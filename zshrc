@@ -2,7 +2,7 @@
 # ***********************
 
 # Load Antigen plugin manager
-source ~/dotfiles/.antigen/antigen.zsh
+source ~/.dotfiles/.antigen/antigen.zsh
 
 # Load the oh-my-zsh library
 antigen use oh-my-zsh
@@ -77,7 +77,7 @@ fi
 alias ia='open $1 -a /Applications/iA\ Writer.app'
 
 # Dotfiles folder
-alias dotfiles="cd $HOME/dotfiles"
+alias dotfiles="cd $HOME/.dotfiles"
 
 # iCloud
 alias icloud="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
