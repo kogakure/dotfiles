@@ -14,6 +14,14 @@ Install [Homebrew](https://brew.sh/) package managager.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+### Homebrew Cask
+
+Install MacOS binaries with Homebrew cask.
+
+```sh
+./setup/cask.sh
+```
+
 ## Starship
 
 Install a [Nerd Font](https://www.nerdfonts.com/).
