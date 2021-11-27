@@ -7,6 +7,9 @@
 - link:
     ~/.ack: ack
     ~/.ag: ag
+    ~/.config/starship.toml:
+      create: true
+      path: starship.toml
     ~/.ctags: ctags
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig

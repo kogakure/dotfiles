@@ -1,0 +1,12 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# "bold red" style when capacity is between 0% and 10%
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+# "bold yellow" style when capacity is between 10% and 30%
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
