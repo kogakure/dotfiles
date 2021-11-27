@@ -14,6 +14,7 @@
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
+    ~/.hammerspoon: hammerspoon
     ~/.pandoc: pandoc
     ~/.wget: wget
     ~/.zshrc: zshrc
