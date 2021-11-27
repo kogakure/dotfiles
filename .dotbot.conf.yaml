@@ -8,6 +8,7 @@
     ~/.ack: ack
     ~/.ag: ag
     ~/.ctags: ctags
+    ~/.editorconfig: editorconfig
     ~/.wget: wget
     ~/.zshrc: zshrc
 
