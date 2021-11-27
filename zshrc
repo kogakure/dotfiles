@@ -56,6 +56,24 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 
+# *** *** Configuration *** ***
+# *****************************
+
+# Vim mode
+bindkey -v
+export KEYTIMEOUT=1
+
+export GIT_EDITOR=vim
+export EDITOR=vim
+
+path=(
+  $HOME/.dotfiles/bin
+  $path
+)
+
+# Fish shell like syntax highlighting for zsh
+source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
 # *** *** Aliases *** ***
 # ***********************
 
@@ -110,6 +128,12 @@ alias gwp='git whatchanged -p'
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
+
+# Tmuxinator
+alias mux="tmuxinator"
+
+# Bat
+alias cat="bat"
 
 # iA Writer
 alias ia='open $1 -a /Applications/iA\ Writer.app'
