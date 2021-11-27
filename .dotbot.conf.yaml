@@ -6,6 +6,7 @@
 
 - link:
     ~/.ack: ack
+    ~/.ag: ag
     ~/.wget: wget
     ~/.zshrc: zshrc
 
