@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.ack: ack
     ~/.wget: wget
     ~/.zshrc: zshrc
 
