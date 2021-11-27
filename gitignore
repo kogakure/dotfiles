@@ -1,0 +1,13 @@
+*.lnk
+*.pyc
+*.pyo
+*.session
+*.sw[nop]
+.BridgeSort
+.DS_Store
+._*
+.agignore
+.bundle/
+m~
+tags
+

@@ -9,6 +9,8 @@
     ~/.ag: ag
     ~/.ctags: ctags
     ~/.editorconfig: editorconfig
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
     ~/.wget: wget
     ~/.zshrc: zshrc
 
