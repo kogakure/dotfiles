@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Create a set of screenshots from a URL
+# Usage: screenshot <url>
+
+if [ $# -lt 1 ]; then
+  echo 1>&2 Usage: screenshot \<url\> \(parameters\)
+  exit 127
+fi
+
+pageres 375x667 768x1024 1280x800 $*
