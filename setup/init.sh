@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Install Xcode Developer Tools
+xcode-select --install
+
+# Install Homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Installing Homebrew packages
 source ./brew.sh
 
