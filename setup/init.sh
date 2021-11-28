@@ -1,5 +1,10 @@
+#!/bin/sh
+
 # Installing Homebrew packages
 source ./brew.sh
+
+# Installing Homebrew Cask packages
+source ./cask.sh
 
 # Installing Node.js
 source ./nvm.sh
