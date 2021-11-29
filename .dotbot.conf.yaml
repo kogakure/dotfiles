@@ -7,6 +7,7 @@
 - link:
     ~/.ack: ack
     ~/.ag: ag
+    ~/.config/kitty: kitty
     ~/.config/starship.toml: starship.toml
     ~/.ctags: ctags
     ~/.editorconfig: editorconfig
