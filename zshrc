@@ -130,6 +130,7 @@ alias gsu='git submodule update'
 alias gu='git up'
 alias gw='git whatchanged'
 alias gwp='git whatchanged -p'
+alias lg='lazygit'
 
 # Vim
 if type nvim > /dev/null 2>&1; then
