@@ -1,0 +1,12 @@
+window:
+  dimensions:
+    columns: 150 
+    lines: 50 
+  decorations: full
+font:
+  normal:
+    family: FiraCode Nerd Font Mono
+  size: 16.0
+background_opacity: 1.0
+key_bindings:
+  - { key: Return, mods: Command,       action: ToggleSimpleFullscreen }
