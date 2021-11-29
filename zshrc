@@ -45,9 +45,9 @@ antigen bundle vagrant
 antigen bundle virtualenv
 antigen bundle yarn
 antigen bundle z
-antigen bundle zsh-autosuggestions
 antigen bundle zsh-interactive-cd
-antigen bundle zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Syntax highlighting bundle
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -58,6 +58,13 @@ antigen apply
 
 # *** *** Configuration *** ***
 # *****************************
+
+CASE_SENSITIVE="true"          # Case-sensitive completion
+DISABLE_AUTO_TITLE="true"      # Disable auto-setting terminal title
+COMPLETION_WAITING_DOTS="true" # Red dots while waiting for completion
+
+# Autosuggest Highlighting
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7,bg=bold,underline"
 
 # Vim mode
 bindkey -v
