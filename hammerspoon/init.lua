@@ -30,14 +30,15 @@ application.enableSpotlightForNameSearches(true)
 ------------
 
 -- Keys
-local KEY_SCAM = { "⇧", "⌃", "⌥", "⌘" }
-local KEY_SCA  = { "⇧", "⌃", "⌥" }
-local KEY_SCM  = { "⇧", "⌃", "⌘" }
-local KEY_CAM  = { "⌃", "⌥", "⌘" }
+local KEY_AM   = { "⌥", "⌘" }
 local KEY_CA   = { "⌃", "⌥" }
+local KEY_CAM  = { "⌃", "⌥", "⌘" }
 local KEY_CM   = { "⌃", "⌘" }
 local KEY_SAM  = { "⇧", "⌥", "⌘" }
-local KEY_AM   = { "⌥", "⌘" }
+local KEY_SC   = { "⇧", "⌘" }
+local KEY_SCA  = { "⇧", "⌃", "⌥" }
+local KEY_SCAM = { "⇧", "⌃", "⌥", "⌘" }
+local KEY_SCM  = { "⇧", "⌃", "⌘" }
 
 -- Displays
 local DISPLAY_PRIMARY = screen.primaryScreen()
