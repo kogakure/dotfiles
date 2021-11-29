@@ -195,6 +195,7 @@ hotkey.bind(KEY_SCM, "l",    function() window.focusedWindow():moveOneScreenEast
 hotkey.bind(KEY_SCM, "h",    function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
 
 -- Application shortcuts
+hotkey.bind(KEY_SC,   "R", function() application.launchOrFocus("kitty") end)
 hotkey.bind(KEY_SCAM, "A", function() application.launchOrFocus("Affinity Designer") end)
 hotkey.bind(KEY_SCAM, "B", function() application.launchOrFocus("Brave Browser") end)
 hotkey.bind(KEY_SCAM, "C", function() application.launchOrFocus("Visual Studio Code") end)
