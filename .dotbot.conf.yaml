@@ -9,6 +9,7 @@
     ~/.ag: ag
     ~/.config/alacritty: alacritty
     ~/.config/kitty: kitty
+    ~/.config/nvim: nvim
     ~/.config/starship.toml: starship.toml
     ~/.ctags: ctags
     ~/.editorconfig: editorconfig
