@@ -9,6 +9,7 @@ set smartcase
 set list
 set listchars=tab:▸\ ,trail:·,nbsp:.,extends:❯,precedes:❮
 set visualbell
+set termguicolors
 set number
 set relativenumber
 set backspace=indent,eol,start " Intuitive backspacing
@@ -59,9 +60,9 @@ set dictionary+=~/.config/nvim/dictionary/en_us.txt
 set thesaurus+=~/.config/nvim/thesaurus/de_user.txt
 set thesaurus+=~/.config/nvim/thesaurus/de_openthesaurus.txt
 
-
 " *** *** *** Key Mappings *** *** ***
 " ************************************
+
 
 let mapleader = "\<space>"
 
@@ -69,8 +70,12 @@ let mapleader = "\<space>"
 noremap <leader>j :b#<CR>
 
 " Add semicolon or comma to the end of the line
-nnoremap <leader>; A;<ESC>
-nnoremap <leader>, A,<ESC>
+nnoremap ;; A;<ESC>
+nnoremap ,, A,<ESC>
+
+" Maintain the cursor position when yanking a visual selection
+vnoremap y myy`y
+vnoremap Y myY`y
 
 " Delete last character of line
 nnoremap <leader>x $x
@@ -80,7 +85,14 @@ nnoremap <leader>ve :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 
 " Delete all buffers
-nnoremap <silent> <leader>da :exec "1," . bufnr('$') . "bd"<CR>
+nnoremap <silent> <leader>da :bufdo bdelete<CR>
+
+" Allow gf to open non-existent files
+map gf :edit <cfile><CR>
+
+" Reselect visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
 
 " Set spell checker to `s`
 " zg (good), zG (good temp), zw (wrong), zW (wrong temp)
@@ -102,6 +114,10 @@ nnoremap ` '
 " Visuall select of just pasted content
 nnoremap gp `[v`]
 nnoremap gy `[v`]y
+
+" When text is wrapped, move by terminal rows, not lines, unless a count is provided
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Open a quickfix window for the last search
 nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -131,12 +147,8 @@ nnoremap <silent> <leader>cf :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>qo :copen<CR>
 nnoremap <leader>qc :cclose<CR>
 
-" Navigation of buffers
-nnoremap <leader>n :bnext<CR>
-nnoremap <leader>p :bprev<CR>
-
 " Exit INSERT MODE with 'jk'
-inoremap jk <ESC>
+inoremap jj <ESC>
 
 " Reformat a line into a block
 nnoremap <leader>q gqip
