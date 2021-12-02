@@ -47,3 +47,8 @@ set dictionary+=~/.config/nvim/dictionary/en_us.txt
 " Custom Thesauri (Synonyms) (<C-x> <C-t>)
 set thesaurus+=~/.config/nvim/thesaurus/de_user.txt
 set thesaurus+=~/.config/nvim/thesaurus/de_openthesaurus.txt
+
+" *** *** *** Key Mappings *** *** ***
+" ************************************
+
+let mapleader = "\<space>"
