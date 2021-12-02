@@ -197,5 +197,7 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
+source ~/.config/nvim/plugins/base16-vim.vim
+
 call plug#end()
 doautocmd User PlugLoaded
