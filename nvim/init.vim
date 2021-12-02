@@ -59,6 +59,7 @@ set dictionary+=~/.config/nvim/dictionary/en_us.txt
 set thesaurus+=~/.config/nvim/thesaurus/de_user.txt
 set thesaurus+=~/.config/nvim/thesaurus/de_openthesaurus.txt
 
+
 " *** *** *** Key Mappings *** *** ***
 " ************************************
 
@@ -149,3 +150,24 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+
+" *** *** *** Functions *** *** ***
+" *********************************
+
+" Toggle between soft wrap and no wrap
+nnoremap <leader>tw :call ToggleWrap()<CR>
+
+function! ToggleWrap()
+  if &wrap
+    echo "Wrap OFF"
+    set nowrap
+    set nolinebreak
+    set virtualedit=all
+  else
+    echo "Wrap ON"
+    set wrap
+    set linebreak
+    set virtualedit=
+    setlocal display+=lastline
+  endif
+endfunction
