@@ -23,8 +23,13 @@ set softtabstop=2
 set expandtab
 set copyindent
 set shiftround
+set mouse=a
+set clipboard=unnamedplus
+set nowrap
+set confirm
 set spelllang=de_de,en_us
 set timeoutlen=500
+set signcolumn=yes:2
 set foldmethod=syntax
 set splitbelow
 set splitright
@@ -32,6 +37,11 @@ set scrolloff=8
 set sidescrolloff=8
 set virtualedit=all
 set cursorline
+set path+=**
+set backup
+set noswapfile
+set undofile
+set redrawtime=10000 " Allow more time for loading syntax on large files
 set complete+=i,k,s,kspell
 set wildmode=longest:full,full
 
