@@ -60,11 +60,15 @@ set dictionary+=~/.config/nvim/dictionary/en_us.txt
 set thesaurus+=~/.config/nvim/thesaurus/de_user.txt
 set thesaurus+=~/.config/nvim/thesaurus/de_openthesaurus.txt
 
+" Python paths
+let g:python_host_prog=$HOME.'/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog=$HOME.'/.pyenv/versions/neovim3/bin/python'
+
+" Leader
+let mapleader = "\<space>"
+
 " *** *** *** Key Mappings *** *** ***
 " ************************************
-
-
-let mapleader = "\<space>"
 
 " Quick toggle between buffers
 noremap <leader>j :b#<CR>
@@ -201,3 +205,4 @@ source ~/.config/nvim/plugins/base16-vim.vim
 
 call plug#end()
 doautocmd User PlugLoaded
+
