@@ -34,3 +34,7 @@ set virtualedit=all
 set cursorline
 set complete+=i,k,s,kspell
 set wildmode=longest:full,full
+
+" Spell Checker
+set spellfile+=~/.config/nvim/spell/de.utf-8.add " (1)zg, (1)zw
+set spellfile+=~/.vim/spell/en.utf-8.add " 2zg, 2zw
