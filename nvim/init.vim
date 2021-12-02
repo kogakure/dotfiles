@@ -38,7 +38,8 @@ set sidescrolloff=8
 set virtualedit=all
 set cursorline
 set path+=**
-set backup
+set nobackup
+set nowritebackup
 set noswapfile
 set undofile
 set redrawtime=10000 " Allow more time for loading syntax on large files
