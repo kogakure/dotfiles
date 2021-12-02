@@ -43,3 +43,7 @@ set spellfile+=~/.vim/spell/en.utf-8.add " 2zg, 2zw
 set dictionary+=~/.config/nvim/dictionary/de_user.txt
 set dictionary+=~/.config/nvim/dictionary/de_neu.txt
 set dictionary+=~/.config/nvim/dictionary/en_us.txt
+
+" Custom Thesauri (Synonyms) (<C-x> <C-t>)
+set thesaurus+=~/.config/nvim/thesaurus/de_user.txt
+set thesaurus+=~/.config/nvim/thesaurus/de_openthesaurus.txt
