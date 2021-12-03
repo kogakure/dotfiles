@@ -64,7 +64,7 @@ bindkey -M viins '^x^f' fzf-file-widget  # (f)ile
 bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
 
 export KEYTIMEOUT=1
-
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export GIT_EDITOR=vim
 export EDITOR=vim
 
@@ -79,8 +79,20 @@ source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+  eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
+export FZF_DEFAULT_OPTS='--no-height'
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
+
+export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
 # }}}
 # {{{ *** *** Aliases *** ***
