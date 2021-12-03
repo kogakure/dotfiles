@@ -17,39 +17,32 @@ antigen bundle dotenv
 antigen bundle extract
 antigen bundle gem
 antigen bundle git
-antigen bundle git 
-antigen bundle git-extras 
+antigen bundle git-extras
 antigen bundle gitignore
 antigen bundle gpg-agent
 antigen bundle gulp
 antigen bundle history-substring-search
 antigen bundle jira
 antigen bundle man
-antigen bundle node 
+antigen bundle node
 antigen bundle npm
-antigen bundle npm 
 antigen bundle nvm
 antigen bundle pip
-antigen bundle pip 
-antigen bundle pyenv 
+antigen bundle pyenv
 antigen bundle python
 antigen bundle rbenv
 antigen bundle rsync
 antigen bundle ssh-agent
 antigen bundle sudo
 antigen bundle tmux
-antigen bundle tmux 
-antigen bundle tmux-cssh 
+antigen bundle tmux-cssh
 antigen bundle tmuxinator
-antigen bundle vagrant 
+antigen bundle vagrant
 antigen bundle virtualenv
 antigen bundle yarn
 antigen bundle z
 antigen bundle zsh-interactive-cd
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Syntax highlighting bundle
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Tell Antigen that you’re done
