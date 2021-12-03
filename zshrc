@@ -57,8 +57,12 @@ COMPLETION_WAITING_DOTS="true" # Red dots while waiting for completion
 # Autosuggest Highlighting
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7,bg=bold,underline"
 
-# Vim mode
+# Bindkey
 bindkey -v
+bindkey -M viins '^r' fzf-history-widget # (r)everse history search
+bindkey -M viins '^x^f' fzf-file-widget  # (f)ile
+bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
+
 export KEYTIMEOUT=1
 
 export GIT_EDITOR=vim
