@@ -1,0 +1,11 @@
+--max-columns-preview
+
+--type-add 
+web:*.{html,css,js,jsx,ts,tsx}*
+
+--type-add 
+text:*.{md,mdx,txt}*
+
+--glob=!git/*
+
+--smart-case

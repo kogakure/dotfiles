@@ -18,6 +18,7 @@
     ~/.gitignore: gitignore
     ~/.hammerspoon: hammerspoon
     ~/.pandoc: pandoc
+    ~/.ripgreprc: ripgrep
     ~/.wget: wget
     ~/.zshrc: zshrc
 
