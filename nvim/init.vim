@@ -31,7 +31,7 @@ set confirm
 set spelllang=de_de,en_us
 set timeoutlen=500
 set signcolumn=yes:2
-set foldmethod=syntax
+set foldmethod=marker
 set splitbelow
 set splitright
 set scrolloff=8
@@ -88,8 +88,14 @@ nnoremap <leader>x $x
 nnoremap <leader>ve :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 
+" Delete current buffer
+nnoremap <silent> <leader>X :bd<CR>
+
 " Delete all buffers
 nnoremap <silent> <leader>da :bufdo bdelete<CR>
+
+" Save current buffer
+nnoremap <silent> <leader>sf :w<CR>
 
 " Allow gf to open non-existent files
 map gf :edit <cfile><CR>
