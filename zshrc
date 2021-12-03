@@ -82,16 +82,19 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
   [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
   eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+# FD
+FD_OPTIONS="--follow --exclude .git --exclude node_modules"
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
+export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --hidden --type f --type l $FD_OPTIONS"
 export FZF_DEFAULT_OPTS='--no-height'
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
-export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
+export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS --color=never --hidden"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
 # }}}
