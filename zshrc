@@ -1,5 +1,4 @@
-# *** *** Plugins *** ***
-# ***********************
+# {{{ *** *** Plugins *** ***
 
 # Load Antigen plugin manager
 source ~/.dotfiles/.antigen/antigen.zsh
@@ -48,9 +47,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # Tell Antigen that you’re done
 antigen apply
 
-
-# *** *** Configuration *** ***
-# *****************************
+# }}}
+# {{{ *** *** Configuration *** ***
 
 CASE_SENSITIVE="true"          # Case-sensitive completion
 DISABLE_AUTO_TITLE="true"      # Disable auto-setting terminal title
@@ -80,8 +78,8 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-# *** *** Aliases *** ***
-# ***********************
+# }}}
+# {{{ *** *** Aliases *** ***
 
 # Folders
 alias ...='cd ../..'
@@ -173,10 +171,15 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # Also, clear Apple’s System Logs to improve shell startup speed
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
+# }}}
+# {{{ *** *** Functions *** ***
 
-# *** *** Shell *** ***
-# *********************
+# }}}
+# {{{ *** *** Shell *** ***
 
 # Starship 
 eval "$(starship init zsh)"
 
+clear
+
+# }}}
