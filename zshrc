@@ -97,6 +97,10 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 # }}}
 # {{{ *** *** Aliases *** ***
 
+# ZSH
+alias zshconfig="vim $HOME/.zshrc"
+alias reload="source $HOME/.zshrc"
+
 # Folders
 alias ...='cd ../..'
 alias ..='cd ..'
@@ -146,6 +150,8 @@ alias gwp='git whatchanged -p'
 alias lg='lazygit'
 
 # Vim
+alias v='vim'
+
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
