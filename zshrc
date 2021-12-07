@@ -65,8 +65,8 @@ bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
 
 export KEYTIMEOUT=1
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-export GIT_EDITOR=vim
-export EDITOR=vim
+export GIT_EDITOR=nvim
+export EDITOR=nvim
 
 path=(
   $HOME/.dotfiles/bin
