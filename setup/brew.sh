@@ -25,7 +25,6 @@ brew install cloc                       # Statistics utility to count lines of c
 brew install closure-compiler           # JavaScript optimizing compiler
 brew install cmake                      # Cross-platform make
 brew install coreutils                  # GNU File, Shell, and Text utilities
-brew install ctags                      # Reimplementation of ctags(1)
 brew install curl                       # Get a file from an HTTP, HTTPS or FTP server
 brew install denisidoro/tools/navi      # An interactive cheatsheet tool for the command-line ➜  navi
 brew install direnv                     # Load/unload environment variables based on $PWD
@@ -95,6 +94,7 @@ brew install the_silver_searcher        # Code-search similar to ack ➜ ag
 brew install tmate                      # Instant terminal sharing
 brew install tmux                       # Terminal multiplexer
 brew install tree                       # Display directories as trees (with optional color/HTML output)
+brew install universal-ctags/universal-ctags/universal-ctags --HEAD # A maintained ctag implementation
 brew install urlview                    # URL extractor/launcher (needed for tmux-urlview)
 brew install watchman                   # Watch files and take action when they change
 brew install wget                       # Internet file retriever
