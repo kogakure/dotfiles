@@ -1,7 +1,3 @@
-" A command-line fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
 " Key bindings
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
