@@ -48,6 +48,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/popup.nvim'
+Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production',  'branch': 'release/0.x' }
 
@@ -60,6 +61,8 @@ Plug 'michaeljsmith/vim-indent-object' " ai, ii, aI, iI
 Plug 'whatyouhide/vim-textobj-xmlattr' " ax, ix
 
 " Custom Motions
+Plug 'christoomey/vim-sort-motion' " gs
+Plug 'tommcdo/vim-exchange' " cx, cxx, X, cxc
 Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
 
 " Syntax Highlighting
@@ -68,6 +71,7 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'sheerun/vim-polyglot'
 Plug 'jxnblk/vim-mdx-js'
 Plug 'styled-components/vim-styled-components'
+
 " Status Line
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
@@ -84,12 +88,24 @@ Plug 'tpope/vim-surround'
 " Misc
 Plug 'APZelos/blamer.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'bogado/file-line'
+Plug 'dstein64/vim-startuptime'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim'
 Plug 'karb94/neoscroll.nvim'
+Plug 'mattn/emmet-vim'
+Plug 'mg979/vim-visual-multi'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'ruanyl/vim-gh-line'
 Plug 'sidebar-nvim/sidebar.nvim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-scripts/VisIncr'
+Plug 'wesQ3/vim-windowswap'
 Plug 'windwp/nvim-autopairs'
+Plug 'yamatsum/nvim-cursorline'
 
 call plug#end()
 doautocmd User PlugLoaded
