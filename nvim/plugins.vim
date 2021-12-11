@@ -31,6 +31,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Tpope
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-speeddating'
 
 " Misc
 Plug 'APZelos/blamer.nvim'
