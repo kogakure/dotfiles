@@ -1,0 +1,6 @@
+name: "Relaunch Hamburg"
+root: ~/Code/Github/11ty-hamburg.stefanimhoff.de
+windows:
+  - Vim: vim
+  - Terminal: clear
+  - Server: clear

@@ -1,0 +1,6 @@
+name: kogakure
+root: ~/Code/Github/hugo-kogakure.de/
+windows:
+  - Vim: vim
+  - Terminal: clear
+  - Server: yarn start

@@ -1,0 +1,5 @@
+name: Designkit
+root: ~/Code/XING/xds-kit/
+windows:
+  - Vim: vim
+  - Terminal: clear

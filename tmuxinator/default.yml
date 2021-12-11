@@ -1,0 +1,7 @@
+name: Standard
+root: ~/.dotfiles/
+windows:
+  - Vim: vim
+  - Downloads: cd ~/Downloads; clear
+  - Terminal: cd; clear
+  - Dotfiles: clear

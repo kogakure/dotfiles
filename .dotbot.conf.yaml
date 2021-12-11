@@ -12,6 +12,7 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/starship.toml: starship.toml
+    ~/.config/tmuxinator: tmuxinator
     ~/.ctags: ctags
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig

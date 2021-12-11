@@ -93,6 +93,7 @@ brew install startship                  # Cross-shell prompt for astronauts
 brew install the_silver_searcher        # Code-search similar to ack ➜ ag
 brew install tmate                      # Instant terminal sharing
 brew install tmux                       # Terminal multiplexer
+brew install tmuxinator                 # Create and manage tmux sessions easily
 brew install tree                       # Display directories as trees (with optional color/HTML output)
 brew install universal-ctags/universal-ctags/universal-ctags --HEAD # A maintained ctag implementation
 brew install urlview                    # URL extractor/launcher (needed for tmux-urlview)
@@ -102,5 +103,5 @@ brew install yarn                       # JavaScript package manager
 brew install youtube-dl                 # Download YouTube videos from the command-line
 brew install z                          # Tracks most-used directories to make cd smarter
 brew install zeromq                     # High-performance, asynchronous messaging library
-brew install zsh                        # UNIX shell (command interpreter) 
+brew install zsh                        # UNIX shell (command interpreter)
 brew install zsh-syntax-highlighting    # Fish shell like syntax highlighting for zsh
