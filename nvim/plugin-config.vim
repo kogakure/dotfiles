@@ -18,6 +18,7 @@ source ~/.config/nvim/plugins/lsp-installer.lua
 source ~/.config/nvim/plugins/lspkind.lua
 source ~/.config/nvim/plugins/lualine.lua
 source ~/.config/nvim/plugins/neoscroll.lua
+source ~/.config/nvim/plugins/pandoc.vim
 source ~/.config/nvim/plugins/prettier.vim
 source ~/.config/nvim/plugins/sidebar.lua
 source ~/.config/nvim/plugins/speeddating.vim
