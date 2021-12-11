@@ -22,6 +22,7 @@ source ~/.config/nvim/plugins/sidebar.lua
 source ~/.config/nvim/plugins/speeddating.vim
 source ~/.config/nvim/plugins/telescope.lua
 source ~/.config/nvim/plugins/tree.lua
+source ~/.config/nvim/plugins/treesitter.lua
 source ~/.config/nvim/plugins/trouble.lua
 source ~/.config/nvim/plugins/ultisnips.vim
 source ~/.config/nvim/plugins/vim-easymotion.vim

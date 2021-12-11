@@ -62,6 +62,9 @@ Plug 'whatyouhide/vim-textobj-xmlattr' " ax, ix
 " Custom Motions
 Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
 
+" Syntax Highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 " Status Line
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
