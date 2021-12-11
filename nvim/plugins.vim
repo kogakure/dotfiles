@@ -18,5 +18,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Tpope
 Plug 'tpope/vim-abolish'
 
+" Misc
+Plug 'godlygeek/tabular'
+
 call plug#end()
 doautocmd User PlugLoaded
