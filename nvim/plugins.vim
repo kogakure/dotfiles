@@ -13,9 +13,7 @@ call plug#begin(data_dir . '/plugins')
 " Base16 for Vim
 Plug 'chriskempson/base16-vim'
 
-" A command-line fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
 " Tpope
 Plug 'tpope/vim-abolish'
