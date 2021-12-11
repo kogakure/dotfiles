@@ -28,4 +28,5 @@ source ~/.config/nvim/plugins/treesitter.lua
 source ~/.config/nvim/plugins/trouble.lua
 source ~/.config/nvim/plugins/ultisnips.vim
 source ~/.config/nvim/plugins/vim-easymotion.vim
+source ~/.config/nvim/plugins/vimux.vim
 source ~/.config/nvim/plugins/web-devicons.lua

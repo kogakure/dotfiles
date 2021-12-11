@@ -77,6 +77,11 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
+" TMUX
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'preservim/vimux'
+Plug 'tyewang/vimux-jest-test'
+
 " Tpope
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
