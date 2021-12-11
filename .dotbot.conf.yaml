@@ -19,6 +19,7 @@
     ~/.hammerspoon: hammerspoon
     ~/.pandoc: pandoc
     ~/.ripgreprc: ripgrep
+    ~/.tmux.conf: tmux.conf
     ~/.wget: wget
     ~/.zshrc: zshrc
 

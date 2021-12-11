@@ -3,6 +3,9 @@
 # Install Xcode Developer Tools
 xcode-select --install
 
+# Install TMUX Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Install Homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -26,3 +29,4 @@ source ./ruby.sh
 
 # Install global Gems
 source ./gem.sh
+
