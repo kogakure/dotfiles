@@ -25,3 +25,4 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [nvim --headless -c "lua lsp_install_sync()" -c "quitall"]
