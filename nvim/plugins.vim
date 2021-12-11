@@ -27,6 +27,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
 
 " Status Line
+Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
