@@ -19,6 +19,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-abolish'
 
 " Misc
+Plug 'APZelos/blamer.nvim'
 Plug 'godlygeek/tabular'
 Plug 'windwp/nvim-autopairs'
 
