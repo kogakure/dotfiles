@@ -24,9 +24,17 @@ Plug 'onsails/lspkind-nvim'
 Plug 'creativenull/diagnosticls-configs-nvim'
 
 " Completion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'David-Kunz/cmp-npm'
+
+" File Management
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ThePrimeagen/harpoon'

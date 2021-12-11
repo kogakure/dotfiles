@@ -5,8 +5,10 @@ source ~/.config/nvim/plugins/base16.vim
 source ~/.config/nvim/plugins/blamer.vim
 source ~/.config/nvim/plugins/bookmarks.vim
 source ~/.config/nvim/plugins/bufferline.lua
+source ~/.config/nvim/plugins/cmp.lua
 source ~/.config/nvim/plugins/colorizer.lua
 source ~/.config/nvim/plugins/dashboard.vim
+source ~/.config/nvim/plugins/diagnosticls-configs.lua
 source ~/.config/nvim/plugins/gitsigns.lua
 source ~/.config/nvim/plugins/goyo.vim
 source ~/.config/nvim/plugins/harpoon.lua
