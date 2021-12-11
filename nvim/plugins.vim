@@ -35,6 +35,14 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'David-Kunz/cmp-npm'
 
 " File Management
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-frecency.nvim'
+Plug 'nvim-telescope/telescope-node-modules.nvim'
+Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
+Plug 'dhruvmanila/telescope-bookmarks.nvim'
+Plug 'tami5/sqlite.lua'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ThePrimeagen/harpoon'

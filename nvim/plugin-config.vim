@@ -20,6 +20,7 @@ source ~/.config/nvim/plugins/neoscroll.lua
 source ~/.config/nvim/plugins/prettier.vim
 source ~/.config/nvim/plugins/sidebar.lua
 source ~/.config/nvim/plugins/speeddating.vim
+source ~/.config/nvim/plugins/telescope.lua
 source ~/.config/nvim/plugins/ultisnips.vim
 source ~/.config/nvim/plugins/vim-easymotion.vim
 source ~/.config/nvim/plugins/web-devicons.lua
