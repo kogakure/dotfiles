@@ -46,7 +46,7 @@ nnoremap <silent> <leader>h :nohlsearch<CR>
 nnoremap <leader>l :set list!<CR>
 
 " Indent the whole source code
-nnoremap <leader>ff gg=G''
+nnoremap <leader>pf gg=G''
 
 " Reverse the mark mapping
 nnoremap ' `
@@ -102,3 +102,29 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Remap Jump to Tag
+nnoremap ü <C-]>
+nnoremap Ü <C-O>
+
+" Open for Markdown in iA Writer
+nnoremap <leader>ia :silent !open -a iA\ Writer.app '%:p'<CR>
+
+" Custom Text Objects
+let pairs = { ":" : ":",
+      \ "." : ".",
+      \ "<bar>" : "<bar>",
+      \ "*" : "*",
+      \ "-" : "-",
+      \ "_" : "_" }
+
+for [key, value] in items(pairs)
+  exe "nnoremap ci".key." T".key."ct".value
+  exe "nnoremap ca".key." F".key."cf".value
+  exe "nnoremap vi".key." T".key."vt".value
+  exe "nnoremap va".key." F".key."vf".value
+  exe "nnoremap di".key." T".key."dt".value
+  exe "nnoremap da".key." F".key."df".value
+  exe "nnoremap yi".key." T".key."yt".value
+  exe "nnoremap ya".key." F".key."yf".value
+endfor
