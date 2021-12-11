@@ -7,3 +7,4 @@ source ~/.config/nvim/plugins/bookmarks.vim
 source ~/.config/nvim/plugins/bufferline.lua
 source ~/.config/nvim/plugins/colorizer.lua
 source ~/.config/nvim/plugins/dashboard.vim
+source ~/.config/nvim/plugins/web-devicons.lua

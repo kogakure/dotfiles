@@ -18,6 +18,7 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'akinsho/bufferline.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Tpope
 Plug 'tpope/vim-abolish'
