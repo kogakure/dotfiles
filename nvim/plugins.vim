@@ -20,6 +20,7 @@ Plug 'tpope/vim-abolish'
 
 " Misc
 Plug 'APZelos/blamer.nvim'
+Plug 'MattesGroeger/vim-bookmarks'
 Plug 'godlygeek/tabular'
 Plug 'windwp/nvim-autopairs'
 
