@@ -71,6 +71,7 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim'
 Plug 'karb94/neoscroll.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'sidebar-nvim/sidebar.nvim'
 Plug 'windwp/nvim-autopairs'
 
 call plug#end()
