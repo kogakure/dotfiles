@@ -19,6 +19,21 @@ function! ToggleWrap()
   endif
 endfunction
 
+" Toggle between soft wrap and no wrap
+nnoremap <leader>cw :call ToggleColorColumn()<CR>
+
+function! ToggleColorColumn()
+  if &colorcolumn == "80"
+    echo "Textwidth OFF"
+    set colorcolumn=0
+    set textwidth=0
+  else
+    echo "Textwidth ON"
+    set colorcolumn=80
+    set textwidth=80
+  endif
+endfunction
+
 " Automatic Tabular.vim with the (|)
 inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
 
