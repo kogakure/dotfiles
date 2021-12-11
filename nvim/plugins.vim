@@ -10,7 +10,10 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
-" Base16 for Vim
+" Dashboard
+Plug 'glepnir/dashboard-nvim'
+
+" Color Themes
 Plug 'chriskempson/base16-vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
