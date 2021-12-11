@@ -1,11 +1,12 @@
  #!/bin/sh
 
 # Install Pyenv
- curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 
 # Activate Pyenv
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 pyenv install 2.7.17
@@ -22,3 +23,4 @@ pip3 install neovim
 
 pip3 install awscli
 
+pyenv deactivate
