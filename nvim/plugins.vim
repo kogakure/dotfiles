@@ -36,6 +36,7 @@ Plug 'tpope/vim-abolish'
 Plug 'APZelos/blamer.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'godlygeek/tabular'
+Plug 'junegunn/goyo.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'windwp/nvim-autopairs'
 
