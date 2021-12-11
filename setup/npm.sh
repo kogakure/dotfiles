@@ -31,6 +31,7 @@ npm install -g http-server               # A simple zero-configuration command-l
 npm install -g json-server               # Small JSON file server for REST API mock ➜ touch db.json; json-server --watch db.json
 npm install -g lighthouse                # Lighthouse analyzes web apps and web pages.
 npm install -g nativefier                # Wrap web apps natively
+npm install -g neovim                    # Node.js provider for NeoVim
 npm install -g netlify-cli               # The Netlify CLI tools.
 npm install -g nodemon                   # Simple monitor script for use during development of a node.js app.
 npm install -g npm-check                 # Check for outdated, incorrect, and unused dependencies. ➜ npm-check -g
