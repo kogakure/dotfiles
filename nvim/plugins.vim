@@ -44,7 +44,10 @@ Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
 Plug 'dhruvmanila/telescope-bookmarks.nvim'
 Plug 'tami5/sqlite.lua'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'nvim-lua/popup.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production',  'branch': 'release/0.x' }
 
