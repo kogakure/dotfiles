@@ -23,6 +23,7 @@ Plug 'tpope/vim-abolish'
 Plug 'APZelos/blamer.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'godlygeek/tabular'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'windwp/nvim-autopairs'
 
 call plug#end()
