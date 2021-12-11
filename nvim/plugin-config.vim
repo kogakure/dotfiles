@@ -10,6 +10,9 @@ source ~/.config/nvim/plugins/dashboard.vim
 source ~/.config/nvim/plugins/gitsigns.lua
 source ~/.config/nvim/plugins/goyo.vim
 source ~/.config/nvim/plugins/harpoon.lua
+source ~/.config/nvim/plugins/lsp-config.lua
+source ~/.config/nvim/plugins/lsp-installer.lua
+source ~/.config/nvim/plugins/lspkind.lua
 source ~/.config/nvim/plugins/lualine.lua
 source ~/.config/nvim/plugins/neoscroll.lua
 source ~/.config/nvim/plugins/prettier.vim

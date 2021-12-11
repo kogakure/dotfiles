@@ -16,6 +16,13 @@ Plug 'glepnir/dashboard-nvim'
 " Color Themes
 Plug 'chriskempson/base16-vim'
 
+" Language Server Protocol
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'folke/trouble.nvim'
+Plug 'onsails/lspkind-nvim'
+Plug 'creativenull/diagnosticls-configs-nvim'
+
 " Completion
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
