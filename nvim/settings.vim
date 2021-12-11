@@ -45,6 +45,7 @@ set noswapfile
 set undofile
 set redrawtime=10000 " Allow more time for loading syntax on large files
 set complete+=i,k,s,kspell
+set completeopt=menu,menuone,preview
 set wildmode=longest:full,full
 
 " Spell Checker
@@ -64,5 +65,12 @@ set thesaurus+=~/.config/nvim/thesaurus/de_openthesaurus.txt
 let g:python_host_prog=$HOME.'/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog=$HOME.'/.pyenv/versions/neovim3/bin/python'
 
+" Custom Colors
+highlight ColorColumn guibg=#202224
+
+" Show VCS conflict marker
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 " Leader
 let mapleader = "\<space>"
+
