@@ -25,6 +25,14 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production',  'branch': 'release/0.x' }
 
+" Custom Text Objects
+Plug 'glts/vim-textobj-comment' " ac, ic, aC
+Plug 'jceb/vim-textobj-uri' " au, iu, go
+Plug 'kana/vim-textobj-datetime' " ada, add, adf, adt, adz, ida, …
+Plug 'kana/vim-textobj-user'
+Plug 'michaeljsmith/vim-indent-object' " ai, ii, aI, iI
+Plug 'whatyouhide/vim-textobj-xmlattr' " ax, ix
+
 " Custom Motions
 Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
 
