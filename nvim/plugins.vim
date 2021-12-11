@@ -17,6 +17,7 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'chriskempson/base16-vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
