@@ -16,8 +16,16 @@ Plug 'glepnir/dashboard-nvim'
 " Color Themes
 Plug 'chriskempson/base16-vim'
 
+" Completion
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Custom Motions
 Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
+
+" Status Line
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 

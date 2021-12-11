@@ -1,0 +1,170 @@
+snippet imp "Imports entire module statement in ES6 syntax" b
+import ${2:moduleName} from '${1:module}';$0
+endsnippet
+
+snippet imn "Imports entire module in ES6 syntax without module name" b
+import '${1:module}';$0
+endsnippet
+
+snippet imd "Imports only a portion of the module in ES6 syntax" b
+import { $2 } from '${1:module}';$0
+endsnippet
+
+snippet ime "Imports everything as alias from the module in ES6 syntax" b
+import * as ${2:alias} from '${1:module}';$0
+endsnippet
+
+snippet ima "Imports a specific portion of the module by assigning a local alias in ES6 syntax" b
+import { ${2:originalName} as ${3:alias} } from '${1:module}';$0
+endsnippet
+
+snippet rqr "Require a package" b
+require('${1:package}');
+endsnippet
+
+snippet mde "Module exports from Common JS, node syntax at ES6" b
+module.exports = {
+	$0
+};
+endsnippet
+
+snippet enf "Export named function in ES6 syntax" b
+export const ${1:functionName} = (${2:params}) => {
+	$0
+};
+endsnippet
+
+snippet edf "Export default function in ES6 syntax" b
+export default (${1:params}) => {
+	$0
+};
+endsnippet
+
+snippet ecl "Export default class in ES6 syntax" b
+export default class ${1:className} {
+	$0
+};
+endsnippet
+
+snippet ece "Export default class which extends a base one in ES6 syntax" b
+export default class ${1:className} extends ${2:baseclassName} {
+	$0
+};
+endsnippet
+
+snippet con "Add default constructor in a class in ES6 syntax" b
+constructor(${1:params}) {
+	${0}
+}
+endsnippet
+
+snippet met "Creates a method inside a class in ES6 syntax" b
+${1:methodName}(${2:params}) {
+	${0}
+}
+endsnippet
+
+snippet fre "Creates a forEach statement in ES6 syntax" b
+${1:array}.forEach(${2:currentItem} => {
+	${0}
+});
+endsnippet
+
+snippet fof "Iterating over property names of iterable objects" b
+for (const ${1:item} of ${2:object}) {
+	${0}
+}
+endsnippet
+
+snippet fin "Iterating over property values of iterable objects" b
+for (const ${1:item} in ${2:object}) {
+	${0}
+}
+endsnippet
+
+snippet anfn "Creates an anonymous function in ES6 syntax" b
+(${1:params}) => {
+	${2}
+}
+endsnippet
+
+snippet nfn "Creates a named function in ES6 syntax" b
+const ${1:name} = (${2:params}) => {
+	${3}
+}
+endsnippet
+
+snippet dob "Creates and assigns a local variable using object destructing" b
+const {${2:propertyName}} = ${1:objectToDestruct};
+endsnippet
+
+snippet dar "Creates and assigns a local variable using array destructing" b
+const [${2:propertyName}] = ${1:arrayToDestruct};
+endsnippet
+
+snippet sti "Executes the given function at specified intervals in ES6 syntax" b
+setInterval(() => {
+	${2}
+}, ${0:intervalInms});
+endsnippet
+
+snippet sto "Executes the given function after the specified delay in ES6 syntax" b
+setTimeout(() => {
+	${2}
+}, ${1:delayInms});
+endsnippet
+
+snippet prom "Creates and returns a new Promise in the standard ES6 syntax" b
+return new Promise((resolve, reject) => {
+	${1}
+});
+endsnippet
+
+snippet thenc "Add the .then and .catch methods to handle promises" b
+.then((${1:result}) => {
+	${2}
+}).catch((${3:err}) => {
+	${4}
+});
+endsnippet
+
+snippet cco "Writes the the number of times that count() has been invoked at the same line and with the same label" b
+console.count(${1:label});
+endsnippet
+
+snippet cdi "Prints a JavaScript representation of the specified object" b
+console.dir(${1:object});
+endsnippet
+
+snippet cer "Displays a message in the console and also includes a stack trace from where the method was called" b
+console.error(${1:object});
+endsnippet
+
+snippet cgr "Groups and indents all following output by an additional level, until console.groupEnd() is called." b
+console.group("${1:label}");
+endsnippet
+
+snippet cge "Closes out the corresponding console.group()." b
+console.groupEnd();
+endsnippet
+
+snippet clg "Displays a message in the console" b
+console.log(${1:object});
+endsnippet
+
+snippet clo "Displays an object in the console with its name" b
+console.log(\{${1:object}\});
+endsnippet
+
+snippet cwa "Displays a message in the console but also displays a yellow warning icon along with the logged message" b
+console.warn(${1:object});
+endsnippet
+
+snippet cin "Displays a message in the console but also displays a blue information icon along with the logged message" b
+console.info(${1:object});
+endsnippet
+
+snippet clt "Displays tabular data as a table." b
+console.table(${1:object});
+endsnippet
+
