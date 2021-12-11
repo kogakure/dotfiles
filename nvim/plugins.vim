@@ -17,5 +17,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Tpope
+Plug 'tpope/vim-abolish'
+
 call plug#end()
 doautocmd User PlugLoaded
