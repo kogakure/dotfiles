@@ -1,53 +1,3 @@
-# {{{ *** *** Plugins *** ***
-
-# Load Antigen plugin manager
-source ~/.dotfiles/.antigen/antigen.zsh
-
-# Load the oh-my-zsh library
-antigen use oh-my-zsh
-
-# Bundles from the default repo
-antigen bundle brew
-antigen bundle bundler
-antigen bundle colored-man-pages
-antigen bundle colorize
-antigen bundle docker
-antigen bundle dotenv
-antigen bundle extract
-antigen bundle gem
-antigen bundle git
-antigen bundle git-extras
-antigen bundle gitignore
-antigen bundle gpg-agent
-antigen bundle gulp
-antigen bundle history-substring-search
-antigen bundle jira
-antigen bundle man
-antigen bundle node
-antigen bundle npm
-antigen bundle nvm
-antigen bundle pip
-antigen bundle pyenv
-antigen bundle python
-antigen bundle rbenv
-antigen bundle rsync
-antigen bundle ssh-agent
-antigen bundle sudo
-antigen bundle tmux
-antigen bundle tmux-cssh
-antigen bundle tmuxinator
-antigen bundle vagrant
-antigen bundle virtualenv
-antigen bundle yarn
-antigen bundle z
-antigen bundle zsh-interactive-cd
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Tell Antigen that you’re done
-antigen apply
-
-# }}}
 # {{{ *** *** Configuration *** ***
 
 CASE_SENSITIVE="true"          # Case-sensitive completion
@@ -57,21 +7,10 @@ COMPLETION_WAITING_DOTS="true" # Red dots while waiting for completion
 # Autosuggest Highlighting
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7,bg=bold,underline"
 
-# Bindkey
-bindkey -v
-bindkey -M viins '^r' fzf-history-widget # (r)everse history search
-bindkey -M viins '^x^f' fzf-file-widget  # (f)ile
-bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
-
 export KEYTIMEOUT=1
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export GIT_EDITOR=nvim
 export EDITOR=nvim
-
-path=(
-  $HOME/.dotfiles/bin
-  $path
-)
 
 # Fish shell like syntax highlighting for zsh
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -109,8 +48,9 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 # Man
@@ -118,6 +58,22 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # Bat
 export BAT_PAGER="less -R"
+
+# Starship
+eval "$(starship init zsh)"
+
+# Path
+path=(
+  $HOME/.dotfiles/bin
+  $path
+)
+
+# Bindkey
+bindkey -v
+bindkey -M viins '^r' fzf-history-widget # (r)everse history search
+bindkey -M viins '^x^f' fzf-file-widget  # (f)ile
+bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
+
 
 # }}}
 # {{{ *** *** Aliases *** ***
@@ -393,11 +349,53 @@ fbh() {
 }
 
 # }}}
-# {{{ *** *** Shell *** ***
+# {{{ *** *** Plugins *** ***
 
-# Starship 
-eval "$(starship init zsh)"
+# Load Antigen plugin manager
+source ~/.dotfiles/.antigen/antigen.zsh
 
-clear
+# Load the oh-my-zsh library
+antigen use oh-my-zsh
+
+# Bundles from the default repo
+antigen bundle brew
+antigen bundle bundler
+antigen bundle colored-man-pages
+antigen bundle colorize
+antigen bundle docker
+antigen bundle dotenv
+antigen bundle extract
+antigen bundle gem
+antigen bundle git
+antigen bundle git-extras
+antigen bundle gitignore
+antigen bundle gpg-agent
+antigen bundle gulp
+antigen bundle history-substring-search
+antigen bundle jira
+antigen bundle man
+antigen bundle node
+antigen bundle npm
+antigen bundle nvm
+antigen bundle pip
+antigen bundle pyenv
+antigen bundle python
+antigen bundle rbenv
+antigen bundle rsync
+antigen bundle ssh-agent
+antigen bundle sudo
+antigen bundle tmux
+antigen bundle tmux-cssh
+antigen bundle tmuxinator
+antigen bundle vagrant
+antigen bundle virtualenv
+antigen bundle yarn
+antigen bundle z
+antigen bundle zsh-interactive-cd
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Tell Antigen that you’re done
+antigen apply
 
 # }}}
