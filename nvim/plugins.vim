@@ -65,6 +65,9 @@ Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
 " Syntax Highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'sheerun/vim-polyglot'
+Plug 'jxnblk/vim-mdx-js'
+Plug 'styled-components/vim-styled-components'
 " Status Line
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
