@@ -14,6 +14,7 @@ call plug#begin(data_dir . '/plugins')
 Plug 'chriskempson/base16-vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'akinsho/bufferline.nvim'
 
 " Tpope
 Plug 'tpope/vim-abolish'
