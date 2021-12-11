@@ -20,6 +20,7 @@ Plug 'tpope/vim-abolish'
 
 " Misc
 Plug 'godlygeek/tabular'
+Plug 'windwp/nvim-autopairs'
 
 call plug#end()
 doautocmd User PlugLoaded
