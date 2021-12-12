@@ -61,69 +61,46 @@ local LEFT_HALF  = hs.geometry.unitrect(0, 0, 0.5, 1)
 -- Format reminder:
 -- {"App name", "Window name", "Display Name", "unitrect", "framerect", "fullframerect"},
 
--- Two Monitors and Notebook
-local LAYOUT_TRI = {
-  {"Brave Browser",             nil, DISPLAY_NOTEBOOK,  FULLSCREEN, nil, nil},
-  {"Code",                      nil, DISPLAY_PRIMARY,   FULLSCREEN, nil, nil},
-  {"DEVONthink 3",              nil, DISPLAY_PRIMARY,   FULLSCREEN, nil, nil},
-  {"Evernote",                  nil, DISPLAY_NOTEBOOK,  FULLSCREEN, nil, nil},
-  {"Firefox Developer Edition", nil, DISPLAY_NOTEBOOK,  FULLSCREEN, nil, nil},
-  {"Kalender",                  nil, DISPLAY_NOTEBOOK,  FULLSCREEN, nil, nil},
-  {"Keybase",                   nil, DISPLAY_NOTEBOOK,  LEFT_HALF,  nil, nil},
-  {"Mail",                      nil, DISPLAY_NOTEBOOK,  FULLSCREEN, nil, nil},
-  {"Microsoft Outlook",         nil, DISPLAY_PRIMARY,   FULLSCREEN, nil, nil},
-  {"Nachrichten",               nil, DISPLAY_NOTEBOOK,  RIGHT_HALF, nil, nil},
-  {"Riot",                      nil, DISPLAY_NOTEBOOK,  RIGHT_HALF, nil, nil},
-  {"Slack",                     nil, DISPLAY_PRIMARY,   FULLSCREEN, nil, nil},
-  {"Spotify",                   nil, DISPLAY_SECONDARY, FULLSCREEN, nil, nil},
-  {"Telegram",                  nil, DISPLAY_NOTEBOOK,  LEFT_HALF,  nil, nil},
-  {"Things",                    nil, DISPLAY_NOTEBOOK,  FULLSCREEN, nil, nil},
-  {"Zeplin",                    nil, DISPLAY_SECONDARY, FULLSCREEN, nil, nil},
-  {"iA Writer",                 nil, DISPLAY_NOTEBOOK,  FULLSCREEN, nil, nil},
-  {"iTerm2",                    nil, DISPLAY_PRIMARY,   FULLSCREEN, nil, nil},
-}
 -- One Monitor and Notebook
 local LAYOUT_DUAL = {
   {"Brave Browser",             nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
+  {"Calendar",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
   {"Code",                      nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
   {"DEVONthink 3",              nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Evernote",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
+  {"Element",                   nil, DISPLAY_NOTEBOOK, RIGHT_HALF, nil, nil},
   {"Firefox Developer Edition", nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Kalender",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Keybase",                   nil, DISPLAY_NOTEBOOK, LEFT_HALF,  nil, nil},
   {"Mail",                      nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
+  {"Messages",                  nil, DISPLAY_PRIMARY,  RIGHT_HALF, nil, nil},
   {"Microsoft Outlook",         nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Nachrichten",               nil, DISPLAY_PRIMARY,  RIGHT_HALF, nil, nil},
-  {"Riot",                      nil, DISPLAY_NOTEBOOK, RIGHT_HALF, nil, nil},
+  {"Music",                     nil, DISPLAY_NOTEBOOK, FULLSCREEN, nil, nil},
+  {"Obsidian",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
   {"Slack",                     nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
   {"Sonos",                     nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Spotify",                   nil, DISPLAY_NOTEBOOK, FULLSCREEN, nil, nil},
   {"Telegram",                  nil, DISPLAY_PRIMARY,  LEFT_HALF,  nil, nil},
   {"Things",                    nil, DISPLAY_NOTEBOOK, FULLSCREEN, nil, nil},
   {"iA Writer",                 nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"iTerm2",                    nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
+  {"kitty",                     nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
 }
 
 --  One Monitor
 local LAYOUT_SINGLE = {
   {"Brave Browser",             nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
+  {"Calendar",                  nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
   {"Code",                      nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
   {"DEVONthink 3",              nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Evernote",                  nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
+  {"Element",                   nil, DISPLAY_PRIMARY, RIGHT_HALF, nil, nil},
   {"Firefox Developer Edition", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Kalender",                  nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
-  {"Keybase",                   nil, DISPLAY_PRIMARY, LEFT_HALF,  nil, nil},
   {"Mail",                      nil, DISPLAY_PRIMARY, RIGHT_MOST, nil, nil},
+  {"Messages",                  nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil},
   {"Microsoft Outlook",         nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Nachrichten",               nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil},
-  {"Riot",                      nil, DISPLAY_PRIMARY, RIGHT_HALF, nil, nil},
+  {"Music",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
+  {"Obsidian",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
   {"Slack",                     nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
   {"Sonos",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Spotify",                   nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
   {"Telegram",                  nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
   {"Things",                    nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil},
   {"iA Writer",                 nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"iTerm2",                    nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
+  {"kitty",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
 }
 
 ------------------
@@ -131,10 +108,10 @@ local LAYOUT_SINGLE = {
 ------------------
 
 -- Movement hotkeys
--- hotkey.bind(KEY_AM, "down",  function() nudge(0, 100) end)
--- hotkey.bind(KEY_AM, "up",    function() nudge(0, -100) end)
--- hotkey.bind(KEY_AM, "right", function() nudge(100, 0) end)
--- hotkey.bind(KEY_AM, "left",  function() nudge(-100, 0) end)
+hotkey.bind(KEY_AM, "down",  function() nudge(0, 100) end)
+hotkey.bind(KEY_AM, "up",    function() nudge(0, -100) end)
+hotkey.bind(KEY_AM, "right", function() nudge(100, 0) end)
+hotkey.bind(KEY_AM, "left",  function() nudge(-100, 0) end)
 
 -- Resize hotkeys
 hotkey.bind(KEY_SAM, "up",    function() yank(0, -100) end)
@@ -169,30 +146,30 @@ hotkey.bind(KEY_CAM, "6", function() push(0.4, 0, 0.6, 1) end)
 hotkey.bind(KEY_CAM, "7", function() push(0.6, 0, 0.4, 1) end)
 
 -- Move a window between monitors (preserve size)
-hotkey.bind(KEY_CM,  "1",    function() window.focusedWindow():moveOneScreenNorth() end)
-hotkey.bind(KEY_CM,  "2",    function() window.focusedWindow():moveOneScreenSouth() end)
-hotkey.bind(KEY_CM,  "3",    function() window.focusedWindow():moveOneScreenWest() end)
-hotkey.bind(KEY_CM,  "up",   function() window.focusedWindow():moveOneScreenNorth() end)
-hotkey.bind(KEY_CM,  "down", function() window.focusedWindow():moveOneScreenSouth() end)
+hotkey.bind(KEY_CM,  "1",     function() window.focusedWindow():moveOneScreenNorth() end)
+hotkey.bind(KEY_CM,  "2",     function() window.focusedWindow():moveOneScreenSouth() end)
+hotkey.bind(KEY_CM,  "3",     function() window.focusedWindow():moveOneScreenWest() end)
+hotkey.bind(KEY_CM,  "up",    function() window.focusedWindow():moveOneScreenNorth() end)
+hotkey.bind(KEY_CM,  "down",  function() window.focusedWindow():moveOneScreenSouth() end)
 hotkey.bind(KEY_CM,  "right", function() window.focusedWindow():moveOneScreenEast() end)
-hotkey.bind(KEY_CM,  "left", function() window.focusedWindow():moveOneScreenWest() end)
-hotkey.bind(KEY_CM,  "k",    function() window.focusedWindow():moveOneScreenNorth() end)
-hotkey.bind(KEY_CM,  "j",    function() window.focusedWindow():moveOneScreenSouth() end)
-hotkey.bind(KEY_CM,  "l",    function() window.focusedWindow():moveOneScreenEast() end)
-hotkey.bind(KEY_CM,  "h",    function() window.focusedWindow():moveOneScreenWest() end)
+hotkey.bind(KEY_CM,  "left",  function() window.focusedWindow():moveOneScreenWest() end)
+hotkey.bind(KEY_CM,  "k",     function() window.focusedWindow():moveOneScreenNorth() end)
+hotkey.bind(KEY_CM,  "j",     function() window.focusedWindow():moveOneScreenSouth() end)
+hotkey.bind(KEY_CM,  "l",     function() window.focusedWindow():moveOneScreenEast() end)
+hotkey.bind(KEY_CM,  "h",     function() window.focusedWindow():moveOneScreenWest() end)
 
 -- Move a window between monitors (change to fullscreen)
-hotkey.bind(KEY_SCM, "1",    function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "2",    function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "3",    function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "up",   function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "down", function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "1",     function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "2",     function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "3",     function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "up",    function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "down",  function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
 hotkey.bind(KEY_SCM, "right", function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "left", function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "k",    function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "j",    function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "l",    function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "h",    function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "left",  function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "k",     function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "j",     function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "l",     function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
+hotkey.bind(KEY_SCM, "h",     function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
 
 -- Application shortcuts
 hotkey.bind(KEY_SC,   "R", function() application.launchOrFocus("kitty") end)
@@ -200,7 +177,6 @@ hotkey.bind(KEY_SCAM, "A", function() application.launchOrFocus("Affinity Design
 hotkey.bind(KEY_SCAM, "B", function() application.launchOrFocus("Brave Browser") end)
 hotkey.bind(KEY_SCAM, "C", function() application.launchOrFocus("Visual Studio Code") end)
 hotkey.bind(KEY_SCAM, "D", function() application.launchOrFocus("DEVONthink 3") end)
-hotkey.bind(KEY_SCAM, "E", function() application.launchOrFocus("Evernote") end)
 hotkey.bind(KEY_SCAM, "F", function() application.launchOrFocus("Firefox Developer Edition") end)
 hotkey.bind(KEY_SCAM, "K", function() application.launchOrFocus("Calendar") end)
 hotkey.bind(KEY_SCAM, "L", function() application.launchOrFocus("Microsoft Outlook") end)
@@ -212,7 +188,6 @@ hotkey.bind(KEY_SCAM, "S", function() application.launchOrFocus("Slack") end)
 hotkey.bind(KEY_SCAM, "T", function() application.launchOrFocus("Things3") end)
 hotkey.bind(KEY_SCAM, "W", function() application.launchOrFocus("iA Writer") end)
 hotkey.bind(KEY_SCAM, "Y", function() application.launchOrFocus("Music") end)
-hotkey.bind(KEY_SCAM, "Z", function() application.launchOrFocus("Zeplin") end)
 
 -- Place red circle around mouse
 hotkey.bind(KEY_SCAM, "space", mouseHighlight)
@@ -232,4 +207,3 @@ hotkey.bind(KEY_CAM, "space", function() hints.windowHints(getAllValidWindows())
 -- Layouts
 hotkey.bind(KEY_SCAM, "1", function() layout.apply(LAYOUT_SINGLE) end)
 hotkey.bind(KEY_SCAM, "2", function() layout.apply(LAYOUT_DUAL) end)
-hotkey.bind(KEY_SCAM, "3", function() layout.apply(LAYOUT_TRI) end)
