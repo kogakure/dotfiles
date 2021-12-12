@@ -25,9 +25,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # FD
 FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --hidden --type f --type l $FD_OPTIONS"
 export FZF_DEFAULT_OPTS='--no-height'
 
@@ -61,6 +58,9 @@ export BAT_PAGER="less -R"
 
 # Starship
 eval "$(starship init zsh)"
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Path
 path=(
@@ -365,6 +365,7 @@ antigen bundle colorize
 antigen bundle docker
 antigen bundle dotenv
 antigen bundle extract
+antigen bundle fzf
 antigen bundle gem
 antigen bundle git
 antigen bundle git-extras
