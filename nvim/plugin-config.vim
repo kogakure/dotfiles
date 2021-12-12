@@ -8,7 +8,6 @@ source ~/.config/nvim/plugin-config/bookmarks.vim
 source ~/.config/nvim/plugin-config/bufferline.lua
 source ~/.config/nvim/plugin-config/cmp.lua
 source ~/.config/nvim/plugin-config/colorizer.lua
-source ~/.config/nvim/plugin-config/dashboard.vim
 source ~/.config/nvim/plugin-config/diagnosticls-configs.lua
 source ~/.config/nvim/plugin-config/gitsigns.lua
 source ~/.config/nvim/plugin-config/goyo.vim

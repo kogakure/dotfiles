@@ -36,7 +36,6 @@ Plug 'bogado/file-line'
 Plug 'dhruvmanila/telescope-bookmarks.nvim'
 Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
 Plug 'github/copilot.vim' " No API key jet :(
-Plug 'glepnir/dashboard-nvim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'kyazdani42/nvim-tree.lua'
