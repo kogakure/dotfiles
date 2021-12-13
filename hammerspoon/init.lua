@@ -42,7 +42,6 @@ local KEY_SCM  = { "⇧", "⌃", "⌘" }
 
 -- Displays
 local DISPLAY_PRIMARY = screen.primaryScreen()
-local DISPLAY_SECONDARY = screen.findByName("DELL U2719DC")
 local DISPLAY_NOTEBOOK = "Color LCD"
 
 -- Sizes
@@ -201,7 +200,7 @@ hotkey.bind(KEY_CAM, 'j', function() window.focusedWindow():focusWindowSouth() e
 hotkey.bind(KEY_CAM, 'l', function() window.focusedWindow():focusWindowEast() end)
 hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
 
--- Hints
+-- Haaints
 hotkey.bind(KEY_CAM, "space", function() hints.windowHints(getAllValidWindows()) end)
 
 -- Layouts
