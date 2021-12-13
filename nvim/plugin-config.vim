@@ -7,6 +7,7 @@ source ~/.config/nvim/plugin-config/lsp-config.vim
 source ~/.config/nvim/plugin-config/trouble.lua
 source ~/.config/nvim/plugin-config/lspkind.lua
 source ~/.config/nvim/plugin-config/diagnosticls-configs.lua
+source ~/.config/nvim/plugin-config/fugitive.vim
 source ~/.config/nvim/plugin-config/cmp.lua
 source ~/.config/nvim/plugin-config/autopairs.lua
 source ~/.config/nvim/plugin-config/blamer.vim
