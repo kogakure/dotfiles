@@ -81,6 +81,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Custom Text Objects
+Plug 'christoomey/vim-titlecase'
 Plug 'glts/vim-textobj-comment' " ac, ic, aC
 Plug 'jceb/vim-textobj-uri' " au, iu, go
 Plug 'kana/vim-textobj-datetime' " ada, add, adf, adt, adz, ida, …
