@@ -47,6 +47,7 @@ set redrawtime=10000 " Allow more time for loading syntax on large files
 set complete+=i,k,s,kspell
 set completeopt=menu,menuone,preview
 set wildmode=longest:full,full
+set omnifunc=syntaxcomplete#Complete
 
 " Spell Checker
 set spellfile+=~/.config/nvim/spell/de.utf-8.add " (1)zg, (1)zw
