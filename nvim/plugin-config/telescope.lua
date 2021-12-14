@@ -79,6 +79,7 @@ vim.api.nvim_set_keymap('n', '<Leader>frg',   [[<Cmd>Telescope live_grep<CR>]], 
 vim.api.nvim_set_keymap('n', '<Leader>fs',    [[<Cmd>lua require('telescope.builtin').file_browser({ cwd = vim.fn.expand('%:p:h') })<CR>]],        opts)
 vim.api.nvim_set_keymap('n', '<Leader>ft',    [[<Cmd>Telescope tags<CR>]],                                                                         opts)
 vim.api.nvim_set_keymap('n', '<Leader>m',     [[<Cmd>Telescope marks<CR>]],                                                                        opts)
+vim.api.nvim_set_keymap('n', '<Leader>km',    [[<Cmd>Telescope keymaps<CR>]],                                                                      opts)
 vim.api.nvim_set_keymap('n', '<Leader>mru',   [[<Cmd>Telescope frecency<CR>]],                                                                     opts)
 vim.api.nvim_set_keymap('n', '<Leader>ps',    [[<Cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep for > ') })<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<Leader>r',     [[<Cmd>Telescope live_grep<CR>]],                                                                    opts)
