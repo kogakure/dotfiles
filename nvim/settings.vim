@@ -48,6 +48,8 @@ set complete+=i,k,s,kspell
 set completeopt=menu,menuone,preview
 set wildmode=longest:full,full
 set omnifunc=syntaxcomplete#Complete
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m
 
 " Spell Checker
 set spellfile+=~/.config/nvim/spell/de.utf-8.add " (1)zg, (1)zw

@@ -56,6 +56,7 @@ Plug 'tami5/sqlite.lua'
 Plug 'vim-scripts/VisIncr'
 Plug 'windwp/nvim-autopairs'
 Plug 'elijahmanor/export-to-vscode.nvim'
+Plug 'brooth/far.vim'
 
 " Window Improvements
 Plug 'akinsho/bufferline.nvim'
