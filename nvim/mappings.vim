@@ -37,7 +37,7 @@ vnoremap > >gv
 
 " Set spell checker to `s`
 " zg (good), zG (good temp), zw (wrong), zW (wrong temp)
-nnoremap <silent> <leader>s :set spell!<CR>
+nnoremap <silent> <leader>rs :set spell!<CR>
 
 " Switch off highlighting
 nnoremap <silent> <leader>h :nohlsearch<CR>
