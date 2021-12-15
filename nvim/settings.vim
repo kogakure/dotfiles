@@ -70,6 +70,7 @@ let g:python3_host_prog=$HOME.'/.pyenv/versions/neovim3/bin/python'
 
 " Custom Colors
 highlight ColorColumn guibg=#202224
+highlight SpellBad guifg=red
 
 " Show VCS conflict marker
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
