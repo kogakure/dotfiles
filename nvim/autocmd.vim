@@ -41,7 +41,6 @@ augroup ft_xml
   autocmd FileType xml setlocal foldmethod=indent
   autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
   autocmd Filetype xml setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType xml set formatprg=xmllint\ --format\ -
 augroup END
 
 " JavaScript
@@ -57,7 +56,6 @@ augroup END
 " JSON
 augroup ft_json
   autocmd!
-  autocmd FileType json set formatprg=jq\ '.'
   autocmd FileType json syntax match Comment +\/\/.\+$+
 augroup END
 
@@ -101,6 +99,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd BufNewFile,BufRead *.handlebars set filetype=html syntax=handlebars
 autocmd BufNewFile,BufRead *.hb set filetype=html syntax=handlebars
 autocmd BufNewFile,BufRead *.hbs set filetype=html syntax=handlebars
+autocmd BufNewFile,BufRead *.njk set filetype=html syntax=handlebars
 autocmd BufNewFile,BufRead *.json set filetype=json
 autocmd BufNewFile,BufRead *.pcss set filetype=css syntax=scss
 autocmd BufNewFile,BufRead *.postcss set filetype=css syntax=scss
