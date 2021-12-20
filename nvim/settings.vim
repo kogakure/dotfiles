@@ -31,7 +31,10 @@ set confirm
 set spelllang=de_de,en_us
 set timeoutlen=500
 set signcolumn=yes:2
-set foldmethod=marker
+set foldlevel=2
+set foldlevelstart=99
+set foldmethod=syntax
+set foldnestmax=10
 set splitbelow
 set splitright
 set scrolloff=8
