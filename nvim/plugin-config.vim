@@ -20,7 +20,7 @@ source ~/.config/nvim/plugin-config/lspkind.lua
 source ~/.config/nvim/plugin-config/lualine.lua
 source ~/.config/nvim/plugin-config/neoscroll.lua
 source ~/.config/nvim/plugin-config/pandoc.vim
-source ~/.config/nvim/plugin-config/prettier.vim
+source ~/.config/nvim/plugin-config/neoformat.vim
 source ~/.config/nvim/plugin-config/sidebar.lua
 source ~/.config/nvim/plugin-config/speeddating.vim
 source ~/.config/nvim/plugin-config/telescope.lua
@@ -31,4 +31,3 @@ source ~/.config/nvim/plugin-config/ultisnips.vim
 source ~/.config/nvim/plugin-config/vim-easymotion.vim
 source ~/.config/nvim/plugin-config/vimux.vim
 source ~/.config/nvim/plugin-config/web-devicons.lua
-

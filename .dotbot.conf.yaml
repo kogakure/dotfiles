@@ -26,11 +26,5 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [
-        ~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1,
-        Installing tmux plugins,
-      ]
-    - [
-        nvim -u ~/.config/nvim/init.vim +PlugUpgrade +PlugInstall +PlugClean +qall,
-      ]
-    - [nvim --headless -c "lua lsp_install_sync()" -c "quitall"]
+    - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
+    - [nvim -u ~/.config/nvim/init.vim +PlugUpgrade +PlugInstall +PlugClean +qall]

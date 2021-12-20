@@ -61,18 +61,3 @@ lsp_installer.on_server_ready(function(server)
 
   vim.cmd([[do User LspAttachBuffers]])
 end)
-
---- Global function to install servers automatically
-function _G.lsp_install_sync()
-  local lsp_installer_servers = require("nvim-lsp-installer.servers")
-
-  local requested = {}
-  for server_name, _ in pairs(servers) do
-    local ok, server = lsp_installer_servers.get_server(server_name)
-    if ok and not server:is_installed() then
-      table.insert(requested, server_name)
-    end
-  end
-
-  lsp_installer.install_sync(requested)
-end

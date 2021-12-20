@@ -1,6 +1,7 @@
 " lspconfig
 " https://github.com/neovim/nvim-lspconfig
 
+" Mappings
 nnoremap <silent> <C-k>      <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <leader>D  <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> <leader>e  <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>

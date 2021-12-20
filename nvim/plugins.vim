@@ -48,7 +48,7 @@ Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-node-modules.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production',  'branch': 'release/0.x' }
+Plug 'sbdchd/neoformat'
 Plug 'ruanyl/vim-gh-line'
 Plug 'sidebar-nvim/sidebar.nvim'
 Plug 'sudormrfbin/cheatsheet.nvim'
