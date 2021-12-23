@@ -19,9 +19,9 @@ augroup END
 " HTML
 augroup ft_html
   autocmd!
-  autocmd FileType html,eruby setlocal foldmethod=indent
-  autocmd FileType html,eruby setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd Filetype html,eruby setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType html,eruby,njk setlocal foldmethod=indent
+  autocmd FileType html,eruby,njk setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd Filetype html,eruby,njk setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
 " CSS
