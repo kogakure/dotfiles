@@ -82,7 +82,7 @@ bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 function update () {
   vim -u ~/.config/nvim/init.vim +PlugUpgrade +PlugInstall +PlugClean +qall
-  brew update && brew outdated && brew upgrade && brew cleanup && brew cask upgrade
+  brew update && brew outdated && brew upgrade && brew cleanup
   sudo gem update --system && sudo gem update && gem cleanup all
   npm update npm -g
   npm update -g
