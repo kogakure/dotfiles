@@ -104,3 +104,5 @@ autocmd BufNewFile,BufRead *.json set filetype=json
 autocmd BufNewFile,BufRead *.pcss set filetype=css syntax=scss
 autocmd BufNewFile,BufRead *.postcss set filetype=css syntax=scss
 autocmd BufNewFile,BufRead *.rss set filetype=xml
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear

@@ -72,12 +72,14 @@ Plug 'yamatsum/nvim-cursorline'
 " Syntax Highlighting
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'jparise/vim-graphql'
 Plug 'jxnblk/vim-mdx-js'
 Plug 'mattn/emmet-vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'sheerun/vim-polyglot'
-Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
