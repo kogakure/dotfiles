@@ -191,7 +191,7 @@ hotkey.bind(KEY_SCAM, "Y", function() application.launchOrFocus("Music") end)
 -- Place red circle around mouse
 hotkey.bind(KEY_SCAM, "space", mouseHighlight)
 
--- Config reloading. manual (from getting started guide):
+-- Manual config reloading (from getting started guide):
 hotkey.bind(KEY_CAM, "delete", function() hs.reload() end)
 
 -- Focus
@@ -200,7 +200,7 @@ hotkey.bind(KEY_CAM, 'j', function() window.focusedWindow():focusWindowSouth() e
 hotkey.bind(KEY_CAM, 'l', function() window.focusedWindow():focusWindowEast() end)
 hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
 
--- Haaints
+-- Hints
 hotkey.bind(KEY_CAM, "space", function() hints.windowHints(getAllValidWindows()) end)
 
 -- Layouts
