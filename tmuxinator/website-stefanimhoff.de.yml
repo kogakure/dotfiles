@@ -1,4 +1,4 @@
-name: stefanimhoff
+name: "Stefan Imhoff"
 root: ~/Code/Github/stefanimhoff.de/
 windows:
   - Vim: vim

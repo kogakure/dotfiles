@@ -1,4 +1,4 @@
-name: kogakure
+name: Kogakure
 root: ~/Code/Github/hugo-kogakure.de/
 windows:
   - Vim: vim

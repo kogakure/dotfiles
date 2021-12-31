@@ -1,4 +1,4 @@
-name: hamburg
+name: Hamburg
 root: ~/Code/Github/hamburg.stefanimhoff.de/
 windows:
   - Vim: vim
