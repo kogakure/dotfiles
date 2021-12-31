@@ -95,7 +95,7 @@ Plug 'whatyouhide/vim-textobj-xmlattr' " ax, ix
 " Custom Motions
 Plug 'christoomey/vim-sort-motion' " gs
 Plug 'tommcdo/vim-exchange' " cx, cxx, X, cxc
-Plug 'easymotion/vim-easymotion' " <Leader><Leader> (motion)
+Plug 'easymotion/vim-easymotion' " <Leader>f/L
 
 " Tpope
 Plug 'tpope/vim-abolish'
