@@ -1,3 +1,5 @@
+![Maintenance](https://img.shields.io/maintenance/yes/2022.svg)
+
 # Dotfiles
 
 These are my Dotfiles, a collection of [NeoVim](https://neovim.io/), [tmux](https://tmux.github.io/), [zsh](http://zsh.sourceforge.net/), [Hammerspoon](http://www.hammerspoon.org/), and other tools.
