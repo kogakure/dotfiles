@@ -30,3 +30,5 @@ source ./ruby.sh
 # Install global Gems
 source ./gem.sh
 
+# Install Visual Studio Code Extensions
+source ./vscode.sh
