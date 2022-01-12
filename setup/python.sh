@@ -12,6 +12,8 @@ eval "$(pyenv virtualenv-init -)"
 pyenv install 2.7.17
 pyenv install 3.10.1
 
+pip3 install fawkes
+
 pyenv virtualenv 2.7.17 neovim2
 pyenv virtualenv 3.10.1 neovim3
 
