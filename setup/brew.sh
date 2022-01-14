@@ -44,6 +44,7 @@ brew install git-extras                 # Small git utilities
 brew install git-lfs                    # Git extension for versioning large files
 brew install git-quick-stats            # Simple and efficient way to access statistics in git.
 brew install github/gh/gh               # GitHub command-line tool
+brew install glow                       # Render markdown on the CLI
 brew install go                         # The Go programming language
 brew install gource                     # Version Control Visualization Tool
 brew install gpg                        # GNU Pretty Good Privacy (PGP)
