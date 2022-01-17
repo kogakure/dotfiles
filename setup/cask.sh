@@ -37,6 +37,7 @@ brew install --cask devonthink
 brew install --cask dropbox
 brew install --cask element
 brew install --cask expressvpn
+brew install --cask figma
 brew install --cask firefox
 brew install --cask firefox-developer-edition
 brew install --cask firefox-nightly
