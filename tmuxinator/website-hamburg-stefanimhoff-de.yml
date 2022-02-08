@@ -3,4 +3,4 @@ root: ~/Code/Github/hamburg.stefanimhoff.de/
 windows:
   - Vim: vim
   - Terminal: clear
-  - Server: yarn start
+  - Server: npm i; npm start

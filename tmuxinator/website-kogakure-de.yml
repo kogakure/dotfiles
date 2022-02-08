@@ -1,6 +1,6 @@
-name: Kogakure
-root: ~/Code/Github/hugo-kogakure.de/
+name: 木隠
+root: ~/Code/Github/kogakure.de/
 windows:
   - Vim: vim
   - Terminal: clear
-  - Server: yarn start
+  - Server: npm i; npm start

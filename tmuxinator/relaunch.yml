@@ -1,6 +1,0 @@
-name: "Relaunch Kogakure"
-root: ~/Code/Github/11ty-kogakure.de/
-windows:
-  - Vim: vim
-  - Terminal: clear
-  - Server: clear
