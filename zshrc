@@ -271,7 +271,6 @@ antigen bundle gem
 antigen bundle git
 antigen bundle git-extras
 antigen bundle gitignore
-antigen bundle gpg-agent
 antigen bundle gulp
 antigen bundle history-substring-search
 antigen bundle jira
