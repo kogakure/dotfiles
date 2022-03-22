@@ -56,6 +56,7 @@ brew install hub                        # Add GitHub support to git on the comma
 brew install icu4c                      # C/C++ and Java libraries for Unicode and globalization
 brew install imagemagick --with-fontconfig # Tools and libraries to manipulate images in many formats
 brew install imagesnap                  # Tool to capture still images from an iSight or other video source
+brew install jless                      # Command-line pager for JSON data
 brew install jpeg                       # Image manipulation library
 brew install lazygit                    # Simple terminal UI for git commands
 brew install libdvdcss                  # Access DVDs as block devices without the decryption
