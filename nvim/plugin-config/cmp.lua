@@ -28,10 +28,12 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+    { name = 'nvim_lua' },
     { name = 'path' },
+    { name = 'omni' },
     { name = 'buffer', keyword_length = 3 },
     { name = 'npm', keyword_length = 4 },
-    { name = 'ultisnips' },
   },
   formatting = {
     format = require('lspkind').cmp_format {
