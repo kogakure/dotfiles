@@ -57,6 +57,7 @@ Plug 'vim-scripts/VisIncr'
 Plug 'windwp/nvim-autopairs'
 Plug 'elijahmanor/export-to-vscode.nvim'
 Plug 'brooth/far.vim'
+Plug 'rstacruz/vim-xtract'
 
 " Window Improvements
 Plug 'akinsho/bufferline.nvim'
