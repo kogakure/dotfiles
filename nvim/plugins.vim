@@ -83,6 +83,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'pantharshit00/vim-prisma'
 
 " Custom Text Objects
 Plug 'christoomey/vim-titlecase'
