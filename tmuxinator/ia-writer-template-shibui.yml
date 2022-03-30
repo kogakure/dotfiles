@@ -1,0 +1,5 @@
+name: iA Writer Template Shibui
+root: ~/Code/Github/ia-writer-template-shibui/
+windows:
+  - Vim: vim
+  - Terminal: clear

@@ -1,0 +1,5 @@
+name: iA Writer Template Nanzan
+root: ~/Code/Github/ia-writer-template-nanzan
+windows:
+  - Vim: vim
+  - Terminal: clear
