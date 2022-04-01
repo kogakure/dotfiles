@@ -11,6 +11,7 @@ source ~/.config/nvim/plugin-config/colorizer.lua
 source ~/.config/nvim/plugin-config/diagnosticls-configs.lua
 source ~/.config/nvim/plugin-config/export-to-vscode.lua
 source ~/.config/nvim/plugin-config/fugitive.vim
+source ~/.config/nvim/plugin-config/fzf.lua
 source ~/.config/nvim/plugin-config/gitsigns.lua
 source ~/.config/nvim/plugin-config/goyo.vim
 source ~/.config/nvim/plugin-config/harpoon.lua

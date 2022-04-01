@@ -38,6 +38,7 @@ Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
 Plug 'github/copilot.vim' " No API key jet :(
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'mg979/vim-visual-multi'
