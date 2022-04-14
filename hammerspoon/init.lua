@@ -107,10 +107,10 @@ local LAYOUT_SINGLE = {
 ------------------
 
 -- Movement hotkeys
-hotkey.bind(KEY_AM, "down",  function() nudge(0, 100) end)
-hotkey.bind(KEY_AM, "up",    function() nudge(0, -100) end)
-hotkey.bind(KEY_AM, "right", function() nudge(100, 0) end)
-hotkey.bind(KEY_AM, "left",  function() nudge(-100, 0) end)
+-- hotkey.bind(KEY_AM, "down",  function() nudge(0, 100) end)
+-- hotkey.bind(KEY_AM, "up",    function() nudge(0, -100) end)
+-- hotkey.bind(KEY_AM, "right", function() nudge(100, 0) end)
+-- hotkey.bind(KEY_AM, "left",  function() nudge(-100, 0) end)
 
 -- Resize hotkeys
 hotkey.bind(KEY_SAM, "up",    function() yank(0, -100) end)
