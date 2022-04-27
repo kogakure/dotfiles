@@ -176,7 +176,7 @@ hotkey.bind(KEY_SCAM, "A", function() application.launchOrFocus("Affinity Design
 hotkey.bind(KEY_SCAM, "B", function() application.launchOrFocus("Brave Browser") end)
 hotkey.bind(KEY_SCAM, "C", function() application.launchOrFocus("Visual Studio Code") end)
 hotkey.bind(KEY_SCAM, "D", function() application.launchOrFocus("DEVONthink 3") end)
-hotkey.bind(KEY_SCAM, "F", function() application.launchOrFocus("Firefox Developer Edition") end)
+hotkey.bind(KEY_SCAM, "F", function() application.launchOrFocus("Reeder") end)
 hotkey.bind(KEY_SCAM, "K", function() application.launchOrFocus("Calendar") end)
 hotkey.bind(KEY_SCAM, "L", function() application.launchOrFocus("Microsoft Outlook") end)
 hotkey.bind(KEY_SCAM, "M", function() application.launchOrFocus("MindNode") end)
