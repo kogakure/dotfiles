@@ -7,7 +7,7 @@ set showbreak=↪
 set ignorecase
 set smartcase
 set list
-set listchars=tab:▸\ ,trail:·,nbsp:.,extends:❯,precedes:❮
+set listchars=tab:∙\ ,trail:·,nbsp:.,extends:❯,precedes:❮
 set visualbell
 set termguicolors
 set number
