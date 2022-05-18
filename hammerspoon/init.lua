@@ -182,7 +182,7 @@ hotkey.bind(KEY_SCAM, "L", function() application.launchOrFocus("Microsoft Outlo
 hotkey.bind(KEY_SCAM, "M", function() application.launchOrFocus("MindNode") end)
 hotkey.bind(KEY_SCAM, "N", function() application.launchOrFocus("Messages") end)
 hotkey.bind(KEY_SCAM, "O", function() application.launchOrFocus("Obsidian") end)
-hotkey.bind(KEY_SCAM, "P", function() application.launchOrFocus("Podcasts") end)
+hotkey.bind(KEY_SCAM, "P", function() application.launchOrFocus("Bitwarden") end)
 hotkey.bind(KEY_SCAM, "R", function() application.launchOrFocus("Raindrop.io.app") end)
 hotkey.bind(KEY_SCAM, "S", function() application.launchOrFocus("Slack") end)
 hotkey.bind(KEY_SCAM, "T", function() application.launchOrFocus("Things3") end)
