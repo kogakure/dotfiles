@@ -69,6 +69,7 @@ brew install --cask protonmail-bridge
 brew install --cask qlcolorcode
 brew install --cask qlvideo
 brew install --cask raindropio
+brew install --cask raycast
 brew install --cask safari-technology-preview
 brew install --cask signal
 brew install --cask slack
