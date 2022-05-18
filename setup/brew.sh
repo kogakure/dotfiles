@@ -20,6 +20,7 @@ brew install ack                        # Search tool like grep, but optimized f
 brew install bash                       # Bourne-Again SHell, a UNIX command interpreter
 brew install bat                        # Clone of cat(1) with syntax highlighting and Git integration
 brew install bfg                        # Remove large files or passwords from Git history like git-filter-branch
+brew install bitwarden-cli              # Secure and free password manager for all of your devices
 brew install cairo                      # Vector graphics library with cross-device output support
 brew install cloc                       # Statistics utility to count lines of code
 brew install closure-compiler           # JavaScript optimizing compiler
