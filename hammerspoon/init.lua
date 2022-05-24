@@ -93,7 +93,7 @@ local LAYOUT_SINGLE = {
   {"Messages",                  nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil},
   {"Microsoft Outlook",         nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
   {"Music",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Obsidian",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
+  {"Obsidian",                  nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
   {"Slack",                     nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
   {"Sonos",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
   {"Telegram",                  nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
@@ -178,7 +178,7 @@ hotkey.bind(KEY_SCAM, "C", function() application.launchOrFocus("Visual Studio C
 hotkey.bind(KEY_SCAM, "D", function() application.launchOrFocus("DEVONthink 3") end)
 hotkey.bind(KEY_SCAM, "F", function() application.launchOrFocus("Reeder") end)
 hotkey.bind(KEY_SCAM, "K", function() application.launchOrFocus("Calendar") end)
-hotkey.bind(KEY_SCAM, "L", function() application.launchOrFocus("Microsoft Outlook") end)
+hotkey.bind(KEY_SCAM, "L", function() application.launchOrFocus("Logseq") end)
 hotkey.bind(KEY_SCAM, "M", function() application.launchOrFocus("MindNode") end)
 hotkey.bind(KEY_SCAM, "N", function() application.launchOrFocus("Messages") end)
 hotkey.bind(KEY_SCAM, "O", function() application.launchOrFocus("Obsidian") end)
