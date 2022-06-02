@@ -106,7 +106,7 @@ local LAYOUT_SINGLE = {
 -- Key Bindings --
 ------------------
 
--- Movement hotkeys
+-- Movement hotkeys (Moved to Raycast -- keep for later)
 -- hotkey.bind(KEY_AM, "down",  function() nudge(0, 100) end)
 -- hotkey.bind(KEY_AM, "up",    function() nudge(0, -100) end)
 -- hotkey.bind(KEY_AM, "right", function() nudge(100, 0) end)
@@ -118,31 +118,31 @@ hotkey.bind(KEY_SAM, "down",  function() yank(0, 100) end)
 hotkey.bind(KEY_SAM, "right", function() yank(100, 0) end)
 hotkey.bind(KEY_SAM, "left",  function() yank(-100, 0) end)
 
--- Push to screen edge
-hotkey.bind(KEY_CAM, "left",  function() push(0, 0, 0.5, 1) end)
-hotkey.bind(KEY_CAM, "right", function() push(0.5, 0, 0.5, 1) end)
-hotkey.bind(KEY_CAM, "up",    function() push(0, 0, 1, 0.5) end)
-hotkey.bind(KEY_CAM, "down",  function() push(0, 0.5, 1, 0.5) end)
+-- Push to screen edge (Moved to Raycast -- keep for later)
+-- hotkey.bind(KEY_CAM, "left",  function() push(0, 0, 0.5, 1) end)
+-- hotkey.bind(KEY_CAM, "right", function() push(0.5, 0, 0.5, 1) end)
+-- hotkey.bind(KEY_CAM, "up",    function() push(0, 0, 1, 0.5) end)
+-- hotkey.bind(KEY_CAM, "down",  function() push(0, 0.5, 1, 0.5) end)
 
--- Centered window with some room to see the desktop
-hotkey.bind(KEY_SCM, "l", function() push(0.05, 0.05, 0.9, 0.9) end)
-hotkey.bind(KEY_SCM, "m", function() push(0.1, 0.1, 0.8, 0.8) end)
-hotkey.bind(KEY_SCM, "s", function() push(0.15, 0.15, 0.7, 0.7) end)
+-- Centered window with some room to see the desktop (Moved to Raycast -- keep for later)
+-- hotkey.bind(KEY_SCM, "l", function() push(0.05, 0.05, 0.9, 0.9) end)
+-- hotkey.bind(KEY_SCM, "m", function() push(0.1, 0.1, 0.8, 0.8) end)
+-- hotkey.bind(KEY_SCM, "s", function() push(0.15, 0.15, 0.7, 0.7) end)
 
--- Fullscreen
-hotkey.bind(KEY_CAM, "0", function() push(0, 0, 1, 1) end)
+-- Fullscreen (Moved to Raycast -- keep for later)
+-- hotkey.bind(KEY_CAM, "0", function() push(0, 0, 1, 1) end)
 
--- Quarter Screens
-hotkey.bind(KEY_CAM, "q", function() push(0, 0, 0.5, 0.5) end)
-hotkey.bind(KEY_CAM, "w", function() push(0.5, 0, 0.5, 0.5) end)
-hotkey.bind(KEY_CAM, "a", function() push(0, 0.5, 0.5, 0.5) end)
-hotkey.bind(KEY_CAM, "s", function() push(0.5, 0.5, 0.5, 0.5) end)
+-- Quarter Screens (Moved to Raycast -- keep for later)
+-- hotkey.bind(KEY_CAM, "q", function() push(0, 0, 0.5, 0.5) end)
+-- hotkey.bind(KEY_CAM, "w", function() push(0.5, 0, 0.5, 0.5) end)
+-- hotkey.bind(KEY_CAM, "a", function() push(0, 0.5, 0.5, 0.5) end)
+-- hotkey.bind(KEY_CAM, "s", function() push(0.5, 0.5, 0.5, 0.5) end)
 
--- Part Screens
-hotkey.bind(KEY_CAM, "4", function() push(0, 0, 0.6, 1) end)
-hotkey.bind(KEY_CAM, "5", function() push(0, 0, 0.4, 1) end)
-hotkey.bind(KEY_CAM, "6", function() push(0.4, 0, 0.6, 1) end)
-hotkey.bind(KEY_CAM, "7", function() push(0.6, 0, 0.4, 1) end)
+-- Part Screens (Moved to Raycast -- keep for later)
+-- hotkey.bind(KEY_CAM, "4", function() push(0, 0, 0.6, 1) end)
+-- hotkey.bind(KEY_CAM, "5", function() push(0, 0, 0.4, 1) end)
+-- hotkey.bind(KEY_CAM, "6", function() push(0.4, 0, 0.6, 1) end)
+-- hotkey.bind(KEY_CAM, "7", function() push(0.6, 0, 0.4, 1) end)
 
 -- Move a window between monitors (preserve size)
 hotkey.bind(KEY_CM,  "1",     function() window.focusedWindow():moveOneScreenNorth() end)
@@ -157,18 +157,18 @@ hotkey.bind(KEY_CM,  "j",     function() window.focusedWindow():moveOneScreenSou
 hotkey.bind(KEY_CM,  "l",     function() window.focusedWindow():moveOneScreenEast() end)
 hotkey.bind(KEY_CM,  "h",     function() window.focusedWindow():moveOneScreenWest() end)
 
--- Move a window between monitors (change to fullscreen)
-hotkey.bind(KEY_SCM, "1",     function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "2",     function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "3",     function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "up",    function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "down",  function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "right", function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "left",  function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "k",     function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "j",     function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "l",     function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
-hotkey.bind(KEY_SCM, "h",     function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
+-- Move a window between monitors (change to fullscreen) (Moved to Raycast -- keep for later)
+-- hotkey.bind(KEY_SCM, "1",     function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "2",     function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "3",     function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "up",    function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "down",  function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "right", function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "left",  function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "k",     function() window.focusedWindow():moveOneScreenNorth(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "j",     function() window.focusedWindow():moveOneScreenSouth(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "l",     function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_SCM, "h",     function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
 
 -- Application shortcuts (Moved to Raycast -- keep for later)
 -- hotkey.bind(KEY_SC,   "R", function() application.launchOrFocus("kitty") end)
@@ -194,11 +194,11 @@ hotkey.bind(KEY_SCAM, "space", mouseHighlight)
 -- Manual config reloading (from getting started guide):
 hotkey.bind(KEY_CAM, "delete", function() hs.reload() end)
 
--- Focus
-hotkey.bind(KEY_CAM, 'k', function() window.focusedWindow():focusWindowNorth() end)
-hotkey.bind(KEY_CAM, 'j', function() window.focusedWindow():focusWindowSouth() end)
-hotkey.bind(KEY_CAM, 'l', function() window.focusedWindow():focusWindowEast() end)
-hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
+-- Focus (Moved to Raycast -- keep for later)
+-- hotkey.bind(KEY_CAM, 'k', function() window.focusedWindow():focusWindowNorth() end)
+-- hotkey.bind(KEY_CAM, 'j', function() window.focusedWindow():focusWindowSouth() end)
+-- hotkey.bind(KEY_CAM, 'l', function() window.focusedWindow():focusWindowEast() end)
+-- hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
 
 -- Hints
 hotkey.bind(KEY_CAM, "space", function() hints.windowHints(getAllValidWindows()) end)
