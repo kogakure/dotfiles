@@ -41,6 +41,9 @@ export RBENV_ROOT="$HOME/.rbenv/"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
+# Rancher
+export PATH="$HOME/.rd/bin:$PATH"
+
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
@@ -403,3 +406,4 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
 # }}}
+
