@@ -89,6 +89,7 @@ function vimUpdate () {
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 function update () {
+  vim +PlugUpgrade +PlugInstall +PlugClean +qall
   brew update && brew outdated && brew upgrade && brew cleanup
   sudo gem update --system && sudo gem update && gem cleanup all
   npm update npm -g
