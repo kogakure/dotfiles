@@ -35,7 +35,6 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'bogado/file-line'
 Plug 'dhruvmanila/telescope-bookmarks.nvim'
 Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
-Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
