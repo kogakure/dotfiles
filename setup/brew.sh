@@ -64,6 +64,7 @@ brew install libdvdcss                  # Access DVDs as block devices without t
 brew install libpng                     # Library for manipulating PNG images
 brew install lua                        # Powerful, lightweight programming language
 brew install lynx                       # Text-based web browser
+brew install m-cli                      # Swiss Army Knife for macOS
 brew install mas                        # Mac App Store command-line interface
 brew install memcached                  # High performance, distributed memory object caching system
 brew install mongodb                    # High-performance, schema-free, document-oriented database
