@@ -42,6 +42,7 @@ brew install --cask firefox
 brew install --cask firefox-developer-edition
 brew install --cask firefox-nightly
 brew install --cask flip4mac
+brew install --cask font-fira-code-nerd-font
 brew install --cask fontforge
 brew install --cask gemini
 brew install --cask google-japanese-ime
