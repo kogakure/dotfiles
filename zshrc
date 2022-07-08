@@ -85,16 +85,12 @@ bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
 # }}}
 # {{{ *** *** Functions *** ***
 
-# Update Vim and Plugins
-function vimUpdate () {
-  vim +PlugUpgrade +PlugInstall +PlugClean +qall
-}
-
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 function update () {
-  vim +PlugUpgrade +PlugInstall +PlugClean +qall
   brew update && brew outdated && brew upgrade && brew cleanup
   sudo gem update --system && sudo gem update && gem cleanup all
+  pip install --upgrade pip
+  pip list -o --format columns|  cut -d' ' -f1|xargs -n1 pip install -U
   npm update npm -g
   npm update -g
   sudo softwareupdate -i -a
@@ -410,4 +406,3 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
 # }}}
-
