@@ -25,10 +25,10 @@ keymap("n", "<leader>ve", "<cmd>e $MYVIMRC<CR>", opts)
 keymap("n", "<leader>vr", "<cmd>source $MYVIMRC<CR>", opts)
 
 -- Delete current buffer
-keymap("n", "<leader>X", ":Bdelete<CR>", opts)
+keymap("n", "<leader>q", ":Bdelete<CR>", opts)
 
 -- Delete all buffers
-keymap("n", "<leader>da", ":bufdo bdelete<CR>", opts)
+keymap("n", "<leader>X", ":bufdo bdelete<CR>", opts)
 
 -- Allow gf to open non-existent files
 keymap("", "gf", ":edit <cfile><CR>", opts)
