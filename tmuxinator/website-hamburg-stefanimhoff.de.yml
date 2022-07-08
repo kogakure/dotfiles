@@ -1,6 +1,0 @@
-name: Hamburg
-root: ~/Code/Github/hamburg.stefanimhoff.de/
-windows:
-  - Vim: vim
-  - Terminal: clear
-  - Server: npm i; npm start

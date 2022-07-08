@@ -20,6 +20,7 @@ brew install ack                        # Search tool like grep, but optimized f
 brew install bash                       # Bourne-Again SHell, a UNIX command interpreter
 brew install bat                        # Clone of cat(1) with syntax highlighting and Git integration
 brew install bfg                        # Remove large files or passwords from Git history like git-filter-branch
+brew install bibclean                   # BibTeX bibliography file pretty printer and syntax checker
 brew install bitwarden-cli              # Secure and free password manager for all of your devices
 brew install cairo                      # Vector graphics library with cross-device output support
 brew install cloc                       # Statistics utility to count lines of code
@@ -28,6 +29,7 @@ brew install cmake                      # Cross-platform make
 brew install coreutils                  # GNU File, Shell, and Text utilities
 brew install curl                       # Get a file from an HTTP, HTTPS or FTP server
 brew install denisidoro/tools/navi      # An interactive cheatsheet tool for the command-line ➜  navi
+brew install deno                       # Secure runtime for JavaScript and TypeScript
 brew install direnv                     # Load/unload environment variables based on $PWD
 brew install docker                     # Pack, ship and run any application as a lightweight container
 brew install docker-machine             # Create Docker hosts locally and on cloud providers
@@ -51,7 +53,9 @@ brew install gource                     # Version Control Visualization Tool
 brew install gpg                        # GNU Pretty Good Privacy (PGP)
 brew install grex                       # Command-line tool for generating regular expressions
 brew install gsl                        # Numerical library for C and C++
+brew install gnu-sed                    # GNU implementation of the famous stream editor
 brew install highlight                  # Convert source code to formatted text with syntax highlighting
+brew install htop                       # Improved top
 brew install httpie                     # User-friendly cURL replacement (command-line HTTP client
 brew install hub                        # Add GitHub support to git on the command-line
 brew install icu4c                      # C/C++ and Java libraries for Unicode and globalization
@@ -63,6 +67,7 @@ brew install lazygit                    # Simple terminal UI for git commands
 brew install libdvdcss                  # Access DVDs as block devices without the decryption
 brew install libpng                     # Library for manipulating PNG images
 brew install lua                        # Powerful, lightweight programming language
+brew install luarocks                   # LuaRocks is the package manager for Lua modules.
 brew install lynx                       # Text-based web browser
 brew install m-cli                      # Swiss Army Knife for macOS
 brew install mas                        # Mac App Store command-line interface
@@ -70,6 +75,7 @@ brew install memcached                  # High performance, distributed memory o
 brew install mongodb                    # High-performance, schema-free, document-oriented database
 brew install multimarkdown              # Turn marked-up plain text into well-formatted documents
 brew install mysql                      # Open source relational database management system
+brew install ncdu                       # NCurses Disk Usage
 brew install neovim --HEAD              # NeoVim
 brew install ossp-uuid                  # ISO-C API and CLI for generating UUIDs
 brew install pandoc                     # Swiss-army knife of markup format conversion
@@ -89,6 +95,7 @@ brew install ripgrep                    # Search tool like grep and The Silver S
 brew install rsync                      # Utility that provides fast incremental file transfer
 brew install ruby                       # Powerful, clean, object-oriented scripting language
 brew install ruby-build                 # Install various Ruby versions and implementations
+brew install rust                       # Rust language
 brew install scala                      # JVM-based programming language
 brew install slugify                    # Convert filenames and directories to a web friendly format
 brew install sqlite                     # Command-line interface for SQLite
@@ -101,6 +108,7 @@ brew install tmuxinator                 # Create and manage tmux sessions easily
 brew install tree                       # Display directories as trees (with optional color/HTML output)
 brew install universal-ctags/universal-ctags/universal-ctags --HEAD # A maintained ctag implementation
 brew install urlview                    # URL extractor/launcher (needed for tmux-urlview)
+brew install vale                       # Syntax-aware linter for prose
 brew install watchman                   # Watch files and take action when they change
 brew install wget                       # Internet file retriever
 brew install yarn                       # JavaScript package manager

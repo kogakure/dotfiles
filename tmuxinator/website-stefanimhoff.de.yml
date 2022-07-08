@@ -1,6 +1,0 @@
-name: "Stefan Imhoff"
-root: ~/Code/Github/stefanimhoff.de/
-windows:
-  - Vim: vim
-  - Terminal: clear
-  - Server: npm i; npm start

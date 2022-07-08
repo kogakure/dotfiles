@@ -24,6 +24,12 @@ source ./npm.sh
 # Installing Python version manager
 source ./python.sh
 
+# Installing Lua packages
+source ./lua.sh
+
+# Installing Rust packages
+source ./rust.sh
+
 # Install current version of Ruby
 source ./ruby.sh
 

@@ -2,12 +2,11 @@ require("functions")
 require("caffeine")
 
 local application = hs.application
-local window      = hs.window
-local layout      = hs.layout
-local screen      = hs.screen
-local hotkey      = hs.hotkey
-local hints       = hs.hints
-
+local window = hs.window
+local layout = hs.layout
+local screen = hs.screen
+local hotkey = hs.hotkey
+local hints = hs.hints
 
 -------------------
 -- Configuration --
@@ -17,8 +16,8 @@ local hints       = hs.hints
 window.animationDuration = 0
 
 -- Hints
-hints.fontName        = "Helvetica-Bold"
-hints.fontSize        = 18
+hints.fontName = "Helvetica-Bold"
+hints.fontSize = 18
 hints.showTitleThresh = 0
 -- hints.style           = "vimperator" -- Buggy, gets slow after a while
 
@@ -30,28 +29,28 @@ application.enableSpotlightForNameSearches(true)
 ------------
 
 -- Keys
-local KEY_AM   = { "⌥", "⌘" }
-local KEY_CA   = { "⌃", "⌥" }
-local KEY_CAM  = { "⌃", "⌥", "⌘" }
-local KEY_CM   = { "⌃", "⌘" }
-local KEY_SAM  = { "⇧", "⌥", "⌘" }
-local KEY_SC   = { "⇧", "⌘" }
-local KEY_SCA  = { "⇧", "⌃", "⌥" }
+local KEY_AM = { "⌥", "⌘" }
+local KEY_CA = { "⌃", "⌥" }
+local KEY_CAM = { "⌃", "⌥", "⌘" }
+local KEY_CM = { "⌃", "⌘" }
+local KEY_SAM = { "⇧", "⌥", "⌘" }
+local KEY_SC = { "⇧", "⌘" }
+local KEY_SCA = { "⇧", "⌃", "⌥" }
 local KEY_SCAM = { "⇧", "⌃", "⌥", "⌘" }
-local KEY_SCM  = { "⇧", "⌃", "⌘" }
+local KEY_SCM = { "⇧", "⌃", "⌘" }
 
 -- Displays
 local DISPLAY_PRIMARY = screen.primaryScreen()
 local DISPLAY_NOTEBOOK = "Color LCD"
 
 -- Sizes
-local LEFT_MOST  = hs.geometry.unitrect(0, 0, 0.6, 1)
-local LEFT_LESS  = hs.geometry.unitrect(0, 0, 0.4, 1)
+local LEFT_MOST = hs.geometry.unitrect(0, 0, 0.6, 1)
+local LEFT_LESS = hs.geometry.unitrect(0, 0, 0.4, 1)
 local RIGHT_MOST = hs.geometry.unitrect(0.4, 0, 0.6, 1)
 local RIGHT_LESS = hs.geometry.unitrect(0.6, 0, 0.4, 1)
 local FULLSCREEN = hs.geometry.unitrect(0, 0, 1, 1)
 local RIGHT_HALF = hs.geometry.unitrect(0.5, 0, 0.5, 1)
-local LEFT_HALF  = hs.geometry.unitrect(0, 0, 0.5, 1)
+local LEFT_HALF = hs.geometry.unitrect(0, 0, 0.5, 1)
 
 -------------
 -- Layouts --
@@ -62,44 +61,44 @@ local LEFT_HALF  = hs.geometry.unitrect(0, 0, 0.5, 1)
 
 -- One Monitor and Notebook
 local LAYOUT_DUAL = {
-  {"Brave Browser",             nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Calendar",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Code",                      nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"DEVONthink 3",              nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Element",                   nil, DISPLAY_NOTEBOOK, RIGHT_HALF, nil, nil},
-  {"Firefox Developer Edition", nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Mail",                      nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Messages",                  nil, DISPLAY_PRIMARY,  RIGHT_HALF, nil, nil},
-  {"Microsoft Outlook",         nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Music",                     nil, DISPLAY_NOTEBOOK, FULLSCREEN, nil, nil},
-  {"Obsidian",                  nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Slack",                     nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Sonos",                     nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"Telegram",                  nil, DISPLAY_PRIMARY,  LEFT_HALF,  nil, nil},
-  {"Things",                    nil, DISPLAY_NOTEBOOK, FULLSCREEN, nil, nil},
-  {"iA Writer",                 nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
-  {"kitty",                     nil, DISPLAY_PRIMARY,  FULLSCREEN, nil, nil},
+	{ "Brave Browser", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Calendar", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Code", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "DEVONthink 3", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Element", nil, DISPLAY_NOTEBOOK, RIGHT_HALF, nil, nil },
+	{ "Firefox Developer Edition", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Mail", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Messages", nil, DISPLAY_PRIMARY, RIGHT_HALF, nil, nil },
+	{ "Microsoft Outlook", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Music", nil, DISPLAY_NOTEBOOK, FULLSCREEN, nil, nil },
+	{ "Obsidian", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Slack", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Sonos", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Telegram", nil, DISPLAY_PRIMARY, LEFT_HALF, nil, nil },
+	{ "Things", nil, DISPLAY_NOTEBOOK, FULLSCREEN, nil, nil },
+	{ "iA Writer", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "kitty", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
 }
 
 --  One Monitor
 local LAYOUT_SINGLE = {
-  {"Brave Browser",             nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Calendar",                  nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
-  {"Code",                      nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"DEVONthink 3",              nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Element",                   nil, DISPLAY_PRIMARY, RIGHT_HALF, nil, nil},
-  {"Firefox Developer Edition", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Mail",                      nil, DISPLAY_PRIMARY, RIGHT_MOST, nil, nil},
-  {"Messages",                  nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil},
-  {"Microsoft Outlook",         nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Music",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Obsidian",                  nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Slack",                     nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
-  {"Sonos",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"Telegram",                  nil, DISPLAY_PRIMARY, LEFT_MOST,  nil, nil},
-  {"Things",                    nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil},
-  {"iA Writer",                 nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
-  {"kitty",                     nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil},
+	{ "Brave Browser", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Calendar", nil, DISPLAY_PRIMARY, LEFT_MOST, nil, nil },
+	{ "Code", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "DEVONthink 3", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Element", nil, DISPLAY_PRIMARY, RIGHT_HALF, nil, nil },
+	{ "Firefox Developer Edition", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Mail", nil, DISPLAY_PRIMARY, RIGHT_MOST, nil, nil },
+	{ "Messages", nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil },
+	{ "Microsoft Outlook", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Music", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Obsidian", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Slack", nil, DISPLAY_PRIMARY, LEFT_MOST, nil, nil },
+	{ "Sonos", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "Telegram", nil, DISPLAY_PRIMARY, LEFT_MOST, nil, nil },
+	{ "Things", nil, DISPLAY_PRIMARY, RIGHT_LESS, nil, nil },
+	{ "iA Writer", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
+	{ "kitty", nil, DISPLAY_PRIMARY, FULLSCREEN, nil, nil },
 }
 
 ------------------
@@ -113,36 +112,44 @@ local LAYOUT_SINGLE = {
 -- hotkey.bind(KEY_AM, "left",  function() nudge(-100, 0) end)
 
 -- Resize hotkeys
-hotkey.bind(KEY_SAM, "up",    function() yank(0, -100) end)
-hotkey.bind(KEY_SAM, "down",  function() yank(0, 100) end)
-hotkey.bind(KEY_SAM, "right", function() yank(100, 0) end)
-hotkey.bind(KEY_SAM, "left",  function() yank(-100, 0) end)
+hotkey.bind(KEY_SAM, "up", function()
+	Yank(0, -100)
+end)
+hotkey.bind(KEY_SAM, "down", function()
+	Yank(0, 100)
+end)
+hotkey.bind(KEY_SAM, "right", function()
+	Yank(100, 0)
+end)
+hotkey.bind(KEY_SAM, "left", function()
+	Yank(-100, 0)
+end)
 
 -- Push to screen edge (Moved to Raycast -- keep for later)
--- hotkey.bind(KEY_CAM, "left",  function() push(0, 0, 0.5, 1) end)
--- hotkey.bind(KEY_CAM, "right", function() push(0.5, 0, 0.5, 1) end)
--- hotkey.bind(KEY_CAM, "up",    function() push(0, 0, 1, 0.5) end)
--- hotkey.bind(KEY_CAM, "down",  function() push(0, 0.5, 1, 0.5) end)
+-- hotkey.bind(KEY_CAM, "left",  function() Push(0, 0, 0.5, 1) end)
+-- hotkey.bind(KEY_CAM, "right", function() Push(0.5, 0, 0.5, 1) end)
+-- hotkey.bind(KEY_CAM, "up",    function() Push(0, 0, 1, 0.5) end)
+-- hotkey.bind(KEY_CAM, "down",  function() Push(0, 0.5, 1, 0.5) end)
 
 -- Centered window with some room to see the desktop (Moved to Raycast -- keep for later)
--- hotkey.bind(KEY_SCM, "l", function() push(0.05, 0.05, 0.9, 0.9) end)
--- hotkey.bind(KEY_SCM, "m", function() push(0.1, 0.1, 0.8, 0.8) end)
--- hotkey.bind(KEY_SCM, "s", function() push(0.15, 0.15, 0.7, 0.7) end)
+-- hotkey.bind(KEY_SCM, "l", function() Push(0.05, 0.05, 0.9, 0.9) end)
+-- hotkey.bind(KEY_SCM, "m", function() Push(0.1, 0.1, 0.8, 0.8) end)
+-- hotkey.bind(KEY_SCM, "s", function() Push(0.15, 0.15, 0.7, 0.7) end)
 
 -- Fullscreen (Moved to Raycast -- keep for later)
--- hotkey.bind(KEY_CAM, "0", function() push(0, 0, 1, 1) end)
+-- hotkey.bind(KEY_CAM, "0", function() Push(0, 0, 1, 1) end)
 
 -- Quarter Screens (Moved to Raycast -- keep for later)
--- hotkey.bind(KEY_CAM, "q", function() push(0, 0, 0.5, 0.5) end)
--- hotkey.bind(KEY_CAM, "w", function() push(0.5, 0, 0.5, 0.5) end)
--- hotkey.bind(KEY_CAM, "a", function() push(0, 0.5, 0.5, 0.5) end)
--- hotkey.bind(KEY_CAM, "s", function() push(0.5, 0.5, 0.5, 0.5) end)
+-- hotkey.bind(KEY_CAM, "q", function() Push(0, 0, 0.5, 0.5) end)
+-- hotkey.bind(KEY_CAM, "w", function() Push(0.5, 0, 0.5, 0.5) end)
+-- hotkey.bind(KEY_CAM, "a", function() Push(0, 0.5, 0.5, 0.5) end)
+-- hotkey.bind(KEY_CAM, "s", function() Push(0.5, 0.5, 0.5, 0.5) end)
 
 -- Part Screens (Moved to Raycast -- keep for later)
--- hotkey.bind(KEY_CAM, "4", function() push(0, 0, 0.6, 1) end)
--- hotkey.bind(KEY_CAM, "5", function() push(0, 0, 0.4, 1) end)
--- hotkey.bind(KEY_CAM, "6", function() push(0.4, 0, 0.6, 1) end)
--- hotkey.bind(KEY_CAM, "7", function() push(0.6, 0, 0.4, 1) end)
+-- hotkey.bind(KEY_CAM, "4", function() Push(0, 0, 0.6, 1) end)
+-- hotkey.bind(KEY_CAM, "5", function() Push(0, 0, 0.4, 1) end)
+-- hotkey.bind(KEY_CAM, "6", function() Push(0.4, 0, 0.6, 1) end)
+-- hotkey.bind(KEY_CAM, "7", function() Push(0.6, 0, 0.4, 1) end)
 
 -- Move a window between monitors (preserve size)
 -- hotkey.bind(KEY_CM,  "1",     function() window.focusedWindow():moveOneScreenNorth() end)
@@ -189,10 +196,12 @@ hotkey.bind(KEY_SAM, "left",  function() yank(-100, 0) end)
 -- hotkey.bind(KEY_SCAM, "Y", function() application.launchOrFocus("Music") end)
 
 -- Place red circle around mouse
-hotkey.bind(KEY_SCAM, "space", mouseHighlight)
+hotkey.bind(KEY_SCAM, "space", MouseHighlight)
 
 -- Manual config reloading (from getting started guide):
-hotkey.bind(KEY_CAM, "delete", function() hs.reload() end)
+hotkey.bind(KEY_CAM, "delete", function()
+	hs.reload()
+end)
 
 -- Focus (Moved to Raycast -- keep for later)
 -- hotkey.bind(KEY_CAM, 'k', function() window.focusedWindow():focusWindowNorth() end)
@@ -201,8 +210,14 @@ hotkey.bind(KEY_CAM, "delete", function() hs.reload() end)
 -- hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
 
 -- Hints
-hotkey.bind(KEY_CAM, "space", function() hints.windowHints(getAllValidWindows()) end)
+hotkey.bind(KEY_CAM, "space", function()
+	hints.windowHints(GetAllValidWindows())
+end)
 
 -- Layouts
-hotkey.bind(KEY_SCAM, "1", function() layout.apply(LAYOUT_SINGLE) end)
-hotkey.bind(KEY_SCAM, "2", function() layout.apply(LAYOUT_DUAL) end)
+hotkey.bind(KEY_SCAM, "1", function()
+	layout.apply(LAYOUT_SINGLE)
+end)
+hotkey.bind(KEY_SCAM, "2", function()
+	layout.apply(LAYOUT_DUAL)
+end)

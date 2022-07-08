@@ -44,6 +44,9 @@ export NVM_DIR="$HOME/.nvm"
 # Rancher
 export PATH="$HOME/.rd/bin:$PATH"
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 

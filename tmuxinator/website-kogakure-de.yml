@@ -1,0 +1,6 @@
+name: 'kogakure-de'
+root: ~/Code/Github/kogakure.de/
+windows:
+  - Vim: vim
+  - Terminal: clear
+  - Server: npm i; npm start

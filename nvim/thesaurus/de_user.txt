@@ -1,2 +1,2 @@
-Auto;Automobil;Bleckbüchse;fahrbarer Untersatz;Flunder;Kalesche;Karre;Kiste;Kutsche;Personenkraftwagen;Personenwagen;PKW;Pkw;Schleuder;Schlitten;Wagen
+Auto;Automobil;Blechbüchse;fahrbarer Untersatz;Flunder;Kalesche;Karre;Kiste;Kutsche;Personenkraftwagen;Personenwagen;PKW;Pkw;Schleuder;Schlitten;Wagen
 Fahrrad;Bike;Drahtesel;Hirsch;Rad;Radl;Velo;Zweirad

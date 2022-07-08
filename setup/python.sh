@@ -9,20 +9,16 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
-pyenv install 2.7.17
 pyenv install 3.10.1
 
-pip3 install fawkes
-
-pyenv virtualenv 2.7.17 neovim2
-pyenv virtualenv 3.10.1 neovim3
-
-pyenv activate neovim2
-pip2 install neovim
-
-pyenv activate neovim3
-pip3 install neovim
-
-pip3 install awscli
-
-pyenv deactivate
+pip install fawkes
+pip install autopep8
+pip install black
+pip install yamllint
+pip install vim-vint
+pip install gitlint
+pip install codespell
+pip install proselint
+pip install flake8
+pip install neovim
+pip install awscli
