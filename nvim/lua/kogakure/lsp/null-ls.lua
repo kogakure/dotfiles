@@ -31,7 +31,7 @@ null_ls.setup({
 		diagnostics.stylelint,
 		diagnostics.tsc,
 		-- diagnostics.write_good,
-		diagnostics.yamllint,
+		-- diagnostics.yamllint,
 		diagnostics.zsh,
 		formatting.autopep8, -- Python
 		formatting.black.with({ extra_args = { "--fast" } }), -- Python
