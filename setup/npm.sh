@@ -52,6 +52,5 @@ npm install -g stylelint-config-standard
 npm install -g tldr                      # tldr;
 npm install -g typescript                # TypeScript is a language for application scale JavaScript development
 npm install -g typesync                  # Install missing TypeScript typings for dependencies in your package.json.
-npm install -g writegood                 # Linter for English prose
+npm install -g write-good                # Linter for English prose
 npm install -g yarn                      # Fast, reliable, and secure dependency management.
-
