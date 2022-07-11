@@ -11,7 +11,6 @@ local servers = {
 	"diagnosticls",
 	"emmet_ls",
 	"graphql",
-	"html",
 	"jsonls",
 	"pyright",
 	"quick_lint_js",

@@ -4,7 +4,6 @@ if not status_ok then
 end
 
 local mappings = {
-	a = { "<CMD>Alpha<CR>", "Alpha" },
 	b = {
 		"<CMD>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<CR>",
 		"Buffers",
@@ -110,6 +109,7 @@ local mappings = {
 		z = { "<CMD>ZenMode<CR>", "ZenMode" },
 		t = { "<CMD>Twilight<CR>", "Twilight Mode" },
 	},
+	A = { "<CMD>Alpha<CR>", "Alpha" },
 	B = {
 		name = "Bufferline",
 		p = { "<CMD>BufferLinePick<CR>", "Pick" },
