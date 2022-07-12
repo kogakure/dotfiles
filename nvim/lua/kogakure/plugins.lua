@@ -114,6 +114,7 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim") -- Display possible keybindings
 	use("karb94/neoscroll.nvim") -- Smooth scrolling
 	use("APZelos/blamer.nvim") -- Git Blame
+	use("tpope/vim-fugitive") -- Git plugin
 	use("elijahmanor/export-to-vscode.nvim") -- Export active Buffers to Visual Studio Code
 	use("bogado/file-line") -- Jump directly to line in file with 'nvim index.html:20'
 	use("ruanyl/vim-gh-line") -- Open current line in GitHub
