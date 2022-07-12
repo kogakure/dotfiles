@@ -185,7 +185,8 @@ fdr() {
 
 # Find in files with ripgrep and fzf
 frg() {
-  rg . | fzf
+  file=$(rg . --line-number | fzf | cut -d: -f1 -f2)
+  nvim $file
 }
 
 # fkill - kill process
