@@ -183,7 +183,8 @@ fdr() {
   cd "$DIR"
 }
 
-# Find in files with ripgrep and fzf
+# Find in files with ripgrep and fzf and open on that line
+# -> Works together with Vim Plugin bogado/file-line
 frg() {
   file=$(rg . --line-number | fzf | cut -d: -f1 -f2)
   if [ "$file" != "" ]
