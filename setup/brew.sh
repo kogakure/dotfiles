@@ -81,6 +81,7 @@ brew install ossp-uuid                  # ISO-C API and CLI for generating UUIDs
 brew install pandoc                     # Swiss-army knife of markup format conversion
 brew install pango                      # Framework for layout and rendering of i18n text
 brew install pass                       # Password manager
+brew install peco                       # Simplistic interactive filtering tool
 brew install pkg-config                 # Manage compile and link flags for libraries
 brew install python                     # Interpreted, interactive, object-oriented programming language
 brew install rabbitmq                   # Messaging broker
