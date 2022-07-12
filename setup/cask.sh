@@ -56,6 +56,7 @@ brew install --cask ipfs
 brew install --cask iterm2
 brew install --cask itsycal
 brew install --cask kaleidoscope
+brew install --cask karabiner-elements
 brew install --cask keycastr
 brew install --cask kindle
 brew install --cask kitty
