@@ -27,7 +27,7 @@ null_ls.setup({
 		diagnostics.flake8, -- Python
 		diagnostics.gitlint,
 		diagnostics.jsonlint,
-		diagnostics.markdownlint,
+		diagnostics.markdownlint.with({ extra_args = { "--rules ~MD033" } }),
 		diagnostics.stylelint,
 		diagnostics.tsc,
 		-- diagnostics.write_good,
