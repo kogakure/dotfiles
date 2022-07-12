@@ -93,6 +93,7 @@ local mappings = {
 	t = {
 		name = "Terminal",
 		f = { "<CMD>ToggleTerm direction=float<CR>", "Float" },
+		g = { "<CMD>lua _TIG_TOGGLE()<CR>", "TIG" },
 		h = { "<CMD>ToggleTerm size=10 direction=horizontal<CR>", "Horizontal" },
 		l = { "<CMD>lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
 		n = { "<CMD>lua _NODE_TOGGLE()<CR>", "Node" },

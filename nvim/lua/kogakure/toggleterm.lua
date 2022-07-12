@@ -51,6 +51,15 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
+local tig = Terminal:new({
+	cmd = "tig",
+	hidden = true,
+})
+
+function _TIG_TOGGLE()
+	tig:toggle()
+end
+
 local node = Terminal:new({
 	cmd = "node",
 	hidden = true,
@@ -88,7 +97,7 @@ function _PYTHON_TOGGLE()
 end
 
 local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true, }
+local opts = { noremap = true, silent = true}
 
 -- Keymaps
 keymap("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
