@@ -19,7 +19,7 @@ project.setup({
 		".svn",
 		"Makefile",
 		".gitignore",
-		'package.json',
+		"package.json",
 	},
 	show_hidden = false,
 	silent_chdir = true,
