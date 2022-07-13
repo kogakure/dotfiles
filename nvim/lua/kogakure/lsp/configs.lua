@@ -12,7 +12,6 @@ local servers = {
 	"emmet_ls",
 	"graphql",
 	"pyright",
-	"quick_lint_js",
 	"sumneko_lua",
 	"tsserver",
 }

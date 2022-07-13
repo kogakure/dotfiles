@@ -15,14 +15,7 @@ local mappings = {
 	h = { "<CMD>nohlsearch<CR>", "No Highlight" },
 	j = { "<CMD>b#<CR>", "Toggle Buffers" },
 	i = { "<CMD>silent !open -a iA\\ Writer.app '%:p'<CR>", "Open in iA Writer" },
-	p = {
-		name = "Packer",
-		c = { "<CMD>PackerCompile<CR>", "Compile" },
-		i = { "<CMD>PackerInstall<CR>", "Install" },
-		s = { "<CMD>PackerSync<CR>", "Sync" },
-		S = { "<CMD>PackerStatus<CR>", "Status" },
-		u = { "<CMD>PackerUpdate<CR>", "Update" },
-	},
+	p = { "<CMD>Telescope projects<CR>", "Projects" },
 	q = { "<CMD>Bdelete!<CR>", "Close Buffer" },
 	s = {
 		a = { "<Cmd>:FzfLua lsp_code_actions<CR>", "LSP Code Actions" },
@@ -142,7 +135,14 @@ local mappings = {
 		a = { "<CMD>vim.lsp.buf.add_workspace_folder<CR>", "Add Workspace" },
 		v = { "<CMD>vim.lsp.buf.remove_workspace_folder<CR>", "Remove Workspace" },
 	},
-	P = { "<CMD>Telescope projects<CR>", "Projects" },
+	P = {
+		name = "Packer",
+		c = { "<CMD>PackerCompile<CR>", "Compile" },
+		i = { "<CMD>PackerInstall<CR>", "Install" },
+		s = { "<CMD>PackerSync<CR>", "Sync" },
+		S = { "<CMD>PackerStatus<CR>", "Status" },
+		u = { "<CMD>PackerUpdate<CR>", "Update" },
+	},
 	Q = { "<CMD>q!<CR>", "Quit" },
 	R = { "<CMD>luafile %<CR>", "Reload File" },
 	T = {
