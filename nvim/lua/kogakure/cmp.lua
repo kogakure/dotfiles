@@ -118,10 +118,10 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "spell" },
 		{ name = "dictionary" },
 		{ name = "omni" },
 		{ name = "nvim_lua" },
+		{ name = "spell" },
 		{ name = "npm", keyword_length = 4 },
 	},
 	confirm_opts = {
