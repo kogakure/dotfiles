@@ -74,9 +74,10 @@ local function lsp_keymaps(bufnr)
 end
 
 -- TODO: Neovim 0.8 https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
 local lsp_formatting = function(bufnr)
 	-- vim.lsp.buf.format({})
-	vim.lsp.buf.formatting({
+	vim.lsp.buf.formatting_sync({
 		filter = function(client)
 			return client.name == "null-ls"
 		end,
@@ -101,6 +102,11 @@ M.on_attach = function(client, bufnr)
 
 	-- TypeScript
 	if client.name == "tsserver" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
+	-- Stylelint
+	if client.name == "stylelint_lsp" then
 		client.resolved_capabilities.document_formatting = false
 	end
 

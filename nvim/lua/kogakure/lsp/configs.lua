@@ -7,11 +7,21 @@ local lspconfig = require("lspconfig")
 
 local servers = {
 	"cssls",
+	"cssmodules_ls",
 	"diagnosticls",
 	"emmet_ls",
+	"graphql",
+	"html",
+	"jsonls",
 	"pyright",
+	"remark_ls",
+	"sourcery",
+	"stylelint_lsp",
 	"sumneko_lua",
-	-- 'tsserver',
+	"svelte",
+	"theme_check",
+	"tsserver",
+	"vuels",
 }
 
 lsp_installer.settings({
