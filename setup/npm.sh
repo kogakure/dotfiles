@@ -43,6 +43,7 @@ npm install -g markdownlint              # Markdown lint tool and style checker
 npm install -g markdownlint-cli          # Command Line Interface for MarkdownLint
 npm install -g pageres-cli               # Capture website screenshots ➜ pageres [ todomvc.com 1200x1000 ] [ yeoman.io 800x600 1200x1000 ] --crop
 npm install -g prettier                  # Prettier is an opinionated code formatter
+npm install -g prettier-init             # Just a CLI for creating a .prettierrc file.
 npm install -g prettier-stylelint        # Format your styles with ease
 npm install -g prettier_d_slim           # Prettier, but fast
 npm install -g prettyjson                # Package for formatting JSON data ➜ prettyjson package.json. curl https://api.github.com/users/rafeca | prettyjson
