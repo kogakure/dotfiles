@@ -4,5 +4,5 @@ windows:
   - Vim: vim
   - Downloads: cd ~/Downloads; clear
   - Terminal: cd; clear
-  - Dotfiles: clear
   - Raycast: cd ~/Code/GitHub/raycast-scripts
+  - Dotfiles: clear
