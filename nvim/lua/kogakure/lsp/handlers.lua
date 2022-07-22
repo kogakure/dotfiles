@@ -110,6 +110,11 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
+	-- JSON
+	if client.name == "jsonls" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
 	-- Lua
 	if client.name == "sumneko_lua" then
 		client.resolved_capabilities.document_formatting = false
