@@ -78,8 +78,8 @@ path=(
 # Bindkey
 bindkey -v
 bindkey -M viins '^r' fzf-history-widget # (r)everse history search
-bindkey -M viins '^x^f' fzf-file-widget  # (f)ile
-bindkey -M viins '^x^j' fzf-cd-widget    # (j)ump
+bindkey -M viins '^f' fzf-file-widget    # (f)ile / (t)
+bindkey -M viins '^z' fzf-cd-widget      # (z) jump
 
 
 # }}}
@@ -322,8 +322,8 @@ alias reload="source $HOME/.zshrc"
 alias ...='cd ../..'
 alias ..='cd ..'
 alias cd..='cd ..'
-alias la='ls -la'
-alias ll='ls -lisa'
+alias ll='exa -l -g --icons'
+alias lla='ll -a'
 alias mkdir='mkdir -p'
 
 # Git
