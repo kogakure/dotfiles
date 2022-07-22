@@ -35,6 +35,7 @@ brew install docker                     # Pack, ship and run any application as 
 brew install docker-machine             # Create Docker hosts locally and on cloud providers
 brew install editorconfig               # Maintain consistent coding style between multiple editors
 brew install eot-utils                  # Tools to convert fonts from OTF/TTF to EOT format
+brew install exo                        # Modern replacement for 'ls'
 brew install fd                         # Simple, fast and user-friendly alternative to find
 brew install ffmpeg --with-libvpx --with-libvorbis --with-fdk-aacc --with-libsass --with-fontconfig # Play, record, convert, and stream audio and video
 brew install flow                       # Static type checker for JavaScript
