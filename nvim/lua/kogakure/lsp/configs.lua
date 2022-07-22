@@ -14,7 +14,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"pyright",
-	"remark_ls",
+	-- "remark_ls",
 	"sourcery",
 	"stylelint_lsp",
 	"sumneko_lua",
