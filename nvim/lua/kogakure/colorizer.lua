@@ -5,9 +5,12 @@ if not status then
 end
 
 colorizer.setup({
-	"html",
 	"css",
+	"html",
 	"javascript",
+	"javascriptreact",
+	"typescript",
+	"typescriptreact",
 }, {
 	RGB = true, -- #RGB hex codes
 	RRGGBB = true, -- #RRGGBB hex codes
