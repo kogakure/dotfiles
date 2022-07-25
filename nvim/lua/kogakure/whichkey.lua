@@ -163,6 +163,7 @@ local mappings = {
 		b = { "<CMD>RunJestOnBuffer<CR>", "Run Jest on Buffer" },
 		f = { "<CMD>RunJestFocused<CR>", "Run Jest on Focused" },
 	},
+	W = { "<CMD>wa!<CR>", "Save All" },
 }
 
 local setup = {
