@@ -105,6 +105,11 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
+	-- HTML
+	if client.name == "html" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
 	-- Stylelint
 	if client.name == "stylelint_lsp" then
 		client.resolved_capabilities.document_formatting = false
