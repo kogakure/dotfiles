@@ -167,6 +167,17 @@ fo() {
   fi
 }
 
+# fcd - cd into directory
+fcd() {
+  cd $(find * -type d | fzf --preview 'tree -C {} | head -50')
+}
+
+# fhcd – Jump to home directory and search for directories
+fhcd() {
+  cd $HOME
+  cd $(find * -type d | fzf --preview 'tree -C {} | head -50')
+}
+
 # fdr - cd to selected parent directory
 fdr() {
   local declare dirs=()
