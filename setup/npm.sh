@@ -2,13 +2,14 @@
 
 npm install -g @11ty/eleventy            # Eleventy
 npm install -g a11y                      # Runs an accessibility audit against a URL
-npm install -g alex                      # Catch insensitive, inconsiderate writing.
-npm install -g babel-cli                 # Babel command line.
+npm install -g alex                      # Catch insensitive, inconsiderate writing
+npm install -g babel-cli                 # Babel command line
 npm install -g browser-sync              # Live CSS Reload & Browser Syncing
 npm install -g caniuse-cmd               # caniuse for the command line ➜ caniuse border-radius
-npm install -g commitizen                # Git commit, but play nice with conventions. ➜ git cz
-npm install -g cz-conventional-changelog # Prompts for conventional changelog standard.
-npm install -g eslint                    # An AST-based pattern checker for JavaScript.
+npm install -g commitizen                # Git commit, but play nice with conventions ➜ git cz
+npm install -g cz-conventional-changelog # Prompts for conventional changelog standard
+npm install -g esbuild                   # An extremely fast JavaScript bundler
+npm install -g eslint                    # An AST-based pattern checker for JavaScript
 npm install -g eslint-plugin-babel
 npm install -g eslint-plugin-chai
 npm install -g eslint-plugin-chai-expect
