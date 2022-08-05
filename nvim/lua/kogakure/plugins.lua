@@ -32,7 +32,7 @@ end
 
 -- Have packer use a popup window
 packer.init({
-	max_jobs= 8,
+	max_jobs = 8,
 	display = {
 		open_fn = function()
 			return require("packer.util").float({
@@ -142,6 +142,7 @@ return packer.startup(function(use)
 	use("rstacruz/vim-xtract") -- Extract code into new file
 	use("tpope/vim-repeat") -- Repeat plugins
 	use("tpope/vim-surround") -- Replace, add, remove surroundings
+	use("mfussenegger/nvim-dap") -- Debug Adapter Protocol
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")

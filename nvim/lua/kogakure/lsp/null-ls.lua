@@ -44,6 +44,7 @@ null_ls.setup({
 		formatting.stylua, -- Lua
 		formatting.trim_newlines,
 		formatting.trim_whitespace,
+		formatting.rustfmt,
 		hover.dictionary,
 	},
 })

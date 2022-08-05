@@ -14,7 +14,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"pyright",
-	-- "remark_ls",
+	"rust_analyzer",
 	"sourcery",
 	"stylelint_lsp",
 	"sumneko_lua",
@@ -22,6 +22,7 @@ local servers = {
 	"theme_check",
 	"tsserver",
 	"vuels",
+	-- "remark_ls",
 }
 
 lsp_installer.settings({
