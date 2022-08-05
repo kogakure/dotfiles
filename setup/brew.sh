@@ -97,7 +97,6 @@ brew install ripgrep                    # Search tool like grep and The Silver S
 brew install rsync                      # Utility that provides fast incremental file transfer
 brew install ruby                       # Powerful, clean, object-oriented scripting language
 brew install ruby-build                 # Install various Ruby versions and implementations
-brew install rust                       # Rust language
 brew install scala                      # JVM-based programming language
 brew install slugify                    # Convert filenames and directories to a web friendly format
 brew install sqlite                     # Command-line interface for SQLite
