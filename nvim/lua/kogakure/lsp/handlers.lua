@@ -63,14 +63,17 @@ local function lsp_keymaps(bufnr)
 
 	keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap(bufnr, "n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	keymap(bufnr, "n", "g0", "<cmd>FzfLua lsp_document_symbols<CR>", opts)
+	keymap(bufnr, "n", "gF", "<cmd>FzfLua lsp_live_workspace_symbols<CR>", opts)
+	keymap(bufnr, "n", "gD", "<cmd>FzfLua lsp_declarations<CR>", opts)
+	keymap(bufnr, "n", "gd", "<cmd>FzfLua lsp_definitions<CR>", opts)
+	keymap(bufnr, "n", "gc", "<cmd>FzfLua lsp_code_actions<CR>", opts)
+	keymap(bufnr, "n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "Ä", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	keymap(bufnr, "n", "gr", "<cmd>FzfLua lsp_references<CR>", opts)
+	keymap(bufnr, "n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	keymap(bufnr, "n", "ä", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	keymap(bufnr, "n", "Ä", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 end
 
 -- TODO: Neovim 0.8 https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
