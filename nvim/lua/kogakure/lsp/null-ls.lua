@@ -16,7 +16,7 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup({
 	debug = false,
 	sources = {
-		code_actions.eslint_d,
+		code_actions.eslint_d.with({ diagnostics_format = "[eslint] #{m}\n(#{c})" }),
 		code_actions.gitrebase,
 		code_actions.gitsigns,
 		code_actions.proselint,
@@ -39,7 +39,8 @@ null_ls.setup({
 		formatting.eslint_d,
 		formatting.json_tool,
 		formatting.markdownlint,
-		formatting.prettier.with({ extra_args = { "--single-quote" } }),
+		formatting.prettierd,
+		-- formatting.prettier.with({ extra_args = { "--single-quote" } }),
 		formatting.stylelint,
 		formatting.stylua, -- Lua
 		formatting.trim_newlines,

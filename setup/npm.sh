@@ -1,6 +1,7 @@
 #!/bin/sh
 
 npm install -g @11ty/eleventy            # Eleventy
+npm install -g @fsouza/prettierd         # Prettier, as a daemon, for ludicrous formatting speed
 npm install -g a11y                      # Runs an accessibility audit against a URL
 npm install -g alex                      # Catch insensitive, inconsiderate writing
 npm install -g babel-cli                 # Babel command line
