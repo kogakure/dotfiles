@@ -4,4 +4,6 @@ if not status_ok then
 	return
 end
 
-autotag.setup()
+autotag.setup({
+	disable_filetype = { "TelescopePrompt", "vim" },
+})
