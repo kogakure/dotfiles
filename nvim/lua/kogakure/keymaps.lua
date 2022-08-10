@@ -1,4 +1,4 @@
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 --- Remap space as <leader> key
@@ -20,9 +20,23 @@ keymap("v", "y", "myy`y", opts)
 -- Delete last character of line
 keymap("n", "<leader>x", "$x", opts)
 
+-- Do not yank with x
+keymap("n", "x", '"_x', opts)
+
 -- Open vim config in a new buffer, reload vim config
 keymap("n", "<leader>ve", "<cmd>e $MYVIMRC<CR>", opts)
 keymap("n", "<leader>vr", "<cmd>source $MYVIMRC<CR>", opts)
+
+-- Increment/decrement
+keymap("n", "+", "<C-a>", opts)
+keymap("n", "-", "<C-x>", opts)
+
+-- Splits
+keymap("n", "ss", ":split<CR><C-w>w", opts)
+keymap("n", "sv", ":vsplit<CR><C-w>w", opts)
+
+-- Select all
+keymap("n", "<C-a>", "gg<S-v>G", opts)
 
 -- Delete current buffer
 keymap("n", "<leader>q", ":Bdelete<CR>", opts)
