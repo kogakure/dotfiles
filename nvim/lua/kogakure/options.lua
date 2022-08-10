@@ -62,8 +62,11 @@ end
 -- Add dashes to words
 vim.opt.iskeyword:append("-")
 
--- Don"t delete the word, but put a $ to the end till exit the mode
+-- Don’t delete the word, but put a $ to the end till exit the mode
 vim.opt.cpoptions:append("$")
+
+-- Wildignore
+vim.opt.wildignore:append({ "*/node_modules/*" })
 
 vim.opt.path:append("**")
 vim.opt.complete:append({ "i", "k", "s", "kspell" })
