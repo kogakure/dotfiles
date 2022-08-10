@@ -1,9 +1,18 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
+local mason_status_ok, mason = pcall(require, "mason")
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+local mason_lsp_config_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+
+if not mason_status_ok then
 	return
 end
 
-local lspconfig = require("lspconfig")
+if not lspconfig_status_ok then
+	return
+end
+
+if not mason_lsp_config_status_ok then
+	return
+end
 
 local servers = {
 	"cssls",
@@ -19,25 +28,26 @@ local servers = {
 	"stylelint_lsp",
 	"sumneko_lua",
 	"svelte",
+	"tailwindcss",
 	"theme_check",
 	"tsserver",
 	"vuels",
 	-- "remark_ls",
 }
 
-lsp_installer.settings({
+mason.setup({
 	ui = {
 		icons = {
-			server_installed = "✓",
-			server_pending = "➜",
-			server_uninstalled = "✗",
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
 		},
 	},
 
 	max_concurrent_installers = 4,
 })
 
-lsp_installer.setup({
+mason_lspconfig.setup({
 	ensure_installed = servers,
 })
 

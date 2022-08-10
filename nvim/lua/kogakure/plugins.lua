@@ -70,7 +70,8 @@ return packer.startup(function(use)
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- Enable LSP
-	use("williamboman/nvim-lsp-installer") -- Simple to use language server installer
+	use("williamboman/mason.nvim") -- Manage LSP servers, DAP servers, linters, and formatters
+	use("williamboman/mason-lspconfig.nvim") -- Bridge betwen Mason and lspconfig
 	use("jose-elias-alvarez/null-ls.nvim") -- Inject LSP diagnostics, code actions, and more
 	use("folke/trouble.nvim") -- Diagnostics
 	use("creativenull/diagnosticls-configs-nvim") -- Collection of linters and formatters
