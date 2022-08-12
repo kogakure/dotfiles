@@ -15,6 +15,7 @@ if not mason_lsp_config_status_ok then
 end
 
 local servers = {
+	"astro",
 	"cssls",
 	"cssmodules_ls",
 	"diagnosticls",
