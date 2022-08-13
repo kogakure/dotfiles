@@ -147,6 +147,7 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap") -- Debug Adapter Protocol
 	use("wuelnerdotexe/vim-astro") -- Astro support
 	use("MunifTanjim/prettier.nvim") -- Prettier
+	use("untitled-ai/jupyter_ascending.vim") -- Interact with jupyter_ascending
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")

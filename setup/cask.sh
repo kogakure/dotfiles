@@ -65,6 +65,7 @@ brew install --cask ledger-live
 brew install --cask magicavoxel
 brew install --cask makemkv
 brew install --cask marked
+brew install --cask miniconda
 brew install --cask obsidian
 brew install --cask philips-hue-sync
 brew install --cask plex

@@ -22,3 +22,14 @@ pip install proselint
 pip install flake8
 pip install neovim
 pip install awscli
+pip install jupyter
+pip install jupyterlab
+pip install jupyter_ascending
+pip install notebook
+pip install voila
+
+jupyter nbextension install --py --sys-prefix jupyter_ascending
+jupyter nbextension     enable jupyter_ascending --sys-prefix --py
+jupyter serverextension enable jupyter_ascending --sys-prefix --py
+
+conda install -n base ipykernel --update-deps --force-reinstall
