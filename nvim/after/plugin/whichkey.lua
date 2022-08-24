@@ -147,12 +147,13 @@ local mappings = {
 	R = { "<CMD>luafile %<CR>", "Reload File" },
 	T = {
 		name = "Text Editing",
-		s = { "<CMD>:set spell!<CR>", "Spell Checking" },
+		c = { "<CMD>call ToggleColorColumn()<CR>", "Show/Hide Colorcolumn" },
 		d = { "<CMD>call SpellEn()<CR>", "Set Spelling Language to English" },
 		e = { "<CMD>call SpellDe()<CR>", "Set Spelling Languate to German" },
-		w = { "<CMD>call ToggleWrap()<CR>", "Soft wrap/No wrap" },
-		c = { "<CMD>call ToggleColorColumn()<CR>", "Show/Hide Colorcolumn" },
+		l = { "<CMD>:set list!<CR>", "List" },
 		m = { "<CMD>MarkdownPreviewToggle<CR>", "Markdown Preview" },
+		s = { "<CMD>:set spell!<CR>", "Spell Checking" },
+		w = { "<CMD>call ToggleWrap()<CR>", "Soft wrap/No wrap" },
 	},
 	V = {
 		name = "Vimux",
