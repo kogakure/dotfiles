@@ -7,34 +7,34 @@ end
 bufferline.setup({
 	highlights = {
 		fill = {
-			guibg = "#282828",
+			bg = "#282828",
 		},
 		tab_selected = {
-			guifg = {
+			fg = {
 				attribute = "fg",
 				highlight = "Normal",
 			},
-			guibg = {
+			bg = {
 				attribute = "bg",
 				highlight = "Normal",
 			},
 		},
 		tab = {
-			guifg = {
+			fg = {
 				attribute = "fg",
 				highlight = "TabLine",
 			},
-			guibg = {
+			bg = {
 				attribute = "bg",
 				highlight = "TabLine",
 			},
 		},
 		indicator_selected = {
-			guifg = {
+			fg = {
 				attribute = "fg",
 				highlight = "LspDiagnosticsDefaultHint",
 			},
-			guibg = {
+			bg = {
 				attribute = "bg",
 				highlight = "Normal",
 			},
