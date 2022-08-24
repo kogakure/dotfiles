@@ -38,7 +38,6 @@ vim.cmd([[
     autocmd!
     autocmd FileType html,eruby,njk setlocal foldmethod=indent
     autocmd FileType html,eruby,njk setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd Filetype html,eruby,njk setlocal ts=2 sts=2 sw=2 expandtab
   augroup END
 
   augroup _ft_css
@@ -48,21 +47,18 @@ vim.cmd([[
     autocmd FileType css setlocal foldmarker={,}
     autocmd FileType css,scss,sass,less,stylus setlocal omnifunc=csscomplete#CompleteCSS
     autocmd Filetype css,scss,sass,less,stylus setlocal iskeyword+=-
-    autocmd Filetype css,scss,sass,less,stylus setlocal ts=2 sts=2 sw=2 expandtab
   augroup END
 
   augroup _ft_xml
     autocmd!
     autocmd FileType xml setlocal foldmethod=indent
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-    autocmd Filetype xml setlocal ts=2 sts=2 sw=2 expandtab
   augroup END
 
   augroup _ft_javascript
     autocmd!
     autocmd FileType javascript setlocal foldmethod=indent
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
     autocmd BufRead,BufNewFile *.es6 setfiletype javascript
     autocmd BufRead,BufNewFile *.jsx setfiletype javascript.jsx
   augroup END
