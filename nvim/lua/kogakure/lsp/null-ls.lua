@@ -32,7 +32,6 @@ null_ls.setup({
 		diagnostics.stylelint,
 		diagnostics.tsc,
 		diagnostics.vale,
-		-- diagnostics.write_good,
 		-- diagnostics.yamllint,
 		diagnostics.zsh,
 		formatting.autopep8, -- Python

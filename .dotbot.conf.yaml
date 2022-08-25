@@ -22,6 +22,7 @@
     ~/.ripgreprc: ripgrep
     ~/.tmux.conf: tmux.conf
     ~/.vale.ini: vale.ini
+    ~/.vale: .vale
     ~/.wget: wget
     ~/.zshrc: zshrc
 
