@@ -21,10 +21,10 @@
     ~/.pandoc: pandoc
     ~/.ripgreprc: ripgrep
     ~/.tmux.conf: tmux.conf
+    ~/.vale.ini: vale.ini
     ~/.wget: wget
     ~/.zshrc: zshrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
-    - [nvim -u ~/.config/nvim/init.vim +PlugUpgrade +PlugInstall +PlugClean +qall]

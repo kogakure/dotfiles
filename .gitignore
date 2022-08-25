@@ -1,1 +1,7 @@
+# Neovim
 nvim/plugin
+
+# Vale
+.vale/proselint
+.vale/Readability
+.vale/write-good

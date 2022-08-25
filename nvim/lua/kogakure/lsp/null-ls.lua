@@ -31,6 +31,7 @@ null_ls.setup({
 		diagnostics.markdownlint.with({ extra_args = { "--rules ~MD033" } }),
 		diagnostics.stylelint,
 		diagnostics.tsc,
+		diagnostics.vale,
 		-- diagnostics.write_good,
 		-- diagnostics.yamllint,
 		diagnostics.zsh,
