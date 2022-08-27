@@ -47,6 +47,7 @@ brew install gcc                        # GNU compiler collection
 brew install giflib                     # GIF library using patented LZW algorithm
 brew install git                        # Distributed revision control system
 brew install git-extras                 # Small git utilities
+brew install git-fixup                  # Alias for git commit --fixup <ref>
 brew install git-lfs                    # Git extension for versioning large files
 brew install git-quick-stats            # Simple and efficient way to access statistics in git.
 brew install github/gh/gh               # GitHub command-line tool
@@ -105,6 +106,7 @@ brew install sqlite                     # Command-line interface for SQLite
 brew install ssh-copy-id                # Add a public key to a remote machine's authorized_keys file
 brew install startship                  # Cross-shell prompt for astronauts
 brew install the_silver_searcher        # Code-search similar to ack ➜ ag
+brew install tig                        # Text interface for Git repositories
 brew install tmate                      # Instant terminal sharing
 brew install tmux                       # Terminal multiplexer
 brew install tmuxinator                 # Create and manage tmux sessions easily
