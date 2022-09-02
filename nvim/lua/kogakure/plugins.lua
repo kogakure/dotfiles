@@ -96,6 +96,7 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("p00f/nvim-ts-rainbow") -- Rainbox parentheses
 	use("nvim-treesitter/playground") -- Treesitter information in Neovim
+	use("nvim-treesitter/nvim-treesitter-context") -- Show context
 
 	-- File/Window Management
 	use("ThePrimeagen/harpoon") --  Getting you where you want
