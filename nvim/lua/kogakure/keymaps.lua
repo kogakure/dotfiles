@@ -87,8 +87,11 @@ keymap("n", "<C-y>", "3<C-y>", opts)
 keymap("n", "G", "Gzzzv", opts)
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
-keymap("n", "}", "}zzzv", opts)
-keymap("n", "{", "{zzzv", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
+-- Copy to the end of the line
+keymap("n", "Y", "yg$", opts)
 
 -- Close all buffers
 keymap("n", "XX", ":qa<CR>", opts)
