@@ -130,8 +130,8 @@ keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+--[[ keymap("n", "<S-l>", ":bnext<CR>", opts) ]]
+--[[ keymap("n", "<S-h>", ":bprevious<CR>", opts) ]]
 
 -- Remap Jump to Tag
 keymap("n", "ü", "<C-]>", opts)
