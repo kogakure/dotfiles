@@ -21,13 +21,12 @@ null_ls.setup({
 		code_actions.gitsigns,
 		code_actions.proselint,
 		completion.luasnip,
-		-- completion.spell,
+		completion.spell,
 		-- diagnostics.codespell,
 		diagnostics.eslint, -- Eslint
 		-- diagnostics.eslint_d, -- Eslint
 		diagnostics.flake8, -- Python
 		diagnostics.gitlint,
-		diagnostics.jsonlint,
 		diagnostics.markdownlint.with({ extra_args = { "--rules ~MD033" } }),
 		diagnostics.stylelint,
 		diagnostics.tsc,
@@ -37,7 +36,6 @@ null_ls.setup({
 		formatting.autopep8, -- Python
 		formatting.black.with({ extra_args = { "--fast" } }), -- Python
 		formatting.eslint_d,
-		formatting.json_tool,
 		formatting.markdownlint,
 		formatting.prettierd,
 		-- formatting.prettier.with({ extra_args = { "--single-quote" } }),

@@ -66,6 +66,7 @@ vim.cmd([[
   augroup _ft_json
     autocmd!
     autocmd FileType json syntax match Comment +\/\/.\+$+
+    autocmd Filetype json setlocal ts=2 sts=2 sw=2
   augroup END
 
   augroup _ft_ruby
