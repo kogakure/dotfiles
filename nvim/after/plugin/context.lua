@@ -4,4 +4,17 @@ if not status_ok then
 	return
 end
 
-context.setup()
+context.setup({
+	patterns = {
+		default = {
+			"class",
+			"function",
+			"method",
+			"for",
+			"while",
+			"if",
+			"switch",
+			"case",
+		},
+	},
+})
