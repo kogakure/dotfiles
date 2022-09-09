@@ -26,7 +26,7 @@ local servers = {
 	"pyright",
 	"rust_analyzer",
 	"sourcery",
-	"stylelint_lsp",
+	--[[ "stylelint_lsp", ]]
 	"sumneko_lua",
 	"svelte",
 	"tailwindcss",
