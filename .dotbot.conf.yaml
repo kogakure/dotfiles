@@ -29,3 +29,5 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
+    - [nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync', Installing Neovim Packer plugins]
+    - [nvim +Mason +15sleep +qall, Installing Neovim Mason plugins]

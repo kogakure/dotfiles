@@ -1,4 +1,4 @@
 #!/bin/sh
 
-vim -u ~/.vimrc +PlugInstall +qall
-
+nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim +Mason +15sleep +qall
