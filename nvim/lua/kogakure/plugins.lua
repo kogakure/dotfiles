@@ -150,6 +150,7 @@ return packer.startup(function(use)
 	use("MunifTanjim/prettier.nvim") -- Prettier
 	use("untitled-ai/jupyter_ascending.vim") -- Interact with jupyter_ascending
 	use("rhysd/vim-grammarous") -- A powerful grammar checker for Vim using LanguageTool
+	use("mechatroner/rainbow_csv") -- Rainbow CSV
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
