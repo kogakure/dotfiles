@@ -3,4 +3,5 @@ root: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Zettelkasten/
 windows:
   - Zettelkasten: clear
   - Highlights: cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Highlights/ && clear
+  - Logseq: cd ~/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/ && clear
   - Buch: cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Buch/ && clear
