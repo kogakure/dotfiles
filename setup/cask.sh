@@ -62,6 +62,7 @@ brew install --cask kindle
 brew install --cask kitty
 brew install --cask lbry
 brew install --cask ledger-live
+brew install --cask logseq
 brew install --cask magicavoxel
 brew install --cask makemkv
 brew install --cask marked
