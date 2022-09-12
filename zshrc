@@ -1,4 +1,4 @@
-# {{{ *** *** Configuration *** ***
+# *** *** Configuration *** ***
 
 CASE_SENSITIVE="true"          # Case-sensitive completion
 DISABLE_AUTO_TITLE="true"      # Disable auto-setting terminal title
@@ -82,8 +82,7 @@ bindkey -M viins '^f' fzf-file-widget    # (f)ile / (t)
 bindkey -M viins '^z' fzf-cd-widget      # (z) jump
 
 
-# }}}
-# {{{ *** *** Functions *** ***
+# *** *** Functions *** ***
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 function update () {
@@ -274,8 +273,7 @@ fbh() {
    fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs open
 }
 
-# }}}
-# {{{ *** *** Plugins *** ***
+# *** *** Plugins *** ***
 
 # Load Antigen plugin manager
 source ~/.dotfiles/.antigen/antigen.zsh
@@ -324,8 +322,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # Tell Antigen that you’re done
 antigen apply
 
-# }}}
-# {{{ *** *** Aliases *** ***
+# *** *** Aliases *** ***
 
 # ZSH
 alias zshconfig="vim $HOME/.zshrc"
@@ -422,5 +419,3 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-
-# }}}
