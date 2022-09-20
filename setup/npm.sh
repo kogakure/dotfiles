@@ -30,6 +30,7 @@ npm install -g eslint-plugin-redux
 npm install -g eslint_d                  # Like Eslint, but faster
 npm install -g fast-cli                  # Test your download speed using fast.com ➜ fast
 npm install -g gifify                    # Convert any video file to an optimized animated GIF
+npm install -g github-codeowners         # A CLI tool for working with GitHub CODEOWNERS
 npm install -g glyphhanger               # Your web font utility belt
 npm install -g http-server               # A simple zero-configuration command-line http server
 npm install -g json-server               # Small JSON file server for REST API mock ➜ touch db.json; json-server --watch db.json
