@@ -44,6 +44,7 @@ brew install flow                       # Static type checker for JavaScript
 brew install fontforge                  # Command-line outline and bitmap font editor/converter
 brew install freetype                   # Software library to render fonts
 brew install gcc                        # GNU compiler collection
+brew install gh                         # GitHub command-line tool
 brew install giflib                     # GIF library using patented LZW algorithm
 brew install git                        # Distributed revision control system
 brew install git-extras                 # Small git utilities
@@ -52,12 +53,12 @@ brew install git-lfs                    # Git extension for versioning large fil
 brew install git-quick-stats            # Simple and efficient way to access statistics in git.
 brew install github/gh/gh               # GitHub command-line tool
 brew install glow                       # Render markdown on the CLI
+brew install gnu-sed                    # GNU implementation of the famous stream editor
 brew install go                         # The Go programming language
 brew install gource                     # Version Control Visualization Tool
 brew install gpg                        # GNU Pretty Good Privacy (PGP)
 brew install grex                       # Command-line tool for generating regular expressions
 brew install gsl                        # Numerical library for C and C++
-brew install gnu-sed                    # GNU implementation of the famous stream editor
 brew install highlight                  # Convert source code to formatted text with syntax highlighting
 brew install htop                       # Improved top
 brew install httpie                     # User-friendly cURL replacement (command-line HTTP client
