@@ -151,6 +151,7 @@ return packer.startup(function(use)
 	use("untitled-ai/jupyter_ascending.vim") -- Interact with jupyter_ascending
 	use("rhysd/vim-grammarous") -- A powerful grammar checker for Vim using LanguageTool
 	use("mechatroner/rainbow_csv") -- Rainbow CSV
+	use("dbeniamine/cheat.sh-vim") -- Cheat.sh
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
