@@ -98,6 +98,7 @@ brew install reattach-to-user-namespace # Reattach process (e.g., tmux) to backg
 brew install redis                      # Persistent key-value database, with built-in net interface
 brew install remarshal                  # Convert between TOML, YAML and JSON ➜ toml2yaml -i test.toml -o test.yml; json2toml, yaml2toml etc.
 brew install ripgrep                    # Search tool like grep and The Silver Searcher ➜ rg
+brew install rlwrap                     # Readline wrapper: adds readline support to tools that lack it
 brew install rsync                      # Utility that provides fast incremental file transfer
 brew install ruby                       # Powerful, clean, object-oriented scripting language
 brew install ruby-build                 # Install various Ruby versions and implementations
