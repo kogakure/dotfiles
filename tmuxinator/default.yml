@@ -2,7 +2,8 @@ name: Standard
 root: ~/.dotfiles/
 windows:
   - Vim: vim
-  - Downloads: cd ~/Downloads; clear
-  - Terminal: cd; clear
-  - Raycast: cd ~/Code/GitHub/raycast-scripts
   - Dotfiles: clear
+  - Terminal: cd; clear
+  - Cheatsheet: cht.sh --shell
+  - Raycast: cd ~/Code/GitHub/raycast-scripts
+  - Downloads: cd ~/Downloads; clear
