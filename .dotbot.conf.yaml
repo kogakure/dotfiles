@@ -24,6 +24,7 @@
     ~/.vale.ini: vale.ini
     ~/.vale: .vale
     ~/.wget: wget
+    ~/.zsh.d: zsh
     ~/.zshrc: zshrc
 
 - shell:
