@@ -43,6 +43,7 @@ brew install ffmpeg --with-libvpx --with-libvorbis --with-fdk-aacc --with-libsas
 brew install flow                       # Static type checker for JavaScript
 brew install fontforge                  # Command-line outline and bitmap font editor/converter
 brew install freetype                   # Software library to render fonts
+brew install fsouza/prettierd/prettierd # prettier, on SPEED!
 brew install gcc                        # GNU compiler collection
 brew install gh                         # GitHub command-line tool
 brew install giflib                     # GIF library using patented LZW algorithm
