@@ -3,7 +3,6 @@ root: ~/.dotfiles/
 windows:
   - Vim: vim
   - Dotfiles: clear
-  - Terminal: cd; clear
+  - Terminal: cd ~/Downloads; clear
   - Cheatsheet: cht.sh --shell
   - Raycast: cd ~/Code/GitHub/raycast-scripts
-  - Downloads: cd ~/Downloads; clear
