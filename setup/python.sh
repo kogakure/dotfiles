@@ -18,6 +18,7 @@ pip install certifi
 pip install codespell
 pip install fawkes
 pip install flake8
+pip install git+https://github.com/openai/whisper.git
 pip install gitlint
 pip install jupyter
 pip install jupyter_ascending
