@@ -28,6 +28,7 @@
     ~/.wget: wget
     ~/.zsh.d: zsh
     ~/.zshrc: zshrc
+    ~/Library/Application Support/lazygit/config.yml: lazygit.yml
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
