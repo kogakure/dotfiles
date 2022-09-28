@@ -28,6 +28,7 @@ brew install cloc                       # Statistics utility to count lines of c
 brew install closure-compiler           # JavaScript optimizing compiler
 brew install cmake                      # Cross-platform make
 brew install cooklang/tap/cook          # CLI tool for CookLang Recipe Markup Language
+brew install commitizen                 # Defines a standard way of committing rules and communicating it
 brew install coreutils                  # GNU File, Shell, and Text utilities
 brew install curl                       # Get a file from an HTTP, HTTPS or FTP server
 brew install denisidoro/tools/navi      # An interactive cheatsheet tool for the command-line ➜  navi
