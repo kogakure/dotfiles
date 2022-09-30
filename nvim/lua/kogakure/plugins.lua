@@ -89,6 +89,7 @@ return packer.startup(function(use)
 	use("sudormrfbin/cheatsheet.nvim") -- Searchable cheatsheet
 	use("nvim-telescope/telescope-node-modules.nvim") -- node_modules packages
 	use("gbrlsnchs/telescope-lsp-handlers.nvim") -- LSP handlers
+	use("crispgm/telescope-heading.nvim") -- Jump between headings
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } }) -- Frequency and recency
 

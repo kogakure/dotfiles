@@ -18,6 +18,7 @@ telescope.load_extension("lsp_handlers")
 telescope.load_extension("fzf")
 telescope.load_extension("harpoon")
 telescope.load_extension("projects")
+telescope.load_extension("heading")
 
 -- Keymaps
 keymap("n", "<leader>bm", [[<Cmd>Telescope bookmarks<CR>]], opts)
