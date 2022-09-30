@@ -51,6 +51,7 @@ return packer.startup(function(use)
 	-- Colorscheme
 	use("chriskempson/base16-vim") -- Base16 colorschemes
 	use("folke/tokyonight.nvim") -- Tokyo Night color scheme
+	use({ "catppuccin/nvim", as = "catppuccin" }) -- Catppuccin color scheme
 
 	-- CMP
 	use("hrsh7th/nvim-cmp") -- The completion plugin
