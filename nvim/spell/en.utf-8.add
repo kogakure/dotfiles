@@ -9,6 +9,8 @@ DEVONthink
 DWeb
 DeepL
 Django
+Dotbot
+Dotfiles
 Emoji
 Ethereum
 Facebook
@@ -19,6 +21,7 @@ GPS
 GTD
 GitHub
 GitWeb
+Hammerspoon
 Homebrew
 Horiyoshi
 IPFS
@@ -76,5 +79,8 @@ plugin
 plugins
 podcast
 pseudoscientific
+symlinks
+tmux
 transhumanism
 weblogs
+zsh

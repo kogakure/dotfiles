@@ -1,2 +1,8 @@
 Autostadt
-Raycast
+[Dd]otbot
+[Dd]otfiles
+[Hh]ammerspoon
+[Nn]eovim
+[Rr]aycast
+[Tt]mux
+[Zz]sh
