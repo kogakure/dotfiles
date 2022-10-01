@@ -19,6 +19,7 @@ telescope.load_extension("fzf")
 telescope.load_extension("harpoon")
 telescope.load_extension("projects")
 telescope.load_extension("heading")
+telescope.load_extension("gh")
 
 -- Keymaps
 keymap("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]], opts)
