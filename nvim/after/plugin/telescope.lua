@@ -41,6 +41,7 @@ keymap("n", "<leader>mru", [[<Cmd>Telescope frecency<CR>]], opts)
 keymap("n", "<leader>nm", [[<Cmd>Telescope node_modules list<CR>]], opts)
 keymap("n", "<leader>r", [[<Cmd>Telescope resume<CR>]], opts)
 keymap("n", "<leader>tg", [[<Cmd>Telescope tags<CR>]], opts)
+keymap("n", "<leader>ty", [[<Cmd>Telescope symbols<CR>]], opts)
 
 -- Setup
 telescope.setup({
