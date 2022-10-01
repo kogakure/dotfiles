@@ -80,6 +80,7 @@ brew install m-cli                      # Swiss Army Knife for macOS
 brew install mas                        # Mac App Store command-line interface
 brew install memcached                  # High performance, distributed memory object caching system
 brew install mongodb                    # High-performance, schema-free, document-oriented database
+brew install ms-jpq/sad/sad             # Search and replace | Space Age seD
 brew install multimarkdown              # Turn marked-up plain text into well-formatted documents
 brew install mysql                      # Open source relational database management system
 brew install ncdu                       # NCurses Disk Usage

@@ -130,6 +130,8 @@ return packer.startup(function(use)
 	use("folke/zen-mode.nvim") -- Zen Mode (2)
 	use("tpope/vim-eunuch") -- UNIX Shell commands
 	use("folke/twilight.nvim") -- Dim inactive code
+	use("ray-x/guihua.lua") -- Lua GUI lib
+	use("ray-x/sad.nvim") -- Find & Replace
 
 	-- Editing Files
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
@@ -174,7 +176,8 @@ return packer.startup(function(use)
 	-- TMUX
 	use("christoomey/vim-tmux-navigator")
 	use("preservim/vimux")
-	use("tyewang/vimux-jest-test")
+	use("tyewang/vimux-jest-test") -- JavaScript tests
+	use("jtdowney/vimux-cargo") -- Rust tests
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
