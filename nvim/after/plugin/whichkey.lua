@@ -92,12 +92,8 @@ local mappings = {
 	},
 	v = { "<CMD>lua require('export-to-vscode').launch()<CR>", "Export to Visual Studio Code" },
 	w = { "<CMD>w!<CR>", "Save" },
-	z = {
-		name = "Zen",
-		g = { "<CMD>Goyo<CR>", "Goyo" },
-		z = { "<CMD>ZenMode<CR>", "ZenMode" },
-		t = { "<CMD>Twilight<CR>", "Twilight Mode" },
-	},
+	x = { "<CMD>Twilight<CR>", "Twilight Mode" },
+	z = { "<CMD>ZenMode<CR>", "Zen Mode" },
 	A = { "<CMD>Alpha<CR>", "Alpha" },
 	B = {
 		name = "Bufferline",

@@ -125,7 +125,6 @@ return packer.startup(function(use)
 	use("bogado/file-line") -- Jump directly to line in file with 'nvim index.html:20'
 	use("ruanyl/vim-gh-line") -- Open current line in GitHub
 	use("nvim-pack/nvim-spectre") -- Search and replace
-	use("junegunn/goyo.vim") -- Zen Mode (1)
 	use("folke/zen-mode.nvim") -- Zen Mode (2)
 	use("tpope/vim-eunuch") -- UNIX Shell commands
 	use("folke/twilight.nvim") -- Dim inactive code
