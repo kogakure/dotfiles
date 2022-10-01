@@ -49,6 +49,7 @@ brew install gcc                        # GNU compiler collection
 brew install gh                         # GitHub command-line tool
 brew install giflib                     # GIF library using patented LZW algorithm
 brew install git                        # Distributed revision control system
+brew install git-delta                  # Syntax-highlighting pager for git and diff output
 brew install git-extras                 # Small git utilities
 brew install git-fixup                  # Alias for git commit --fixup <ref>
 brew install git-lfs                    # Git extension for versioning large files
