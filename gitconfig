@@ -18,6 +18,7 @@
   navigate = true
   light = false
   line-numbers = true
+  side-by-side = true
   syntax-theme = Dracula
 [alias]
   st = status
@@ -92,8 +93,6 @@
   cmd = "code $MERGED"
   keepBackup = false
   trustexitcode = true
-[pager]
-  diff =
 [rebase]
   autosquash = true
 [rerere]
