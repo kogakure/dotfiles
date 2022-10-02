@@ -127,6 +127,7 @@ return packer.startup(function(use)
 	use("elijahmanor/export-to-vscode.nvim") -- Export active Buffers to Visual Studio Code
 	use("bogado/file-line") -- Jump directly to line in file with 'nvim index.html:20'
 	use("ruanyl/vim-gh-line") -- Open current line in GitHub
+	use("pwntester/octo.nvim") -- GitHub in Neovim
 	use("nvim-pack/nvim-spectre") -- Search and replace
 	use("folke/zen-mode.nvim") -- Zen Mode (2)
 	use("tpope/vim-eunuch") -- UNIX Shell commands
