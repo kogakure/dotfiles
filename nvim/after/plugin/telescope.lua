@@ -15,11 +15,12 @@ telescope.load_extension("node_modules")
 telescope.load_extension("file_browser")
 telescope.load_extension("frecency")
 telescope.load_extension("lsp_handlers")
-telescope.load_extension("fzf")
+telescope.load_extension("fzy_native")
 telescope.load_extension("harpoon")
 telescope.load_extension("projects")
 telescope.load_extension("heading")
 telescope.load_extension("gh")
+telescope.load_extension("git_worktree")
 
 -- Keymaps
 keymap("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]], opts)
@@ -34,6 +35,8 @@ keymap("n", "<leader>fa", [[<Cmd>Telescope find_files hidden=true<CR>]], opts)
 keymap("n", "<leader>fb", [[<Cmd>Telescope file_browser<CR>]], opts)
 keymap("n", "<leader>gb", [[<Cmd>Telescope git_branches<CR>]], opts)
 keymap("n", "<leader>gs", [[<Cmd>Telescope git_status<CR>]], opts)
+keymap("n", "<leader>gwc", [[<Cmd>Telescope git_worktree create_git_worktree<CR>]], opts)
+keymap("n", "<leader>gww", [[<Cmd>Telescope git_worktree git_worktrees<CR>]], opts)
 keymap("n", "<leader>ht", [[<Cmd>Telescope help_tags<CR>]], opts)
 keymap("n", "<leader>km", [[<Cmd>Telescope keymaps<CR>]], opts)
 keymap("n", "<leader>m", [[<Cmd>Telescope marks<CR>]], opts)
@@ -129,6 +132,12 @@ telescope.setup({
 		},
 	},
 	extensions = {
+		fzy_native = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		},
 		fzf = {
 			fuzzy = true,
 			override_generic_sorter = true,

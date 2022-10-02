@@ -391,6 +391,10 @@ alias gu='git up'
 alias gw='git whatchanged'
 alias gwp='git whatchanged -p'
 alias lg='lazygit'
+alias gw='git worktree'
+alias gwl='git worktree list'
+alias gwa='git worktree add' # <folder> <branch/hash>
+alias gwr='git worktree remove' # <path/name>
 
 # Vim
 alias v='vim'

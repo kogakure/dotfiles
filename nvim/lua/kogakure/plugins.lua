@@ -92,7 +92,7 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope-node-modules.nvim") -- node_modules packages
 	use("gbrlsnchs/telescope-lsp-handlers.nvim") -- LSP handlers
 	use("crispgm/telescope-heading.nvim") -- Jump between headings
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use("nvim-telescope/telescope-fzy-native.nvim") -- FZY style sorter that is compiled
 	use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } }) -- Frequency and recency
 	use("nvim-telescope/telescope-github.nvim") -- GitHub CLI
 	use("nvim-telescope/telescope-symbols.nvim") -- Symbols
@@ -105,6 +105,7 @@ return packer.startup(function(use)
 
 	-- File/Window Management
 	use("ThePrimeagen/harpoon") --  Getting you where you want
+	use("ThePrimeagen/git-worktree.nvim") -- Git Worktree
 	use("lewis6991/gitsigns.nvim") -- Git decorations
 	use("kyazdani42/nvim-web-devicons") -- Icons and colors for file types
 	use("kyazdani42/nvim-tree.lua") -- A File Explorer
