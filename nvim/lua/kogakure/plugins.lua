@@ -158,6 +158,7 @@ return packer.startup(function(use)
 	use("rhysd/vim-grammarous") -- A powerful grammar checker for Vim using LanguageTool
 	use("mechatroner/rainbow_csv") -- Rainbow CSV
 	use("dbeniamine/cheat.sh-vim") -- Cheat.sh
+	use("wakatime/vim-wakatime") -- Wakatime
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
