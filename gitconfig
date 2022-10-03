@@ -58,6 +58,7 @@
 [push]
   default = upstream
   followTags = true
+  autoSetupRemote = true
 [status]
   showUntrackedFiles = all
 [transfer]
