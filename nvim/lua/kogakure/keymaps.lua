@@ -147,4 +147,4 @@ keymap("o", "al", ":<c-u>normal! $v0<CR>", opts)
 keymap("x", "al", ":<c-u>normal! $v0<CR>", opts)
 
 -- LSP formatting
-keymap("n", "<leader>o", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+keymap("n", "<leader>o", "<cmd>lua vim.lsp.buf.format()<CR>", opts)

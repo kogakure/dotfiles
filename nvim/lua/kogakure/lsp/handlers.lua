@@ -41,19 +41,23 @@ M.setup = function()
 	})
 end
 
-local function lsp_highlight_document(client)
+local function lsp_highlight_document(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-			false
-		)
+	if client.server_capabilities.documentHighlightProvider then
+		vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+		vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
+		vim.api.nvim_create_autocmd("CursorHold", {
+			callback = vim.lsp.buf.document_highlight,
+			buffer = bufnr,
+			group = "lsp_document_highlight",
+			desc = "Document Highlight",
+		})
+		vim.api.nvim_create_autocmd("CursorMoved", {
+			callback = vim.lsp.buf.clear_references,
+			buffer = bufnr,
+			group = "lsp_document_highlight",
+			desc = "Clear All the References",
+		})
 	end
 end
 
@@ -76,11 +80,9 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "ä", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 end
 
--- TODO: Neovim 0.8 https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
 local lsp_formatting = function(bufnr)
-	-- vim.lsp.buf.format({})
-	vim.lsp.buf.formatting_sync({
+	vim.lsp.buf.format({
 		bufnr = bufnr,
 		filter = function(client)
 			return client.name == "null-ls"
@@ -105,47 +107,47 @@ M.on_attach = function(client, bufnr)
 
 	-- TypeScript
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	-- HTML
 	if client.name == "html" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	-- Stylelint
 	if client.name == "stylelint_lsp" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	-- JSON
 	if client.name == "jsonls" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	-- Lua
 	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
 	end
 
 	-- Rust
 	if client.name == "rust_analyzer" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	-- Astro
 	if client.name == "astro" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	-- Diagnostic
 	if client.name == "diagnosticls" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	lsp_keymaps(bufnr)
-	lsp_highlight_document(client)
+	lsp_highlight_document(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
