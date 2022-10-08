@@ -11,11 +11,13 @@ eval "$(pyenv virtualenv-init -)"
 
 pyenv install 3.10.1
 
+pip install Pillow
 pip install autopep8
 pip install awscli
 pip install black
 pip install certifi
 pip install codespell
+pip install diffusers==0.3.0
 pip install fawkes
 pip install flake8
 pip install git+https://github.com/openai/whisper.git
@@ -26,8 +28,12 @@ pip install jupyterlab
 pip install mutagen
 pip install neovim
 pip install notebook
+pip install numpy
 pip install proselint
 pip install pycryptodomex
+pip install torch
+pip install tqdm
+pip install transformers
 pip install vim-vint
 pip install voila
 pip install websockets
