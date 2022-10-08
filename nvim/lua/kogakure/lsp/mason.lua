@@ -26,14 +26,12 @@ local servers = {
 	"pyright",
 	"rust_analyzer",
 	"sourcery",
-	--[[ "stylelint_lsp", ]]
 	"sumneko_lua",
 	"svelte",
 	"tailwindcss",
 	"theme_check",
 	"tsserver",
 	"vuels",
-	-- "remark_ls",
 }
 
 mason.setup({

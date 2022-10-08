@@ -103,6 +103,9 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground") -- Treesitter information in Neovim
 	use("nvim-treesitter/nvim-treesitter-context") -- Show context
 
+	-- DAP
+	use("mfussenegger/nvim-dap") -- Debug Adapter Protocol
+
 	-- File/Window Management
 	use("ThePrimeagen/harpoon") --  Getting you where you want
 	use("ThePrimeagen/git-worktree.nvim") -- Git Worktree
@@ -153,7 +156,6 @@ return packer.startup(function(use)
 	use("rstacruz/vim-xtract") -- Extract code into new file
 	use("tpope/vim-repeat") -- Repeat plugins
 	use("tpope/vim-surround") -- Replace, add, remove surroundings
-	use("mfussenegger/nvim-dap") -- Debug Adapter Protocol
 	use("wuelnerdotexe/vim-astro") -- Astro support
 	use("MunifTanjim/prettier.nvim") -- Prettier
 	use("untitled-ai/jupyter_ascending.vim") -- Interact with jupyter_ascending
