@@ -27,7 +27,7 @@ zenmode.setup({
 		},
 		twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
 		gitsigns = { enabled = false }, -- disables git signs
-		tmux = { enabled = true }, -- disables the tmux statusline
+		tmux = { enabled = false }, -- disables the tmux statusline
 		kitty = {
 			enabled = true,
 			font = "+5", -- font size increment
