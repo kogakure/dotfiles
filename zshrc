@@ -84,6 +84,7 @@ eval "$(starship init zsh)"
 # Path
 path=(
   $HOME/.dotfiles/bin
+  $HOME/.local/bin
   /usr/local/sbin
   $path
 )
