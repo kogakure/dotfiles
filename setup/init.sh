@@ -9,11 +9,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Install Homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Installing Homebrew packages
+# Installing Homebrew packages, Cask binaries and Mac App Store software
 source ./brew.sh
-
-# Installing Homebrew Cask packages
-source ./cask.sh
 
 # Installing Node.js
 source ./nvm.sh
