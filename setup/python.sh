@@ -11,37 +11,11 @@ eval "$(pyenv virtualenv-init -)"
 
 pyenv install 3.10.1
 
-pip install Pillow
-pip install autopep8
-pip install awscli
-pip install black
-pip install certifi
-pip install codespell
-pip install diffusers==0.3.0
-pip install fawkes
-pip install flake8
-pip install git+https://github.com/openai/whisper.git
-pip install gitlint
-pip install jupyter
-pip install jupyter_ascending
-pip install jupyterlab
-pip install mutagen
-pip install neovim
-pip install notebook
-pip install numpy
-pip install proselint
-pip install pycryptodomex
-pip install torch
-pip install tqdm
-pip install transformers
-pip install vim-vint
-pip install voila
-pip install websockets
-pip install yamllint
-pip install yt-dlp
+pip install -r ~/.dotfiles/python/pip-requirements.txt
 
 jupyter nbextension install --py --sys-prefix jupyter_ascending
 jupyter nbextension     enable jupyter_ascending --sys-prefix --py
 jupyter serverextension enable jupyter_ascending --sys-prefix --py
 
 conda install -n base ipykernel --update-deps --force-reinstall
+conda install --file ~/.dotfiles/python/conda-requirements.txt
