@@ -7,7 +7,6 @@
 - link:
     ~/.ack: ack
     ~/.ag: ag
-    ~/.config/alacritty: alacritty
     ~/.config/base16-shell: .base16-shell
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
