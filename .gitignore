@@ -7,3 +7,4 @@ nvim/plugin
 .vale/write-good
 kitty/kitty.conf.bak
 Brewfile.lock.json
+Gemfile.lock
