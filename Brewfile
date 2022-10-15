@@ -118,8 +118,6 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GNU compiler collection
-brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -128,6 +126,8 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -559,26 +559,22 @@ mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Flow", id: 1423210932
-mas "Free MP4 Converter", id: 693443591
+mas "Horo", id: 1437226581
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
 mas "iMovie", id: 408981434
-mas "IP Friend", id: 1560408065
 mas "Just Focus", id: 1142151959
 mas "Keynote", id: 409183694
 mas "Kiwix", id: 1275066656
 mas "LanguageTool", id: 1534275760
 mas "Marked 2", id: 890031187
 mas "Mela", id: 1568924476
-mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixave", id: 924891282
 mas "Reeder", id: 1529448980
-mas "Save to Raindrop.io", id: 1549370672
-mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
