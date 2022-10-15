@@ -10,6 +10,7 @@ npm install -g browser-sync              # Live CSS Reload & Browser Syncing
 npm install -g caniuse-cmd               # caniuse for the command line ➜ caniuse border-radius
 npm install -g commitizen                # Git commit, but play nice with conventions ➜ git cz
 npm install -g cz-conventional-changelog # Prompts for conventional changelog standard
+npm install -g degit                     # Straightforward project scaffolding
 npm install -g esbuild                   # An extremely fast JavaScript bundler
 npm install -g eslint                    # An AST-based pattern checker for JavaScript
 npm install -g eslint-plugin-babel
