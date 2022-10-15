@@ -24,6 +24,8 @@ brew "freetype"
 brew "gettext"
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -116,6 +118,8 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# GNU compiler collection
+brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -124,16 +128,6 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
-brew "gem-bundler"
-brew "gem-erb_lint"
-brew "gem-git-up"
-brew "gem-lunchy"
-brew "gem-neovim"
-brew "gem-tmuxinator"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -203,7 +197,7 @@ brew "libolm"
 # HTTP client/server library for GNOME
 brew "libsoup"
 # Just-In-Time Compiler (JIT) for the Lua programming language
-brew "luajit"
+brew "luajit", args: ["HEAD"]
 # Package manager for the Lua programming language
 brew "luarocks"
 # Friendly wrapper for launchctl
@@ -280,6 +274,8 @@ brew "ripgrep"
 brew "rlwrap"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Safe, concurrent, practical language
 brew "rust"
 # JVM-based programming language
@@ -338,14 +334,12 @@ brew "jondot/tap/hygen"
 brew "ms-jpq/sad/sad"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
-# Professional graphic design software
-cask "affinity-designer"
-# Professional image editing software
-cask "affinity-photo"
 # Application launcher and productivity software
 cask "alfred"
 # Application uninstaller
 cask "appcleaner"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Menu bar icon organizer
 cask "bartender"
 # All-In-One Toolkit for Working Remotely
@@ -360,6 +354,12 @@ cask "blender"
 cask "boop"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Web browser focusing on privacy
+cask "brave-browser-beta"
+# Web browser focusing on privacy
+cask "brave-browser-dev"
+# Web browser focusing on privacy
+cask "brave-browser-nightly"
 # E-books management software
 cask "calibre"
 cask "color-oracle"
@@ -373,9 +373,12 @@ cask "dash"
 cask "dat"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
-cask "delicious-library"
+# Trains AIs to understand and translate texts
+cask "deepl"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
+# Voice and text chat software
+cask "discord"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Matrix collaboration client
@@ -435,6 +438,8 @@ cask "itsycal"
 cask "kaleidoscope"
 # Keyboard customizer
 cask "karabiner-elements"
+# End-to-end encryption software
+cask "keybase"
 # Open-source keystroke visualizer
 cask "keycastr"
 # Interface for reading and syncing eBooks
@@ -459,7 +464,6 @@ cask "microsoft-auto-update"
 cask "microsoft-edge"
 # Minimal installer for conda
 cask "miniconda"
-cask "music-manager"
 # Desktop sync client for Nextcloud software products
 cask "nextcloud"
 # VPN client for secure internet access and private browsing
@@ -470,7 +474,6 @@ cask "notion"
 cask "numi"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-cask "omnigraffle6"
 # Web browser
 cask "opera"
 # Web browser
@@ -507,7 +510,6 @@ cask "selfcontrol"
 cask "sequel-pro"
 # Onion routing based messenger
 cask "session"
-cask "shiori"
 # EPUB ebook editor
 cask "sigil"
 # Instant messaging application focusing on security
@@ -557,22 +559,28 @@ mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Flow", id: 1423210932
+mas "Free MP4 Converter", id: 693443591
+mas "GarageBand", id: 682658836
 mas "Horo", id: 1437226581
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
 mas "iMovie", id: 408981434
+mas "IP Friend", id: 1560408065
 mas "Just Focus", id: 1142151959
 mas "Keynote", id: 409183694
 mas "Kiwix", id: 1275066656
 mas "LanguageTool", id: 1534275760
 mas "Marked 2", id: 890031187
 mas "Mela", id: 1568924476
+mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixave", id: 924891282
 mas "Reeder", id: 1529448980
+mas "Save to Raindrop.io", id: 1549370672
+mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
