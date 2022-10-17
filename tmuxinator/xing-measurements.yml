@@ -2,6 +2,7 @@ name: Measurements
 root: ~/Code/XING/component-scanner/
 windows:
   - Vim: vim
-  - Backend: clear
   - Frontend: cd ~/Code/XING/component-scanner-frontend/
+  - Backend: clear
+  - Figma: cd ~/Code/XING/figma-component-measurement/
   - Extension: cd ~/Code/XING/chrome-extension-xds-component/
