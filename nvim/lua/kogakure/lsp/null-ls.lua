@@ -21,8 +21,6 @@ null_ls.setup({
 		code_actions.gitsigns,
 		code_actions.proselint,
 		completion.luasnip,
-		completion.spell,
-		-- diagnostics.codespell,
 		diagnostics.eslint, -- Eslint
 		-- diagnostics.eslint_d, -- Eslint
 		diagnostics.flake8, -- Python
