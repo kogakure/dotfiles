@@ -383,8 +383,6 @@ cask "discord"
 cask "dropbox"
 # Matrix collaboration client
 cask "element"
-# VPN client for secure internet access and private browsing
-cask "expressvpn"
 # Collaborative team software
 cask "figma"
 # Web browser
@@ -405,10 +403,6 @@ cask "fontforge"
 cask "gemini"
 # Desktop client for GitHub repositories
 cask "github"
-# Web browser
-cask "google-chrome"
-# Web browser
-cask "google-chrome-canary"
 # Virtual globe
 cask "google-earth-pro"
 cask "google-japanese-ime"
@@ -560,9 +554,7 @@ mas "Be Focused Pro", id: 961632517
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
-mas "Flow", id: 1423210932
 mas "Free MP4 Converter", id: 693443591
-mas "Horo", id: 1437226581
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
