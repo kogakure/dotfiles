@@ -111,6 +111,15 @@ function update () {
   sudo softwareupdate -i -a
 }
 
+function homebrewBackup () {
+  cd ~/.dotfiles/
+  brew bundle dump --describe -f
+}
+
+function homebrewRestore () {
+  brew bundle --file ~/.dotfiles/Brewfile
+}
+
 # Encode images in Base64
 encodeBase64() {
   uuencode -m $1 /dev/stdout | sed '1d' | sed '$d'
