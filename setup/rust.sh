@@ -1,6 +1,7 @@
  #!/bin/sh
 
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+asdf plugin-add rust
+asdf install rust latest
+asdf global rust latest
 
 cargo install stylua

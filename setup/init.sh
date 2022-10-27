@@ -21,7 +21,7 @@ source ./python.sh
 # Installing Lua packages
 source ./lua.sh
 
-# Installing Rust packages
+# Rust
 source ./rust.sh
 
 # Ruby
