@@ -7,12 +7,16 @@
 - link:
     ~/.ack: ack
     ~/.ag: ag
+    ~/.asdfrc: asdf/asdfrc
     ~/.config/base16-shell: .base16-shell
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/starship.toml: starship.toml
     ~/.config/tmuxinator: tmuxinator
     ~/.ctags: ctags
+    ~/.default-gems: asdf/default-gems
+    ~/.default-npm-packages: asdf/default-npm-packages
+    ~/.default-python-packages: asdf/default-python-packages
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
