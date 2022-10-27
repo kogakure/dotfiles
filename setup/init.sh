@@ -12,11 +12,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # Installing Homebrew packages, Cask binaries and Mac App Store software
 source ./brew.sh
 
-# Installing Node.js
-source ./nvm.sh
-
-# Installing global Node.js modules
-source ./npm.sh
+# Node.js
+source ./nodejs.sh
 
 # Installing Python version manager
 source ./python.sh

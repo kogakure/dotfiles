@@ -34,9 +34,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 # rbenv
 export RBENV_ROOT="$HOME/.rbenv/"
 
-# nvm (Node Version Manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 # ASDF
 . /usr/local/opt/asdf/libexec/asdf.sh
 
@@ -165,17 +162,6 @@ unquarantine() {
     xattr -r -d "$attribute" "$@"
   done
 }
-
-# Auto change the nvm version based on a .nvmrc file based on the current directory.
-# See https://github.com/creationix/nvm/issues/110#issuecomment-190125863
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
@@ -329,7 +315,6 @@ antigen bundle jira
 antigen bundle man
 antigen bundle node
 antigen bundle npm
-antigen bundle nvm
 antigen bundle pip
 antigen bundle pyenv
 antigen bundle python

@@ -1,6 +1,11 @@
 # Don't print a new line at the start of the prompt
 add_newline = false
 
+command_timeout = 1000
+
+[nodejs]
+detect_files = ["package.json", ".node-version", ".nvmrc", ".tool-versions"]
+
 # "bold red" style when capacity is between 0% and 10%
 [[battery.display]]
 threshold = 10
