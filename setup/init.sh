@@ -1,15 +1,15 @@
 #!/bin/sh
 
-# Install Xcode Developer Tools
+# Xcode Developer Tools
 xcode-select --install
 
-# Install TMUX Plugin Manager
+# TMUX Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Install Homebrew
+# Homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Installing Homebrew packages, Cask binaries and Mac App Store software
+# Homebrew packages, Cask binaries and Mac App Store software
 source ./brew.sh
 
 # Node.js
@@ -18,7 +18,7 @@ source ./nodejs.sh
 # Python
 source ./python.sh
 
-# Installing Lua packages
+# Lua
 source ./lua.sh
 
 # Rust
@@ -27,5 +27,5 @@ source ./rust.sh
 # Ruby
 source ./ruby.sh
 
-# Install Visual Studio Code Extensions
+# Visual Studio Code Extensions
 source ./vscode.sh
