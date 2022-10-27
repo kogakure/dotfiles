@@ -12,6 +12,9 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # Homebrew packages, Cask binaries and Mac App Store software
 source ./brew.sh
 
+# Direnv
+source ./direnv.sh
+
 # Node.js
 source ./nodejs.sh
 
