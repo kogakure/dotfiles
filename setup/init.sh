@@ -15,7 +15,7 @@ source ./brew.sh
 # Node.js
 source ./nodejs.sh
 
-# Installing Python version manager
+# Python
 source ./python.sh
 
 # Installing Lua packages

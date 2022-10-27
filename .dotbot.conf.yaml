@@ -16,6 +16,7 @@
     ~/.ctags: ctags
     ~/.default-gems: default-gems
     ~/.default-npm-packages: default-npm-packages
+    ~/.default-python-packages: default-python-packages
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore

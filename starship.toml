@@ -9,6 +9,9 @@ detect_files = ["package.json", ".node-version", ".nvmrc", ".tool-versions"]
 [ruby]
 detect_files = ["Gemfile", ".ruby-version", ".tool-versions"]
 
+[python]
+detect_files = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini", '.tool-versions']
+
 # "bold red" style when capacity is between 0% and 10%
 [[battery.display]]
 threshold = 10
