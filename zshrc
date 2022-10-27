@@ -31,27 +31,11 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers {}' --bind
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS --color=never --hidden"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
-# rbenv
-export RBENV_ROOT="$HOME/.rbenv/"
-
-# nvm (Node Version Manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
 # Rancher
 export PATH="$HOME/.rd/bin:$PATH"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# Ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
 
 # Conda
 # >>> conda initialize >>>
@@ -74,6 +58,10 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # Bat
 export BAT_PAGER="less -R"
+
+# Asdf
+ . /usr/local/opt/asdf/libexec/asdf.sh
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # Starship
 eval "$(starship init zsh)"
@@ -159,17 +147,6 @@ unquarantine() {
     xattr -r -d "$attribute" "$@"
   done
 }
-
-# Auto change the nvm version based on a .nvmrc file based on the current directory.
-# See https://github.com/creationix/nvm/issues/110#issuecomment-190125863
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
@@ -323,11 +300,9 @@ antigen bundle jira
 antigen bundle man
 antigen bundle node
 antigen bundle npm
-antigen bundle nvm
 antigen bundle pip
 antigen bundle pyenv
 antigen bundle python
-antigen bundle rbenv
 antigen bundle rsync
 antigen bundle ssh-agent
 antigen bundle sudo
@@ -368,6 +343,8 @@ alias gb='git branch'
 alias gba='git branch -a'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
+alias gcam='git commit --amend'
+alias gcan='git commit --amend --no-edit'
 alias gd='git diff -- . ":(exclude)yarn.lock"' # Show differences between index and working tree
 alias gdc='git diff --cached' # Show changes in next commit (differences between index and last commit)
 alias gdh='git diff head' # Show difference between files in working tree and last commit

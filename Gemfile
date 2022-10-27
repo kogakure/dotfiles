@@ -2,7 +2,10 @@
 
 source "https://rubygems.org"
 
-gem "neovim"
-gem "lunchy"
-gem "git-up"
+gem "bundler"
 gem "erb_lint"
+gem "git-up"
+gem "github-linguist"
+gem "lunchy"
+gem "neovim"
+gem "tmuxinator"
