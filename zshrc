@@ -31,9 +31,6 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers {}' --bind
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS --color=never --hidden"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
-# rbenv
-export RBENV_ROOT="$HOME/.rbenv/"
-
 # ASDF
 . /usr/local/opt/asdf/libexec/asdf.sh
 
@@ -318,7 +315,6 @@ antigen bundle npm
 antigen bundle pip
 antigen bundle pyenv
 antigen bundle python
-antigen bundle rbenv
 antigen bundle rsync
 antigen bundle ssh-agent
 antigen bundle sudo

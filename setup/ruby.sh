@@ -1,6 +1,7 @@
 #!/bin/sh
 
-rbenv install $(rbenv install -l | grep -v - | tail -1)
-rbenv global $(rbenv install -l | grep -v - | tail -1)
+asdf plugin add ruby
+asdf install ruby latest
+asdf global ruby latest
 
 bundle install --gemfile=~/.dotfiles/Gemfile

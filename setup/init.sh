@@ -24,11 +24,8 @@ source ./lua.sh
 # Installing Rust packages
 source ./rust.sh
 
-# Install current version of Ruby
+# Ruby
 source ./ruby.sh
-
-# Install global Gems
-source ./gem.sh
 
 # Install Visual Studio Code Extensions
 source ./vscode.sh
