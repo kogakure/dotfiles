@@ -30,5 +30,8 @@ source ./rust.sh
 # Ruby
 source ./ruby.sh
 
+# Golang
+source ./golang.sh
+
 # Visual Studio Code Extensions
 source ./vscode.sh
