@@ -1,3 +1,4 @@
+tap "charmbracelet/tap"
 tap "cooklang/tap"
 tap "denisidoro/tools"
 tap "fsouza/prettierd"
@@ -46,6 +47,10 @@ brew "librsvg"
 brew "adwaita-icon-theme"
 # Library and utilities for processing GIFs
 brew "giflib"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -82,8 +87,6 @@ brew "libzip"
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Reimplementation of ctags(1)
 brew "ctags", link: false
 # Secure runtime for JavaScript and TypeScript
@@ -276,8 +279,6 @@ brew "rlwrap"
 brew "rsync"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
-# Safe, concurrent, practical language
-brew "rust"
 # JVM-based programming language
 brew "scala"
 # Convert filenames and directories to a web friendly format
@@ -300,14 +301,14 @@ brew "tmate"
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
+# Command-line tool for sharing terminal over the web
+brew "ttyd", args: ["HEAD"]
 # URL extractor/launcher
 brew "urlview"
 # Syntax-aware linter for prose
 brew "vale"
 # Watch files and take action when they change
 brew "watchman"
-# Extensible IRC client
-brew "weechat"
 # Internet file retriever
 brew "wget"
 # Fake keyboard/mouse input and window management for X
@@ -324,6 +325,8 @@ brew "zk"
 brew "zsh"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# A tool for recording terminal GIFs
+brew "charmbracelet/tap/vhs"
 # CLI tool for CookLang Recipe Markup Language
 brew "cooklang/tap/cook"
 # prettier, on SPEED!
@@ -403,6 +406,8 @@ cask "fontforge"
 cask "gemini"
 # Desktop client for GitHub repositories
 cask "github"
+# Web browser
+cask "google-chrome"
 # Virtual globe
 cask "google-earth-pro"
 cask "google-japanese-ime"
@@ -440,6 +445,8 @@ cask "keycastr"
 cask "kindle"
 # GPU-based terminal emulator
 cask "kitty"
+# Official client for LBRY, a decentralised file-sharing and payment network
+cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
 # Privacy-first, open-source platform for knowledge sharing and management
@@ -554,6 +561,7 @@ mas "Be Focused Pro", id: 961632517
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
+mas "Flow", id: 1423210932
 mas "Free MP4 Converter", id: 693443591
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
