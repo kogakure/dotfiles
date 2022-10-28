@@ -5,25 +5,32 @@ command_timeout = 1000
 
 [nodejs]
 detect_files = ["package.json", ".node-version", ".nvmrc", ".tool-versions"]
+format = "[$symbol($version )]($style)"
 
 [deno]
 detect_files = ["deno.json", "deno.jsonc", "mod.ts", "mod.js", "deps.ts", "deps.js", ".tool-versions"]
+format = "[$symbol($version )]($style)"
 style = "blue bold"
 
 [lua]
 detect_files = [".lua-version", ".tool-versions"]
+format = "[$symbol($version )]($style)"
 
 [ruby]
 detect_files = ["Gemfile", ".ruby-version", ".tool-versions"]
+format = "[$symbol($version )]($style)"
 
 [python]
 detect_files = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini", '.tool-versions']
+format = "[$symbol($version )]($style)"
 
 [rust]
 detect_files = ["Cargo.toml", ".tool-versions"]
+format = "[$symbol($version )]($style)"
 
 [golang]
 detect_files = ["go.mod", "go.sum", "go.work", "glide.yaml", "Gopkg.yml", "Gopkg.lock", ".go-version", ".tool-versions"]
+format = "[$symbol($version )]($style)"
 
 # "bold red" style when capacity is between 0% and 10%
 [[battery.display]]
