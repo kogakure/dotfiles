@@ -155,7 +155,7 @@ return packer.startup(function(use)
 	use("tpope/vim-speeddating") -- Increase dates, times, etc.
 	use("rstacruz/vim-xtract") -- Extract code into new file
 	use("tpope/vim-repeat") -- Repeat plugins
-	use("tpope/vim-surround") -- Replace, add, remove surroundings
+	use("kylechui/nvim-surround") -- Surround selections, stylishly
 	use("wuelnerdotexe/vim-astro") -- Astro support
 	use("MunifTanjim/prettier.nvim") -- Prettier
 	use("untitled-ai/jupyter_ascending.vim") -- Interact with jupyter_ascending
@@ -172,6 +172,7 @@ return packer.startup(function(use)
 	use("kana/vim-textobj-user")
 	use("michaeljsmith/vim-indent-object") -- ai, ii, aI, iI
 	use("whatyouhide/vim-textobj-xmlattr") -- ax, ix
+	use("nvim-treesitter/nvim-treesitter-textobjects") -- Syntax aware text-objects
 
 	-- Custom Motions
 	use("christoomey/vim-sort-motion") -- gs
