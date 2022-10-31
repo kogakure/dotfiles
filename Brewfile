@@ -47,6 +47,10 @@ brew "librsvg"
 brew "adwaita-icon-theme"
 # Library and utilities for processing GIFs
 brew "giflib"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Record and share terminal sessions
+brew "asciinema"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
@@ -75,8 +79,6 @@ brew "cloc"
 brew "closure-compiler"
 # Cross-platform make
 brew "cmake"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -87,8 +89,10 @@ brew "libzip"
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
+# Header-only library for parsing TOML
+brew "cpptoml"
 # Reimplementation of ctags(1)
-brew "ctags", link: false
+brew "ctags"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
 # Good-lookin' diffs with diff-highlight and more
@@ -121,8 +125,6 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GNU compiler collection
-brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -131,6 +133,8 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -155,6 +159,8 @@ brew "gnu-sed"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Google Testing and Mocking Framework
+brew "googletest"
 # Version Control Visualization Tool
 brew "gource"
 # Command-line tool for generating regular expressions
@@ -184,7 +190,7 @@ brew "hugo"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
 # Peer-to-peer hypermedia protocol
-brew "ipfs"
+brew "ipfs", restart_service: true
 # Command-line pager for JSON data
 brew "jless"
 # Simple terminal UI for git commands
@@ -250,7 +256,7 @@ brew "peco"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Generic syntax highlighter
-brew "pygments", link: false
+brew "pygments"
 # GNOME Python bindings (based on GObject Introspection)
 brew "pygobject3"
 # Interpreted, interactive, object-oriented programming language
@@ -279,8 +285,12 @@ brew "rlwrap"
 brew "rsync"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
+# Safe, concurrent, practical language
+brew "rust"
 # JVM-based programming language
 brew "scala"
+# Create beautiful image of your source code
+brew "silicon"
 # Convert filenames and directories to a web friendly format
 brew "slugify"
 # Add a public key to a remote machine's authorized_keys file
@@ -325,8 +335,12 @@ brew "zk"
 brew "zsh"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# A tasty, self-hostable Git server for the command line🍦
+brew "charmbracelet/tap/soft-serve"
 # A tool for recording terminal GIFs
 brew "charmbracelet/tap/vhs"
+# The SSH directory
+brew "charmbracelet/tap/wishlist"
 # CLI tool for CookLang Recipe Markup Language
 brew "cooklang/tap/cook"
 # prettier, on SPEED!
@@ -554,6 +568,7 @@ cask "webponize"
 cask "whatroute"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
+mas "1-Click Video Converter", id: 717545086
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Affinity Publisher", id: 881418622
@@ -561,8 +576,8 @@ mas "Be Focused Pro", id: 961632517
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
-mas "Flow", id: 1423210932
 mas "Free MP4 Converter", id: 693443591
+mas "Grammarly for Safari", id: 1462114288
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
