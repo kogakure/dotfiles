@@ -23,6 +23,7 @@ pageres-cli
 prettier
 prettier_d_slim
 prettyjson
+stylelint
 typescript
 typesync
 write-good
