@@ -137,6 +137,7 @@ return packer.startup(function(use)
 	use("folke/twilight.nvim") -- Dim inactive code
 	use("ray-x/guihua.lua") -- Lua GUI lib
 	use("ray-x/sad.nvim") -- Find & Replace
+	use("gorbit99/codewindow.nvim") -- Minimap
 
 	-- Editing Files
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
