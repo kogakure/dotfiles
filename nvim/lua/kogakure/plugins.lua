@@ -96,6 +96,7 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } }) -- Frequency and recency
 	use("nvim-telescope/telescope-github.nvim") -- GitHub CLI
 	use("nvim-telescope/telescope-symbols.nvim") -- Symbols
+	use("princejoogie/dir-telescope.nvim") -- Perform functions in selected directory
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
