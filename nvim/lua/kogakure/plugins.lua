@@ -165,6 +165,7 @@ return packer.startup(function(use)
 	use("mechatroner/rainbow_csv") -- Rainbow CSV
 	use("dbeniamine/cheat.sh-vim") -- Cheat.sh
 	use("wakatime/vim-wakatime") -- Wakatime
+	use("Ostralyan/scribe.nvim") -- Take notes
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
