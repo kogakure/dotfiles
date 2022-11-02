@@ -21,24 +21,21 @@ null_ls.setup({
 		code_actions.gitsigns,
 		code_actions.proselint,
 		completion.luasnip,
-		diagnostics.eslint, -- Eslint
-		-- diagnostics.eslint_d, -- Eslint
+		diagnostics.eslint_d,
 		diagnostics.flake8, -- Python
 		diagnostics.gitlint,
 		diagnostics.markdownlint.with({ extra_args = { "--rules ~MD033" } }),
 		diagnostics.stylelint,
 		diagnostics.tsc,
 		diagnostics.vale,
-		-- diagnostics.yamllint,
 		diagnostics.zsh,
 		formatting.autopep8, -- Python
 		formatting.black.with({ extra_args = { "--fast" } }), -- Python
 		formatting.eslint_d,
 		formatting.markdownlint,
 		formatting.prettierd,
-		-- formatting.prettier.with({ extra_args = { "--single-quote" } }),
 		formatting.stylelint,
-		formatting.stylua, -- Lua
+		formatting.stylua,
 		formatting.trim_newlines,
 		formatting.trim_whitespace,
 		formatting.rustfmt,

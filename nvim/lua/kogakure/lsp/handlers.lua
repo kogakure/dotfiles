@@ -83,6 +83,7 @@ end
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
+		timeout_ms = 2000,
 		bufnr = bufnr,
 		filter = function(client)
 			return client.name == "null-ls"
