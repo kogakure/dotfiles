@@ -24,6 +24,7 @@ prettier
 prettier_d_slim
 prettyjson
 stylelint
+trash-cli
 typescript
 typesync
 write-good
