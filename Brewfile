@@ -103,6 +103,8 @@ brew "direnv"
 brew "docker"
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine"
+# Shared library for Watchman and Eden projects
+brew "edencommon"
 # Maintain consistent coding style between multiple editors
 brew "editorconfig"
 # LLVM bytecode to JavaScript compiler
@@ -113,6 +115,10 @@ brew "eot-utils"
 brew "exa"
 # C++14 implementation of the TLS-1.3 standard
 brew "fizz"
+# Modular, composable client/server abstractions framework
+brew "wangle"
+# Facebook's branch of Apache Thrift, including a new C++ server
+brew "fbthrift"
 # Thrift functions for querying information from a service
 brew "fb303"
 # Simple, fast and user-friendly alternative to find
@@ -125,6 +131,8 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# GNU compiler collection
+brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -133,8 +141,6 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -411,6 +417,7 @@ cask "firefox-nightly"
 cask "flip4mac"
 # Download manager with a torrent client
 cask "folx"
+# Free monospaced font with programming ligatures
 cask "font-fira-code"
 # Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
@@ -576,6 +583,7 @@ mas "Be Focused Pro", id: 961632517
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
+mas "Flow", id: 1423210932
 mas "Free MP4 Converter", id: 693443591
 mas "Grammarly for Safari", id: 1462114288
 mas "iA Writer", id: 775737590
