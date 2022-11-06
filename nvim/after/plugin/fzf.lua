@@ -4,7 +4,7 @@ if not cmp_status_ok then
 	return
 end
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 fzf_lua.setup({

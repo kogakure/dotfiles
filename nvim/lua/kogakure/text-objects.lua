@@ -1,4 +1,4 @@
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- Basic Text Objects
 function Basic_text_objects()
