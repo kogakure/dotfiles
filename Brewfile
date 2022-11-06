@@ -131,8 +131,6 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GNU compiler collection
-brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -141,6 +139,8 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -584,6 +584,7 @@ mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Flow", id: 1423210932
+mas "Fluent Reader", id: 1520907427
 mas "Free MP4 Converter", id: 693443591
 mas "Grammarly for Safari", id: 1462114288
 mas "iA Writer", id: 775737590
