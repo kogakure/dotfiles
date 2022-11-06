@@ -1,4 +1,4 @@
--- Harpoon – https://github.com/ThePrimeagen/harpoon
+-- https://github.com/ThePrimeagen/harpoon
 local status, harpoon = pcall(require, "harpoon")
 if not status then
 	return

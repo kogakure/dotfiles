@@ -1,4 +1,4 @@
--- project.nvim – https://github.com/ahmedkhalf/project.nvim
+-- https://github.com/ahmedkhalf/project.nvim
 local status_ok, project = pcall(require, "project_nvim")
 if not status_ok then
 	return

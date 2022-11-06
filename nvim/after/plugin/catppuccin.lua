@@ -1,4 +1,4 @@
--- Catppuccin Theme – https://github.com/catppuccin/catppuccin
+-- https://github.com/catppuccin/catppuccin
 local status_ok, catppucin = pcall(require, "catppuccin")
 if not status_ok then
 	return

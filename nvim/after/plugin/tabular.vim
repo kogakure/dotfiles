@@ -1,5 +1,6 @@
-" Custom Tabular Commands
+" https://github.com/godlygeek/tabular
 
+" Custom Tabular Commands
 AddTabularPattern! equals       /^[^=]*\zs=/
 AddTabularPattern! ruby_hash    /^[^=>]*\zs=>/
 AddTabularPattern! commas       /,\s*\zs\s/l0

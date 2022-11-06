@@ -1,4 +1,4 @@
--- fzf-lua – https://github.com/ibhagwan/fzf-lua
+-- https://github.com/ibhagwan/fzf-lua
 local cmp_status_ok, fzf_lua = pcall(require, "fzf-lua")
 if not cmp_status_ok then
 	return

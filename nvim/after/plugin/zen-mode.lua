@@ -1,4 +1,4 @@
--- Zen Mode – https://github.com/folke/zen-mode.nvim
+-- https://github.com/folke/zen-mode.nvim
 local status_ok, zenmode = pcall(require, "zen-mode")
 if not status_ok then
 	return

@@ -1,4 +1,4 @@
--- blamer.vim – https://github.com/APZelos/blamer.nvim
+-- https://github.com/APZelos/blamer.nvim
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 

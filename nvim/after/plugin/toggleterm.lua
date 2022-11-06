@@ -1,3 +1,4 @@
+-- https://github.com/akinsho/toggleterm.nvim
 local status_ok, toggleterm = pcall(require, "toggleterm")
 if not status_ok then
 	return
@@ -97,7 +98,7 @@ function _PYTHON_TOGGLE()
 end
 
 local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 -- Keymaps
 keymap("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

@@ -1,4 +1,4 @@
--- sad.nvim – https://github.com/ray-x/sad.nvim
+-- https://github.com/ray-x/sad.nvim
 local status_ok, sad = pcall(require, "sad")
 if not status_ok then
 	return

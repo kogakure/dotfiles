@@ -1,4 +1,4 @@
--- nvim-cursorline – https://github.com/yamatsum/nvim-cursorline
+-- https://github.com/yamatsum/nvim-cursorline
 local status, cursorline = pcall(require, "nvim-cursorline")
 if not status then
 	return
