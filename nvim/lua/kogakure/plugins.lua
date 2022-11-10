@@ -125,6 +125,7 @@ return packer.startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("MattesGroeger/vim-bookmarks") -- Bookmarks
 	use("folke/which-key.nvim") -- Display possible keybindings
+	use("mrjones2014/legendary.nvim") -- Legend for keymaps, commands, and autocommands
 	use("karb94/neoscroll.nvim") -- Smooth scrolling
 	use("APZelos/blamer.nvim") -- Git Blame
 	use("tpope/vim-fugitive") -- Git plugin
@@ -133,6 +134,7 @@ return packer.startup(function(use)
 	use("ruanyl/vim-gh-line") -- Open current line in GitHub
 	use("pwntester/octo.nvim") -- GitHub in Neovim
 	use("nvim-pack/nvim-spectre") -- Search and replace
+	use("stevearc/dressing.nvim") -- Improve the default vim.ui interfaces
 	use("folke/zen-mode.nvim") -- Zen Mode (2)
 	use("tpope/vim-eunuch") -- UNIX Shell commands
 	use("folke/twilight.nvim") -- Dim inactive code

@@ -148,3 +148,6 @@ keymap("x", "al", ":<c-u>normal! $v0<CR>", opts)
 
 -- LSP formatting
 keymap("n", "<leader>o", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+
+-- Manual Prettier
+keymap("n", "<leader>P", "<cmd>Prettier<CR>", opts)
