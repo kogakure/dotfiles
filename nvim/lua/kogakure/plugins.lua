@@ -141,6 +141,7 @@ return packer.startup(function(use)
 	use("ray-x/guihua.lua") -- Lua GUI lib
 	use("ray-x/sad.nvim") -- Find & Replace
 	use("gorbit99/codewindow.nvim") -- Minimap
+	use("https://gitlab.com/madyanov/svart.nvim")
 
 	-- Editing Files
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
