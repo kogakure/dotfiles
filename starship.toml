@@ -1,7 +1,7 @@
 # Don't print a new line at the start of the prompt
 add_newline = false
 
-command_timeout = 1000
+command_timeout = 2000
 
 # "bold red" style when capacity is between 0% and 10%
 [[battery.display]]
