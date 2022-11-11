@@ -79,6 +79,8 @@ brew "cloc"
 brew "closure-compiler"
 # Cross-platform make
 brew "cmake"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -131,6 +133,8 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# GNU compiler collection
+brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -139,8 +143,6 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -196,7 +198,7 @@ brew "hugo"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
 # Peer-to-peer hypermedia protocol
-brew "ipfs", restart_service: true
+brew "ipfs"
 # Command-line pager for JSON data
 brew "jless"
 # Simple terminal UI for git commands
@@ -404,6 +406,8 @@ cask "devonthink"
 cask "discord"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
+# Find files, folders, or contents in any file
+cask "easyfind"
 # Matrix collaboration client
 cask "element"
 # Collaborative team software
@@ -550,6 +554,8 @@ cask "steam"
 cask "stellarium"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin8"
 # General-purpose text editor
 cask "textmate"
 # Unpacks archive files
@@ -560,8 +566,6 @@ cask "tor-browser"
 cask "transmit"
 # Free and open-source OpenVPN client
 cask "tunnelblick"
-# Font manager application
-cask "typeface"
 # Virtualizer for x86 hardware
 cask "virtualbox"
 # Open-source code editor
@@ -576,16 +580,13 @@ cask "whatroute"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 mas "1-Click Video Converter", id: 717545086
-mas "Affinity Designer", id: 824171161
-mas "Affinity Photo", id: 824183456
-mas "Affinity Publisher", id: 881418622
 mas "Be Focused Pro", id: 961632517
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
-mas "Flow", id: 1423210932
 mas "Fluent Reader", id: 1520907427
 mas "Free MP4 Converter", id: 693443591
+mas "GoodNotes", id: 1444383602
 mas "Grammarly for Safari", id: 1462114288
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
@@ -609,4 +610,5 @@ mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
+mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
