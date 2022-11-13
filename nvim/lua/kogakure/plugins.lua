@@ -182,7 +182,7 @@ return packer.startup(function(use)
 	-- Custom Motions
 	use("christoomey/vim-sort-motion") -- gs
 	use("tommcdo/vim-exchange") -- cx, cxx, X, cxc
-	use("easymotion/vim-easymotion") -- <Leader>f/L
+	use("easymotion/vim-easymotion") -- <Leader><Leader>f/L
 
 	-- TMUX
 	use("christoomey/vim-tmux-navigator")
