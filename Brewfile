@@ -1,6 +1,7 @@
 tap "charmbracelet/tap"
 tap "cooklang/tap"
 tap "denisidoro/tools"
+tap "felixkratz/formulae"
 tap "fsouza/prettierd"
 tap "github/gh"
 tap "homebrew/bundle"
@@ -133,8 +134,6 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GNU compiler collection
-brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -143,6 +142,8 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -198,7 +199,7 @@ brew "hugo"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
 # Peer-to-peer hypermedia protocol
-brew "ipfs"
+brew "ipfs", restart_service: true
 # Command-line pager for JSON data
 brew "jless"
 # Simple terminal UI for git commands
@@ -351,6 +352,8 @@ brew "charmbracelet/tap/vhs"
 brew "charmbracelet/tap/wishlist"
 # CLI tool for CookLang Recipe Markup Language
 brew "cooklang/tap/cook"
+# Turns macOS input fields into real vim buffers
+brew "felixkratz/formulae/svim"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
 # The scalable code generator that saves you time.
@@ -492,6 +495,8 @@ cask "microsoft-auto-update"
 cask "microsoft-edge"
 # Minimal installer for conda
 cask "miniconda"
+# Neovim Client
+cask "neovide"
 # Desktop sync client for Nextcloud software products
 cask "nextcloud"
 # VPN client for secure internet access and private browsing
@@ -566,6 +571,8 @@ cask "tor-browser"
 cask "transmit"
 # Free and open-source OpenVPN client
 cask "tunnelblick"
+# Font manager application
+cask "typeface"
 # Virtualizer for x86 hardware
 cask "virtualbox"
 # Open-source code editor
