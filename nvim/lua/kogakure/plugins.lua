@@ -168,6 +168,7 @@ return packer.startup(function(use)
 	use("dbeniamine/cheat.sh-vim") -- Cheat.sh
 	use("wakatime/vim-wakatime") -- Wakatime
 	use("github/copilot.vim") -- GitHub Copilot
+	use("cshuaimin/ssr.nvim") -- Structural search and replace
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
