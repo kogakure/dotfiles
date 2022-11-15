@@ -95,7 +95,6 @@ function update () {
   npm update npm -g
   npm update -g
   nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-  nvim +Mason +15sleep +qall
   sudo softwareupdate -i -a
 }
 
