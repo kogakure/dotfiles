@@ -291,6 +291,7 @@ antigen bundle extract
 antigen bundle fzf
 antigen bundle gem
 antigen bundle git
+antigen bundle gh
 antigen bundle git-extras
 antigen bundle gitignore
 antigen bundle gulp

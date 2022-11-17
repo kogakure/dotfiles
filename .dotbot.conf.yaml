@@ -9,11 +9,12 @@
     ~/.ag: ag
     ~/.asdfrc: asdf/asdfrc
     ~/.config/base16-shell: .base16-shell
-    ~/.config/svim: svim
+    ~/.config/gh/config.yml: github/config.yml
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/starship.toml: starship.toml
+    ~/.config/svim: svim
     ~/.config/tmuxinator: tmuxinator
     ~/.ctags: ctags
     ~/.default-gems: asdf/default-gems

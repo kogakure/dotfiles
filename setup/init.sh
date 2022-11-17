@@ -33,5 +33,8 @@ source ./ruby.sh
 # Golang
 source ./golang.sh
 
+# GitHub CLI Extensions
+source ./github.sh
+
 # Visual Studio Code Extensions
 source ./vscode.sh
