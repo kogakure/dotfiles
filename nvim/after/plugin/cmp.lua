@@ -97,6 +97,11 @@ cmp.setup({
 		format = function(entry, vim_item)
 			-- Kind icons
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+
+			if entry.source.name == "copilot" then
+				vim_item.kind = icons.git.Octoface
+				vim_item.kind_hl_group = "CmpItemKindCopilot"
+			end
 			-- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
@@ -113,6 +118,37 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		{
+			name = "copilot",
+			-- keyword_length = 0,
+			max_item_count = 3,
+			trigger_characters = {
+				{
+					".",
+					":",
+					"(",
+					"'",
+					'"',
+					"[",
+					",",
+					"#",
+					"*",
+					"@",
+					"|",
+					"=",
+					"-",
+					"{",
+					"/",
+					"\\",
+					"+",
+					"?",
+					" ",
+					-- "\t",
+					-- "\n",
+				},
+			},
+			group_index = 2,
+		},
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "luasnip" },
