@@ -59,6 +59,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- Path completions
 	use("hrsh7th/cmp-cmdline") -- Cmdline completions
 	use("hrsh7th/cmp-nvim-lua") -- Lua API completions
+	use("hrsh7th/cmp-copilot") -- GitHub Copilot completions
 	use("saadparwaiz1/cmp_luasnip") -- Snippet completions
 	use("uga-rosa/cmp-dictionary") -- Dictionary completions
 	use("f3fora/cmp-spell") -- Spell completions
