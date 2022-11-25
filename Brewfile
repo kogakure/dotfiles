@@ -134,6 +134,8 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# GNU compiler collection
+brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -142,8 +144,6 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -364,6 +364,8 @@ brew "ms-jpq/sad/sad"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 # Application launcher and productivity software
 cask "alfred"
+# Network scanner
+cask "angry-ip-scanner"
 # Application uninstaller
 cask "appcleaner"
 # Tool to flash OS images to SD cards & USB drives
@@ -559,6 +561,8 @@ cask "spotify"
 cask "steam"
 # Tool to render realistic skies in real time on the screen
 cask "stellarium"
+# Sync and backup service to Synology NAS drives
+cask "synology-drive"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # JDK from the Eclipse Foundation (Adoptium)
