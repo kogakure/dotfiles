@@ -20,6 +20,8 @@ local servers = {
 	"cssmodules_ls",
 	"diagnosticls",
 	"emmet_ls",
+	"golangci_lint_ls",
+	"gopls",
 	"graphql",
 	"html",
 	"jsonls",

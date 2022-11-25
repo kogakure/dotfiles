@@ -24,6 +24,7 @@ null_ls.setup({
 		diagnostics.eslint_d,
 		diagnostics.flake8, -- Python
 		diagnostics.gitlint,
+		diagnostics.golangci_lint,
 		diagnostics.markdownlint.with({ extra_args = { "--rules ~MD033" } }),
 		diagnostics.stylelint,
 		diagnostics.tsc,
@@ -32,6 +33,9 @@ null_ls.setup({
 		formatting.autopep8, -- Python
 		formatting.black.with({ extra_args = { "--fast" } }), -- Python
 		formatting.eslint_d,
+		formatting.gofmt,
+		formatting.goimports,
+		formatting.goimports_reviser,
 		formatting.markdownlint,
 		formatting.prettierd,
 		formatting.stylelint,
