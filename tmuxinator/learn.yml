@@ -1,6 +1,6 @@
 name: Learn
 root: ~/Code/Github/learn/
 windows:
-  - Vim: vim README.md
+  - Vim: vim
   - Terminal: clear
   - Server: clear
