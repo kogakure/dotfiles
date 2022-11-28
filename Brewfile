@@ -134,8 +134,6 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GNU compiler collection
-brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -144,6 +142,8 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -172,6 +172,8 @@ brew "go"
 brew "googletest"
 # Version Control Visualization Tool
 brew "gource"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # Command-line tool for generating regular expressions
 brew "grex"
 # Numerical library for C and C++
@@ -264,6 +266,8 @@ brew "pass"
 brew "peco"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
+# Python 3 bindings for the Cairo graphics library
+brew "py3cairo"
 # Generic syntax highlighter
 brew "pygments"
 # GNOME Python bindings (based on GObject Introspection)
@@ -432,6 +436,8 @@ cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 # Font editor and converter for outline and bitmap fonts
 cask "fontforge"
+# 3D parametric modeler
+cask "freecad"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Desktop client for GitHub repositories
@@ -624,4 +630,5 @@ mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
+mas "Vectornator", id: 1219074514
 mas "Yoink", id: 457622435
