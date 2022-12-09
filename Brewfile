@@ -134,6 +134,8 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# GNU compiler collection
+brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -142,8 +144,6 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -384,6 +384,8 @@ cask "bibdesk"
 cask "bitwarden"
 # 3D creation suite
 cask "blender"
+# 3D model editor for boxy models and pixel art textures
+cask "blockbench"
 # Scriptable scratchpad for developers
 cask "boop"
 # Web browser focusing on privacy
@@ -537,7 +539,7 @@ cask "protonmail-bridge"
 cask "protonvpn"
 # QuickLook plug-in that renders source code with syntax highlighting
 cask "qlcolorcode"
-# QuickLook generator for video files
+# Thumbnails, static previews, cover art and metadata for video files
 cask "qlvideo"
 # All-in-one bookmark manager
 cask "raindropio"
