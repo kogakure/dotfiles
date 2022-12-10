@@ -143,6 +143,7 @@ return packer.startup(function(use)
 	use("ray-x/sad.nvim") -- Find & Replace
 	use("gorbit99/codewindow.nvim") -- Minimap
 	use("simrat39/symbols-outline.nvim") -- Symbols Outline
+	use("SmiteshP/nvim-navic") -- Statusline current context
 
 	-- Editing Files
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter

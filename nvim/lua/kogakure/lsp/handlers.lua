@@ -1,5 +1,7 @@
 local M = {}
 
+local navic = require("nvim-navic")
+
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -106,6 +108,10 @@ M.on_attach = function(client, bufnr)
 		})
 	end
 
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
+
 	-- TypeScript
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
@@ -157,6 +163,9 @@ local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
 	return
 end
+
+-- Set Winbar to nvim-static
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
