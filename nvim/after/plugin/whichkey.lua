@@ -19,7 +19,10 @@ local mappings = {
 		"<CMD>lua require('spectre').open_file_search()<CR>",
 		"Spectre",
 	},
-	t = {
+	t = { "<CMD>TodoTelescope<CR>", "Todo" },
+	v = { "<CMD>lua require('export-to-vscode').launch()<CR>", "Visual Studio Code" },
+	w = { "<CMD>w!<CR>", "Save" },
+	x = {
 		name = "Text Editing",
 		c = { "<CMD>call ToggleColorColumn()<CR>", "Show/Hide Colorcolumn" },
 		d = { "<CMD>call SpellEn()<CR>", "Set Spelling Language to English" },
@@ -29,9 +32,6 @@ local mappings = {
 		s = { "<CMD>set spell!<CR>", "Spell Checking" },
 		w = { "<CMD>call ToggleWrap()<CR>", "Soft wrap/No wrap" },
 	},
-	v = { "<CMD>lua require('export-to-vscode').launch()<CR>", "Visual Studio Code" },
-	w = { "<CMD>w!<CR>", "Save" },
-	x = { "<CMD>Twilight<CR>", "Twilight Mode" },
 	z = { "<CMD>ZenMode<CR>", "Zen Mode" },
 	A = { "<CMD>Alpha<CR>", "Alpha" },
 	B = {
