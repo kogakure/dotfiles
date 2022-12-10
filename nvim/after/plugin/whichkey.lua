@@ -13,6 +13,7 @@ local mappings = {
 	h = { "<CMD>nohlsearch<CR>", "No Highlight" },
 	i = { "<CMD>silent !open -a iA\\ Writer.app '%:p'<CR>", "iA Writer" },
 	j = { "<CMD>b#<CR>", "Toggle Buffers" },
+	o = { "<CMD>SymbolsOutline<CR>", "Symbols Outline" },
 	p = { "<CMD>Telescope projects<CR>", "Projects" },
 	q = { "<CMD>Bdelete!<CR>", "Close Buffer" },
 	s = {
