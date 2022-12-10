@@ -157,7 +157,7 @@ return packer.startup(function(use)
 	use("tpope/vim-abolish") -- Autofix spelling mistakes
 	use("mg979/vim-visual-multi") -- Multi cursor mode
 	use("vim-scripts/VisIncr") -- Increase and decreasing numbers, dates, daynames etc.
-	use("tpope/vim-speeddating") -- Increase dates, times, etc.
+	use("monaqa/dial.nvim") -- Increase and decrease numbers, dates, times, etc
 	use("rstacruz/vim-xtract") -- Extract code into new file
 	use("tpope/vim-repeat") -- Repeat plugins
 	use("kylechui/nvim-surround") -- Surround selections, stylishly
@@ -170,7 +170,7 @@ return packer.startup(function(use)
 	use("wakatime/vim-wakatime") -- Wakatime
 	use("github/copilot.vim") -- GitHub Copilot
 	use("cshuaimin/ssr.nvim") -- Structural search and replace
-	use("folke/todo-comments.nvim") -- Highlight TODOs
+	use("folke/todo-comments.nvim") -- Highlight TODO
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
