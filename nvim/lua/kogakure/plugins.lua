@@ -189,6 +189,7 @@ return packer.startup(function(use)
 	use("christoomey/vim-sort-motion") -- gs
 	use("tommcdo/vim-exchange") -- cx, cxx, X, cxc
 	use("easymotion/vim-easymotion") -- <Leader><Leader>f/L
+	use("andymass/vim-matchup") -- Better % matching
 
 	-- TMUX
 	use("christoomey/vim-tmux-navigator")
