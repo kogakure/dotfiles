@@ -12,6 +12,7 @@
     ~/.config/gh/config.yml: github/config.yml
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
+    ~/.config/lvim: lvim
     ~/.config/nvim: nvim
     ~/.config/starship.toml: starship.toml
     ~/.config/svim: svim
