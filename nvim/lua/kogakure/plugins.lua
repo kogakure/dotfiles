@@ -145,6 +145,7 @@ return packer.startup(function(use)
 	use("gorbit99/codewindow.nvim") -- Minimap
 	use("simrat39/symbols-outline.nvim") -- Symbols Outline
 	use("SmiteshP/nvim-navic") -- Statusline current context
+	use("kevinhwang91/nvim-bqf") -- Better Quickfix
 
 	-- Editing Files
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
