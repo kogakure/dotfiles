@@ -170,6 +170,7 @@ return packer.startup(function(use)
 	use("wakatime/vim-wakatime") -- Wakatime
 	use("github/copilot.vim") -- GitHub Copilot
 	use("cshuaimin/ssr.nvim") -- Structural search and replace
+	use("folke/todo-comments.nvim") -- Highlight TODOs
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
