@@ -146,6 +146,7 @@ return packer.startup(function(use)
 	use("simrat39/symbols-outline.nvim") -- Symbols Outline
 	use("SmiteshP/nvim-navic") -- Statusline current context
 	use("kevinhwang91/nvim-bqf") -- Better Quickfix
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- Better folds
 
 	-- Editing Files
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
