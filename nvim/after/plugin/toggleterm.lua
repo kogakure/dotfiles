@@ -48,8 +48,17 @@ local lazygit = Terminal:new({
 	hidden = true,
 })
 
+local ranger = Terminal:new({
+	cmd = "ranger",
+	hidden = true,
+})
+
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
+end
+
+function _RANGER_TOGGLE()
+	ranger:toggle()
 end
 
 local tig = Terminal:new({
@@ -101,8 +110,11 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Keymaps
+keymap("n", "<M-g>", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+keymap("n", "<M-o>", "<cmd>lua _RANGER_TOGGLE()<CR>", opts)
 keymap("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-keymap("n", "<leader>node", "<cmd>lua _NODE_TOGGLE()<CR>", opts)
-keymap("n", "<leader>py", "<cmd>lua _PYTHON_TOGGLE()<CR>", opts)
-keymap("n", "<leader>top", "<cmd>lua _HTOP_TOGGLE()<CR>", opts)
 keymap("n", "<leader>ncdu", "<cmd>lua _NCDU_TOGGLE()<CR>", opts)
+keymap("n", "<leader>node", "<cmd>lua _NODE_TOGGLE()<CR>", opts)
+keymap("n", "<leader>rg", "<cmd>lua _RANGER_TOGGLE()<CR>", opts)
+keymap("n", "<leader>top", "<cmd>lua _HTOP_TOGGLE()<CR>", opts)
+keymap("n", "<leader>y", "<cmd>lua _PYTHON_TOGGLE()<CR>", opts)

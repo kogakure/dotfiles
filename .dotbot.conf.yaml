@@ -14,8 +14,8 @@
     ~/.config/kitty: kitty
     ~/.config/lvim: lvim
     ~/.config/nvim: nvim
+    ~/.config/ranger: ranger
     ~/.config/starship.toml: starship.toml
-    ~/.config/svim: svim
     ~/.config/tmuxinator: tmuxinator
     ~/.ctags: ctags
     ~/.default-gems: asdf/default-gems
