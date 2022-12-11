@@ -175,6 +175,7 @@ return packer.startup(function(use)
 	use("wakatime/vim-wakatime") -- Wakatime
 	use("github/copilot.vim") -- GitHub Copilot
 	use("folke/todo-comments.nvim") -- Highlight TODO
+	use("DNLHC/glance.nvim") -- Pretty preview of LSP locations
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
