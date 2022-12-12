@@ -176,6 +176,7 @@ return packer.startup(function(use)
 	use("github/copilot.vim") -- GitHub Copilot
 	use("folke/todo-comments.nvim") -- Highlight TODO
 	use("DNLHC/glance.nvim") -- Pretty preview of LSP locations
+	use("rlane/pounce.nvim") -- Incremental fuzzy search motion
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
