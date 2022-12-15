@@ -151,3 +151,12 @@ keymap("n", "<leader>o", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 -- Manual Prettier
 keymap("n", "<leader>P", "<cmd>Prettier<CR>", opts)
+
+-- Get the filename and path of current file
+keymap("n", "<leader>kn", ":let @+=@%<CR>", opts)
+
+-- Remove console.log statements
+keymap("n", "<leader>kc", ":g/console.log/d<CR>", opts)
+
+-- Convert Markdown to HTML and copy to Clipboard
+keymap("v", "<leader>kp", ":'<,'> w !pandoc --no-highlight --wrap=none | pbcopy <CR>", opts)
