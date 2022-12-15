@@ -98,6 +98,11 @@ function update () {
   sudo softwareupdate -i -a
 }
 
+# Delete all node_modules folders in a folder and subfolders
+function deleteNodeModules () {
+  find . -name "node_modules" -type d -exec rm -rf '{}' +
+}
+
 function homebrewBackup () {
   cd ~/.dotfiles/
   brew bundle dump --describe -f
