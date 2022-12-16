@@ -54,6 +54,8 @@ brew "python@3.10"
 brew "asciinema"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -102,8 +104,6 @@ brew "deno"
 brew "diff-so-fancy"
 # Load/unload environment variables based on $PWD
 brew "direnv"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine"
 # Shared library for Watchman and Eden projects
@@ -134,8 +134,6 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GNU compiler collection
-brew "gcc"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -144,6 +142,8 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -252,8 +252,6 @@ brew "neovim"
 brew "nghttp2"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # ISO-C API and CLI for generating UUIDs
 brew "ossp-uuid"
 # Swiss-army knife of markup format conversion
@@ -276,6 +274,8 @@ brew "pygobject3"
 brew "python@3.8"
 # Messaging broker
 brew "rabbitmq"
+# File browser
+brew "ranger"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -334,6 +334,8 @@ brew "vale"
 brew "watchman"
 # Internet file retriever
 brew "wget"
+# Homebrew, but with Docker images
+brew "whalebrew"
 # Fake keyboard/mouse input and window management for X
 brew "xdotool"
 # JavaScript package manager
@@ -356,8 +358,6 @@ brew "charmbracelet/tap/vhs"
 brew "charmbracelet/tap/wishlist"
 # CLI tool for CookLang Recipe Markup Language
 brew "cooklang/tap/cook"
-# Turns macOS input fields into real vim buffers
-brew "felixkratz/formulae/svim"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
 # The scalable code generator that saves you time.
@@ -415,6 +415,8 @@ cask "deepl"
 cask "devonthink"
 # Voice and text chat software
 cask "discord"
+# App to build and share containerized applications and microservices
+cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Find files, folders, or contents in any file
@@ -636,3 +638,4 @@ mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
 mas "Vectornator", id: 1219074514
 mas "Yoink", id: 457622435
+whalebrew "whalebrew/whalesay"
