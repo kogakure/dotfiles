@@ -1,6 +1,10 @@
-local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
-local cfg = vim.fn.stdpath("config")
+
+-- Toggle between soft wrap and no wrap
+vim.keymap.set("n", "<leader>tw", [[<cmd>call ToggleWrap()<CR>]], opts)
+
+-- Toggle between soft wrap and no wrap
+vim.keymap.set("n", "<leader>cc", [[<cmd>call ToggleColorColumn()<CR>]], opts)
 
 vim.cmd([[
 function! ToggleWrap()
@@ -42,10 +46,3 @@ function! SpellDe()
   set spellfile=~/.config/nvim/spell/de.utf-8.add
 endfunction
 ]])
-
--- Keymaps
--- Toggle between soft wrap and no wrap
-keymap("n", "<leader>tw", [[<cmd>call ToggleWrap()<CR>]], opts)
-
--- Toggle between soft wrap and no wrap
-keymap("n", "<leader>tcc", [[<cmd>call ToggleColorColumn()<CR>]], opts)

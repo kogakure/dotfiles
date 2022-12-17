@@ -1,14 +1,10 @@
 -- https://github.com/lukas-reineke/indent-blankline.nvim
-local status_ok, indent_blankline = pcall(require, "indent_blankline")
-if not status_ok then
-	return
-end
+local indent_blankline = require("indent_blankline")
 
 vim.opt.termguicolors = true
-vim.cmd([[
-highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine
-highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine
-]])
+
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { bg = "#1f1f1f", nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { bg = "#1a1a1a", nocombine = true })
 
 indent_blankline.setup({
 	char = "",

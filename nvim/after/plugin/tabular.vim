@@ -6,7 +6,6 @@ AddTabularPattern! ruby_hash    /^[^=>]*\zs=>/
 AddTabularPattern! commas       /,\s*\zs\s/l0
 AddTabularPattern! colons       /^[^:]*:\s*\zs\s/l0
 
-" Mappings
 inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
 
 " Automatic Tabular.vim with the (|)

@@ -1,8 +1,5 @@
 -- https://github.com/gorbit99/codewindow.nvim
-local status, codewindow = pcall(require, "codewindow")
-if not status then
-	return
-end
+local codewindow = require("codewindow")
 
 codewindow.setup()
 

@@ -128,7 +128,6 @@ return packer.startup(function(use)
 	use("MattesGroeger/vim-bookmarks") -- Bookmarks
 	use("folke/which-key.nvim") -- Display possible keybindings
 	use("mrjones2014/legendary.nvim") -- Legend for keymaps, commands, and autocommands
-	use("karb94/neoscroll.nvim") -- Smooth scrolling
 	use("APZelos/blamer.nvim") -- Git Blame
 	use("tpope/vim-fugitive") -- Git plugin
 	use("elijahmanor/export-to-vscode.nvim") -- Export active Buffers to Visual Studio Code
@@ -137,7 +136,7 @@ return packer.startup(function(use)
 	use("pwntester/octo.nvim") -- GitHub in Neovim
 	use("nvim-pack/nvim-spectre") -- Search and replace
 	use("stevearc/dressing.nvim") -- Improve the default vim.ui interfaces
-	use("folke/zen-mode.nvim") -- Zen Mode (2)
+	use("folke/zen-mode.nvim") -- Zen Mode
 	use("tpope/vim-eunuch") -- UNIX Shell commands
 	use("folke/twilight.nvim") -- Dim inactive code
 	use("ray-x/guihua.lua") -- Lua GUI lib

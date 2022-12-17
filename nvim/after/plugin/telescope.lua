@@ -1,15 +1,33 @@
 -- https://github.com/nvim-telescope/telescope.nvim/
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-	return
-end
-
-local keymap = vim.keymap.set
+local telescope = require("telescope")
+local actions = require("telescope.actions")
 local opts = { noremap = true, silent = true }
 
-local actions = require("telescope.actions")
+vim.keymap.set("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]], opts)
+vim.keymap.set("n", "<leader>C", [[<Cmd>Cheatsheet<CR>]], opts)
+vim.keymap.set("n", "<leader>F", [[<Cmd>Telescope live_grep<CR>]], opts)
+vim.keymap.set("n", "<leader>H", [[<Cmd>Telescope headings<CR>]], opts)
+vim.keymap.set("n", "<leader>S", [[<Cmd>Telescope spell_suggest<CR>]], opts)
+vim.keymap.set("n", "<leader>b", [[<Cmd>Telescope buffers<CR>]], opts)
+vim.keymap.set("n", "<leader>bm", [[<Cmd>Telescope bookmarks<CR>]], opts)
+vim.keymap.set("n", "<leader>f", [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]], opts)
+vim.keymap.set("n", "<leader>fa", [[<Cmd>Telescope find_files hidden=true<CR>]], opts)
+vim.keymap.set("n", "<leader>fb", [[<Cmd>Telescope file_browser<CR>]], opts)
+vim.keymap.set("n", "<leader>fd", [[<Cmd>Telescope dir live_grep<CR>]], opts)
+vim.keymap.set("n", "<leader>ff", [[<Cmd>Telescope dir find_files<CR>]], opts)
+vim.keymap.set("n", "<leader>gb", [[<Cmd>Telescope git_branches<CR>]], opts)
+vim.keymap.set("n", "<leader>gs", [[<Cmd>Telescope git_status<CR>]], opts)
+vim.keymap.set("n", "<leader>gwc", [[<Cmd>Telescope git_worktree create_git_worktree<CR>]], opts)
+vim.keymap.set("n", "<leader>gww", [[<Cmd>Telescope git_worktree git_worktrees<CR>]], opts)
+vim.keymap.set("n", "<leader>ht", [[<Cmd>Telescope help_tags<CR>]], opts)
+vim.keymap.set("n", "<leader>km", [[<Cmd>Telescope keymaps<CR>]], opts)
+vim.keymap.set("n", "<leader>m", [[<Cmd>Telescope marks<CR>]], opts)
+vim.keymap.set("n", "<leader>mru", [[<Cmd>Telescope frecency<CR>]], opts)
+vim.keymap.set("n", "<leader>nm", [[<Cmd>Telescope node_modules list<CR>]], opts)
+vim.keymap.set("n", "<leader>r", [[<Cmd>Telescope resume<CR>]], opts)
+vim.keymap.set("n", "<leader>tg", [[<Cmd>Telescope tags<CR>]], opts)
+vim.keymap.set("n", "<leader>ty", [[<Cmd>Telescope symbols<CR>]], opts)
 
--- Extensions
 telescope.load_extension("bookmarks")
 telescope.load_extension("node_modules")
 telescope.load_extension("file_browser")
@@ -23,33 +41,6 @@ telescope.load_extension("gh")
 telescope.load_extension("git_worktree")
 telescope.load_extension("dir")
 
--- Keymaps
-keymap("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]], opts)
-keymap("n", "<leader>C", [[<Cmd>Cheatsheet<CR>]], opts)
-keymap("n", "<leader>F", [[<Cmd>Telescope live_grep<CR>]], opts)
-keymap("n", "<leader>H", [[<Cmd>Telescope headings<CR>]], opts)
-keymap("n", "<leader>S", [[<Cmd>Telescope spell_suggest<CR>]], opts)
-keymap("n", "<leader>b", [[<Cmd>Telescope buffers<CR>]], opts)
-keymap("n", "<leader>bm", [[<Cmd>Telescope bookmarks<CR>]], opts)
-keymap("n", "<leader>f", [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]], opts)
-keymap("n", "<leader>fa", [[<Cmd>Telescope find_files hidden=true<CR>]], opts)
-keymap("n", "<leader>fb", [[<Cmd>Telescope file_browser<CR>]], opts)
-keymap("n", "<leader>fd", [[<Cmd>Telescope dir live_grep<CR>]], opts)
-keymap("n", "<leader>ff", [[<Cmd>Telescope dir find_files<CR>]], opts)
-keymap("n", "<leader>gb", [[<Cmd>Telescope git_branches<CR>]], opts)
-keymap("n", "<leader>gs", [[<Cmd>Telescope git_status<CR>]], opts)
-keymap("n", "<leader>gwc", [[<Cmd>Telescope git_worktree create_git_worktree<CR>]], opts)
-keymap("n", "<leader>gww", [[<Cmd>Telescope git_worktree git_worktrees<CR>]], opts)
-keymap("n", "<leader>ht", [[<Cmd>Telescope help_tags<CR>]], opts)
-keymap("n", "<leader>km", [[<Cmd>Telescope keymaps<CR>]], opts)
-keymap("n", "<leader>m", [[<Cmd>Telescope marks<CR>]], opts)
-keymap("n", "<leader>mru", [[<Cmd>Telescope frecency<CR>]], opts)
-keymap("n", "<leader>nm", [[<Cmd>Telescope node_modules list<CR>]], opts)
-keymap("n", "<leader>r", [[<Cmd>Telescope resume<CR>]], opts)
-keymap("n", "<leader>tg", [[<Cmd>Telescope tags<CR>]], opts)
-keymap("n", "<leader>ty", [[<Cmd>Telescope symbols<CR>]], opts)
-
--- Setup
 telescope.setup({
 	defaults = {
 		prompt_prefix = " ",

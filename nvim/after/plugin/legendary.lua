@@ -1,13 +1,7 @@
 -- https://github.com/mrjones2014/legendary.nvim
-local status, legendary = pcall(require, "legendary")
-if not status then
-	return
-end
-
-local keymap = vim.keymap.set
+local legendary = require("legendary")
 local opts = { noremap = true, silent = true }
 
-legendary.setup({ which_key = { auto_register = true } })
+vim.keymap.set("n", "LL", "<CMD>Legendary<CR>", opts)
 
--- Keymaps
-keymap("n", "LL", "<CMD>Legendary<CR>", opts)
+legendary.setup({ which_key = { auto_register = true } })

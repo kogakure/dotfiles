@@ -1,10 +1,5 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter/
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-	return
-end
-
-configs.setup({
+require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
 	sync_install = false,
 	ignore_install = { "" }, -- List of parsers to ignore installing

@@ -1,10 +1,5 @@
--- https://github.com/karb94/neoscroll.nvim
-local status, augend = pcall(require, "dial.augend")
-if not status then
-	return
-end
-
-local keymap = vim.keymap.set
+-- https://github.com/monaqa/dial.nvim
+local augend = require("dial.augend")
 local opts = { noremap = true, silent = true }
 
 require("dial.config").augends:register_group({
@@ -19,10 +14,9 @@ require("dial.config").augends:register_group({
 	},
 })
 
--- Keymaps
-keymap("n", "<C-a>", require("dial.map").inc_normal(), opts)
-keymap("n", "<C-x>", require("dial.map").dec_normal(), opts)
-keymap("v", "<C-a>", require("dial.map").inc_visual(), opts)
-keymap("v", "<C-x>", require("dial.map").dec_visual(), opts)
-keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), opts)
-keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), opts)
+vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), opts)
+vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), opts)
+vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual(), opts)
+vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), opts)
+vim.keymap.set("v", "g<C-a>", require("dial.map").inc_gvisual(), opts)
+vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), opts)

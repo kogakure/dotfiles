@@ -1,162 +1,161 @@
-local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 --- Remap space as <leader> key
-keymap("", "<space>", "<Nop>", opts)
+vim.keymap.set("", "<space>", "<Nop>", opts)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Quick toggle between buffers
-keymap("n", "<leader>j", ":b#<CR>", opts)
+vim.keymap.set("n", "<leader>j", ":b#<CR>", opts)
 
 -- Add semicolon or comma to the end of the line
-keymap("n", ";;", "A;<ESC>", opts)
-keymap("n", ",,", "A,<ESC>", opts)
+vim.keymap.set("n", ";;", "A;<ESC>", opts)
+vim.keymap.set("n", ",,", "A,<ESC>", opts)
 
 -- Maintain the cursor position when yanking a visual selection
-keymap("v", "y", "myy`y", opts)
+vim.keymap.set("v", "y", "myy`y", opts)
 
 -- Delete last character of line
-keymap("n", "<leader>x", "$x", opts)
+vim.keymap.set("n", "<leader>x", "$x", opts)
 
 -- Do not yank with x
-keymap("n", "x", '"_x', opts)
+vim.keymap.set("n", "x", '"_x', opts)
 
 -- Open vim config in a new buffer, reload vim config
-keymap("n", "<leader>ve", "<cmd>e $MYVIMRC<CR>", opts)
-keymap("n", "<leader>vr", "<cmd>source $MYVIMRC<CR>", opts)
+vim.keymap.set("n", "<leader>ve", "<cmd>e $MYVIMRC<CR>", opts)
+vim.keymap.set("n", "<leader>vr", "<cmd>source $MYVIMRC<CR>", opts)
 
 -- Increment/decrement
-keymap("n", "+", "<C-a>", opts)
-keymap("n", "-", "<C-x>", opts)
+vim.keymap.set("n", "+", "<C-a>", opts)
+vim.keymap.set("n", "-", "<C-x>", opts)
 
 -- Splits
-keymap("n", "ss", ":split<CR><C-w>w", opts)
-keymap("n", "sv", ":vsplit<CR><C-w>w", opts)
+vim.keymap.set("n", "ss", ":split<CR><C-w>w", opts)
+vim.keymap.set("n", "sv", ":vsplit<CR><C-w>w", opts)
 
 -- Select all
-keymap("n", "<C-a>", "gg<S-v>G", opts)
+vim.keymap.set("n", "<C-a>", "gg<S-v>G", opts)
 
 -- Delete current buffer
-keymap("n", "<leader>q", ":Bdelete<CR>", opts)
+vim.keymap.set("n", "<leader>q", ":Bdelete<CR>", opts)
 
 -- Delete all buffers
-keymap("n", "<leader>X", ":bufdo bdelete<CR>", opts)
+vim.keymap.set("n", "<leader>X", ":bufdo bdelete<CR>", opts)
 
 -- Allow gf to open non-existent files
-keymap("", "gf", ":edit <cfile><CR>", opts)
+vim.keymap.set("", "gf", ":edit <cfile><CR>", opts)
 
 -- Reselect visual selection after indenting
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- Set spell checker to `s`
 -- zg (good), zG (good temp), zw (wrong), zW (wrong temp)
-keymap("n", "<leader>rs", ":set spell!<CR>", opts)
+vim.keymap.set("n", "<leader>rs", ":set spell!<CR>", opts)
 
 -- Switch off highlighting
-keymap("n", "<leader>h", ":nohlsearch<CR>", opts)
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", opts)
 
 -- Toggle list
-keymap("n", "<leader>l", ":set list!<CR>", opts)
+vim.keymap.set("n", "<leader>l", ":set list!<CR>", opts)
 
 -- Indent the whole source code
-keymap("n", "<leader>pf", "gg=G''", opts)
+vim.keymap.set("n", "<leader>pf", "gg=G''", opts)
 
 -- Reverse the mark mapping
-keymap("n", "'", "`", opts)
-keymap("n", "`", "'", opts)
+vim.keymap.set("n", "'", "`", opts)
+vim.keymap.set("n", "`", "'", opts)
 
 -- Visuall select of just pasted content
-keymap("n", "gP", "`[v`]", opts)
-keymap("n", "gy", "`[v`]y", opts)
+vim.keymap.set("n", "gP", "`[v`]", opts)
+vim.keymap.set("n", "gy", "`[v`]y", opts)
 
 -- When text is wrapped, move by terminal rows, not lines, unless a count is provided
-keymap("n", "<expr> j", "(v:count == 0 ? 'gj' : 'j')", opts)
-keymap("n", "<expr> k", "(v:count == 0 ? 'gk' : 'k')", opts)
+vim.keymap.set("n", "<expr> j", "(v:count == 0 ? 'gj' : 'j')", opts)
+vim.keymap.set("n", "<expr> k", "(v:count == 0 ? 'gk' : 'k')", opts)
 
 -- Open a quickfix window for the last search
-keymap("n", "<leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>", opts)
+vim.keymap.set("n", "<leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>", opts)
 
 -- Faster linewise scrolling
-keymap("n", "<C-e>", "3<C-e>", opts)
-keymap("n", "<C-y>", "3<C-y>", opts)
+vim.keymap.set("n", "<C-e>", "3<C-e>", opts)
+vim.keymap.set("n", "<C-y>", "3<C-y>", opts)
 
 -- Keep the window centered
-keymap("n", "G", "Gzzzv", opts)
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+vim.keymap.set("n", "G", "Gzzzv", opts)
+vim.keymap.set("n", "n", "nzzzv", opts)
+vim.keymap.set("n", "N", "Nzzzv", opts)
+vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
 -- Copy to the end of the line
-keymap("n", "Y", "yg$", opts)
+vim.keymap.set("n", "Y", "yg$", opts)
 
 -- Close all buffers
-keymap("n", "XX", ":qa<CR>", opts)
+vim.keymap.set("n", "XX", ":qa<CR>", opts)
 
 -- Add lines in NORMAL Mode
-keymap("n", "gN", "o<ESC>k", opts)
-keymap("n", "gNN", "O<ESC>j", opts)
+vim.keymap.set("n", "gN", "o<ESC>k", opts)
+vim.keymap.set("n", "gNN", "O<ESC>j", opts)
 
 -- Change to the folder of the current file
-keymap("n", "<leader>cf", ":cd %:p:h<CR>:pwd<CR>", opts)
+vim.keymap.set("n", "<leader>cf", ":cd %:p:h<CR>:pwd<CR>", opts)
 
 -- Reformat a line into a block
-keymap("n", "<leader>rq", "gqip", opts)
+vim.keymap.set("n", "<leader>rq", "gqip", opts)
 
 -- Reformat a block into a line
-keymap("n", "<leader>rqq", "vipJ", opts)
+vim.keymap.set("n", "<leader>rqq", "vipJ", opts)
 
 -- Easier split navigation
-keymap("n", "<C-J>", "<C-W><C-K>", opts)
-keymap("n", "<C-K>", "<C-W><C-L>", opts)
-keymap("n", "<C-L>", "<C-W><C-H>", opts)
-keymap("n", "<C-H>", "<C-W><C-H>", opts)
+vim.keymap.set("n", "<C-J>", "<C-W><C-K>", opts)
+vim.keymap.set("n", "<C-K>", "<C-W><C-L>", opts)
+vim.keymap.set("n", "<C-L>", "<C-W><C-H>", opts)
+vim.keymap.set("n", "<C-H>", "<C-W><C-H>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-M-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-M-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-M-Left>", ":vertical resize +2<CR>", opts)
-keymap("n", "<C-M-Right>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<C-M-Up>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<C-M-Down>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<C-M-Left>", ":vertical resize +2<CR>", opts)
+vim.keymap.set("n", "<C-M-Right>", ":vertical resize -2<CR>", opts)
 
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+vim.keymap.set("v", "<A-j>", ":m .+1<CR>==", opts)
+vim.keymap.set("v", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Navigate buffers
---[[ keymap("n", "<S-l>", ":bnext<CR>", opts) ]]
---[[ keymap("n", "<S-h>", ":bprevious<CR>", opts) ]]
+--[[ vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts) ]]
+--[[ vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts) ]]
 
 -- Remap Jump to Tag
-keymap("n", "ü", "<C-]>", opts)
-keymap("n", "Ü", "<C-O>", opts)
+vim.keymap.set("n", "ü", "<C-]>", opts)
+vim.keymap.set("n", "Ü", "<C-O>", opts)
 
 -- Open for Markdown in iA Writer
-keymap("n", "<leader>ia", ":silent !open -a iA\\ Writer.app '%:p'<CR>", opts)
+vim.keymap.set("n", "<leader>ia", ":silent !open -a iA\\ Writer.app '%:p'<CR>", opts)
 
 -- Custom Text-Objects
-keymap("o", "il", ":<c-u>normal! $v^<CR>", opts)
-keymap("x", "il", ":<c-u>normal! $v^<CR>", opts)
-keymap("o", "al", ":<c-u>normal! $v0<CR>", opts)
-keymap("x", "al", ":<c-u>normal! $v0<CR>", opts)
+vim.keymap.set("o", "il", ":<c-u>normal! $v^<CR>", opts)
+vim.keymap.set("x", "il", ":<c-u>normal! $v^<CR>", opts)
+vim.keymap.set("o", "al", ":<c-u>normal! $v0<CR>", opts)
+vim.keymap.set("x", "al", ":<c-u>normal! $v0<CR>", opts)
 
 -- LSP formatting
-keymap("n", "<leader>o", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+vim.keymap.set("n", "<leader>o", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 -- Manual Prettier
-keymap("n", "<leader>P", "<cmd>Prettier<CR>", opts)
+vim.keymap.set("n", "<leader>P", "<cmd>Prettier<CR>", opts)
 
 -- Get the filename and path of current file
-keymap("n", "<leader>kn", ":let @+=@%<CR>", opts)
+vim.keymap.set("n", "<leader>kn", ":let @+=@%<CR>", opts)
 
 -- Remove console.log statements
-keymap("n", "<leader>kc", ":g/console.log/d<CR>", opts)
+vim.keymap.set("n", "<leader>kc", ":g/console.log/d<CR>", opts)
 
 -- Convert Markdown to HTML and copy to Clipboard
-keymap("v", "<leader>kp", ":'<,'> w !pandoc --no-highlight --wrap=none | pbcopy <CR>", opts)
+vim.keymap.set("v", "<leader>kp", ":'<,'> w !pandoc --no-highlight --wrap=none | pbcopy <CR>", opts)

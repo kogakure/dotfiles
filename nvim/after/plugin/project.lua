@@ -1,10 +1,9 @@
 -- https://github.com/ahmedkhalf/project.nvim
-local status_ok, project = pcall(require, "project_nvim")
-if not status_ok then
-	return
-end
+local opts = { noremap = true, silent = true }
 
-project.setup({
+vim.keymap.set("n", "<leader>pm", [[<Cmd>:Telescope projects<CR>]], opts)
+
+require("project_nvim").setup({
 	active = true,
 	on_config_done = nil,
 	manual_mode = false,
@@ -23,8 +22,3 @@ project.setup({
 	ignore_lsp = {},
 	datapath = vim.fn.stdpath("data"),
 })
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>pm", [[<Cmd>:Telescope projects<CR>]], opts)

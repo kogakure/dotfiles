@@ -122,5 +122,6 @@ function ReloadConfig(files)
 		hs.reload()
 	end
 end
+
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", ReloadConfig):start()
 hs.alert.show("Hammerspoon")

@@ -1,8 +1,5 @@
 -- https://github.com/folke/which-key.nvim
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-	return
-end
+local which_key = require("which-key")
 
 local mappings = {
 	b = { "<CMD>Telescope buffers<CR>", "Buffers" },

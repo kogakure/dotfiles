@@ -1,6 +1,4 @@
 --- https://github.com/elijahmanor/export-to-vscode.nvim
-local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Keymaps
-keymap("n", "<leader>code", [[<Cmd>lua require("export-to-vscode").launch()<CR>]], opts)
+vim.keymap.set("n", "<leader>code", [[<Cmd>lua require("export-to-vscode").launch()<CR>]], opts)

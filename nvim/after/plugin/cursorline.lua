@@ -1,10 +1,5 @@
 -- https://github.com/yamatsum/nvim-cursorline
-local status, cursorline = pcall(require, "nvim-cursorline")
-if not status then
-	return
-end
-
-cursorline.setup({
+require("nvim-cursorline").setup({
 	cursorline = {
 		enable = true,
 		timeout = 1000,
