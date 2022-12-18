@@ -158,7 +158,6 @@ return packer.startup(function(use)
 	use("mattn/emmet-vim") -- Emmet
 	use("editorconfig/editorconfig-vim") -- Editorconfig
 	use("sheerun/vim-polyglot") -- A collection of language packs (?)
-	use("godlygeek/tabular") -- Align everything
 	use("tpope/vim-abolish") -- Autofix spelling mistakes
 	use("mg979/vim-visual-multi") -- Multi cursor mode
 	use("vim-scripts/VisIncr") -- Increase and decreasing numbers, dates, daynames etc.
@@ -177,6 +176,7 @@ return packer.startup(function(use)
 	use("folke/todo-comments.nvim") -- Highlight TODO
 	use("DNLHC/glance.nvim") -- Pretty preview of LSP locations
 	use("rlane/pounce.nvim") -- Incremental fuzzy search motion
+	use("echasnovski/mini.nvim") -- Library with 20+ plugins
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
