@@ -177,6 +177,7 @@ return packer.startup(function(use)
 	use("DNLHC/glance.nvim") -- Pretty preview of LSP locations
 	use("rlane/pounce.nvim") -- Incremental fuzzy search motion
 	use("echasnovski/mini.nvim") -- Library with 20+ plugins
+	use("dhruvasagar/vim-table-mode") -- Markdown table mode
 
 	-- Custom Text Objects
 	use("christoomey/vim-titlecase")
