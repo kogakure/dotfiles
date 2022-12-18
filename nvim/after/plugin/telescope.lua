@@ -27,6 +27,7 @@ vim.keymap.set("n", "<leader>nm", [[<Cmd>Telescope node_modules list<CR>]], opts
 vim.keymap.set("n", "<leader>r", [[<Cmd>Telescope resume<CR>]], opts)
 vim.keymap.set("n", "<leader>tg", [[<Cmd>Telescope tags<CR>]], opts)
 vim.keymap.set("n", "<leader>ty", [[<Cmd>Telescope symbols<CR>]], opts)
+vim.keymap.set("n", "<leader>u", [[<Cmd>Telescope undo<CR>]], opts)
 
 telescope.load_extension("bookmarks")
 telescope.load_extension("node_modules")
@@ -40,6 +41,7 @@ telescope.load_extension("heading")
 telescope.load_extension("gh")
 telescope.load_extension("git_worktree")
 telescope.load_extension("dir")
+telescope.load_extension("undo")
 
 telescope.setup({
 	defaults = {
