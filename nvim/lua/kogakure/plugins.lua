@@ -147,6 +147,7 @@ return packer.startup(function(use)
 	use("kevinhwang91/nvim-bqf") -- Better Quickfix
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- Better folds
 	use("debugloop/telescope-undo.nvim") -- Undo history
+	use("mrjones2014/smart-splits.nvim") -- Smart splits
 
 	-- Editing Files
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
