@@ -25,7 +25,7 @@ require("zen-mode").setup({
 		tmux = { enabled = false }, -- disables the tmux statusline
 		kitty = {
 			enabled = true,
-			font = "+5", -- font size increment
+			font = "+2", -- font size increment
 		},
 	},
 	on_open = function()
