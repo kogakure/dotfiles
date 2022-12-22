@@ -6,6 +6,8 @@ require("colorizer").setup({
 	"javascriptreact",
 	"typescript",
 	"typescriptreact",
+	"yaml",
+	"conf",
 }, {
 	RGB = true,
 	RRGGBB = true,
