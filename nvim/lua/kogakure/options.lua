@@ -17,6 +17,7 @@ local options = {
 	grepprg = "rg\\ --vimgrep\\ --no-heading\\ --smart-case",
 	hidden = true,
 	ignorecase = true,
+	laststatus = 3,
 	list = false,
 	listchars = {
 		tab = "↦ ",
