@@ -63,13 +63,13 @@ end
 -- Indent Text Object
 function Indent_text_objects()
 	for _, mode in ipairs({ "x", "o" }) do
-		keymap(mode, "ii", ":<c-u>lua select_indent()<cr>", {
+		keymap(mode, "ii", ":<c-u>lua Select_indent()<cr>", {
 			noremap = true,
 			silent = true,
 		})
-		keymap(mode, "ai", ":<c-u>lua select_indent(true)<cr>", {
-			noremap = true,
+		keymap(mode, "ai", ":<c-u>lua Select_indent(true)<cr>", {
 			silent = true,
+			noremap = true,
 		})
 	end
 end

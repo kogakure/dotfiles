@@ -89,3 +89,5 @@ vim.keymap.set("n", "<leader>P", "<cmd>Prettier<CR>", { desc = "Format with Pret
 vim.keymap.set("n", "<leader>kn", ":let @+=@%<CR>", { desc = "Get the filename and path of current file", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>kc", ":g/console.log/d<CR>", { desc = "Remove console.log statements", noremap = true, silent = true })
 vim.keymap.set("v", "<leader>kp", ":'<,'> w !pandoc --no-highlight --wrap=none | pbcopy <CR>", { desc = "Convert Markdown to HTML and copy to Clipboard", noremap = true, silent = true })
+
+vim.keymap.set("n", "gsii", "<CMD>lua Select_indent()<CR>:sort<CR>", { desc = "Sort lines by indentation", noremap = true, silent = true })
