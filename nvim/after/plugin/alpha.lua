@@ -19,7 +19,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("t", "  Find Text", ":Telescope grep_string<CR>"),
 	dashboard.button("b", "  Browser Bookmarks", ":Telescope bookmarks<CR>"),
 	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
-	dashboard.button("u", "  Update Plugins", ":PackerUpdate<CR>"),
+	dashboard.button("u", "  Update Plugins", ":Lazy sync<CR>"),
 	dashboard.button("m", "  Mason (LSP, DAP, Linter, Formatter)", ":Mason<CR>"),
 	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }

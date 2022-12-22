@@ -94,7 +94,7 @@ function update () {
   pip list -o --format columns|  cut -d' ' -f1|xargs -n1 pip install -U
   npm update npm -g
   npm update -g
-  nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  nvim --headless "+Lazy! sync" +qa
   sudo softwareupdate -i -a
 }
 

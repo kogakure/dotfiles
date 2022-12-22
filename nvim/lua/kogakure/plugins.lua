@@ -1,210 +1,172 @@
--- Packer.nvim – https://github.com/wbthomason/packer.nvim
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
+-- Lazy.nvim - https://github.com/folke/lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
 		"git",
 		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
+		"--filter=blob:none",
+		"--single-branch",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
 	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup end
-]])
+vim.opt.runtimepath:prepend(lazypath)
 
--- Use a protected call so we don’t error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
-end
-
--- Have packer use a popup window
-packer.init({
-	max_jobs = 8,
-	display = {
-		open_fn = function()
-			return require("packer.util").float({
-				border = "rounded",
-			})
-		end,
-	},
-})
-
--- Plugins
-return packer.startup(function(use)
-	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+require("lazy").setup({
+	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 
 	-- Colorscheme
-	use("chriskempson/base16-vim") -- Base16 colorschemes
-	use("folke/tokyonight.nvim") -- Tokyo Night color scheme
-	use({ "catppuccin/nvim", as = "catppuccin" }) -- Catppuccin color scheme
+	"chriskempson/base16-vim", -- Base16 colorschemes
+	"folke/tokyonight.nvim", -- Tokyo Night color scheme
+	{ "catppuccin/nvim", name = "catppuccin" }, -- Catppuccin color scheme
 
 	-- CMP
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- Buffer completions
-	use("hrsh7th/cmp-path") -- Path completions
-	use("hrsh7th/cmp-cmdline") -- Cmdline completions
-	use("hrsh7th/cmp-nvim-lua") -- Lua API completions
-	use("hrsh7th/cmp-copilot") -- GitHub Copilot completions
-	use("saadparwaiz1/cmp_luasnip") -- Snippet completions
-	use("uga-rosa/cmp-dictionary") -- Dictionary completions
-	use("f3fora/cmp-spell") -- Spell completions
-	use("David-Kunz/cmp-npm") -- NPM package completions
-	use("hrsh7th/cmp-nvim-lsp") -- LSP completions
-	use("hrsh7th/cmp-nvim-lsp-signature-help") -- LSP Signature Help
+	"hrsh7th/nvim-cmp", -- The completion plugin
+	"hrsh7th/cmp-buffer", -- Buffer completions
+	"hrsh7th/cmp-path", -- Path completions
+	"hrsh7th/cmp-cmdline", -- Cmdline completions
+	"hrsh7th/cmp-nvim-lua", -- Lua API completions
+	"hrsh7th/cmp-copilot", -- GitHub Copilot completions
+	"saadparwaiz1/cmp_luasnip", -- Snippet completions
+	"uga-rosa/cmp-dictionary", -- Dictionary completions
+	"f3fora/cmp-spell", -- Spell completions
+	"David-Kunz/cmp-npm", -- NPM package completions
+	"hrsh7th/cmp-nvim-lsp", -- LSP completions
+	"hrsh7th/cmp-nvim-lsp-signature-help", -- LSP Signature Help
 
 	-- Snippets
-	use("L3MON4D3/LuaSnip") -- Snippet Engine
-	use("rafamadriz/friendly-snippets") -- A bunch of snippets
+	"L3MON4D3/LuaSnip", -- Snippet Engine
+	"rafamadriz/friendly-snippets", -- A bunch of snippets
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- Enable LSP
-	use("williamboman/mason.nvim") -- Manage LSP servers, DAP servers, linters, and formatters
-	use("williamboman/mason-lspconfig.nvim") -- Bridge betwen Mason and lspconfig
-	use("jay-babu/mason-null-ls.nvim") -- Bridge between Mason and null-ls
-	use("jose-elias-alvarez/null-ls.nvim") -- Inject LSP diagnostics, code actions, and more
-	use("folke/trouble.nvim") -- Diagnostics
-	use("creativenull/diagnosticls-configs-nvim") -- Collection of linters and formatters
-	use("tamago324/nlsp-settings.nvim") -- LSP for json/yaml
-	use({ "kosayoda/nvim-lightbulb", requires = "antoinemadec/FixCursorHold.nvim" })
+	"neovim/nvim-lspconfig", -- Enable LSP
+	"williamboman/mason.nvim", -- Manage LSP servers, DAP servers, linters, and formatters
+	"williamboman/mason-lspconfig.nvim", -- Bridge betwen Mason and lspconfig
+	"jay-babu/mason-null-ls.nvim", -- Bridge between Mason and null-ls
+	"jose-elias-alvarez/null-ls.nvim", -- Inject LSP diagnostics, code actions, and more
+	"folke/trouble.nvim", -- Diagnostics
+	"creativenull/diagnosticls-configs-nvim", -- Collection of linters and formatters
+	"tamago324/nlsp-settings.nvim", -- LSP for json/yaml
+	{ "kosayoda/nvim-lightbulb", dependencies = "antoinemadec/FixCursorHold.nvim" },
 
 	-- FZF
-	use({ "junegunn/fzf", run = "./install --bin" })
-	use("ibhagwan/fzf-lua")
+	{ "junegunn/fzf", build = "./install --bin" },
+	"ibhagwan/fzf-lua",
 
 	-- Telescope
-	use("nvim-telescope/telescope.nvim")
-	use("dhruvmanila/telescope-bookmarks.nvim") -- Open browser bookmarks
-	use("nvim-telescope/telescope-file-browser.nvim") -- File and folder actions
-	use("sudormrfbin/cheatsheet.nvim") -- Searchable cheatsheet
-	use("nvim-telescope/telescope-node-modules.nvim") -- node_modules packages
-	use("gbrlsnchs/telescope-lsp-handlers.nvim") -- LSP handlers
-	use("crispgm/telescope-heading.nvim") -- Jump between headings
-	use("nvim-telescope/telescope-fzy-native.nvim") -- FZY style sorter that is compiled
-	use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sqlite.lua" } }) -- Frequency and recency
-	use("nvim-telescope/telescope-github.nvim") -- GitHub CLI
-	use("nvim-telescope/telescope-symbols.nvim") -- Symbols
-	use("princejoogie/dir-telescope.nvim") -- Perform functions in selected directory
+	"nvim-telescope/telescope.nvim",
+	"dhruvmanila/telescope-bookmarks.nvim", -- Open browser bookmarks
+	"nvim-telescope/telescope-file-browser.nvim", -- File and folder actions
+	"sudormrfbin/cheatsheet.nvim", -- Searchable cheatsheet
+	"nvim-telescope/telescope-node-modules.nvim", -- node_modules packages
+	"gbrlsnchs/telescope-lsp-handlers.nvim", -- LSP handlers
+	"crispgm/telescope-heading.nvim", -- Jump between headings
+	"nvim-telescope/telescope-fzy-native.nvim", -- FZY style sorter that is compiled
+	{ "nvim-telescope/telescope-frecency.nvim", dependencies = { "tami5/sqlite.lua" } }, -- Frequency and recency
+	"nvim-telescope/telescope-github.nvim", -- GitHub CLI
+	"nvim-telescope/telescope-symbols.nvim", -- Symbols
+	"princejoogie/dir-telescope.nvim", -- Perform functions in selected directory
 
 	-- Treesitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use("p00f/nvim-ts-rainbow") -- Rainbox parentheses
-	use("nvim-treesitter/playground") -- Treesitter information in Neovim
-	use("nvim-treesitter/nvim-treesitter-context") -- Show context
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	"p00f/nvim-ts-rainbow", -- Rainbox parentheses
+	"nvim-treesitter/playground", -- Treesitter information in Neovim
+	"nvim-treesitter/nvim-treesitter-context", -- Show context
 
 	-- DAP
-	use("mfussenegger/nvim-dap") -- Debug Adapter Protocol
+	"mfussenegger/nvim-dap", -- Debug Adapter Protocol
 
 	-- File/Window Management
-	use("ThePrimeagen/harpoon") --  Getting you where you want
-	use("ThePrimeagen/git-worktree.nvim") -- Git Worktree
-	use("lewis6991/gitsigns.nvim") -- Git decorations
-	use("kyazdani42/nvim-web-devicons") -- Icons and colors for file types
-	use("kyazdani42/nvim-tree.lua") -- A File Explorer
-	use("akinsho/bufferline.nvim") -- Emulate tabs for buffers
-	use("moll/vim-bbye") -- Delete buffers without closing the window
-	use("akinsho/toggleterm.nvim") -- Terminal in Neovim
-	use("nvim-lualine/lualine.nvim") -- Statusline
-	use("norcalli/nvim-colorizer.lua") -- Highlight colors
-	use("ahmedkhalf/project.nvim") -- Project Management
-	use("lewis6991/impatient.nvim") -- Speed Up Startup
-	use("lukas-reineke/indent-blankline.nvim") -- Indentation guides
-	use("goolord/alpha-nvim") -- Customizable Greeter
-	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
-	use("MattesGroeger/vim-bookmarks") -- Bookmarks
-	use("folke/which-key.nvim") -- Display possible keybindings
-	use("mrjones2014/legendary.nvim") -- Legend for keymaps, commands, and autocommands
-	use("APZelos/blamer.nvim") -- Git Blame
-	use("tpope/vim-fugitive") -- Git plugin
-	use("elijahmanor/export-to-vscode.nvim") -- Export active Buffers to Visual Studio Code
-	use("bogado/file-line") -- Jump directly to line in file with 'nvim index.html:20'
-	use("ruanyl/vim-gh-line") -- Open current line in GitHub
-	use("pwntester/octo.nvim") -- GitHub in Neovim
-	use("nvim-pack/nvim-spectre") -- Search and replace
-	use("stevearc/dressing.nvim") -- Improve the default vim.ui interfaces
-	use("folke/zen-mode.nvim") -- Zen Mode
-	use("tpope/vim-eunuch") -- UNIX Shell commands
-	use("folke/twilight.nvim") -- Dim inactive code
-	use("ray-x/guihua.lua") -- Lua GUI lib
-	use("ray-x/sad.nvim") -- Find & Replace
-	use("gorbit99/codewindow.nvim") -- Minimap
-	use("simrat39/symbols-outline.nvim") -- Symbols Outline
-	use("SmiteshP/nvim-navic") -- Statusline current context
-	use("kevinhwang91/nvim-bqf") -- Better Quickfix
-	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- Better folds
-	use("debugloop/telescope-undo.nvim") -- Undo history
-	use("mrjones2014/smart-splits.nvim") -- Smart splits
+	"ThePrimeagen/harpoon", --  Getting you where you want
+	"ThePrimeagen/git-worktree.nvim", -- Git Worktree
+	"lewis6991/gitsigns.nvim", -- Git decorations
+	"kyazdani42/nvim-web-devicons", -- Icons and colors for file types
+	"kyazdani42/nvim-tree.lua", -- A File Explorer
+	"akinsho/bufferline.nvim", -- Emulate tabs for buffers
+	"moll/vim-bbye", -- Delete buffers without closing the window
+	"akinsho/toggleterm.nvim", -- Terminal in Neovim
+	"nvim-lualine/lualine.nvim", -- Statusline
+	"norcalli/nvim-colorizer.lua", -- Highlight colors
+	"ahmedkhalf/project.nvim", -- Project Management
+	"lewis6991/impatient.nvim", -- Speed Up Startup
+	"lukas-reineke/indent-blankline.nvim", -- Indentation guides
+	"goolord/alpha-nvim", -- Customizable Greeter
+	"antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
+	"MattesGroeger/vim-bookmarks", -- Bookmarks
+	"folke/which-key.nvim", -- Display possible keybindings
+	"mrjones2014/legendary.nvim", -- Legend for keymaps, commands, and autocommands
+	"APZelos/blamer.nvim", -- Git Blame
+	"tpope/vim-fugitive", -- Git plugin
+	"elijahmanor/export-to-vscode.nvim", -- Export active Buffers to Visual Studio Code
+	"bogado/file-line", -- Jump directly to line in file with 'nvim index.html:20'
+	"ruanyl/vim-gh-line", -- Open current line in GitHub
+	"pwntester/octo.nvim", -- GitHub in Neovim
+	"nvim-pack/nvim-spectre", -- Search and replace
+	"stevearc/dressing.nvim", -- Improve the default vim.ui interfaces
+	"folke/zen-mode.nvim", -- Zen Mode
+	"tpope/vim-eunuch", -- UNIX Shell commands
+	"folke/twilight.nvim", -- Dim inactive code
+	"ray-x/guihua.lua", -- Lua GUI lib
+	"ray-x/sad.nvim", -- Find & Replace
+	"gorbit99/codewindow.nvim", -- Minimap
+	"simrat39/symbols-outline.nvim", -- Symbols Outline
+	"SmiteshP/nvim-navic", -- Statusline current context
+	"kevinhwang91/nvim-bqf", -- Better Quickfix
+	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" }, -- Better folds
+	"debugloop/telescope-undo.nvim", -- Undo history
+	"mrjones2014/smart-splits.nvim", -- Smart splits
 
 	-- Editing Files
-	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-	use("windwp/nvim-ts-autotag") -- Autoclose and autorename html tags
-	use("numToStr/Comment.nvim") -- Easily comment stuff
-	use("JoosepAlviste/nvim-ts-context-commentstring") -- Comment based on cursor location of file
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", cmd = "MarkdownPreview" })
-	use("yamatsum/nvim-cursorline") -- Highlight words and lines on the cursor
-	use("mattn/emmet-vim") -- Emmet
-	use("editorconfig/editorconfig-vim") -- Editorconfig
-	use("sheerun/vim-polyglot") -- A collection of language packs (?)
-	use("tpope/vim-abolish") -- Autofix spelling mistakes
-	use("mg979/vim-visual-multi") -- Multi cursor mode
-	use("vim-scripts/VisIncr") -- Increase and decreasing numbers, dates, daynames etc.
-	use("monaqa/dial.nvim") -- Increase and decrease numbers, dates, times, etc
-	use("rstacruz/vim-xtract") -- Extract code into new file
-	use("tpope/vim-repeat") -- Repeat plugins
-	use("kylechui/nvim-surround") -- Surround selections, stylishly
-	use("wuelnerdotexe/vim-astro") -- Astro support
-	use("MunifTanjim/prettier.nvim") -- Prettier
-	use("untitled-ai/jupyter_ascending.vim") -- Interact with jupyter_ascending
-	use("rhysd/vim-grammarous") -- A powerful grammar checker for Vim using LanguageTool
-	use("mechatroner/rainbow_csv") -- Rainbow CSV
-	use("dbeniamine/cheat.sh-vim") -- Cheat.sh
-	use("wakatime/vim-wakatime") -- Wakatime
-	use("github/copilot.vim") -- GitHub Copilot
-	use("folke/todo-comments.nvim") -- Highlight TODO
-	use("DNLHC/glance.nvim") -- Pretty preview of LSP locations
-	use("rlane/pounce.nvim") -- Incremental fuzzy search motion
-	use("echasnovski/mini.nvim") -- Library with 20+ plugins
-	use("dhruvasagar/vim-table-mode") -- Markdown table mode
+	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+	"windwp/nvim-ts-autotag", -- Autoclose and autorename html tags
+	"numToStr/Comment.nvim", -- Easily comment stuff
+	"JoosepAlviste/nvim-ts-context-commentstring", -- Comment based on cursor location of file
+	{ "iamcco/markdown-preview.nvim", build = "cd app && yarn install", cmd = "MarkdownPreview" },
+	"yamatsum/nvim-cursorline", -- Highlight words and lines on the cursor
+	"mattn/emmet-vim", -- Emmet
+	"editorconfig/editorconfig-vim", -- Editorconfig
+	"sheerun/vim-polyglot", -- A collection of language packs (?,
+	"tpope/vim-abolish", -- Autofix spelling mistakes
+	"mg979/vim-visual-multi", -- Multi cursor mode
+	"vim-scripts/VisIncr", -- Increase and decreasing numbers, dates, daynames etc.
+	"monaqa/dial.nvim", -- Increase and decrease numbers, dates, times, etc
+	"rstacruz/vim-xtract", -- Extract code into new file
+	"tpope/vim-repeat", -- Repeat plugins
+	"kylechui/nvim-surround", -- Surround selections, stylishly
+	"wuelnerdotexe/vim-astro", -- Astro support
+	"MunifTanjim/prettier.nvim", -- Prettier
+	"untitled-ai/jupyter_ascending.vim", -- Interact with jupyter_ascending
+	"rhysd/vim-grammarous", -- A powerful grammar checker for Vim using LanguageTool
+	"mechatroner/rainbow_csv", -- Rainbow CSV
+	"dbeniamine/cheat.sh-vim", -- Cheat.sh
+	"wakatime/vim-wakatime", -- Wakatime
+	"github/copilot.vim", -- GitHub Copilot
+	"folke/todo-comments.nvim", -- Highlight TODO
+	"DNLHC/glance.nvim", -- Pretty preview of LSP locations
+	"rlane/pounce.nvim", -- Incremental fuzzy search motion
+	"echasnovski/mini.nvim", -- Library with 20+ plugins
+	"dhruvasagar/vim-table-mode", -- Markdown table mode
 
 	-- Custom Text Objects
-	use("christoomey/vim-titlecase")
-	use("glts/vim-textobj-comment") -- ac, ic, aC
-	use("jceb/vim-textobj-uri") -- au, iu, go
-	use("kana/vim-textobj-datetime") -- ada, add, adf, adt, adz, ida, …
-	use("kana/vim-textobj-user")
-	use("michaeljsmith/vim-indent-object") -- ai, ii, aI, iI
-	use("whatyouhide/vim-textobj-xmlattr") -- ax, ix
-	use("nvim-treesitter/nvim-treesitter-textobjects") -- Syntax aware text-objects
+	"christoomey/vim-titlecase",
+	"michaeljsmith/vim-indent-object", -- ai, ii, aI, iI
+	"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects
+	{ "glts/vim-textobj-comment", dependencies = { "kana/vim-textobj-user" } }, -- ac, ic, aC
+	{ "jceb/vim-textobj-uri", dependencies = { "kana/vim-textobj-user" } }, -- au, iu, go
+	{ "kana/vim-textobj-datetime", dependencies = { "kana/vim-textobj-user" } }, -- ada, add, adf, adt, adz, ida, …
+	{ "whatyouhide/vim-textobj-xmlattr", dependencies = { "kana/vim-textobj-user" } }, -- ax, ix
 
 	-- Custom Motions
-	use("christoomey/vim-sort-motion") -- gs
-	use("tommcdo/vim-exchange") -- cx, cxx, X, cxc
-	use("easymotion/vim-easymotion") -- <Leader><Leader>f/L
-	use("andymass/vim-matchup") -- Better % matching
+	"christoomey/vim-sort-motion", -- gs
+	"tommcdo/vim-exchange", -- cx, cxx, X, cxc
+	"easymotion/vim-easymotion", -- <Leader><Leader>f/L
+	"andymass/vim-matchup", -- Better % matching
 
 	-- TMUX
-	use("christoomey/vim-tmux-navigator")
-	use("preservim/vimux")
-	use("tyewang/vimux-jest-test") -- JavaScript tests
-	use("jtdowney/vimux-cargo") -- Rust tests
-
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
-end)
+	"christoomey/vim-tmux-navigator",
+	"preservim/vimux",
+	"tyewang/vimux-jest-test", -- JavaScript tests
+	"jtdowney/vimux-cargo", -- Rust tests
+})
