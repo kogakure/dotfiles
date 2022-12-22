@@ -13,7 +13,7 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
-require("lazy").setup({
+local plugins = {
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 
@@ -150,16 +150,15 @@ require("lazy").setup({
 	"dhruvasagar/vim-table-mode", -- Markdown table mode
 
 	-- Custom Text Objects
-	"christoomey/vim-titlecase",
-	"michaeljsmith/vim-indent-object", -- ai, ii, aI, iI
 	"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects
+	{ "kana/vim-textobj-indent", dependencies = { "kana/vim-textobj-user" } }, -- Text objects for indentation
 	{ "glts/vim-textobj-comment", dependencies = { "kana/vim-textobj-user" } }, -- ac, ic, aC
 	{ "jceb/vim-textobj-uri", dependencies = { "kana/vim-textobj-user" } }, -- au, iu, go
 	{ "kana/vim-textobj-datetime", dependencies = { "kana/vim-textobj-user" } }, -- ada, add, adf, adt, adz, ida, …
 	{ "whatyouhide/vim-textobj-xmlattr", dependencies = { "kana/vim-textobj-user" } }, -- ax, ix
+	"chrisgrieser/nvim-various-textobjs",
 
 	-- Custom Motions
-	"christoomey/vim-sort-motion", -- gs
 	"tommcdo/vim-exchange", -- cx, cxx, X, cxc
 	"easymotion/vim-easymotion", -- <Leader><Leader>f/L
 	"andymass/vim-matchup", -- Better % matching
@@ -169,4 +168,12 @@ require("lazy").setup({
 	"preservim/vimux",
 	"tyewang/vimux-jest-test", -- JavaScript tests
 	"jtdowney/vimux-cargo", -- Rust tests
-})
+}
+
+local opts = {
+	install = {
+		colorscheme = { "tokyonight-night" },
+	},
+}
+
+require("lazy").setup(plugins, opts)
