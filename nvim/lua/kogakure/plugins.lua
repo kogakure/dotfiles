@@ -117,6 +117,7 @@ local plugins = {
 	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" }, -- Better folds
 	"debugloop/telescope-undo.nvim", -- Undo history
 	"mrjones2014/smart-splits.nvim", -- Smart splits
+	"xiyaowong/nvim-transparent", -- Remove all background colors
 
 	-- Editing Files
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
@@ -150,13 +151,13 @@ local plugins = {
 	"dhruvasagar/vim-table-mode", -- Markdown table mode
 
 	-- Custom Text Objects
+	"chrisgrieser/nvim-various-textobjs", -- Various text objects
 	"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects
-	{ "kana/vim-textobj-indent", dependencies = { "kana/vim-textobj-user" } }, -- Text objects for indentation
 	{ "glts/vim-textobj-comment", dependencies = { "kana/vim-textobj-user" } }, -- ac, ic, aC
 	{ "jceb/vim-textobj-uri", dependencies = { "kana/vim-textobj-user" } }, -- au, iu, go
 	{ "kana/vim-textobj-datetime", dependencies = { "kana/vim-textobj-user" } }, -- ada, add, adf, adt, adz, ida, …
+	{ "kana/vim-textobj-indent", dependencies = { "kana/vim-textobj-user" } }, -- Text objects for indentation
 	{ "whatyouhide/vim-textobj-xmlattr", dependencies = { "kana/vim-textobj-user" } }, -- ax, ix
-	"chrisgrieser/nvim-various-textobjs",
 
 	-- Custom Motions
 	"tommcdo/vim-exchange", -- cx, cxx, X, cxc
