@@ -13,5 +13,5 @@ vim.cmd([[
 silent! colorscheme tokyonight-night
 highlight ColorColumn guibg=#202224
 highlight SpellBad guifg=red
-highlight Winseparator guifg=#444444 guibg=None
+highlight Winseparator guifg=#1F2335 guibg=None
 ]])
