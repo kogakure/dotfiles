@@ -398,8 +398,10 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-# Tmuxinator
+# Tmux
+alias t='tmux'
 alias mux="tmuxinator"
+alias tn="tmux new -s $(pwd | sed 's/.*\///g')"
 
 # Bat
 alias cat="bat"
