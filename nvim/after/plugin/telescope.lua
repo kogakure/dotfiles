@@ -3,7 +3,8 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]], opts)
+vim.keymap.set("n", "<M-p>", [[<Cmd>Telescope find_files<CR>]], opts)
+vim.keymap.set("n", "<C-p>", [[<Cmd>Telescope find_files hidden=true<CR>]], opts)
 vim.keymap.set("n", "<leader>C", [[<Cmd>Cheatsheet<CR>]], opts)
 vim.keymap.set("n", "<leader>F", [[<Cmd>Telescope live_grep<CR>]], opts)
 vim.keymap.set("n", "<leader>H", [[<Cmd>Telescope headings<CR>]], opts)

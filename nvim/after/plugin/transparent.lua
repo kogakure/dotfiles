@@ -2,15 +2,16 @@
 require("transparent").setup({
 	enable = true,
 	extra_groups = {
-		"NvimTreeNormal",
+		"BufferLineBackground",
+		"BufferLineFill",
+		"BufferLineIndicatorSelected",
+		"BufferLineSeparator",
 		"BufferLineTabClose",
 		"BufferlineBufferSelected",
-		"BufferLineFill",
-		"BufferLineBackground",
-		"BufferLineSeparator",
-		"BufferLineIndicatorSelected",
 		"IndentBlanklineIndent1",
 		"IndentBlanklineIndent2",
+		"NvimTreeNormal",
+		"TelescopeNormal",
 	},
 	exclude = {}, -- table: groups you don't want to clear
 })
