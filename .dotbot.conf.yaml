@@ -20,6 +20,7 @@
     ~/.config/ranger: ranger
     ~/.config/starship.toml: starship.toml
     ~/.config/tmuxinator: tmuxinator
+    ~/.config/yabai: yabai
     ~/.ctags: ctags
     ~/.default-gems: asdf/default-gems
     ~/.default-npm-packages: asdf/default-npm-packages
