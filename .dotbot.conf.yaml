@@ -28,6 +28,7 @@
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
+    ~/.gitmux.conf: tmux/gitmux.conf
     ~/.hammerspoon: hammerspoon
     ~/.pandoc: pandoc
     ~/.ripgreprc: ripgrep
