@@ -404,6 +404,9 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
+# Homebrew
+alias bi='brew install'
+
 # Tmux
 alias t='tmux'
 alias mux="tmuxinator"
@@ -438,6 +441,9 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Clear the screen
+alias c="clear"
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
