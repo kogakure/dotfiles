@@ -1,6 +1,6 @@
 -- https://github.com/xiyaowong/nvim-transparent
 require("transparent").setup({
-	enable = true,
+	enable = false,
 	extra_groups = {
 		"BufferLineBackground",
 		"BufferLineFill",
