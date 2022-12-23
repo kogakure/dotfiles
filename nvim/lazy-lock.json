@@ -31,6 +31,7 @@
   "emmet-vim": { "branch": "master", "commit": "def5d57a1ae5afb1b96ebe83c4652d1c03640f4d" },
   "export-to-vscode.nvim": { "branch": "main", "commit": "7746bb67d03f6a6891cdedc8c760c95a5714fe8c" },
   "file-line": { "branch": "main", "commit": "559088afaf10124ea663ee0f4f73b1de48fb1632" },
+  "fm-nvim": { "branch": "master", "commit": "8e6a77049330e7c797eb9e63affd75eb796fe75e" },
   "friendly-snippets": { "branch": "main", "commit": "1a6a02350568d6830bcfa167c72f9b6e75e454ae" },
   "fzf": { "branch": "master", "commit": "8e283f512acb74faef6f1760927e1ef4da1b5263" },
   "fzf-lua": { "branch": "main", "commit": "5abf66f63bf08121dd4e917488b59ccb693eee12" },

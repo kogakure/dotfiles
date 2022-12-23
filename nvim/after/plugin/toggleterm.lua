@@ -4,12 +4,8 @@ local Terminal = require("toggleterm.terminal").Terminal
 local opts = { noremap = true, silent = true }
 
 -- Keymaps
-vim.keymap.set("n", "<M-g>", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-vim.keymap.set("n", "<M-l>", "<cmd>lua _LF_TOGGLE()<CR>", opts)
-vim.keymap.set("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 vim.keymap.set("n", "<leader>ncdu", "<cmd>lua _NCDU_TOGGLE()<CR>", opts)
 vim.keymap.set("n", "<leader>node", "<cmd>lua _NODE_TOGGLE()<CR>", opts)
-vim.keymap.set("n", "<leader>lf", "<cmd>lua _LF_TOGGLE()<CR>", opts)
 vim.keymap.set("n", "<leader>top", "<cmd>lua _HTOP_TOGGLE()<CR>", opts)
 vim.keymap.set("n", "<leader>y", "<cmd>lua _PYTHON_TOGGLE()<CR>", opts)
 
@@ -51,21 +47,11 @@ end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-local lf = Terminal:new({ cmd = "lf", hidden = true })
 local tig = Terminal:new({ cmd = "tig", hidden = true })
 local node = Terminal:new({ cmd = "node", hidden = true })
 local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
 local htop = Terminal:new({ cmd = "htop", hidden = true })
 local python = Terminal:new({ cmd = "python", hidden = true })
-
-function _LAZYGIT_TOGGLE()
-	lazygit:toggle()
-end
-
-function _LF_TOGGLE()
-	lf:toggle()
-end
 
 function _TIG_TOGGLE()
 	tig:toggle()

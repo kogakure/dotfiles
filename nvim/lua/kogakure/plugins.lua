@@ -119,6 +119,7 @@ local plugins = {
 	"mrjones2014/smart-splits.nvim", -- Smart splits
 	"xiyaowong/nvim-transparent", -- Remove all background colors
 	"nanotee/zoxide.vim", -- zoxide integration
+	"is0n/fm-nvim", -- terminal file managers
 
 	-- Editing Files
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
