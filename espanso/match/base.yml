@@ -1,0 +1,16 @@
+imports:
+  - "../../private/espanso/finance.yml"
+
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hello World"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"

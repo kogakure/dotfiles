@@ -1,0 +1,16 @@
+# Toggle key
+
+toggle_key: RIGHT_ALT
+search_shortcut: ALT+SHIFT+SPACE
+
+# Injection Backend
+
+backend: Clipboard
+
+# Auto-restart
+
+auto_restart: true
+
+# Clipboard threshold
+
+clipboard_threshold: 100

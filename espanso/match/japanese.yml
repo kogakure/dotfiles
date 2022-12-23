@@ -1,0 +1,9 @@
+matches:
+  - trigger: "OO"
+    label: Japanisches Längenzeichen Ō
+    replace: "Ō"
+    word: true
+  - trigger: "oo"
+    label: Japanisches Längenzeichen ō
+    replace: "ō"
+    word: true

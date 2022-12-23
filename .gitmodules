@@ -8,3 +8,6 @@
 [submodule ".base16-shell"]
 	path = .base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
+[submodule "private/espanso"]
+	path = private/espanso
+	url = git@github.com:kogakure/espanso-snippets.git

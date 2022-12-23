@@ -11,6 +11,7 @@
     ~/.config/alacritty: alacritty
     ~/.config/base16-shell: .base16-shell
     ~/.config/cava: cava
+    ~/.config/espanso: espanso
     ~/.config/fish: fish
     ~/.config/gh/config.yml: github/config.yml
     ~/.config/karabiner: karabiner
