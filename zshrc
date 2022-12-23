@@ -101,6 +101,12 @@ function update () {
   sudo softwareupdate -i -a
 }
 
+function replaceKittyLogo () {
+  cp ~/Dropbox/Software/Kitty/kitty-icon/kitty-dark.icns /Applications/kitty.app/Contents/Resources/kitty.icns
+  rm /var/folders/*/*/*/com.apple.dock.iconcache
+  killall Dock
+}
+
 # Delete all node_modules folders in a folder and subfolders
 function deleteNodeModules () {
   find . -name "node_modules" -type d -exec rm -rf '{}' +
