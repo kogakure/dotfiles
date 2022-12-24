@@ -418,6 +418,7 @@ alias bi='brew install'
 # Tmux
 alias t='tmux'
 alias mux="tmuxinator"
+alias ms="mux start"
 alias tn="tmux new -s $(pwd | sed 's/.*\///g')"
 
 # Bat
