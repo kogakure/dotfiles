@@ -40,12 +40,15 @@ export PATH="$HOME/.rd/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# TMUX nvr
+# TMUX
 if [ -n "$TMUX" ]; then
   eval "$(tmux show-environment -s NVIM_LISTEN_ADDRESS 2> /dev/null)"
 else
   export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 fi
+
+export PATH=$HOME/.tmux/plugins/tmux-nvr/bin:$PATH
+export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
 # Conda
 # >>> conda initialize >>>
