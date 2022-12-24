@@ -1,6 +1,7 @@
 tap "charmbracelet/tap"
 tap "cooklang/tap"
 tap "denisidoro/tools"
+tap "espanso/espanso"
 tap "felixkratz/formulae"
 tap "fsouza/prettierd"
 tap "github/gh"
@@ -12,6 +13,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "jondot/tap"
+tap "koekeishiya/formulae"
 tap "ms-jpq/sad"
 tap "neovim/neovim"
 tap "ttscoff/thelab"
@@ -76,6 +78,10 @@ brew "bitwarden-cli"
 brew "brew-gem"
 # Freely available high-quality data compressor
 brew "bzip2"
+# GNU compiler collection
+brew "gcc"
+# Console-based Audio Visualizer for ALSA
+brew "cava"
 # Statistics utility to count lines of code
 brew "cloc"
 # JavaScript optimizing compiler
@@ -134,6 +140,8 @@ brew "jpeg", link: true
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
 # Static type checker for JavaScript
 brew "flow"
 # Command-line outline and bitmap font editor/converter
@@ -142,8 +150,6 @@ brew "fontforge"
 brew "fpp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -198,16 +204,22 @@ brew "httpie"
 brew "hub"
 # Configurable static site generator
 brew "hugo"
+# Open h.265 video codec implementation
+brew "libde265"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
 # Peer-to-peer hypermedia protocol
-brew "ipfs", restart_service: true
+brew "ipfs"
 # Command-line pager for JSON data
 brew "jless"
+# Lazier way to manage everything docker
+brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Open h.265 video codec implementation
-brew "libde265"
+# Terminal file manager
+brew "lf"
 # Access DVDs as block devices without the decryption
 brew "libdvdcss"
 # Conversion library
@@ -244,6 +256,8 @@ brew "mysql"
 brew "navi"
 # NCurses Disk Usage
 brew "ncdu"
+# Fast, highly customisable system info script
+brew "neofetch"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -342,10 +356,10 @@ brew "xdotool"
 brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
-# Tracks most-used directories to make cd smarter
-brew "z"
 # Plain text note-taking assistant
 brew "zk"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Fish shell like syntax highlighting for zsh
@@ -362,16 +376,26 @@ brew "cooklang/tap/cook"
 brew "fsouza/prettierd/prettierd"
 # The scalable code generator that saves you time.
 brew "jondot/tap/hygen"
+# Simple hotkey-daemon for macOS.
+brew "koekeishiya/formulae/skhd"
+# A tiling window manager for macOS based on binary space partitioning.
+brew "koekeishiya/formulae/yabai"
 # Search and replace | Space Age seD
 brew "ms-jpq/sad/sad"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+# Time tracker
+cask "activitywatch"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Application launcher and productivity software
 cask "alfred"
 # Network scanner
 cask "angry-ip-scanner"
 # Application uninstaller
 cask "appcleaner"
+# Audio utility
+cask "background-music"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Menu bar icon organizer
@@ -413,6 +437,8 @@ cask "db-browser-for-sqlite"
 cask "deepl"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
+# Run Stable Diffusion locally
+cask "diffusionbee"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerized applications and microservices
@@ -423,6 +449,8 @@ cask "dropbox"
 cask "easyfind"
 # Matrix collaboration client
 cask "element"
+# Cross-platform Text Expander written in Rust
+cask "espanso"
 # Collaborative team software
 cask "figma"
 # Web browser
@@ -547,6 +575,8 @@ cask "qlvideo"
 cask "raindropio"
 # Kubernetes and container management on the desktop
 cask "rancher"
+# Imaging utility to install operating systems to a microSD card
+cask "raspberry-pi-imager"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Web browser
@@ -565,6 +595,8 @@ cask "signal"
 cask "sketchbook"
 # Team communication and collaboration software
 cask "slack"
+# App launcher/switcher
+cask "spacelauncher"
 # Music streaming service
 cask "spotify"
 # Video game digital distribution service
