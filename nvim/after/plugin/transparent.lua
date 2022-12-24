@@ -59,6 +59,7 @@ require("transparent").setup({
 		"BufferlineTab",
 		"BufferlineTabSelected",
 		"BufferlineOffsetSeparator",
+		"FloatBorder",
 		"IndentBlanklineIndent1",
 		"Pmenu",
 		"IndentBlanklineIndent2",
