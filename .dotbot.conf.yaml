@@ -18,6 +18,7 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/ranger: ranger
+    ~/.config/skhd: skhd
     ~/.config/starship.toml: starship.toml
     ~/.config/tmuxinator: tmuxinator
     ~/.config/yabai: yabai
