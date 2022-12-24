@@ -1,12 +1,45 @@
 matches:
-  - trigger: ":ddt"
-    replace: "datetime"
-
-  # Print the current date
-  - trigger: ":date"
-    replace: "{{mydate}}"
+  - trigger: ":dat"
+    label: Datum (DD.MM.YYYY)
+    replace: "{{current_date}}"
     vars:
-      - name: mydate
+      - name: current_date
         type: date
         params:
-          format: "%m/%d/%Y"
+          format: "%d.%m.%Y"
+
+  - trigger: ":udat"
+    label: Datum (UTC) (DD.MM.YYYY)
+    replace: "{{current_date}}"
+    vars:
+      - name: current_date
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  - trigger: ":zzt"
+    label: Aktuelle Zeit (HH:mm)
+    replace: "{{current_time}}"
+    vars:
+      - name: current_time
+        type: date
+        params:
+          format: "%H:%M"
+
+  - trigger: ":uzzt"
+    label: Aktuelle Zeit und Uhr (HH:mm Uhr)
+    replace: "{{current_time}} Uhr"
+    vars:
+      - name: current_time
+        type: date
+        params:
+          format: "%H:%M"
+
+  - trigger: ":zdat"
+    label: Datum und Zeit (DD.MM.YYYY HH:mm)
+    replace: "{{current_datetime}}"
+    vars:
+      - name: current_datetime
+        type: date
+        params:
+          format: "%d.%m.%Y %H:%M"
