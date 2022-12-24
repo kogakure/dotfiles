@@ -11,7 +11,7 @@ local mappings = {
 	i = { "<CMD>silent !open -a iA\\ Writer.app '%:p'<CR>", "iA Writer" },
 	j = { "<CMD>b#<CR>", "Toggle Buffers" },
 	o = { "<CMD>SymbolsOutline<CR>", "Symbols Outline" },
-	p = { "<CMD>Pounce<CR>", "Pounce" },
+	p = { "<CMD>Telescope projects<CR>", "Projects" },
 	q = { "<CMD>Bdelete!<CR>", "Close Buffer" },
 	s = {
 		"<CMD>lua require('spectre').open_file_search()<CR>",
@@ -119,7 +119,7 @@ local mappings = {
 			u = { "<Cmd>Telescope frecency<CR>", "MRU (Frequency)" },
 		},
 	},
-	P = { "<CMD>Telescope projects<CR>", "Projects" },
+	P = { "<CMD>Pounce<CR>", "Pounce" },
 	Q = { "<CMD>q!<CR>", "Quit" },
 	R = { "<CMD>lua vim.lsp.buf.rename()<CR>", "Rename" },
 	S = { "<CMD>lua require('spectre').open_visual({select_word=true})<CR>", "Spectre Current Word" },
