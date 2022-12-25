@@ -69,6 +69,8 @@ require("transparent").setup({
 		"Normal",
 		"TelescopeBorder",
 		"FoldColumn",
+		"CursorLine",
+		"CursorWord",
 	},
 	exclude = {}, -- table: groups you don't want to clear
 })
