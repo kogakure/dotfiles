@@ -8,6 +8,7 @@ require("colorizer").setup({
 	"typescriptreact",
 	"yaml",
 	"conf",
+	"lua",
 }, {
 	RGB = true,
 	RRGGBB = true,
