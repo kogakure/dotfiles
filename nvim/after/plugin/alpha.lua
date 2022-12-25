@@ -2,14 +2,7 @@
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
-dashboard.section.header.val = {
-	[[🟨🟨🟨🟨🟨🟨🟨🟨]],
-	[[🟨🟨🟨🟨🟨🟨🟨🟨]],
-	[[🟨🟨🟨 🐍 🟨🟨🟨]],
-	[[🟨🟨🌿🌿🌿🌿🟨🟨]],
-	[[🟨🟨🟨🟨🟨🟨🟨🟨]],
-	[[DONT TREAD ON ME]],
-}
+dashboard.section.header.val = {}
 
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find Files", ":Telescope find_files<CR>"),
