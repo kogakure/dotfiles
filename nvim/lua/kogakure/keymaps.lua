@@ -22,8 +22,6 @@ vim.keymap.set("n", "sv", ":vsplit<CR><C-w>w", { desc = "Open vertical split", n
 vim.keymap.set("n", "<leader>q", ":Bdelete<CR>", { desc = "Delete current buffer", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>X", ":bufdo bdelete<CR>", { desc = "Delete all buffers", noremap = true, silent = true })
 
-vim.keymap.set("", "gf", ":edit <cfile><CR>", { desc = "Allow gf to open non-existent files", noremap = true, silent = true })
-
 vim.keymap.set("v", "<", "<gv", { desc = "Reselect visual selection after indenting left", noremap = true, silent = true })
 vim.keymap.set("v", ">", ">gv", { desc = "Reselect visual selection after indenting right", noremap = true, silent = true })
 
