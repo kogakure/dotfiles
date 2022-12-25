@@ -68,6 +68,7 @@ require("transparent").setup({
 		"TabLine",
 		"Normal",
 		"TelescopeBorder",
+		"FoldColumn",
 	},
 	exclude = {}, -- table: groups you don't want to clear
 })
