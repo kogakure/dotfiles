@@ -1,18 +1,8 @@
 -- https://github.com/nvim-lualine/lualine.nvim
-local theme = require("lualine.themes.auto")
-
-theme.normal.c.bg = "#1F2335"
-theme.normal.b.bg = "#24283B"
-theme.insert.b.bg = "#24283B"
-theme.visual.b.bg = "#24283B"
-theme.replace.b.bg = "#24283B"
-theme.command.b.bg = "#24283B"
-theme.inactive.b.bg = "#24283B"
-
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = theme,
+		theme = "transparent",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline " },
