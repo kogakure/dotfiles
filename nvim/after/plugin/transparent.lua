@@ -71,6 +71,13 @@ require("transparent").setup({
 		"FoldColumn",
 		"CursorLine",
 		"CursorWord",
+		"WhichKey",
+		"WhichKeyGroup",
+		"WhichKeySeparator",
+		"WhichKeyDesc",
+		"WhichKeyFloat",
+		"WhichKeyBorder",
+		"WhichKeyValue",
 	},
 	exclude = {}, -- table: groups you don't want to clear
 })
