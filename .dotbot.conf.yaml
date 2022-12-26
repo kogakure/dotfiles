@@ -4,9 +4,13 @@
 
 - clean: ["~"]
 
+- create:
+    - ~/.config/lazygit
+    - ~/.config/lazydocker
+
 - link:
-    ~/.ack: ack
-    ~/.ag: ag
+    ~/.ack: search/ack
+    ~/.ag: search/ag
     ~/.asdfrc: asdf/asdfrc
     ~/.config/alacritty: alacritty
     ~/.config/base16-shell: .base16-shell
@@ -16,32 +20,33 @@
     ~/.config/gh/config.yml: github/config.yml
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
+    ~/.config/lazydocker/config.yml: docker/lazydocker.yml
+    ~/.config/lazygit/config.yml: git/lazygit.yml
     ~/.config/nvim: nvim
     ~/.config/ranger: ranger
     ~/.config/skhd: skhd
-    ~/.config/starship.toml: starship.toml
+    ~/.config/starship.toml: prompt/starship.toml
     ~/.config/tmuxinator: tmuxinator
     ~/.config/yabai: yabai
-    ~/.ctags: ctags
+    ~/.ctags: search/ctags
+    ~/.curlrc: url/curlrc
     ~/.default-gems: asdf/default-gems
     ~/.default-npm-packages: asdf/default-npm-packages
     ~/.default-python-packages: asdf/default-python-packages
-    ~/.editorconfig: editorconfig
-    ~/.gitconfig: gitconfig
-    ~/.gitignore: gitignore
+    ~/.editorconfig: style/editorconfig
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
     ~/.gitmux.conf: tmux/gitmux.conf
     ~/.hammerspoon: hammerspoon
     ~/.pandoc: pandoc
-    ~/.ripgreprc: ripgrep
+    ~/.ripgreprc: search/ripgrep
     ~/.tmux-cht-command: tmux/tmux-cht-command
     ~/.tmux-cht-languages: tmux/tmux-cht-languages
-    ~/.tmux.conf: tmux.conf
-    ~/.vale.ini: vale.ini
-    ~/.vale: .vale
-    ~/.wget: wget
-    ~/.zsh.d: zsh
-    ~/.zshrc: zshrc
-    ~/Library/Application Support/lazygit/config.yml: lazygit.yml
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vale.ini: style/vale.ini
+    ~/.wget: url/wget
+    ~/.zsh.d: zsh/zsh.d
+    ~/.zshrc: zsh/zshrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

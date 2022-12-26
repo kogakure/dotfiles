@@ -36,15 +36,15 @@ alt - e : yabai -m window --toggle split
 shift + alt - 0 : yabai -m space --balance
 
 # Move Window and Focus Desktop
-shift + alt - 1 : yabai -m window --space 1
-shift + alt - 2 : yabai -m window --space 2
-shift + alt - 3 : yabai -m window --space 3
-shift + alt - 4 : yabai -m window --space 4
-shift + alt - 5 : yabai -m window --space 5
-shift + alt - 6 : yabai -m window --space 6
-shift + alt - 7 : yabai -m window --space 7
-shift + alt - 8 : yabai -m window --space 8
-shift + alt - 9 : yabai -m window --space 9
+shift + alt + ctrl - 1 : yabai -m window --space 1
+shift + alt + ctrl - 2 : yabai -m window --space 2
+shift + alt + ctrl - 3 : yabai -m window --space 3
+shift + alt + ctrl - 4 : yabai -m window --space 4
+shift + alt + ctrl - 5 : yabai -m window --space 5
+shift + alt + ctrl - 6 : yabai -m window --space 6
+shift + alt + ctrl - 7 : yabai -m window --space 7
+shift + alt + ctrl - 8 : yabai -m window --space 8
+shift + alt + ctrl - 9 : yabai -m window --space 9
 
 # Send Window to Monitor and Follow Focus
 shift + alt - n : yabai -m window --display next; yabai -m display --focus next
