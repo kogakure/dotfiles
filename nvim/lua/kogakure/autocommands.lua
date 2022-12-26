@@ -1,5 +1,5 @@
 vim.cmd([[
-  augroup _general_settings
+  augroup general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
     autocmd BufWinEnter * :set formatoptions-=cro
@@ -7,13 +7,13 @@ vim.cmd([[
   augroup end
 
   " Automatically highlight yanked content
-  augroup _highlight_yank
+  augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup = 'Visual', timeout = 700})
   augroup END
 
   " Remember cursor position
-  augroup _line_return
+  augroup line_return
     autocmd!
     autocmd BufReadPost *
           \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -21,25 +21,30 @@ vim.cmd([[
           \ endif
   augroup END
 
-  augroup _git
+  augroup git
     autocmd!
     autocmd FileType gitcommit setlocal wrap
     autocmd FileType gitcommit setlocal spell
     autocmd BufRead,BufNewFile COMMIT_EDITMSG setfiletype git
   augroup end
 
-  augroup _markdown
+  augroup markdown
     autocmd!
     autocmd FileType markdown setlocal wrap
   augroup end
 
-  augroup _ft_html
+  augroup pandoc_syntax
+    autocmd! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+    autocmd FileType markdown.pandoc setlocal nospell
+  augroup END
+
+  augroup ft_html
     autocmd!
     autocmd FileType html,eruby,njk setlocal foldmethod=indent
     autocmd FileType html,eruby,njk setlocal omnifunc=htmlcomplete#CompleteTags
   augroup END
 
-  augroup _ft_css
+  augroup ft_css
     autocmd!
     autocmd FileType css setlocal foldmethod=marker
     autocmd FileType scss,sass,less,stylus setlocal foldmethod=indent
@@ -48,13 +53,13 @@ vim.cmd([[
     autocmd Filetype css,scss,sass,less,stylus setlocal iskeyword+=-
   augroup END
 
-  augroup _ft_xml
+  augroup ft_xml
     autocmd!
     autocmd FileType xml setlocal foldmethod=indent
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
   augroup END
 
-  augroup _ft_javascript
+  augroup ft_javascript
     autocmd!
     autocmd FileType javascript setlocal foldmethod=indent
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -62,13 +67,13 @@ vim.cmd([[
     autocmd BufRead,BufNewFile *.jsx setfiletype javascript.jsx
   augroup END
 
-  augroup _ft_json
+  augroup ft_json
     autocmd!
     autocmd FileType json syntax match Comment +\/\/.\+$+
     autocmd Filetype json setlocal ts=2 sts=2 sw=2
   augroup END
 
-  augroup _ft_ruby
+  augroup ft_ruby
     autocmd!
     autocmd FileType ruby setlocal foldmethod=syntax
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
@@ -77,12 +82,12 @@ vim.cmd([[
     autocmd FileType ruby let g:rubycomplete_classes_in_global = 1
   augroup END
 
-  augroup _ft_vim
+  augroup ft_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
   augroup END
 
-  augroup _ft_misc
+  augroup ft_misc
     autocmd!
     autocmd BufNewFile,BufRead *.handlebars set filetype=html syntax=handlebars
     autocmd BufNewFile,BufRead *.hb set filetype=html syntax=handlebars
@@ -96,17 +101,17 @@ vim.cmd([[
     autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
   augroup END
 
-  augroup _auto_resize
+  augroup auto_resize
     autocmd!
     autocmd VimResized * tabdo wincmd =
   augroup end
 
-  augroup _alpha
+  augroup alpha
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
-  augroup _lsp
+  augroup lsp
     autocmd!
     autocmd BufWritePre * lua vim.lsp.buf.format()
   augroup end

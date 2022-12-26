@@ -152,6 +152,8 @@ local plugins = {
 	"rlane/pounce.nvim", -- Incremental fuzzy search motion
 	"echasnovski/mini.nvim", -- Library with 20+ plugins
 	"dhruvasagar/vim-table-mode", -- Markdown table mode
+	"vim-pandoc/vim-pandoc", -- Pandoc
+	"vim-pandoc/vim-pandoc-syntax", -- Pandoc syntax
 
 	-- Custom Text Objects
 	"chrisgrieser/nvim-various-textobjs", -- Various text objects
