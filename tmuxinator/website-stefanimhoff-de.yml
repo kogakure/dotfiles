@@ -1,5 +1,6 @@
 name: stefanimhoff-de
 root: ~/Code/Github/stefanimhoff.de/
+attach: false
 windows:
   - Vim:
       layout: main-vertical

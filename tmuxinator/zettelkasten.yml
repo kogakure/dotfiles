@@ -1,5 +1,6 @@
 name: Zettelkasten
 root: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Zettelkasten/
+attach: false
 windows:
   - Zettelkasten: clear
   - Highlights: cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Highlights/ && clear

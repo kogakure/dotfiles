@@ -1,5 +1,6 @@
 name: Measurements
 root: ~/Code/XING/component-scanner/
+attach: false
 windows:
   - Vim: vim
   - Frontend: cd ~/Code/XING/component-scanner-frontend/
