@@ -116,6 +116,7 @@ local plugins = {
 	"kevinhwang91/nvim-bqf", -- Better Quickfix
 	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" }, -- Better folds
 	"debugloop/telescope-undo.nvim", -- Undo history
+	"mbbill/undotree", -- Undo tree
 	"mrjones2014/smart-splits.nvim", -- Smart splits
 	"xiyaowong/nvim-transparent", -- Remove all background colors
 	"nanotee/zoxide.vim", -- zoxide integration
