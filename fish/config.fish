@@ -4,9 +4,6 @@ end
 
 # *** *** Configuration *** ***
 
-# Prompt
-starship init fish | source
-
 # asdf Version Manager
 source /usr/local/opt/asdf/libexec/asdf.fish
 
@@ -60,3 +57,6 @@ alias icloud "cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
 #
 # Clear the screen
 alias c "clear"
+
+# Prompt
+starship init fish | source
