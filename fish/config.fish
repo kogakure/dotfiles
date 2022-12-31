@@ -10,6 +10,10 @@ source /usr/local/opt/asdf/libexec/asdf.fish
 # Neovim as default editor
 set -U EDITOR nvim
 
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/kogakure/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
 # *** *** Aliases *** ***
 
 # Fish
