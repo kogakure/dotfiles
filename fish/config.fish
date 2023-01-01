@@ -29,6 +29,7 @@ alias mkdir 'mkdir -p'
 
 # Git
 alias gst 'git status -sb'
+alias gd 'git diff -- . ":(exclude)yarn.lock"'
 alias gl 'git pull'
 alias glr 'git pull --rebase'
 alias glu 'git config user.name "Stefan Imhoff" && git config user.email "stefan@imhoff.name";'
