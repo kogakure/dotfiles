@@ -110,8 +110,12 @@ brew "deno"
 brew "diff-so-fancy"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
 # Create Docker hosts locally and on cloud providers
-brew "docker-machine"
+brew "docker-machine", restart_service: true
 # Shared library for Watchman and Eden projects
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
@@ -144,8 +148,6 @@ brew "ffmpeg"
 brew "fish"
 # Static type checker for JavaScript
 brew "flow"
-# Command-line outline and bitmap font editor/converter
-brew "fontforge"
 # CLI program that accepts piped input and presents files for selection
 brew "fpp"
 # Command-line fuzzy finder written in Go
@@ -204,6 +206,8 @@ brew "httpie"
 brew "hub"
 # Configurable static site generator
 brew "hugo"
+# Toolkit for embedding hypervisor capabilities in your application
+brew "hyperkit"
 # Open h.265 video codec implementation
 brew "libde265"
 # Tools and libraries to manipulate images in many formats
@@ -214,6 +218,8 @@ brew "imagesnap"
 brew "ipfs"
 # Command-line pager for JSON data
 brew "jless"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
@@ -228,6 +234,8 @@ brew "libiconv"
 brew "libolm"
 # HTTP client/server library for GNOME
 brew "libsoup"
+# Linux virtual machines
+brew "lima"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Package manager for the Lua programming language
@@ -384,8 +392,6 @@ brew "koekeishiya/formulae/yabai"
 brew "ms-jpq/sad/sad"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
-# Time tracker
-cask "activitywatch"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Application launcher and productivity software
@@ -402,24 +408,18 @@ cask "balenaetcher"
 cask "bartender"
 # All-In-One Toolkit for Working Remotely
 cask "basecamp"
+# Compact TeX distribution as alternative to the full TeX Live / MacTeX
+cask "basictex"
 # Edit and manage bibliographies
 cask "bibdesk"
 # Desktop password and login vault
 cask "bitwarden"
 # 3D creation suite
 cask "blender"
-# 3D model editor for boxy models and pixel art textures
-cask "blockbench"
 # Scriptable scratchpad for developers
 cask "boop"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Web browser focusing on privacy
-cask "brave-browser-beta"
-# Web browser focusing on privacy
-cask "brave-browser-dev"
-# Web browser focusing on privacy
-cask "brave-browser-nightly"
 # E-books management software
 cask "calibre"
 cask "color-oracle"
@@ -437,12 +437,8 @@ cask "db-browser-for-sqlite"
 cask "deepl"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
-# Run Stable Diffusion locally
-cask "diffusionbee"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Find files, folders, or contents in any file
@@ -466,18 +462,12 @@ cask "folx"
 cask "font-fira-code"
 # Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
-# Font editor and converter for outline and bitmap fonts
-cask "fontforge"
 # 3D parametric modeler
 cask "freecad"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Desktop client for GitHub repositories
 cask "github"
-# Web browser
-cask "google-chrome"
-# Virtual globe
-cask "google-earth-pro"
 cask "google-japanese-ime"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
@@ -519,8 +509,6 @@ cask "kitty"
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
-# Privacy-first, open-source platform for knowledge sharing and management
-cask "logseq"
 # 2D game framework for Lua
 cask "love"
 # 8-bit 3D voxel editor and interactive path tracing renderer
@@ -535,10 +523,10 @@ cask "michaelvillar-timer"
 cask "microsoft-auto-update"
 # Web browser
 cask "microsoft-edge"
+# Remote desktop client
+cask "microsoft-remote-desktop"
 # Minimal installer for conda
 cask "miniconda"
-# Neovim Client
-cask "neovide"
 # Desktop sync client for Nextcloud software products
 cask "nextcloud"
 # VPN client for secure internet access and private browsing
@@ -581,8 +569,6 @@ cask "raspberry-pi-imager"
 cask "raycast"
 # Web browser
 cask "safari-technology-preview"
-# Block your own access to distracting websites
-cask "selfcontrol"
 # MySQL/MariaDB database management platform
 cask "sequel-pro"
 # Onion routing based messenger
