@@ -1,4 +1,4 @@
-![Maintenance](https://img.shields.io/maintenance/yes/2022.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2023.svg)
 
 # Dotfiles
 
