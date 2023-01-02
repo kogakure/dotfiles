@@ -2,6 +2,9 @@ name: Learn
 root: ~/Code/Github/learn/
 attach: false
 windows:
-  - Vim: vim
+  - Vim:
+      layout: main-vertical
+      panes:
+        - vim
+        - clear
   - Terminal: clear
-  - Server: clear

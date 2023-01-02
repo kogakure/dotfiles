@@ -2,6 +2,9 @@ name: "kogakure-de"
 root: ~/Code/Github/kogakure.de/
 attach: false
 windows:
-  - Vim: vim
+  - Vim:
+      layout: main-vertical
+      panes:
+        - vim
+        - npm i; npm start
   - Terminal: clear
-  - Server: npm i; npm start

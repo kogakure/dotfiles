@@ -2,6 +2,9 @@ name: Brewery
 root: ~/Code/XING/brewery/
 attach: false
 windows:
-  - Vim: vim
+  - Vim:
+      layout: main-vertical
+      panes:
+        - vim
+        - yarn; yarn develop
   - Terminal: clear
-  - Server: yarn
