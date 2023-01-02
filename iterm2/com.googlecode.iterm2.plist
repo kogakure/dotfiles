@@ -437,6 +437,8 @@
 	<true/>
 	<key>HotkeyModifiers</key>
 	<integer>1179914</integer>
+	<key>IRMemory</key>
+	<integer>4</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
