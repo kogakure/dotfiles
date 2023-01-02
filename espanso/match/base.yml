@@ -1,5 +1,6 @@
 imports:
   - "../../private/espanso/finance.yml"
+  - "../../private/espanso/personal.yml"
 
 matches:
   # Simple text replacement

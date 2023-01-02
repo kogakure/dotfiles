@@ -1,4 +1,7 @@
 matches:
+  - trigger: "Dojo"
+    label: Dōjō
+    replace: "Dōjō"
   - trigger: "OO"
     label: Japanisches Längenzeichen Ō
     replace: "Ō"
