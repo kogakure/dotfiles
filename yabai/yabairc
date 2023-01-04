@@ -37,7 +37,8 @@ yabai -m config right_padding 10
 
 # Apps to ignore
 yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^FortiClient$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
 yabai -m rule --add app="Raycast" manage=off

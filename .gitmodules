@@ -11,3 +11,6 @@
 [submodule "private/espanso"]
 	path = private/espanso
 	url = git@github.com:kogakure/espanso-snippets.git
+[submodule "private/bin"]
+	path = private/bin
+	url = git@github.com:kogakure/scripts.git
