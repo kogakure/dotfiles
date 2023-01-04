@@ -7,3 +7,4 @@ gitlint
 pipenv
 proselint
 neovim-remote
+pyautogui
