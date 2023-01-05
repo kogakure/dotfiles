@@ -13,6 +13,9 @@ set -U EDITOR nvim
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 
+# Set .config folder
+set --export XDG_CONFIG_HOME "$HOME/.config"
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 set --export --prepend PATH "$HOME/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
