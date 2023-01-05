@@ -17,6 +17,18 @@ set PATH ~/.dotfiles/private/bin $PATH
 set --export --prepend PATH "$HOME/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
+# Enable vi-mode key bindings
+fish_vi_key_bindings
+
+# (r)everse history search
+bind -M viins '^r' 'fzf-history-widget'
+
+# (f)ile / (t)
+bind -M viins '^f' 'fzf-file-widget'
+
+# (z) jump
+bind -M viins '^z' 'fzf-cd-widget'
+
 # *** *** Aliases *** ***
 
 # Fish
