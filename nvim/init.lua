@@ -7,4 +7,3 @@ require("kogakure.plugins")
 require("kogakure.lsp")
 
 require("kogakure/text-objects").basic_text_objects()
-require("kogakure/text-objects").indent_text_objects()

@@ -60,21 +60,6 @@ function Select_indent(around)
 	end
 end
 
--- Indent Text Object
-function Indent_text_objects()
-	for _, mode in ipairs({ "x", "o" }) do
-		keymap(mode, "ii", ":<c-u>lua Select_indent()<cr>", {
-			noremap = true,
-			silent = true,
-		})
-		keymap(mode, "ai", ":<c-u>lua Select_indent(true)<cr>", {
-			silent = true,
-			noremap = true,
-		})
-	end
-end
-
 return {
 	basic_text_objects = Basic_text_objects,
-	indent_text_objects = Indent_text_objects,
 }
