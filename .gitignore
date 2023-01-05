@@ -8,3 +8,4 @@ nvim/plugin
 kitty/kitty.conf.bak
 karabiner/automatic_backups
 Brewfile.lock.json
+fish/fish_variables
