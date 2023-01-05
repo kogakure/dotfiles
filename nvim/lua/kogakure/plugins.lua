@@ -154,6 +154,7 @@ local plugins = {
 	"dhruvasagar/vim-table-mode", -- Markdown table mode
 	"vim-pandoc/vim-pandoc", -- Pandoc
 	"vim-pandoc/vim-pandoc-syntax", -- Pandoc syntax
+	{ "princejoogie/chafa.nvim", dependencies = { "nvim-lua/plenary.nvim", "m00qek/baleia.nvim" } }, -- Preview images in terminal
 
 	-- Custom Text Objects
 	"chrisgrieser/nvim-various-textobjs", -- Various text objects
