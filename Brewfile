@@ -82,6 +82,8 @@ brew "bzip2"
 brew "gcc"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
+brew "chafa"
 # Statistics utility to count lines of code
 brew "cloc"
 # JavaScript optimizing compiler
@@ -90,6 +92,8 @@ brew "closure-compiler"
 brew "cmake"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -140,6 +144,8 @@ brew "fd"
 brew "gnutls"
 # Image manipulation library
 brew "jpeg", link: true
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
 # High-performance, asynchronous messaging library
 brew "zeromq"
 # Play, record, convert, and stream audio and video
@@ -215,7 +221,7 @@ brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
 # Peer-to-peer hypermedia protocol
-brew "ipfs"
+brew "ipfs", restart_service: true
 # Command-line pager for JSON data
 brew "jless"
 # Kubernetes command-line interface
@@ -364,6 +370,8 @@ brew "xdotool"
 brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Tracks most-used directories to make cd smarter
+brew "z"
 # Plain text note-taking assistant
 brew "zk"
 # Shell extension to navigate your filesystem faster
@@ -656,4 +664,3 @@ mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
 mas "Vectornator", id: 1219074514
 mas "Yoink", id: 457622435
-whalebrew "whalebrew/whalesay"
