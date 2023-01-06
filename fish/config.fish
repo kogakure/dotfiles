@@ -69,6 +69,7 @@ end
 alias t 'tmux'
 alias mux 'tmuxinator'
 alias ms 'mux start'
+alias ta 'tmux attach'
 
 # Bat
 alias cat 'bat'
