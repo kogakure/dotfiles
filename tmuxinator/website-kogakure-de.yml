@@ -3,7 +3,7 @@ root: ~/Code/Github/kogakure.de/
 attach: false
 windows:
   - Vim:
-      layout: main-vertical
+      layout: main-horizontal
       panes:
         - vim
         - npm i; npm start
