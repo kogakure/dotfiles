@@ -16,9 +16,50 @@ set PATH ~/.dotfiles/private/bin $PATH
 # Set .config folder
 set --export XDG_CONFIG_HOME "$HOME/.config"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export KEYTIMEOUT 1
+set --export RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+set --export GIT_EDITOR nvim
+set --export EDITOR nvim
+
+# FZF
+set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
+
+set --export FZF_DEFAULT_COMMAND "git ls-files --cached --others --exclude-standard | fd --hidden --type f --type l $FD_OPTIONS"
+set --export FZF_DEFAULT_OPTS "--no-height"
+
+set --export FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set --export FZF_CTRL_T_OPTS "--preview 'bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+
+set --export FZF_CTRL_R_OPTS "--reverse"
+set --export FZF_TMUX_OPTS "-p"
+
+set --export FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
+set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
+
+# Rust
+set --export PATH "$HOME/.cargo/bin:$PATH"
+
+# Rancher
 set --export --prepend PATH "$HOME/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# TMUX
+if set -q TMUX
+  set --export NVIM_LISTEN_ADDRESS (tmux show-environment -s NVIM_LISTEN_ADDRESS 2> /dev/null)
+else
+  set --export NVIM_LISTEN_ADDRESS /tmp/nvimsocket
+end
+
+set --export PATH $HOME/.tmux/plugins/tmux-nvr/bin $PATH
+set --export PATH $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin $PATH
+
+# BasicTex
+set --export PATH /Library/TeX/texbin $PATH
+
+# Man
+set --export MANPATH "/usr/local/man:$MANPATH"
+
+# Bat
+set --export BAT_PAGER "less -R"
 
 # Enable vi-mode key bindings
 fish_vi_key_bindings

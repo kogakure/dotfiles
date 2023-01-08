@@ -56,10 +56,6 @@ export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # BasicTex
 export PATH="/Library/TeX/texbin:$PATH"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/kogakure/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
 # Conda
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
