@@ -220,8 +220,6 @@ brew "libde265"
 brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
-# Peer-to-peer hypermedia protocol
-brew "ipfs", restart_service: true
 # Command-line pager for JSON data
 brew "jless"
 # Kubernetes command-line interface
@@ -493,8 +491,6 @@ cask "imagealpha"
 cask "imageoptim"
 # Tool to scan a website checking for broken links
 cask "integrity"
-# Menu bar application for the IPFS peer-to-peer network
-cask "ipfs"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Menu bar calendar
@@ -664,3 +660,4 @@ mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
 mas "Vectornator", id: 1219074514
 mas "Yoink", id: 457622435
+whalebrew "whalebrew/whalesay"
