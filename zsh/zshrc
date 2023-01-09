@@ -37,9 +37,6 @@ export FZF_TMUX_OPTS="-p"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS --color=never --hidden"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
-# Rancher
-export PATH="$HOME/.rd/bin:$PATH"
-
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -468,3 +465,7 @@ alias c="clear"
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/stefan.imhoff/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

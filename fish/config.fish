@@ -39,9 +39,6 @@ set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 # Rust
 set --export PATH "$HOME/.cargo/bin:$PATH"
 
-# Rancher
-set --export --prepend PATH "$HOME/.rd/bin"
-
 # TMUX
 if set -q TMUX
   set --export NVIM_LISTEN_ADDRESS (tmux show-environment -s NVIM_LISTEN_ADDRESS 2> /dev/null)
