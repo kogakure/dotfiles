@@ -126,6 +126,8 @@ alias gwl 'git worktree list'
 alias gwp 'git whatchanged -p'
 alias gwr 'git worktree remove' # <path/name>
 alias lg 'lazygit'
+alias gcrb 'git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff --color=always {1}" --pointer="" | xargs  git checkout '
+
 
 # Vim/Neovim
 alias v "vim"

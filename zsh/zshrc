@@ -417,6 +417,7 @@ alias gw='git worktree'
 alias gwl='git worktree list'
 alias gwa='git worktree add' # <folder> <branch/hash>
 alias gwr='git worktree remove' # <path/name>
+alias gcrb='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff --color=always {1}" --pointer="" | xargs  git checkout '
 
 # Vim
 alias v='vim'
