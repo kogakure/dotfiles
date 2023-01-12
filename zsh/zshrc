@@ -438,6 +438,9 @@ alias tn="tmux new -s $(pwd | sed 's/.*\///g')"
 # Bat
 alias cat="bat"
 
+# TLDR
+alias tldrf='tldr --list --single-column | fzf --preview "tldr --color=always {1}" --preview-window=right,70% | xargs tldr'
+
 # iA Writer
 alias ia='open $1 -a /Applications/iA\ Writer.app'
 

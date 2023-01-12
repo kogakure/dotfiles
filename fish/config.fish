@@ -145,6 +145,9 @@ alias ta 'tmux attach'
 # Bat
 alias cat 'bat'
 
+# TLDR
+alias tldrf 'tldr --list --single-column | fzf --preview "tldr --color=always {1}" --preview-window=right,70% | xargs tldr'
+
 # Dotfiles Folder
 alias dotfiles 'cd ~/.dotfiles'
 
