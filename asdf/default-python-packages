@@ -1,11 +1,9 @@
 autopep8
 black
 codespell
-fawkes
 flake8
 gitlint
 pipenv
 proselint
 neovim-remote
 pyautogui
-rainbowstream
