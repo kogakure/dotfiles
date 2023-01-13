@@ -120,6 +120,8 @@ brew "docker"
 brew "docker-compose"
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true
+# More intuitive version of du in rust
+brew "dust"
 # Shared library for Watchman and Eden projects
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
@@ -212,6 +214,8 @@ brew "httpie"
 brew "hub"
 # Configurable static site generator
 brew "hugo"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Toolkit for embedding hypervisor capabilities in your application
 brew "hyperkit"
 # Open h.265 video codec implementation
@@ -288,6 +292,8 @@ brew "tree"
 brew "pass"
 # Simplistic interactive filtering tool
 brew "peco"
+# 📦🚀 Fast, disk space efficient package manager
+brew "pnpm"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Python 3 bindings for the Cairo graphics library
@@ -352,6 +358,8 @@ brew "tmux"
 brew "tmuxinator"
 # Command-line tool for sharing terminal over the web
 brew "ttyd", args: ["HEAD"]
+# TUI for Mastodon with vim inspired keys
+brew "tut"
 # URL extractor/launcher
 brew "urlview"
 # Syntax-aware linter for prose
@@ -445,6 +453,8 @@ cask "deepl"
 cask "devonthink"
 # Voice and text chat software
 cask "discord"
+# App to build and share containerized applications and microservices
+cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Find files, folders, or contents in any file
@@ -632,7 +642,6 @@ mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
-mas "Fluent Reader", id: 1520907427
 mas "Free MP4 Converter", id: 693443591
 mas "GoodNotes", id: 1444383602
 mas "Grammarly for Safari", id: 1462114288
