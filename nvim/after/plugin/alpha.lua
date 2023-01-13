@@ -18,11 +18,12 @@ dashboard.section.buttons.val = {
 	dashboard.button("u", "  Update Plugins", ":Lazy sync<CR>"),
 	dashboard.button("m", "  Mason (LSP, DAP, Linter, Formatter)", ":Mason<CR>"),
 	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+	dashboard.padding,
 }
 
-dashboard.section.footer.opts.hl = "Type"
-dashboard.section.header.opts.hl = "Include"
+dashboard.section.header.opts.hl = "String"
 dashboard.section.buttons.opts.hl = "Keyword"
+dashboard.section.footer.opts.hl = "String"
 dashboard.opts.opts.noautocmd = true
 
 alpha.setup(dashboard.opts)
