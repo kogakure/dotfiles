@@ -2,6 +2,18 @@ matches:
   - trigger: "Dojo"
     label: Dōjō
     replace: "Dōjō"
+  - trigger: "Bushido"
+    label: Bushidō
+    replace: "Bushidō"
+  - trigger: "Daimyo"
+    label: Daimyō
+    replace: "Daimyō"
+  - trigger: "Daisho"
+    label: Daishō
+    replace: "Daishō"
+  - trigger: "Ryu"
+    label: Ryū
+    replace: "Ryū"
   - trigger: "OO"
     label: Japanisches Längenzeichen Ō
     replace: "Ō"
@@ -9,4 +21,12 @@ matches:
   - trigger: "oo"
     label: Japanisches Längenzeichen ō
     replace: "ō"
+    word: true
+  - trigger: "UU"
+    label: Japanisches Längenzeichen Ū
+    replace: "Ū"
+    word: true
+  - trigger: "uu"
+    label: Japanisches Längenzeichen ū
+    replace: "ū"
     word: true

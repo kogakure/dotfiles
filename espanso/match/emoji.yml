@@ -41,3 +41,18 @@ matches:
   - trigger: ":10:"
     label: Emoji 10
     replace: "🔟"
+  - trigger: ":pmd:"
+    label: Pomodori
+    replace: "🍅"
+  - trigger: ":-"
+    label: Minus
+    replace: "🚫"
+  - trigger: ":+"
+    label: Plus
+    replace: "✅"
+  - trigger: ":!"
+    label: Warning
+    replace: "⚠️"
+  - trigger: ":?"
+    label: Question
+    replace: "❓"
