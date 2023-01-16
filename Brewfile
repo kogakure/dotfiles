@@ -122,6 +122,8 @@ brew "docker-compose"
 brew "docker-machine", restart_service: true
 # More intuitive version of du in rust
 brew "dust"
+# Collection of reusable C++ library artifacts developed at Facebook
+brew "folly"
 # Shared library for Watchman and Eden projects
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
@@ -453,8 +455,6 @@ cask "deepl"
 cask "devonthink"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Find files, folders, or contents in any file
