@@ -25,7 +25,6 @@ null_ls.setup({
 		diagnostics.flake8, -- Python
 		diagnostics.gitlint,
 		diagnostics.golangci_lint,
-		diagnostics.markdownlint.with({ extra_args = { "--rules ~MD033" } }),
 		diagnostics.stylelint,
 		diagnostics.tsc,
 		diagnostics.vale,
@@ -36,7 +35,6 @@ null_ls.setup({
 		formatting.gofmt,
 		formatting.goimports,
 		formatting.goimports_reviser,
-		formatting.markdownlint,
 		formatting.prettierd,
 		formatting.stylelint,
 		formatting.stylua,
