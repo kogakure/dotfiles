@@ -20,6 +20,7 @@ local plugins = {
 	-- Colorscheme
 	"chriskempson/base16-vim", -- Base16 colorschemes
 	"folke/tokyonight.nvim", -- Tokyo Night color scheme
+	{ "kartikp10/noctis.nvim", dependencies = "rktjmp/lush.nvim" }, -- Noctis color scheme
 	{ "catppuccin/nvim", name = "catppuccin" }, -- Catppuccin color scheme
 
 	-- CMP
