@@ -33,11 +33,6 @@ vim.cmd([[
     autocmd FileType markdown setlocal wrap
   augroup end
 
-  augroup pandoc_syntax
-    autocmd! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-    autocmd FileType markdown.pandoc setlocal nospell
-  augroup END
-
   augroup ft_html
     autocmd!
     autocmd FileType html,eruby,njk setlocal foldmethod=indent

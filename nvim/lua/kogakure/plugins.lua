@@ -152,8 +152,6 @@ local plugins = {
 	"rlane/pounce.nvim", -- Incremental fuzzy search motion
 	"echasnovski/mini.nvim", -- Library with 20+ plugins
 	"dhruvasagar/vim-table-mode", -- Markdown table mode
-	"vim-pandoc/vim-pandoc", -- Pandoc
-	"vim-pandoc/vim-pandoc-syntax", -- Pandoc syntax
 	{ "princejoogie/chafa.nvim", dependencies = { "nvim-lua/plenary.nvim", "m00qek/baleia.nvim" } }, -- Preview images in terminal
 
 	-- Custom Text Objects
