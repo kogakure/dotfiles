@@ -3,15 +3,32 @@ imports:
   - "../../private/espanso/personal.yml"
 
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hello World"
-
-  # Print the output of a shell command
-  - trigger: ":shell"
-    replace: "{{output}}"
+  - trigger: ":fn"
+    label: Markdown Footnote
     vars:
-      - name: output
+      - name: form
+        type: form
+        params:
+          layout: |
+            Author:
+            [[author]]
+
+            Publication Title:
+            [[title]]
+          fields:
+            title:
+              multiline: true
+      - name: "clipboard"
+        type: "clipboard"
+      - name: year
+        type: date
+        params:
+          format: "%Y"
+      - name: id
         type: shell
         params:
-          cmd: "echo 'Hello from your shell'"
+          cmd: 'echo "{{form.author}}$(date +%Y)" | perl -pe "s/(\b[a-z])/\u$1/g" | perl -pe "s/(\s)/\u/g"'
+    replace: |
+      [^{{id}}]
+
+      [^{{id}}]: {{form.author}} ({{year}}): {{form.title}}, <{{clipboard}}>.
