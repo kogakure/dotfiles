@@ -2,50 +2,66 @@ matches:
   - trigger: "1star"
     label: 1 Star
     replace: "★"
+
   - trigger: "2star"
     label: 2 Star
     replace: "★★"
+
   - trigger: "3star"
     label: 3 Star
     replace: "★★★"
+
   - trigger: "4star"
     label: 4 Star
     replace: "★★★★"
+
   - trigger: "5star"
     label: 5 Star
     replace: "★★★★★"
+
   - trigger: "===>"
     label: Dicker Pfeil nach links (➜)
     replace: "➜"
+
   - trigger: "<===>"
     label: Link-Rechts Pfeil (⬌)
     replace: "⬌"
+
   - trigger: "<---"
     label: Pfeil nach links (←)
     replace: "←"
+
   - trigger: "---^"
     label: Pfeil nach oben (↑)
     replace: "↑"
+
   - trigger: "--->"
     label: Pfeil nach rechts (→)
     replace: "→"
+
   - trigger: "---v"
     label: Pfeil nach unten (↓)
     replace: "↓"
+
   - trigger: ":snip"
     label: Abrisskante
     replace: "✂---✂---✂---✂---✂---✂---✂---✂---✂---✂---✂---✂---✂"
+
   - trigger: ":bull"
     label: Bullet (•)
     replace: "•"
+
   - trigger: ":mid"
     label: Middot (·)
     replace: "·"
+
   - trigger: ":flag"
     label: Flagge (⚑)
     replace: "⚑"
+
   - label: Schleifenquadrat (⌘)
     replace: "⌘"
+
   - trigger: ":x:"
     label: Multiplikationszeichen
     replace: "×"

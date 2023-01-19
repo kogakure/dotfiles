@@ -1,0 +1,46 @@
+matches:
+  - label: "Shortcode: Affiliate"
+    replace: '{% affiliate "Titel", "ASIN" %}'
+
+  - label: "Shortcode: Flag"
+    replace: '{% flag "Label", "URL" %}'
+
+  - label: "Shortcode: Netflix Flag"
+    replace: '{% netflix "ID" %}'
+
+  - label: "Shortcode: Amazon Prime Video Flag"
+    replace: '{% primevideo "ID" %}'
+
+  - label: "Shortcode: More Link"
+    replace: '{% more "Text", "url" %}'
+
+  - label: "Shortcode: Download Link"
+    replace: '{% download "Text", "URL" %}'
+
+  - label: "Shortcode: Color Swatch"
+    replace: '{% color "#HEX", "TITLE", "DESCRIPTION" %}'
+
+  - label: "Shortcode: Color Stack"
+    replace: "{% colorstack %}\n{% color \"#HEX\", \"TITLE\", \"DESCRIPTION\" %}\n{% endcolorstack %}"
+
+  - label: "Shortcode: Book"
+    replace: '{% book "ASIN", "ALT" %}'
+
+  - label: "Shortcode: Bookshelf"
+    replace: "{% bookshelf %}\n{% book \"ASIN\", \"ALT\" %}\n{% endbookshelf %}"
+
+  - label: "Shortcode: Banner"
+    replace: "{% banner \"Summary\" %}\n\n$|$\n\n{% endbanner %}"
+
+  - label: "Shortcode: Quote mit Link"
+    replace: ">\n> **Author**, *[Source]()*"
+
+  - label: "Shortcode: Quote"
+    replace: ">\n> **Author**, *Source*"
+
+  - label: "Shortcode: Pullquote"
+    replace: "<blockquote lang=\"en\" class=\"pullquote\">\n
+              \t<p>$|$</p>\n
+              \t<footer>\n
+              \t\t<b></b>, <cite></cite>\n
+              \t</footer>\n</blockquote>"

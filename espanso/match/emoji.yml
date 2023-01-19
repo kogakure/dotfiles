@@ -2,57 +2,75 @@ matches:
   - trigger: ":proposal:"
     label: Proposal
     replace: "🐣"
+
   - trigger: ":pitch:"
     label: Pitch
     replace: "💡"
+
   - trigger: ":ding:"
     label: Reminder
     replace: "🛎"
+
   - trigger: ":0:"
     label: Emoji 0
     replace: "0️⃣"
+
   - trigger: ":1:"
     label: Emoji 1
     replace: "1️⃣"
+
   - trigger: ":2:"
     label: Emoji 2
     replace: "2️⃣"
+
   - trigger: ":3:"
     label: Emoji 3
     replace: "3️⃣"
+
   - trigger: ":4:"
     label: Emoji 4
     replace: "4️⃣"
+
   - trigger: ":5:"
     label: Emoji 5
     replace: "5️⃣"
+
   - trigger: ":6:"
     label: Emoji 6
     replace: "6️⃣"
+
   - trigger: ":7:"
     label: Emoji 7
     replace: "7️⃣"
+
   - trigger: ":8:"
     label: Emoji 8
     replace: "8️⃣"
+
   - trigger: ":9:"
     label: Emoji 9
     replace: "9️⃣"
+
   - trigger: ":10:"
     label: Emoji 10
     replace: "🔟"
+
   - trigger: ":pmd:"
     label: Pomodori
     replace: "🍅"
+
   - trigger: ":-"
     label: Minus
     replace: "🚫"
+
   - trigger: ":+"
     label: Plus
     replace: "✅"
+
   - trigger: ":!"
     label: Warning
     replace: "⚠️"
+
   - trigger: ":?"
     label: Question
     replace: "❓"
