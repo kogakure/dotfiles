@@ -150,7 +150,6 @@ local plugins = {
 	"github/copilot.vim", -- GitHub Copilot
 	"folke/todo-comments.nvim", -- Highlight TODO
 	"DNLHC/glance.nvim", -- Pretty preview of LSP locations
-	"rlane/pounce.nvim", -- Incremental fuzzy search motion
 	"echasnovski/mini.nvim", -- Library with 20+ plugins
 	"dhruvasagar/vim-table-mode", -- Markdown table mode
 	{ "princejoogie/chafa.nvim", dependencies = { "nvim-lua/plenary.nvim", "m00qek/baleia.nvim" } }, -- Preview images in terminal

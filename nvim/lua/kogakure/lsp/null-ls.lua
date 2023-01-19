@@ -19,10 +19,8 @@ null_ls.setup({
 		code_actions.eslint_d.with({ diagnostics_format = "[eslint] #{m}\n(#{c})" }),
 		code_actions.gitrebase,
 		code_actions.gitsigns,
-		code_actions.proselint,
 		completion.luasnip,
 		diagnostics.eslint_d,
-		diagnostics.flake8, -- Python
 		diagnostics.gitlint,
 		diagnostics.golangci_lint,
 		diagnostics.stylelint,
@@ -37,7 +35,6 @@ null_ls.setup({
 		formatting.goimports_reviser,
 		formatting.prettierd,
 		formatting.stylelint,
-		formatting.stylua,
 		formatting.trim_newlines,
 		formatting.trim_whitespace,
 		formatting.rustfmt,

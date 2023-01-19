@@ -119,7 +119,7 @@ local mappings = {
 			u = { "<Cmd>Telescope frecency<CR>", "MRU (Frequency)" },
 		},
 	},
-	P = { "<CMD>Pounce<CR>", "Pounce" },
+	P = { "<CMD>Prettier<CR>", "Format with Prettier" },
 	Q = { "<CMD>q!<CR>", "Quit" },
 	R = { "<CMD>lua vim.lsp.buf.rename()<CR>", "Rename" },
 	S = { "<CMD>lua require('spectre').open_visual({select_word=true})<CR>", "Spectre Current Word" },
