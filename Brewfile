@@ -14,6 +14,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "jondot/tap"
 tap "koekeishiya/formulae"
+tap "micnncim/tap"
 tap "ms-jpq/sad"
 tap "neovim/neovim"
 tap "ttscoff/thelab"
@@ -74,6 +75,8 @@ brew "bibclean"
 brew "node"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
+# Collection of portable C++ source libraries
+brew "boost"
 # Install RubyGems as Homebrew formulae
 brew "brew-gem"
 # Freely available high-quality data compressor
@@ -150,6 +153,8 @@ brew "gnutls"
 brew "jpeg", link: true
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
 # High-performance, asynchronous messaging library
 brew "zeromq"
 # Play, record, convert, and stream audio and video
@@ -242,6 +247,8 @@ brew "libdvdcss"
 brew "libiconv"
 # Implementation of the Double Ratchet cryptographic ratchet
 brew "libolm"
+# C library for the Public Suffix List
+brew "libpsl"
 # HTTP client/server library for GNOME
 brew "libsoup"
 # Linux virtual machines
@@ -396,8 +403,6 @@ brew "charmbracelet/tap/vhs"
 brew "charmbracelet/tap/wishlist"
 # CLI tool for CookLang Recipe Markup Language
 brew "cooklang/tap/cook"
-# prettier, on SPEED!
-brew "fsouza/prettierd/prettierd"
 # The scalable code generator that saves you time.
 brew "jondot/tap/hygen"
 # Simple hotkey-daemon for macOS.
@@ -455,6 +460,8 @@ cask "deepl"
 cask "devonthink"
 # Voice and text chat software
 cask "discord"
+# App to build and share containerized applications and microservices
+cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Find files, folders, or contents in any file
