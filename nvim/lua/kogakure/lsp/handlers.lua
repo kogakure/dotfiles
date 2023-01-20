@@ -2,6 +2,8 @@ local M = {}
 
 local navic = require("nvim-navic")
 
+vim.g.navic_silence = true
+
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },

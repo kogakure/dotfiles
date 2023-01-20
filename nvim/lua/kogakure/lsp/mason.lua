@@ -35,8 +35,6 @@ local servers = {
 	"sourcery",
 	"sumneko_lua",
 	"svelte",
-	"tailwindcss",
-	"theme_check",
 	"tsserver",
 	"vuels",
 }
