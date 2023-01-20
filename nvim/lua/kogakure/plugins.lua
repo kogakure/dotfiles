@@ -148,6 +148,7 @@ local plugins = {
 	"dbeniamine/cheat.sh-vim", -- Cheat.sh
 	"wakatime/vim-wakatime", -- Wakatime
 	"github/copilot.vim", -- GitHub Copilot
+	"Exafunction/codeium.vim", -- Codeium
 	"folke/todo-comments.nvim", -- Highlight TODO
 	"DNLHC/glance.nvim", -- Pretty preview of LSP locations
 	"echasnovski/mini.nvim", -- Library with 20+ plugins
