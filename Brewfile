@@ -193,6 +193,8 @@ brew "gnupg"
 brew "go"
 # Google Testing and Mocking Framework
 brew "googletest"
+# Library for loading images as SDL surfaces and textures
+brew "sdl2_image"
 # Version Control Visualization Tool
 brew "gource"
 # Graph visualization software from AT&T and Bell Labs
@@ -227,6 +229,8 @@ brew "hyperfine"
 brew "hyperkit"
 # Open h.265 video codec implementation
 brew "libde265"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+brew "libheif"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
