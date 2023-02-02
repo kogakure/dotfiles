@@ -1,6 +1,7 @@
 imports:
   - "../../private/espanso/finance.yml"
   - "../../private/espanso/personal.yml"
+  - "../../private/espanso/work.yml"
 
 matches:
   - trigger: ":fn"
