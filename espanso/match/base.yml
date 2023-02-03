@@ -33,3 +33,10 @@ matches:
       [^{{id}}]
 
       [^{{id}}]: {{form.author}} ({{year}}): {{form.title}}, <{{clipboard}}>.
+
+  - trigger: ":y"
+    label: Youtube-Shortlink
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+    replace: "https://youtu.be/{{clipboard}}"

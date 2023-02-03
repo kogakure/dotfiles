@@ -65,3 +65,9 @@ matches:
   - trigger: ":x:"
     label: Multiplikationszeichen
     replace: "×"
+
+  - label: Ascii Border Box
+    replace: |
+      ╭─────╮
+      │  $|$  │
+      ╰─────╯

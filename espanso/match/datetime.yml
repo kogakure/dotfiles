@@ -1,4 +1,12 @@
 matches:
+  - trigger: ":std"
+    label: Stunden
+    replace: "Stunden"
+
+  - trigger: ":min"
+    label: Minuten
+    replace: "Minuten"
+
   - trigger: ":dat"
     label: Datum (DD.MM.YYYY)
     replace: "{{current_date}}"

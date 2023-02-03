@@ -1,0 +1,25 @@
+matches:
+  - trigger: ":oa"
+    label: Obsidian Aliases
+    replace: |
+      ---
+      aliases: [$|$]
+      ---
+
+  - trigger: ":id"
+    label: Zettel ID (Timestamp)
+    vars:
+      - name: current_time
+        type: date
+        params:
+          format: "%Y%m%d%H%M"
+    replace: "{{current_time}}"
+
+  - trigger: ":z"
+    label: Zettelkasten-Template
+    replace: |
+      $|$
+
+      ## Verwandte Links
+
+      Tags: #BOAT
