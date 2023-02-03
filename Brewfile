@@ -649,6 +649,7 @@ cask "whatroute"
 cask "xquartz"
 mas "1-Click Video Converter", id: 717545086
 mas "Be Focused Pro", id: 961632517
+mas "Binnen-I be gone", id: 1591455415
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
