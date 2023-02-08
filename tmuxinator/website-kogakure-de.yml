@@ -6,5 +6,5 @@ windows:
       layout: main-horizontal
       panes:
         - vim
-        - npm i; npm start
+        - pnpm i
   - Terminal: clear
