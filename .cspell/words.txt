@@ -225,3 +225,8 @@ Shibui
 shibui
 stefanimhoff
 Zettelkasten
+andrewferrier
+depencendies
+ldelossa
+litee
+otavioschwanck
