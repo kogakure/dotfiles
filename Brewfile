@@ -407,6 +407,8 @@ brew "charmbracelet/tap/vhs"
 brew "charmbracelet/tap/wishlist"
 # CLI tool for CookLang Recipe Markup Language
 brew "cooklang/tap/cook"
+# prettier, on SPEED!
+brew "fsouza/prettierd/prettierd"
 # The scalable code generator that saves you time.
 brew "jondot/tap/hygen"
 # Simple hotkey-daemon for macOS.
