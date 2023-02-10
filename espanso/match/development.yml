@@ -38,8 +38,7 @@ matches:
   - label: .localrc Work (Restore)
     replace: "cp ~/Dropbox/Software/Dotfiles/localrc-work ~/.localrc"
 
-  - trigger: ":proposal:"
-    label: "Shell: Leeres Script"
+  - label: "Shell: Leeres Script"
     replace: |
       #!/bin/bash
 
