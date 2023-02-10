@@ -3,8 +3,5 @@ root: ~/Code/XING/brewery/
 attach: false
 windows:
   - Vim:
-      layout: main-horizontal
-      panes:
-        - vim
-        - yarn; yarn develop
+  - Server: yarn
   - Terminal: clear

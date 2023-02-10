@@ -3,8 +3,5 @@ root: ~/Code/Github/learn/
 attach: false
 windows:
   - Vim:
-      layout: main-horizontal
-      panes:
-        - vim
-        - clear
+  - Server: clear
   - Terminal: clear

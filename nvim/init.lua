@@ -1,9 +1,5 @@
-require("kogakure.options")
-require("kogakure.keymaps")
-require("kogakure.functions")
-require("kogakure.autocommands")
-require("kogakure.plugins")
-require("kogakure.lsp")
-require("kogakure.colorscheme")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
 
-require("kogakure/text-objects").basic_text_objects()
+-- Custom Highlight
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#1F2334" })

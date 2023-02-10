@@ -3,8 +3,5 @@ root: ~/Code/Github/kogakure.de/
 attach: false
 windows:
   - Vim:
-      layout: main-horizontal
-      panes:
-        - vim
-        - pnpm i
+  - Server: pnpm i
   - Terminal: clear

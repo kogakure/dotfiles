@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/sh
 
 asdf plugin add lua
 asdf install lua latest

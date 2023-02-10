@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/sh
 
 asdf plugin add python
 asdf install python latest
