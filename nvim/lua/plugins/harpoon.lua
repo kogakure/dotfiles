@@ -5,7 +5,7 @@ return {
   dependencies = "nvim-telescope/telescope.nvim",
   -- stylua: ignore
   keys = {
-    { "<leader>a", function() require("harpoon.ui").add_file() end, desc = "Harpoon Add File" },
+    { "<leader>a", function() require("harpoon.mark").add_file() end, desc = "Harpoon Add File" },
     { "<leader>;", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon Toggle Quickmenu" },
     { "<leader>1", function() require("harpoon.ui").nav_file(1) end, desc = "Harpoon Buffer 1" },
     { "<leader>2", function() require("harpoon.ui").nav_file(2) end, desc = "Harpoon Buffer 2" },
