@@ -2,8 +2,11 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 return {
   "nvim-treesitter/nvim-treesitter",
-  "nvim-treesitter/playground",
+  depencendies = {
+    "nvim-treesitter/playground",
+  },
   opts = {
+    indent = { enable = false },
     ensure_installed = {
       "astro",
       "bash",
