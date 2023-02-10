@@ -2,6 +2,6 @@ name: stefanimhoff-de
 root: ~/Code/Github/stefanimhoff.de/
 attach: false
 windows:
-  - Vim:
+  - Vim: vim
   - Server: pnpm i
   - Terminal: clear

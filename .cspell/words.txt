@@ -213,3 +213,15 @@ yamlfmt
 yamlls
 zbirenbaum
 Zelos
+Buch
+Designkit
+Dotfiles
+dotfiles
+kogakure
+Nanzan
+nanzan
+pnpm
+Shibui
+shibui
+stefanimhoff
+Zettelkasten

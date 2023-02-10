@@ -2,6 +2,6 @@ name: "kogakure-de"
 root: ~/Code/Github/kogakure.de/
 attach: false
 windows:
-  - Vim:
+  - Vim: vim
   - Server: pnpm i
   - Terminal: clear
