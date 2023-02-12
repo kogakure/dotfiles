@@ -64,6 +64,10 @@ set --export MANPATH "/usr/local/man:$MANPATH"
 # Bat
 set --export BAT_PAGER "less -R"
 
+# pnpm
+set -gx PNPM_HOME "$HOME/Library/pnpm/"
+set -gx PATH "$PNPM_HOME" $PATH
+
 # Enable vi-mode key bindings
 fish_vi_key_bindings
 
@@ -166,8 +170,3 @@ alias c clear
 
 # Prompt
 starship init fish | source
-
-# pnpm
-set -gx PNPM_HOME "/Users/kogakure/Library/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
-# pnpm end
