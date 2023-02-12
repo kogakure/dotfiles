@@ -51,6 +51,10 @@ brew "librsvg"
 brew "adwaita-icon-theme"
 # Library and utilities for processing GIFs
 brew "giflib"
+# New file format for still image compression
+brew "jpeg-xl"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Record and share terminal sessions
@@ -135,6 +139,8 @@ brew "editorconfig"
 brew "emscripten"
 # Tools to convert fonts from OTF/TTF to EOT format
 brew "eot-utils"
+# Cross-platform C++ GUI toolkit
+brew "wxwidgets"
 # Modern replacement for 'ls'
 brew "exa"
 # C++14 implementation of the TLS-1.3 standard
