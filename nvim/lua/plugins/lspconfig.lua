@@ -18,7 +18,7 @@ return {
       graphql = {},
       html = {},
       jsonls = {},
-      sumneko_lua = {},
+      lua_ls = {},
       svelte = {},
       tsserver = {},
       yamlls = {},
