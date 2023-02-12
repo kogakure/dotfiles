@@ -31,13 +31,13 @@ set --export EDITOR nvim
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
 
 set --export FZF_DEFAULT_COMMAND "git ls-files --cached --others --exclude-standard | fd --hidden --type f --type l $FD_OPTIONS"
-set --export FZF_DEFAULT_OPTS "--no-height"
+set --export FZF_DEFAULT_OPTS --no-height
 
 set --export FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set --export FZF_CTRL_T_OPTS "--preview 'bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
-set --export FZF_CTRL_R_OPTS "--reverse"
-set --export FZF_TMUX_OPTS "-p"
+set --export FZF_CTRL_R_OPTS --reverse
+set --export FZF_TMUX_OPTS -p
 
 set --export FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
 set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
@@ -47,9 +47,9 @@ set --export PATH "$HOME/.cargo/bin:$PATH"
 
 # TMUX
 if set -q TMUX
-  set --export NVIM_LISTEN_ADDRESS (tmux show-environment -s NVIM_LISTEN_ADDRESS 2> /dev/null)
+    set --export NVIM_LISTEN_ADDRESS (tmux show-environment -s NVIM_LISTEN_ADDRESS 2> /dev/null)
 else
-  set --export NVIM_LISTEN_ADDRESS /tmp/nvimsocket
+    set --export NVIM_LISTEN_ADDRESS /tmp/nvimsocket
 end
 
 set --export PATH $HOME/.tmux/plugins/tmux-nvr/bin $PATH
@@ -68,13 +68,13 @@ set --export BAT_PAGER "less -R"
 fish_vi_key_bindings
 
 # (r)everse history search
-bind -M viins '^r' 'fzf-history-widget'
+bind -M viins '^r' fzf-history-widget
 
 # (f)ile / (t)
-bind -M viins '^f' 'fzf-file-widget'
+bind -M viins '^f' fzf-file-widget
 
 # (z) jump
-bind -M viins '^z' 'fzf-cd-widget'
+bind -M viins '^z' fzf-cd-widget
 
 # *** *** Aliases *** ***
 
@@ -88,6 +88,7 @@ alias ls 'exa --git --group-directories-first --icons'
 alias ll 'exa -l --git --group-directories-first --icons'
 alias lla 'll -a'
 alias mkdir 'mkdir -p'
+alias pn pnpm
 
 # Git
 alias ga 'git add'
@@ -131,25 +132,25 @@ alias gwa 'git worktree add' # <folder> <branch/hash>
 alias gwl 'git worktree list'
 alias gwp 'git whatchanged -p'
 alias gwr 'git worktree remove' # <path/name>
-alias lg 'lazygit'
+alias lg lazygit
 alias gcrb 'git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff --color=always {1}" --pointer="" | xargs  git checkout '
 
 
 # Vim/Neovim
-alias v "vim"
+alias v vim
 
-if type nvim > /dev/null 2>&1
-  alias vim 'nvim'
+if type nvim >/dev/null 2>&1
+    alias vim nvim
 end
 
 # TMUX
-alias t 'tmux'
-alias mux 'tmuxinator'
+alias t tmux
+alias mux tmuxinator
 alias ms 'mux start'
 alias ta 'tmux attach'
 
 # Bat
-alias cat 'bat'
+alias cat bat
 
 # TLDR
 alias tldrf 'tldr --list --single-column | fzf --preview "tldr --color=always {1}" --preview-window=right,70% | xargs tldr'
@@ -161,7 +162,12 @@ alias dotfiles 'cd ~/.dotfiles'
 alias icloud "cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
 #
 # Clear the screen
-alias c "clear"
+alias c clear
 
 # Prompt
 starship init fish | source
+
+# pnpm
+set -gx PNPM_HOME "/Users/kogakure/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
