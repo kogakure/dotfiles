@@ -2,6 +2,7 @@
 -- https://github.com/ahmedkhalf/project.nvim
 return {
   "ahmedkhalf/project.nvim",
+  lazy = false,
   keys = {
 	-- stylua: ignore
     { "<leader>p", ":Telescope projects<cr>", desc = "Search Projects" },
