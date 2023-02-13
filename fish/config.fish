@@ -93,6 +93,7 @@ alias ll 'exa -l --git --group-directories-first --icons'
 alias lla 'll -a'
 alias mkdir 'mkdir -p'
 alias pn pnpm
+alias px pnpx
 
 # Git
 alias ga 'git add'
