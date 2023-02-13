@@ -53,7 +53,3 @@ shift + alt - p : yabai -m window --display prev; yabai -m display --focus prev
 # Move Focus to Monitor
 shift + alt + cmd - h : yabai -m display --focus next
 shift + alt + cmd - l : yabai -m display --focus prev
-
-# Restart/Stop Yabai
-shift + ctrl + alt - r : brew services restart yabai
-shift + ctrl + alt - s : brew services stop yabai
