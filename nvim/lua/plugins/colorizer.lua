@@ -1,7 +1,7 @@
 -- The fastest Neovim colorizer
--- https://github.com/norcalli/nvim-colorizer.lua
+-- https://github.com/NvChad/nvim-colorizer.lua
 return {
-  "norcalli/nvim-colorizer.lua",
+  "NvChad/nvim-colorizer.lua",
   config = function()
     require("colorizer").setup({
       "css",
@@ -23,7 +23,6 @@ return {
       css = true,
       css_fn = true,
       mode = "background",
-      tailwind = true,
     })
   end,
 }

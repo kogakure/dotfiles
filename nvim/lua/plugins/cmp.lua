@@ -11,6 +11,7 @@ return {
       { name = "copilot" },
       { name = "npm", keyword_length = 4 },
     }))
+
     opts.formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(_, item)
@@ -37,12 +38,5 @@ return {
     vim.cmd([[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]])
     vim.cmd([[highlight! link CmpItemKindProperty CmpItemKindKeyword]])
     vim.cmd([[highlight! link CmpItemKindUnit CmpItemKindKeyword]])
-
-    -- Original LazyVim kind icon formatter
-    local format_kinds = opts.formatting.format
-    opts.formatting.format = function(entry, item)
-      format_kinds(entry, item) -- add icons
-      return require("tailwindcss-colorizer-cmp").formatter(entry, item)
-    end
   end,
 }
