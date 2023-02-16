@@ -2,8 +2,8 @@
 -- https://github.com/NvChad/nvim-colorizer.lua
 return {
   "NvChad/nvim-colorizer.lua",
-  config = function()
-    require("colorizer").setup({
+  opts = {
+    filetypes = {
       "css",
       "html",
       "javascript",
@@ -13,7 +13,8 @@ return {
       "yaml",
       "conf",
       "lua",
-    }, {
+    },
+    user_default_options = {
       RGB = true,
       RRGGBB = true,
       names = true,
@@ -23,6 +24,6 @@ return {
       css = true,
       css_fn = true,
       mode = "background",
-    })
-  end,
+    },
+  },
 }
