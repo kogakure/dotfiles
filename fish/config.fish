@@ -13,6 +13,10 @@ end
 # asdf Version Manager
 source /usr/local/opt/asdf/libexec/asdf.fish
 
+# Volta
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+
 # Neovim as default editor
 set -U EDITOR nvim
 
