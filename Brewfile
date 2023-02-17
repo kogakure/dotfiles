@@ -453,6 +453,8 @@ cask "blender"
 cask "boop"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Automation tool
+cask "bunch"
 # E-books management software
 cask "calibre"
 cask "color-oracle"
@@ -614,6 +616,8 @@ cask "signal"
 cask "sketchbook"
 # Team communication and collaboration software
 cask "slack"
+# Displays all open files and sockets in use by all running processes
+cask "sloth"
 # App launcher/switcher
 cask "spacelauncher"
 # Music streaming service
