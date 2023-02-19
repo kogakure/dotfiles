@@ -7,9 +7,12 @@
 # code --list extensions
 
 code --install-extension ChakrounAnas.turbo-console-log
+code --install-extension Codeium.codeium
 code --install-extension EditorConfig.EditorConfig
 code --install-extension Equinusocio.vsc-community-material-theme
 code --install-extension Equinusocio.vsc-material-theme
+code --install-extension GitHub.copilot
+code --install-extension GitHub.copilot-labs
 code --install-extension GitHub.github-vscode-theme
 code --install-extension GitHub.vscode-pull-request-github
 code --install-extension Gruntfuggly.todo-tree
@@ -30,6 +33,7 @@ code --install-extension alefragnani.Bookmarks
 code --install-extension alefragnani.project-manager
 code --install-extension anteprimorac.html-end-tag-labels
 code --install-extension arcticicestudio.nord-visual-studio-code
+code --install-extension astro-build.astro-vscode
 code --install-extension asvetliakov.snapshot-tools
 code --install-extension asvetliakov.vscode-neovim
 code --install-extension azemoh.one-monokai
@@ -41,6 +45,7 @@ code --install-extension christian-kohler.path-intellisense
 code --install-extension chrmarti.regex
 code --install-extension codezombiech.gitignore
 code --install-extension csstools.postcss
+code --install-extension davidlday.languagetool-linter
 code --install-extension daylerees.rainglow
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension deerawan.vscode-dash
@@ -92,11 +97,15 @@ code --install-extension pnp.polacode
 code --install-extension pomdtr.excalidraw-editor
 code --install-extension quick-lint.quick-lint-js
 code --install-extension redhat.vscode-commons
+code --install-extension redhat.vscode-yaml
+code --install-extension rvest.vs-code-prettier-eslint
 code --install-extension sdras.night-owl
 code --install-extension silvenon.mdx
 code --install-extension sleistner.vscode-fileutils
 code --install-extension softwaredotcom.swdc-vscode
 code --install-extension stuartzhang.stylelint-stzhang
+code --install-extension styled-components.vscode-styled-components
+code --install-extension stylelint.vscode-stylelint
 code --install-extension svanimpe.stencil
 code --install-extension svelte.svelte-vscode
 code --install-extension tchayen.markdown-links
