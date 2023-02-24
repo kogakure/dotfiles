@@ -675,6 +675,7 @@ mas "iFinance 5", id: 1500241909
 mas "iMovie", id: 408981434
 mas "IP Friend", id: 1560408065
 mas "Just Focus", id: 1142151959
+mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Kiwix", id: 1275066656
 mas "LanguageTool", id: 1534275760
