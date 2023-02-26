@@ -46,6 +46,9 @@ set --export FZF_TMUX_OPTS -p
 set --export FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
 set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 
+# Zoxide
+zoxide init fish | source
+
 # Rust
 set --export PATH "$HOME/.cargo/bin:$PATH"
 

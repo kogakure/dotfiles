@@ -50,6 +50,9 @@ fi
 export PATH=$HOME/.tmux/plugins/tmux-nvr/bin:$PATH
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # BasicTex
 export PATH="/Library/TeX/texbin:$PATH"
 
