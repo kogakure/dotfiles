@@ -8,6 +8,7 @@ return {
     require("prettier").setup({
       bin = "prettierd",
       filetypes = {
+        "astro",
         "css",
         "graphql",
         "html",
@@ -17,6 +18,7 @@ return {
         "less",
         "markdown",
         "scss",
+        "svelte",
         "typescript",
         "typescriptreact",
         "yaml",
