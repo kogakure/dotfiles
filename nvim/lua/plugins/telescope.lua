@@ -3,6 +3,7 @@
 return {
   "telescope.nvim",
   keys = {
+    { "<M-b>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     { "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files (hidden)" },
     { "<C-t>", "<cmd>Telescope<cr>", desc = "Telescope" },
     { "<M-p>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
