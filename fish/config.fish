@@ -156,7 +156,7 @@ if type nvim >/dev/null 2>&1
 end
 
 # TMUX
-alias t tmux
+alias tx tmux
 alias mux tmuxinator
 alias ms 'mux start'
 alias ta 'tmux attach'
