@@ -97,6 +97,8 @@ brew "cloc"
 brew "closure-compiler"
 # Cross-platform make
 brew "cmake"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
 # Interpreted, interactive, object-oriented programming language
@@ -347,8 +349,6 @@ brew "ripgrep"
 brew "rlwrap"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Safe, concurrent, practical language
 brew "rust"
 # JVM-based programming language
@@ -668,7 +668,6 @@ mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Free MP4 Converter", id: 693443591
 mas "GoodNotes", id: 1444383602
-mas "Grammarly for Safari", id: 1462114288
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
