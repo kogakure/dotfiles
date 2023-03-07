@@ -156,7 +156,7 @@ if type nvim >/dev/null 2>&1
 end
 
 # TMUX
-alias tx tmux
+alias t tmux
 alias mux tmuxinator
 alias ms 'mux start'
 alias ta 'tmux attach'
@@ -175,6 +175,12 @@ alias icloud "cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
 #
 # Clear the screen
 alias c clear
+
+# GitHub Copilot CLI
+alias cpw copilot_what-the-shell
+alias cpg copilot_git-assist
+alias cpgh copilot_github-assist
+alias wts copilot_what-the-shell
 
 # Prompt
 starship init fish | source
