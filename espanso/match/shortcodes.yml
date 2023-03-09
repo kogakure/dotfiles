@@ -11,6 +11,9 @@ matches:
   - label: "Shortcode: Amazon Prime Video Flag"
     replace: '{% primevideo "ID" %}'
 
+  - label: "Shortcode: YouTube Video"
+    replace: '{% youtube "ID" %}'
+
   - label: "Shortcode: More Link"
     replace: '{% more "Text", "url" %}'
 
@@ -40,7 +43,7 @@ matches:
 
   - label: "Shortcode: Pullquote"
     replace: "<blockquote lang=\"en\" class=\"pullquote\">\n
-              \t<p>$|$</p>\n
-              \t<footer>\n
-              \t\t<b></b>, <cite></cite>\n
-              \t</footer>\n</blockquote>"
+      \t<p>$|$</p>\n
+      \t<footer>\n
+      \t\t<b></b>, <cite></cite>\n
+      \t</footer>\n</blockquote>"
