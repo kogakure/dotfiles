@@ -12,7 +12,6 @@ return {
         null_ls.builtins.diagnostics.cspell,
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.fish,
-        null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.stylelint,
         null_ls.builtins.diagnostics.tsc,
         null_ls.builtins.diagnostics.tsc,

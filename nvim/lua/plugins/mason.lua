@@ -14,7 +14,6 @@ return {
       "html-lsp",
       "json-lsp",
       "lua-language-server",
-      "markdownlint",
       "prettier",
       "prettierd",
       "pyright",
