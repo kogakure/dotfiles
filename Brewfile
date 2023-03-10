@@ -397,6 +397,8 @@ brew "yarn"
 brew "youtube-dl"
 # Tracks most-used directories to make cd smarter
 brew "z"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # Plain text note-taking assistant
 brew "zk"
 # Shell extension to navigate your filesystem faster
@@ -660,12 +662,14 @@ cask "whatroute"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 mas "1-Click Video Converter", id: 717545086
+mas "Aiko", id: 1672085276
 mas "Be Focused Pro", id: 961632517
 mas "Binnen-I be gone", id: 1591455415
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
+mas "Draw Things", id: 6444050820
 mas "Free MP4 Converter", id: 693443591
 mas "GoodNotes", id: 1444383602
 mas "iA Writer", id: 775737590
@@ -687,6 +691,7 @@ mas "Pages", id: 409201541
 mas "Pixave", id: 924891282
 mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
+mas "Smart Converter", id: 447513724
 mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
