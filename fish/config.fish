@@ -13,6 +13,9 @@ end
 # asdf Version Manager
 source /usr/local/opt/asdf/libexec/asdf.fish
 
+# SSH
+set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
 # Volta
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
