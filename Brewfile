@@ -606,6 +606,8 @@ cask "raspberry-pi-imager"
 cask "raycast"
 # Web browser
 cask "safari-technology-preview"
+# Store SSH keys in the Secure Enclave
+cask "secretive"
 # MySQL/MariaDB database management platform
 cask "sequel-pro"
 # Onion routing based messenger
@@ -654,6 +656,8 @@ cask "visual-studio-code"
 cask "vlc"
 # Web browser plugin
 cask "vlc-webplugin"
+# Rust-based terminal
+cask "warp"
 cask "webponize"
 # Torrent streaming application
 cask "webtorrent"
@@ -662,20 +666,17 @@ cask "whatroute"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 mas "1-Click Video Converter", id: 717545086
-mas "Aiko", id: 1672085276
 mas "Be Focused Pro", id: 961632517
 mas "Binnen-I be gone", id: 1591455415
 mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
-mas "Draw Things", id: 6444050820
 mas "Free MP4 Converter", id: 693443591
 mas "GoodNotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
-mas "iMovie", id: 408981434
 mas "IP Friend", id: 1560408065
 mas "Just Focus", id: 1142151959
 mas "Key Codes", id: 414568915
