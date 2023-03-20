@@ -17,6 +17,9 @@ if test ! $(which brew); then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# Install SSH keys Secure Enclave
+brew install --cask secretive
+
 # Homebrew packages, Cask binaries and Mac App Store software
 echo "Installing Homebrew packages, Cask binaries and Mac App Store software"
 source ./brew.sh
