@@ -1,7 +1,0 @@
-name: Learn
-root: ~/Code/Github/learn/
-attach: false
-windows:
-  - Vim: vim
-  - Server: clear
-  - Terminal: clear

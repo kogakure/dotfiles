@@ -1,7 +1,0 @@
-name: Crate
-root: ~/Code/XING/crate/
-attach: false
-windows:
-  - Vim: vim
-  - Terminal: clear
-  - Server: yarn; ENABLE_MOCKS=true yarn repl

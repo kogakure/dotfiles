@@ -1,7 +1,0 @@
-name: Brewery
-root: ~/Code/XING/brewery/
-attach: false
-windows:
-  - Vim: vim
-  - Server: yarn
-  - Terminal: clear

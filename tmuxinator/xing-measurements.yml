@@ -1,9 +1,0 @@
-name: Measurements
-root: ~/Code/XING/component-scanner/
-attach: false
-windows:
-  - Vim: vim
-  - Frontend: cd ~/Code/XING/component-scanner-frontend/
-  - Backend: clear
-  - Figma: cd ~/Code/XING/figma-component-measurement/
-  - Extension: cd ~/Code/XING/chrome-extension-xds-component/

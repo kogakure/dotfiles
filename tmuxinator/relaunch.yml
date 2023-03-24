@@ -1,5 +1,5 @@
 name: Relaunch
-root: ~/Code/Github/astro-stefanimhoff.de/
+root: ~/Code/Github/astro-stefanimhoff-de/
 attach: false
 windows:
   - Vim: vim

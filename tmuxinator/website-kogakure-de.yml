@@ -1,5 +1,5 @@
 name: "kogakure-de"
-root: ~/Code/Github/kogakure.de/
+root: ~/Code/Github/kogakure-de/
 attach: false
 windows:
   - Vim: vim
