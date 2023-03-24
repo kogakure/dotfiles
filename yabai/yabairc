@@ -46,6 +46,5 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
 yabai -m rule --add app="Raycast" manage=off
-yabai -m rule --add app="^Music$" manage=off
 
 echo "Yabai configuration loaded …"
