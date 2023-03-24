@@ -4,6 +4,7 @@ return {
   "telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-node-modules.nvim",
+    cond = vim.g.vscode == nil,
     keys = {
       { "<leader>sN", "<cmd>Telescope node_modules list<cr>", desc = "Node Modules" },
     },

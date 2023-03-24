@@ -2,5 +2,6 @@
 return {
   "folke/tokyonight.nvim",
   lazy = true,
+  cond = vim.g.vscode == nil,
   opts = { style = "night" },
 }

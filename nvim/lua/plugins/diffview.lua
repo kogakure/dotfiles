@@ -4,6 +4,7 @@ return {
   "sindrets/diffview.nvim",
   lazy = false,
   dependencies = "nvim-lua/plenary.nvim",
+  cond = vim.g.vscode == nil,
   keys = {
     { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
     { "<leader>gdx", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },

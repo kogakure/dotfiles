@@ -3,4 +3,5 @@
 return {
   "christoomey/vim-tmux-navigator",
   event = "VeryLazy",
+  cond = vim.g.vscode == nil,
 }

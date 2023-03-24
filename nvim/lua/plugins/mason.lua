@@ -2,6 +2,7 @@
 -- https://github.com/williamboman/mason.nvim
 return {
   "williamboman/mason.nvim",
+  cond = vim.g.vscode == nil,
   opts = {
     ensure_installed = {
       "astro-language-server",

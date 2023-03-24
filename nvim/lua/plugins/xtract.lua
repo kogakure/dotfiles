@@ -2,4 +2,5 @@
 -- https://github.com/rstacruz/vim-xtract
 return {
   "rstacruz/vim-xtract",
+  cond = vim.g.vscode == nil,
 }

@@ -7,6 +7,7 @@ return {
     "nvim-lua/plenary.nvim",
     "akinsho/toggleterm.nvim",
   },
+  cond = vim.g.vscode == nil,
   keys = {
     { "<leader>fl", "<cmd>Lf<cr>", desc = "Lf File Manager" },
   },

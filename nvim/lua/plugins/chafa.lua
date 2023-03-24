@@ -2,6 +2,7 @@
 -- https://github.com/princejoogie/chafa.nvim
 return {
   "princejoogie/chafa.nvim",
+  cond = vim.g.vscode == nil,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "m00qek/baleia.nvim",

@@ -2,6 +2,7 @@
 -- https://github.com/nvim-telescope/telescope.nvim
 return {
   "telescope.nvim",
+  cond = vim.g.vscode == nil,
   keys = {
     { "<M-b>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     { "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files (hidden)" },

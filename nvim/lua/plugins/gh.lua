@@ -3,6 +3,7 @@
 return {
   "ldelossa/gh.nvim",
   dependencies = { "ldelossa/litee.nvim" },
+  cond = vim.g.vscode == nil,
   config = function()
     require("litee.lib").setup()
     require("litee.gh").setup({

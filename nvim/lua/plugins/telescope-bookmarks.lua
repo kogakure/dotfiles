@@ -4,6 +4,7 @@ return {
   "telescope.nvim",
   dependencies = {
     "dhruvmanila/telescope-bookmarks.nvim",
+    cond = vim.g.vscode == nil,
     keys = {
       { "<leader>sR", "<cmd>Telescope bookmarks<cr>", desc = "Brave Bookmarks" },
     },

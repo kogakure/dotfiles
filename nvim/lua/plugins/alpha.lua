@@ -2,6 +2,7 @@
 -- https://github.com/goolord/alpha-nvim
 return {
   "goolord/alpha-nvim",
+  cond = vim.g.vscode == nil,
   opts = function(_, opts)
     opts.section.header.val = {
       "             ▖     ",

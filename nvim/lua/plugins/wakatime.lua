@@ -3,4 +3,5 @@
 return {
   "wakatime/vim-wakatime",
   event = "VeryLazy",
+  cond = vim.g.vscode == nil,
 }

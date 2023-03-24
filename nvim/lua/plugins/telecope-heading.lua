@@ -4,6 +4,7 @@ return {
   "telescope.nvim",
   dependencies = {
     "crispgm/telescope-heading.nvim",
+    cond = vim.g.vscode == nil,
     keys = {
       { "<leader>sl", "<cmd>Telescope heading<cr>", desc = "Headlines" },
     },

@@ -2,6 +2,7 @@
 -- https://github.com/is0n/fm-nvim
 return {
   "is0n/fm-nvim",
+  cond = vim.g.vscode == nil,
   keys = {
     { "<M-g>", "<cmd>Lazygit<cr>", desc = "Lazygit" },
     { "<M-l>", "<cmd>Lf<cr>", desc = "Lf" },

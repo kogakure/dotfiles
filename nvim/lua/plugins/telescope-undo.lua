@@ -6,6 +6,7 @@ return {
     "nvim-lua/plenary.nvim",
     "debugloop/telescope-undo.nvim",
   },
+  cond = vim.g.vscode == nil,
   opts = {
     extensions = {
       undo = {

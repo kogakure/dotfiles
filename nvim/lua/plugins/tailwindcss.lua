@@ -2,6 +2,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    cond = vim.g.vscode == nil,
     opts = {
       servers = {
         tailwindcss = {},
@@ -10,6 +11,7 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
+    cond = vim.g.vscode == nil,
     opts = {
       user_default_options = {
         tailwind = true,
@@ -20,6 +22,7 @@ return {
       dependencies = {
         { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
       },
+      cond = vim.g.vscode == nil,
       opts = function(_, opts)
         -- original LazyVim kind icon formatter
         local format_kinds = opts.formatting.format
@@ -30,6 +33,7 @@ return {
       end,
     },
     "laytan/tailwind-sorter.nvim",
+    cond = vim.g.vscode == nil,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
