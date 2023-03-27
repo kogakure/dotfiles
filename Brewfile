@@ -199,6 +199,8 @@ brew "gnu-sed"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # Google Testing and Mocking Framework
 brew "googletest"
 # Library for loading images as SDL surfaces and textures
