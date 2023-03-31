@@ -28,8 +28,8 @@ return {
         "BufEnter",
         "WinEnter",
       },
-      tmux_integration = true,
-      disable_tmux_nav_when_zoomed = true,
+      multiplexer_integration = "tmux",
+      disable_multiplexer_nav_when_zoomed = true,
     })
   end,
 }

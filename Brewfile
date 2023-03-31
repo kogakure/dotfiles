@@ -451,8 +451,6 @@ cask "basictex"
 cask "bibdesk"
 # Desktop password and login vault
 cask "bitwarden"
-# 3D creation suite
-cask "blender"
 # Scriptable scratchpad for developers
 cask "boop"
 # Web browser focusing on privacy
@@ -674,6 +672,7 @@ mas "Bitwarden", id: 1352778147
 mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
+mas "Draw Things", id: 6444050820
 mas "Free MP4 Converter", id: 693443591
 mas "GoodNotes", id: 1444383602
 mas "iA Writer", id: 775737590
