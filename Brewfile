@@ -383,6 +383,8 @@ brew "ttyd", args: ["HEAD"]
 brew "tut"
 # URL extractor/launcher
 brew "urlview"
+# Compiler for the GObject type system
+brew "vala"
 # Syntax-aware linter for prose
 brew "vale"
 # Watch files and take action when they change
