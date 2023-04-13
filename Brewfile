@@ -27,16 +27,6 @@ brew "libpng"
 brew "freetype"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
-# Manage compile and link flags for libraries
-brew "pkg-config"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # C/C++ and Java libraries for Unicode and globalization
@@ -55,8 +45,14 @@ brew "giflib"
 brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
+brew "python@3.11"
 # Record and share terminal sessions
 brew "asciinema"
 # GNU File, Shell, and Text utilities
@@ -101,8 +97,6 @@ brew "cmake"
 brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -157,8 +151,6 @@ brew "fb303"
 brew "fd"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
-# Image manipulation library
-brew "jpeg", link: true
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # OCR (Optical Character Recognition) engine
@@ -199,6 +191,8 @@ brew "gnu-sed"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Manage compile and link flags for libraries
+brew "pkg-config"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Google Testing and Mocking Framework
@@ -223,6 +217,8 @@ brew "helix"
 brew "lua"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
+# Generic syntax highlighter
+brew "pygments"
 # Instant coding answers via the command-line
 brew "howdoi"
 # Improved top (interactive process viewer)
@@ -235,8 +231,6 @@ brew "hub"
 brew "hugo"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Toolkit for embedding hypervisor capabilities in your application
-brew "hyperkit"
 # Open h.265 video codec implementation
 brew "libde265"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
@@ -247,6 +241,8 @@ brew "imagemagick"
 brew "imagesnap"
 # Command-line pager for JSON data
 brew "jless"
+# Image manipulation library
+brew "jpeg", link: true
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Lazier way to manage everything docker
@@ -321,12 +317,14 @@ brew "pnpm"
 brew "prettier"
 # Python 3 bindings for the Cairo graphics library
 brew "py3cairo"
-# Generic syntax highlighter
-brew "pygments"
 # GNOME Python bindings (based on GObject Introspection)
 brew "pygobject3"
 # Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Messaging broker
 brew "rabbitmq"
 # File browser
@@ -417,8 +415,6 @@ brew "charmbracelet/tap/soft-serve"
 brew "charmbracelet/tap/vhs"
 # The SSH directory
 brew "charmbracelet/tap/wishlist"
-# CLI tool for CookLang Recipe Markup Language
-brew "cooklang/tap/cook"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
 # The scalable code generator that saves you time.
@@ -453,8 +449,6 @@ cask "basictex"
 cask "bibdesk"
 # Desktop password and login vault
 cask "bitwarden"
-# Scriptable scratchpad for developers
-cask "boop"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Automation tool
@@ -494,9 +488,6 @@ cask "figma"
 cask "firefox"
 # Web browser
 cask "firefox-developer-edition"
-# Web browser
-cask "firefox-nightly"
-cask "flip4mac"
 # Download manager with a torrent client
 cask "folx"
 # Free monospaced font with programming ligatures
@@ -600,8 +591,6 @@ cask "qlcolorcode"
 cask "qlvideo"
 # All-in-one bookmark manager
 cask "raindropio"
-# Kubernetes and container management on the desktop
-cask "rancher"
 # Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
 # Control your tools with a few keystrokes
@@ -650,8 +639,6 @@ cask "transmit"
 cask "tunnelblick"
 # Font manager application
 cask "typeface"
-# Virtualizer for x86 hardware
-cask "virtualbox"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -660,7 +647,6 @@ cask "vlc"
 cask "vlc-webplugin"
 # Rust-based terminal
 cask "warp"
-cask "webponize"
 # Torrent streaming application
 cask "webtorrent"
 # Network diagnostic utility
@@ -671,24 +657,21 @@ mas "1-Click Video Converter", id: 717545086
 mas "Be Focused Pro", id: 961632517
 mas "Binnen-I be gone", id: 1591455415
 mas "Bitwarden", id: 1352778147
-mas "Boop", id: 1518425043
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
 mas "Free MP4 Converter", id: 693443591
+mas "GarageBand", id: 682658836
 mas "GoodNotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
-mas "IP Friend", id: 1560408065
+mas "iMovie", id: 408981434
 mas "Just Focus", id: 1142151959
-mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
-mas "Kiwix", id: 1275066656
 mas "LanguageTool", id: 1534275760
 mas "Marked 2", id: 890031187
 mas "Mela", id: 1568924476
-mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
@@ -699,7 +682,5 @@ mas "Smart Converter", id: 447513724
 mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
-mas "Typeface", id: 1062679359
-mas "Vectornator", id: 1219074514
+mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
-whalebrew "whalebrew/whalesay"
