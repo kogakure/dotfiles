@@ -5,6 +5,7 @@
 - clean: ["~"]
 
 - create:
+    - ~/.config/gh
     - ~/.config/lazygit
     - ~/.config/lazydocker
 
