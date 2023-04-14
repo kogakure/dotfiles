@@ -21,6 +21,7 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -U EDITOR nvim
 
 set PATH /opt/homebrew/bin $PATH
+set PATH /opt/homebrew/sbin $PATH
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 
