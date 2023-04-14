@@ -11,6 +11,10 @@ xcode-select --install
 echo "Installing TMUX Plugin Manager"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# Fish Plugin Manager
+echo "Installing Fish Plugin Manager"
+source ./fisher.sh
+
 # Homebrew
 if test ! $(which brew); then
 	echo "Installing Homebrew"
