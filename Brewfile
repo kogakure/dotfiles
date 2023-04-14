@@ -27,6 +27,8 @@ brew "libpng"
 brew "freetype"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# Low-level library for pixel manipulation
+brew "pixman"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # C/C++ and Java libraries for Unicode and globalization
@@ -357,6 +359,8 @@ brew "scala"
 brew "silicon"
 # Convert filenames and directories to a web friendly format
 brew "slugify"
+# Compression/decompression tool based on snappy
+brew "snzip"
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
@@ -385,6 +389,8 @@ brew "urlview"
 brew "vala"
 # Syntax-aware linter for prose
 brew "vale"
+# Image processing library
+brew "vips"
 # Watch files and take action when they change
 brew "watchman"
 # Internet file retriever
@@ -470,6 +476,8 @@ cask "db-browser-for-sqlite"
 cask "deepl"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
+# Run Stable Diffusion locally
+cask "diffusionbee"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerized applications and microservices
@@ -494,6 +502,11 @@ cask "folx"
 cask "font-fira-code"
 # Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
+cask "font-ia-writer-duo"
+cask "font-ia-writer-mono"
+cask "font-ia-writer-quattro"
+# Free VPN client for FortiClient
+cask "forticlient-vpn"
 # 3D parametric modeler
 cask "freecad"
 # Disk space cleaner that finds and deletes duplicated and similar files
@@ -535,12 +548,16 @@ cask "keycastr"
 cask "kindle"
 # GPU-based terminal emulator
 cask "kitty"
+# Grammar, spelling and style suggestions in all the writing apps
+cask "languagetool"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
 # 2D game framework for Lua
 cask "love"
+# File system integration
+cask "macfuse"
 # 8-bit 3D voxel editor and interactive path tracing renderer
 cask "magicavoxel"
 # Video format converter (transcoder)
@@ -613,6 +630,8 @@ cask "sketchbook"
 cask "slack"
 # Displays all open files and sockets in use by all running processes
 cask "sloth"
+# Control your Sonos system
+cask "sonos"
 # App launcher/switcher
 cask "spacelauncher"
 # Music streaming service
@@ -639,6 +658,8 @@ cask "transmit"
 cask "tunnelblick"
 # Font manager application
 cask "typeface"
+# Disk encryption software focusing on security based on TrueCrypt
+cask "veracrypt"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -654,8 +675,8 @@ cask "whatroute"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 mas "1-Click Video Converter", id: 717545086
+mas "Aiko", id: 1672085276
 mas "Be Focused Pro", id: 961632517
-mas "Binnen-I be gone", id: 1591455415
 mas "Bitwarden", id: 1352778147
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
