@@ -82,7 +82,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export BAT_PAGER="less -R"
 
 # Asdf
- . /usr/local/opt/asdf/libexec/asdf.sh
+. "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # Volta

@@ -11,7 +11,7 @@ if status --is-interactive
 end
 
 # asdf Version Manager
-source /usr/local/opt/asdf/libexec/asdf.fish
+source "$(brew --prefix)/opt/asdf/libexec/asdf.fish"
 
 # SSH
 set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
