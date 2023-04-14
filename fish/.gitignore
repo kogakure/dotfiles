@@ -1,0 +1,6 @@
+completions
+conf.d
+functions/_*
+functions/fisher.fish
+functions/bass.fish
+functions/replay.fish
