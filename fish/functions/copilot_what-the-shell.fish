@@ -1,4 +1,4 @@
-function copilot_what-the-shell
+function copilot_what-the-shell --description "GitHub Copilot what the shell"
     set TMPFILE (mktemp)
     trap 'rm -f $TMPFILE' EXIT
     if github-copilot-cli what-the-shell $argv --shellout $TMPFILE

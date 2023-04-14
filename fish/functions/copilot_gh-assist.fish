@@ -1,4 +1,4 @@
-function copilot_gh-assist
+function copilot_gh-assist --description "GitHub Copilot gh assist"
     set TMPFILE (mktemp)
     trap 'rm -f $TMPFILE' EXIT
     if github-copilot-cli gh-assist $argv --shellout $TMPFILE
