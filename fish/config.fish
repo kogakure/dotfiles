@@ -10,9 +10,6 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-# asdf Version Manager
-source "$(brew --prefix)/opt/asdf/libexec/asdf.fish"
-
 # SSH
 set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
@@ -23,6 +20,7 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 # Neovim as default editor
 set -U EDITOR nvim
 
+set PATH /opt/homebrew/bin $PATH
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 
@@ -33,6 +31,9 @@ set --export KEYTIMEOUT 1
 set --export RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 set --export GIT_EDITOR nvim
 set --export EDITOR nvim
+
+# asdf Version Manager
+source (brew --prefix)/opt/asdf/libexec/asdf.fish
 
 # FZF
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
