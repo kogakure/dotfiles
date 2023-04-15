@@ -51,6 +51,13 @@ set --export FZF_TMUX_OPTS -p
 set --export FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
 set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
+    eval /opt/homebrew/Caskroom/miniconda/base/bin/conda "shell.fish" hook $argv | source
+end
+# <<< conda initialize <<<
+
 # Zoxide
 zoxide init fish | source
 
@@ -151,7 +158,6 @@ alias gwp 'git whatchanged -p'
 alias gwr 'git worktree remove' # <path/name>
 alias lg lazygit
 alias gcrb 'git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff --color=always {1}" --pointer="" | xargs  git checkout '
-
 
 # Vim/Neovim
 alias v vim
