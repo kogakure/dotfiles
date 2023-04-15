@@ -1,9 +1,1 @@
-{
-  "version": "0.2",
-  "dictionaryDefinitions": [
-    { "addWords": true, "path": ".cspell/words.txt", "name": "words" }
-  ],
-  "language": "en",
-  "dictionaries": ["words"],
-  "ignorePaths": ["nvim/dictionary", "nvim/spell", "nvim/thesaurus", "private"]
-}
+{"version":"0.2","dictionaries":["words"],"language":"en","ignorePaths":["nvim\/dictionary","nvim\/spell","nvim\/thesaurus","private"],"words":["nvim","miniconda","zoxide","texbin","MANPATH","pnpx","difftool","Imhoff","whatchanged","tmuxinator","dotfiles","softwareupdate","Neovim"]}
