@@ -439,6 +439,8 @@ cask "alacritty"
 cask "alfred"
 # Network scanner
 cask "angry-ip-scanner"
+# Webcam & audio device software
+cask "ankerwork"
 # Application uninstaller
 cask "appcleaner"
 # Audio utility
@@ -572,6 +574,8 @@ cask "microsoft-auto-update"
 cask "microsoft-edge"
 # Remote desktop client
 cask "microsoft-remote-desktop"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Minimal installer for conda
 cask "miniconda"
 # Desktop sync client for Nextcloud software products
