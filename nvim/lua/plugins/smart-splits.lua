@@ -13,7 +13,7 @@ return {
       },
       ignored_buftypes = { "NvimTree" },
       default_amount = 3,
-      wrap_at_edge = true,
+      at_edge = "wrap",
       move_cursor_same_row = false,
       resize_mode = {
         quit_key = "<ESC>",
