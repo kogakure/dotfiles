@@ -515,6 +515,7 @@ cask "freecad"
 cask "gemini"
 # Desktop client for GitHub repositories
 cask "github"
+# Japanese input software
 cask "google-japanese-ime"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
@@ -572,6 +573,8 @@ cask "michaelvillar-timer"
 cask "microsoft-auto-update"
 # Web browser
 cask "microsoft-edge"
+# Email client
+cask "microsoft-outlook"
 # Remote desktop client
 cask "microsoft-remote-desktop"
 # Meet, chat, call, and collaborate in just one place
