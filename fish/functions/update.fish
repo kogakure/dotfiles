@@ -1,4 +1,5 @@
 function update --description "Updating Homebrew, Ruby, Python, Node.js, Neovim, and MacOS"
+    sudo -v
     brew update && brew outdated && brew upgrade && brew cleanup
     sudo gem update --system && sudo gem update && gem cleanup all
     pip install --upgrade pip
