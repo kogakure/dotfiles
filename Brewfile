@@ -443,8 +443,6 @@ cask "angry-ip-scanner"
 cask "ankerwork"
 # Application uninstaller
 cask "appcleaner"
-# Audio utility
-cask "background-music"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Menu bar icon organizer
