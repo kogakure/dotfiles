@@ -323,6 +323,8 @@ brew "py3cairo"
 brew "pygobject3"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
+# Python interface to Tcl/Tk
+brew "python-tk@3.10"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
 # Interpreted, interactive, object-oriented programming language
@@ -667,6 +669,8 @@ cask "typeface"
 cask "veracrypt"
 # Open-source code editor
 cask "visual-studio-code"
+# Code editor
+cask "visual-studio-code-insiders"
 # Multimedia player
 cask "vlc"
 # Web browser plugin
