@@ -19,8 +19,8 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Keep the window centered (previous s
 vim.keymap.set("n", "<expr> j", "(v:count == 0 ? 'gj' : 'j')", { desc = "Move by rows in wrapped mode (down)", noremap = true, silent = true })
 -- stylua: ignore
 vim.keymap.set("n", "<expr> k", "(v:count == 0 ? 'gk' : 'k')", { desc = "Move by rows in wrapped mode (up)", noremap = true, silent = true })
-vim.keymap.set("n", "gP", "`[v`]", { desc = "Visuall select of just pasted content", noremap = true, silent = true })
-vim.keymap.set("n", "gy", "`[v`]y", { desc = "Visuall select of just pasted content", noremap = true, silent = true })
+vim.keymap.set("n", "gP", "`[v`]", { desc = "Visually select of just pasted content", noremap = true, silent = true })
+vim.keymap.set("n", "gy", "`[v`]y", { desc = "Visually select of just pasted content", noremap = true, silent = true })
 -- stylua: ignore
 vim.keymap.set("n", "<leader>wi", ":silent !open -a iA\\ Writer.app '%:p'<CR>", { desc = "Open in iA Writer", noremap = true, silent = true })
 
