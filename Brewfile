@@ -507,6 +507,8 @@ cask "font-fira-code-nerd-font"
 cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
+# Developer targeted fonts with a high number of glyphs
+cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
 cask "forticlient-vpn"
 # 3D parametric modeler
@@ -712,5 +714,6 @@ mas "Smart Converter", id: 447513724
 mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
+mas "Typeface", id: 1062679359
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
