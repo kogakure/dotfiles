@@ -46,6 +46,7 @@
     ~/.tmux-cht-languages: tmux/tmux-cht-languages
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vale.ini: style/vale.ini
+    ~/.wezterm.lua: wezterm/wezterm.lua
     ~/.wget: url/wget
     ~/.zsh.d: zsh/zsh.d
     ~/.zshrc: zsh/zshrc
