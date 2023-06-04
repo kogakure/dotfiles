@@ -12,7 +12,7 @@ return {
       "astro",
       "bash",
       "css",
-      "help",
+      "vimdoc",
       "html",
       "javascript",
       "json",
