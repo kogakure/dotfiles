@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
   pattern = { "*.mdx", "*.md" },
   callback = function()
     vim.cmd([[set filetype=markdown wrap linebreak nolist]])
+    vim.cmd([[SoftWrapMode]])
   end,
 })
 
