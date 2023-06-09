@@ -141,6 +141,8 @@ brew "eot-utils"
 brew "wxwidgets"
 # Modern replacement for 'ls'
 brew "exa"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
 # C++14 implementation of the TLS-1.3 standard
 brew "fizz"
 # Modular, composable client/server abstractions framework
@@ -237,6 +239,8 @@ brew "hyperfine"
 brew "libde265"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
+# LLVM's OpenMP runtime library
+brew "libomp"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
@@ -265,6 +269,8 @@ brew "libpsl"
 brew "libsoup"
 # Linux virtual machines
 brew "lima"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Package manager for the Lua programming language
@@ -283,8 +289,6 @@ brew "memcached"
 brew "mplayer"
 # Turn marked-up plain text into well-formatted documents
 brew "multimarkdown"
-# Protocol buffers (Google's data interchange format)
-brew "protobuf"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Open source relational database management system
@@ -303,6 +307,8 @@ brew "neovim"
 brew "nghttp2"
 # Small build system for use with gyp or CMake
 brew "ninja"
+# Optimized BLAS library
+brew "openblas"
 # ISO-C API and CLI for generating UUIDs
 brew "ossp-uuid"
 # Swiss-army knife of markup format conversion
@@ -317,6 +323,8 @@ brew "peco"
 brew "pnpm"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
 # Python 3 bindings for the Cairo graphics library
 brew "py3cairo"
 # GNOME Python bindings (based on GObject Introspection)
@@ -399,6 +407,8 @@ brew "watchman"
 brew "wget"
 # Homebrew, but with Docker images
 brew "whalebrew"
+# Utilities to create and convert Web Open Font File (WOFF) files
+brew "woff2"
 # Fake keyboard/mouse input and window management for X
 brew "xdotool"
 # JavaScript package manager
@@ -445,6 +455,8 @@ cask "angry-ip-scanner"
 cask "ankerwork"
 # Application uninstaller
 cask "appcleaner"
+# Multi-track audio editor and recorder
+cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Menu bar icon organizer
@@ -593,6 +605,8 @@ cask "notion"
 cask "numi"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Organize all your reference images in one place
+cask "ogdesign-eagle"
 # Web browser
 cask "opera"
 # Web browser
@@ -681,6 +695,8 @@ cask "vlc-webplugin"
 cask "warp"
 # Torrent streaming application
 cask "webtorrent"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
 # Network diagnostic utility
 cask "whatroute"
 # Open-source version of the X.Org X Window System
