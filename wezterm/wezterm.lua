@@ -48,7 +48,7 @@ config.keys = {
 	{ key = "i", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2i" }) },
 	{ key = "d", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2d" }) },
 	{ key = "z", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2z" }) },
-	{ key = "t", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2c" }) },
+	{ key = "t", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2\84T" }) },
 	{ key = "f", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2O" }) },
 	{ key = ",", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2v" }) },
 	{ key = "g", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2G" }) },
