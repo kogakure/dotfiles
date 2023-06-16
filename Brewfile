@@ -81,10 +81,12 @@ brew "bitwarden-cli"
 brew "boost"
 # Install RubyGems as Homebrew formulae
 brew "brew-gem"
-# Freely available high-quality data compressor
-brew "bzip2"
 # GNU compiler collection
 brew "gcc"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Freely available high-quality data compressor
+brew "bzip2"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
@@ -617,6 +619,8 @@ cask "opera-developer"
 cask "origin"
 # Control your smart light system
 cask "philips-hue-sync"
+# Colour picker for colours onscreen
+cask "pika"
 # Home media player
 cask "plex"
 # Collaboration platform for API development
@@ -777,6 +781,7 @@ vscode "file-icons.file-icons"
 vscode "foam.foam-vscode"
 vscode "gerane.Theme-TomorrowNight"
 vscode "ginfuru.better-nunjucks"
+vscode "GitHub.copilot-chat"
 vscode "GitHub.copilot-labs"
 vscode "GitHub.copilot-nightly"
 vscode "GitHub.github-vscode-theme"
