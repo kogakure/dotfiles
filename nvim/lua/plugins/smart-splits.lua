@@ -1,6 +1,7 @@
 return {
   "mrjones2014/smart-splits.nvim",
-  enabled = false,
+  enabled = true,
+  event = "VeryLazy",
   cond = vim.g.vscode == nil,
   keys = {
     { "<leader>wr", "<cmd>SmartResizeMode<cr>", desc = "Toggle Smart Resize Mode" },

@@ -24,10 +24,18 @@ vim.keymap.set("n", "gy", "`[v`]y", { desc = "Visually select of just pasted con
 -- stylua: ignore
 vim.keymap.set("n", "<leader>wi", ":silent !open -a iA\\ Writer.app '%:p'<CR>", { desc = "Open in iA Writer", noremap = true, silent = true })
 
--- vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
--- vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
--- vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
--- vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+vim.keymap.set("n", "<C-h>", function()
+  require("smart-splits").move_cursor_left()
+end)
+vim.keymap.set("n", "<C-j>", function()
+  require("smart-splits").move_cursor_down()
+end)
+vim.keymap.set("n", "<C-k>", function()
+  require("smart-splits").move_cursor_up()
+end)
+vim.keymap.set("n", "<C-l>", function()
+  require("smart-splits").move_cursor_right()
+end)
 
 -- Visual Mode
 vim.keymap.set("v", "<", "<gv", { desc = "Stay in indent mode (left)", noremap = true, silent = true })
