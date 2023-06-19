@@ -23,6 +23,7 @@
     ~/.config/kitty: kitty
     ~/.config/lazydocker/config.yml: docker/lazydocker.yml
     ~/.config/lazygit/config.yml: git/lazygit.yml
+    ~/.config/lf: lf
     ~/.config/nvim: nvim
     ~/.config/ranger: ranger
     ~/.config/skhd: skhd
