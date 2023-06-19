@@ -36,6 +36,9 @@ set --export EDITOR nvim
 # asdf Version Manager
 source (brew --prefix)/opt/asdf/libexec/asdf.fish
 
+# Atuin
+atuin init fish | source
+
 # FZF
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
 
