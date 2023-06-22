@@ -16,7 +16,7 @@ vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 vim.opt.title = true
 vim.opt.swapfile = false
-vim.opt.virtualedit = "all"
+vim.opt.virtualedit = "block,insert"
 
 vim.opt.iskeyword:append("-") -- Add dashes to words
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- Wildignore
