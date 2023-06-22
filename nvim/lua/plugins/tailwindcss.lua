@@ -33,7 +33,6 @@ return {
       end,
     },
     "laytan/tailwind-sorter.nvim",
-    cond = vim.g.vscode == nil,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
