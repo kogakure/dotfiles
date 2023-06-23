@@ -89,6 +89,8 @@ brew "gcc"
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
+# High performance message passing library
+brew "open-mpi"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
@@ -189,8 +191,12 @@ brew "git-fixup"
 brew "git-lfs"
 # Simple and efficient way to access statistics in git
 brew "git-quick-stats"
+# OpenGL Extension Wrangler Library
+brew "glew"
 # Network related modules for glib
 brew "glib-networking"
+# C++ mathematics library for graphics software
+brew "glm"
 # Render markdown on the CLI
 brew "glow"
 # GNU implementation of the famous stream editor
@@ -317,13 +323,15 @@ brew "openblas"
 brew "ossp-uuid"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# QR Code generation
+brew "qrencode"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Password manager
 brew "pass"
 # Simplistic interactive filtering tool
 brew "peco"
-# 📦🚀 Fast, disk space efficient package manager
+# Fast, disk space efficient package manager
 brew "pnpm"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
@@ -407,6 +415,8 @@ brew "vale"
 brew "vips"
 # Watch files and take action when they change
 brew "watchman"
+# Command-line tool to track (your) time
+brew "watson"
 # Internet file retriever
 brew "wget"
 # Homebrew, but with Docker images
@@ -461,8 +471,6 @@ cask "ankerwork"
 cask "appcleaner"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Tool to flash OS images to SD cards & USB drives
-cask "balenaetcher"
 # Menu bar icon organizer
 cask "bartender"
 # All-In-One Toolkit for Working Remotely
@@ -473,6 +481,8 @@ cask "basictex"
 cask "bibdesk"
 # Desktop password and login vault
 cask "bitwarden"
+# 3D creation suite
+cask "blender"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Automation tool
