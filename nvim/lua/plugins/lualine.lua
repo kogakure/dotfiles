@@ -2,6 +2,10 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   cond = vim.g.vscode == nil,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "linrongbin16/lsp-progress.nvim",
+  },
   opts = function()
     local icons = require("lazyvim.config").icons
 
@@ -45,6 +49,7 @@ return {
         },
         },
         lualine_x = {
+          { require("lsp-progress").progress },
           {
             function()
               return require("noice").api.status.command.get()

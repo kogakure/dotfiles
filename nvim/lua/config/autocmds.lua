@@ -9,12 +9,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { ".yabairc" },
-  command = "!brew services restart yabai",
+  command = "!yabai --restart-service",
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { ".skhdrc" },
-  command = "!brew services restart skhd",
+  command = "!skhd --restart-service",
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
@@ -36,6 +36,13 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   pattern = { "*" },
   callback = function()
     vim.cmd([[tabdo wincmd =]])
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "User LspProgressStatusUpdated" }, {
+  pattern = { "*" },
+  callback = function()
+    require("lualine").refresh()
   end,
 })
 
