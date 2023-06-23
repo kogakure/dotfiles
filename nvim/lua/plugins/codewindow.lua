@@ -5,7 +5,9 @@ return {
   cond = vim.g.vscode == nil,
   config = function()
     local codewindow = require("codewindow")
-    codewindow.setup()
+    codewindow.setup({
+      window_border = "none",
+    })
     codewindow.apply_default_keybinds()
   end,
 }
