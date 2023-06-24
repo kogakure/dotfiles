@@ -9,6 +9,7 @@ vim.keymap.set("v", "y", "myy`y", { desc = "Maintain the cursor position when ya
 vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true, silent = true })
 vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>bx", ":bufdo bdelete<CR>", { desc = "Delete all buffers", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>bsd", "<cmd>%bd|e#|bd#<cr>|'<cr>", { desc = "Delete surrounding buffers" })
 vim.keymap.set("n", "<leader>ut", ":set list!<CR>", { desc = "Toggle list", noremap = true, silent = true })
 vim.keymap.set("n", "Y", "yg$", { desc = "Copy to the end of the line", noremap = true, silent = true })
 -- stylua: ignore
