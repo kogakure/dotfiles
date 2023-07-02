@@ -110,6 +110,50 @@ function GetAllValidWindows()
 	return windows
 end
 
+-- Launch application or toggle it
+function launchToggleApplication(applicationName)
+	local app = hs.application.find(applicationName)
+
+	if app then
+		local appWindows = app:visibleWindows()
+
+		if #appWindows > 0 then
+			local focusedWindow = app:focusedWindow()
+
+			if focusedWindow then
+				if app:isHidden() then
+					app:unhide()
+				else
+					-- Some apps don't allow hiding, so Apple Script is needed
+					if app:hide() == false then
+						hideApplicationWithAppleScript(app)
+					else
+						app:hide()
+					end
+				end
+			else
+				app:activate()
+			end
+		else
+			app:activate()
+		end
+	else
+		hs.application.launchOrFocus(applicationName)
+	end
+end
+
+-- Hide application with AppleScript
+function hideApplicationWithAppleScript(app)
+	local appName = app:name()
+	local hideScript = [[
+        tell application "Finder"
+            set visible of process "%s" to false
+        end tell
+    ]]
+	local formattedScript = string.format(hideScript, appName)
+	hs.osascript.applescript(formattedScript)
+end
+
 -- Auto Reload Config
 function ReloadConfig(files)
 	DoReload = false
