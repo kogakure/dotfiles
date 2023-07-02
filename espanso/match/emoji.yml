@@ -59,18 +59,18 @@ matches:
     label: Pomodori
     replace: "🍅"
 
-  - trigger: ":-"
+  - trigger: ":-:"
     label: Minus
     replace: "🚫"
 
-  - trigger: ":+"
+  - trigger: ":+:"
     label: Plus
     replace: "✅"
 
-  - trigger: ":!"
+  - trigger: ":!:"
     label: Warning
     replace: "⚠️"
 
-  - trigger: ":?"
+  - trigger: ":?:"
     label: Question
     replace: "❓"
