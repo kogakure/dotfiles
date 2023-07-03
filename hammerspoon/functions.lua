@@ -126,7 +126,7 @@ function launchToggleApplication(applicationName)
 				else
 					-- Some apps don't allow hiding, so Apple Script is needed
 					if app:hide() == false then
-						hideApplicationWithAppleScript(app)
+						HideApplicationWithAppleScript(app)
 					else
 						app:hide()
 					end
@@ -143,7 +143,7 @@ function launchToggleApplication(applicationName)
 end
 
 -- Hide application with AppleScript
-function hideApplicationWithAppleScript(app)
+function HideApplicationWithAppleScript(app)
 	local appName = app:name()
 	local hideScript = [[
         tell application "Finder"
@@ -152,6 +152,12 @@ function hideApplicationWithAppleScript(app)
     ]]
 	local formattedScript = string.format(hideScript, appName)
 	hs.osascript.applescript(formattedScript)
+end
+
+function Yabai(commands)
+	for _, cmd in ipairs(commands) do
+		os.execute("/opt/homebrew/bin/yabai -m " .. cmd)
+	end
 end
 
 -- Auto Reload Config

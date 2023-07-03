@@ -21,7 +21,7 @@ window.animationDuration = 0
 hints.fontName = "Helvetica-Bold"
 hints.fontSize = 18
 hints.showTitleThresh = 0
--- hints.style           = "vimperator" -- Buggy, gets slow after a while
+hints.style = "vimperator"
 
 -- Allow searching for alternate names
 application.enableSpotlightForNameSearches(true)
@@ -32,10 +32,12 @@ application.enableSpotlightForNameSearches(true)
 
 -- Keys
 local KEY_HYPER = { "⇧", "⌃", "⌥", "⌘" }
+local KEY_A = { "⌥" }
 local KEY_AM = { "⌥", "⌘" }
 local KEY_CA = { "⌃", "⌥" }
 local KEY_CAM = { "⌃", "⌥", "⌘" }
 local KEY_CM = { "⌃", "⌘" }
+local KEY_SA = { "⇧", "⌥" }
 local KEY_SAM = { "⇧", "⌥", "⌘" }
 local KEY_SC = { "⇧", "⌘" }
 local KEY_SCA = { "⇧", "⌃", "⌥" }
@@ -110,22 +112,29 @@ local LAYOUT_SINGLE = {
 -- stylua: ignore start
 
 -- Movement hotkeys
--- hotkey.bind(KEY_AM, "down",  function() nudge(0, 100) end)
--- hotkey.bind(KEY_AM, "up",    function() nudge(0, -100) end)
--- hotkey.bind(KEY_AM, "right", function() nudge(100, 0) end)
--- hotkey.bind(KEY_AM, "left",  function() nudge(-100, 0) end)
+-- hotkey.bind(KEY_AM, "down",  function() Nudge(0, 100) end)
+-- hotkey.bind(KEY_AM, "up",    function() Nudge(0, -100) end)
+-- hotkey.bind(KEY_AM, "right", function() Nudge(100, 0) end)
+-- hotkey.bind(KEY_AM, "left",  function() Nudge(-100, 0) end)
 
 -- Resize hotkeys
-hotkey.bind(KEY_SAM, "up",    function() Yank(0, -100) end)
-hotkey.bind(KEY_SAM, "down",  function() Yank(0, 100) end)
-hotkey.bind(KEY_SAM, "right", function() Yank(100, 0) end)
-hotkey.bind(KEY_SAM, "left",  function() Yank(-100, 0) end)
+-- hotkey.bind(KEY_SAM, "up",    function() Yank(0, -100) end)
+-- hotkey.bind(KEY_SAM, "down",  function() Yank(0, 100) end)
+-- hotkey.bind(KEY_SAM, "right", function() Yank(100, 0) end)
+-- hotkey.bind(KEY_SAM, "left",  function() Yank(-100, 0) end)
 
 -- Push to screen edge
 -- hotkey.bind(KEY_CAM, "left",  function() Push(0, 0, 0.5, 1) end)
 -- hotkey.bind(KEY_CAM, "right", function() Push(0.5, 0, 0.5, 1) end)
 -- hotkey.bind(KEY_CAM, "up",    function() Push(0, 0, 1, 0.5) end)
 -- hotkey.bind(KEY_CAM, "down",  function() Push(0, 0.5, 1, 0.5) end)
+
+-- Focus
+-- hotkey.bind(KEY_CAM, 'k', function() window.focusedWindow():focusWindowNorth() end)
+-- hotkey.bind(KEY_CAM, 'j', function() window.focusedWindow():focusWindowSouth() end)
+-- hotkey.bind(KEY_CAM, 'l', function() window.focusedWindow():focusWindowEast() end)
+-- hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
+
 
 -- Centered window with some room to see the desktop
 -- hotkey.bind(KEY_SCM, "l", function() Push(0.05, 0.05, 0.9, 0.9) end)
@@ -173,6 +182,62 @@ hotkey.bind(KEY_SAM, "left",  function() Yank(-100, 0) end)
 -- hotkey.bind(KEY_SCM, "l",     function() window.focusedWindow():moveOneScreenEast(); push(0, 0, 1, 1) end)
 -- hotkey.bind(KEY_SCM, "h",     function() window.focusedWindow():moveOneScreenWest(); window.focusedWindow():moveOneScreenWest(); push(0, 0, 1, 1) end)
 
+-- Yabai
+-- Focus Window
+hotkey.bind(KEY_A, "h", function() Yabai({"window --focus west"}) end)
+hotkey.bind(KEY_A, "j", function() Yabai({"window --focus south"}) end)
+hotkey.bind(KEY_A, "k", function() Yabai({"window --focus north"}) end)
+hotkey.bind(KEY_A, "l", function() Yabai({"window --focus east"}) end)
+
+-- Swap Managed Windows
+hotkey.bind(KEY_SA, "h", function() Yabai({"window --swap west"}) end)
+hotkey.bind(KEY_SA, "j", function() Yabai({"window --swap south"}) end)
+hotkey.bind(KEY_SA, "k", function() Yabai({"window --swap north"}) end)
+hotkey.bind(KEY_SA, "l", function() Yabai({"window --swap east"}) end)
+
+-- Move Managed Windows
+hotkey.bind(KEY_SCA, "h", function() Yabai({"window --warp west"}) end)
+hotkey.bind(KEY_SCA, "j", function() Yabai({"window --warp south"}) end)
+hotkey.bind(KEY_SCA, "k", function() Yabai({"window --warp north"}) end)
+hotkey.bind(KEY_SCA, "l", function() Yabai({"window --warp east"}) end)
+
+-- Rotate Windows
+hotkey.bind(KEY_A, "r", function() Yabai({"space --rotate 90"}) end)
+
+-- Toggle Window Fullscreen Zoom
+hotkey.bind(KEY_A, "f", function() Yabai({"window --toggle zoom-fullscreen"}) end)
+
+-- Toggle Padding and Gap
+hotkey.bind(KEY_A, "g", function() Yabai({"space --toggle padding", "space --toggle gap"}) end)
+
+-- Float/Unfloat Window
+hotkey.bind(KEY_A, "t", function() Yabai({"window --toggle float", "window --grid 7:7:1:1:5:5"}) end)
+
+-- Toggle Window Split Type
+hotkey.bind(KEY_A, "e", function() Yabai({"window --toggle split"}) end)
+
+-- Balance Size of Windows
+hotkey.bind(KEY_SA, "0", function() Yabai({"space --balance"}) end)
+
+-- Move Window to space
+hotkey.bind(KEY_SCA, "1", function() Yabai({"window --space 1"}) end)
+hotkey.bind(KEY_SCA, "2", function() Yabai({"window --space 2"}) end)
+hotkey.bind(KEY_SCA, "3", function() Yabai({"window --space 3"}) end)
+hotkey.bind(KEY_SCA, "4", function() Yabai({"window --space 4"}) end)
+hotkey.bind(KEY_SCA, "5", function() Yabai({"window --space 5"}) end)
+hotkey.bind(KEY_SCA, "6", function() Yabai({"window --space 6"}) end)
+hotkey.bind(KEY_SCA, "7", function() Yabai({"window --space 7"}) end)
+hotkey.bind(KEY_SCA, "8", function() Yabai({"window --space 8"}) end)
+hotkey.bind(KEY_SCA, "9", function() Yabai({"window --space 9"}) end)
+
+-- Send Window to Monitor
+hotkey.bind(KEY_SA, "n", function() Yabai({"window --display next"}) end)
+hotkey.bind(KEY_SA, "p", function() Yabai({"window --display prev"}) end)
+
+-- Move Focus to Monitor
+hotkey.bind(KEY_SAM, "h", function() Yabai({"display --focus next"}) end)
+hotkey.bind(KEY_SAM, "l", function() Yabai({"display --focus prev"}) end)
+
 -- Application shortcuts
 hotkey.bind(KEY_SC,    "r", function() launchToggleApplication("Wezterm") end)
 hotkey.bind(KEY_SC,    "w", function() launchToggleApplication("kitty") end)
@@ -202,12 +267,6 @@ hotkey.bind(KEY_HYPER, "space", function() hints.windowHints(GetAllValidWindows(
 
 -- Manual config reloading (from getting started guide):
 hotkey.bind(KEY_HYPER, "delete", function() hs.reload() end)
-
--- Focus
--- hotkey.bind(KEY_CAM, 'k', function() window.focusedWindow():focusWindowNorth() end)
--- hotkey.bind(KEY_CAM, 'j', function() window.focusedWindow():focusWindowSouth() end)
--- hotkey.bind(KEY_CAM, 'l', function() window.focusedWindow():focusWindowEast() end)
--- hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
 
 -- Layouts
 hotkey.bind(KEY_HYPER, "1", function() layout.apply(LAYOUT_SINGLE) end)
