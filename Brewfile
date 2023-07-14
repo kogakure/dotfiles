@@ -49,8 +49,6 @@ brew "jpeg-xl"
 brew "aom"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -89,6 +87,8 @@ brew "gcc"
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # High performance message passing library
 brew "open-mpi"
 # Console-based Audio Visualizer for ALSA
@@ -655,6 +655,8 @@ cask "raycast"
 cask "safari-technology-preview"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
+# Tool for sending personal documents to Kindles from Macs
+cask "send-to-kindle"
 # MySQL/MariaDB database management platform
 cask "sequel-pro"
 # Onion routing based messenger
