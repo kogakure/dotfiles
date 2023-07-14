@@ -124,15 +124,10 @@ function launchToggleApplication(applicationName)
 				if app:isHidden() then
 					app:unhide()
 				else
-					-- Some apps don't allow hiding, so Apple Script is needed
-					if app:hide() == false then
-						HideApplicationWithAppleScript(app)
-					else
-						app:hide()
-					end
+					HideApplicationWithAppleScript(app)
 				end
 			else
-				app:activate()
+				ShowApplicationWithAppleScript(app)
 			end
 		else
 			app:activate()
@@ -151,6 +146,18 @@ function HideApplicationWithAppleScript(app)
         end tell
     ]]
 	local formattedScript = string.format(hideScript, appName)
+	hs.osascript.applescript(formattedScript)
+end
+
+-- Show application with AppleScript
+function ShowApplicationWithAppleScript(app)
+	local appName = app:name()
+	local showScript = [[
+        tell application "Finder"
+            set visible of process "%s" to true
+        end tell
+    ]]
+	local formattedScript = string.format(showScript, appName)
 	hs.osascript.applescript(formattedScript)
 end
 
