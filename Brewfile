@@ -673,8 +673,6 @@ cask "slack"
 cask "sloth"
 # Control your Sonos system
 cask "sonos"
-# App launcher/switcher
-cask "spacelauncher"
 # Music streaming service
 cask "spotify"
 # Video game digital distribution service
@@ -697,8 +695,6 @@ cask "tor-browser"
 cask "transmit"
 # Free and open-source OpenVPN client
 cask "tunnelblick"
-# Font manager application
-cask "typeface"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
 # Open-source code editor
