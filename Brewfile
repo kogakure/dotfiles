@@ -585,6 +585,8 @@ cask "languagetool"
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
+# Client for LLaMA models
+cask "llamachat"
 # 2D game framework for Lua
 cask "love"
 # File system integration
@@ -685,8 +687,6 @@ cask "synology-drive"
 cask "telegram-desktop"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin8"
-# General-purpose text editor
-cask "textmate"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security
@@ -759,7 +759,6 @@ vscode "asvetliakov.snapshot-tools"
 vscode "azemoh.one-monokai"
 vscode "bierner.markdown-preview-github-styles"
 vscode "bradlc.vscode-tailwindcss"
-vscode "bungcip.better-toml"
 vscode "ChakrounAnas.turbo-console-log"
 vscode "chrischinchilla.vale-vscode"
 vscode "christian-kohler.npm-intellisense"
@@ -844,6 +843,7 @@ vscode "sleistner.vscode-fileutils"
 vscode "styled-components.vscode-styled-components"
 vscode "svanimpe.stencil"
 vscode "svelte.svelte-vscode"
+vscode "tamasfe.even-better-toml"
 vscode "tchayen.markdown-links"
 vscode "thenikso.github-plus-theme"
 vscode "Tyriar.sort-lines"
