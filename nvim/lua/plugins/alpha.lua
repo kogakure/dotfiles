@@ -16,9 +16,9 @@ return {
       opts.button("r", "󰈞 " .. " Recent files", ":Telescope oldfiles <CR>"),
       opts.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
       opts.button("p", " " .. " Find Project", ":Telescope projects<CR>"),
-      opts.button("s", "󰁯" .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
-      opts.button("l", "󰒲" .. " Lazy (Plugins)", ":Lazy<CR>"),
-      opts.button("m", "󱊈" .. " Mason (LSP, DAP, Linter, Formatter)", ":Mason<CR>"),
+      opts.button("s", "󰁯 " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+      opts.button("l", "󰒲 " .. " Lazy (Plugins)", ":Lazy<CR>"),
+      opts.button("m", "󱊈 " .. " Mason (LSP, DAP, Linter, Formatter)", ":Mason<CR>"),
       opts.button("q", " " .. " Quit", ":qa<CR>"),
       opts.padding,
     }
