@@ -489,6 +489,8 @@ cask "brave-browser"
 cask "bunch"
 # E-books management software
 cask "calibre"
+# Screen capturing tool
+cask "cleanshot"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
@@ -587,6 +589,8 @@ cask "lbry"
 cask "ledger-live"
 # Client for LLaMA models
 cask "llamachat"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # 2D game framework for Lua
 cask "love"
 # File system integration
