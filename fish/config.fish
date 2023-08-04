@@ -24,6 +24,7 @@ set PATH /opt/homebrew/bin $PATH
 set PATH /opt/homebrew/sbin $PATH
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
+set PATH ~/.local/bin $PATH
 
 # Set .config folder
 set --export XDG_CONFIG_HOME "$HOME/.config"
