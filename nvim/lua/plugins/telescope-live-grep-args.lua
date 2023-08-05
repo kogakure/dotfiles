@@ -4,7 +4,6 @@ return {
   "telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-live-grep-args.nvim",
-    cond = vim.g.vscode == nil,
     opts = {
       extensions = {
         live_grep_args = {

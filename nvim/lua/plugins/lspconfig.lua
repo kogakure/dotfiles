@@ -2,7 +2,6 @@
 -- https://github.com/neovim/nvim-lspconfig
 return {
   "neovim/nvim-lspconfig",
-  cond = vim.g.vscode == nil,
   init = function()
     require("lazyvim.util").on_attach(function(_, buffer)
 	  -- stylua: ignore

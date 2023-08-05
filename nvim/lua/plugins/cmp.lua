@@ -5,7 +5,6 @@ return {
     "zbirenbaum/copilot-cmp",
     "David-Kunz/cmp-npm",
   },
-  cond = vim.g.vscode == nil,
   opts = function(_, opts)
     local cmp = require("cmp")
     opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {

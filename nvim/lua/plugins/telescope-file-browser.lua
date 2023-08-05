@@ -4,7 +4,6 @@ return {
   "telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-file-browser.nvim",
-    cond = vim.g.vscode == nil,
     keys = {
       { "<leader>sB", ":Telescope file_browser path=%:p:h=%:p:h<cr>", desc = "Browse Files" },
     },

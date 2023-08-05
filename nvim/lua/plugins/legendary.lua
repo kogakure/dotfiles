@@ -5,7 +5,6 @@ return {
   dependencies = {
     "kkharji/sqlite.lua",
   },
-  cond = vim.g.vscode == nil,
   keys = {
 	-- stylua: ignore
     { "<leader>L", "<cmd>Legendary<cr>", desc = "Legendary" },

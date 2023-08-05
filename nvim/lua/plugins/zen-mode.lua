@@ -2,7 +2,6 @@
 -- https://github.com/folke/zen-mode.nvim
 return {
   "folke/zen-mode.nvim",
-  cond = vim.g.vscode == nil,
   keys = {
 	-- stylua: ignore
     { "<leader>zz", "<cmd>ZenMode<cr>", desc = "Zen Mode" },

@@ -3,7 +3,6 @@
 return {
   "ahmedkhalf/project.nvim",
   lazy = false,
-  cond = vim.g.vscode == nil,
   keys = {
 	-- stylua: ignore
     { "<leader>p", ":Telescope projects<cr>", desc = "Search Projects" },

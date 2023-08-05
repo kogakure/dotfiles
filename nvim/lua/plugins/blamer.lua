@@ -2,7 +2,6 @@
 -- https://github.com/APZelos/blamer.nvim
 return {
   "APZelos/blamer.nvim",
-  cond = vim.g.vscode == nil,
   keys = {
 	-- stylua: ignore
     { "<leader>gB", "<cmd>BlamerToggle<cr>", desc = "Git Blame" },

@@ -2,7 +2,6 @@
 -- https://github.com/nvim-telescope/telescope.nvim
 return {
   "telescope.nvim",
-  cond = vim.g.vscode == nil,
   keys = {
     { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
     { "<C-t>", "<cmd>Telescope<cr>", desc = "Telescope" },

@@ -2,7 +2,6 @@
 return {
   {
     "LazyVim/LazyVim",
-    cond = vim.g.vscode == nil,
     opts = {
       colorscheme = "tokyonight",
     },

@@ -2,7 +2,6 @@
 -- https://github.com/otavioschwanck/tmux-awesome-manager.nvim
 return {
   "otavioschwanck/tmux-awesome-manager.nvim",
-  cond = vim.g.vscode == nil,
   keys = {
     -- stylua: ignore
     { "<leader>sT", function() vim.cmd(":Telescope tmux-awesome-manager list_terms") end, desc = "TMUX Awesome Manager" },

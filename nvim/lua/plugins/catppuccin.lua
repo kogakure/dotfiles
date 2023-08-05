@@ -3,6 +3,5 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    cond = vim.g.vscode == nil,
   },
 }

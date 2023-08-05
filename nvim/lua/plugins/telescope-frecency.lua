@@ -4,7 +4,6 @@ return {
   "telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-frecency.nvim",
-    cond = vim.g.vscode == nil,
     dependencies = {
       "kkharji/sqlite.lua",
     },

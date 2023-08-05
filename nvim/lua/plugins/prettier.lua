@@ -4,7 +4,6 @@ return {
     "neovim/nvim-lspconfig",
     "jose-elias-alvarez/null-ls.nvim",
   },
-  cond = vim.g.vscode == nil,
   config = function()
     require("prettier").setup({
       bin = "prettierd",

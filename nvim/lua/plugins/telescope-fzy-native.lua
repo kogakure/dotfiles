@@ -4,7 +4,6 @@ return {
   "telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-fzy-native.nvim",
-    cond = vim.g.vscode == nil,
     opts = {
       extensions = {
         fzy_native = {

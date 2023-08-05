@@ -5,7 +5,6 @@ return {
   depencendies = {
     "nvim-treesitter/playground",
   },
-  cond = vim.g.vscode == nil,
   opts = {
     indent = { enable = false },
     ensure_installed = {

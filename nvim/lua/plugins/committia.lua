@@ -2,5 +2,4 @@
 -- https://github.com/rhysd/committia.vim
 return {
   "rhysd/committia.vim",
-  cond = vim.g.vscode == nil,
 }

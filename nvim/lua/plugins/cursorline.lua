@@ -2,7 +2,6 @@
 -- https://github.com/yamatsum/nvim-cursorline
 return {
   "yamatsum/nvim-cursorline",
-  cond = vim.g.vscode == nil,
   config = function()
     require("nvim-cursorline").setup({
       cursorline = {

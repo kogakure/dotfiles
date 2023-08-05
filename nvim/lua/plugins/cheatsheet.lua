@@ -2,7 +2,6 @@
 -- https://github.com/sudormrfbin/cheatsheet.nvim
 return {
   "sudormrfbin/cheatsheet.nvim",
-  cond = vim.g.vscode == nil,
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "nvim-lua/popup.nvim",

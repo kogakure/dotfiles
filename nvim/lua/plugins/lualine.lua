@@ -1,7 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
-  cond = vim.g.vscode == nil,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     "linrongbin16/lsp-progress.nvim",
