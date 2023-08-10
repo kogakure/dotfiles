@@ -49,5 +49,6 @@ yabai -m rule --add app="Raycast" manage=off
 yabai -m rule --add app="Dropbox Dash" manage=off
 yabai -m rule --add app="Pika" manage=off
 yabai -m rule --add app="^CleanShot X$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Dash$" sticky=on layer=above manage=off
 
 echo "Yabai configuration loaded …"
