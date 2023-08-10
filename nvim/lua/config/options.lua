@@ -5,6 +5,7 @@ vim.opt.autowrite = true
 vim.opt.backspace = { "indent", "eol", "start" } -- Intuitive backspacing
 vim.opt.copyindent = true
 vim.opt.foldlevel = 2
+vim.opt.fillchars = "fold: "
 vim.opt.cursorline = false
 vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "indent"
