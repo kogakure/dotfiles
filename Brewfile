@@ -131,6 +131,8 @@ brew "docker"
 brew "docker-compose"
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true
+# .NET Core
+brew "dotnet"
 # More intuitive version of du in rust
 brew "dust"
 # Collection of reusable C++ library artifacts developed at Facebook
@@ -459,6 +461,8 @@ brew "koekeishiya/formulae/yabai"
 brew "ms-jpq/sad/sad"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+# Time tracker
+cask "activitywatch"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Application launcher and productivity software
@@ -469,6 +473,8 @@ cask "angry-ip-scanner"
 cask "ankerwork"
 # Application uninstaller
 cask "appcleaner"
+# User-friendly GUI app for Homebrew
+cask "applite"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Menu bar icon organizer
@@ -539,8 +545,6 @@ cask "font-ia-writer-quattro"
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
 cask "forticlient-vpn"
-# 3D parametric modeler
-cask "freecad"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Desktop client for GitHub repositories
@@ -709,8 +713,6 @@ cask "visual-studio-code-insiders"
 cask "vlc"
 # Web browser plugin
 cask "vlc-webplugin"
-# Rust-based terminal
-cask "warp"
 # Torrent streaming application
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
@@ -728,12 +730,13 @@ mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
 mas "Free MP4 Converter", id: 693443591
 mas "GarageBand", id: 682658836
-mas "GoodNotes", id: 1444383602
+mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
 mas "iMovie", id: 408981434
 mas "Just Focus", id: 1142151959
+mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "LanguageTool", id: 1534275760
 mas "Marked 2", id: 890031187
@@ -751,6 +754,7 @@ mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
+vscode "activitywatch.aw-watcher-vscode"
 vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
 vscode "alefragnani.Bookmarks"
