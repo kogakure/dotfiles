@@ -18,6 +18,7 @@
     ~/.config/cava: cava
     ~/.config/espanso: espanso
     ~/.config/fish: fish
+    ~/.config/gh-dash/config.yml: github/gh-dash/config.yml
     ~/.config/gh/config.yml: github/gh/config.yml
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
