@@ -18,7 +18,7 @@
     ~/.config/cava: cava
     ~/.config/espanso: espanso
     ~/.config/fish: fish
-    ~/.config/gh/config.yml: github/config.yml
+    ~/.config/gh/config.yml: github/gh/config.yml
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
     ~/.config/lazydocker/config.yml: docker/lazydocker.yml
