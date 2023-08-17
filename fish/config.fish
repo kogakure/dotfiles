@@ -22,6 +22,8 @@ set -U EDITOR nvim
 
 set PATH /opt/homebrew/bin $PATH
 set PATH /opt/homebrew/sbin $PATH
+set PATH /opt/homebrew/opt/libomp/bin $PATH
+set PATH /opt/homebrew/opt/llvm/bin $PATH
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 set PATH ~/.local/bin $PATH
@@ -33,6 +35,9 @@ set --export KEYTIMEOUT 1
 set --export RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 set --export GIT_EDITOR nvim
 set --export EDITOR nvim
+
+# Stable Diffusion Webui
+set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 
 # asdf Version Manager
 source (brew --prefix)/opt/asdf/libexec/asdf.fish
