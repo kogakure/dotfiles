@@ -201,5 +201,9 @@ alias cpg copilot_git-assist
 alias cpgh copilot_github-assist
 alias wts copilot_what-the-shell
 
+# Nvim
+alias :GoToFile "nvim +GoToFile"
+alias :Grep "nvim +Grep"
+
 # Prompt
 starship init fish | source
