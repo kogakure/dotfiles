@@ -8,6 +8,7 @@
     - ~/.config/gh
     - ~/.config/lazygit
     - ~/.config/lazydocker
+    - ~/.config/tmux
 
 - link:
     ~/.ack: search/ack
@@ -29,6 +30,7 @@
     ~/.config/ranger: ranger
     ~/.config/skhd: skhd
     ~/.config/starship.toml: prompt/starship.toml
+    ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
     ~/.config/tmuxinator: tmuxinator
     ~/.config/yabai: yabai
     ~/.ctags: search/ctags
