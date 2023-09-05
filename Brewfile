@@ -475,6 +475,8 @@ cask "ankerwork"
 cask "appcleaner"
 # User-friendly GUI app for Homebrew
 cask "applite"
+# Chromium based browser
+cask "arc"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Menu bar icon organizer
