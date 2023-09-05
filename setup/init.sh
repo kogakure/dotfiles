@@ -59,7 +59,3 @@ source ./golang.sh
 # GitHub CLI Extensions
 echo "Installing GitHub CLI Extensions"
 source ./github.sh
-
-# Visual Studio Code Extensions
-echo "Installing Visual Studio Code Extensions"
-source ./vscode.sh
