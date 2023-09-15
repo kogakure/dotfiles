@@ -673,8 +673,6 @@ cask "send-to-kindle"
 cask "sequel-pro"
 # Onion routing based messenger
 cask "session"
-# EPUB ebook editor
-cask "sigil"
 # Instant messaging application focusing on security
 cask "signal"
 # Draw, paint, & sketch application
@@ -715,8 +713,6 @@ cask "visual-studio-code-insiders"
 cask "vlc"
 # Web browser plugin
 cask "vlc-webplugin"
-# Torrent streaming application
-cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
 # Network diagnostic utility

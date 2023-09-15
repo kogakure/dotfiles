@@ -130,10 +130,10 @@ local LAYOUT_SINGLE = {
 -- hotkey.bind(KEY_CAM, "down",  function() Push(0, 0.5, 1, 0.5) end)
 
 -- Focus
--- hotkey.bind(KEY_CAM, 'k', function() window.focusedWindow():focusWindowNorth() end)
--- hotkey.bind(KEY_CAM, 'j', function() window.focusedWindow():focusWindowSouth() end)
--- hotkey.bind(KEY_CAM, 'l', function() window.focusedWindow():focusWindowEast() end)
--- hotkey.bind(KEY_CAM, 'h', function() window.focusedWindow():focusWindowWest() end)
+hotkey.bind(KEY_AM, 'k', function() window.focusedWindow():focusWindowNorth() end)
+hotkey.bind(KEY_AM, 'j', function() window.focusedWindow():focusWindowSouth() end)
+hotkey.bind(KEY_AM, 'l', function() window.focusedWindow():focusWindowEast() end)
+hotkey.bind(KEY_AM, 'h', function() window.focusedWindow():focusWindowWest() end)
 
 
 -- Centered window with some room to see the desktop
