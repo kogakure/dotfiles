@@ -24,6 +24,7 @@ set PATH /opt/homebrew/bin $PATH
 set PATH /opt/homebrew/sbin $PATH
 set PATH /opt/homebrew/opt/libomp/bin $PATH
 set PATH /opt/homebrew/opt/llvm/bin $PATH
+set PATH /usr/local/sbin $PATH
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 set PATH ~/.local/bin $PATH
@@ -115,8 +116,8 @@ alias reload 'exec fish'
 # Folders/Lists
 alias ... 'cd ../..'
 alias cd.. 'cd ..'
-alias ls 'exa --git --group-directories-first --icons'
-alias ll 'exa -l --git --group-directories-first --icons'
+alias ls 'eza --git --group-directories-first --icons'
+alias ll 'eza -l --git --group-directories-first --icons'
 alias lla 'll -a'
 alias mkdir 'mkdir -p'
 alias pn pnpm

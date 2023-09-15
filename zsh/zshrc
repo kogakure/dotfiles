@@ -378,8 +378,8 @@ alias reload="source $HOME/.zshrc"
 alias ...='cd ../..'
 alias ..='cd ..'
 alias cd..='cd ..'
-alias ls='exa --git --group-directories-first --icons'
-alias ll='exa -l --git --group-directories-first --icons'
+alias ls='eza --git --group-directories-first --icons'
+alias ll='eza -l --git --group-directories-first --icons'
 alias lla='ll -a'
 alias mkdir='mkdir -p'
 
