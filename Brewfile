@@ -6,14 +6,18 @@ tap "felixkratz/formulae"
 tap "fsouza/prettierd"
 tap "github/gh"
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
+tap "homebrew/core"
 tap "homebrew/services"
 tap "jondot/tap"
 tap "koekeishiya/formulae"
 tap "micnncim/tap"
 tap "ms-jpq/sad"
 tap "neovim/neovim"
+tap "oven-sh/bun"
 tap "ttscoff/thelab"
 tap "universal-ctags/universal-ctags"
 # Search tool like grep, but optimized for programmers
@@ -24,18 +28,8 @@ brew "libpng"
 brew "freetype"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
-# Manage compile and link flags for libraries
-brew "pkg-config"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
+# Low-level library for pixel manipulation
+brew "pixman"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # C/C++ and Java libraries for Unicode and globalization
@@ -50,12 +44,16 @@ brew "librsvg"
 brew "adwaita-icon-theme"
 # Library and utilities for processing GIFs
 brew "giflib"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
 # New file format for still image compression
 brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Record and share terminal sessions
@@ -90,6 +88,10 @@ brew "gcc"
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# High performance message passing library
+brew "open-mpi"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
@@ -108,8 +110,6 @@ brew "cocoapods"
 brew "commitizen"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Graphics library to dynamically manipulate images
-brew "gd"
 # C library for reading, creating, and modifying zip archives
 brew "libzip"
 # General-purpose scripting language
@@ -132,8 +132,6 @@ brew "docker"
 brew "docker-compose"
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true
-# Text processing system for reStructuredText
-brew "docutils"
 # .NET Core
 brew "dotnet"
 # More intuitive version of du in rust
@@ -150,8 +148,8 @@ brew "emscripten"
 brew "eot-utils"
 # Cross-platform C++ GUI toolkit
 brew "wxwidgets"
-# Programming language for highly scalable real-time systems
-brew "erlang"
+# Modern replacement for 'ls'
+brew "exa"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
@@ -166,14 +164,8 @@ brew "fbthrift"
 brew "fb303"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
-# Library for JPEG-2000 image manipulation
-brew "openjpeg"
-# Image processing and image analysis library
-brew "leptonica"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # OCR (Optical Character Recognition) engine
@@ -192,8 +184,6 @@ brew "fpp"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
-# Interpreter for PostScript and PDF
-brew "ghostscript"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -206,6 +196,8 @@ brew "git-fixup"
 brew "git-lfs"
 # Simple and efficient way to access statistics in git
 brew "git-quick-stats"
+# OpenGL Extension Wrangler Library
+brew "glew"
 # Network related modules for glib
 brew "glib-networking"
 # C++ mathematics library for graphics software
@@ -218,6 +210,8 @@ brew "gnu-sed"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Manage compile and link flags for libraries
+brew "pkg-config"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Google Testing and Mocking Framework
@@ -226,8 +220,6 @@ brew "googletest"
 brew "sdl2_image"
 # Version Control Visualization Tool
 brew "gource"
-# Image manipulation
-brew "netpbm"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Command-line tool for generating regular expressions
@@ -238,8 +230,6 @@ brew "gsl"
 brew "gtk+3"
 # Tool for glamorous shell scripts
 brew "gum"
-# File format designed to store large amounts of data
-brew "hdf5"
 # Post-modern modal text editor
 brew "helix"
 # Powerful, lightweight programming language
@@ -260,8 +250,6 @@ brew "hub"
 brew "hugo"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Toolkit for embedding hypervisor capabilities in your application
-brew "hyperkit"
 # Open h.265 video codec implementation
 brew "libde265"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
@@ -272,8 +260,6 @@ brew "libomp"
 brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
-# Image loading and rendering library
-brew "imlib2"
 # Command-line pager for JSON data
 brew "jless"
 # Image manipulation library
@@ -290,18 +276,12 @@ brew "lf"
 brew "libdvdcss"
 # Conversion library
 brew "libiconv"
-# C library for reading and writing MATLAB MAT files
-brew "libmatio"
 # Implementation of the Double Ratchet cryptographic ratchet
 brew "libolm"
 # C library for the Public Suffix List
 brew "libpsl"
 # HTTP client/server library for GNOME
 brew "libsoup"
-# C websockets server library
-brew "libwebsockets"
-# Emulator for x86 and PowerPC
-brew "qemu"
 # Linux virtual machines
 brew "lima"
 # Next-gen compiler infrastructure
@@ -312,8 +292,6 @@ brew "luajit", args: ["HEAD"]
 brew "luarocks"
 # Friendly wrapper for launchctl
 brew "lunchy"
-# Bare libuv bindings for lua
-brew "luv"
 # Text-based web browser
 brew "lynx"
 # Swiss Army Knife for macOS
@@ -348,12 +326,12 @@ brew "ninja"
 brew "openblas"
 # Open Fortinet client for PPP+SSL VPN tunnel services
 brew "openfortivpn"
-# C library to read whole-slide images (a.k.a. virtual slides)
-brew "openslide"
 # ISO-C API and CLI for generating UUIDs
 brew "ossp-uuid"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# QR Code generation
+brew "qrencode"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Password manager
@@ -364,8 +342,6 @@ brew "peco"
 brew "perl"
 # Fast, disk space efficient package manager
 brew "pnpm"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Protocol buffers (Google's data interchange format)
@@ -380,6 +356,8 @@ brew "python@3.10"
 brew "python-tk@3.10"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Messaging broker
 brew "rabbitmq"
 # File browser
@@ -490,6 +468,8 @@ brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
 # Search and replace | Space Age seD
 brew "ms-jpq/sad/sad"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 # Time tracker
@@ -571,7 +551,6 @@ cask "firefox"
 cask "firefox-developer-edition"
 # Web browser
 cask "firefox-nightly"
-cask "flip4mac"
 # Download manager with a torrent client
 cask "folx"
 # Free monospaced font with programming ligatures
@@ -633,6 +612,8 @@ cask "lbry"
 cask "ledger-live"
 # Client for LLaMA models
 cask "llamachat"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # 2D game framework for Lua
 cask "love"
 # File system integration
@@ -731,8 +712,6 @@ cask "synology-drive"
 cask "telegram-desktop"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin8"
-# General-purpose text editor
-cask "textmate"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security
@@ -741,12 +720,8 @@ cask "tor-browser"
 cask "transmit"
 # Free and open-source OpenVPN client
 cask "tunnelblick"
-# Font manager application
-cask "typeface"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
-# Virtualizer for x86 hardware
-cask "virtualbox"
 # Open-source code editor
 cask "visual-studio-code"
 # Code editor
@@ -757,7 +732,6 @@ cask "vlc"
 cask "vlc-webplugin"
 # Rust-based terminal
 cask "warp"
-cask "webponize"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
 # Network diagnostic utility
@@ -773,7 +747,7 @@ mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
 mas "Free MP4 Converter", id: 693443591
 mas "GarageBand", id: 682658836
-mas "GoodNotes", id: 1444383602
+mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
@@ -799,7 +773,6 @@ mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
-whalebrew "whalebrew/whalesay"
 vscode "activitywatch.aw-watcher-vscode"
 vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
@@ -917,7 +890,6 @@ vscode "vscode-icons-team.vscode-icons"
 vscode "vscodevim.vim"
 vscode "WakaTime.vscode-wakatime"
 vscode "wayou.vscode-todo-highlight"
-vscode "withfig.fig"
 vscode "wix.vscode-import-cost"
 vscode "xabikos.JavaScriptSnippets"
 vscode "XadillaX.viml"
