@@ -110,6 +110,8 @@ brew "cocoapods"
 brew "commitizen"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Graphics library to dynamically manipulate images
+brew "gd"
 # C library for reading, creating, and modifying zip archives
 brew "libzip"
 # General-purpose scripting language
@@ -148,8 +150,6 @@ brew "emscripten"
 brew "eot-utils"
 # Cross-platform C++ GUI toolkit
 brew "wxwidgets"
-# Modern replacement for 'ls'
-brew "exa"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
@@ -557,6 +557,8 @@ cask "folx"
 cask "font-fira-code"
 # Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
+cask "font-fira-sans"
+cask "font-fira-sans-condensed"
 cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
@@ -783,7 +785,6 @@ vscode "arcticicestudio.nord-visual-studio-code"
 vscode "ardenivanov.svelte-intellisense"
 vscode "astro-build.astro-vscode"
 vscode "asvetliakov.snapshot-tools"
-vscode "asvetliakov.vscode-neovim"
 vscode "azemoh.one-monokai"
 vscode "bierner.markdown-preview-github-styles"
 vscode "bradlc.vscode-tailwindcss"
