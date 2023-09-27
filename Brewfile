@@ -206,6 +206,8 @@ brew "glm"
 brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# Common error values for all GnuPG components
+brew "libgpg-error"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
@@ -340,6 +342,8 @@ brew "pass"
 brew "peco"
 # Highly capable, feature-rich programming language
 brew "perl"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -490,8 +494,6 @@ cask "applite"
 cask "arc"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Audio utility
-cask "background-music"
 # Menu bar icon organizer
 cask "bartender"
 # All-In-One Toolkit for Working Remotely
@@ -529,8 +531,6 @@ cask "db-browser-for-sqlite"
 cask "deepl"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
-# Run Stable Diffusion locally
-cask "diffusionbee"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerized applications and microservices
