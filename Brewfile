@@ -600,6 +600,8 @@ cask "kaleidoscope"
 cask "karabiner-elements"
 # End-to-end encryption software
 cask "keybase"
+# Desktop shield and keystroke interceptor
+cask "keyboard-cleaner"
 # Open-source keystroke visualizer
 cask "keycastr"
 # Interface for reading and syncing eBooks
@@ -704,8 +706,6 @@ cask "sloth"
 cask "sonos"
 # Music streaming service
 cask "spotify"
-# Video game digital distribution service
-cask "steam"
 # Tool to render realistic skies in real time on the screen
 cask "stellarium"
 # Sync and backup service to Synology NAS drives
@@ -742,8 +742,6 @@ cask "whatroute"
 cask "xquartz"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
-mas "Be Focused Pro", id: 961632517
-mas "Bitwarden", id: 1352778147
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
@@ -758,6 +756,7 @@ mas "IP Friend", id: 1560408065
 mas "Just Focus", id: 1142151959
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
 mas "LanguageTool", id: 1534275760
 mas "Marked 2", id: 890031187
 mas "Mela", id: 1568924476
