@@ -2,7 +2,7 @@ return {
   "MunifTanjim/prettier.nvim",
   dependencies = {
     "neovim/nvim-lspconfig",
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
   },
   config = function()
     require("prettier").setup({
