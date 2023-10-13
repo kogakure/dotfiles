@@ -2,12 +2,12 @@ return {
   "glepnir/dashboard-nvim",
   event = "VimEnter",
   opts = function()
-    local logo = [[
-               ▖
-      ┌─╮╭─╮╭─╮▖  ▖▖▄▄▗▄
-      │ │├─┘│ │▝▖▞ ▌▌ ▌ ▌
-      ╵ ╵╰─╯╰─╯ ▝  ▘▘ ▘ ▘
-    ]]
+    local logo = "\n"
+      .. "         ▖\n"
+      .. "┌─╮╭─╮╭─╮▖  ▖▖▄▄▗▄ \n"
+      .. "│ │├─┘│ │▝▖▞ ▌▌ ▌ ▌\n"
+      .. "╵ ╵╰─╯╰─╯ ▝  ▘▘ ▘ ▘\n"
+      .. "\n"
 
     logo = string.rep("\n", 8) .. logo .. "\n\n"
 
