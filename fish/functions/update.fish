@@ -1,5 +1,6 @@
 function update --description "Updating Homebrew, Ruby, Python, Node.js, Neovim, and MacOS"
     sudo -v
+    fisher update
     ~/.tmux/plugins/tpm/bin/update_plugins all
     gh extension upgrade --all
     nvim --headless "+Lazy! sync" +qa
@@ -8,6 +9,5 @@ function update --description "Updating Homebrew, Ruby, Python, Node.js, Neovim,
     pip install --upgrade pip
     pip list -o --format columns | cut -d' ' -f1 | xargs -n1 pip install -U
     pnpm update -g
-    fisher update
     sudo softwareupdate -i -a
 end
