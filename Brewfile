@@ -88,10 +88,10 @@ brew "gcc"
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # High performance message passing library
 brew "open-mpi"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
