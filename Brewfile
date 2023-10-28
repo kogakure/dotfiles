@@ -54,8 +54,6 @@ brew "openssl@3"
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Record and share terminal sessions
 brew "asciinema"
 # GNU File, Shell, and Text utilities
@@ -144,6 +142,8 @@ brew "folly"
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
 brew "editorconfig"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Tools to convert fonts from OTF/TTF to EOT format
@@ -158,10 +158,10 @@ brew "eza"
 brew "fizz"
 # Modular, composable client/server abstractions framework
 brew "wangle"
-# Facebook's branch of Apache Thrift, including a new C++ server
-brew "fbthrift"
 # Thrift functions for querying information from a service
 brew "fb303"
+# Facebook's branch of Apache Thrift, including a new C++ server
+brew "fbthrift"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # GNU Transport Layer Security (TLS) Library
@@ -775,7 +775,6 @@ mas "Typeface", id: 1062679359
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
 vscode "activitywatch.aw-watcher-vscode"
-vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
 vscode "alefragnani.Bookmarks"
 vscode "alefragnani.project-manager"
