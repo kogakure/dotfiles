@@ -27,6 +27,9 @@ vim.keymap.set("n", "gy", "`[v`]y", { desc = "Visually select of just pasted con
 -- stylua: ignore
 vim.keymap.set("n", "<leader>wi", ":silent !open -a iA\\ Writer.app '%:p'<CR>", { desc = "Open in iA Writer", noremap = true, silent = true })
 
+vim.keymap.set("n", "-", "<CMD>foldclose<CR>", { desc = "Close code fold" })
+vim.keymap.set("n", "+", "<CMD>foldopen<CR>", { desc = "Open code fold" })
+
 vim.keymap.set("n", "<C-h>", function()
   require("smart-splits").move_cursor_left()
 end)
