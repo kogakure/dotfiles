@@ -60,7 +60,7 @@ brew "asciinema"
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# Improved shell history for zsh and bash
+# Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
