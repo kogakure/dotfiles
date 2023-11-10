@@ -27,7 +27,7 @@ config.font = wezterm.font({
 	},
 })
 config.font_size = 22.0
-config.line_height = 1.1
+config.line_height = 1.2
 config.color_scheme = "Tokyo Night"
 
 config.cursor_blink_rate = 0
