@@ -562,6 +562,8 @@ cask "font-fira-sans-condensed"
 cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
+# Superfamily of fonts for code
+cask "font-monaspace"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
