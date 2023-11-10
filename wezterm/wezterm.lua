@@ -6,7 +6,26 @@ if wezterm.config_builder then
 end
 
 -- Colorscheme and font
-config.font = wezterm.font("FiraCode Nerd Font")
+-- config.font = wezterm.font("FiraCode Nerd Font")
+-- config.font = wezterm.font("Monaspace Radon")
+-- config.font = wezterm.font("Monaspace Neon")
+config.font = wezterm.font({
+	family = "Monaspace Neon",
+	harfbuzz_features = {
+		"calt=1",
+		"clig=1",
+		"liga=1",
+		"dlig=1",
+		"ss01=1",
+		"ss02=1",
+		"ss03=1",
+		"ss04=1",
+		"ss05=1",
+		"ss06=1",
+		"ss07=1",
+		"ss08=1",
+	},
+})
 config.font_size = 22.0
 config.line_height = 1.1
 config.color_scheme = "Tokyo Night"
@@ -69,7 +88,7 @@ config.keys = {
 	{ key = "j", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2s" }) },
 	{ key = "k", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2s" }) },
 	{ key = "l", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2n" }) },
-	{ key = "n", mods = "CTRL|ALT|SHIFT", action = wezterm.action({ SendString = '\2"' }) },
+	{ key = "n", mods = "CTRL|ALT|SHIFT", action = wezterm.action({ SendString = "" }) },
 	{ key = "p", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2\84" }) },
 	{ key = "q", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2d" }) },
 	{ key = "r", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2R" }) },
