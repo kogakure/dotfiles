@@ -39,9 +39,11 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 })
 
 vim.api.nvim_create_autocmd({ "User LspProgressStatusUpdated" }, {
-  pattern = { "*" },
   callback = function()
-    require("lualine").refresh()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    if not string.match(bufname, "COMMIT_EDITMSG") then
+      require("lualine").refresh()
+    end
   end,
 })
 
