@@ -343,7 +343,7 @@ brew "nghttp2"
 brew "ninja"
 # Optimized BLAS library
 brew "openblas"
-# Open Fortinet client for PPP+SSL VPN tunnel services
+# Open Fortinet client for PPP+TLS VPN tunnel services
 brew "openfortivpn"
 # C library to read whole-slide images (a.k.a. virtual slides)
 brew "openslide"
@@ -584,6 +584,8 @@ cask "font-fira-sans-condensed"
 cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
+# Superfamily of fonts for code
+cask "font-monaspace"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
@@ -774,7 +776,7 @@ mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Free MP4 Converter", id: 693443591
 mas "GarageBand", id: 682658836
-mas "GoodNotes", id: 1444383602
+mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
