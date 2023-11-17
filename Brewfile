@@ -17,6 +17,7 @@ tap "koekeishiya/formulae"
 tap "micnncim/tap"
 tap "ms-jpq/sad"
 tap "neovim/neovim"
+tap "nikitabobko/tap"
 tap "oven-sh/bun"
 tap "ttscoff/thelab"
 tap "universal-ctags/universal-ctags"
@@ -326,7 +327,7 @@ brew "nghttp2"
 brew "ninja"
 # Optimized BLAS library
 brew "openblas"
-# Open Fortinet client for PPP+SSL VPN tunnel services
+# Open Fortinet client for PPP+TLS VPN tunnel services
 brew "openfortivpn"
 # ISO-C API and CLI for generating UUIDs
 brew "ossp-uuid"
@@ -572,6 +573,8 @@ cask "forticlient-vpn"
 cask "gemini"
 # Desktop client for GitHub repositories
 cask "github"
+# Web browser
+cask "google-chrome"
 # Japanese input software
 cask "google-japanese-ime"
 # Tools to protect your files
