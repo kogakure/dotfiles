@@ -20,6 +20,7 @@ return {
       "shellcheck",
       "stylua",
       "svelte-language-server",
+      "tailwindcss-language-server",
       "typescript-language-server",
       "vale",
       "yaml-language-server",
