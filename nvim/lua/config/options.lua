@@ -24,6 +24,10 @@ vim.opt.iskeyword:append("-") -- Add dashes to words
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- Wildignore
 vim.opt.complete:append({ "i", "k", "s", "kspell" })
 
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
 -- FIXME: When using "vim.opt.spellfile:append("~/.config/…) the file is not writable"
 vim.cmd([[
 " Spell Checker
