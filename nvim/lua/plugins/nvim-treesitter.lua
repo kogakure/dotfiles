@@ -11,8 +11,11 @@ return {
       "astro",
       "bash",
       "css",
-      "vimdoc",
+      "fish",
+      "gitignore",
+      "graphql",
       "html",
+      "http",
       "javascript",
       "json",
       "lua",
@@ -21,10 +24,28 @@ return {
       "python",
       "query",
       "regex",
+      "scss",
+      "sql",
+      "svelte",
       "tsx",
       "typescript",
       "vim",
+      "vimdoc",
       "yaml",
     },
   },
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+
+    -- Add custom filetypes
+    vim.filetype.add({
+      extension = {
+        mdx = "mdx",
+        rss = "rss",
+      },
+    })
+
+    vim.treesitter.language.register("markdown", "mdx")
+    vim.treesitter.language.register("xml", "rss")
+  end,
 }
