@@ -10,6 +10,10 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
+# Use wezterm.terminfo
+# curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo | tic -x -
+set TERM wezterm
+
 # SSH
 set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 

@@ -7,6 +7,9 @@ sudo -v
 echo "Installing Xcode Developer Tools"
 xcode-select --install
 
+# Download wezterm.terminfo
+curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo | tic -x -
+
 # TMUX Plugin Manager
 echo "Installing TMUX Plugin Manager"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
