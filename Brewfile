@@ -29,10 +29,14 @@ brew "libpng"
 brew "freetype"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# Core application library for C
+brew "glib"
 # Low-level library for pixel manipulation
 brew "pixman"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# JPEG image codec that aids compression and decompression
+brew "jpeg-turbo"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
 # OpenType text shaping engine
@@ -45,6 +49,8 @@ brew "librsvg"
 brew "adwaita-icon-theme"
 # Library and utilities for processing GIFs
 brew "giflib"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # New file format for still image compression
 brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
@@ -143,8 +149,6 @@ brew "folly"
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
 brew "editorconfig"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Tools to convert fonts from OTF/TTF to EOT format
@@ -167,6 +171,8 @@ brew "fbthrift"
 brew "fd"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
+# Multi-format archive and compression library
+brew "libarchive"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # OCR (Optical Character Recognition) engine
@@ -215,6 +221,8 @@ brew "gnupg"
 brew "go"
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Google Testing and Mocking Framework
@@ -425,8 +433,6 @@ brew "urlview"
 brew "vala"
 # Syntax-aware linter for prose
 brew "vale"
-# Image processing library
-brew "vips"
 # Watch files and take action when they change
 brew "watchman"
 # Command-line tool to track (your) time
@@ -780,6 +786,7 @@ mas "Typeface", id: 1062679359
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
 vscode "activitywatch.aw-watcher-vscode"
+vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
 vscode "alefragnani.Bookmarks"
 vscode "alefragnani.project-manager"
@@ -813,7 +820,6 @@ vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "EditorConfig.EditorConfig"
 vscode "enkia.tokyo-night"
-vscode "Equinusocio.vsc-community-material-theme"
 vscode "Equinusocio.vsc-material-theme"
 vscode "equinusocio.vsc-material-theme-icons"
 vscode "esbenp.prettier-vscode"
