@@ -141,8 +141,6 @@ brew "folly"
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
 brew "editorconfig"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Tools to convert fonts from OTF/TTF to EOT format
@@ -217,6 +215,8 @@ brew "gnu-sed"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Google Testing and Mocking Framework
@@ -837,7 +837,6 @@ vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "EditorConfig.EditorConfig"
 vscode "enkia.tokyo-night"
-vscode "Equinusocio.vsc-community-material-theme"
 vscode "Equinusocio.vsc-material-theme"
 vscode "equinusocio.vsc-material-theme-icons"
 vscode "esbenp.prettier-vscode"
