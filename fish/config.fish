@@ -65,6 +65,8 @@ set --export FZF_TMUX_OPTS -p
 set --export FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
 set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 
+set --export FZF_COMPLETE 0
+
 # Conda
 set conda_path (brew --prefix)/Caskroom/miniconda/base/bin/conda
 if test -f $conda_path
