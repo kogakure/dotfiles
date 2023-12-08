@@ -19,6 +19,7 @@ tap "ms-jpq/sad"
 tap "neovim/neovim"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
+tap "pkgxdev/made"
 tap "ttscoff/thelab"
 tap "universal-ctags/universal-ctags"
 # Search tool like grep, but optimized for programmers
@@ -433,6 +434,8 @@ brew "urlview"
 brew "vala"
 # Syntax-aware linter for prose
 brew "vale"
+# Image processing library
+brew "vips"
 # Watch files and take action when they change
 brew "watchman"
 # Command-line tool to track (your) time
@@ -481,6 +484,8 @@ brew "koekeishiya/formulae/yabai"
 brew "ms-jpq/sad/sad"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
+# Run Anything
+brew "pkgxdev/made/pkgx"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 # Time tracker
