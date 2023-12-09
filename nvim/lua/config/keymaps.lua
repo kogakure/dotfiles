@@ -43,6 +43,9 @@ vim.keymap.set("n", "<C-l>", function()
   require("smart-splits").move_cursor_right()
 end)
 
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+
 -- Visual Mode
 vim.keymap.set("v", "<", "<gv", { desc = "Stay in indent mode (left)", noremap = true, silent = true })
 vim.keymap.set("v", ">", ">gv", { desc = "Stay in indent mode (right)", noremap = true, silent = true })
