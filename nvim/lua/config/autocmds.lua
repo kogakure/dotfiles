@@ -45,16 +45,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   command = "set nopaste",
 })
 
--- Turn off lualine in Git commit messages
-vim.api.nvim_create_autocmd({ "User LspProgressStatusUpdated" }, {
-  callback = function()
-    local bufname = vim.api.nvim_buf_get_name(0)
-    if not string.match(bufname, "COMMIT_EDITMSG") then
-      require("lualine").refresh()
-    end
-  end,
-})
-
 -- Change conceallevel for JSON files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "json", "jsonc" },
