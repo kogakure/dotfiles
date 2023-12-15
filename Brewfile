@@ -12,6 +12,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "jakehilborn/jakehilborn"
 tap "jondot/tap"
 tap "koekeishiya/formulae"
 tap "micnncim/tap"
@@ -474,6 +475,8 @@ brew "charmbracelet/tap/wishlist"
 brew "cooklang/tap/cook"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
+# macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.
+brew "jakehilborn/jakehilborn/displayplacer"
 # The scalable code generator that saves you time.
 brew "jondot/tap/hygen"
 # Simple hotkey-daemon for macOS.

@@ -36,12 +36,6 @@ return {
           font = "+2", -- font size increment
         },
       },
-      on_open = function()
-        vim.cmd([[:IndentBlanklineDisable]])
-      end,
-      on_close = function()
-        vim.cmd([[:IndentBlanklineEnable]])
-      end,
     })
   end,
 }
