@@ -297,6 +297,8 @@ brew "libpsl"
 brew "libsoup"
 # Linux virtual machines
 brew "lima"
+# Lynx-like WWW browser that supports tables, menus, etc.
+brew "links"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Just-In-Time Compiler (JIT) for the Lua programming language
@@ -453,6 +455,8 @@ brew "xdotool"
 brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Tracks most-used directories to make cd smarter
 brew "z"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
@@ -838,7 +842,6 @@ vscode "gerane.Theme-TomorrowNight"
 vscode "ginfuru.better-nunjucks"
 vscode "GitHub.copilot"
 vscode "GitHub.copilot-chat"
-vscode "GitHub.copilot-labs"
 vscode "GitHub.github-vscode-theme"
 vscode "GitHub.vscode-pull-request-github"
 vscode "Gruntfuggly.todo-tree"
