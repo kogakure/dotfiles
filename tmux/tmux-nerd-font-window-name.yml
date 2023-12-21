@@ -3,5 +3,4 @@ config:
   show-name: true
 
 icons:
-  fish: "🐠"
-  nvim: "📝"
+  sudo: "🔒"
