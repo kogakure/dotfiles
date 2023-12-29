@@ -1,7 +1,0 @@
-name: Relaunch
-root: ~/Code/Github/astro-stefanimhoff-de/
-attach: false
-windows:
-  - Vim: vim
-  - Server: pnpm i
-  - Terminal: clear

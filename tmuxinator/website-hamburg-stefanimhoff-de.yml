@@ -1,7 +1,0 @@
-name: hamburg-stefanimhoff-de
-root: ~/Code/Github/hamburg-stefanimhoff-de/
-attach: false
-windows:
-  - Vim: vim
-  - Server: pnpm i
-  - Terminal: clear
