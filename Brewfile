@@ -477,6 +477,8 @@ brew "charmbracelet/tap/vhs"
 brew "charmbracelet/tap/wishlist"
 # CLI tool for CookLang Recipe Markup Language
 brew "cooklang/tap/cook"
+# Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
+brew "dustinblackman/tap/oatmeal"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
 # macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.

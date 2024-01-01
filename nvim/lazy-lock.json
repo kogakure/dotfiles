@@ -85,6 +85,7 @@
   "nvim-ufo": { "branch": "main", "commit": "c6d88523f574024b788f1c3400c5d5b9bb1a0407" },
   "nvim-various-textobjs": { "branch": "main", "commit": "8ebbedb58845d4bce91cfb1db705fb4e942ee333" },
   "nvim-web-devicons": { "branch": "master", "commit": "43aa2ddf476012a2155f5f969ee55ab17174da7a" },
+  "oatmeal.nvim": { "branch": "master", "commit": "efeca77819c136a4a93c8913f8d3601daf76abb4" },
   "obsidian.nvim": { "branch": "main", "commit": "4a962b100a77f852207e9f0b8bc8e3564997a05f" },
   "octo.nvim": { "branch": "master", "commit": "b5371003f209764c9d1cc43cf20b6dc52961f0e8" },
   "oil.nvim": { "branch": "master", "commit": "523b61430cb7365f8f86609c2ea60e48456bac63" },

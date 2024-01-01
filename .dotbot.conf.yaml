@@ -27,6 +27,7 @@
     ~/.config/lazygit/config.yml: git/lazygit.yml
     ~/.config/lf: lf
     ~/.config/nvim: nvim
+    ~/.config/oatmeal: oatmeal
     ~/.config/ranger: ranger
     ~/.config/skhd: skhd
     ~/.config/starship.toml: prompt/starship.toml
