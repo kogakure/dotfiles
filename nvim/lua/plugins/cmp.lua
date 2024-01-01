@@ -23,6 +23,11 @@ return {
       end,
     }
 
+    opts.window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    }
+
     vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "NONE", bg = "#000000" })
 
