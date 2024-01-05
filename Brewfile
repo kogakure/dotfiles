@@ -1,6 +1,7 @@
 tap "charmbracelet/tap"
 tap "cooklang/tap"
 tap "denisidoro/tools"
+tap "dustinblackman/tap"
 tap "espanso/espanso"
 tap "felixkratz/formulae"
 tap "fsouza/prettierd"
@@ -49,6 +50,8 @@ brew "pango"
 brew "librsvg"
 # Icons for the GNOME project
 brew "adwaita-icon-theme"
+# ChatGPT cli
+brew "aichat"
 # Library and utilities for processing GIFs
 brew "giflib"
 # Image format providing lossless and lossy compression for web images
@@ -357,6 +360,8 @@ brew "peco"
 brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Paste PNG into files
+brew "pngpaste"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -447,6 +452,8 @@ brew "watson"
 brew "wget"
 # Homebrew, but with Docker images
 brew "whalebrew"
+# Port of OpenAI's Whisper model in C/C++
+brew "whisper-cpp"
 # Utilities to create and convert Web Open Font File (WOFF) files
 brew "woff2"
 # Fake keyboard/mouse input and window management for X
@@ -527,6 +534,8 @@ cask "bibdesk"
 cask "bitwarden"
 # 3D creation suite
 cask "blender"
+# 3D performance benchmarking tool
+cask "blender-benchmark"
 # Scriptable scratchpad for developers
 cask "boop"
 # Web browser focusing on privacy
