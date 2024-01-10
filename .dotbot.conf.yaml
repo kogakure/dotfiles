@@ -29,6 +29,7 @@
     ~/.config/nvim: nvim
     ~/.config/oatmeal: oatmeal
     ~/.config/ranger: ranger
+    ~/.config/sketchybar: sketchybar
     ~/.config/skhd: skhd
     ~/.config/starship.toml: prompt/starship.toml
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
