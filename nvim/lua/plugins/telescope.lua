@@ -14,7 +14,7 @@ return {
     { ";r", "<cmd>Telescope resume<cr>", desc = "Resume" },
     {
       ";t",
-      "<cmd>Telescope file_browser initial_mode='normal' respect_gitignore=false hidden=true grouped=true<cr>",
+      "<cmd>Telescope file_browser respect_gitignore=false hidden=true grouped=true<cr>",
       desc = "File Browser",
     },
     { ";e", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
