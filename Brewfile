@@ -280,6 +280,8 @@ brew "imagesnap"
 brew "jless"
 # Image manipulation library
 brew "jpeg", link: true
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Lazier way to manage everything docker
@@ -486,6 +488,8 @@ brew "charmbracelet/tap/wishlist"
 brew "cooklang/tap/cook"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
 # macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.
@@ -589,6 +593,8 @@ cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
 cask "font-fira-sans-condensed"
+# Developer targeted fonts with a high number of glyphs
+cask "font-hack-nerd-font"
 cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
@@ -728,6 +734,8 @@ cask "send-to-kindle"
 cask "sequel-pro"
 # Onion routing based messenger
 cask "session"
+# Tool that provides consistent, highly configurable symbols for apps
+cask "sf-symbols"
 # Instant messaging application focusing on security
 cask "signal"
 # Draw, paint, & sketch application
