@@ -298,7 +298,7 @@ brew "libpsl"
 brew "libsoup"
 # C websockets server library
 brew "libwebsockets"
-# Emulator for x86 and PowerPC
+# Generic machine emulator and virtualizer
 brew "qemu"
 # Linux virtual machines
 brew "lima"
