@@ -383,7 +383,7 @@ brew "python-tk@3.10"
 brew "python@3.8"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
-# Messaging broker
+# Messaging and streaming broker
 brew "rabbitmq"
 # File browser
 brew "ranger"
@@ -753,6 +753,8 @@ cask "sonos"
 cask "spotify"
 # Tool to render realistic skies in real time on the screen
 cask "stellarium"
+# Interior design application
+cask "sweet-home3d"
 # Sync and backup service to Synology NAS drives
 cask "synology-drive"
 # Desktop client for Telegram messenger
