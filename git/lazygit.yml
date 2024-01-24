@@ -9,3 +9,7 @@ customCommands:
     context: "files"
     loadingText: "opening commitizen commit tool"
     subprocess: true
+  - key: "W"
+    command: git commit --no-verify
+    context: "global"
+    subprocess: true
