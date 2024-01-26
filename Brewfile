@@ -23,6 +23,7 @@ tap "neovim/neovim"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
 tap "pkgxdev/made"
+tap "supabase/tap"
 tap "ttscoff/thelab"
 tap "universal-ctags/universal-ctags"
 # Search tool like grep, but optimized for programmers
@@ -471,6 +472,8 @@ brew "yq"
 brew "z"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
+# Command-line fuzzy finder that prioritizes matches on filenames
+brew "zf"
 # Plain text note-taking assistant
 brew "zk"
 # Shell extension to navigate your filesystem faster
@@ -509,6 +512,8 @@ brew "ms-jpq/sad/sad"
 brew "oven-sh/bun/bun"
 # Run Anything
 brew "pkgxdev/made/pkgx"
+# Supabase CLI
+brew "supabase/tap/supabase"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 # Time tracker
@@ -661,8 +666,6 @@ cask "ledger-live"
 cask "llamachat"
 # Discover, download, and run local LLMs
 cask "lm-studio"
-# 2D game framework for Lua
-cask "love"
 # File system integration
 cask "macfuse"
 # 8-bit 3D voxel editor and interactive path tracing renderer
