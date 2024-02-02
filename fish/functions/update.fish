@@ -1,6 +1,5 @@
 function update --description "Updating Homebrew, Ruby, Python, Node.js, Neovim, and MacOS"
     sudo -v
-    nvim --headless "+Lazy! sync" +qa
     brew update && brew outdated && brew upgrade && brew cleanup
     sudo gem update --system && sudo gem update && gem cleanup all
     pip install --upgrade pip
@@ -9,5 +8,6 @@ function update --description "Updating Homebrew, Ruby, Python, Node.js, Neovim,
     ~/.tmux/plugins/tpm/bin/update_plugins all
     gh extension upgrade --all
     fisher update
+    nvim --headless "+Lazy! sync" +qa
     # sudo softwareupdate -i -a
 end

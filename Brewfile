@@ -86,8 +86,6 @@ brew "openjdk"
 brew "bfg"
 # BibTeX bibliography file pretty printer and syntax checker
 brew "bibclean"
-# Platform built on V8 to build network applications
-brew "node"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
 # Collection of portable C++ source libraries
@@ -182,6 +180,8 @@ brew "gnutls"
 brew "libarchive"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
+# Optimized BLAS library
+brew "openblas"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # High-performance, asynchronous messaging library
@@ -344,8 +344,6 @@ brew "neovim"
 brew "nghttp2"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Optimized BLAS library
-brew "openblas"
 # Open Fortinet client for PPP+TLS VPN tunnel services
 brew "openfortivpn"
 # ISO-C API and CLI for generating UUIDs
@@ -893,6 +891,7 @@ vscode "mrmlnc.vscode-attrs-sorter"
 vscode "ms-azuretools.vscode-docker"
 vscode "MS-CEINTL.vscode-language-pack-de"
 vscode "ms-playwright.playwright"
+vscode "ms-python.debugpy"
 vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
