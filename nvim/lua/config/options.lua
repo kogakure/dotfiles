@@ -19,6 +19,7 @@ vim.opt.tabstop = 2
 vim.opt.title = true
 vim.opt.swapfile = false
 vim.opt.virtualedit = "block,insert"
+vim.opt.conceallevel = 2
 
 vim.opt.iskeyword:append("-") -- Add dashes to words
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- Wildignore
