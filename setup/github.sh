@@ -1,5 +1,6 @@
 #!/bin/sh
 
+gh extension install github/gh-copilot
 gh extension install thatvegandev/gh-eco
 gh extension install gennaro-tedesco/gh-s
 gh extension install mislav/gh-branch
