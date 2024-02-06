@@ -45,6 +45,8 @@
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.gitmux.conf: tmux/gitmux.conf
+    ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
+    ~/.gnupg/gpg.conf: gpg/gpg.conf
     ~/.hammerspoon: hammerspoon
     ~/.pandoc: pandoc
     ~/.ripgreprc: search/ripgrep
