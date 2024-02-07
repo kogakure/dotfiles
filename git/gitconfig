@@ -1,5 +1,6 @@
 [user]
   useConfigOnly = true
+  signingkey = F0CF1CF481C2E3AA0F806A378BD4525D7A7253E8
 [include]
   path = ~/.gitconfig.local
 [help]
@@ -123,3 +124,5 @@
   host = source.xing.com
 [pull]
 	ff = only
+# [commit]
+#  gpgsign = true
