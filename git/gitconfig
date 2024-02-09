@@ -124,5 +124,5 @@
   host = source.xing.com
 [pull]
 	ff = only
-# [commit]
+[commit]
 #  gpgsign = true
