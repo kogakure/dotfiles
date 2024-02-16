@@ -11,7 +11,7 @@ conda @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_0cwm
 conda-content-trust @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_11146a2b-93c2-444c-a378-ad4fac363e991s0r1hnp/croots/recipe/conda-content-trust_1658126383571/work
 conda-package-handling==2.2.0
 conda_package_streaming==0.9.0
-cryptography==42.0.2
+cryptography==42.0.3
 debugpy==1.8.1
 decorator @ file:///opt/conda/conda-bld/decorator_1643638310831/work
 exceptiongroup==1.2.0
@@ -64,7 +64,7 @@ torch==2.2.0
 torchaudio==2.2.0
 torchvision==0.17.0
 tornado==6.4
-tqdm==4.66.1
+tqdm==4.66.2
 traitlets==5.14.1
 typing_extensions==4.9.0
 urllib3==2.2.0

@@ -420,6 +420,8 @@ brew "snzip"
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Nodejs-based tool for optimizing SVG vector graphics files
+brew "svgo"
 # Open source continuous file synchronization application
 brew "syncthing"
 # Code-search similar to ack
@@ -438,6 +440,8 @@ brew "tmuxinator"
 brew "ttyd", args: ["HEAD"]
 # TUI for Mastodon with vim inspired keys
 brew "tut"
+# Maintained ctags implementation
+brew "universal-ctags", args: ["HEAD"]
 # URL extractor/launcher
 brew "urlview"
 # Compiler for the GObject type system
@@ -512,8 +516,6 @@ brew "oven-sh/bun/bun"
 brew "pkgxdev/made/pkgx"
 # Supabase CLI
 brew "supabase/tap/supabase"
-# Maintained ctags implementation
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 # Time tracker
 cask "activitywatch"
 # GPU-accelerated terminal emulator
@@ -532,7 +534,7 @@ cask "applite"
 cask "arc"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Menu bar icon organizer
+# Menu bar icon organiser
 cask "bartender"
 # All-In-One Toolkit for Working Remotely
 cask "basecamp"
@@ -559,7 +561,7 @@ cask "cleanshot"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
-# Disk space visualizer
+# Disk space visualiser
 cask "daisydisk"
 # API documentation browser and code snippet manager
 cask "dash"
@@ -569,11 +571,11 @@ cask "dat"
 cask "db-browser-for-sqlite"
 # Trains AIs to understand and translate texts
 cask "deepl"
-# Collect, organize, edit and annotate documents
+# Collect, organise, edit and annotate documents
 cask "devonthink"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
+# App to build and share containerised applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
@@ -608,8 +610,6 @@ cask "font-ia-writer-quattro"
 cask "font-monaspace"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
-# Free VPN client for FortiClient
-cask "forticlient-vpn"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Desktop client for GitHub repositories
@@ -630,7 +630,7 @@ cask "hammerspoon"
 cask "handbrake"
 # Utility to reduce the size of 24-bit PNG files
 cask "imagealpha"
-# Tool to optimize images to a smaller size
+# Tool to optimise images to a smaller size
 cask "imageoptim"
 # Tool to scan a website checking for broken links
 cask "integrity"
@@ -642,13 +642,13 @@ cask "itsycal"
 cask "jellyfin-media-player"
 # Spot and merge differences in text and image files or folders
 cask "kaleidoscope"
-# Keyboard customizer
+# Keyboard customiser
 cask "karabiner-elements"
 # End-to-end encryption software
 cask "keybase"
 # Desktop shield and keystroke interceptor
 cask "keyboard-cleaner"
-# Open-source keystroke visualizer
+# Open-source keystroke visualiser
 cask "keycastr"
 # Interface for reading and syncing eBooks
 cask "kindle"
@@ -690,13 +690,13 @@ cask "miniconda"
 cask "nextcloud"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
-# App to write, plan, collaborate, and get organized
+# App to write, plan, collaborate, and get organised
 cask "notion"
 # Calculator and converter application
 cask "numi"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Organize all your reference images in one place
+# Organise all your reference images in one place
 cask "ogdesign-eagle"
 # Web browser
 cask "opera"
