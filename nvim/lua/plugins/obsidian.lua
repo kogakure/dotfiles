@@ -21,14 +21,14 @@ return {
     workspaces = {
       {
         name = "zettelkasten",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Zettelkasten",
+        path = "~/Code/GitHub/obsidian/zettelkasten",
         overrides = {
           notes_subdir = "pages",
         },
       },
       {
         name = "highlights",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Highlights",
+        path = "~/Code/GitHub/obsidian/highlights",
       },
     },
     completion = {
