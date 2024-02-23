@@ -518,8 +518,6 @@ brew "pkgxdev/made/pkgx"
 brew "supabase/tap/supabase"
 # Time tracker
 cask "activitywatch"
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # Application launcher and productivity software
 cask "alfred"
 # Network scanner
@@ -610,6 +608,8 @@ cask "font-ia-writer-quattro"
 cask "font-monaspace"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
+# Free VPN client for FortiClient
+cask "forticlient-vpn"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Desktop client for GitHub repositories
@@ -788,6 +788,8 @@ cask "wezterm"
 cask "whatroute"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
+# Multiplayer code editor
+cask "zed"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "Day One", id: 1055511498
