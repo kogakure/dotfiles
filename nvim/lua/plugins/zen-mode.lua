@@ -28,7 +28,7 @@ return {
           ruler = true, -- disables the ruler text in the cmd line area
           showcmd = false, -- disables the command in the last line of the screen
         },
-        twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+        twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
         gitsigns = { enabled = false }, -- disables git signs
         tmux = { enabled = true }, -- disables the tmux statusline
         wezterm = {
