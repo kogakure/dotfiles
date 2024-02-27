@@ -5,6 +5,7 @@ return {
   opts = {
     ensure_installed = {
       "astro-language-server",
+      "black",
       "cspell",
       "css-lsp",
       "cssmodules-language-server",
@@ -13,6 +14,7 @@ return {
       "eslint-lsp",
       "eslint_d",
       "html-lsp",
+      "isort",
       "json-lsp",
       "lua-language-server",
       "prettier",
