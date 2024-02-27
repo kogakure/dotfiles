@@ -10,6 +10,7 @@ return {
       "cssmodules-language-server",
       "diagnostic-languageserver",
       "emmet-ls",
+      "eslint-lsp",
       "eslint_d",
       "html-lsp",
       "json-lsp",

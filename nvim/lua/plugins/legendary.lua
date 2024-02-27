@@ -6,8 +6,8 @@ return {
     "kkharji/sqlite.lua",
   },
   keys = {
-	-- stylua: ignore
-    { "<leader>L", "<cmd>Legendary<cr>", desc = "Legendary" },
+    -- stylua: ignore
+    -- { "<leader>L", "<cmd>Legendary<cr>", desc = "Legendary" },
   },
   config = function()
     require("legendary").setup({
