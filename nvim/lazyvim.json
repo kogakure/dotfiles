@@ -4,7 +4,8 @@
     "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.tailwind",
-    "lazyvim.plugins.extras.lang.yaml"
+    "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.lsp.none-ls"
   ],
   "news": {
     "NEWS.md": "2123"
