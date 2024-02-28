@@ -30,6 +30,7 @@ bufdo
 catppuccin
 chafa
 chriskempson
+conceallevel
 copyindent
 cursorline
 cursorword
@@ -67,6 +68,7 @@ linrongbin
 listchars
 litee
 lualine
+lunchy
 marilari
 matchit
 matchparen
@@ -77,6 +79,7 @@ netrw
 noautocmd
 noice
 nolist
+nopaste
 noremap
 nvim
 nvim

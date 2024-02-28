@@ -19,15 +19,15 @@ return {
   opts = {
     events = { "BufEnter", "BufWritePost", "BufReadPost", "InsertLeave" },
     linters_by_ft = {
-      ["*"] = { "codespell", "cspell" },
-      astro = { "eslint_d" },
+      ["*"] = { "codespell" },
+      astro = { "eslint_d", "cspell" },
       fish = { "fish" },
-      javascript = { "eslint_d" },
-      javascriptreact = { "eslint_d" },
+      javascript = { "eslint_d", "cspell" },
+      javascriptreact = { "eslint_d", "cspell" },
       python = { "pylint" },
       svelte = { "eslint_d" },
-      typescript = { "eslint_d" },
-      typescriptreact = { "eslint_d" },
+      typescript = { "eslint_d", "cspell" },
+      typescriptreact = { "eslint_d", "cspell" },
     },
   },
 }
