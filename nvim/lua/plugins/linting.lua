@@ -19,7 +19,9 @@ return {
   opts = {
     events = { "BufEnter", "BufWritePost", "BufReadPost", "InsertLeave" },
     linters_by_ft = {
+      ["*"] = { "codespell", "cspell" },
       astro = { "eslint_d" },
+      fish = { "fish" },
       javascript = { "eslint_d" },
       javascriptreact = { "eslint_d" },
       python = { "pylint" },
