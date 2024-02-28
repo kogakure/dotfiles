@@ -6,6 +6,7 @@ return {
     ensure_installed = {
       "astro-language-server",
       "black",
+      "codespell",
       "cspell",
       "css-lsp",
       "cssmodules-language-server",
