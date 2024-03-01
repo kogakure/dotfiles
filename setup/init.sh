@@ -62,7 +62,9 @@ source ./golang.sh
 # GitHub CLI Extensions
 echo "Installing GitHub CLI Extensions"
 source ./github.sh
+
 # Install Themes
 cd ~/.dotfiles/bat
 bat cache --build
+silicon --build-cache
 cd ..
