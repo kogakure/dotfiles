@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Tokyo Night",
+  "theme": "Catppuccin Mocha",
   "autosave": "on_window_change",
   "buffer_font_family": "Monaspace Neon",
   "buffer_font_features": {
