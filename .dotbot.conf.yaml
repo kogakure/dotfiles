@@ -16,6 +16,7 @@
     ~/.asdfrc: asdf/asdfrc
     ~/.config/alacritty: alacritty
     ~/.config/base16-shell: .base16-shell
+    ~/.config/bat: bat
     ~/.config/cava: cava
     ~/.config/espanso: espanso
     ~/.config/fish: fish

@@ -41,6 +41,8 @@ set --export RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 set --export GIT_EDITOR nvim
 set --export EDITOR nvim
 
+set --export BAT_THEME Catppuccin-mocha
+
 # Stable Diffusion Webui
 set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 
