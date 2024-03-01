@@ -28,7 +28,7 @@ config.font = wezterm.font({
 })
 config.font_size = 22.0
 config.line_height = 1.2
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "Catppuccin Mocha"
 
 config.cursor_blink_rate = 0
 config.audible_bell = "Disabled"
