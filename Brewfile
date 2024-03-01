@@ -2,6 +2,7 @@ tap "charmbracelet/tap"
 tap "cooklang/tap"
 tap "denisidoro/tools"
 tap "dustinblackman/tap"
+tap "dwarvesf/tap"
 tap "espanso/espanso"
 tap "felixkratz/formulae"
 tap "fsouza/prettierd"
@@ -520,6 +521,8 @@ brew "supabase/tap/supabase"
 cask "activitywatch"
 # Application launcher and productivity software
 cask "alfred"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Network scanner
 cask "angry-ip-scanner"
 # Webcam & audio device software
@@ -546,6 +549,8 @@ cask "bitwarden"
 cask "blender"
 # 3D performance benchmarking tool
 cask "blender-benchmark"
+# Utility to dim background/inactive content in the screen
+cask "blurred"
 # Scriptable scratchpad for developers
 cask "boop"
 # Web browser focusing on privacy
@@ -606,6 +611,7 @@ cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
 # Superfamily of fonts for code
 cask "font-monaspace"
+cask "font-noto-emoji"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
@@ -628,6 +634,8 @@ cask "graphql-playground"
 cask "hammerspoon"
 # Open-source video transcoder
 cask "handbrake"
+# Utility to hide menu bar items
+cask "hiddenbar"
 # Utility to reduce the size of 24-bit PNG files
 cask "imagealpha"
 # Tool to optimise images to a smaller size
@@ -642,8 +650,12 @@ cask "itsycal"
 cask "jellyfin-media-player"
 # Spot and merge differences in text and image files or folders
 cask "kaleidoscope"
+# Open-source screen recorder built with web technology
+cask "kap"
 # Keyboard customiser
 cask "karabiner-elements"
+# File archiver
+cask "keka"
 # End-to-end encryption software
 cask "keybase"
 # Desktop shield and keystroke interceptor
@@ -752,6 +764,8 @@ cask "sloth"
 cask "sonos"
 # Music streaming service
 cask "spotify"
+# System monitor for the menu bar
+cask "stats"
 # Tool to render realistic skies in real time on the screen
 cask "stellarium"
 # Interior design application
@@ -764,6 +778,8 @@ cask "telegram-desktop"
 cask "temurin8"
 # Unpacks archive files
 cask "the-unarchiver"
+# Customizable timing of breaks
+cask "time-out"
 # Web browser focusing on security
 cask "tor-browser"
 # File transfer application
@@ -833,11 +849,9 @@ vscode "anteprimorac.html-end-tag-labels"
 vscode "arcticicestudio.nord-visual-studio-code"
 vscode "ardenivanov.svelte-intellisense"
 vscode "astro-build.astro-vscode"
-vscode "asvetliakov.snapshot-tools"
 vscode "azemoh.one-monokai"
 vscode "bierner.markdown-preview-github-styles"
 vscode "bradlc.vscode-tailwindcss"
-vscode "chakrounanas.turbo-console-log"
 vscode "chrischinchilla.vale-vscode"
 vscode "christian-kohler.npm-intellisense"
 vscode "christian-kohler.path-intellisense"
@@ -851,8 +865,6 @@ vscode "davidlday.languagetool-linter"
 vscode "daylerees.rainglow"
 vscode "dbaeumer.vscode-eslint"
 vscode "deerawan.vscode-dash"
-vscode "dendron.dendron"
-vscode "dendron.dendron-paste-image"
 vscode "donjayamanne.githistory"
 vscode "dsznajder.es7-react-js-snippets"
 vscode "eamodio.gitlens"
@@ -875,10 +887,8 @@ vscode "gruntfuggly.todo-tree"
 vscode "hextorgb.hex-to-rgb"
 vscode "idleberg.applescript"
 vscode "jasonnutter.search-node-modules"
-vscode "juanblanco.solidity"
 vscode "kaleidoscope-app.vscode-ksdiff"
 vscode "kamikillerto.vscode-colorize"
-vscode "kotfu.bunch"
 vscode "kumar-harsh.graphql-for-vscode"
 vscode "liviuschera.noctis"
 vscode "mattpocock.ts-error-translator"
@@ -911,7 +921,6 @@ vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.remote-server"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "nrwl.angular-console"
-vscode "octref.vetur"
 vscode "perkovec.emoji"
 vscode "pkief.material-icon-theme"
 vscode "pnp.polacode"
@@ -924,7 +933,6 @@ vscode "sdras.night-owl"
 vscode "sleistner.vscode-fileutils"
 vscode "softwaredotcom.swdc-vscode"
 vscode "styled-components.vscode-styled-components"
-vscode "svanimpe.stencil"
 vscode "svelte.svelte-vscode"
 vscode "tamasfe.even-better-toml"
 vscode "tchayen.markdown-links"
@@ -946,4 +954,3 @@ vscode "yinfei.luahelper"
 vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
 vscode "zhuangtongfa.material-theme"
-vscode "znck.grammarly"
