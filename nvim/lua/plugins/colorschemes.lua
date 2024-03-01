@@ -1,9 +1,9 @@
--- Configure LazyVim to load Tokyo Night
+-- Configure LazyVim to load colorscheme
 return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "catppuccin",
     },
   },
 }

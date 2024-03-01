@@ -1,4 +1,4 @@
---  https://github.com/folke/tokyonight.nvim
+-- https://github.com/folke/tokyonight.nvim
 return {
   "folke/tokyonight.nvim",
   lazy = true,
