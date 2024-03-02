@@ -71,6 +71,10 @@ source ./golang.sh
 echo "Installing GitHub CLI Extensions"
 source ./github.sh
 
+# MacOS Default Settings
+echo "Restoring default settings for MacOS"
+source ./macos.sh
+
 # Install Themes
 cd ~/.dotfiles/bat
 bat cache --build
