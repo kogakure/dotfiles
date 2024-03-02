@@ -31,6 +31,10 @@ brew install --cask secretive
 echo "Installing Homebrew packages, Cask binaries and Mac App Store software"
 source ./brew.sh
 
+# Neovim
+echo "Installing Neovim"
+source ./neovim.sh
+
 # Direnv
 echo "Installing Direnv"
 source ./direnv.sh
@@ -38,6 +42,10 @@ source ./direnv.sh
 # Node.js
 echo "Installing Node.js"
 source ./nodejs.sh
+
+# Deno
+echo "Installing Deno"
+source ./deno.sh
 
 # Python
 echo "Installing Python"
