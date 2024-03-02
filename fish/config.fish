@@ -33,6 +33,12 @@ set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 set PATH ~/.local/bin $PATH
 
+# Homebrew Command Not Found
+set HB_CNF_HANDLER (brew --repository)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
+if test -f $HB_CNF_HANDLER
+    source $HB_CNF_HANDLER
+end
+
 # Set .config folder
 set --export XDG_CONFIG_HOME "$HOME/.config"
 
