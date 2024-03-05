@@ -26,7 +26,7 @@ return {
       },
     },
     formatters_by_ft = {
-      ["*"] = { "codespell" },
+      -- ["*"] = { "codespell" },
       ["_"] = { "trim_whitespace" },
       astro = { { "prettierd", "prettier" } },
       css = { { "prettierd", "prettier" }, "stylelint" },
