@@ -25,6 +25,9 @@ vim.opt.iskeyword:append("-") -- Add dashes to words
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- Wildignore
 vim.opt.complete:append({ "i", "k", "s", "kspell" })
 
+-- Only the project root should be the root
+vim.g.root_spec = { ".git" }
+
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
