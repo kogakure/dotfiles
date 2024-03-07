@@ -38,6 +38,7 @@ return {
       json = { { "prettierd", "prettier" } },
       lua = { "stylua" },
       markdown = { { "prettierd", "prettier" } },
+      mdx = { { "prettierd", "prettier" } },
       python = { "isort", "black" },
       svelte = { { "prettierd", "prettier" } },
       typescript = { { "prettierd", "prettier" }, "eslint_d" },
