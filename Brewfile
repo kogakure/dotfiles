@@ -1,13 +1,12 @@
+tap "buo/cask-upgrade"
 tap "charmbracelet/tap"
 tap "fsouza/prettierd"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/command-not-found"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "jakehilborn/jakehilborn"
 tap "jondot/tap"
@@ -42,8 +41,6 @@ brew "pango"
 brew "librsvg"
 # Icons for the GNOME project
 brew "adwaita-icon-theme"
-# ChatGPT cli
-brew "aichat"
 # Library and utilities for processing GIFs
 brew "giflib"
 # Image format providing lossless and lossy compression for web images
