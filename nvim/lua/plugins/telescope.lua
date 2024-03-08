@@ -17,6 +17,7 @@ return {
       "<cmd>Telescope file_browser respect_gitignore=false hidden=true grouped=true<cr>",
       desc = "File Browser",
     },
+    { ";o", "<cmd>TodoTelescope<cr>", desc = "Todo Comments" },
     { ";u", "<cmd>Telescope undo<cr>", desc = "Undo Tree" },
     { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
     { "<C-t>", "<cmd>Telescope<cr>", desc = "Telescope" },
