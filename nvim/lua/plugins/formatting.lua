@@ -40,6 +40,8 @@ return {
       markdown = { { "prettierd", "prettier" } },
       mdx = { { "prettierd", "prettier" } },
       python = { "isort", "black" },
+      ruby = { "rubyfmt", "rubocop" },
+      eruby = { "htmlbeautifier" },
       svelte = { { "prettierd", "prettier" } },
       typescript = { { "prettierd", "prettier" }, "eslint_d" },
       typescriptreact = { { "prettierd", "prettier" }, "eslint_d" },

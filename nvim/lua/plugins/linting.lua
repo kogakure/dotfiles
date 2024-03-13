@@ -25,6 +25,7 @@ return {
       javascript = { "eslint_d", "cspell" },
       javascriptreact = { "eslint_d", "cspell" },
       python = { "pylint" },
+      ruby = { "rubocop" },
       svelte = { "eslint_d" },
       typescript = { "eslint_d", "cspell" },
       typescriptreact = { "eslint_d", "cspell" },
