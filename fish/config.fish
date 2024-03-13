@@ -9,6 +9,9 @@ if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
     source "$BASE16_SHELL/profile_helper.fish"
 end
+#
+# asdf Version Manager
+source (brew --prefix asdf)/libexec/asdf.fish
 
 # Use wezterm.terminfo
 # curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo | tic -x -
@@ -32,6 +35,7 @@ set PATH /usr/local/sbin $PATH
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 set PATH ~/.local/bin $PATH
+set PATH ~/.asdf/shims $PATH
 
 # Homebrew Command Not Found
 set HB_CNF_HANDLER (brew --repository)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
@@ -51,9 +55,6 @@ set --export BAT_THEME Catppuccin-mocha
 
 # Stable Diffusion Webui
 set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
-
-# asdf Version Manager
-source (brew --prefix)/opt/asdf/libexec/asdf.fish
 
 # Atuin
 atuin init fish | source
