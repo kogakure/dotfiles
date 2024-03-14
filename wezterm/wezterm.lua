@@ -6,26 +6,63 @@ if wezterm.config_builder then
 end
 
 -- Colorscheme and font
--- config.font = wezterm.font("FiraCode Nerd Font")
--- config.font = wezterm.font("Monaspace Radon")
--- config.font = wezterm.font("Monaspace Neon")
-config.font = wezterm.font({
-	family = "Monaspace Neon",
-	harfbuzz_features = {
-		"calt=1",
-		"clig=1",
-		"liga=1",
-		"dlig=1",
-		"ss01=1",
-		"ss02=1",
-		"ss03=1",
-		"ss04=1",
-		"ss05=1",
-		"ss06=1",
-		"ss07=1",
-		"ss08=1",
+config.font = wezterm.font_with_fallback({
+	{
+		family = "Monaspace Neon",
+		harfbuzz_features = { "calt=1", "clig=1", "liga=1", "dlig=1", "ss01=1", "ss02=1", "ss03=1", "ss04=1", "ss05=1", "ss06=1", "ss07=1", "ss08=1" },
+		weight = "Regular",
+		italic = false,
 	},
+	"Symbols Nerd Font Mono",
+	"Noto Color Emoji",
+	"Noto Emoji",
 })
+
+config.font_rules = {
+	-- Comment in code (italic)
+	{
+		intensity = "Normal",
+		italic = true,
+		font = wezterm.font_with_fallback({
+			{
+				family = "Monaspace Radon",
+				weight = "ExtraLight",
+				stretch = "Normal",
+				style = "Normal",
+				harfbuzz_features = { "calt=1", "liga=1", "dlig=1", "ss01=1", "ss02=1", "ss03=1", "ss04=1", "ss05=1", "ss06=1", "ss07=0", "ss08=1" },
+			},
+		}),
+	},
+	-- Highlighted text in code (bold)
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font_with_fallback({
+			{
+				family = "Monaspace Krypton",
+				weight = "Light",
+				stretch = "Normal",
+				style = "Normal",
+				harfbuzz_features = { "calt=1", "liga=1", "dlig=1", "ss01=1", "ss02=1", "ss03=1", "ss04=1", "ss05=1", "ss06=1", "ss07=0", "ss08=1" },
+			},
+		}),
+	},
+	-- Bold-italic
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font_with_fallback({
+			{
+				family = "Monaspace Radon",
+				weight = "Light",
+				stretch = "Normal",
+				style = "Normal",
+				harfbuzz_features = { "calt=1", "liga=1", "dlig=1", "ss01=1", "ss02=1", "ss03=1", "ss04=1", "ss05=1", "ss06=1", "ss07=0", "ss08=1" },
+			},
+		}),
+	},
+}
+
 config.font_size = 22.0
 config.line_height = 1.2
 config.color_scheme = "Catppuccin Mocha"
