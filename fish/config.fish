@@ -59,6 +59,9 @@ set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 # Atuin
 atuin init fish | source
 
+# Direnv
+direnv hook fish | source
+
 # FZF
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
 
