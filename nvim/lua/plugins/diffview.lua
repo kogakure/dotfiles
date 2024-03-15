@@ -5,8 +5,8 @@ return {
   lazy = false,
   dependencies = "nvim-lua/plenary.nvim",
   keys = {
-    { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
-    { "<leader>gdx", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+    { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
+    { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
   },
   opts = {
     view = {
