@@ -23,6 +23,12 @@ brew "libpng"
 brew "freetype"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
 # Core application library for C
 brew "glib"
 # Low-level library for pixel manipulation
@@ -49,12 +55,6 @@ brew "webp"
 brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
 # Record and share terminal sessions
 brew "asciinema"
 # GNU File, Shell, and Text utilities
@@ -73,6 +73,8 @@ brew "openjdk"
 brew "bfg"
 # BibTeX bibliography file pretty printer and syntax checker
 brew "bibclean"
+# Platform built on V8 to build network applications
+brew "node"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
 # Collection of portable C++ source libraries
