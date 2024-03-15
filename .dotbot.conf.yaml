@@ -30,6 +30,7 @@
     ~/.config/nvim: nvim
     ~/.config/oatmeal: oatmeal
     ~/.config/ranger: ranger
+    ~/.config/sesh: sesh
     ~/.config/sketchybar: sketchybar
     ~/.config/skhd: skhd
     ~/.config/starship.toml: prompt/starship.toml

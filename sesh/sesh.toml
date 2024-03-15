@@ -1,0 +1,5 @@
+default_startup_script = "~/.config/sesh/scripts/open_files"
+
+[[startup_scripts]]
+session_path = "~/Code/GitHub/websites/stefanimhoff-de"
+script_path = "~/.config/sesh/scripts/node_dev"
