@@ -6,6 +6,7 @@ return {
     require("lazyvim.util").lsp.on_attach(function(_, buffer)
 	  -- stylua: ignore
       vim.keymap.set("n", "g0", "<cmd>Telescope lsp_document_symbols<cr>", { buffer = buffer, desc = "Document Symbols" })
+      vim.keymap.set("n", "cc", "<cmd>lua vim.lsp.buf.code_action()<cr>", { buffer = buffer, desc = "Code Action" })
     end)
   end,
   opts = {
