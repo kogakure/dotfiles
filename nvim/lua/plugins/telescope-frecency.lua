@@ -21,7 +21,7 @@ return {
       },
     },
     config = function()
-      -- require("telescope").load_extension("frecency") // FIXME: Bug with the database
+      require("telescope").load_extension("frecency")
     end,
   },
 }
