@@ -5,7 +5,11 @@ return {
   dependencies = {
     "nvim-telescope/telescope-file-browser.nvim",
     keys = {
-      { "<leader>sB", ":Telescope file_browser path=%:p:h=%:p:h<cr>", desc = "Browse Files" },
+      {
+        ";t",
+        "<cmd>Telescope file_browser respect_gitignore=false hidden=true grouped=true<cr>",
+        desc = "File Browser",
+      },
     },
     opts = {
       extensions = {

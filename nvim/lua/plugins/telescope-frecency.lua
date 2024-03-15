@@ -8,7 +8,7 @@ return {
       "kkharji/sqlite.lua",
     },
     keys = {
-      { "<leader>sf", "<cmd>Telescope frecency<cr>", desc = "Frecency" },
+      { ";mr", "<cmd>Telescope frecency<cr>", desc = "Most recently used files" },
     },
     opts = {
       extensions = {

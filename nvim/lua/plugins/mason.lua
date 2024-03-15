@@ -23,7 +23,6 @@ return {
       "prettierd",
       "pyright",
       "rubocop",
-      "ruby",
       "rubyfmt",
       "shellcheck",
       "stylua",

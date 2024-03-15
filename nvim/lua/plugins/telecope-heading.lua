@@ -5,7 +5,7 @@ return {
   dependencies = {
     "crispgm/telescope-heading.nvim",
     keys = {
-      { "<leader>sl", "<cmd>Telescope heading<cr>", desc = "Headlines" },
+      { ";h", "<cmd>Telescope heading<cr>", desc = "Headlines" },
     },
     opts = {
       extensions = {

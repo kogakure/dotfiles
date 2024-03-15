@@ -5,7 +5,7 @@ return {
   dependencies = {
     "nvim-telescope/telescope-node-modules.nvim",
     keys = {
-      { "<leader>sN", "<cmd>Telescope node_modules list<cr>", desc = "Node Modules" },
+      { ";N", "<cmd>Telescope node_modules list<cr>", desc = "Node Modules" },
     },
     config = function()
       require("telescope").load_extension("node_modules")

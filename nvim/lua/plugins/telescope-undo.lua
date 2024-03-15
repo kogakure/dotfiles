@@ -6,6 +6,9 @@ return {
     "nvim-lua/plenary.nvim",
     "debugloop/telescope-undo.nvim",
   },
+  keys = {
+    { ";u", "<cmd>Telescope undo<cr>", desc = "Undo Tree" },
+  },
   opts = {
     extensions = {
       undo = {
