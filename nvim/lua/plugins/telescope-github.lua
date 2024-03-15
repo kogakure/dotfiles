@@ -5,6 +5,9 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-github.nvim",
+    keys = {
+      { ";p", "<cmd>Telescope gh pull_request<cr>", desc = "GitHub Pull Requests" },
+    },
     config = function()
       require("telescope").load_extension("gh")
     end,
