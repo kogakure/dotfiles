@@ -9,9 +9,6 @@ if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
     source "$BASE16_SHELL/profile_helper.fish"
 end
-#
-# asdf Version Manager
-source (brew --prefix asdf)/libexec/asdf.fish
 
 # Use wezterm.terminfo
 # curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo | tic -x -
@@ -78,6 +75,9 @@ set --export FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
 set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 
 set --export FZF_COMPLETE 0
+
+# asdf Version Manager
+source (brew --prefix asdf)/libexec/asdf.fish
 
 # Conda
 set conda_path (brew --prefix)/Caskroom/miniconda/base/bin/conda
