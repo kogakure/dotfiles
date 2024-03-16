@@ -40,7 +40,7 @@
   "gen.nvim": { "branch": "main", "commit": "2cb643b1a827bcdfc665a37d5f8174249d2d5bf5" },
   "gh.nvim": { "branch": "main", "commit": "3181973d0c80fe0553e30e0aeeb860bedef9a33b" },
   "gitsigns.nvim": { "branch": "main", "commit": "4e348641b8206c3b8d23080999e3ddbe4ca90efc" },
-  "harpoon": { "branch": "master", "commit": "ccae1b9bec717ae284906b0bf83d720e59d12b91" },
+  "harpoon": { "branch": "harpoon2", "commit": "a38be6e0dd4c6db66997deab71fc4453ace97f9c" },
   "highlight-undo.nvim": { "branch": "main", "commit": "50a6884a8476be04ecce8f1c4ed692c5000ef0a1" },
   "inc-rename.nvim": { "branch": "main", "commit": "6f9b5f9cb237e12935144cdc535322b8c93c1b25" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3d08501caef2329aba5121b753e903904088f7e6" },
