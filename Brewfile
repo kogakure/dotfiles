@@ -111,10 +111,6 @@ brew "ctags"
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Isolated development environments using Docker
-brew "docker-compose"
-# Create Docker hosts locally and on cloud providers
-brew "docker-machine", restart_service: true
 # More intuitive version of du in rust
 brew "dust"
 # Collection of reusable C++ library artifacts developed at Facebook
@@ -321,6 +317,10 @@ brew "pipx"
 brew "pngpaste"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Tool for managing OCI containers and pods
+brew "podman"
+# Alternative to docker-compose using podman
+brew "podman-compose"
 # Object-relational database system
 brew "postgresql@14"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -447,6 +447,8 @@ cask "alt-tab"
 cask "angry-ip-scanner"
 # Webcam & audio device software
 cask "ankerwork"
+# Memory training application
+cask "anki"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
@@ -482,8 +484,6 @@ cask "deepl"
 cask "devonthink"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerised applications and microservices
-cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Collaborative team software
@@ -522,6 +522,8 @@ cask "hammerspoon"
 cask "handbrake"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
+# Free and open-source media player
+cask "iina"
 # Tool to optimise images to a smaller size
 cask "imageoptim"
 # Tool to scan a website checking for broken links
@@ -570,6 +572,8 @@ cask "ollamac"
 cask "philips-hue-sync"
 # Colour picker for colours onscreen
 cask "pika"
+# Browse, manage, inspect containers and images
+cask "podman-desktop"
 # Client for Proton Drive
 cask "proton-drive"
 # Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
@@ -632,6 +636,7 @@ cask "whatroute"
 cask "zed"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
+mas "Amphetamine", id: 937984704
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
@@ -649,6 +654,7 @@ mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Pure Paste", id: 1611378436
 mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
