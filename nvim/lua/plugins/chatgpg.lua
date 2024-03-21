@@ -1,3 +1,5 @@
+-- ChatGPT Neovim Plugin
+-- https://github.com/jackMort/ChatGPT.nvim
 return {
   "jackMort/ChatGPT.nvim",
   event = "VeryLazy",
