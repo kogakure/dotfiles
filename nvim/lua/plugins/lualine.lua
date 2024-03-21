@@ -42,7 +42,7 @@ return {
             },
           },
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+          { "filename", path = 3, symbols = { modified = "  ", readonly = "", unnamed = "" } },
           {
             "harpoon2",
             indicators = { "1", "2", "3", "4", "5" },
