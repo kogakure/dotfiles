@@ -111,10 +111,20 @@ brew "ctags"
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # More intuitive version of du in rust
 brew "dust"
 # Collection of reusable C++ library artifacts developed at Facebook
 brew "folly"
+# C++14 implementation of the TLS-1.3 standard
+brew "fizz"
+# Modular, composable client/server abstractions framework
+brew "wangle"
+# Facebook's branch of Apache Thrift, including a new C++ server
+brew "fbthrift"
+# Thrift functions for querying information from a service
+brew "fb303"
 # Shared library for Watchman and Eden projects
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
@@ -129,14 +139,6 @@ brew "wxwidgets"
 brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
-# C++14 implementation of the TLS-1.3 standard
-brew "fizz"
-# Modular, composable client/server abstractions framework
-brew "wangle"
-# Thrift functions for querying information from a service
-brew "fb303"
-# Facebook's branch of Apache Thrift, including a new C++ server
-brew "fbthrift"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # GNU Transport Layer Security (TLS) Library
@@ -267,6 +269,8 @@ brew "lynx"
 brew "m-cli"
 # Mac App Store command-line interface
 brew "mas"
+# Run a Kubernetes cluster locally
+brew "minikube"
 # UNIX movie player
 brew "mplayer"
 # Turn marked-up plain text into well-formatted documents
