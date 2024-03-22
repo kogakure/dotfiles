@@ -111,10 +111,20 @@ brew "ctags"
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # More intuitive version of du in rust
 brew "dust"
 # Collection of reusable C++ library artifacts developed at Facebook
 brew "folly"
+# C++14 implementation of the TLS-1.3 standard
+brew "fizz"
+# Modular, composable client/server abstractions framework
+brew "wangle"
+# Facebook's branch of Apache Thrift, including a new C++ server
+brew "fbthrift"
+# Thrift functions for querying information from a service
+brew "fb303"
 # Shared library for Watchman and Eden projects
 brew "edencommon"
 # Maintain consistent coding style between multiple editors
@@ -129,14 +139,6 @@ brew "wxwidgets"
 brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
-# C++14 implementation of the TLS-1.3 standard
-brew "fizz"
-# Modular, composable client/server abstractions framework
-brew "wangle"
-# Thrift functions for querying information from a service
-brew "fb303"
-# Facebook's branch of Apache Thrift, including a new C++ server
-brew "fbthrift"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # GNU Transport Layer Security (TLS) Library
@@ -189,8 +191,6 @@ brew "libgpg-error"
 brew "gnupg"
 # Manage compile and link flags for libraries
 brew "pkg-config"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Library for loading images as SDL surfaces and textures
@@ -255,6 +255,8 @@ brew "libsoup"
 brew "libzip"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Package manager for the Lua programming language
@@ -267,6 +269,10 @@ brew "lynx"
 brew "m-cli"
 # Mac App Store command-line interface
 brew "mas"
+# Run a Kubernetes cluster locally
+brew "minikube"
+# CLI tool for saving complete web pages as a single HTML file
+brew "monolith"
 # UNIX movie player
 brew "mplayer"
 # Turn marked-up plain text into well-formatted documents
@@ -662,6 +668,7 @@ mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
+mas "Wunderbar", id: 6479203386
 mas "Yoink", id: 457622435
 vscode "activitywatch.aw-watcher-vscode"
 vscode "adamvoss.vscode-languagetool"
