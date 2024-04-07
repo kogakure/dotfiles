@@ -15,6 +15,7 @@ tap "koekeishiya/formulae"
 tap "ms-jpq/sad"
 tap "oven-sh/bun"
 tap "pkgxdev/made"
+tap "railwayapp/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Library for manipulating PNG images
@@ -111,8 +112,8 @@ brew "ctags"
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
 # More intuitive version of du in rust
 brew "dust"
 # Collection of reusable C++ library artifacts developed at Facebook
@@ -293,6 +294,8 @@ brew "tree-sitter"
 brew "neovim"
 # HTTP/2 C Library
 brew "nghttp2"
+# HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
+brew "nginx"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
@@ -411,6 +414,8 @@ brew "xdotool"
 brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
@@ -437,6 +442,8 @@ brew "koekeishiya/formulae/yabai"
 brew "ms-jpq/sad/sad"
 # Run Anything
 brew "pkgxdev/made/pkgx"
+# App source + Nix packages + Docker = Image
+brew "railwayapp/tap/nixpacks"
 # Time tracker
 cask "activitywatch"
 # Professional graphic design software
@@ -477,6 +484,8 @@ cask "brave-browser"
 cask "calibre"
 # Screen capturing tool
 cask "cleanshot"
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
@@ -490,6 +499,8 @@ cask "deepl"
 cask "devonthink"
 # Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
+cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Collaborative team software
@@ -578,8 +589,6 @@ cask "ollamac"
 cask "philips-hue-sync"
 # Colour picker for colours onscreen
 cask "pika"
-# Browse, manage, inspect containers and images
-cask "podman-desktop"
 # Client for Proton Drive
 cask "proton-drive"
 # Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
@@ -672,6 +681,7 @@ mas "Wunderbar", id: 6479203386
 mas "Yoink", id: 457622435
 vscode "activitywatch.aw-watcher-vscode"
 vscode "adamvoss.vscode-languagetool"
+vscode "ahmadalli.vscode-nginx-conf"
 vscode "akamud.vscode-caniuse"
 vscode "alefragnani.bookmarks"
 vscode "alefragnani.project-manager"
@@ -756,6 +766,7 @@ vscode "pkief.material-icon-theme"
 vscode "pnp.polacode"
 vscode "pomdtr.excalidraw-editor"
 vscode "prisma.prisma"
+vscode "raynigon.nginx-formatter"
 vscode "redhat.vscode-commons"
 vscode "redhat.vscode-yaml"
 vscode "rvest.vs-code-prettier-eslint"
@@ -776,6 +787,7 @@ vscode "vscode-icons-team.vscode-icons"
 vscode "vscodevim.vim"
 vscode "wakatime.vscode-wakatime"
 vscode "wayou.vscode-todo-highlight"
+vscode "william-voyek.vscode-nginx"
 vscode "wix.vscode-import-cost"
 vscode "xabikos.javascriptsnippets"
 vscode "xadillax.viml"
