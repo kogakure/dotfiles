@@ -99,7 +99,6 @@ config.window_padding = {
 
 -- Custom Keybindings
 config.keys = {
-	{ key = "Enter", mods = "CMD", action = wezterm.action.ToggleFullScreen }, -- Toggle fullscreen
 	{ key = ",", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2v" }) }, -- Rename window
 	{ key = "1", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\21" }) }, -- window 1
 	{ key = "2", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\22" }) }, -- window 2
@@ -111,11 +110,12 @@ config.keys = {
 	{ key = "8", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\28" }) }, -- window 8
 	{ key = "9", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\29" }) }, -- window 9
 	{ key = ";", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2:" }) }, -- Command Mode
-	{ key = "D", mods = "CTRL|ALT|SHIFT", action = wezterm.action({ SendString = "\2D" }) }, -- Lazydocker
+	{ key = "Enter", mods = "CMD", action = wezterm.action.ToggleFullScreen }, -- Toggle fullscreen
 	{ key = "[", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2p" }) }, -- Previous window
 	{ key = "]", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2n" }) }, -- Next window
-	{ key = "d", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2d" }) }, -- Detach session
-	{ key = "f", mods = "CTRL|ALT", action = wezterm.action({ SendString = ":Grep\n" }) }, -- Telescope Live Grep
+	{ key = "d", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2D" }) }, -- Lazydocker
+	{ key = "d", mods = "CTRL|ALT|SHIFT", action = wezterm.action({ SendString = "\2d" }) }, -- Detach session
+	{ key = "f", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2O" }) }, -- LF
 	{ key = "g", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2G" }) }, -- Lazygit
 	{ key = "h", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2p" }) }, -- Previous window
 	{ key = "i", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2i" }) }, -- Cht.sh
