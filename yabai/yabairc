@@ -54,5 +54,6 @@ yabai -m rule --add app="Pika" manage=off
 yabai -m rule --add app="Microsoft Teams" manage=off
 yabai -m rule --add app="^CleanShot X$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Dash$" sticky=on layer=above manage=off
+yabai -m rule --add app="^IINA$" sticky=on layer=above manage=off
 
 echo "Yabai configuration loaded …"
