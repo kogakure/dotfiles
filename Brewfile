@@ -214,8 +214,6 @@ brew "lua"
 brew "highlight"
 # Improved top (interactive process viewer)
 brew "htop"
-# Generic syntax highlighter
-brew "pygments"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Command-line benchmarking tool
@@ -256,8 +254,6 @@ brew "libsoup"
 brew "libzip"
 # Next-gen compiler infrastructure
 brew "llvm"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Package manager for the Lua programming language
@@ -338,12 +334,16 @@ brew "prettier"
 brew "protobuf"
 # Python 3 bindings for the Cairo graphics library
 brew "py3cairo"
+# Generic syntax highlighter
+brew "pygments"
 # GNOME Python bindings (based on GObject Introspection)
 brew "pygobject3"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Python interface to Tcl/Tk
 brew "python-tk@3.10"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
 # Interpreted, interactive, object-oriented programming language
@@ -647,6 +647,8 @@ cask "webtorrent"
 cask "wezterm"
 # Network diagnostic utility
 cask "whatroute"
+# Native desktop client for WhatsApp
+cask "whatsapp"
 # Multiplayer code editor
 cask "zed"
 mas "1-Click Video Converter", id: 717545086
@@ -739,6 +741,7 @@ vscode "miguelsolorio.fluent-icons"
 vscode "miguelsolorio.min-theme"
 vscode "miguelsolorio.symbols"
 vscode "mikestead.dotenv"
+vscode "morph.rift-vscode"
 vscode "mrmlnc.vscode-attrs-sorter"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-ceintl.vscode-language-pack-de"
