@@ -3,3 +3,18 @@ default_startup_script = "~/.config/sesh/scripts/open_files"
 [[startup_scripts]]
 session_path = "~/Code/GitHub/websites/stefanimhoff-de"
 script_path = "~/.config/sesh/scripts/node_dev"
+
+[[session]]
+name = "Dotfiles"
+path = "~/.dotfiles"
+startup_command = "nvim"
+
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "ll"
+
+[[session]]
+name = "tmux config 🔧"
+path = "~/.dotfiles/tmux"
+startup_command = "nvim tmux.conf"
