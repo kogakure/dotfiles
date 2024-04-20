@@ -8,7 +8,7 @@
 # Terminal file manager
 # https://github.com/gokcehan/lf
 
-set hidden true
+set hidden false
 set icons
 set previewer ~/.config/lf/previewer.sh
 set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
@@ -38,10 +38,6 @@ cmd open ${{
     esac
 }}
 
-# define a custom 'rename' command without prompt for overwrite
-# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-# map r push :rename<space>
-
 # make sure trash folder exists
 # %mkdir -p ~/.trash
 
@@ -49,18 +45,15 @@ cmd open ${{
 # (also see 'man mv' for backup/overwrite options)
 # cmd trash %set -f; mv $fx ~/.trash
 
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ $ans = "y" ] && rm -rf $fx
-# }}
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    printf "delete? [y/n]"
+    read ans
+    [ $ans = "y" ] && rm -rf $fx
+}}
 
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
+map <delete> delete
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
@@ -113,11 +106,6 @@ cmd z %{{
     lf -remote "send ${id} cd '${result}'"
 }}
 
-cmd zi ${{
-    result="$(zoxide query -i -- "$1""
-    lf -remote "send ${id} cd '${result}'"
-}}
-
 cmd git_branch ${{
     git branch | fzf-tmux -p --reverse | xargs git checkout
     pwd_shell=$(pwd)
@@ -129,5 +117,4 @@ map gp ${{clear; git pull --rebase || true; echo "press ENTER"; read ENTER}}
 map gs ${{clear; git status; echo "press ENTER"; read ENTER}}
 map gl ${{clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit}}
 
-map E %nvr --remote $fx
 map f $nvim $(fzf)
