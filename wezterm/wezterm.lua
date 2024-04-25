@@ -126,6 +126,7 @@ config.keys = {
 	{ key = "q", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2d" }) }, -- Detach session
 	{ key = "r", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2R" }) }, -- Return to last session
 	{ key = "t", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2c" }) }, -- New window
+	{ key = "s", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2f" }) }, -- Superfile
 	{ key = "w", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2x" }) }, -- Close window
 	{ key = "y", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2!" }) }, -- Move pane to new window
 	{ key = "z", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2z" }) }, -- Zoom into window
