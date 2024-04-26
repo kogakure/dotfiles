@@ -31,6 +31,7 @@ return {
       astro = { { "prettierd", "prettier" } },
       css = { { "prettierd", "prettier" }, "stylelint" },
       fish = { "fish_indent" },
+      go = { "goimports", "gofumpt" },
       graphql = { { "prettierd", "prettier" } },
       html = { { "prettierd", "prettier" } },
       javascript = { { "prettierd", "prettier" }, "eslint_d" },

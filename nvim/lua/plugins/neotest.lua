@@ -45,6 +45,12 @@ return {
         })
       )
       table.insert(opts.adapters, require("neotest-vitest"))
+      table.insert(
+        opts.adapters,
+        require("neotest-go")({
+          recursive_run = true,
+        })
+      )
     end,
   },
 }
