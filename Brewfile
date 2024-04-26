@@ -378,6 +378,8 @@ brew "ssh-copy-id"
 brew "starship"
 # Supabase CLI
 brew "supabase"
+# Modern and pretty fancy file manager for the terminal
+brew "superfile"
 # Nodejs-based tool for optimizing SVG vector graphics files
 brew "svgo"
 # Open source continuous file synchronization application
@@ -484,8 +486,6 @@ cask "brave-browser"
 cask "calibre"
 # Screen capturing tool
 cask "cleanshot"
-# Free app that makes your Internet safer
-cask "cloudflare-warp"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
@@ -701,6 +701,7 @@ vscode "chrmarti.regex"
 vscode "codeium.codeium"
 vscode "codesandbox-io.codesandbox-projects"
 vscode "codezombiech.gitignore"
+vscode "continue.continue"
 vscode "csstools.postcss"
 vscode "cstrachan.vcard"
 vscode "davidlday.languagetool-linter"
