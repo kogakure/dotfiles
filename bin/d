@@ -9,7 +9,7 @@ DEV_SCRIPT="${1:-dev}"
 # AND there is a package.json file in the current directory
 if command -v jq &>/dev/null && [[ -f "package.json" ]]; then
   # if we have jq,
-  # then use it to extract the first occurence of a key in package.json's scripts object
+  # then use it to extract the first occurrence of a key in package.json's scripts object
   # that starts with the argument passed in (or dev)
   DEV_SCRIPT="$(jq \
     -r \
