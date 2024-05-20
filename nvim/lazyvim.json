@@ -1,15 +1,15 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.dap.core",
-    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.tailwind",
-    "lazyvim.plugins.extras.lang.yaml"
+    "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.editor.aerial"
   ],
   "news": {
-    "NEWS.md": "3314"
+    "NEWS.md": "4578"
   },
   "version": 3
 }

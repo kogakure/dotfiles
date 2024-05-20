@@ -134,8 +134,6 @@ brew "editorconfig"
 brew "emscripten"
 # Tools to convert fonts from OTF/TTF to EOT format
 brew "eot-utils"
-# Cross-platform C++ GUI toolkit
-brew "wxwidgets"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
@@ -156,6 +154,8 @@ brew "tesseract"
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg@6"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Command-line fuzzy finder written in Go
@@ -410,6 +410,8 @@ brew "wget"
 brew "whisper-cpp"
 # Utilities to create and convert Web Open Font File (WOFF) files
 brew "woff2"
+# Cross-platform C++ GUI toolkit
+brew "wxwidgets"
 # Fake keyboard/mouse input and window management for X
 brew "xdotool"
 # JavaScript package manager
