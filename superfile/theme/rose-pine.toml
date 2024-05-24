@@ -1,5 +1,5 @@
 # Rose Pine
-# Theme create by: https://github.com/tanbinislam43
+# Theme create by: https://github.com/pearcidar
 # Update by(sort by time):
 # 
 # Thanks for all contributor!!
@@ -58,3 +58,7 @@ modal_cancel_bg = "#524f67"
 
 modal_confirm_fg = "#e0def4"
 modal_confirm_bg = "#eb6f92"
+
+# ========= Help Menu =========
+help_menu_hotkey = "#f6c177"
+help_menu_title = "#9ccfd8"
