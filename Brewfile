@@ -264,6 +264,8 @@ brew "lunchy"
 brew "lynx"
 # Swiss Army Knife for macOS
 brew "m-cli"
+# Apple Silicon Monitor Top written in Golang
+brew "mactop"
 # Mac App Store command-line interface
 brew "mas"
 # Run a Kubernetes cluster locally
