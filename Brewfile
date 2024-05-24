@@ -156,6 +156,8 @@ brew "zeromq"
 brew "ffmpeg"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg@6"
+# Create thumbnails for your video files
+brew "ffmpegthumbnailer"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Command-line fuzzy finder written in Go
@@ -328,6 +330,8 @@ brew "pnpm"
 brew "podman"
 # Alternative to docker-compose using podman
 brew "podman-compose"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Object-relational database system
 brew "postgresql@14"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -396,6 +400,8 @@ brew "tldr"
 brew "tmux"
 # Command-line tool for sharing terminal over the web
 brew "ttyd", args: ["HEAD"]
+# Command-line unarchiving tools supporting multiple formats
+brew "unar"
 # Maintained ctags implementation
 brew "universal-ctags", args: ["HEAD"]
 # URL extractor/launcher
@@ -418,6 +424,8 @@ brew "wxwidgets"
 brew "xdotool"
 # JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI

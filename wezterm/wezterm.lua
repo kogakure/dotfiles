@@ -128,7 +128,7 @@ config.keys = {
 	{ key = "t", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2c" }) }, -- New window
 	{ key = "s", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2f" }) }, -- Superfile
 	{ key = "w", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2x" }) }, -- Close window
-	{ key = "y", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2!" }) }, -- Move pane to new window
+	{ key = "y", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2W" }) }, -- Move pane to new window
 	{ key = "z", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2z" }) }, -- Zoom into window
 }
 
