@@ -6,6 +6,8 @@ return {
     extra_groups = {
       "TelescopeBorder",
       "TelescopeNormal",
+      -- "NeoTreeNormal",
+      -- "NeoTreeNormalNC",
     },
   },
 }
