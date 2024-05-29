@@ -1,14 +1,25 @@
 # change your theme
 theme = 'catpuccin'
 # 
-# useless for now
-footer_panel_list = ['processes', 'metadata', 'clipboard']
+# Auto check for update
+auto_check_update = true
+# 
+# Cd on quit (For more details, please check out https://superfile.netlify.app/configure/superfile-config/#cd_on_quit)
+cd_on_quit = false
+# 
+# Whether to open file preview automatically every time superfile is opened.
+default_open_file_preview = true
 # 
 # ================   Style =================
 # 
 # Set transparent background or not (this only work when your terminal background is transparent)
-transparent_backgroun = false
+transparent_background = false
 # 
+# File preview width allow '0' (this mean same as file panel),'x' x must be less than 10 and greater than 1 (This means that the width of the file preview will be one xth of the total width.)
+file_preview_width = 0
+# 
+# The length of the sidebar. If you don't want to display the sidebar, you can input 0 directly. If you want to display the value, please place it in the range of 3-20.
+sidebar_width = 20
 # 
 # Border style
 border_top = '━'
