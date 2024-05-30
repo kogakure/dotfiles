@@ -84,7 +84,7 @@ config.front_end = "WebGpu"
 
 -- Window
 config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.9
 config.initial_cols = 100
 config.initial_rows = 65
 config.enable_tab_bar = false
@@ -128,7 +128,7 @@ config.keys = {
 	{ key = "t", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2c" }) }, -- New window
 	{ key = "s", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2f" }) }, -- Superfile
 	{ key = "w", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2x" }) }, -- Close window
-	{ key = "y", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2W" }) }, -- Yazi 
+	{ key = "y", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2W" }) }, -- Yazi
 	{ key = "z", mods = "CTRL|ALT", action = wezterm.action({ SendString = "\2z" }) }, -- Zoom into window
 }
 
