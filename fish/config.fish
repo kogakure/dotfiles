@@ -85,6 +85,12 @@ if test -f $conda_path
     eval $conda_path "shell.fish" hook $argv | source
 end
 
+# Nix
+set nix_path /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+if test -f $nix_path
+    bass source $nix_path
+end
+
 # Zoxide
 zoxide init fish | source
 
