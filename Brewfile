@@ -146,14 +146,14 @@ brew "gnutls"
 brew "libarchive"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
-# Optimized BLAS library
-brew "openblas"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # High-performance, asynchronous messaging library
 brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Optimized BLAS library
+brew "openblas"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg@6"
 # Create thumbnails for your video files
@@ -168,6 +168,8 @@ brew "gd"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Enable transparent encryption/decryption of files in a git repo
+brew "git-crypt"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Small git utilities
