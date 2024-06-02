@@ -40,4 +40,9 @@ return {
       on_save_pattern = { "*.html", "*.jsx", "*.tsx", "*.astro", "*.svelte" },
     },
   },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
+  },
 }
