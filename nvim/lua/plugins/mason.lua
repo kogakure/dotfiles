@@ -24,6 +24,7 @@ return {
       "isort",
       "json-lsp",
       "lua-language-server",
+      "nixpkgs-fmt",
       "prettier",
       "prettierd",
       "pyright",

@@ -34,6 +34,10 @@ set PATH ~/.dotfiles/private/bin $PATH
 set PATH ~/.local/bin $PATH
 set PATH ~/.asdf/shims $PATH
 
+set -x LIBRARY_PATH (brew --prefix)/opt/libiconv/lib
+set -x CPATH (brew --prefix)/opt/libiconv/include
+set -x PKG_CONFIG_PATH (brew --prefix)/opt/libiconv/lib/pkgconfig
+
 # Homebrew Command Not Found
 set HB_CNF_HANDLER (brew --repository)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
 if test -f $HB_CNF_HANDLER

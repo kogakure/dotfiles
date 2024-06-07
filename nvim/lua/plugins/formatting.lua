@@ -24,6 +24,9 @@ return {
         args = { "--fix-to-stdout", "--stdin", "--stdin-filename", "$FILENAME" },
         stdin = true,
       },
+      nixpkgs_fmt = {
+        command = "nixpkgs-fmt",
+      },
     },
     formatters_by_ft = {
       -- ["*"] = { "codespell" },
@@ -40,6 +43,7 @@ return {
       lua = { "stylua" },
       markdown = { { "prettierd", "prettier" } },
       mdx = { { "prettierd", "prettier" } },
+      nix = { "nixpkgs_fmt" },
       python = { "isort", "black" },
       ruby = { "rubyfmt", "rubocop" },
       eruby = { "htmlbeautifier" },
