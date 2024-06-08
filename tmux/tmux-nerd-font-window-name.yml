@@ -3,8 +3,9 @@ config:
   show-name: true
 
 icons:
-  sudo: "🔒"
+  bat: "󰭟"
   gh: ""
-  spf: "󰪶"
   pnpm: ""
   reattach-to-user-namespace: ""
+  spf: "󰪶"
+  sudo: "🔒"
