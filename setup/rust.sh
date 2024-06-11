@@ -6,3 +6,4 @@ asdf global rust latest
 
 cargo install stylua
 cargo install nixpkgs-fmt
+cargo install code2prompt
