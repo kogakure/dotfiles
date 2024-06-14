@@ -523,21 +523,16 @@ cask "figma"
 cask "firefox"
 # Web browser
 cask "firefox-developer-edition"
-# Free monospaced font with programming ligatures
 cask "font-fira-code"
-# Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
 cask "font-fira-sans-condensed"
-# Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
 cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
-# Superfamily of fonts for code
 cask "font-monaspace"
 cask "font-noto-emoji"
-# Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
 cask "forticlient-vpn"
