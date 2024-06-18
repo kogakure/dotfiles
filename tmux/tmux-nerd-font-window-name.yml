@@ -5,6 +5,7 @@ config:
 icons:
   bat: "󰭟"
   gh: ""
+  ollama: "󰚩"
   pnpm: ""
   reattach-to-user-namespace: ""
   spf: "󰪶"
