@@ -670,6 +670,7 @@ mas "Amphetamine", id: 937984704
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
+mas "Exporter", id: 1099120373
 mas "Free MP4 Converter", id: 693443591
 mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
@@ -706,6 +707,7 @@ vscode "ardenivanov.svelte-intellisense"
 vscode "astro-build.astro-vscode"
 vscode "asvetliakov.snapshot-tools"
 vscode "azemoh.one-monokai"
+vscode "bbenoist.nix"
 vscode "bierner.markdown-preview-github-styles"
 vscode "bradlc.vscode-tailwindcss"
 vscode "chakrounanas.turbo-console-log"
