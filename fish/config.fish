@@ -146,7 +146,7 @@ alias ... 'cd ../..'
 alias cd.. 'cd ..'
 alias ls 'eza --git --group-directories-first --icons'
 alias ll 'eza -l --git --group-directories-first --icons'
-alias lla 'll -a'
+alias lt 'eza --git --group-directories-first --icons --tree'
 alias mkdir 'mkdir -p'
 alias pn pnpm
 alias px pnpx
