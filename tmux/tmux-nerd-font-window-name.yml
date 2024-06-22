@@ -5,6 +5,9 @@ config:
 icons:
   bat: "󰭟"
   gh: ""
+  nix-env: "󱄅"
+  nix-shell: "󱄅"
+  nix: "󱄅"
   ollama: "󰚩"
   pnpm: ""
   reattach-to-user-namespace: ""
