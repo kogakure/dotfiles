@@ -35,12 +35,10 @@
     ~/.config/ranger: ranger
     ~/.config/sesh: sesh
     ~/.config/sketchybar: sketchybar
-    ~/.config/skhd: skhd
     ~/.config/starship.toml: prompt/starship.toml
     ~/.config/superfile: superfile
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
     ~/.config/tmuxinator: tmuxinator
-    ~/.config/yabai: yabai
     ~/.config/zed/settings.json: zed/settings.json
     ~/.ctags: search/ctags
     ~/.curlrc: url/curlrc
