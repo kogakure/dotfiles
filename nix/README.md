@@ -7,7 +7,13 @@ This is my folder where I migrate my current dotfile setup to [Nix](https://nixo
 
 ```sh
 # First time install
-nix run nix-darwin -- switch --flake ~/.config/nix-darwin
+nix run nix-darwin -- switch --flake ~/.dotfiles/nix
+```
+
+By default the `$hostname` that matches the current machine is used, but it is possible to manually load one by running:
+
+```sh
+nix run nix-darwin -- switch --flake ~/.dotfiles/nix#mac-mini
 ```
 
 Make sure this is added to your path:

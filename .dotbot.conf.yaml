@@ -56,7 +56,6 @@
     ~/.gnupg/gpg.conf: gpg/gpg.conf
     ~/.hammerspoon: hammerspoon
     ~/.pandoc: pandoc
-    ~/.ripgreprc: search/ripgrep
     ~/.tmux-cht-command: tmux/tmux-cht-command
     ~/.tmux-cht-languages: tmux/tmux-cht-languages
     ~/.tmux.conf: tmux/tmux.conf

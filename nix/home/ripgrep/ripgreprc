@@ -1,9 +1,9 @@
 --max-columns-preview
 
---type-add 
+--type-add
 web:*.{html,css,js,jsx,ts,tsx}*
 
---type-add 
+--type-add
 text:*.{md,mdx,txt}*
 
 --glob=!git/*

@@ -6,6 +6,7 @@ in
 {
   # https://nix-community.github.io/home-manager/options.html
   imports = [
+    ./ripgrep
     ./skhd
     ./yabai
   ];
@@ -23,11 +24,6 @@ in
     # environment.
     home.packages = with pkgs; [
       nixpkgs-fmt
-      ripgrep
     ];
-
-    home.sessionVariables = {
-      EDITOR = "vim";
-    };
   };
 }
