@@ -16,6 +16,7 @@ tap "ms-jpq/sad"
 tap "oven-sh/bun"
 tap "pkgxdev/made"
 tap "railwayapp/tap"
+tap "xwmx/taps"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Library for manipulating PNG images
@@ -258,6 +259,8 @@ brew "libsoup"
 brew "libzip"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Package manager for the Lua programming language
@@ -330,8 +333,6 @@ brew "pngpaste"
 brew "pnpm"
 # Tool for managing OCI containers and pods
 brew "podman"
-# Generic machine emulator and virtualizer
-brew "qemu"
 # Alternative to docker-compose using podman
 brew "podman-compose"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -358,6 +359,8 @@ brew "python@3.11"
 brew "python@3.8"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
+# Generic machine emulator and virtualizer
+brew "qemu"
 # File browser
 brew "ranger"
 # Reattach process (e.g., tmux) to background
@@ -462,6 +465,7 @@ brew "ms-jpq/sad/sad"
 brew "pkgxdev/made/pkgx"
 # App source + Nix packages + Docker = Image
 brew "railwayapp/tap/nixpacks"
+brew "xwmx/taps/nb"
 # Professional graphic design software
 cask "affinity-designer"
 # Professional image editing software
