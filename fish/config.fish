@@ -95,6 +95,8 @@ if test -f $nix_path
     bass source $nix_path
 end
 
+set --export PATH /run/current-system/sw/bin $PATH
+
 # Zoxide
 zoxide init fish | source
 
