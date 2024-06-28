@@ -61,6 +61,7 @@
   "mini.ai": { "branch": "main", "commit": "7859b6344f5cee567a94f173859d25e20ba1a77e" },
   "mini.animate": { "branch": "main", "commit": "0a35f6db55cfac04a0999abe3465f7b692dc56a7" },
   "mini.pairs": { "branch": "main", "commit": "40261dfcec7623cd57be3c3beb50fa73f2650cdf" },
+  "mini.surround": { "branch": "main", "commit": "af280fc18792b4d142aab4c1638a8949a38ff33a" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "29f7c215332ba95e470811c380ddbce2cebe2af4" },
   "neogit": { "branch": "master", "commit": "ade9858cb6c434f3642f0b6296ac8d9d4ee51935" },
   "neotest": { "branch": "master", "commit": "6f35d797882c6ce0ab7c87dc86561512dc3d7aba" },
