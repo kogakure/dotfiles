@@ -14,7 +14,7 @@ export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAge
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export KEYTIMEOUT=1
-export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 export GIT_EDITOR=nvim
 export EDITOR=nvim
 

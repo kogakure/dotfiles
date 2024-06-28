@@ -48,7 +48,7 @@ end
 set --export XDG_CONFIG_HOME "$HOME/.config"
 
 set --export KEYTIMEOUT 1
-set --export RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+set --export RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
 set --export GIT_EDITOR nvim
 set --export EDITOR nvim
 
@@ -96,6 +96,7 @@ if test -f $nix_path
 end
 
 set --export PATH /run/current-system/sw/bin $PATH
+set --export PATH /etc/profiles/per-user/$USER/bin $PATH
 
 # Zoxide
 zoxide init fish | source
@@ -210,6 +211,9 @@ alias t tmux
 alias mux tmuxinator
 alias ms 'mux start'
 alias ta 'tmux attach'
+
+# Nix
+alias nxs 'darwin-rebuild switch --flake ~/.dotfiles/nix'
 
 # Bat
 alias cat bat
