@@ -6,8 +6,6 @@ tap "felixkratz/formulae"
 tap "fsouza/prettierd"
 tap "github/gh"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "jakehilborn/jakehilborn"
 tap "jondot/tap"
@@ -171,8 +169,6 @@ brew "openjpeg"
 brew "leptonica"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
-# Optimized BLAS library
-brew "openblas"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # High-performance, asynchronous messaging library
@@ -335,6 +331,8 @@ brew "neovim"
 brew "nghttp2"
 # Small build system for use with gyp or CMake
 brew "ninja"
+# Optimized BLAS library
+brew "openblas"
 # Open Fortinet client for PPP+TLS VPN tunnel services
 brew "openfortivpn"
 # C library to read whole-slide images (a.k.a. virtual slides)
@@ -459,6 +457,8 @@ brew "xdotool"
 brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Tracks most-used directories to make cd smarter
 brew "z"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
@@ -566,25 +566,19 @@ cask "espanso"
 cask "figma"
 # Web browser
 cask "firefox"
-# Web browser
 cask "firefox-developer-edition"
-# Web browser
 cask "firefox-nightly"
 cask "flip4mac"
 # Download manager with a torrent client
 cask "folx"
-# Free monospaced font with programming ligatures
 cask "font-fira-code"
-# Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
 cask "font-fira-sans-condensed"
 cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
-# Superfamily of fonts for code
 cask "font-monaspace"
-# Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
 cask "forticlient-vpn"
@@ -610,6 +604,8 @@ cask "iina"
 cask "imagealpha"
 # Tool to optimise images to a smaller size
 cask "imageoptim"
+# Vector graphics editor
+cask "inkscape"
 # Tool to scan a website checking for broken links
 cask "integrity"
 # Terminal emulator as alternative to Apple's Terminal app
@@ -672,10 +668,9 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Web browser
 cask "opera"
-# Web browser
 cask "opera-beta"
 # Web browser
-cask "opera-developer"
+cask "opera@developer"
 # Play PC games and connect with your friends
 cask "origin"
 # Control your smart light system
@@ -758,7 +753,6 @@ cask "vlc"
 cask "vlc-webplugin"
 # Rust-based terminal
 cask "warp"
-cask "webponize"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
 # Network diagnostic utility
@@ -768,16 +762,12 @@ cask "xquartz"
 # Multiplayer code editor
 cask "zed"
 mas "1-Click Video Converter", id: 717545086
-mas "Amphetamine", id: 937984704
 mas "Be Focused Pro", id: 961632517
-mas "Bitwarden", id: 1352778147
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Free MP4 Converter", id: 693443591
-mas "GarageBand", id: 682658836
 mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
-mas "Icon Slate", id: 439697913
 mas "iFinance 5", id: 1500241909
 mas "iMovie", id: 408981434
 mas "IP Friend", id: 1560408065
@@ -785,13 +775,11 @@ mas "Just Focus", id: 1142151959
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "LanguageTool", id: 1534275760
-mas "Marked 2", id: 890031187
 mas "Mela", id: 1568924476
 mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Pure Paste", id: 1611378436
 mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
@@ -804,6 +792,7 @@ mas "Yoink", id: 457622435
 whalebrew "whalebrew/whalesay"
 vscode "activitywatch.aw-watcher-vscode"
 vscode "adamvoss.vscode-languagetool"
+vscode "ahmadalli.vscode-nginx-conf"
 vscode "akamud.vscode-caniuse"
 vscode "alefragnani.bookmarks"
 vscode "alefragnani.project-manager"
@@ -823,6 +812,7 @@ vscode "chrmarti.regex"
 vscode "codeium.codeium"
 vscode "codesandbox-io.codesandbox-projects"
 vscode "codezombiech.gitignore"
+vscode "continue.continue"
 vscode "csstools.postcss"
 vscode "cstrachan.vcard"
 vscode "davidlday.languagetool-linter"
@@ -847,7 +837,6 @@ vscode "gerane.theme-tomorrownight"
 vscode "ginfuru.better-nunjucks"
 vscode "github.copilot"
 vscode "github.copilot-chat"
-vscode "github.copilot-labs"
 vscode "github.github-vscode-theme"
 vscode "github.vscode-pull-request-github"
 vscode "gruntfuggly.todo-tree"
@@ -868,10 +857,12 @@ vscode "miguelsolorio.fluent-icons"
 vscode "miguelsolorio.min-theme"
 vscode "miguelsolorio.symbols"
 vscode "mikestead.dotenv"
+vscode "morph.rift-vscode"
 vscode "mrmlnc.vscode-attrs-sorter"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-ceintl.vscode-language-pack-de"
 vscode "ms-playwright.playwright"
+vscode "ms-python.debugpy"
 vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
@@ -896,6 +887,7 @@ vscode "pnp.polacode"
 vscode "pomdtr.excalidraw-editor"
 vscode "prisma.prisma"
 vscode "quick-lint.quick-lint-js"
+vscode "raynigon.nginx-formatter"
 vscode "redhat.vscode-commons"
 vscode "redhat.vscode-yaml"
 vscode "rvest.vs-code-prettier-eslint"
@@ -917,6 +909,7 @@ vscode "vscode-icons-team.vscode-icons"
 vscode "vscodevim.vim"
 vscode "wakatime.vscode-wakatime"
 vscode "wayou.vscode-todo-highlight"
+vscode "william-voyek.vscode-nginx"
 vscode "withfig.fig"
 vscode "wix.vscode-import-cost"
 vscode "xabikos.javascriptsnippets"
