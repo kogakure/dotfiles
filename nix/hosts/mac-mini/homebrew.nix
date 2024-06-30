@@ -3,6 +3,8 @@
   # onActivation.cleanup = "uninstall";
   taps = [ ];
   brews = [ ];
-  casks = [ "raycast" ];
+  casks = [
+    "webtorrent"
+  ];
   masApps = { };
 }

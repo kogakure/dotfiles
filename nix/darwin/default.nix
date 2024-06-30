@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  homebrew = import ./homebrew.nix // { enable = true; };
+  homebrew = import ./homebrew-common.nix;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

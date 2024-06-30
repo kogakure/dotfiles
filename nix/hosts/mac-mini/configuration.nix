@@ -9,4 +9,6 @@
     name = "kogakure";
     home = "/Users/kogakure";
   };
+
+  homebrew = import ./homebrew.nix;
 }
