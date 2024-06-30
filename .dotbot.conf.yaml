@@ -26,7 +26,6 @@
     ~/.config/lazygit/config.yml: git/lazygit.yml
     ~/.config/lf: lf
     ~/.config/nvim: nvim
-    ~/.config/nix: nix
     ~/.config/oatmeal: oatmeal
     ~/.config/ranger: ranger
     ~/.config/sesh: sesh
