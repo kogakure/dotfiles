@@ -24,6 +24,8 @@ in
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
+      comma # Comma runs software without installing it
+      nixd # Nix language server
       nixpkgs-fmt # Nix code formatter
     ];
   };
