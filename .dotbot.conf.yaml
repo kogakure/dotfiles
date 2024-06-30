@@ -13,7 +13,6 @@
     - ~/.gnupg
 
 - link:
-    ~/.ack: search/ack
     ~/.ag: search/ag
     ~/.asdfrc: asdf/asdfrc
     ~/.config/alacritty: alacritty
