@@ -3,7 +3,7 @@
   # TODO: Activate after migration is complete
   # onActivation.cleanup = "uninstall";
   taps = [ ];
-  brews = [ ];
+  brews = [ "lunchy" ];
   casks = [ "raycast" ];
   masApps = { };
 }

@@ -13,6 +13,7 @@ in
     ./lazydocker
     ./lazygit
     ./ripgrep
+    ./ruby
     ./skhd
     ./yabai
   ];
