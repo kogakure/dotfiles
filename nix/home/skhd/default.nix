@@ -1,4 +1,4 @@
-{ pkgs, config, lib, home-manager, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   options.services.skhd = {
