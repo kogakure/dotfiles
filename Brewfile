@@ -107,8 +107,6 @@ brew "cmake"
 brew "commitizen"
 # Header-only library for parsing TOML
 brew "cpptoml"
-# Reimplementation of ctags(1)
-brew "ctags"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -407,8 +405,6 @@ brew "tmux"
 brew "ttyd", args: ["HEAD"]
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
-# Maintained ctags implementation
-brew "universal-ctags", args: ["HEAD"]
 # URL extractor/launcher
 brew "urlview"
 # Syntax-aware linter for prose

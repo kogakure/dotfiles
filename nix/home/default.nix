@@ -8,6 +8,7 @@ in
   imports = [
     ./ack
     ./ag
+    ./ctags
     ./ripgrep
     ./skhd
     ./yabai

@@ -34,7 +34,6 @@
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
     ~/.config/tmuxinator: tmuxinator
     ~/.config/zed/settings.json: zed/settings.json
-    ~/.ctags: search/ctags
     ~/.curlrc: url/curlrc
     ~/.default-gems: asdf/default-gems
     ~/.default-npm-packages: asdf/default-npm-packages
