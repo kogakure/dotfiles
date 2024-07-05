@@ -401,8 +401,6 @@ brew "ttyd", args: ["HEAD"]
 brew "unar"
 # URL extractor/launcher
 brew "urlview"
-# Syntax-aware linter for prose
-brew "vale"
 # Image processing library
 brew "vips"
 # Watch files and take action when they change
