@@ -181,6 +181,8 @@ brew "git-fixup"
 brew "git-lfs"
 # Simple and efficient way to access statistics in git
 brew "git-quick-stats"
+# Audit git repos for secrets
+brew "gitleaks"
 # OpenGL Extension Wrangler Library
 brew "glew"
 # Network related modules for glib
@@ -367,8 +369,6 @@ brew "ranger"
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
 brew "remarshal"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
 brew "rlwrap"
 # Utility that provides fast incremental file transfer
@@ -570,8 +570,6 @@ cask "jellyfin-media-player"
 cask "kaleidoscope"
 # Open-source screen recorder built with web technology
 cask "kap"
-# Keyboard customiser
-cask "karabiner-elements"
 # File archiver
 cask "keka"
 # Open-source keystroke visualiser
@@ -679,7 +677,6 @@ mas "Free MP4 Converter", id: 693443591
 mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
-mas "iMovie", id: 408981434
 mas "Just Focus", id: 1142151959
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
