@@ -397,8 +397,6 @@ brew "superfile"
 brew "svgo"
 # Open source continuous file synchronization application
 brew "syncthing"
-# Code-search similar to ack
-brew "the_silver_searcher"
 # Text interface for Git repositories
 brew "tig"
 # Simplified and community-driven man pages

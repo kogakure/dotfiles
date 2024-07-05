@@ -7,6 +7,7 @@ in
   # https://nix-community.github.io/home-manager/options.html
   imports = [
     ./ack
+    ./ag
     ./ripgrep
     ./skhd
     ./yabai

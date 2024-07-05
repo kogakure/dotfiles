@@ -13,7 +13,6 @@
     - ~/.gnupg
 
 - link:
-    ~/.ag: search/ag
     ~/.asdfrc: asdf/asdfrc
     ~/.config/base16-shell: .base16-shell
     ~/.config/bat: bat
