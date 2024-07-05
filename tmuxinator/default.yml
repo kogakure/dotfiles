@@ -1,6 +1,0 @@
-name: Standard
-root: ~/
-attach: false
-windows:
-  - Vim: vim
-  - Terminal: cd ~/Downloads; clear
