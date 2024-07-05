@@ -68,9 +68,6 @@ fi
 # Man
 export MANPATH="/usr/local/man:$MANPATH"
 
-# Bat
-export BAT_PAGER="less -R"
-
 # Asdf
 . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

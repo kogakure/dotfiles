@@ -52,8 +52,6 @@ set --export RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
 set --export GIT_EDITOR nvim
 set --export EDITOR nvim
 
-set --export BAT_THEME Catppuccin-mocha
-
 # Stable Diffusion Webui
 set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 
@@ -119,9 +117,6 @@ set --export PATH /Library/TeX/texbin $PATH
 
 # Man
 set --export MANPATH "/usr/local/man:$MANPATH"
-
-# Bat
-set --export BAT_PAGER "less -R"
 
 # pnpm
 set -gx PNPM_HOME "$HOME/Library/pnpm/"

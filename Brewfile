@@ -67,8 +67,6 @@ brew "asdf"
 brew "atuin"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # Development kit for the Java programming language
 brew "openjdk"
 # Remove large files or passwords from Git history like git-filter-branch
