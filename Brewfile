@@ -237,8 +237,6 @@ brew "jless"
 brew "jpeg", link: true
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Lazier way to manage everything docker
-brew "lazydocker"
 # Terminal file manager
 brew "lf"
 # Access DVDs as block devices without the decryption

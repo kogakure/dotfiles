@@ -7,7 +7,6 @@
 - create:
     - ~/.config/gh
     - ~/.config/gh-dash
-    - ~/.config/lazydocker
     - ~/.config/tmux
     - ~/.gnupg
 
@@ -19,7 +18,6 @@
     ~/.config/gh-dash/config.yml: github/gh-dash/config.yml
     ~/.config/gh/config.yml: github/gh/config.yml
     ~/.config/karabiner: karabiner
-    ~/.config/lazydocker/config.yml: docker/lazydocker.yml
     ~/.config/lf: lf
     ~/.config/nvim: nvim
     ~/.config/oatmeal: oatmeal

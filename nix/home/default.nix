@@ -10,6 +10,7 @@ in
     ./ag
     ./bat
     ./ctags
+    ./lazydocker
     ./lazygit
     ./ripgrep
     ./skhd
