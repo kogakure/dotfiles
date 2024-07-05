@@ -548,8 +548,6 @@ cask "imageoptim"
 cask "inkscape"
 # Tool to scan a website checking for broken links
 cask "integrity"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Menu bar calendar
 cask "itsycal"
 # Jellyfin desktop client
