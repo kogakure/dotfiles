@@ -59,10 +59,6 @@ brew "jpeg-xl"
 brew "aom"
 # Record and share terminal sessions
 brew "asciinema"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -103,6 +99,8 @@ brew "closure-compiler"
 brew "cmake"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Header-only library for parsing TOML
 brew "cpptoml"
 # Get a file from an HTTP, HTTPS or FTP server

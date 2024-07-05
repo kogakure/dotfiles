@@ -11,7 +11,6 @@
     - ~/.gnupg
 
 - link:
-    ~/.asdfrc: asdf/asdfrc
     ~/.config/base16-shell: .base16-shell
     ~/.config/fish: fish
     ~/.config/gh-dash/config.yml: github/gh-dash/config.yml
@@ -28,9 +27,6 @@
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
     ~/.config/zed/settings.json: zed/settings.json
     ~/.curlrc: url/curlrc
-    ~/.default-gems: asdf/default-gems
-    ~/.default-npm-packages: asdf/default-npm-packages
-    ~/.default-python-packages: asdf/default-python-packages
     ~/.editorconfig: style/editorconfig
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore

@@ -79,7 +79,7 @@ set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 set --export FZF_COMPLETE 0
 
 # asdf Version Manager
-source (brew --prefix asdf)/libexec/asdf.fish
+source $(dirname $(dirname $(readlink -f $(which asdf))))/share/asdf-vm/asdf.fish
 
 # Conda
 set conda_path (brew --prefix)/Caskroom/miniconda/base/bin/conda

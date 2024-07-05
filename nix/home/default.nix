@@ -8,6 +8,7 @@ in
   imports = [
     ./ack
     ./ag
+    ./asdf
     ./bat
     ./ctags
     ./lazydocker
