@@ -10,6 +10,7 @@ in
     ./ag
     ./bat
     ./ctags
+    ./lazygit
     ./ripgrep
     ./skhd
     ./yabai
@@ -20,6 +21,9 @@ in
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
+
+    # Write into ~/.config
+    xdg.enable = true;
 
     # TODO: First migrate all fonts
     # fonts.fontconfig.enable = true;

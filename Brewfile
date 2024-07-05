@@ -239,8 +239,6 @@ brew "jpeg", link: true
 brew "jq"
 # Lazier way to manage everything docker
 brew "lazydocker"
-# Simple terminal UI for git commands
-brew "lazygit"
 # Terminal file manager
 brew "lf"
 # Access DVDs as block devices without the decryption

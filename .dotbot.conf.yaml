@@ -8,7 +8,6 @@
     - ~/.config/gh
     - ~/.config/gh-dash
     - ~/.config/lazydocker
-    - ~/.config/lazygit
     - ~/.config/tmux
     - ~/.gnupg
 
@@ -21,7 +20,6 @@
     ~/.config/gh/config.yml: github/gh/config.yml
     ~/.config/karabiner: karabiner
     ~/.config/lazydocker/config.yml: docker/lazydocker.yml
-    ~/.config/lazygit/config.yml: git/lazygit.yml
     ~/.config/lf: lf
     ~/.config/nvim: nvim
     ~/.config/oatmeal: oatmeal
