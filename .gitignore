@@ -6,6 +6,6 @@ nvim/plugin
 .vale/Readability
 .vale/write-good
 kitty/kitty.conf.bak
-karabiner/automatic_backups
+automatic_backups
 Brewfile.lock.json
 fish/fish_variables

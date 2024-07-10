@@ -11,6 +11,7 @@ in
     ./asdf
     ./bat
     ./ctags
+    ./karabiner
     ./lazydocker
     ./lazygit
     ./ripgrep
