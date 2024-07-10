@@ -4,6 +4,9 @@
   # onActivation.cleanup = "uninstall";
   taps = [ ];
   brews = [ "lunchy" ];
-  casks = [ "raycast" ];
+  casks = [
+    "hammerspoon"
+    "raycast"
+  ];
   masApps = { };
 }
