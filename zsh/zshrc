@@ -68,10 +68,6 @@ fi
 # Man
 export MANPATH="/usr/local/man:$MANPATH"
 
-# Asdf
-. "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-
 # Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

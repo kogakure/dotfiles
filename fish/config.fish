@@ -5,10 +5,10 @@ end
 # *** *** Configuration *** ***
 
 # Base16 Shell
-if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
-end
+# if status --is-interactive
+#     set BASE16_SHELL "$HOME/.config/base16-shell/"
+#     source "$BASE16_SHELL/profile_helper.fish"
+# end
 
 # Use wezterm.terminfo
 # curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo | tic -x -
@@ -77,15 +77,6 @@ set --export FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
 set --export FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 
 set --export FZF_COMPLETE 0
-
-# asdf Version Manager
-source $(dirname $(dirname $(readlink -f $(which asdf))))/share/asdf-vm/asdf.fish
-
-# Conda
-set conda_path (brew --prefix)/Caskroom/miniconda/base/bin/conda
-if test -f $conda_path
-    eval $conda_path "shell.fish" hook $argv | source
-end
 
 # Nix
 set nix_path /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
