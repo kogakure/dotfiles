@@ -510,7 +510,7 @@ cask "figma"
 # Web browser
 cask "firefox"
 # Web browser
-cask "firefox-developer-edition"
+cask "firefox@developer-edition"
 cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
@@ -668,6 +668,7 @@ mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
