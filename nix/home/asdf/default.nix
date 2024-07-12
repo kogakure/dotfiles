@@ -10,7 +10,5 @@
     ".asdf/lib".source = "${pkgs.asdf-vm}/share/asdf-vm/lib";
   };
 
-  home.packages = [
-    pkgs.asdf-vm
-  ];
+  home.packages = [ pkgs.asdf-vm ];
 }

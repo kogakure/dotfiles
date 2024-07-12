@@ -5,7 +5,5 @@
     source = ./gemrc;
   };
 
-  home.packages = [
-    pkgs.ruby
-  ];
+  home.packages = [ pkgs.ruby ];
 }

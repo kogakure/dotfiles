@@ -5,7 +5,5 @@
     source = ./karabiner;
   };
 
-  home.packages = [
-    pkgs.karabiner-elements
-  ];
+  home.packages = [ pkgs.karabiner-elements ];
 }

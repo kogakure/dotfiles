@@ -5,7 +5,5 @@
     source = ./lazydocker.yml;
   };
 
-  home.packages = [
-    pkgs.lazydocker
-  ];
+  home.packages = [ pkgs.lazydocker ];
 }

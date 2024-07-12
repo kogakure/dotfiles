@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home.file.".config/ripgrep/ripgreprc" = {
@@ -8,4 +8,6 @@
   programs.ripgrep = {
     enable = true;
   };
+
+  home.packages = [ pkgs.ripgrep ];
 }

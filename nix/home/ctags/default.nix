@@ -5,7 +5,5 @@
     source = ./ctags;
   };
 
-  home.packages = [
-    pkgs.universal-ctags
-  ];
+  home.packages = [ pkgs.universal-ctags ];
 }
