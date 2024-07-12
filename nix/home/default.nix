@@ -17,6 +17,7 @@ in
     ./lazydocker
     ./lazygit
     ./lf
+    ./oatmeal
     ./ripgrep
     ./ruby
     ./skhd

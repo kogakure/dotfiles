@@ -1,5 +1,6 @@
 tap "buo/cask-upgrade"
 tap "charmbracelet/tap"
+tap "dustinblackman/tap"
 tap "fsouza/prettierd"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
@@ -293,8 +294,6 @@ brew "nghttp2"
 brew "nginx"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
-brew "oatmeal"
 # Open Fortinet client for PPP+TLS VPN tunnel services
 brew "openfortivpn"
 # ISO-C API and CLI for generating UUIDs
@@ -429,6 +428,8 @@ brew "zsh-syntax-highlighting"
 brew "charmbracelet/tap/soft-serve"
 # A tool for recording terminal GIFs
 brew "charmbracelet/tap/vhs"
+# Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
+brew "dustinblackman/tap/oatmeal"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
 # macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.

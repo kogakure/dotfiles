@@ -2,8 +2,13 @@
   enable = true;
   # TODO: Activate after migration is complete
   # onActivation.cleanup = "uninstall";
-  taps = [ ];
-  brews = [ "lunchy" ];
+  taps = [
+    "dustinblackman/tap"
+  ];
+  brews = [
+    "lunchy"
+    "oatmeal"
+  ];
   casks = [
     "hammerspoon"
     "raycast"
