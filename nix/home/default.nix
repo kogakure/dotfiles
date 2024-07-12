@@ -11,6 +11,7 @@ in
     ./asdf
     ./bat
     ./ctags
+    ./editorconfig
     ./gnupg
     ./hammerspoon
     ./karabiner

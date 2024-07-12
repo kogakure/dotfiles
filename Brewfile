@@ -124,8 +124,6 @@ brew "fbthrift"
 brew "fb303"
 # Shared library for Watchman and Eden projects
 brew "edencommon"
-# Maintain consistent coding style between multiple editors
-brew "editorconfig"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Tools to convert fonts from OTF/TTF to EOT format
