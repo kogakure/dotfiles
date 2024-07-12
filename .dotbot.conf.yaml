@@ -8,7 +8,6 @@
     - ~/.config/gh
     - ~/.config/gh-dash
     - ~/.config/tmux
-    - ~/.gnupg
 
 - link:
     ~/.config/base16-shell: .base16-shell
@@ -29,8 +28,6 @@
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.gitmux.conf: tmux/gitmux.conf
-    ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
-    ~/.gnupg/gpg.conf: gpg/gpg.conf
     ~/.tmux-cht-command: tmux/tmux-cht-command
     ~/.tmux-cht-languages: tmux/tmux-cht-languages
     ~/.tmux.conf: tmux/tmux.conf

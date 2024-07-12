@@ -11,6 +11,7 @@ in
     ./asdf
     ./bat
     ./ctags
+    ./gnupg
     ./hammerspoon
     ./karabiner
     ./lazydocker

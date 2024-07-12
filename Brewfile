@@ -187,10 +187,6 @@ brew "glm"
 brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# Common error values for all GnuPG components
-brew "libgpg-error"
-# GNU Pretty Good Privacy (PGP) package
-brew "gnupg"
 # Manage compile and link flags for libraries
 brew "pkg-config"
 # Generate introspection data for GObject libraries
@@ -199,6 +195,8 @@ brew "gobject-introspection"
 brew "sdl2_image"
 # Version Control Visualization Tool
 brew "gource"
+# Common error values for all GnuPG components
+brew "libgpg-error"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Command-line tool for generating regular expressions
