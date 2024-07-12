@@ -15,6 +15,7 @@ in
     ./karabiner
     ./lazydocker
     ./lazygit
+    ./lf
     ./ripgrep
     ./ruby
     ./skhd

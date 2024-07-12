@@ -15,7 +15,6 @@
     ~/.config/fish: fish
     ~/.config/gh-dash/config.yml: github/gh-dash/config.yml
     ~/.config/gh/config.yml: github/gh/config.yml
-    ~/.config/lf: lf
     ~/.config/nvim: nvim
     ~/.config/oatmeal: oatmeal
     ~/.config/ranger: ranger
