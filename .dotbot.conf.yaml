@@ -10,7 +10,6 @@
     - ~/.config/tmux
 
 - link:
-    ~/.config/base16-shell: .base16-shell
     ~/.config/fish: fish
     ~/.config/gh-dash/config.yml: github/gh-dash/config.yml
     ~/.config/gh/config.yml: github/gh/config.yml
