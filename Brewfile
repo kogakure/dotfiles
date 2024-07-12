@@ -376,8 +376,6 @@ brew "ssh-copy-id"
 brew "starship"
 # Supabase CLI
 brew "supabase"
-# Modern and pretty fancy file manager for the terminal
-brew "superfile"
 # Nodejs-based tool for optimizing SVG vector graphics files
 brew "svgo"
 # Open source continuous file synchronization application

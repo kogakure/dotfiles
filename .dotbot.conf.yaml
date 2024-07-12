@@ -19,7 +19,6 @@
     ~/.config/sesh: sesh
     ~/.config/sketchybar: sketchybar
     ~/.config/starship.toml: prompt/starship.toml
-    ~/.config/superfile: superfile
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
     ~/.config/zed/settings.json: zed/settings.json
     ~/.curlrc: url/curlrc
