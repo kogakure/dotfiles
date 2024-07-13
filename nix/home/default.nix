@@ -23,6 +23,7 @@ in
     ./ruby
     ./skhd
     ./yabai
+    ./yazi
   ];
 
   config = {

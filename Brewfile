@@ -408,8 +408,6 @@ brew "wxwidgets"
 brew "xdotool"
 # JavaScript package manager
 brew "yarn"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
