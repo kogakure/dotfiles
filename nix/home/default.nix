@@ -27,6 +27,7 @@ in
     ./wget
     ./yabai
     ./yazi
+    ./zed
   ];
 
   config = {
