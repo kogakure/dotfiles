@@ -348,8 +348,6 @@ brew "python@3.8"
 brew "python@3.9"
 # Generic machine emulator and virtualizer
 brew "qemu"
-# File browser
-brew "ranger"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
