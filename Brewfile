@@ -11,7 +11,6 @@ tap "homebrew/command-not-found"
 tap "homebrew/services"
 tap "jakehilborn/jakehilborn"
 tap "jondot/tap"
-tap "joshmedeski/sesh"
 tap "koekeishiya/formulae"
 tap "ms-jpq/sad"
 tap "oven-sh/bun"
@@ -428,8 +427,6 @@ brew "fsouza/prettierd/prettierd"
 brew "jakehilborn/jakehilborn/displayplacer"
 # The scalable code generator that saves you time.
 brew "jondot/tap/hygen"
-# Smart terminal session manager
-brew "joshmedeski/sesh/sesh"
 # Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.

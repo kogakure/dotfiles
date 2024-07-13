@@ -21,6 +21,7 @@ in
     ./oatmeal
     ./ripgrep
     ./ruby
+    ./sesh
     ./skhd
     ./yabai
     ./yazi
