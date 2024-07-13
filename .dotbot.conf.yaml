@@ -14,11 +14,9 @@
     ~/.config/gh-dash/config.yml: github/gh-dash/config.yml
     ~/.config/gh/config.yml: github/gh/config.yml
     ~/.config/nvim: nvim
-    ~/.config/sketchybar: sketchybar
     ~/.config/starship.toml: prompt/starship.toml
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
     ~/.config/zed/settings.json: zed/settings.json
-    ~/.curlrc: url/curlrc
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.gitmux.conf: tmux/gitmux.conf
