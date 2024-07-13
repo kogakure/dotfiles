@@ -24,6 +24,7 @@ in
     ./ruby
     ./sesh
     ./skhd
+    ./wget
     ./yabai
     ./yazi
   ];
