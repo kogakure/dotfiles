@@ -16,8 +16,6 @@
     ~/.config/nvim: nvim
     ~/.config/starship.toml: prompt/starship.toml
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
-    ~/.gitconfig: git/gitconfig
-    ~/.gitignore: git/gitignore
     ~/.gitmux.conf: tmux/gitmux.conf
     ~/.tmux-cht-command: tmux/tmux-cht-command
     ~/.tmux-cht-languages: tmux/tmux-cht-languages
