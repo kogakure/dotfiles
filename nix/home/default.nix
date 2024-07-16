@@ -13,6 +13,7 @@ in
     ./ctags
     ./curl
     ./editorconfig
+    ./gh
     ./git
     ./gnupg
     ./hammerspoon

@@ -157,8 +157,6 @@ brew "fish"
 brew "fzf"
 # Graphics library to dynamically manipulate images
 brew "gd"
-# GitHub command-line tool
-brew "gh"
 # Distributed revision control system
 brew "git"
 # Enable transparent encryption/decryption of files in a git repo

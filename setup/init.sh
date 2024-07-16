@@ -67,10 +67,6 @@ source ./ruby.sh
 echo "Installing Go"
 source ./golang.sh
 
-# GitHub CLI Extensions
-echo "Installing GitHub CLI Extensions"
-source ./github.sh
-
 # MacOS Default Settings
 echo "Restoring default settings for MacOS"
 source ./macos.sh
