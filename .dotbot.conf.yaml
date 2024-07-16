@@ -5,12 +5,10 @@
 - clean: ["~"]
 
 - create:
-    - ~/.config/gh-dash
     - ~/.config/tmux
 
 - link:
     ~/.config/fish: fish
-    ~/.config/gh-dash/config.yml: github/gh-dash/config.yml
     ~/.config/nvim: nvim
     ~/.config/starship.toml: prompt/starship.toml
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml

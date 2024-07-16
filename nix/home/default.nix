@@ -14,6 +14,7 @@ in
     ./curl
     ./editorconfig
     ./gh
+    ./gh-dash
     ./git
     ./gnupg
     ./hammerspoon
