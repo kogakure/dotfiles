@@ -16,7 +16,6 @@
     ~/.tmux-cht-command: tmux/tmux-cht-command
     ~/.tmux-cht-languages: tmux/tmux-cht-languages
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.wezterm.lua: wezterm/wezterm.lua
     ~/.zsh.d: zsh/zsh.d
     ~/.zshrc: zsh/zshrc
 

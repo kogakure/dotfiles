@@ -12,6 +12,7 @@
   casks = [
     "hammerspoon"
     "raycast"
+    "wezterm"
     "zed"
   ];
   masApps = { };
