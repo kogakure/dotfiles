@@ -17,8 +17,6 @@ tap "oven-sh/bun"
 tap "pkgxdev/made"
 tap "railwayapp/tap"
 tap "xwmx/taps"
-# Search tool like grep, but optimized for programmers
-brew "ack"
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
@@ -151,6 +149,8 @@ brew "openblas"
 brew "ffmpeg@6"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
+# macOS CLI for managing custom icons for files and folders
+brew "fileicon"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Command-line fuzzy finder written in Go
@@ -568,6 +568,8 @@ cask "ollama"
 cask "ollamac"
 # Control your smart light system
 cask "philips-hue-sync"
+# Customise and maintain app icons
+cask "pictogram"
 # Colour picker for colours onscreen
 cask "pika"
 # Client for Proton Drive
