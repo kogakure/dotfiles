@@ -170,8 +170,15 @@
   };
 
   home.packages = with pkgs; [
-    git
-    delta
-    gh
+    delta # Syntax-highlighting pager for git
+    gh # GitHub CLI tool
+    git # Distributed version control system
+    git-crypt # Transparent file encryption in git
+    git-extras # GIT utilities -- repo summary, repl, changelog population, author commit percentages and more
+    git-fixup # Fighting the copy-paste element of your rebase workflow
+    git-lfs # Git extension for versioning large files
+    git-quick-stats # Simple and efficient way to access various statistics in git repository
+    gitleaks # Scan git repos (or files) for secrets
+    soft-serve # Tasty, self-hosted Git server for the command line
   ];
 }

@@ -32,7 +32,6 @@ set PATH /usr/local/sbin $PATH
 set PATH ~/.dotfiles/bin $PATH
 set PATH ~/.dotfiles/private/bin $PATH
 set PATH ~/.local/bin $PATH
-set PATH ~/.asdf/shims $PATH
 
 set -x LIBRARY_PATH (brew --prefix)/opt/libiconv/lib
 set -x CPATH (brew --prefix)/opt/libiconv/include
@@ -86,6 +85,9 @@ end
 
 set --export PATH /run/current-system/sw/bin $PATH
 set --export PATH /etc/profiles/per-user/$USER/bin $PATH
+
+# asdf
+set PATH ~/.asdf/shims $PATH
 
 # Zoxide
 zoxide init fish | source
@@ -206,6 +208,9 @@ alias cat bat
 
 # TLDR
 alias tldrf 'tldr --list --single-column | fzf --preview "tldr --color=always {1}" --preview-window=right,70% | xargs tldr'
+
+# Can't remember the fork name
+alias youtube-dl yt-dlp
 
 # Dotfiles Folder
 alias dotfiles 'cd ~/.dotfiles'

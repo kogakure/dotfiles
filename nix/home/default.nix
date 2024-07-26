@@ -80,10 +80,71 @@ in
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
+      atuin # Replacement for a shell history which records additional commands context with optional encrypted synchronization between machines
+      bash # GNU Bourne-Again Shell, the de facto standard shell on Linux
+      bfg-repo-cleaner # Removes large or troublesome blobs in a git repository like git-filter-branch does, but faster
+      btop # Monitor of resources
+      bzip2 # High-quality data compression program
+      cloc # Program that counts lines of source code
       comma # Comma runs software without installing it
-      nixd # Nix language server
-      nixpkgs-fmt # Nix code formatter
+      commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
+      coreutils # GNU Core Utilities
       darwin.xattr # Display and manipulate extended attributes
+      diff-so-fancy # Good-looking diffs filter for git
+      docker-buildx # Docker CLI plugin for extended build capabilities with BuildKit
+      dust # du + rust = dust. Like du but more intuitive
+      exiftool # Tool to read, write and edit EXIF meta information
+      eza # Modern, maintained replacement for ls
+      fd # Simple, fast and user-friendly alternative to find
+      ffmpeg_7 # Complete, cross-platform solution to record, convert and stream audio and video
+      fzf # Command-line fuzzy finder written in Go
+      glow # Render markdown on the CLI, with pizzazz!
+      gource # Software version control visualization tool
+      grex # Command-line tool for generating regular expressions from user-provided test cases
+      highlight # Source code highlighting tool
+      htop # Interactive process viewer
+      httpie # Command line HTTP client whose goal is to make CLI human-friendly
+      hyperfine # Command-line benchmarking tool
+      jless # Command-line pager for JSON data
+      jq # Lightweight and flexible command-line JSON processor
+      lua # Powerful, fast, lightweight, embeddable scripting language
+      lynx # Text-mode web browser
+      monolith # Bundle any web page into a single HTML file
+      mysql84 # World's most popular open source database
+      nginx # Reverse proxy and lightweight webserver
+      nixd # Nix language server
+      nixpacks # App source + Nix packages + Docker = Image Resources
+      nixpkgs-fmt # Nix code formatter
+      nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine
+      openai-whisper-cpp # Port of OpenAI's Whisper model in C/C++
+      openfortivpn # Client for PPP+SSL VPN tunnel services
+      openssl # A cryptographic library that implements the SSL and TLS protocols
+      perl # Standard implementation of the Perl 5 programming language
+      php # HTML-embedded scripting language
+      pngpaste # Paste image files from clipboard to file on MacOS
+      pnpm # Fast, disk space efficient package manager for JavaScript
+      postgresql # Powerful, open source object-relational database system
+      prettierd # Prettier, as a daemon, for improved formatting speed
+      python3 # High-level dynamically-typed programming language
+      reattach-to-user-namespace # Wrapper that provides access to the Mac OS X pasteboard service
+      remarshal # Convert between TOML, YAML and JSON
+      rsync # Fast incremental file transfer utility
+      ruby # Object-oriented language for quick and easy programming
+      rustc # Safe, concurrent, practical language (wrapper script)
+      sad # CLI tool to search and replace
+      silicon # Create beautiful image of your source code
+      sqlite # A self-contained, serverless, zero-configuration, transactional SQL database engine
+      ssh-copy-id # Tool to copy SSH public keys to a remote machine
+      tldr # Simplified and community-driven man pages
+      tldr # Simplified and community-driven man pages
+      tree # Command to produce a depth indented directory listing
+      unar # Archive unpacker program
+      vhs # Tool for generating terminal GIFs with code
+      watchman # Watches files and takes action when they change
+      woff2 # Webfont compression reference code
+      yarn # Fast, reliable, and secure dependency management for javascript
+      yt-dlp # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
+      zoxide # Fast cd command that learns your habits
     ];
   };
 }
