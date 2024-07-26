@@ -87,7 +87,6 @@ in
       bzip2 # High-quality data compression program
       cloc # Program that counts lines of source code
       comma # Comma runs software without installing it
-      commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
       coreutils # GNU Core Utilities
       darwin.xattr # Display and manipulate extended attributes
       diff-so-fancy # Good-looking diffs filter for git
@@ -107,35 +106,22 @@ in
       hyperfine # Command-line benchmarking tool
       jless # Command-line pager for JSON data
       jq # Lightweight and flexible command-line JSON processor
-      lua # Powerful, fast, lightweight, embeddable scripting language
       lynx # Text-mode web browser
       monolith # Bundle any web page into a single HTML file
-      mysql84 # World's most popular open source database
-      nginx # Reverse proxy and lightweight webserver
       nixd # Nix language server
       nixpacks # App source + Nix packages + Docker = Image Resources
       nixpkgs-fmt # Nix code formatter
-      nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine
       openai-whisper-cpp # Port of OpenAI's Whisper model in C/C++
-      openfortivpn # Client for PPP+SSL VPN tunnel services
       openssl # A cryptographic library that implements the SSL and TLS protocols
-      perl # Standard implementation of the Perl 5 programming language
-      php # HTML-embedded scripting language
       pngpaste # Paste image files from clipboard to file on MacOS
       pnpm # Fast, disk space efficient package manager for JavaScript
-      postgresql # Powerful, open source object-relational database system
       prettierd # Prettier, as a daemon, for improved formatting speed
-      python3 # High-level dynamically-typed programming language
       reattach-to-user-namespace # Wrapper that provides access to the Mac OS X pasteboard service
       remarshal # Convert between TOML, YAML and JSON
       rsync # Fast incremental file transfer utility
-      ruby # Object-oriented language for quick and easy programming
-      rustc # Safe, concurrent, practical language (wrapper script)
       sad # CLI tool to search and replace
       silicon # Create beautiful image of your source code
-      sqlite # A self-contained, serverless, zero-configuration, transactional SQL database engine
       ssh-copy-id # Tool to copy SSH public keys to a remote machine
-      tldr # Simplified and community-driven man pages
       tldr # Simplified and community-driven man pages
       tree # Command to produce a depth indented directory listing
       unar # Archive unpacker program
@@ -145,6 +131,32 @@ in
       yarn # Fast, reliable, and secure dependency management for javascript
       yt-dlp # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
       zoxide # Fast cd command that learns your habits
+
+      # Programming Languages
+      lua # Powerful, fast, lightweight, embeddable scripting language
+      nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine
+      perl # Standard implementation of the Perl 5 programming language
+      php # HTML-embedded scripting language
+      python3 # High-level dynamically-typed programming language
+      ruby # Object-oriented language for quick and easy programming
+      rustc # Safe, concurrent, practical language (wrapper script)
+
+      # Server & Databases
+      mysql84 # World's most popular open source database
+      nginx # Reverse proxy and lightweight webserver
+      postgresql # Powerful, open source object-relational database system
+      sqlite # A self-contained, serverless, zero-configuration, transactional SQL database engine
+
+      # Applications
+      alt-tab-macos # Windows alt-tab on macOS
+      appcleaner # Uninstall unwanted apps
+      audacity # Sound editor with graphical UI
+      bartender # Take control of your menu bar
+      iina # Modern media player for macOS
+      keycastr # Open-source keystroke visualizer
+      openfortivpn # Client for PPP+SSL VPN tunnel services
+      sequelpro # MySQL database management for macOS
+      telegram-desktop # Telegram Desktop messaging app
     ];
   };
 }

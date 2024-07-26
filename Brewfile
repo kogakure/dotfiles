@@ -164,14 +164,8 @@ cask "angry-ip-scanner"
 cask "ankerwork"
 # Memory training application
 cask "anki"
-# Application uninstaller
-cask "appcleaner"
 # Chromium based browser
 cask "arc"
-# Multi-track audio editor and recorder
-cask "audacity"
-# Menu bar icon organiser
-cask "bartender"
 # Edit and manage bibliographies
 cask "bibdesk"
 # 3D creation suite
@@ -197,8 +191,6 @@ cask "db-browser-for-sqlite"
 cask "deepl"
 # Collect, organise, edit and annotate documents
 cask "devonthink"
-# Voice and text chat software
-cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
@@ -234,26 +226,16 @@ cask "hammerspoon"
 cask "handbrake"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
-# Free and open-source media player
-cask "iina"
 # Tool to optimise images to a smaller size
 cask "imageoptim"
-# Vector graphics editor
-cask "inkscape"
 # Tool to scan a website checking for broken links
 cask "integrity"
 # Menu bar calendar
 cask "itsycal"
-# Jellyfin desktop client
-cask "jellyfin-media-player"
 # Spot and merge differences in text and image files or folders
-cask "kaleidoscope"
+cask "kaleidoscope@3"
 # Open-source screen recorder built with web technology
 cask "kap"
-# File archiver
-cask "keka"
-# Open-source keystroke visualiser
-cask "keycastr"
 # Grammar, spelling and style suggestions in all the writing apps
 cask "languagetool"
 # Official client for LBRY, a decentralised file-sharing and payment network
@@ -276,16 +258,14 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Get up and running with large language models locally
 cask "ollama"
-# Interact with Ollama models
-cask "ollamac"
 # Control your smart light system
 cask "philips-hue-sync"
-# Customise and maintain app icons
-cask "pictogram"
-# Colour picker for colours onscreen
-cask "pika"
 # Client for Proton Drive
 cask "proton-drive"
+# Client for Proton Mail and Proton Calendar
+cask "proton-mail"
+# Desktop client for Proton Pass
+cask "proton-pass"
 # Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
 cask "protonmail-bridge"
 # VPN client focusing on security
@@ -302,8 +282,6 @@ cask "reader"
 cask "secretive"
 # Tool for sending personal documents to Kindles from Macs
 cask "send-to-kindle"
-# MySQL/MariaDB database management platform
-cask "sequel-pro"
 # Onion routing based messenger
 cask "session"
 # Tool that provides consistent, highly configurable symbols for apps
@@ -314,18 +292,10 @@ cask "signal"
 cask "sonos"
 # Music streaming service
 cask "spotify"
-# System monitor for the menu bar
-cask "stats"
-# Tool to render realistic skies in real time on the screen
-cask "stellarium"
 # Interior design application
 cask "sweet-home3d"
-# Desktop client for Telegram messenger
-cask "telegram-desktop"
 # Unpacks archive files
 cask "the-unarchiver"
-# Customizable email client
-cask "thunderbird"
 # Web browser focusing on security
 cask "tor-browser"
 # File transfer application
@@ -342,8 +312,6 @@ cask "vlc-webplugin"
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
-# Network diagnostic utility
-cask "whatroute"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Multiplayer code editor

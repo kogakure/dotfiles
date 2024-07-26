@@ -170,6 +170,7 @@
   };
 
   home.packages = with pkgs; [
+    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
     delta # Syntax-highlighting pager for git
     gh # GitHub CLI tool
     git # Distributed version control system
