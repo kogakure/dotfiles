@@ -1,119 +1,28 @@
 tap "dustinblackman/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "ms-jpq/sad"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# Record and share terminal sessions
-brew "asciinema"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Core application library for C
-brew "glib"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
-# Collection of portable C++ source libraries
-brew "boost"
-# Library for manipulating PNG images
-brew "libpng"
-# Software library to render fonts
-brew "freetype"
-# Low-level library for pixel manipulation
-brew "pixman"
-# Vector graphics library with cross-device output support
-brew "cairo"
 # GNU compiler collection
 brew "gcc"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # High performance message passing library
 brew "open-mpi"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
-# Collection of reusable C++ library artifacts developed at Facebook
-brew "folly"
-# C++14 implementation of the TLS-1.3 standard
-brew "fizz"
-# Modular, composable client/server abstractions framework
-brew "wangle"
-# Facebook's branch of Apache Thrift, including a new C++ server
-brew "fbthrift"
-# Thrift functions for querying information from a service
-brew "fb303"
-# Shared library for Watchman and Eden projects
-brew "edencommon"
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
-# JPEG image codec that aids compression and decompression
-brew "jpeg-turbo"
-# Library and utilities for processing GIFs
-brew "giflib"
-# Distributed revision control system
-brew "git"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# Network related modules for glib
-brew "glib-networking"
-# Manage compile and link flags for libraries
-brew "pkg-config"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
-# Common error values for all GnuPG components
-brew "libgpg-error"
-# Numerical library for C and C++
-brew "gsl"
-# OpenType text shaping engine
-brew "harfbuzz"
-# Framework for layout and rendering of i18n text
-brew "pango"
-# Toolkit for creating graphical user interfaces
-brew "gtk+3"
-# Image manipulation library
-brew "jpeg", link: true
-# Image format providing lossless and lossy compression for web images
-brew "webp"
-# New file format for still image compression
-brew "jpeg-xl"
-# Multi-format archive and compression library
-brew "libarchive"
-# Subtitle renderer for the ASS/SSA subtitle format
-brew "libass"
-# Open h.265 video codec implementation
-brew "libde265"
-# Access DVDs as block devices without the decryption
-brew "libdvdcss"
-# Conversion library
-brew "libiconv"
-# Implementation of the Double Ratchet cryptographic ratchet
-brew "libolm"
-# LLVM's OpenMP runtime library
-brew "libomp"
-# C library for the Public Suffix List
-brew "libpsl"
-# Library to render SVG files using Cairo
-brew "librsvg"
-# HTTP client/server library for GNOME
-brew "libsoup"
-# C library for reading, creating, and modifying zip archives
-brew "libzip"
-# Next-gen compiler infrastructure
-brew "llvm"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
-# Friendly wrapper for launchctl
-brew "lunchy"
 # Mac App Store command-line interface
 brew "mas"
 # Parser generator tool and incremental parsing library
@@ -122,28 +31,16 @@ brew "tree-sitter"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
-# Optimized BLAS library
-brew "openblas"
-# Development kit for the Java programming language
-brew "openjdk"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
-# QR Code generation
-brew "qrencode"
 # Cross-shell prompt for astronauts
 brew "starship"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
 # Terminal multiplexer
 brew "tmux"
-# High-performance, asynchronous messaging library
-brew "zeromq"
-# General-purpose lossless data-compression library
-brew "zlib"
+# URL extractor/launcher
+brew "urlview"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Fish shell like syntax highlighting for zsh

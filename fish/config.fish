@@ -54,11 +54,6 @@ set --export EDITOR nvim
 # Stable Diffusion Webui
 set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 
-# Atuin
-atuin init fish | source
-
-# Direnv
-direnv hook fish | source
 
 # FZF
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
@@ -114,6 +109,12 @@ set --export MANPATH "/usr/local/man:$MANPATH"
 # pnpm
 set -gx PNPM_HOME "$HOME/Library/pnpm/"
 set -gx PATH "$PNPM_HOME" $PATH
+
+# Atuin
+atuin init fish | source
+
+# Direnv
+direnv hook fish | source
 
 # Enable vi-mode key bindings
 fish_vi_key_bindings

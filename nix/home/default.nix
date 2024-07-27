@@ -129,7 +129,6 @@ in
       watchman # Watches files and takes action when they change
       woff2 # Webfont compression reference code
       yarn # Fast, reliable, and secure dependency management for javascript
-      yq # Command-line YAML/XML/TOML processor - jq wrapper for YAML, XML, TOML documents
       yt-dlp # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
       zoxide # Fast cd command that learns your habits
 

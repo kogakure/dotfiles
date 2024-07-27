@@ -8,10 +8,22 @@
     "homebrew/services" # Manage background services using the daemon manager launchctl on macOS or systemctl on Linux.
   ];
   brews = [
+    "bash" # TODO: Migrate to nix
     "cava" # Console-based Audio Visualizer for ALSA
     "fileicon" # macOS CLI for managing custom icons for files and folders
+    "fish" # TODO: Migrate to nix
+    "luajit" # INFO: Dependency of Neovim
+    "neovim" # TODO: Migrate to nix
     "oatmeal" # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
     "prettier" # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+    "starship" # TODO: Migrate to nix
+    "tmux" # TODO: Migrate to nix
+    "tree-sitter" # INFO: Dependency of Neovim
+    "gettext" # INFO: Dependency of Neovim
+    "urlview" # URL extractor/launcher
+    "yq" # Process YAML, JSON, XML, CSV and properties documents from the CLI. INFO: Needed for joshmedeski/tmux-nerd-font-window-name
+    "zsh" # TODO: Migrate to nix
+    "zsh-syntax-highlighting" # TODO: Migration to nix
   ];
   casks = [
     "affinity-designer" # Professional graphic design software
@@ -38,6 +50,17 @@
     "figma" # Collaborative team software
     "firefox" # Web browser
     "firefox@developer-edition" # Web browser
+    "font-fira-code"
+    "font-fira-code-nerd-font"
+    "font-fira-sans"
+    "font-fira-sans-condensed"
+    "font-hack-nerd-font"
+    "font-ia-writer-duo"
+    "font-ia-writer-mono"
+    "font-ia-writer-quattro"
+    "font-monaspace"
+    "font-noto-emoji"
+    "font-symbols-only-nerd-font"
     "forticlient-vpn" # Free VPN client for FortiClient
     "google-japanese-ime" # Japanese input software
     "gpg-suite-no-mail" # Tools to protect your files
