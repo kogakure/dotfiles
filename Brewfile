@@ -302,6 +302,8 @@ cask "tor-browser"
 cask "transmit"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
+# Virtualizer for x86 and arm64 hardware
+cask "virtualbox@beta"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -314,11 +316,13 @@ cask "webtorrent"
 cask "wezterm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+# Tax declaration for the fiscal year 2023
+cask "wiso-steuer-2024"
 # Multiplayer code editor
 cask "zed"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
-mas "Amphetamine", id: 937984704
+mas "DaVinci Resolve", id: 571213070
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
@@ -327,11 +331,9 @@ mas "Free MP4 Converter", id: 693443591
 mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
-mas "Just Focus", id: 1142151959
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
-mas "LanguageTool", id: 1534275760
 mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
@@ -345,7 +347,6 @@ mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
-mas "Wunderbar", id: 6479203386
 mas "Yoink", id: 457622435
 vscode "activitywatch.aw-watcher-vscode"
 vscode "adamvoss.vscode-languagetool"

@@ -75,12 +75,40 @@
     "the-unarchiver" # Unpacks archive files
     "transmit" # File transfer application
     "veracrypt" # Disk encryption software focusing on security based on TrueCrypt
+    "virtualbox@beta" # Virtualizer for x86 and arm64 hardware
     "visual-studio-code" # Open-source code editor
     "vlc" # Multimedia player
     "vlc-webplugin" # Web browser plugin
     "wezterm" # GPU-accelerated cross-platform terminal emulator and multiplexer. NOTE: Only installed with Brew because I want to replace the icon
     "whatsapp" # Native desktop client for WhatsApp
+    "wiso-steuer-2024" # Tax declaration for the fiscal year 2023
     "zed" # Multiplayer code editor
   ];
-  masApps = { };
+  masApps = {
+    "1-Click Video Converter" = 717545086; # Video converter
+    "Aiko" = 1672085276; # Audio to text converter with AI
+    "DaVinci Resolve" = 571213070; # Video Editing
+    "Day One" = 1055511498; # Journaling
+    "Deliveries" = 290986013; # Track parcels
+    "Draw Things" = 6444050820; # Stable Diffusion AI art generation
+    "Exporter" = 1099120373; # Export from Apple Notes
+    "Free MP4 Converter" = 693443591; # Video converter
+    "Goodnotes" = 1444383602; # Note-taking
+    "Key Codes" = 414568915; # Keyboard key codes
+    "Kindle" = 302584613; # E-book reader
+    "Mela" = 1568924476; # Recipe manager
+    "MindNode" = 1289197285; # Mind mapping
+    "Numbers" = 409203825; # Spreadsheet
+    "Pages" = 409201541; # Word processor
+    "Proton Pass for Safari" = 6502835663; # Password manager browser extension
+    "Pure Paste" = 1611378436; # Paste plain text by default
+    "Reeder" = 1529448980; # RSS reader
+    "Save to Raindrop.io" = 1549370672; # Bookmark manager browser extension
+    "iA Writer" = 775737590; # Writing
+    "iFinance 5" = 1500241909; # Banking
+    "Time Sink" = 404363161; # Time tracking
+    "Typeface" = 1062679359; # Font manager
+    "Yoink" = 457622435; # Drag and drop
+  };
 }
+
