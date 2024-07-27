@@ -12,6 +12,7 @@
     "fileicon" # macOS CLI for managing custom icons for files and folders
     "fish" # TODO: Migrate to nix
     "gettext" # INFO: Dependency of Neovim
+    "libiconv" # INFO: Dependency of nixpkgs_fmt
     "luajit" # INFO: Dependency of Neovim
     "neovim" # TODO: Migrate to nix
     "oatmeal" # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!

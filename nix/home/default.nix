@@ -22,6 +22,7 @@ in
     ./lazydocker
     ./lazygit
     ./lf
+    ./lsd
     ./oatmeal
     ./ripgrep
     ./ruby
