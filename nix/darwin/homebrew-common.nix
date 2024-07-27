@@ -1,7 +1,6 @@
 {
   enable = true;
-  # TODO: Activate after migration is complete
-  # onActivation.cleanup = "uninstall";
+  onActivation.cleanup = "uninstall";
   taps = [
     "dustinblackman/tap" # Oatmeal
     "homebrew/bundle" # Bundler for non-Ruby dependencies from Homebrew, Homebrew Cask, Mac App Store, Whalebrew and Visual Studio Code.
@@ -12,6 +11,7 @@
     "cava" # Console-based Audio Visualizer for ALSA
     "fileicon" # macOS CLI for managing custom icons for files and folders
     "fish" # TODO: Migrate to nix
+    "gettext" # INFO: Dependency of Neovim
     "luajit" # INFO: Dependency of Neovim
     "neovim" # TODO: Migrate to nix
     "oatmeal" # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
@@ -19,7 +19,6 @@
     "starship" # TODO: Migrate to nix
     "tmux" # TODO: Migrate to nix
     "tree-sitter" # INFO: Dependency of Neovim
-    "gettext" # INFO: Dependency of Neovim
     "urlview" # URL extractor/launcher
     "yq" # Process YAML, JSON, XML, CSV and properties documents from the CLI. INFO: Needed for joshmedeski/tmux-nerd-font-window-name
     "zsh" # TODO: Migrate to nix
