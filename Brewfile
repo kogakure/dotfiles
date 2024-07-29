@@ -21,6 +21,8 @@ brew "fish"
 brew "gettext"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
+# Conversion library
+brew "libiconv"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Mac App Store command-line interface

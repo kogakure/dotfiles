@@ -14,6 +14,7 @@ in
     ./ctags
     ./curl
     ./editorconfig
+    ./fzf
     ./gh
     ./gh-dash
     ./git
@@ -29,11 +30,14 @@ in
     ./ruby
     ./sesh
     ./skhd
+    ./starship
     ./wezterm
     ./wget
     ./yabai
     ./yazi
     ./zed
+    ./zoxide
+    ./zsh
   ];
 
   config = {
@@ -47,28 +51,51 @@ in
         && tic -x -o ~/.terminfo $tempfile \
         && rm $tempfile
       '';
-      # Install custom icon for WezTerm
-      setupWezTermCustomIcon = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        icon_path="$HOME/.config/wezterm/terminal.icns"
-        app_path="/Applications/WezTerm.app"
-
-        $DRY_RUN_CMD mkdir -p "$(dirname "$icon_path")"
-        $DRY_RUN_CMD cp -f ${./wezterm/wezterm.icns} "$icon_path"
-
-        if [ -d "$app_path" ]; then
-          $DRY_RUN_CMD cp "$icon_path" "$app_path"/Contents/Resources/terminal.icns
-
-          # Touch the app to refresh Finder
-          $DRY_RUN_CMD touch "$app_path"
-          $DRY_RUN_CMD ${pkgs.darwin.xattr}/bin/xattr -rc "$app_path"
-
-          $VERBOSE_ECHO "Applied custom icon to WezTerm.app"
-          $DRY_RUN_CMD touch "$app_path"
-        else
-          $VERBOSE_ECHO "WezTerm.app not found in /Applications. Custom icon not applied."
-        fi
-      '';
     };
+
+    # Session Variables
+    home.sessionVariables = {
+      KEYTIMEOUT = 1;
+
+      # Man
+      MANPATH = "/usr/local/man:$MANPATH";
+
+      # Editor
+      EDITOR = "nvim";
+      GIT_EDITOR = "nvim";
+
+      # Secretive
+      SSH_AUTH_SOCK = "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
+
+      # Volta
+      VOLTA_HOME = "$HOME/.volta";
+    };
+
+    # Session Paths
+    home.sessionPath = [
+      # Personal scripts
+      "$HOME/.dotfiles/bin"
+      "$HOME/.dotfiles/private/bin"
+
+      # Homebrew
+      "/opt/homebrew/bin"
+      "/opt/homebrew/sbin"
+
+      # Misc
+      "$HOME/.local/bin"
+      "/usr/local/bin"
+      "/usr/local/sbin"
+      #
+      # Rust
+      "$HOME/.cargo/bin"
+
+      # Tmux plugins
+      "$HOME/.tmux/plugins/tmux-nvr/bin"
+      "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin"
+
+      # Volta
+      "$VOLTA_HOME/bin"
+    ];
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
@@ -91,13 +118,13 @@ in
       coreutils # GNU Core Utilities
       darwin.xattr # Display and manipulate extended attributes
       diff-so-fancy # Good-looking diffs filter for git
+      docker # Pack, ship and run any application as a lightweight container
       docker-buildx # Docker CLI plugin for extended build capabilities with BuildKit
       dust # du + rust = dust. Like du but more intuitive
       exiftool # Tool to read, write and edit EXIF meta information
       eza # Modern, maintained replacement for ls
       fd # Simple, fast and user-friendly alternative to find
       ffmpeg_7 # Complete, cross-platform solution to record, convert and stream audio and video
-      fzf # Command-line fuzzy finder written in Go
       glow # Render markdown on the CLI, with pizzazz!
       gource # Software version control visualization tool
       grex # Command-line tool for generating regular expressions from user-provided test cases
@@ -131,7 +158,6 @@ in
       woff2 # Webfont compression reference code
       yarn # Fast, reliable, and secure dependency management for javascript
       yt-dlp # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
-      zoxide # Fast cd command that learns your habits
 
       # Programming Languages
       lua # Powerful, fast, lightweight, embeddable scripting language

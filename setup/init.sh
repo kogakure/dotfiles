@@ -15,19 +15,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Installing Fish Plugin Manager"
 source ./fisher.sh
 
-# Homebrew
-if test ! $(which brew); then
-	echo "Installing Homebrew"
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
-# Install SSH keys Secure Enclave
-brew install --cask secretive
-
-# Homebrew packages, Cask binaries and Mac App Store software
-echo "Installing Homebrew packages, Cask binaries and Mac App Store software"
-source ./brew.sh
-
 # Neovim
 echo "Installing Neovim"
 source ./neovim.sh

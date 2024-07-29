@@ -10,14 +10,11 @@
 - link:
     ~/.config/fish: fish
     ~/.config/nvim: nvim
-    ~/.config/starship.toml: prompt/starship.toml
     ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
     ~/.gitmux.conf: tmux/gitmux.conf
     ~/.tmux-cht-command: tmux/tmux-cht-command
     ~/.tmux-cht-languages: tmux/tmux-cht-languages
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.zsh.d: zsh/zsh.d
-    ~/.zshrc: zsh/zshrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

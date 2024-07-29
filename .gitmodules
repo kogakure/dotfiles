@@ -2,9 +2,6 @@
 	ignore = dirty
 	path = .dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule ".antigen"]
-	path = .antigen
-	url = https://github.com/zsh-users/antigen.git
 [submodule "private/bin"]
 	path = private/bin
 	url = git@github.com:kogakure/scripts.git
