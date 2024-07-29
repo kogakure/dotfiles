@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   editorconfig = {
@@ -19,6 +19,4 @@
       };
     };
   };
-
-  home.packages = [ pkgs.editorconfig-core-c ];
 }

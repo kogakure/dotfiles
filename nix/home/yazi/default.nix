@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.yazi = {
@@ -29,6 +29,4 @@
       };
     };
   };
-
-  home.packages = [ pkgs.yazi ];
 }

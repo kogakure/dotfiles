@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.lsd =
@@ -87,8 +87,4 @@
         };
       };
     };
-
-  home.packages = with pkgs; [
-    lsd
-  ];
 }

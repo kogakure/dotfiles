@@ -125,7 +125,6 @@
     };
 
   home.packages = with pkgs; [
-    lf
     bat
     fzf
     zoxide # z

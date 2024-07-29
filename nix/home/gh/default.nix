@@ -24,9 +24,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    git
-    gh
-  ];
 }

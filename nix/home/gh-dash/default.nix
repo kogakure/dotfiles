@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.gh-dash = {
@@ -81,9 +81,4 @@
       pager.diff = "";
     };
   };
-
-  home.packages = with pkgs; [
-    git
-    gh-dash
-  ];
 }

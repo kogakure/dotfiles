@@ -62,6 +62,4 @@
       };
     };
   };
-
-  home.packages = [ pkgs.bat ];
 }

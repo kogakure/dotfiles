@@ -173,7 +173,6 @@
     commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
     delta # Syntax-highlighting pager for git
     gh # GitHub CLI tool
-    git # Distributed version control system
     git-crypt # Transparent file encryption in git
     git-extras # GIT utilities -- repo summary, repl, changelog population, author commit percentages and more
     git-fixup # Fighting the copy-paste element of your rebase workflow
