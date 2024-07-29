@@ -9,6 +9,7 @@ in
     ./ack
     ./ag
     ./asdf
+    ./bash
     ./bat
     ./ctags
     ./curl
@@ -82,7 +83,6 @@ in
     # environment.
     home.packages = with pkgs; [
       atuin # Replacement for a shell history which records additional commands context with optional encrypted synchronization between machines
-      bash # GNU Bourne-Again Shell, the de facto standard shell on Linux
       bfg-repo-cleaner # Removes large or troublesome blobs in a git repository like git-filter-branch does, but faster
       btop # Monitor of resources
       bzip2 # High-quality data compression program

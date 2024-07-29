@@ -4,7 +4,7 @@
   programs.lsd =
     {
       enable = true;
-      enableAliases = true;
+      enableAliases = false;
       settings = {
         classic = false;
         blocks = [
