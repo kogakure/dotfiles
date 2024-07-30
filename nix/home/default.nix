@@ -31,6 +31,7 @@ in
     ./sesh
     ./skhd
     ./starship
+    ./tmux
     ./wezterm
     ./wget
     ./yabai

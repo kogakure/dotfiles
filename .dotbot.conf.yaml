@@ -4,21 +4,9 @@
 
 - clean: ["~"]
 
-- create:
-    - ~/.config/tmux
-
 - link:
     ~/.config/fish: fish
     ~/.config/nvim: nvim
-    ~/.config/tmux/tmux-nerd-font-window-name.yml: tmux/tmux-nerd-font-window-name.yml
-    ~/.gitmux.conf: tmux/gitmux.conf
-    ~/.tmux-cht-command: tmux/tmux-cht-command
-    ~/.tmux-cht-languages: tmux/tmux-cht-languages
-    ~/.tmux.conf: tmux/tmux.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [
-        ~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1,
-        Installing tmux plugins,
-      ]

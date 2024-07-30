@@ -21,7 +21,6 @@
     "tmux" # TODO: Migrate to nix
     "tree-sitter" # INFO: Dependency of Neovim
     "urlview" # URL extractor/launcher
-    "yq" # Process YAML, JSON, XML, CSV and properties documents from the CLI. INFO: Needed for joshmedeski/tmux-nerd-font-window-name
     "zsh" # TODO: Migrate to nix
     "zsh-syntax-highlighting" # TODO: Migration to nix
   ];

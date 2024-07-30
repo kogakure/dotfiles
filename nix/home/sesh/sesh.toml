@@ -5,16 +5,30 @@ session_path = "~/Code/GitHub/websites/stefanimhoff-de"
 script_path = "~/.config/sesh/scripts/node_dev"
 
 [[session]]
-name = "Dotfiles"
+name = "⭐ Dotfiles"
 path = "~/.dotfiles"
-startup_command = "nvim"
 
 [[session]]
-name = "Downloads 📥"
+name = "📥 Downloads"
 path = "~/Downloads"
-startup_command = "ll"
+startup_command = "la"
 
 [[session]]
-name = "tmux config 🔧"
-path = "~/.dotfiles/tmux"
-startup_command = "nvim tmux.conf"
+name = "👨‍💻 stefanimhoff-de"
+path = "~/Code/GitHub/websites/stefanimhoff-de/"
+
+[[session]]
+name = "🥷 kogakure-de"
+path = "~/Code/GitHub/websites/kogakure-de/"
+
+[[session]]
+name = "📦 Crate 🌳"
+path = "~/Code/XING/crate.git/"
+
+[[session]]
+name = "📦 Crate"
+path = "~/Code/XING/crate/"
+
+[[session]]
+name = "🍺 Brewery"
+path = "~/Code/XING/brewery/"
