@@ -1,3 +1,7 @@
-indent_type = "Spaces"
+call_parentheses = "Always"
+collapse_simple_statement = "Never"
+column_width = 200
+indent_type = "Tabs"
 indent_width = 2
-column_width = 120
+line_endings = "Unix"
+quote_style = "AutoPreferDouble"
