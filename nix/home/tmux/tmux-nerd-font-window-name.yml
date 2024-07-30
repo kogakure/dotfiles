@@ -3,6 +3,7 @@ config:
   show-name: true
 
 icons:
+  nvim: ""
   bat: "󰭟"
   gh: ""
   nix-env: "󱄅"
