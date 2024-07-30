@@ -5,10 +5,6 @@ let
 in
 {
   shellAliases = mkAliases {
-    # ZSH
-    zshconfig = "vim $HOME/.zshrc";
-    reload = "source $HOME/.zshrc";
-
     # Folders/Lists
     "..." = "cd ../..";
     ".." = "cd ..";

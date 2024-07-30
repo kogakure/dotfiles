@@ -43,6 +43,9 @@ in
 
       # Set environment variables
       set -gx TERM wezterm
+
+      # Aliases
+      alias reload 'exec fish'
     '';
 
     shellAliases = sharedAliases.shellAliases;

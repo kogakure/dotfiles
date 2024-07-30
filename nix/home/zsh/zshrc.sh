@@ -3,6 +3,9 @@ DISABLE_AUTO_TITLE="true" # Disable auto-setting terminal title
 COMPLETION_WAITING_DOTS="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7,bg=bold,underline"
 
+# Aliases
+alias reload="source $HOME/.zshrc"
+
 # Bindkey
 bindkey -v
 bindkey -M viins '^r' fzf-history-widget # (r)everse history search
