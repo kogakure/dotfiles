@@ -7,22 +7,16 @@
     "homebrew/services" # Manage background services using the daemon manager launchctl on macOS or systemctl on Linux.
   ];
   brews = [
-    "bash" # TODO: Migrate to nix
     "cava" # Console-based Audio Visualizer for ALSA
     "fileicon" # macOS CLI for managing custom icons for files and folders
-    "fish" # TODO: Migrate to nix
     "gettext" # INFO: Dependency of Neovim
     "libiconv" # INFO: Dependency of nixpkgs_fmt
     "luajit" # INFO: Dependency of Neovim
     "neovim" # TODO: Migrate to nix
     "oatmeal" # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
     "prettier" # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
-    "starship" # TODO: Migrate to nix
-    "tmux" # TODO: Migrate to nix
     "tree-sitter" # INFO: Dependency of Neovim
     "urlview" # URL extractor/launcher
-    "zsh" # TODO: Migrate to nix
-    "zsh-syntax-highlighting" # TODO: Migration to nix
   ];
   casks = [
     "affinity-designer" # Professional graphic design software
@@ -133,4 +127,3 @@
     "Yoink" = 457622435; # Drag and drop
   };
 }
-

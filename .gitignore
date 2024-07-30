@@ -1,11 +1,2 @@
-# Neovim
-nvim/plugin
-
-# Vale
-.vale/proselint
-.vale/Readability
-.vale/write-good
-kitty/kitty.conf.bak
+# Karabiner backups
 automatic_backups
-Brewfile.lock.json
-fish/fish_variables

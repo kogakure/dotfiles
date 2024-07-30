@@ -13,7 +13,9 @@ in
     ./bat
     ./ctags
     ./curl
+    ./direnv
     ./editorconfig
+    ./fish
     ./fzf
     ./gh
     ./gh-dash
@@ -70,12 +72,14 @@ in
 
       # Volta
       VOLTA_HOME = "$HOME/.volta";
+
+      # Stable Diffusion
+      # VIRTUAL_ENV = "$HOME/Code/AI/stable-diffusion-webui/venv";
     };
 
     # Session Paths
     home.sessionPath = [
       # Personal scripts
-      "$HOME/.dotfiles/bin"
       "$HOME/.dotfiles/private/bin"
 
       # Homebrew
@@ -96,6 +100,9 @@ in
 
       # Volta
       "$VOLTA_HOME/bin"
+
+      # ASDF
+      "$HOME/.asdf/shims"
     ];
 
     # Let Home Manager install and manage itself.
@@ -137,6 +144,7 @@ in
       jq # Lightweight and flexible command-line JSON processor
       lynx # Text-mode web browser
       monolith # Bundle any web page into a single HTML file
+      nix-prefetch-git # Script used to obtain source hashes for fetchgit
       nixd # Nix language server
       nixpacks # App source + Nix packages + Docker = Image Resources
       nixpkgs-fmt # Nix code formatter
@@ -159,6 +167,7 @@ in
       woff2 # Webfont compression reference code
       yarn # Fast, reliable, and secure dependency management for javascript
       yt-dlp # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
+      zoxide # A faster way to navigate your filesystem
 
       # Programming Languages
       lua # Powerful, fast, lightweight, embeddable scripting language

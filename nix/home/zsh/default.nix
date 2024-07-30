@@ -6,6 +6,7 @@ let
     text = builtins.readFile ./_cht;
     destination = "/share/zsh/site-functions/_cht";
   };
+  sharedAliases = import ../shared/shared-aliases.nix { inherit lib; };
 in
 {
   programs.zsh = {
@@ -13,107 +14,16 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    shellAliases = {
-      # ZSH
-      zshconfig = "vim $HOME/.zshrc";
-      reload = "source $HOME/.zshrc";
-
-      # Folders
-      "..." = "cd ../..";
-      ".." = "cd ..";
-      "cd.." = "cd ..";
-      ls = "eza --git --group-directories-first --icons";
-      ll = "eza -l --git --group-directories-first --icons";
-      lla = "ll -a";
-      mkdir = "mkdir -p";
-
-      # Git aliases
-      ga = "git add";
-      gb = "git branch";
-      gba = "git branch -a";
-      gc = "git commit -v";
-      gca = "git commit -v -a";
-      gcam = "git commit --amend";
-      gcan = "git commit --amend --no-edit";
-      gd = "git diff -- . ':(exclude)yarn.lock'";
-      gdc = "git diff --cached";
-      gdh = "git diff head";
-      gdt = "git difftool";
-      gfa = "git fetch --all";
-      gg = "git log";
-      ghi = "git hist";
-      gl = "git pull";
-      glr = "git pull --rebase";
-      gp = "git push";
-      gpf = "git push --force-with-lease";
-      gpu = "git push -u origin HEAD";
-      gpv = "git push --no-verify";
-      grb = "git rebase master";
-      grbc = "git rebase --continue";
-      grbi = "git rebase -i ";
-      grbs = "git rebase --skip";
-      gru = "git remote update";
-      gsb = "git show-branch";
-      gsl = "git submodule foreach git pull";
-      gst = "git status -sb";
-      gsu = "git submodule update";
-      gu = "git up";
-      gw = "git whatchanged";
-      gwp = "git whatchanged -p";
-      lg = "lazygit";
-
-      # Vim
-      v = "vim";
-      vim = "nvim";
-
-      # Tmux
-      t = "tmux";
-      tn = "tmux new -s $(pwd | sed 's/.*\///g')";
-
-      # Bat
-      cat = "bat";
-
-      # TLDR
-      tldrf = "tldr --list --single-column | fzf --preview \"tldr --color=always {1}\" --preview-window=right,70% | xargs tldr";
-
-      # iA Writer
-      ia = "open $1 -a /Applications/iA\\ Writer.app";
-
-      # Dotfiles folder
-      dotfiles = "cd $HOME/.dotfiles";
-
-      # iCloud
-      icloud = "cd $HOME/Library/Mobile\\ Documents/com~apple~CloudDocs";
-
-      # Get week number
-      week = "date +%V";
-
-      # Stopwatch
-      timer = "echo \"Timer started. Stop with Ctrl-D.\" && date && time cat && date";
-
-      # IP addresses
-      ip = "dig +short myip.opendns.com @resolver1.opendns.com";
-
-      # Flush Directory Service cache
-      flush = "dscacheutil -flushcache && killall -HUP mDNSResponder";
-
-      # Recursively delete `.DS_Store` files
-      cleanup = "find . -type f -name '*.DS_Store' -ls -delete";
-
-      # Clear the screen
-      c = "clear";
-
-      # Empty the Trash on all mounted volumes and the main HDD
-      # Also, clear Apple’s System Logs to improve shell startup speed
-      emptytrash = "sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl";
-    };
+    shellAliases = sharedAliases.shellAliases;
     initExtra = builtins.readFile ./zshrc.sh;
+
     plugins = [
       {
         name = "cht-completion";
         src = chtCompletionScript;
       }
     ];
+
     antidote = {
       enable = true;
       plugins = [

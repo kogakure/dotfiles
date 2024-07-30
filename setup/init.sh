@@ -7,21 +7,9 @@ sudo -v
 echo "Installing Xcode Developer Tools"
 xcode-select --install
 
-# TMUX Plugin Manager
-echo "Installing TMUX Plugin Manager"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Fish Plugin Manager
-echo "Installing Fish Plugin Manager"
-source ./fisher.sh
-
 # Neovim
 echo "Installing Neovim"
 source ./neovim.sh
-
-# Direnv
-echo "Installing Direnv"
-source ./direnv.sh
 
 # Node.js
 echo "Installing Node.js"
@@ -54,9 +42,3 @@ source ./golang.sh
 # MacOS Default Settings
 echo "Restoring default settings for MacOS"
 source ./macos.sh
-
-# Install Themes
-cd ~/.dotfiles/bat
-bat cache --build
-silicon --build-cache
-cd ..
