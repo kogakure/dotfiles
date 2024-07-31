@@ -54,6 +54,12 @@
           hostname = "mac-mini";
           username = "kogakure";
         };
+        "macbook-2023" = mkDarwinConfig {
+          system = "aarch64-darwin";
+          hostname = "macbook-2023";
+          username = "stefan.imhoff";
+        };
       };
     };
 }
+
