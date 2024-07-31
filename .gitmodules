@@ -1,7 +1,3 @@
-[submodule ".dotbot"]
-	ignore = dirty
-	path = .dotbot
-	url = https://github.com/anishathalye/dotbot
 [submodule "private/bin"]
 	path = private/bin
 	url = git@github.com:kogakure/scripts.git

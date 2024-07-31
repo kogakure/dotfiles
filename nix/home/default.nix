@@ -27,6 +27,7 @@ in
     ./lazygit
     ./lf
     ./lsd
+    ./neovim
     ./oatmeal
     ./ripgrep
     ./ruby
