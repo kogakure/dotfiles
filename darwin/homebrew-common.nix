@@ -7,6 +7,7 @@
     "homebrew/services" # Manage background services using the daemon manager launchctl on macOS or systemctl on Linux.
   ];
   brews = [
+    "asdf" # Extendable version manager with support for Ruby, Node.js, Erlang & more
     "cava" # Console-based Audio Visualizer for ALSA
     "fileicon" # macOS CLI for managing custom icons for files and folders
     "gettext" # INFO: Dependency of Neovim
@@ -17,6 +18,8 @@
     "prettier" # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
     "tree-sitter" # INFO: Dependency of Neovim
     "urlview" # URL extractor/launcher
+    "volta" # JavaScript toolchain manager for reproducible environments
+    "yarn" # JavaScript package manager
   ];
   casks = [
     "affinity-designer" # Professional graphic design software

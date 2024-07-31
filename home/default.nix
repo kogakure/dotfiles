@@ -83,6 +83,9 @@ in
       # Personal scripts
       "$HOME/.dotfiles/private/bin"
 
+      # ASDF
+      "$HOME/.asdf/shims"
+
       # Homebrew
       "/opt/homebrew/bin"
       "/opt/homebrew/sbin"
@@ -101,9 +104,6 @@ in
 
       # Volta
       "$VOLTA_HOME/bin"
-
-      # ASDF
-      "$HOME/.asdf/shims"
     ];
 
     # Let Home Manager install and manage itself.
@@ -167,14 +167,14 @@ in
       vhs # Tool for generating terminal GIFs with code
       watchman # Watches files and takes action when they change
       woff2 # Webfont compression reference code
-      yarn # Fast, reliable, and secure dependency management for javascript
+      # yarn # Fast, reliable, and secure dependency management for javascript
       yt-dlp # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
       zoxide # A faster way to navigate your filesystem
 
       # Programming Languages
       lua # Powerful, fast, lightweight, embeddable scripting language
-      nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine
-      corepack_22 # Wrappers for npm, pnpm and Yarn via Node.js Corepack
+      # nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine
+      # corepack_22 # Wrappers for npm, pnpm and Yarn via Node.js Corepack
       perl # Standard implementation of the Perl 5 programming language
       php # HTML-embedded scripting language
       python3 # High-level dynamically-typed programming language
