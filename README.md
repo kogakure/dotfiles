@@ -64,3 +64,7 @@ After making changes to your configuration, apply them with:
 ```sh
 darwin-rebuild switch --flake ~/.dotfiles
 ```
+
+## Inspiration
+
+My setup is inspired by [davish’s Nix Setup](https://github.com/davish/setup) and by a lot of talking to [Claude 3.5](https://claude.ai/). 😅
