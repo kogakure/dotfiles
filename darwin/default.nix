@@ -153,7 +153,6 @@
     # Apps in the Dock
     persistent-apps = [
       "/Applications/Things3.app"
-      "/Applications/Proton\ Mail.app"
       "/System/Applications/Calendar.app"
       "/Applications/WezTerm.app"
       "/Applications/Arc.app"
