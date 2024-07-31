@@ -74,6 +74,7 @@
     "ogdesign-eagle" # Organise all your reference images in one place
     "ollama" # Get up and running with large language models locally
     "philips-hue-sync" # Control your smart light system
+    "pictogram" # Customise and maintain app icons
     "proton-drive" # Client for Proton Drive
     "proton-mail" # Client for Proton Mail and Proton Calendar
     "proton-pass" # Desktop client for Proton Pass

@@ -1,11 +1,7 @@
 #!/bin/sh
 
-echo "Setting up the Mac"
+echo "Installing asdf plugins and versions"
 sudo -v
-
-# Xcode Developer Tools
-echo "Installing Xcode Developer Tools"
-xcode-select --install
 
 # Neovim
 echo "Installing Neovim"
@@ -38,7 +34,3 @@ source ./ruby.sh
 # Golang
 echo "Installing Go"
 source ./golang.sh
-
-# MacOS Default Settings
-echo "Restoring default settings for MacOS"
-source ./macos.sh
