@@ -173,6 +173,7 @@ in
       # Programming Languages
       lua # Powerful, fast, lightweight, embeddable scripting language
       nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine
+      corepack_22 # Wrappers for npm, pnpm and Yarn via Node.js Corepack
       perl # Standard implementation of the Perl 5 programming language
       php # HTML-embedded scripting language
       python3 # High-level dynamically-typed programming language
