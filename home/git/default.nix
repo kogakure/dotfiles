@@ -56,6 +56,7 @@
       "m~"
       "tags"
       ".worktrees"
+      ".tool-versions"
     ];
     lfs.enable = true;
     includes = [
