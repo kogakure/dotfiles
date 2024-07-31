@@ -68,7 +68,7 @@ in
     ta = "tmux attach";
 
     # Nix
-    nxs = "darwin-rebuild switch --flake ~/.dotfiles/nix";
+    nxs = "darwin-rebuild switch --flake ~/.dotfiles";
 
     # Bat
     cat = "bat";

@@ -15,7 +15,7 @@ return {
 	},
 	config = function()
 		local home = vim.fn.expand("$HOME")
-		local file_path = home .. "/.dotfiles/nix/home/neovim/nvim/lua/plugins/chatgpg.txt.gpg"
+		local file_path = home .. "/.dotfiles/home/neovim/nvim/lua/plugins/chatgpg.txt.gpg"
 		require("chatgpt").setup({
 			api_key_cmd = "gpg --decrypt --use-agent " .. file_path,
 		})

@@ -47,7 +47,7 @@
     in
     {
       # Build darwin flake using:
-      # $ darwin-rebuild switch --flake ~/.dotfiles/nix/.#mac-mini
+      # $ darwin-rebuild switch --flake ~/.dotfiles/.#mac-mini
       darwinConfigurations = {
         "mac-mini" = mkDarwinConfig {
           system = "aarch64-darwin";

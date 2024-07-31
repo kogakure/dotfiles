@@ -151,6 +151,7 @@ in
       nixpkgs-fmt # Nix code formatter
       openai-whisper-cpp # Port of OpenAI's Whisper model in C/C++
       openssl # A cryptographic library that implements the SSL and TLS protocols
+      phrase-cli # PhraseApp API v2 Command Line Client
       pngpaste # Paste image files from clipboard to file on MacOS
       pnpm # Fast, disk space efficient package manager for JavaScript
       prettierd # Prettier, as a daemon, for improved formatting speed

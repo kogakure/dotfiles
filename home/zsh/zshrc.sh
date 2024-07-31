@@ -43,15 +43,6 @@ function deleteNodeModules() {
 	find . -name "node_modules" -type d -exec rm -rf '{}' +
 }
 
-function homebrewBackup() {
-	cd ~/.dotfiles/
-	brew bundle dump --describe -f
-}
-
-function homebrewRestore() {
-	brew bundle --file ~/.dotfiles/Brewfile
-}
-
 # Server
 server() {
 	browser-sync start --server --files "**"

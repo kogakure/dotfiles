@@ -1,17 +1,66 @@
-# Dotfiles
+# Nix Dotfiles
 
-These are my Dotfiles, a collection of [Neovim](https://neovim.io/), [tmux](https://tmux.github.io/), [zsh](http://zsh.sourceforge.net/), [Hammerspoon](http://www.hammerspoon.org/), and other tools.
+This is my dotfile setup, using [Nix](https://nixos.org/), [nix-darwin](https://github.com/LnL7/nix-darwin), and [home-manager](https://github.com/nix-community/home-manager).
 
-## Initial Setup and Installation
+> [!WARNING]
+> This is a work in progress and I am still learning Nix, so expect things to be broken.
+
+## Install Dependencies
+
+First, install the Xcode command-line tools:
+
+```sh
+xcode-select --install
+```
+
+## Install Nix
+
+Install Nix using the [Determinate Systems installer](https://github.com/DeterminateSystems/nix-installer):
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+## Install the Nix Flake
+
+### First-time Installation
+
+#### Install from GitHub
+
+To install and use this configuration directly from GitHub without cloning:
+
+```sh
+nix run nix-darwin -- switch --flake github:kogakure/dotfiles
+```
+
+#### Clone and Install
+
+Clone the repository:
 
 ```sh
 git clone git@github.com:kogakure/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles/
-./install
 ```
 
-Dotbot will create symlinks from all necessary files in the folder.
+For the initial setup, run:
 
-## Setting Up a New Computer
+```sh
+nix run nix-darwin -- switch --flake ~/.dotfiles
+```
 
-The project includes a `setup` folder that has install scripts for everything I need on a new computer. You can run the scripts individually or all at once by running `./setup/init.sh`.
+This command installs nix-darwin and applies your configuration.
+
+### Selecting a Specific Configuration
+
+By default the `$hostname` that matches the current machine is used, but it is possible to manually load one by running:
+
+```sh
+nix run nix-darwin -- switch --flake ~/.dotfiles#mac-mini
+```
+
+## Updating Configuration
+
+After making changes to your configuration, apply them with:
+
+```sh
+darwin-rebuild switch --flake ~/.dotfiles
+```
