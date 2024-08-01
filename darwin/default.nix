@@ -148,8 +148,9 @@
     tilesize = 36;
 
     # Hot corners
+    wvous-bl-corner = 4; # bottom left (Desktop)
     wvous-br-corner = 10; # bottom right (Put display to sleep)
-    wvous-tl-corner = 4; # top left (Desktop)
+    wvous-tl-corner = 1; # top left (disabled)
     wvous-tr-corner = 12; # top right (Mission Control)
 
     # Apps in the Dock
