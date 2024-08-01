@@ -25,6 +25,8 @@
     fish
   ];
 
+  environment.extraInit = builtins.readFile ./mac-extra.sh;
+
   programs.zsh.enable = true;
   programs.fish.enable = true;
   programs.bash.enable = true;
