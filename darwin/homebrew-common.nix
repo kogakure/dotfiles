@@ -79,7 +79,7 @@
     "microsoft-teams" # Meet, chat, call, and collaborate in just one place
     "notion" # App to write, plan, collaborate, and get organised
     "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
-    "ogdesign-eagle" # Organise all your reference images in one place
+    # FIX: "ogdesign-eagle" # Organise all your reference images in one place
     "ollama" # Get up and running with large language models locally
     "philips-hue-sync" # Control your smart light system
     "pictogram" # Customise and maintain app icons
