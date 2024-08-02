@@ -58,7 +58,6 @@
     "font-monaspace"
     "font-noto-emoji"
     "font-symbols-only-nerd-font"
-    "forticlient-vpn" # Free VPN client for FortiClient
     "google-japanese-ime" # Japanese input software
     "gpg-suite-no-mail" # Tools to protect your files
     "hammerspoon" # Desktop automation application
