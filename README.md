@@ -2,15 +2,18 @@
 
 This is my dotfile setup, using [Nix](https://nixos.org/), [nix-darwin](https://github.com/LnL7/nix-darwin), and [home-manager](https://github.com/nix-community/home-manager).
 
-> [!WARNING]
-> This is a work in progress and I am still learning Nix, so expect things to be broken.
-
 ## Install Dependencies
 
 First, install the Xcode command-line tools:
 
 ```sh
 xcode-select --install
+```
+
+## Install Homebrew
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ## Install Nix
@@ -21,7 +24,16 @@ Install Nix using the [Determinate Systems installer](https://github.com/Determi
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
+### Prepare Configuration for Installation
+
+```sh
+sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
+```
+
 ## Install the Nix Flake
+
+> [!IMPORTANT]
+> Make sure your Terminal has full disk access in the Security & Privacy settings.
 
 ### First-time Installation
 
@@ -30,7 +42,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 To install and use this configuration directly from GitHub without cloning:
 
 ```sh
-nix run nix-darwin -- switch --flake github:kogakure/dotfiles
+nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake github:kogakure/dotfiles
 ```
 
 #### Clone and Install
@@ -44,7 +56,7 @@ git clone git@github.com:kogakure/dotfiles.git ~/.dotfiles
 For the initial setup, run:
 
 ```sh
-nix run nix-darwin -- switch --flake ~/.dotfiles
+nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake ~/.dotfiles
 ```
 
 This command installs nix-darwin and applies your configuration.
@@ -54,7 +66,7 @@ This command installs nix-darwin and applies your configuration.
 By default the `$hostname` that matches the current machine is used, but it is possible to manually load one by running:
 
 ```sh
-nix run nix-darwin -- switch --flake ~/.dotfiles#mac-mini
+nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake ~/.dotfiles#mac-mini
 ```
 
 ## Updating Configuration
