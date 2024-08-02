@@ -5,7 +5,6 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  services.karabiner-elements.enable = true;
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -16,7 +15,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-  environment.systemPackages = [ pkgs.pinentry_mac ];
 
   # Shells
   environment.shells = with pkgs; [
@@ -196,8 +194,4 @@
   # Additional system configurations
   system.defaults.NSGlobalDomain.AppleKeyboardUIMode = 3;
   system.defaults.NSGlobalDomain.AppleFontSmoothing = 2;
-
-  # Services
-  services.skhd.enable = true;
-  services.yabai.enable = true;
 }

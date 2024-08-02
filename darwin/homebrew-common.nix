@@ -5,6 +5,7 @@
     "dustinblackman/tap" # Oatmeal
     "homebrew/bundle" # Bundler for non-Ruby dependencies from Homebrew, Homebrew Cask, Mac App Store, Whalebrew and Visual Studio Code.
     "homebrew/services" # Manage background services using the daemon manager launchctl on macOS or systemctl on Linux.
+    "koekeishiya/formulae" # yabai/skhd
   ];
   brews = [
     "asdf" # Extendable version manager with support for Ruby, Node.js, Erlang & more
@@ -16,10 +17,13 @@
     "luajit" # INFO: Dependency of Neovim
     "neovim" # TODO: Migrate to nix
     "oatmeal" # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
+    "pinentry-mac" # Pinentry for GPG
     "prettier" # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+    "skhd" # Simple hotkey daemon for macOS
     "tree-sitter" # INFO: Dependency of Neovim
     "urlview" # URL extractor/launcher
     "volta" # JavaScript toolchain manager for reproducible environments
+    "yabai" # Tiling window manager for macOS based on binary space partitioning
     "yarn" # JavaScript package manager
   ];
   casks = [
@@ -67,6 +71,7 @@
     "itsycal" # Menu bar calendar
     "kaleidoscope@3" # Spot and merge differences in text and image files or folders
     "kap" # Open-source screen recorder built with web technology
+    "karabiner-elements" # Keyboard customisation tool
     "languagetool" # Grammar, spelling and style suggestions in all the writing apps
     "ledger-live" # Wallet desktop application to maintain multiple cryptocurrencies
     "macfuse" # File system integration
