@@ -1,13 +1,25 @@
 function update --description "Updating Homebrew, Ruby, Python, Node.js, Neovim, and MacOS"
     sudo -v
-    brew update && brew outdated && brew upgrade && brew cleanup
-    sudo gem update --system && sudo gem update && gem cleanup all
-    pip install --upgrade pip
-    pip list -o --format columns | cut -d' ' -f1 | xargs -n1 pip install -U
-    pnpm update -g
-    ~/.tmux/plugins/tpm/bin/update_plugins all
-    gh extension upgrade --all
-    fisher update
+    cd ~/.dotfiles
+
+    # Update Nix flake
+    nix flake update
+
+    # Add to git
+    git add .
+
+    # Rebuild nix-darwin
+    darwin-rebuild switch --flake .
+
+    # Update Homebrew
+    brew update
+    brew outdated
+    brew upgrade
+    brew cleanup
+
+    # Clean up Nix
+    nix-collect-garbage -d
+
+    # Update Neovim
     nvim --headless "+Lazy! sync" +qa
-    # sudo softwareupdate -i -a
 end

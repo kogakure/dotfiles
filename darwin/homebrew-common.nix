@@ -9,6 +9,7 @@
   brews = [
     "asdf" # Extendable version manager with support for Ruby, Node.js, Erlang & more
     "cava" # Console-based Audio Visualizer for ALSA
+    "cmake" # Cross-platform make
     "fileicon" # macOS CLI for managing custom icons for files and folders
     "gettext" # INFO: Dependency of Neovim
     "libiconv" # INFO: Dependency of nixpkgs_fmt

@@ -86,6 +86,8 @@ in
       # ASDF
       "$HOME/.asdf/shims"
 
+      "/usr/bin"
+
       # Homebrew
       "/opt/homebrew/bin"
       "/opt/homebrew/sbin"
@@ -170,16 +172,6 @@ in
       # yarn # Fast, reliable, and secure dependency management for javascript
       yt-dlp # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
       zoxide # A faster way to navigate your filesystem
-
-      # Programming Languages
-      lua # Powerful, fast, lightweight, embeddable scripting language
-      # nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine
-      # corepack_22 # Wrappers for npm, pnpm and Yarn via Node.js Corepack
-      perl # Standard implementation of the Perl 5 programming language
-      php # HTML-embedded scripting language
-      python3 # High-level dynamically-typed programming language
-      ruby # Object-oriented language for quick and easy programming
-      rustc # Safe, concurrent, practical language (wrapper script)
 
       # Server & Databases
       mysql84 # World's most popular open source database

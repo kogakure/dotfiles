@@ -1,9 +1,0 @@
-neovim stable
-nodejs 18.17.1
-ruby 3.2.2
-python 3.9.9 3.10.9
-rust 1.78.0
-deno 1.27.0
-lua 5.1
-golang 1.20
-direnv 2.32.2
