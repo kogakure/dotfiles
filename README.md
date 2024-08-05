@@ -1,6 +1,4 @@
-# Nix Dotfiles
-
-This is my dotfile setup, using [Nix](https://nixos.org/), [nix-darwin](https://github.com/LnL7/nix-darwin), and [home-manager](https://github.com/nix-community/home-manager).
+# Dotfiles
 
 ## Install Dependencies
 
@@ -16,67 +14,39 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## Install Nix
-
-Install Nix using the [Determinate Systems installer](https://github.com/DeterminateSystems/nix-installer):
+## Install Initial Software
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+brew install stow
+brew install --cask proton-pass
+brew install --cask secretive
 ```
 
-### Prepare Configuration for Installation
+## Setup SSH
+
+Log into the password manager, start and configure [Secretive](https://github.com/maxgoedjen/secretive) to setup SSH keys. Add the public key to GitHub and export the `SSH_AUTH_SOCK` (temporary) to be able to clone with SSH:
 
 ```sh
-sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
+export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 ```
 
-## Install the Nix Flake
-
-> [!IMPORTANT]
-> Make sure your Terminal has full disk access in the Security & Privacy settings.
-
-### First-time Installation
-
-#### Install from GitHub
-
-To install and use this configuration directly from GitHub without cloning:
+## Setup Hostname
 
 ```sh
-nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake github:kogakure/dotfiles
+sudo scutil --set HostName <hostname>
 ```
 
-#### Clone and Install
-
-Clone the repository:
+## Clone Dotfiles
 
 ```sh
 git clone git@github.com:kogakure/dotfiles.git ~/.dotfiles
 ```
 
-For the initial setup, run:
+## Install Script
+
+Log in with your Apple ID to be able to install app store apps. Run the install script to setup the computer:
 
 ```sh
-nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake ~/.dotfiles
+cd ~/.dotfiles
+./install.sh
 ```
-
-This command installs nix-darwin and applies your configuration.
-
-### Selecting a Specific Configuration
-
-By default the `$hostname` that matches the current machine is used, but it is possible to manually load one by running:
-
-```sh
-nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake ~/.dotfiles#mac-mini
-```
-
-## Updating Configuration
-
-After making changes to your configuration, apply them with:
-
-```sh
-darwin-rebuild switch --flake ~/.dotfiles
-```
-
-## Inspiration
-
-My setup is inspired by [davish’s Nix Setup](https://github.com/davish/setup) and by a lot of talking to [Claude 3.5](https://claude.ai/). 😅

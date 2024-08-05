@@ -1,0 +1,2 @@
+#!/bin/bash
+brew bundle dump --force --describe --file=~/.dotfiles/homebrew/$(hostname)

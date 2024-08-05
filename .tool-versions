@@ -1,0 +1,9 @@
+deno 1.45.5
+python 3.10.9
+lua 5.4.6
+rust 1.80.0
+ruby 3.3.4
+golang 1.22.5
+nodejs 18.17.1
+neovim stable
+direnv 2.32.2

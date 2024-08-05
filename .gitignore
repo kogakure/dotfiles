@@ -1,2 +1,14 @@
 # Karabiner backups
 automatic_backups
+
+# Homebrew lock files
+homebrew/*.lock.json
+
+# Tmux Plugin Manager
+.config/tmux/plugins/
+
+# Fish
+.config/fish/completions
+.config/fish/conf.d
+.config/fish/fish_variables
+.config/fish/functions/*

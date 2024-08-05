@@ -1,0 +1,150 @@
+[add "interactive"]
+	useBuildtin = true
+
+[alias]
+	br = "branch"
+	branches = "for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes"
+	ci = "commit"
+	co = "checkout"
+	cp = "cherry-pick"
+	dt = "difftool"
+	hist = "log --color --graph --decorate --abbrev-commit --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --abbrev-commit --"
+	hub = "!gh repo view --web"
+	ignored = "ls-files --others --directory"
+	local-branches = "!git branch -vv | cut -c 3- | awk '$3 !~/\\[/ { print $1 }'"
+	ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --decorate"
+	mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+	merged = "branch --merged"
+	prune = "fetch --prune"
+	pub = "publish"
+	publish = "push origin HEAD --force-with-lease"
+	rb = "rebase"
+	squash = "!git rebase -v -i $(git mainbranch)"
+	st = "status"
+	stash-all = "stash save --include-untracked"
+	stats = "shortlog -sn --all --no-merges"
+	synced = "!git pull origin $(git mainbranch) --rebase"
+	today = "log --since=00:00:00 --all --no-merges --oneline"
+	undo = "reset --soft HEAD^"
+	unmerged = "branch --no-merge"
+	unstage = "reset HEAD --"
+	update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
+
+[apply]
+  whitespace = "fix"
+
+[branch]
+  autosetupmerge = true
+  sort = "-authordate"
+
+[color]
+  branch = "auto"
+  diff = "auto"
+  interactive = "auto"
+  status = "auto"
+  ui = 1
+
+[commit]
+  gpgsign = true
+
+[core]
+  editor = code --wait
+  legacyheaders = false
+  pager = delta
+  whitespace = trailing-space,space-before-tab
+
+[credential "https://gist.github.com"]
+	helper = "gh auth git-credential"
+
+[credential "https://github.com"]
+	helper = "gh auth git-credential"
+
+[delta]
+  light = false
+  line-numbers = true
+  navigate = true
+  side-by-side = true
+  syntax-theme = "Dracula"
+
+[diff]
+  algorithm = "patience"
+  colorMoved = "default"
+  tool = "Kaleidoscope"
+
+[difftool]
+  prompt = false
+
+[difftool "Kaleidoscope"]
+	cmd = "ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\""
+
+[fetch]
+  fsckobjects = false
+  prune = true
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[help]
+  autocorrect = 1
+
+[i18n]
+	commitencoding = "UTF-8"
+	logoutputencoding = "UTF-8"
+
+[interactive]
+  diffFilter = "delta --color-only"
+
+[merge]
+	conflictstyle = "diff3"
+	tool = "Kaleidoscope"
+
+[mergetool]
+	keepBackup = false
+	prompt = false
+
+[mergetool "Kaleidoscope"]
+	cmd = "ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot"
+	trustExitCode = true
+
+[mergetool "code"]
+	cmd = "\"code $MERGED\""
+	keepBackup = false
+	trustexitcode = true
+
+[mergetool "nvim"]
+	cmd = "nvim -f -c \"Gdiffsplit!\" \"$MERGED\""
+
+[pull]
+	ff = "only"
+
+[push]
+	autoSetupRemote = true
+	default = "upstream"
+	followTags = true
+
+[rebase]
+  autosquash = true
+
+[repack]
+  usedeltabaseoffset = true
+
+[rerere]
+  enabled = true
+
+[status]
+	showUntrackedFiles = "all"
+
+[transfer]
+	fsckObjects = true
+
+[user]
+  useConfigOnly = true
+
+[web]
+	browser = "open"
+
+[include]
+	path = "~/.gitconfig.local"

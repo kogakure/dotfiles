@@ -1,3 +1,3 @@
-[submodule "private/bin"]
-	path = private/bin
-	url = git@github.com:kogakure/scripts.git
+[submodule "private"]
+	path = private
+	url = git@github.com:kogakure/vault.git

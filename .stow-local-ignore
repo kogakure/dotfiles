@@ -1,0 +1,11 @@
+.git
+.gitignore
+.gitmodules
+.DS_Store
+
+install.sh
+README.md
+
+bin
+homebrew
+private

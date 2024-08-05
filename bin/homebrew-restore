@@ -1,0 +1,3 @@
+#!/bin/bash
+brew bundle cleanup --force --file ~/.dotfiles/homebrew/$(hostname)
+brew bundle --file ~/.dotfiles/homebrew/$(hostname)
