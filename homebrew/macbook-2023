@@ -70,6 +70,8 @@ brew "docbook-xsl"
 brew "docker-buildx"
 # Text processing system for reStructuredText
 brew "docutils"
+# Tool that bootstraps your dotfiles
+brew "dotbot"
 # More intuitive version of du in rust
 brew "dust"
 # Maintain consistent coding style between multiple editors
@@ -314,8 +316,6 @@ cask "blurred"
 cask "brave-browser"
 # E-books management software
 cask "calibre"
-# Screen capturing tool
-cask "cleanshot"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
@@ -461,7 +461,6 @@ mas "Day One", id: 1055511498
 mas "Draw Things", id: 6444050820
 mas "Exporter", id: 1099120373
 mas "Free MP4 Converter", id: 693443591
-mas "GarageBand", id: 682658836
 mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
@@ -499,7 +498,6 @@ vscode "bbenoist.nix"
 vscode "bierner.markdown-preview-github-styles"
 vscode "bradlc.vscode-tailwindcss"
 vscode "chakrounanas.turbo-console-log"
-vscode "chrischinchilla.vale-vscode"
 vscode "christian-kohler.npm-intellisense"
 vscode "christian-kohler.path-intellisense"
 vscode "chrmarti.regex"
@@ -585,7 +583,6 @@ vscode "redhat.vscode-commons"
 vscode "redhat.vscode-yaml"
 vscode "rvest.vs-code-prettier-eslint"
 vscode "sdras.night-owl"
-vscode "silvenon.mdx"
 vscode "sleistner.vscode-fileutils"
 vscode "softwaredotcom.swdc-vscode"
 vscode "styled-components.vscode-styled-components"
