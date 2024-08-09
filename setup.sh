@@ -104,16 +104,6 @@ nvim --headless "+Lazy! sync" +qa
 yabai --start-service
 skhd --start-service
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
-
-# Show the /Volumes folder
-sudo chflags nohidden /Volumes
-
-# Icon Settings
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:gridSpacing 60" ~/Library/Preferences/com.apple.finder.plist
-
 # Change default shell to fish
 echo "Changing default shell to fish"
 run_with_sudo chsh -s $(which fish) $USER
