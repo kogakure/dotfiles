@@ -70,6 +70,8 @@ brew "docbook-xsl"
 brew "docker-buildx"
 # Text processing system for reStructuredText
 brew "docutils"
+# Tool that bootstraps your dotfiles
+brew "dotbot"
 # More intuitive version of du in rust
 brew "dust"
 # Maintain consistent coding style between multiple editors
@@ -230,8 +232,6 @@ brew "silicon"
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Organize software neatly under a single directory tree (e.g. /usr/local)
-brew "stow"
 # Official documentation format of the GNU project
 brew "texinfo"
 # Code-search similar to ack
@@ -513,7 +513,6 @@ vscode "bbenoist.nix"
 vscode "bierner.markdown-preview-github-styles"
 vscode "bradlc.vscode-tailwindcss"
 vscode "chakrounanas.turbo-console-log"
-vscode "chrischinchilla.vale-vscode"
 vscode "christian-kohler.npm-intellisense"
 vscode "christian-kohler.path-intellisense"
 vscode "chrmarti.regex"

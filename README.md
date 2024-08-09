@@ -17,7 +17,7 @@ xcode-select --install
 ## Install Initial Software
 
 ```sh
-brew install stow
+brew install dotbot
 brew install --cask proton-pass
 brew install --cask secretive
 ```
@@ -42,11 +42,11 @@ sudo scutil --set HostName <hostname>
 git clone git@github.com:kogakure/dotfiles.git ~/.dotfiles
 ```
 
-## Install Script
+## Setup the Mac
 
 Log in with your Apple ID to be able to install app store apps. Run the install script to setup the computer:
 
 ```sh
 cd ~/.dotfiles
-./install.sh
+./setup.sh
 ```

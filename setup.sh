@@ -42,7 +42,7 @@ echo "Initializing submodule(s)"
 git submodule update --init --recursive
 
 # Symlink dotfiles
-stow --no-folding --adopt -v .
+./install
 
 # Download wezterm.terminfo
 curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo | tic -x -

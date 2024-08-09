@@ -1,0 +1,54 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- create:
+    ~/.ssh:
+      mode: 0700
+
+- link:
+    ~/.ack: ack
+    ~/.ag: ag
+    ~/.aliases: aliases
+    ~/.asdfrc: asdfrc
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.config/:
+      glob: true
+      path: config/*
+      relink: true
+      exclude: [config/karabiner, config/hammerspoon]
+    ~/.config/karabiner:
+      if: "[ `uname` = Darwin ]"
+      link: darwin/karabiner
+    ~/.ctags: ctags
+    ~/.curlrc: curlrc
+    ~/.default-gems: default-gems
+    ~/.default-npm-packages: default-npm-packages
+    ~/.default-python-packages: default-python-packages
+    ~/.editorconfig: editorconfig
+    ~/.functions: functions
+    ~/.gemrc: gemrc
+    ~/.gitmux.conf: gitmux.conf
+    ~/.gnupg/dirmngr.conf: gnupg/dirmngr.conf
+    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
+    ~/.gnupg/gpg.conf: gnupg/gpg.conf
+    ~/.hammerspoon:
+      if: "[ `uname` = Darwin ]"
+      path: darwin/hammerspoon
+    ~/.profile: profile
+    ~/.session-variables.sh: session-variables.sh
+    ~/.tool-versions: tool-versions
+    ~/.wget: wget
+    ~/.zsh_plugins.txt: zsh_plugins.txt
+    ~/.zshenv: zshenv
+    ~/.zshrc: zshrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [
+        ~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1,
+        Installing tmux plugins,
+      ]
