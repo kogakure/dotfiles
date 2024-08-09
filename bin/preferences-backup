@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Export all Keyboard Shortcuts
+defaults export com.apple.symbolichotkeys ~/.dotfiles/private/preferences/keyboard_shortcuts.plist
+defaults export com.apple.universalaccess ~/.dotfiles/private/preferences/universal_access_shortcuts.plist
+
+# Export all Dock settings
+defaults export com.apple.dock ~/.dotfiles/private/preferences/dock.plist
+
+# Save the Stable Diffusion Settings file
+cp ~/Code/AI/stable-diffusion-webui/webui-macos-env.sh ~/.dotfiles/private/preferences/webui-macos-env.sh
+
+# Affinity
+cp ~/Library/Preferences/com.seriflabs.affinitydesigner2.plist ~/.dotfiles/private/preferences/
+cp ~/Library/Preferences/com.seriflabs.affinityphoto2.plist ~/.dotfiles/private/preferences/
+cp ~/Library/Preferences/com.seriflabs.affinitypublisher2.plist ~/.dotfiles/private/preferences/
+
+# Alfred
+cp ~/Library/Preferences/com.runningwithcrayons.Alfred.plist ~/.dotfiles/private/preferences/
+cp ~/Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist ~/.dotfiles/private/preferences/
+
+# AltTab
+cp ~/Library/Preferences/com.lwouis.alt-tab-macos.plist ~/.dotfiles/private/preferences/
+
+# Anki
+cp ~/Library/Preferences/net.ankiweb.dtop.plist ~/.dotfiles/private/preferences/
+
+# Arc
+cp ~/Library/Preferences/company.thebrowser.Browser.plist ~/.dotfiles/private/preferences/
+
+# Bartender
+cp -R ~/Library/Application\ Support/Bartender/Bartender.BartenderPreferences ~/.dotfiles/private/preferences/
+cp ~/Library/Preferences/com.surteesstudios.Bartender.plist ~/.dotfiles/private/preferences/
+
+# BibDesk
+cp -R ~/Library/Application\ Support/BibDesk/ ~/.dotfiles/private/preferences/BibDesk/
+cp ~/Library/Preferences/edu.ucsd.cs.mmccrack.bibdesk.plist ~/.dotfiles/private/preferences/
+
+# Brave
+cp ~/Library/Preferences/com.brave.Browser.plist ~/.dotfiles/private/preferences/
+
+# CleanShot X
+cp ~/Library/Preferences/pl.maketheweb.cleanshotx.plist ~/.dotfiles/private/preferences/
+
+# Itsycal
+cp ~/Library/Preferences/com.mowglii.itsycalApp.plist ~/.dotfiles/private/preferences/
+
+# Raycast
+cp ~/Library/Preferences/com.raycast.macos.plist ~/.dotfiles/private/preferences/

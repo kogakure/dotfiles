@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Export public keys
+gpg --import ~/.dotfiles/private/gpg/public_keys.asc
+
+# Export private keys
+gpg --import ~/.dotfiles/private/gpg/private_keys.asc
+
+# Export trust database
+gpg --import-ownertrust ~/.dotfiles/private/gpg/ownertrust.txt

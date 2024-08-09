@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Import all Keyboard Shortcuts
+defaults import com.apple.symbolichotkeys ~/.dotfiles/private/preferences/keyboard_shortcuts.plist
+defaults import com.apple.universalaccess ~/.dotfiles/private/preferences/universal_access_shortcuts.plist
+
+# Remove default Dock and import all Dock settings
+defaults delete com.apple.dock persistent-apps
+defaults delete com.apple.dock persistent-others
+defaults import com.apple.dock ~/.dotfiles/private/preferences/dock.plist
+
+echo "Please log out and back in to apply the changes."
+
+# Restore the Stable Diffusion Settings file
+cp ~/.dotfiles/private/preferences/webui-macos-env.sh ~/Code/AI/stable-diffusion-webui/webui-macos-env.sh
+
+# Affinity
+cp ~/.dotfiles/private/preferences/com.seriflabs.affinitydesigner2.plist ~/Library/Preferences/
+cp ~/.dotfiles/private/preferences/com.seriflabs.affinityphoto2.plist ~/Library/Preferences/
+cp ~/.dotfiles/private/preferences/com.seriflabs.affinitypublisher2.plist ~/Library/Preferences/
+
+# Alfred
+cp ~/.dotfiles/private/preferences/com.runningwithcrayons.Alfred.plist ~/Library/Preferences/
+cp ~/.dotfiles/private/preferences/com.runningwithcrayons.Alfred-Preferences.plist ~/Library/Preferences/
+
+# AltTab
+cp ~/.dotfiles/private/preferences/com.lwouis.alt-tab-macos.plist ~/Library/Preferences/
+
+# Anki
+cp ~/.dotfiles/private/preferences/net.ankiweb.dtop.plist ~/Library/Preferences/
+
+# Arc
+cp ~/.dotfiles/private/preferences/company.thebrowser.Browser.plist ~/Library/Preferences/
+
+# Bartender
+cp -R ~/.dotfiles/private/preferences/Bartender.BartenderPreferences ~/Library/Application\ Support/Bartender/
+cp ~/.dotfiles/private/preferences/com.surteesstudios.Bartender.plist ~/Library/Preferences/
+
+# BibDesk
+cp -R ~/.dotfiles/private/preferences/BibDesk/ ~/Library/Application\ Support/
+cp ~/.dotfiles/private/preferences/edu.ucsd.cs.mmccrack.bibdesk.plist ~/Library/Preferences/
+
+# Brave
+cp ~/.dotfiles/private/preferences/com.brave.Browser.plist ~/Library/Preferences/
+
+# CleanShot X
+cp ~/.dotfiles/private/preferences/pl.maketheweb.cleanshotx.plist ~/Library/Preferences/
+
+# Itsycal
+cp ~/.dotfiles/private/preferences/com.mowglii.itsycalApp.plist ~/Library/Preferences/
+
+# Raycast
+cp ~/.dotfiles/private/preferences/com.raycast.macos.plist ~/Library/Preferences/

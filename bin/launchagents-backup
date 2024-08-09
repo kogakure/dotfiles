@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# AltTab
+cp ~/Library/LaunchAgents/com.lwouis.alt-tab-macos.plist ~/.dotfiles/private/launch-agents/
