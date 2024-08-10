@@ -50,6 +50,11 @@ set -x FZF_DEFAULT_OPTS --no-height
 set -x FZF_TMUX 1
 set -x FZF_TMUX_OPTS -p
 
+# OpenSSL
+set -x LDFLAGS "-L/opt/homebrew/opt/openssl@1.1/lib"
+set -x CPPFLAGS "-I/opt/homebrew/opt/openssl@1.1/include"
+set -x PKG_CONFIG_PATH "/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+
 # Man
 set -x MANPATH /usr/local/man $MANPATH
 

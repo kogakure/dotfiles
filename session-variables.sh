@@ -33,6 +33,11 @@ export FZF_DEFAULT_OPTS="--no-height"
 export FZF_TMUX="1"
 export FZF_TMUX_OPTS="-p"
 
+# OpenSSL
+export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+
 # Man
 export MANPATH="/usr/local/man:$MANPATH"
 
