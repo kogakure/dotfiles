@@ -68,6 +68,9 @@ echo "Restoring Homebrew packages..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1
 
+# Install tmux plugins
+~/.tmux/plugins/tpm/bin/install_plugins
+
 # GitHub CLI extensions
 gh extension install github/gh-copilot
 gh extension install dlvhdr/gh-dash
@@ -77,9 +80,6 @@ gh extension install yusukebe/gh-markdown-preview
 gh extension install meiji163/gh-notify
 gh extension install seachicken/gh-poi
 gh extension install gennaro-tedesco/gh-s
-
-# Install tmux plugins
-~/.tmux/plugins/tpm/bin/install_plugins
 
 # Install Fish plugins
 fisher install jorgebucaran/fisher
