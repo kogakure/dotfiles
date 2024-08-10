@@ -64,13 +64,6 @@ fi
 echo "Restoring Homebrew packages..."
 ./bin/homebrew-restore
 
-# Setup fish shell as default shell
-echo "Configuring fish as default shell"
-if ! command -v fish &>/dev/null; then
-	echo "Fish shell not found. Installing fish..."
-	brew install fish
-fi
-
 # Tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1
@@ -103,6 +96,13 @@ nvim --headless "+Lazy! sync" +qa
 # Start services
 yabai --start-service
 skhd --start-service
+
+# Setup fish shell as default shell
+echo "Configuring fish as default shell"
+if ! command -v fish &>/dev/null; then
+	echo "Fish shell not found. Installing fish..."
+	brew install fish
+fi
 
 # Change default shell to fish
 echo "Changing default shell to fish"
