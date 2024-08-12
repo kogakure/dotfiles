@@ -1,5 +1,6 @@
 tap "charmbracelet/tap"
 tap "dustinblackman/tap"
+tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
@@ -279,6 +280,8 @@ brew "zsh"
 brew "charmbracelet/tap/soft-serve"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
 # Simple hotkey-daemon for macOS.
