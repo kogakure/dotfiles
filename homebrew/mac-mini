@@ -185,6 +185,8 @@ brew "node"
 brew "nss"
 # General-purpose speech recognition model
 brew "openai-whisper"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
