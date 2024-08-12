@@ -315,8 +315,6 @@ cask "bibdesk"
 cask "blender"
 # 3D performance benchmarking tool
 cask "blender-benchmark"
-# Utility to dim background/inactive content in the screen
-cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
 # E-books management software
