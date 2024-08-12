@@ -366,8 +366,6 @@ cask "gemini"
 cask "google-japanese-ime"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
-# Desktop automation application
-cask "hammerspoon"
 # Open-source video transcoder
 cask "handbrake"
 # Create presentation slides from a Markdown document
