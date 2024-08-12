@@ -144,6 +144,9 @@ defaults write com.apple.dock launchanim -bool false
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
+# Group windows by application in Mission Control
+defaults write com.apple.dock "expose-group-apps" -bool "true"
+
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
@@ -152,6 +155,9 @@ defaults write com.apple.dock autohide-delay -float 0
 
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Disable Display have separate Spaces
+defaults write com.apple.spaces "spans-displays" -bool "true"
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
@@ -207,6 +213,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCorner
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+# Move windows by dragging any part of the window (ctrl + cmd)
+defaults write -g NSWindowShouldDragOnGesture YES
 
 for app in "Dock" \
 	"Finder" \
