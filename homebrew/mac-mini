@@ -4,7 +4,6 @@ tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
-tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
@@ -284,8 +283,6 @@ brew "dustinblackman/tap/oatmeal"
 brew "felixkratz/formulae/borders"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
-# Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
 # Professional graphic design software
