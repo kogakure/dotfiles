@@ -1,0 +1,150 @@
+# Start AeroSpace at Login
+start-at-login = true
+
+after-login-command = []
+after-startup-command = []
+
+# Normalizations.
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Paddings
+accordion-padding = 30
+
+# Default Layout
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# Key Mapping
+key-mapping.preset = 'qwerty'
+
+# Mouse follows focus when focused monitor changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = "move-mouse window-lazy-center"
+
+# Gaps
+[gaps]
+inner.horizontal = 10
+inner.vertical =   10
+outer.left =       10
+outer.bottom =     10
+outer.top =        10
+outer.right =      10
+
+# ✂---✂---✂---✂---✂---✂---✂---✂
+
+# 'main' Mode
+[mode.main.binding]
+
+# Change Layout
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+# Focus
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Moving
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Resizing
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+# Workspaces
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+# Move to Workspace
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+# Fullscreen
+alt-shift-f = "fullscreen"
+
+# Floating/tiling layout
+alt-t = 'layout floating tiling'
+
+# Move to monitor
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# Service Mode
+alt-shift-semicolon = 'mode service'
+
+# ✂---✂---✂---✂---✂---✂---✂---✂
+
+# 'service' Mode
+[mode.service.binding]
+
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main'] # reset layout
+#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# Join Windows
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+# ✂---✂---✂---✂---✂---✂---✂---✂
+
+# Window Autodetection
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'tw.ogdesign.eagle'
+run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
+if.app-id = 'com.devon-technologies.think3'
+run = "move-node-to-workspace 4"
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = "move-node-to-workspace 6"
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+if.window-title-regex-substring = '^[^Space|Little]'
+check-further-callbacks = true
+run = 'layout tiling'

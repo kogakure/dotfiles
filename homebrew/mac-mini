@@ -4,6 +4,7 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
 tap "koekeishiya/formulae"
+tap "nikitabobko/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -284,6 +285,8 @@ brew "joshmedeski/sesh/sesh"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
 # Professional graphic design software
 cask "affinity-designer"
 # Professional image editing software
