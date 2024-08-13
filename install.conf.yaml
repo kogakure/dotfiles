@@ -9,18 +9,18 @@
       mode: 0700
 
 - link:
+    ~/.config/:
+      glob: true
+      path: config/*
+      relink: true
+      exclude: [config/karabiner]
+    ~/.config/karabiner: darwin/karabiner
     ~/.ack: ack
     ~/.ag: ag
     ~/.aliases: aliases
     ~/.asdfrc: asdfrc
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
-    ~/.config/:
-      glob: true
-      path: config/*
-      relink: true
-      exclude: [config/karabiner, config/hammerspoon]
-    ~/.config/karabiner: darwin/karabiner
     ~/.ctags: ctags
     ~/.curlrc: curlrc
     ~/.default-gems: default-gems
