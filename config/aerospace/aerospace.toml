@@ -57,32 +57,32 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # Workspaces
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
+alt-ctrl-1 = 'workspace 1'
+alt-ctrl-2 = 'workspace 2'
+alt-ctrl-3 = 'workspace 3'
+alt-ctrl-4 = 'workspace 4'
+alt-ctrl-5 = 'workspace 5'
+alt-ctrl-6 = 'workspace 6'
+alt-ctrl-7 = 'workspace 7'
+alt-ctrl-8 = 'workspace 8'
+alt-ctrl-9 = 'workspace 9'
 
 # Move to Workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
+alt-ctrl-shift-1 = 'move-node-to-workspace 1'
+alt-ctrl-shift-2 = 'move-node-to-workspace 2'
+alt-ctrl-shift-3 = 'move-node-to-workspace 3'
+alt-ctrl-shift-4 = 'move-node-to-workspace 4'
+alt-ctrl-shift-5 = 'move-node-to-workspace 5'
+alt-ctrl-shift-6 = 'move-node-to-workspace 6'
+alt-ctrl-shift-7 = 'move-node-to-workspace 7'
+alt-ctrl-shift-8 = 'move-node-to-workspace 8'
+alt-ctrl-shift-9 = 'move-node-to-workspace 9'
 
 # Fullscreen
-alt-shift-f = "fullscreen"
+alt-ctrl-shift-f = "fullscreen"
 
 # Floating/tiling layout
-alt-t = 'layout floating tiling'
+alt-ctrl-t = 'layout floating tiling'
 
 # Move to monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
