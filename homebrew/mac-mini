@@ -171,6 +171,10 @@ brew "mas"
 brew "meson"
 # CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
 # Open source relational database management system
 brew "mysql"
 # Parser generator tool and incremental parsing library
@@ -271,8 +275,6 @@ brew "yarn"
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
