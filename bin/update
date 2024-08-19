@@ -37,3 +37,6 @@ nvim --headless "+Lazy! sync" +qa
 
 # Update macOS software
 sudo softwareupdate -i -a
+
+# Write Homebrew Brewfile
+homebrew-backup
