@@ -81,9 +81,6 @@ alt-ctrl-shift-9 = 'move-node-to-workspace 9'
 # Fullscreen
 ctrl-alt-cmd-f = "fullscreen"
 
-# Floating/tiling layout
-alt-ctrl-t = 'layout floating tiling'
-
 # Move to monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
