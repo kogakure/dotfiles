@@ -1,21 +1,29 @@
 tap "charmbracelet/tap"
 tap "dustinblackman/tap"
+tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
 tap "koekeishiya/formulae"
+tap "nikitabobko/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
+# YAML Parser
+brew "libyaml"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Library for command-line editing
+brew "readline"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
@@ -180,6 +188,8 @@ brew "node"
 brew "nss"
 # General-purpose speech recognition model
 brew "openai-whisper"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
@@ -276,12 +286,12 @@ brew "zsh"
 brew "charmbracelet/tap/soft-serve"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
-# Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd"
-# A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
 # Professional graphic design software
 cask "affinity-designer"
 # Professional image editing software
@@ -310,8 +320,6 @@ cask "bibdesk"
 cask "blender"
 # 3D performance benchmarking tool
 cask "blender-benchmark"
-# Utility to dim background/inactive content in the screen
-cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
 # E-books management software
@@ -348,8 +356,6 @@ cask "font-symbols-only-nerd-font"
 cask "google-japanese-ime"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
-# Desktop automation application
-cask "hammerspoon"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
 # Free and open-source media player
@@ -396,8 +402,6 @@ cask "notion"
 cask "obsidian"
 # Get up and running with large language models locally
 cask "ollama"
-# Cloud storage client
-cask "onedrive"
 # Control your smart light system
 cask "philips-hue-sync"
 # Client for Proton Drive
@@ -458,6 +462,7 @@ mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "DaVinci Resolve", id: 571213070
 mas "Day One", id: 1055511498
+mas "Deliveries", id: 290986013
 mas "Draw Things", id: 6444050820
 mas "Exporter", id: 1099120373
 mas "Free MP4 Converter", id: 693443591
@@ -468,7 +473,6 @@ mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
-mas "Lieferungen", id: 290986013
 mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
