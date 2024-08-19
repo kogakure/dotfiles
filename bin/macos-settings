@@ -53,8 +53,8 @@ defaults write com.apple.universalaccess reduceMotion -bool true
 defaults write NSGlobalDomain NSTitleBarSize 22
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Set language and text formats
 defaults write NSGlobalDomain AppleLanguages -array "en-DE" "de-DE" "ja-DE"
