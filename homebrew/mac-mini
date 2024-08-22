@@ -311,6 +311,8 @@ cask "appcleaner"
 cask "arc"
 # Multi-track audio editor and recorder
 cask "audacity"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Menu bar icon organiser
 cask "bartender"
 # Edit and manage bibliographies
@@ -357,6 +359,8 @@ cask "font-noto-emoji"
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
 cask "forticlient-vpn"
+# Tool to measure the computer system's performance
+cask "geekbench"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Japanese input software
