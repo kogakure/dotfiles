@@ -27,6 +27,13 @@ if command -v nvim >/dev/null 2>&1
     set -x GIT_EDITOR nvim
 end
 
+# Check for Homebrew path
+if test (uname -m) = arm64
+    set brew_prefix /opt/homebrew
+else
+    set brew_prefix /usr/local
+end
+
 # XDG base directory specification
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
@@ -51,9 +58,9 @@ set -x FZF_TMUX 1
 set -x FZF_TMUX_OPTS -p
 
 # OpenSSL
-set -x LDFLAGS "-L/opt/homebrew/opt/openssl@1.1/lib"
-set -x CPPFLAGS "-I/opt/homebrew/opt/openssl@1.1/include"
-set -x PKG_CONFIG_PATH "/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+set -x LDFLAGS "-L$brew_prefix/opt/openssl@1.1/lib"
+set -x CPPFLAGS "-I$brew_prefix/opt/openssl@1.1/include"
+set -x PKG_CONFIG_PATH "$brew_prefix/opt/openssl@1.1/lib/pkgconfig"
 
 # Man
 set -x MANPATH /usr/local/man $MANPATH
@@ -96,7 +103,7 @@ fish_add_path $HOME/.asdf/shims
 # *** *** Tools *** ***
 
 # Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$($brew_prefix/bin/brew shellenv)"
 
 # asdf
 source (brew --prefix asdf)/libexec/asdf.fish
