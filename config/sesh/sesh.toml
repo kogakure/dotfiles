@@ -14,6 +14,14 @@ path = "~/Downloads"
 startup_command = "la"
 
 [[session]]
+name = "📝 Zettelkasten"
+path = "~/Code/GitHub/obsidian/zettelkasten/"
+
+[[session]]
+name = "✨ Highlights"
+path = "~/Code/GitHub/obsidian/highlights/"
+
+[[session]]
 name = "👨‍💻 stefanimhoff-de"
 path = "~/Code/GitHub/websites/stefanimhoff-de/"
 
