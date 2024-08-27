@@ -41,6 +41,13 @@ trap allow_sleep EXIT
 echo "Initializing submodule(s)"
 git submodule update --init --recursive
 
+# Tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1
+
+# Install tmux plugins
+~/.tmux/plugins/tpm/bin/install_plugins
+
 # Symlink dotfiles
 ./install
 
@@ -64,13 +71,6 @@ fi
 echo "Restoring Homebrew packages..."
 ./bin/homebrew-restore
 
-# Tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1
-
-# Install tmux plugins
-~/.tmux/plugins/tpm/bin/install_plugins
-
 # GitHub CLI extensions
 gh extension install github/gh-copilot
 gh extension install dlvhdr/gh-dash
@@ -92,10 +92,6 @@ fisher install jethrokuan/fzf
 
 # Install Neovim plugins
 nvim --headless "+Lazy! sync" +qa
-
-# Start services
-yabai --start-service
-skhd --start-service
 
 # Setup fish shell as default shell
 echo "Configuring fish as default shell"
