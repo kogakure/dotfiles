@@ -431,6 +431,8 @@ cask "signal"
 cask "spotify"
 # Interior design application
 cask "sweet-home3d"
+# Mesh VPN based on WireGuard
+cask "tailscale"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Unpacks archive files

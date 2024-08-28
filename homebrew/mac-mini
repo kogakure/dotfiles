@@ -133,6 +133,8 @@ brew "gource"
 brew "gpgme"
 # Command-line tool for generating regular expressions
 brew "grex"
+# Tool for glamorous shell scripts
+brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
 # Convert source code to formatted text with syntax highlighting
@@ -261,6 +263,8 @@ brew "vhs"
 brew "volta"
 # Watch files and take action when they change
 brew "watchman"
+# Internet file retriever
+brew "wget"
 # Homebrew, but with Docker images
 brew "whalebrew"
 # Port of OpenAI's Whisper model in C/C++
@@ -407,6 +411,8 @@ cask "microsoft-teams"
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Organise all your reference images in one place
+cask "ogdesign-eagle"
 # Get up and running with large language models locally
 cask "ollama"
 # Control your smart light system
@@ -447,6 +453,8 @@ cask "sonos"
 cask "spotify"
 # Interior design application
 cask "sweet-home3d"
+# Mesh VPN based on WireGuard
+cask "tailscale"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Unpacks archive files
