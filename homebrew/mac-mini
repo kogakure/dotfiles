@@ -311,6 +311,8 @@ cask "ankerwork"
 cask "anki"
 # Application uninstaller
 cask "appcleaner"
+# Open-source project and knowledge management tool
+cask "appflowy"
 # Chromium based browser
 cask "arc"
 # Multi-track audio editor and recorder
@@ -391,12 +393,16 @@ cask "kap"
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
+# Free and open-source painting and sketching program
+cask "krita"
 # Grammar, spelling and style suggestions in all the writing apps
 cask "languagetool"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
+# Free cross-platform office suite, fresh version
+cask "libreoffice"
 # File system integration
 cask "macfuse"
 # Video format converter (transcoder)
