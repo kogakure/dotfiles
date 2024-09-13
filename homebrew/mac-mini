@@ -365,6 +365,8 @@ cask "font-noto-emoji"
 cask "font-symbols-only-nerd-font"
 # Free VPN client for FortiClient
 cask "forticlient-vpn"
+# 3D parametric modeller
+cask "freecad"
 # Tool to measure the computer system's performance
 cask "geekbench"
 # Disk space cleaner that finds and deletes duplicated and similar files
