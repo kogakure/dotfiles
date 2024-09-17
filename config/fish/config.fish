@@ -70,43 +70,39 @@ set -x VOLTA_HOME $HOME/.volta
 
 # *** *** Session Paths *** ***
 
-# Volta
-fish_add_path $VOLTA_HOME/bin
-
-# Rust
-fish_add_path $HOME/.cargo/bin
-
-# tmux plugins
-fish_add_path $HOME/.tmux/plugins/tmux-nvr/bin
-fish_add_path $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
-
-# Personal
-fish_add_path $HOME/.dotfiles/bin
-fish_add_path $HOME/.dotfiles/private/bin
-
 # Homebrew
-fish_add_path (brew --prefix)/bin
-fish_add_path (brew --prefix)/sbin
-fish_add_path (brew --prefix)/whalebrew/bin
-
-# System
-fish_add_path /usr/bin
-fish_add_path /usr/local/bin
-fish_add_path /usr/local/sbin
+eval "$($brew_prefix/bin/brew shellenv)"
 
 # asdf
-fish_add_path $HOME/.asdf/shims
+set -l asdf_path (brew --prefix asdf)
+if test -f $asdf_path/libexec/asdf.fish
+    source $asdf_path/libexec/asdf.fish
+    set -x PATH $HOME/.asdf/shims $PATH
+end
+
+# Volta
+set -x PATH $PATH $VOLTA_HOME/bin
+
+# Rust
+set -x PATH $PATH $HOME/.cargo/bin
+
+# tmux plugins
+set -x PATH $PATH $HOME/.tmux/plugins/tmux-nvr/bin
+set -x PATH $PATH $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
+
+# Personal
+set -x PATH $PATH $HOME/.dotfiles/bin
+set -x PATH $PATH $HOME/.dotfiles/private/bin
+
+# System
+set -x PATH $PATH /usr/bin
+set -x PATH $PATH /usr/local/bin
+set -x PATH $PATH /usr/local/sbin
 
 # Stable Diffusion Webui
 # set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 
 # *** *** Tools *** ***
-
-# Homebrew
-eval "$($brew_prefix/bin/brew shellenv)"
-
-# asdf
-source (brew --prefix asdf)/libexec/asdf.fish
 
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1
