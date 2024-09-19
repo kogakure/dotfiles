@@ -133,7 +133,7 @@ config.front_end = "WebGpu"
 
 -- Window
 config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.8
 config.initial_cols = 100
 config.initial_rows = 65
 config.enable_tab_bar = false
