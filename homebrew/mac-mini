@@ -223,6 +223,8 @@ brew "reattach-to-user-namespace"
 brew "remarshal"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Wrapper around ripgrep that adds multiple rich file types
+brew "ripgrep-all"
 # Builds manuals - the opposite of roff
 brew "ronn"
 # Utility that provides fast incremental file transfer
@@ -327,6 +329,8 @@ cask "bibdesk"
 cask "blender"
 # 3D performance benchmarking tool
 cask "blender-benchmark"
+# Utility to dim background/inactive content in the screen
+cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
 # E-books management software
