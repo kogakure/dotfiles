@@ -37,12 +37,12 @@ brew "icu4c"
 brew "bfg"
 # Parser generator
 brew "bison"
-# GNU compiler collection
-brew "gcc"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
+# GNU compiler collection
+brew "gcc"
 # High performance message passing library
 brew "open-mpi"
 # C routines to compute the Discrete Fourier Transform
@@ -97,6 +97,8 @@ brew "fisher"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Automatic git commit --fixup
+brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo
 brew "git-crypt"
 # Syntax-highlighting pager for git and diff output
@@ -179,6 +181,8 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
+# Fast, highly customisable system info script
+brew "neofetch"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -618,7 +622,6 @@ vscode "pkief.material-icon-theme"
 vscode "pnp.polacode"
 vscode "pomdtr.excalidraw-editor"
 vscode "prisma.prisma"
-vscode "quick-lint.quick-lint-js"
 vscode "raynigon.nginx-formatter"
 vscode "redhat.vscode-commons"
 vscode "redhat.vscode-yaml"
