@@ -8,5 +8,10 @@ default: true
 # Path to configuration file to extend
 extends: null
 
+# MD012/no-multiple-blanks : Multiple consecutive blank lines : https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md012.md
+MD012:
+  # Consecutive blank lines
+  maximum: 1
+
 # MD013/line-length : Line length : https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md013.md
 MD013: false
