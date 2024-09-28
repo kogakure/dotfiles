@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.yaml"
   ],

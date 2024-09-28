@@ -1,0 +1,12 @@
+# Filename: ~/.markdownlint.yaml
+#
+# Example: https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
+
+# Default state for all rules
+default: true
+
+# Path to configuration file to extend
+extends: null
+
+# MD013/line-length : Line length : https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md013.md
+MD013: false
