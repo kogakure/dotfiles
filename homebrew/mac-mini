@@ -88,7 +88,9 @@ brew "sdl2"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Play, record, convert, and stream audio and video
-brew "ffmpeg", link: false
+brew "ffmpeg"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg@6"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # macOS CLI for managing custom icons for files and folders
