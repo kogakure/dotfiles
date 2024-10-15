@@ -11,6 +11,7 @@ return {
 			"css-lsp",
 			"cssmodules-language-server",
 			"delve",
+			"deno",
 			"diagnostic-languageserver",
 			"emmet-ls",
 			"eslint-lsp",
