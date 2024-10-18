@@ -44,12 +44,12 @@ brew "icu4c"
 brew "bfg"
 # Parser generator
 brew "bison"
-# GNU compiler collection
-brew "gcc"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
+# GNU compiler collection
+brew "gcc"
 # High performance message passing library
 brew "open-mpi"
 # C routines to compute the Discrete Fourier Transform
@@ -320,6 +320,8 @@ cask "bibdesk"
 cask "blender"
 # 3D performance benchmarking tool
 cask "blender-benchmark"
+# Utility to dim background/inactive content in the screen
+cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
 # E-books management software
