@@ -75,6 +75,8 @@ brew "docutils"
 brew "dotbot"
 # More intuitive version of du in rust
 brew "dust"
+# Collection of reusable C++ library artifacts developed at Facebook
+brew "folly"
 # Maintain consistent coding style between multiple editors
 brew "editorconfig"
 # Perl lib for reading and writing EXIF metadata
@@ -431,6 +433,8 @@ cask "microsoft-outlook"
 cask "microsoft-teams"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Calculator and converter application
+cask "numi"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Organise all your reference images in one place
@@ -439,6 +443,8 @@ cask "ogdesign-eagle"
 cask "ollama"
 # Control your smart light system
 cask "philips-hue-sync"
+# Collaboration platform for API development
+cask "postman"
 # Client for Proton Drive
 cask "proton-drive"
 # Client for Proton Mail and Proton Calendar
