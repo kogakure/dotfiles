@@ -31,8 +31,6 @@ brew "bat-extras"
 brew "gettext"
 # Command-line interface for SQLite
 brew "sqlite"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -287,6 +285,8 @@ brew "xmlto"
 brew "yarn"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Dumb downloader that scrapes the web
+brew "you-get"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Shell extension to navigate your filesystem faster
