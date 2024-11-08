@@ -437,6 +437,8 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Get up and running with large language models locally
 cask "ollama"
+# Open-source transport simulation game
+cask "openttd"
 # Control your smart light system
 cask "philips-hue-sync"
 # Collaboration platform for API development
