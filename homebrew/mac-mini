@@ -9,6 +9,10 @@ tap "nikitabobko/tap"
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
+# Library and utilities for processing GIFs
+brew "giflib"
+# Library for manipulating PNG images
+brew "libpng"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Powerful, clean, object-oriented scripting language
@@ -31,6 +35,10 @@ brew "bat-extras"
 brew "gettext"
 # Command-line interface for SQLite
 brew "sqlite"
+# Low-level library for pixel manipulation
+brew "pixman"
+# Vector graphics library with cross-device output support
+brew "cairo"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -73,6 +81,8 @@ brew "docutils"
 brew "dotbot"
 # More intuitive version of du in rust
 brew "dust"
+# Compression/decompression library aiming for high speed
+brew "snappy"
 # Collection of reusable C++ library artifacts developed at Facebook
 brew "folly"
 # Maintain consistent coding style between multiple editors
@@ -83,10 +93,14 @@ brew "exiftool"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
 brew "sdl2"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
+# High-performance, asynchronous messaging library
+brew "zeromq"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Play, record, convert, and stream audio and video
@@ -97,6 +111,8 @@ brew "ffmpegthumbnailer"
 brew "fileicon"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
 # Plugin manager for the Fish shell
 brew "fisher"
 # Command-line fuzzy finder written in Go
@@ -129,8 +145,8 @@ brew "gnu-sed"
 brew "gnu-tar"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Manage compile and link flags for libraries
-brew "pkg-config"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Google Testing and Mocking Framework
@@ -161,6 +177,8 @@ brew "imagemagick"
 brew "itstool"
 # Command-line pager for JSON data
 brew "jless"
+# Image manipulation library
+brew "jpeg"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Lazier way to manage everything docker
@@ -171,6 +189,8 @@ brew "lazygit"
 brew "lf"
 # Conversion library
 brew "libiconv"
+# Library to render SVG files using Cairo
+brew "librsvg"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Text-based web browser
@@ -245,6 +265,8 @@ brew "sevenzip"
 brew "shfmt"
 # Create beautiful image of your source code
 brew "silicon"
+# Compression/decompression tool based on snappy
+brew "snzip"
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
@@ -531,6 +553,7 @@ mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
+mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
 whalebrew "whalebrew/whalesay"
 vscode "adamvoss.vscode-languagetool"
