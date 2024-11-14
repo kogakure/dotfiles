@@ -39,7 +39,7 @@ brew "gettext"
 # Command-line interface for SQLite
 brew "sqlite"
 # C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
+brew "icu4c@76"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -128,8 +128,8 @@ brew "gnu-sed"
 brew "gnu-tar"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Manage compile and link flags for libraries
-brew "pkg-config"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Google Testing and Mocking Framework
