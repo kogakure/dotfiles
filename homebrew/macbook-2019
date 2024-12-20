@@ -28,7 +28,7 @@ brew "bat-extras"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
+brew "icu4c@76"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -117,8 +117,8 @@ brew "gnu-sed"
 brew "gnu-tar"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Manage compile and link flags for libraries
-brew "pkg-config"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Google Testing and Mocking Framework
@@ -130,7 +130,7 @@ brew "gpgme"
 # Command-line tool for generating regular expressions
 brew "grex"
 # Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake"
+brew "handbrake", link: false
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
