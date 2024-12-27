@@ -55,6 +55,12 @@ brew "open-mpi"
 brew "fftw"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
+# Framework for layout and rendering of i18n text
+brew "pango"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
+brew "chafa"
 # Statistics utility to count lines of code
 brew "cloc"
 # Cross-platform make
@@ -93,8 +99,6 @@ brew "exiftool"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Framework for layout and rendering of i18n text
-brew "pango"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
 brew "sdl2"
 # OCR (Optical Character Recognition) engine
@@ -189,8 +193,6 @@ brew "lazygit"
 brew "lf"
 # Conversion library
 brew "libiconv"
-# Library to render SVG files using Cairo
-brew "librsvg"
 # Text-based web browser
 brew "lynx"
 # Mac App Store command-line interface
@@ -403,6 +405,8 @@ cask "freecad"
 cask "geekbench"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Japanese input software
 cask "google-japanese-ime"
 # Tools to protect your files
@@ -469,10 +473,10 @@ cask "postman"
 cask "proton-drive"
 # Client for Proton Mail and Proton Calendar
 cask "proton-mail"
+# Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
+cask "proton-mail-bridge"
 # Desktop client for Proton Pass
 cask "proton-pass"
-# Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
-cask "protonmail-bridge"
 # VPN client focusing on security
 cask "protonvpn"
 # All-in-one bookmark manager
