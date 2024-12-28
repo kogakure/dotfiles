@@ -1,0 +1,113 @@
+##### Typography #####
+
+# Font configuration
+font-family = Monaspace Neon
+font-family-italic = Monaspace Radon
+font-family-bold = Monaspace Krypton
+font-family-bold-italic = Monaspace Radon
+
+font-size = 22
+adjust-cell-height = 20%
+
+# Font features for Monaspace
+font-feature = calt
+font-feature = clig
+font-feature = liga
+font-feature = dlig
+font-feature = ss01
+font-feature = ss02
+font-feature = ss03
+font-feature = ss04
+font-feature = ss05
+font-feature = ss06
+font-feature = ss07
+font-feature = ss08
+
+##### Appearance #####
+
+# Theme
+theme = tokyonight
+
+# Window settings
+window-decoration = false
+background-opacity = 0.8
+background-blur-radius = 30
+window-padding-x = 30
+window-padding-y = 30
+window-height = 65
+window-width = 100
+
+# Macos
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+confirm-close-surface = false
+
+# Macos custom icon
+macos-icon = custom-style
+macos-icon-ghost-color = white
+macos-icon-screen-color = black,darkgrey
+
+# Clipboard
+clipboard-write = allow
+clipboard-read = allow
+
+# Cursor
+shell-integration-features = no-cursor
+cursor-style = bar
+
+###### Key bindings ######
+
+# Fullscreen
+keybind = cmd+enter=toggle_fullscreen
+
+# Rename window
+keybind = ctrl+alt+comma=text:\x02v
+
+# Command Mode
+keybind = ctrl+alt+;=text:\x02:
+
+# Previous window
+keybind = ctrl+alt+[=text:\x02p
+keybind = ctrl+alt+h=text:\x02p
+
+# Next window
+keybind = ctrl+alt+]=text:\x02n
+keybind = ctrl+alt+l=text:\x02n
+
+# Lazydocker
+keybind = ctrl+alt+d=text:\x02D
+
+# Detach session
+keybind = ctrl+alt+q=text:\x02d
+
+# LF
+keybind = ctrl+alt+f=text:\x02O
+
+# Lazygit
+keybind = ctrl+alt+g=text:\x02G
+
+# Select windows
+keybind = ctrl+alt+j=text:\x02s
+keybind = ctrl+alt+k=text:\x02s
+
+# Smart tmux session manager
+keybind = ctrl+alt+p=text:\x02T
+
+# Return to last session
+keybind = ctrl+alt+r=text:\x02R
+
+# New window
+keybind = ctrl+alt+t=text:\x02c
+
+# Superfile
+keybind = ctrl+alt+s=text:\x02f
+
+# Close window
+keybind = ctrl+alt+w=text:\x02x
+
+# Yazi
+keybind = ctrl+alt+y=text:\x02W
+
+# Zoom into window
+keybind = ctrl+alt+z=text:\x02z
