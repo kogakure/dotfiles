@@ -5,42 +5,42 @@ session_path = "~/Code/GitHub/websites/stefanimhoff-de"
 script_path = "~/.config/sesh/scripts/node_dev"
 
 [[session]]
-name = "⭐ Dotfiles"
+name = "⭐Dotfiles"
 path = "~/.dotfiles"
 
 [[session]]
-name = "📥 Downloads"
+name = "📥Downloads"
 path = "~/Downloads"
 startup_command = "la"
 
 [[session]]
-name = "📝 Zettelkasten"
+name = "📝Zettelkasten"
 path = "~/Code/GitHub/obsidian/zettelkasten/"
 
 [[session]]
-name = "✨ Highlights"
+name = "✨Highlights"
 path = "~/Code/GitHub/obsidian/highlights/"
 
 [[session]]
-name = "👨‍💻 stefanimhoff-de"
+name = "👨‍💻stefanimhoff-de"
 path = "~/Code/GitHub/websites/stefanimhoff-de/"
 
 [[session]]
-name = "🥷 kogakure-de"
+name = "🥷kogakure-de"
 path = "~/Code/GitHub/websites/kogakure-de/"
 
 [[session]]
-name = "⚓ hamburg-stefanimhoff-de"
+name = "⚓hamburg-stefanimhoff-de"
 path = "~/Code/GitHub/websites/hamburg-stefanimhoff-de/"
 
 [[session]]
-name = "📦 Crate 🌳"
+name = "📦Crate 🌳"
 path = "~/Code/XING/crate.git/"
 
 [[session]]
-name = "📦 Crate"
+name = "📦Crate"
 path = "~/Code/XING/crate/"
 
 [[session]]
-name = "🍺 Brewery"
-path = "~/Code/XING/brewery/"
+name = "🍺Brewery"
+path = "~/Code/XING/crate/xinglets/brewery/"
