@@ -30,6 +30,10 @@ name = "🥷 kogakure-de"
 path = "~/Code/GitHub/websites/kogakure-de/"
 
 [[session]]
+name = "⚓ hamburg-stefanimhoff-de"
+path = "~/Code/GitHub/websites/hamburg-stefanimhoff-de/"
+
+[[session]]
 name = "📦 Crate 🌳"
 path = "~/Code/XING/crate.git/"
 
