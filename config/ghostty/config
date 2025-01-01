@@ -36,6 +36,7 @@ window-padding-x = 30
 window-padding-y = 30
 window-height = 65
 window-width = 100
+window-colorspace = "display-p3"
 
 # Macos
 macos-titlebar-style = hidden
@@ -54,7 +55,7 @@ clipboard-read = allow
 
 # Cursor
 shell-integration-features = no-cursor
-cursor-style = bar
+cursor-style = block
 
 ###### Key bindings ######
 
