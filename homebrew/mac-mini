@@ -13,6 +13,8 @@ brew "antidote"
 brew "giflib"
 # Library for manipulating PNG images
 brew "libpng"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Powerful, clean, object-oriented scripting language
@@ -195,6 +197,8 @@ brew "lf"
 brew "libiconv"
 # Text-based web browser
 brew "lynx"
+# Apple Silicon Monitor Top written in Golang
+brew "mactop"
 # Mac App Store command-line interface
 brew "mas"
 # Fast and user friendly build system
@@ -207,6 +211,8 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
+# Fast, highly customisable system info script
+brew "neofetch"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
