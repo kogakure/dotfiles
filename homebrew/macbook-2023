@@ -354,6 +354,8 @@ cask "font-ia-writer-quattro"
 cask "font-monaspace"
 cask "font-noto-emoji"
 cask "font-symbols-only-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Japanese input software
 cask "google-japanese-ime"
 # Tools to protect your files
@@ -410,10 +412,10 @@ cask "philips-hue-sync"
 cask "proton-drive"
 # Client for Proton Mail and Proton Calendar
 cask "proton-mail"
+# Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
+cask "proton-mail-bridge"
 # Desktop client for Proton Pass
 cask "proton-pass"
-# Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
-cask "protonmail-bridge"
 # All-in-one bookmark manager
 cask "raindropio"
 # Control your tools with a few keystrokes
