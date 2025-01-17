@@ -79,6 +79,15 @@ return {
 		end
 
 		-- Setup fzf-lua with default options
-		fzf.setup({})
+		fzf.setup({
+			winopts = {
+				width = 0.90,
+				height = 0.90,
+				preview = {
+					width = 0.5,
+					horizontal = "right:50%",
+				},
+			},
+		})
 	end,
 }
