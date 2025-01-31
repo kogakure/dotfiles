@@ -469,6 +469,8 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Get up and running with large language models locally
 cask "ollama"
+# Interact with Ollama models
+cask "ollamac"
 # Open-source transport simulation game
 cask "openttd"
 # Control your smart light system
@@ -610,12 +612,14 @@ vscode "ms-azuretools.vscode-docker"
 vscode "ms-playwright.playwright"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode-remote.vscode-remote-extensionpack"
+vscode "ms-vscode.extension-test-runner"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "pkief.material-icon-theme"
 vscode "pnp.polacode"
 vscode "redhat.vscode-yaml"
 vscode "rvest.vs-code-prettier-eslint"
 vscode "styled-components.vscode-styled-components"
+vscode "tobermory.es6-string-html"
 vscode "tyriar.sort-lines"
 vscode "unifiedjs.vscode-mdx"
 vscode "visualstudioexptteam.intellicode-api-usage-examples"
