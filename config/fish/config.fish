@@ -85,6 +85,7 @@ set -x PATH $PATH $VOLTA_HOME/bin
 
 # Rust
 set -x PATH $PATH $HOME/.cargo/bin
+set -x PATH $PATH $HOME/.local/share/../bin
 
 # tmux plugins
 set -x PATH $PATH $HOME/.tmux/plugins/tmux-nvr/bin
