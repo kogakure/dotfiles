@@ -18,12 +18,6 @@ brew "openssl@3"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
-# GNU multiple precision arithmetic library
-brew "gmp"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Library for command-line editing
-brew "readline"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
@@ -36,6 +30,8 @@ brew "bat"
 brew "bat-extras"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# Library for command-line editing
+brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # C/C++ and Java libraries for Unicode and globalization
@@ -48,6 +44,8 @@ brew "bison"
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # GNU compiler collection
 brew "gcc"
 # High performance message passing library
@@ -62,6 +60,8 @@ brew "cloc"
 brew "cmake"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Header-only library for parsing TOML
 brew "cpptoml"
 # Get a file from an HTTP, HTTPS or FTP server
