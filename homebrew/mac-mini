@@ -21,8 +21,6 @@ brew "openssl@3"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
@@ -69,6 +67,8 @@ brew "cloc"
 brew "cmake"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Header-only library for parsing TOML
 brew "cpptoml"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -221,8 +221,6 @@ brew "tree-sitter"
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
-# Platform built on V8 to build network applications
-brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
 # General-purpose speech recognition model
@@ -564,6 +562,7 @@ mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Pieoneer", id: 6739781207
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
