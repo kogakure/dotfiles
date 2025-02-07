@@ -83,6 +83,10 @@ end
 # Volta
 set -x PATH $PATH $VOLTA_HOME/bin
 
+# Bun
+set -x BUN_INSTALL "$HOME/.bun"
+set -x PATH "$BUN_INSTALL/bin" $PATH
+
 # Rust
 set -x PATH $PATH $HOME/.cargo/bin
 set -x PATH $PATH $HOME/.local/share/../bin
