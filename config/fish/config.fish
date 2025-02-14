@@ -34,6 +34,8 @@ else
     set brew_prefix /usr/local
 end
 
+set -x HOMEBREW_NO_AUTO_UPDATE 1
+
 # XDG base directory specification
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
