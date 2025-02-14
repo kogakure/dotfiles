@@ -543,6 +543,8 @@ cask "whatsapp"
 cask "wiso-steuer-2024"
 # Multiplayer code editor
 cask "zed"
+# Gecko based web browser
+cask "zen-browser"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "DaVinci Resolve", id: 571213070
