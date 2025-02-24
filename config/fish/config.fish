@@ -72,15 +72,15 @@ set -x VOLTA_HOME $HOME/.volta
 
 # *** *** Session Paths *** ***
 
-# Homebrew
-eval "$($brew_prefix/bin/brew shellenv)"
-
 # asdf
 set -l asdf_path (brew --prefix asdf)
 if test -f $asdf_path/libexec/asdf.fish
     source $asdf_path/libexec/asdf.fish
     set -x PATH $HOME/.asdf/shims $PATH
 end
+
+# Homebrew
+eval "$($brew_prefix/bin/brew shellenv)"
 
 # Volta
 set -x PATH $PATH $VOLTA_HOME/bin
@@ -105,6 +105,9 @@ set -x PATH $PATH $HOME/.dotfiles/private/bin
 set -x PATH $PATH /usr/bin
 set -x PATH $PATH /usr/local/bin
 set -x PATH $PATH /usr/local/sbin
+
+# Make sure asdf comes first
+set -x PATH $HOME/.asdf/shims $PATH
 
 # Stable Diffusion Webui
 # set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
