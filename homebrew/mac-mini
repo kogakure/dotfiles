@@ -33,10 +33,10 @@ brew "bat"
 brew "bat-extras"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
-# Command-line interface for SQLite
-brew "sqlite"
 # Low-level library for pixel manipulation
 brew "pixman"
+# Command-line interface for SQLite
+brew "sqlite"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Remove large files or passwords from Git history like git-filter-branch
@@ -221,6 +221,8 @@ brew "tree-sitter"
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
+# Platform built on V8 to build network applications
+brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
 # General-purpose speech recognition model
@@ -596,8 +598,6 @@ vscode "dbaeumer.vscode-eslint"
 vscode "ecmel.vscode-html-css"
 vscode "editorconfig.editorconfig"
 vscode "enkia.tokyo-night"
-vscode "equinusocio.vsc-material-theme"
-vscode "equinusocio.vsc-material-theme-icons"
 vscode "esbenp.prettier-vscode"
 vscode "file-icons.file-icons"
 vscode "gerane.theme-tomorrownight"
