@@ -48,6 +48,9 @@ set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAge
 # fd
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
 
+# Make Podman work with LazyDocker
+set -x DOCKER_HOST "unix://"(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')
+
 # fzf
 set -x FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
 set -x FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
