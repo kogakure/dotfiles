@@ -17,7 +17,7 @@ bind -M viins '^z' fzf-cd-widget
 
 # *** *** Session Variables *** ***
 
-set TERM wezterm
+# set TERM wezterm
 
 # General
 set -x KEYTIMEOUT 1
