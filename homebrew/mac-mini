@@ -168,7 +168,7 @@ brew "grex"
 # Tool for glamorous shell scripts
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake"
+brew "handbrake", link: false
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
@@ -241,6 +241,8 @@ brew "pngpaste"
 brew "pnpm"
 # Perl documentation generator
 brew "pod2man"
+# Tool for managing OCI containers and pods
+brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
@@ -481,6 +483,8 @@ cask "ollamac"
 cask "openttd"
 # Control your smart light system
 cask "philips-hue-sync"
+# Browse, manage, inspect containers and images
+cask "podman-desktop"
 # Collaboration platform for API development
 cask "postman"
 # Client for Proton Drive
