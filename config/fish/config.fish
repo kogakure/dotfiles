@@ -27,12 +27,23 @@ if command -v nvim >/dev/null 2>&1
     set -x GIT_EDITOR nvim
 end
 
-# Check for Homebrew path
+# Determine Homebrew prefix based on architecture
 if test (uname -m) = arm64
     set brew_prefix /opt/homebrew
 else
     set brew_prefix /usr/local
 end
+
+# Check if essential commands are in PATH, if not add them
+if not command -v podman >/dev/null 2>&1 || not command -v brew >/dev/null 2>&1
+    # Add Homebrew to PATH if not already there
+    if not contains $brew_prefix/bin $PATH
+        set -x PATH $brew_prefix/bin $PATH
+    end
+end
+
+# Initialize Homebrew environment
+eval "$($brew_prefix/bin/brew shellenv)"
 
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 
@@ -84,9 +95,6 @@ if test -f $asdf_path/libexec/asdf.fish
     source $asdf_path/libexec/asdf.fish
     set -x PATH $HOME/.asdf/shims $PATH
 end
-
-# Homebrew
-eval "$($brew_prefix/bin/brew shellenv)"
 
 # Volta
 set -x PATH $PATH $VOLTA_HOME/bin
