@@ -15,8 +15,6 @@ brew "giflib"
 brew "libpng"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
@@ -35,8 +33,6 @@ brew "bat-extras"
 brew "gettext"
 # Low-level library for pixel manipulation
 brew "pixman"
-# Command-line interface for SQLite
-brew "sqlite"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Remove large files or passwords from Git history like git-filter-branch
@@ -65,6 +61,8 @@ brew "chafa"
 brew "cloc"
 # Cross-platform make
 brew "cmake"
+# Command-line interface for SQLite
+brew "sqlite"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # GNU File, Shell, and Text utilities
@@ -168,7 +166,7 @@ brew "grex"
 # Tool for glamorous shell scripts
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake", link: false
+brew "handbrake"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
@@ -213,8 +211,6 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
-# Fast, highly customisable system info script
-brew "neofetch"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -285,8 +281,6 @@ brew "starship"
 brew "texinfo"
 # Code-search similar to ack
 brew "the_silver_searcher"
-# Simplified and community-driven man pages
-brew "tldr"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
@@ -357,8 +351,6 @@ cask "ankerwork"
 cask "anki"
 # Application uninstaller
 cask "appcleaner"
-# Open-source project and knowledge management tool
-cask "appflowy"
 # Chromium based browser
 cask "arc"
 # Multi-track audio editor and recorder
@@ -411,8 +403,6 @@ cask "font-ia-writer-quattro"
 cask "font-monaspace"
 cask "font-noto-emoji"
 cask "font-symbols-only-nerd-font"
-# Free VPN client for FortiClient
-cask "forticlient-vpn"
 # 3D parametric modeller
 cask "freecad"
 # Tool to measure the computer system's performance
@@ -437,8 +427,6 @@ cask "imageoptim"
 cask "integrity"
 # Menu bar calendar
 cask "itsycal"
-# Offline AI chat tool
-cask "jan"
 # Spot and merge differences in text and image files or folders
 cask "kaleidoscope@3"
 # Open-source screen recorder built with web technology
@@ -447,16 +435,12 @@ cask "kap"
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
-# Free and open-source painting and sketching program
-cask "krita"
 # Grammar, spelling and style suggestions in all the writing apps
 cask "languagetool"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-live"
-# Free cross-platform office suite, fresh version
-cask "libreoffice"
 # File system integration
 cask "macfuse"
 # Video format converter (transcoder)
@@ -479,14 +463,12 @@ cask "ogdesign-eagle"
 cask "ollama"
 # Interact with Ollama models
 cask "ollamac"
-# Open-source transport simulation game
-cask "openttd"
+# WebKit based web browser
+cask "orion"
 # Control your smart light system
 cask "philips-hue-sync"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
-# Collaboration platform for API development
-cask "postman"
 # Client for Proton Drive
 cask "proton-drive"
 # Client for Proton Mail and Proton Calendar
@@ -521,8 +503,6 @@ cask "sonos"
 cask "spotify"
 # Interior design application
 cask "sweet-home3d"
-# Mesh VPN based on WireGuard
-cask "tailscale"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Unpacks archive files
@@ -582,14 +562,16 @@ mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
-whalebrew "whalebrew/whalesay"
+whalebrew "directory"
 vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
 vscode "anteprimorac.html-end-tag-labels"
 vscode "arcticicestudio.nord-visual-studio-code"
 vscode "astro-build.astro-vscode"
+vscode "asvetliakov.vscode-neovim"
 vscode "bierner.markdown-preview-github-styles"
 vscode "bradlc.vscode-tailwindcss"
+vscode "catppuccin.catppuccin-vsc"
 vscode "christian-kohler.npm-intellisense"
 vscode "christian-kohler.path-intellisense"
 vscode "chrmarti.regex"
@@ -602,6 +584,7 @@ vscode "dbaeumer.vscode-eslint"
 vscode "ecmel.vscode-html-css"
 vscode "editorconfig.editorconfig"
 vscode "enkia.tokyo-night"
+vscode "equinusocio.vsc-material-theme"
 vscode "esbenp.prettier-vscode"
 vscode "file-icons.file-icons"
 vscode "gerane.theme-tomorrownight"
@@ -622,8 +605,13 @@ vscode "mrmlnc.vscode-attrs-sorter"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-playwright.playwright"
 vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.remote-ssh-edit"
+vscode "ms-vscode-remote.remote-wsl"
 vscode "ms-vscode-remote.vscode-remote-extensionpack"
 vscode "ms-vscode.extension-test-runner"
+vscode "ms-vscode.remote-explorer"
+vscode "ms-vscode.remote-server"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "pkief.material-icon-theme"
 vscode "pnp.polacode"
@@ -635,7 +623,6 @@ vscode "tyriar.sort-lines"
 vscode "unifiedjs.vscode-mdx"
 vscode "visualstudioexptteam.intellicode-api-usage-examples"
 vscode "visualstudioexptteam.vscodeintellicode"
-vscode "vscodevim.vim"
 vscode "wakatime.vscode-wakatime"
 vscode "wayou.vscode-todo-highlight"
 vscode "xabikos.javascriptsnippets"
