@@ -10,3 +10,4 @@
 .bundle/
 m~
 tags
+.tool-versions
