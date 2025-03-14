@@ -4,6 +4,10 @@
 defaults import com.apple.symbolichotkeys ~/.dotfiles/private/preferences/keyboard_shortcuts.plist
 defaults import com.apple.universalaccess ~/.dotfiles/private/preferences/universal_access_shortcuts.plist
 
+# Finder sidebar favorites
+defaults import com.apple.finder ~/.dotfiles/private/preferences/finder.plist
+killall Finder
+
 # Remove default Dock and import all Dock settings
 defaults delete com.apple.dock persistent-apps
 defaults delete com.apple.dock persistent-others

@@ -47,7 +47,7 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Reduce Motion
-defaults write com.apple.universalaccess reduceMotion -bool true
+defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
 
 # Menu Bar Size
 defaults write NSGlobalDomain NSTitleBarSize 22
@@ -191,11 +191,11 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Tracking speed: (default is 1.5 in GUI)
-defaults read -g com.apple.trackpad.scaling
-
 # Tracking speed: maximum 5.0
-defaults write -g com.apple.trackpad.scaling 5.0
+defaults write -g com.apple.trackpad.scaling -float 5.0
+
+# Mouse Tracking speed: maximum 5.0
+defaults write -g com.apple.mouse.scaling -float 1.5
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true

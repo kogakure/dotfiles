@@ -4,6 +4,9 @@
 defaults export com.apple.symbolichotkeys ~/.dotfiles/private/preferences/keyboard_shortcuts.plist
 defaults export com.apple.universalaccess ~/.dotfiles/private/preferences/universal_access_shortcuts.plist
 
+# Finder sidebar favorites
+defaults export com.apple.finder ~/.dotfiles/private/preferences/finder.plist
+
 # Export all Dock settings
 defaults export com.apple.dock ~/.dotfiles/private/preferences/dock.plist
 
