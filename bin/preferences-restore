@@ -46,6 +46,9 @@ cp ~/.dotfiles/private/preferences/com.brave.Browser.plist ~/Library/Preferences
 # CleanShot X
 cp ~/.dotfiles/private/preferences/pl.maketheweb.cleanshotx.plist ~/Library/Preferences/
 
+# DEVONthink 3
+cp ~/.dotfiles/private/preferences/com.devon-technologies.think3.plist ~/Library/Preferences/
+
 # Itsycal
 cp ~/.dotfiles/private/preferences/com.mowglii.itsycalApp.plist ~/Library/Preferences/
 
