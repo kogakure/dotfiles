@@ -93,7 +93,9 @@ keybind = ctrl+alt+j=text:\x02s
 keybind = ctrl+alt+k=text:\x02s
 
 # Smart tmux session manager
+# FIXME: Shortcut stopped working, no clue why
 keybind = ctrl+alt+p=text:\x02T
+keybind = shift+ctrl+alt+cmd+p=text:\x02T
 
 # Return to last session
 keybind = ctrl+alt+r=text:\x02R
