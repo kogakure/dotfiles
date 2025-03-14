@@ -1,3 +1,6 @@
+# Basic configuration
+shell-integration = detect
+
 ##### Typography #####
 
 # Font configuration
@@ -39,6 +42,7 @@ window-width = 100
 window-colorspace = "display-p3"
 
 # Macos
+macos-non-native-fullscreen = true
 macos-titlebar-style = hidden
 macos-option-as-alt = true
 mouse-hide-while-typing = true
