@@ -144,7 +144,16 @@ if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 7"
 
 [[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = "move-node-to-workspace 9"
+
+[[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.daisydiskapp.DaisyDiskStandAlone'
 check-further-callbacks = true
 run = 'layout floating'
 
