@@ -6,6 +6,8 @@ First, install the Xcode command-line tools:
 
 ```sh
 xcode-select --install
+sudo softwareupdate --install-rosetta
+sudo xcodebuild -license accept
 ```
 
 ## Install Homebrew

@@ -48,6 +48,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Install tmux plugins
 ~/.tmux/plugins/tpm/bin/install_plugins
 
+# Create folders
+mkdir -p ~/.config
+mkdir -p ~/.gnupg
+
 # Symlink dotfiles
 ./install
 
@@ -100,8 +104,36 @@ if ! command -v fish &>/dev/null; then
 	brew install fish
 fi
 
+# Add fish to /etc/shells
+echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
+
 # Change default shell to fish
 echo "Changing default shell to fish"
 run_with_sudo chsh -s $(which fish) $USER
+
+# Add fish to /etc/shells
+echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
+
+# Login to atuin
+atuin login
+
+# Configure GPG to use pinentry-mac
+echo "Configuring GPG to use pinentry-mac …"
+echo "pinentry-program /opt/homebrew/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+gpgconf --kill gpg-agent
+gpg-agent --daemon
+./bin/gpg-keys-restore
+
+# Install asdf versions
+./private/asdf/init.sh
+asdf reshim
+
+# Project setup
+./private/bin/project-setup
+
+# Restore MacOS settings, preferences, and launchagents
+./bin/launchagents-restore
+./bin/preferences-restore
+./bin/macos-settings
 
 echo "Done."
