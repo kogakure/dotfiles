@@ -40,3 +40,12 @@ sudo softwareupdate -i -a
 
 # Write Homebrew Brewfile
 homebrew-backup
+
+# Write preferences
+preferences-backup
+
+# Write launch agents
+launchagents-backup
+
+# Write GPG keys
+gpg-keys-backup
