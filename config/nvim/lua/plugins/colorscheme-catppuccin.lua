@@ -1,7 +1,10 @@
 -- https://github.com/catppuccin/nvim
 return {
-  "catppuccin/nvim",
-  lazy = false,
-  priority = 1000,
-  name = "catppuccin",
+	"catppuccin/nvim",
+	lazy = false,
+	priority = 1000,
+	name = "catppuccin",
+	opts = {
+		transparent_background = true,
+	},
 }
