@@ -5,7 +5,7 @@ session_path = "~/Code/GitHub/websites/stefanimhoff-de"
 script_path = "~/.config/sesh/scripts/node_dev"
 
 [[session]]
-name = "⭐Dotfiles"
+name = "🌟Dotfiles"
 path = "~/.dotfiles"
 
 [[session]]
