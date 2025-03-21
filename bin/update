@@ -46,6 +46,3 @@ preferences-backup
 
 # Write launch agents
 launchagents-backup
-
-# Write GPG keys
-gpg-keys-backup

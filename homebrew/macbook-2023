@@ -30,12 +30,12 @@ brew "bat"
 brew "bat-extras"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -204,6 +204,8 @@ brew "pngpaste"
 brew "pnpm"
 # Perl documentation generator
 brew "pod2man"
+# Tool for managing OCI containers and pods
+brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
@@ -406,6 +408,8 @@ cask "obsidian"
 cask "ollama"
 # Control your smart light system
 cask "philips-hue-sync"
+# Browse, manage, inspect containers and images
+cask "podman-desktop"
 # Client for Proton Drive
 cask "proton-drive"
 # Client for Proton Mail and Proton Calendar

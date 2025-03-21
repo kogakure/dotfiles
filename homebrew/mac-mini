@@ -384,6 +384,8 @@ cask "db-browser-for-sqlite"
 cask "deepl"
 # Collect, organise, edit and annotate documents
 cask "devonthink"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
