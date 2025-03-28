@@ -15,6 +15,10 @@ brew "giflib"
 brew "libpng"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
+# YAML Parser
+brew "libyaml"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
@@ -61,6 +65,8 @@ brew "chafa"
 brew "cloc"
 # Cross-platform make
 brew "cmake"
+# Library for command-line editing
+brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # Defines a standard way of committing rules and communicating it
