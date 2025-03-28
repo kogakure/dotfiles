@@ -119,7 +119,7 @@ atuin login
 
 # Configure GPG to use pinentry-mac
 echo "Configuring GPG to use pinentry-mac …"
-echo "pinentry-program /opt/homebrew/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+echo "pinentry-program /opt/homebrew/bin/pinentry-mac" >>~/.gnupg/gpg-agent.conf
 gpgconf --kill gpg-agent
 gpg-agent --daemon
 ./bin/gpg-keys-restore
@@ -127,6 +127,10 @@ gpg-agent --daemon
 # Install asdf versions
 ./private/asdf/init.sh
 asdf reshim
+
+# Install Doom Emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
 
 # Project setup
 ./private/bin/project-setup

@@ -1,4 +1,5 @@
 tap "charmbracelet/tap"
+tap "d12frosted/emacs-plus"
 tap "dustinblackman/tap"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
@@ -199,6 +200,8 @@ brew "lazydocker"
 brew "lazygit"
 # Terminal file manager
 brew "lf"
+# JIT library for the GNU compiler collection
+brew "libgccjit"
 # Conversion library
 brew "libiconv"
 # Text-based web browser
@@ -273,6 +276,8 @@ brew "rust"
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
 # Create beautiful image of your source code
@@ -331,6 +336,8 @@ brew "zoxide"
 brew "zsh"
 # A tasty, self-hostable Git server for the command line🍦
 brew "charmbracelet/tap/soft-serve"
+# GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@30"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
 # A window border system for macOS

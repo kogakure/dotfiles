@@ -120,6 +120,9 @@ set -x PATH $PATH /usr/bin
 set -x PATH $PATH /usr/local/bin
 set -x PATH $PATH /usr/local/sbin
 
+# Emacs
+set -x PATH $PATH $HOME/.config/emacs/bin
+
 # Make sure asdf comes first
 set -x PATH $HOME/.asdf/shims $PATH
 
