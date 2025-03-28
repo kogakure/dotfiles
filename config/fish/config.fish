@@ -77,9 +77,9 @@ set -x FZF_TMUX 1
 set -x FZF_TMUX_OPTS -p
 
 # OpenSSL
-set -x LDFLAGS "-L$brew_prefix/opt/openssl@1.1/lib"
-set -x CPPFLAGS "-I$brew_prefix/opt/openssl@1.1/include"
-set -x PKG_CONFIG_PATH "$brew_prefix/opt/openssl@1.1/lib/pkgconfig"
+set -x LDFLAGS "-L$brew_prefix/opt/openssl/lib"
+set -x CPPFLAGS "-I$brew_prefix/opt/openssl/include"
+set -x PKG_CONFIG_PATH "$brew_prefix/opt/openssl/lib/pkgconfig"
 
 # Man
 set -x MANPATH /usr/local/man $MANPATH
