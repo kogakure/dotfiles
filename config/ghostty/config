@@ -33,7 +33,7 @@ theme = tokyonight
 
 # Window settings
 window-decoration = false
-background-opacity = 0.7
+background-opacity = 0.8
 background-blur-radius = 20
 window-padding-x = 30
 window-padding-y = 30
