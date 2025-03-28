@@ -216,6 +216,9 @@ alias lg lazygit
 # Vim/Neovim
 alias v vim
 
+# Emacs
+alias emacs "emacs -nw"
+
 if type nvim >/dev/null 2>&1
     alias vim nvim
 end
