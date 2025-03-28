@@ -38,7 +38,7 @@
     "ss07": true,
     "ss08": true
   },
-  "buffer_font_size": 20,
+  "buffer_font_size": 18,
   "confirm_quit": false,
   "cursor_blink": false,
   "format_on_save": "on",
