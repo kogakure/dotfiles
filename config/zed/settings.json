@@ -78,5 +78,37 @@
     "font_size": 20
   },
   "ui_font_size": 20,
-  "vim_mode": true
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  "auto_install_extensions": {
+    "astro": true,
+    "basher": true,
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "cspell": true,
+    "csv": true,
+    "deno": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "emmet": true,
+    "fish": true,
+    "git-firefly": true,
+    "graphql": true,
+    "html": true,
+    "ini": true,
+    "log": true,
+    "lua": true,
+    "mermaid": true,
+    "nginx": true,
+    "rainbow-csv": true,
+    "ruby": true,
+    "scss": true,
+    "sql": true,
+    "svelte": true,
+    "tmux": true,
+    "tokyo-night": true,
+    "toml": true,
+    "wakatime": true,
+    "xml": true
+  }
 }
