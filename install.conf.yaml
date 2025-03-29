@@ -36,6 +36,7 @@
     ~/.profile: profile
     ~/.session-variables.sh: session-variables.sh
     ~/.tool-versions: tool-versions
+    ~/.wakatime.cfg: private/wakatime.cfg
     ~/.wget: wget
     ~/.zsh_plugins.txt: zsh_plugins.txt
     ~/.zshenv: zshenv
