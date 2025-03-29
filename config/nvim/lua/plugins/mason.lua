@@ -19,6 +19,7 @@ return {
 			"gofumpt",
 			"goimports",
 			"gomodifytags",
+			"harper-ls",
 			"html-lsp",
 			"htmlbeautifier",
 			"impl",
