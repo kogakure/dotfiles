@@ -68,7 +68,7 @@
       }
     }
   },
-  "preferred_line_length": 100,
+  "preferred_line_length": 80,
   "remove_trailing_whitespace_on_save": true,
   "show_whitespaces": "selection",
   "soft_wrap": "preferred_line_length",

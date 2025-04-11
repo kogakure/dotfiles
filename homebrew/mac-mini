@@ -514,6 +514,8 @@ cask "session"
 cask "sf-symbols"
 # Instant messaging application focusing on security
 cask "signal"
+# Team communication and collaboration software
+cask "slack"
 # Control your Sonos system
 cask "sonos"
 # Music streaming service
@@ -567,11 +569,13 @@ vscode "csstools.postcss"
 vscode "davidlday.languagetool-linter"
 vscode "daylerees.rainglow"
 vscode "dbaeumer.vscode-eslint"
+vscode "docker.docker"
 vscode "ecmel.vscode-html-css"
 vscode "editorconfig.editorconfig"
 vscode "elijah-potter.harper"
 vscode "enkia.tokyo-night"
 vscode "equinusocio.vsc-material-theme"
+vscode "equinusocio.vsc-material-theme-icons"
 vscode "esbenp.prettier-vscode"
 vscode "file-icons.file-icons"
 vscode "gerane.theme-tomorrownight"
