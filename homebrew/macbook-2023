@@ -492,6 +492,7 @@ mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
+mas "Windows App", id: 1295203466
 mas "Yoink", id: 457622435
 whalebrew "whalebrew/whalesay"
 vscode "adamvoss.vscode-languagetool"
