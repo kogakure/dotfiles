@@ -346,6 +346,8 @@ brew "dustinblackman/tap/oatmeal"
 brew "felixkratz/formulae/borders"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
+# Sound and music editor
+cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
 # Professional graphic design software
@@ -559,6 +561,7 @@ mas "Draw Things", id: 6444050820
 mas "Exporter", id: 1099120373
 mas "Free MP4 Converter", id: 693443591
 mas "fullmoon", id: 6727014156
+mas "GarageBand", id: 682658836
 mas "Goodnotes", id: 1444383602
 mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
