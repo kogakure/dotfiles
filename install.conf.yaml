@@ -32,6 +32,7 @@
     ~/.gitmux.conf: gitmux.conf
     ~/.gnupg/dirmngr.conf: gnupg/dirmngr.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
+    ~/.jjconfig.toml: jjconfig.toml
     ~/.markdownlint.yaml: markdownlint.yaml
     ~/.profile: profile
     ~/.session-variables.sh: session-variables.sh
