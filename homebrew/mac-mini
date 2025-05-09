@@ -190,6 +190,8 @@ brew "shared-mime-info"
 brew "imagemagick"
 # Make XML documents translatable through PO files
 brew "itstool"
+# Git-compatible distributed version control system
+brew "jj"
 # Command-line pager for JSON data
 brew "jless"
 # Image manipulation library
@@ -551,7 +553,7 @@ cask "wiso-steuer-2024"
 # Multiplayer code editor
 cask "zed"
 # Gecko based web browser
-cask "zen-browser"
+cask "zen"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "DaVinci Resolve", id: 571213070
@@ -609,8 +611,6 @@ vscode "ecmel.vscode-html-css"
 vscode "editorconfig.editorconfig"
 vscode "elijah-potter.harper"
 vscode "enkia.tokyo-night"
-vscode "equinusocio.vsc-material-theme"
-vscode "equinusocio.vsc-material-theme-icons"
 vscode "esbenp.prettier-vscode"
 vscode "file-icons.file-icons"
 vscode "gerane.theme-tomorrownight"
