@@ -9,7 +9,7 @@ font-family-italic = Monaspace Radon
 font-family-bold = Monaspace Krypton
 font-family-bold-italic = Monaspace Radon
 
-font-size = 18
+font-size = 16
 adjust-cell-height = 20%
 
 # Font features for Monaspace
@@ -33,7 +33,7 @@ theme = tokyonight
 
 # Window settings
 window-decoration = false
-background-opacity = 0.8
+background-opacity = 0.95
 background-blur-radius = 20
 window-padding-x = 30
 window-padding-y = 30

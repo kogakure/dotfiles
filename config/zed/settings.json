@@ -15,6 +15,7 @@
     "edit_prediction_provider": "zed"
   },
   "assistant": {
+    "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-3-7-sonnet"
