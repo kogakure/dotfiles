@@ -18,6 +18,8 @@ brew "openssl@3"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
@@ -28,8 +30,6 @@ brew "bash-completion"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
 # Library for command-line editing
