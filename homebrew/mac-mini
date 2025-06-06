@@ -24,6 +24,8 @@ brew "openssl@3"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
@@ -34,8 +36,6 @@ brew "bash-completion"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
 # Low-level library for pixel manipulation
 brew "pixman"
 # Vector graphics library with cross-device output support
@@ -370,8 +370,6 @@ cask "ankerwork"
 cask "anki"
 # Application uninstaller
 cask "appcleaner"
-# Chromium based browser
-cask "arc"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
@@ -472,6 +470,8 @@ cask "microsoft-auto-update"
 cask "microsoft-outlook"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
+# Display MIDI signals going in and out of your computer
+cask "midi-monitor"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Calculator and converter application
@@ -556,6 +556,7 @@ cask "zed"
 cask "zen"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
+mas "Cake Wallet", id: 1334702542
 mas "DaVinci Resolve", id: 571213070
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
@@ -628,6 +629,7 @@ vscode "miguelsolorio.fluent-icons"
 vscode "miguelsolorio.symbols"
 vscode "mikestead.dotenv"
 vscode "mrmlnc.vscode-attrs-sorter"
+vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-playwright.playwright"
 vscode "ms-vscode-remote.remote-containers"
