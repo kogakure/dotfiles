@@ -478,12 +478,10 @@ mas "iFinance 5", id: 1500241909
 mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
-mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Pieoneer", id: 6739781207
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Reeder", id: 1529448980
@@ -492,7 +490,6 @@ mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
-mas "Windows App", id: 1295203466
 mas "Yoink", id: 457622435
 whalebrew "whalebrew/whalesay"
 vscode "adamvoss.vscode-languagetool"

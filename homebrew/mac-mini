@@ -397,8 +397,6 @@ cask "cryptomator"
 cask "daisydisk"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
-# Trains AIs to understand and translate texts
-cask "deepl"
 # Collect, organise, edit and annotate documents
 cask "devonthink"
 # Voice and text chat software
