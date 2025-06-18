@@ -162,3 +162,8 @@ if.app-id = 'company.thebrowser.Browser'
 if.window-title-regex-substring = '^[^Space|Little]'
 check-further-callbacks = true
 run = 'layout tiling'
+
+[[on-window-detected]]
+if.app-id = 'io.zsa.keymapp'
+check-further-callbacks = true
+run = 'layout floating'

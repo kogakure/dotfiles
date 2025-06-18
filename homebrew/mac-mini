@@ -452,6 +452,8 @@ cask "kap"
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
+# ZSA keyboard firmware flasher
+cask "keymapp"
 # Grammar, spelling and style suggestions in all the writing apps
 cask "languagetool"
 # Official client for LBRY, a decentralised file-sharing and payment network
