@@ -4,6 +4,6 @@ lua 5.4.6
 rust 1.86.0
 ruby 3.3.4
 golang 1.22.5
-nodejs 20.11.1
+nodejs 22.15.1
 neovim 0.11.1
 direnv 2.32.2
