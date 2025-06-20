@@ -378,6 +378,8 @@ cask "kap"
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
+# ZSA keyboard firmware flasher
+cask "keymapp"
 # Grammar, spelling and style suggestions in all the writing apps
 cask "languagetool"
 # Wallet desktop application to maintain multiple cryptocurrencies
@@ -464,33 +466,6 @@ cask "whatsapp"
 cask "wiso-steuer-2024"
 # Multiplayer code editor
 cask "zed"
-mas "1-Click Video Converter", id: 717545086
-mas "Aiko", id: 1672085276
-mas "DaVinci Resolve", id: 571213070
-mas "Day One", id: 1055511498
-mas "Deliveries", id: 290986013
-mas "Draw Things", id: 6444050820
-mas "Exporter", id: 1099120373
-mas "Free MP4 Converter", id: 693443591
-mas "Goodnotes", id: 1444383602
-mas "iA Writer", id: 775737590
-mas "iFinance 5", id: 1500241909
-mas "iMovie", id: 408981434
-mas "Key Codes", id: 414568915
-mas "Keynote", id: 409183694
-mas "Mela", id: 1568924476
-mas "MindNode", id: 1289197285
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Proton Pass for Safari", id: 6502835663
-mas "Pure Paste", id: 1611378436
-mas "Reeder", id: 1529448980
-mas "Save to Raindrop.io", id: 1549370672
-mas "Smart Converter", id: 447513724
-mas "Things", id: 904280696
-mas "Time Sink", id: 404363161
-mas "Typeface", id: 1062679359
-mas "Yoink", id: 457622435
 whalebrew "whalebrew/whalesay"
 vscode "adamvoss.vscode-languagetool"
 vscode "ahmadalli.vscode-nginx-conf"
