@@ -13,6 +13,8 @@ brew "antidote"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
@@ -23,8 +25,6 @@ brew "bash-completion"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -328,8 +328,6 @@ cask "color-oracle"
 cask "cryptomator"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
-# Trains AIs to understand and translate texts
-cask "deepl"
 # Collect, organise, edit and annotate documents
 cask "devonthink"
 # App to build and share containerised applications and microservices
@@ -379,6 +377,8 @@ cask "kap"
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
+# ZSA keyboard firmware flasher
+cask "keymapp"
 # Grammar, spelling and style suggestions in all the writing apps
 cask "languagetool"
 # Official client for LBRY, a decentralised file-sharing and payment network
