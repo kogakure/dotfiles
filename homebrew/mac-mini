@@ -262,6 +262,10 @@ brew "prettier"
 brew "prettierd"
 # Easily download, build, install, upgrade, and uninstall Python packages
 brew "python-setuptools"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Python interface to Tcl/Tk
+brew "python-tk@3.10"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
@@ -402,7 +406,7 @@ cask "devonthink"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
-cask "docker"
+cask "docker-desktop"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Collaborative team software
@@ -433,7 +437,7 @@ cask "google-japanese-ime"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
 # Open-source video transcoder
-cask "handbrake"
+cask "handbrake-app"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
 # Free and open-source media player
@@ -455,7 +459,7 @@ cask "keycastr"
 # ZSA keyboard firmware flasher
 cask "keymapp"
 # Grammar, spelling and style suggestions in all the writing apps
-cask "languagetool"
+cask "languagetool-desktop"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
@@ -481,7 +485,7 @@ cask "obsidian"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
 # Get up and running with large language models locally
-cask "ollama"
+cask "ollama-app"
 # Interact with Ollama models
 cask "ollamac"
 # WebKit based web browser
