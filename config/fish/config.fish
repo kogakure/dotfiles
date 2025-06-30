@@ -55,6 +55,7 @@ set -x XDG_STATE_HOME $HOME/.local/state
 
 # jj
 set -x JJ_CONFIG_DIR $HOME/.config/jj
+jj util completion fish | source
 
 # GPG
 set -gx GPG_TTY (tty)
