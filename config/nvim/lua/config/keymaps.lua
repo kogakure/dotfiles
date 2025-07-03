@@ -22,8 +22,6 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Keep the window centered (previous s
 vim.keymap.set("n", "<expr> j", "(v:count == 0 ? 'gj' : 'j')", { desc = "Move by rows in wrapped mode (down)", noremap = true, silent = true })
 -- stylua: ignore
 vim.keymap.set("n", "<expr> k", "(v:count == 0 ? 'gk' : 'k')", { desc = "Move by rows in wrapped mode (up)", noremap = true, silent = true })
-vim.keymap.set("n", "gP", "`[v`]", { desc = "Visually select of just pasted content", noremap = true, silent = true })
-vim.keymap.set("n", "gy", "`[v`]y", { desc = "Visually select of just pasted content", noremap = true, silent = true })
 -- stylua: ignore
 vim.keymap.set("n", "<leader>wi", ":silent !open -a iA\\ Writer.app '%:p'<CR>", { desc = "Open in iA Writer", noremap = true, silent = true })
 
@@ -31,16 +29,16 @@ vim.keymap.set("n", "-", "<CMD>foldclose<CR>", { desc = "Close code fold" })
 vim.keymap.set("n", "+", "<CMD>foldopen<CR>", { desc = "Open code fold" })
 
 vim.keymap.set("n", "<C-h>", function()
-  require("smart-splits").move_cursor_left()
+	require("smart-splits").move_cursor_left()
 end)
 vim.keymap.set("n", "<C-j>", function()
-  require("smart-splits").move_cursor_down()
+	require("smart-splits").move_cursor_down()
 end)
 vim.keymap.set("n", "<C-k>", function()
-  require("smart-splits").move_cursor_up()
+	require("smart-splits").move_cursor_up()
 end)
 vim.keymap.set("n", "<C-l>", function()
-  require("smart-splits").move_cursor_right()
+	require("smart-splits").move_cursor_right()
 end)
 
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
