@@ -140,4 +140,8 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ./bin/preferences-restore
 ./bin/macos-settings
 
+# Services
+brew services start atuin
+brew services start borders
+
 echo "Done."
