@@ -170,10 +170,6 @@ alias dotfiles 'cd $HOME/.dotfiles'
 alias icloud 'cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias dropbox 'cd $HOME/Dropbox'
 
-# pnpm
-alias pn pnpm
-alias px pnpx
-
 # Git
 alias ga 'git add'
 alias gb 'git branch'
@@ -203,32 +199,17 @@ alias grb 'git rebase master'
 alias grbc 'git rebase --continue'
 alias grbi 'git rebase -i '
 alias grbs 'git rebase --skip'
-alias gru 'git remote update'
-alias gsb 'git show-branch'
-alias gsl 'git submodule foreach git pull'
-alias gst 'git status -sb'
-alias gsu 'git submodule update'
-alias gu 'git up'
-alias gw 'git whatchanged'
-alias gw 'git worktree'
-alias gwa 'git worktree add' # <folder> <branch/hash>
-alias gwl 'git worktree list'
-alias gwp 'git whatchanged -p'
-alias gwr 'git worktree remove' # <path/name>
 alias lg lazygit
 
 # Vim/Neovim
 alias v vim
 
-# Emacs
-alias emacs "emacs -nw"
-
 if type nvim >/dev/null 2>&1
     alias vim nvim
 end
 
-# Homebrew
-alias bi 'brew install'
+# Emacs
+alias emacs "emacs -nw"
 
 # TMUX
 alias t tmux
@@ -239,9 +220,6 @@ alias youtube-dl yt-dlp
 
 # iA Writer
 alias ia 'open $1 -a /Applications/iA\ Writer.app'
-
-# Recursively delete `.DS_Store` files
-alias cleanup 'find . -type f -name "*.DS_Store" -ls -delete'
 
 # Clear the screen
 alias c clear

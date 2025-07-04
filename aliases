@@ -10,53 +10,10 @@ alias dotfiles="cd $HOME/.dotfiles"
 alias icloud="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
 alias dropbox="cd $HOME/Dropbox"
 
-# pnpm
-alias pn='pnpm'
-alias px='pnpx'
-
 # Git
-alias ga='git add'
-alias gb='git branch'
-alias gba='git branch -a'
-alias gc='git commit -v'
-alias gca='git commit -v -a'
-alias gcam='git commit --amend'
-alias gcan='git commit --amend --no-edit'
-alias gd='git diff -- . ":(exclude)yarn.lock"' # Show differences between index and working tree
-alias gdc='git diff --cached' # Show changes in next commit (differences between index and last commit)
-alias gdh='git diff head' # Show difference between files in working tree and last commit
-alias gdt='git difftool'
-alias gfa='git fetch --all'
-alias gg='git log'
-alias ghi='git hist'
-alias gl='git pull'
-alias glr='git pull --rebase'
 alias glu='git config user.name "Stefan Imhoff" && git config user.email "gpg@kogakure.8shield.net" && git config user.signingkey "7A7253E8!"'
 alias glx='git config user.name "Stefan Imhoff" && git config user.email "stefan.imhoff@xing.com" && git config user.signingkey "73C3E2E3!"'
-alias gmb='git merge-base master HEAD'
-alias gp='git push'
-alias gpf='git push --force-with-lease'
-alias gpp='PATCHNAME=`git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/\1/"`-`date "+%Y-%m-%d-%H%M.patch"`; git diff --full-index master > ../patches/$PATCHNAME'
-alias gpu='git push -u origin HEAD'
-alias gpv='git push --no-verify'
-alias grb='git rebase master'
-alias grbc='git rebase --continue'
-alias grbi='git rebase -i '
-alias grbs='git rebase --skip'
-alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
-alias gru='git remote update'
-alias gsb='git show-branch'
-alias gsl='git submodule foreach git pull'
-alias gst='git status -sb'
-alias gsu='git submodule update'
-alias gu='git up'
-alias gw='git whatchanged'
-alias gwp='git whatchanged -p'
 alias lg='lazygit'
-alias gw='git worktree'
-alias gwl='git worktree list'
-alias gwa='git worktree add' # <folder> <branch/hash>
-alias gwr='git worktree remove' # <path/name>
 
 # Vim
 alias v='vim'
@@ -65,8 +22,9 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-# Homebrew
-alias bi='brew install'
+# Emacs
+alias emacs "emacs -nw"
+
 
 # Tmux
 alias t='tmux'
@@ -78,12 +36,6 @@ alias youtube-dl='yt-dlp'
 # iA Writer
 alias ia='open $1 -a /Applications/iA\ Writer.app'
 
-# Recursively delete `.DS_Store` files
-alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
-
 # Clear the screen
 alias c="clear"
 
-# Empty the Trash on all mounted volumes and the main HDD
-# Also, clear Apple’s System Logs to improve shell startup speed
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
