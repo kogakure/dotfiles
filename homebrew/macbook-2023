@@ -452,7 +452,7 @@ cask "the-unarchiver"
 cask "transmit"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
-# Virtualizer for x86 and arm64 hardware
+# Virtualiser for arm64 hardware
 cask "virtualbox@beta"
 # Open-source code editor
 cask "visual-studio-code"
@@ -481,7 +481,6 @@ mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672

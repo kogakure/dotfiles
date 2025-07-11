@@ -532,6 +532,8 @@ cask "sonos"
 cask "spotify"
 # Interior design application
 cask "sweet-home3d"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Unpacks archive files
@@ -542,7 +544,7 @@ cask "tor-browser"
 cask "transmit"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
-# Virtualizer for x86 and arm64 hardware
+# Virtualiser for arm64 hardware
 cask "virtualbox@beta"
 # Open-source code editor
 cask "visual-studio-code"
