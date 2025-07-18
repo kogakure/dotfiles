@@ -24,6 +24,8 @@ brew "gettext"
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
+# Library for command-line editing
+brew "readline"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -32,8 +34,6 @@ brew "bat"
 brew "bat-extras"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
-# Library for command-line editing
-brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # Remove large files or passwords from Git history like git-filter-branch
@@ -468,25 +468,6 @@ cask "whatsapp"
 cask "wiso-steuer-2024"
 # Multiplayer code editor
 cask "zed"
-mas "1-Click Video Converter", id: 717545086
-mas "Aiko", id: 1672085276
-mas "Deliveries", id: 290986013
-mas "Exporter", id: 1099120373
-mas "Free MP4 Converter", id: 693443591
-mas "iA Writer", id: 775737590
-mas "iMovie", id: 408981434
-mas "Key Codes", id: 414568915
-mas "Keynote", id: 409183694
-mas "Mela", id: 1568924476
-mas "MindNode", id: 1289197285
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Pure Paste", id: 1611378436
-mas "Reeder", id: 1529448980
-mas "Save to Raindrop.io", id: 1549370672
-mas "Smart Converter", id: 447513724
-mas "Time Sink", id: 404363161
-mas "Typeface", id: 1062679359
 whalebrew "whalebrew/whalesay"
 vscode "adamvoss.vscode-languagetool"
 vscode "ahmadalli.vscode-nginx-conf"
