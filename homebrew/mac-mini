@@ -30,6 +30,8 @@ brew "gettext"
 brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin", restart_service: :changed
+# Library for command-line editing
+brew "readline"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -68,8 +70,6 @@ brew "chafa"
 brew "cloc"
 # Cross-platform make
 brew "cmake"
-# Library for command-line editing
-brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # Defines a standard way of committing rules and communicating it
