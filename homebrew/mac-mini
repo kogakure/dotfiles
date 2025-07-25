@@ -411,6 +411,8 @@ cask "discord"
 cask "docker-desktop"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
+# Web browser focusing on privacy
+cask "duckduckgo"
 # Collaborative team software
 cask "figma"
 # Web browser
