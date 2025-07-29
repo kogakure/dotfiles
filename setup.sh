@@ -124,6 +124,10 @@ gpgconf --kill gpg-agent
 gpg-agent --daemon
 ./bin/gpg-keys-restore
 
+# Install mise and mise versions
+curl https://mise.run | sh
+./private/mise/init.sh
+
 # Install asdf versions
 ./private/asdf/init.sh
 asdf reshim

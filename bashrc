@@ -25,6 +25,11 @@ if command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix asdf)/libexec/asdf.s
 	source "$(brew --prefix asdf)/libexec/asdf.sh"
 fi
 
+# Mise
+if command -v mise >/dev/null 2>&1; then
+	eval "$($HOME/.local/bin/mise activate bash)"
+fi
+
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1; then
 	eval "$(gh completion -s bash)"

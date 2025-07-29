@@ -140,6 +140,11 @@ if command -v gh >/dev/null 2>&1
     eval "$(gh completion -s fish)"
 end
 
+# Mise
+if command -v mise >/dev/null 2>&1
+    $HOME/.local/bin/mise activate fish | source
+end
+
 # fzf
 fzf --fish | source
 

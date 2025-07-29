@@ -24,6 +24,11 @@ if command -v brew &>/dev/null && [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]
   fi
 fi
 
+# Mise
+if command -v mise &>/dev/null; then
+	eval "$($HOME/.local/bin/mise activate zsh)"
+fi
+
 # GitHub CLI completion
 if command -v gh &>/dev/null; then
   eval "$(gh completion -s zsh)"
@@ -68,3 +73,4 @@ source "$HOME/.aliases"
 for file in ~/.functions/*.sh; do
   source "$file"
 done
+
