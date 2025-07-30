@@ -4,8 +4,6 @@
 rawset(_G, "vim", vim or {})
 
 vim.keymap.set("n", "<leader>j", ":b#<CR>", { desc = "Toggle between buffers", noremap = true, silent = true })
-vim.keymap.set("n", ";;", "A;<ESC>", { desc = "Add semicolon to the end of the line", noremap = true, silent = true })
-vim.keymap.set("n", ",,", "A,<ESC>", { desc = "Add comma to the end of the line", noremap = true, silent = true })
 -- stylua: ignore
 vim.keymap.set("v", "y", "myy`y", { desc = "Maintain the cursor position when yanking a visual selection", noremap = true, silent = true })
 vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true, silent = true })
