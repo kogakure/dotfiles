@@ -15,20 +15,6 @@ bindkey -M viins '^z' fzf-cd-widget      # (z) jump
 
 # *** *** Tools *** ***
 
-# asdf
-if command -v brew &>/dev/null && [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
-  . "$(brew --prefix asdf)/libexec/asdf.sh"
-
-  if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ]; then
-    source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-  fi
-fi
-
-# Mise
-if command -v mise &>/dev/null; then
-	eval "$($HOME/.local/bin/mise activate zsh)"
-fi
-
 # GitHub CLI completion
 if command -v gh &>/dev/null; then
   eval "$(gh completion -s zsh)"

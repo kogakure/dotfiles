@@ -128,10 +128,6 @@ gpg-agent --daemon
 curl https://mise.run | sh
 ./private/mise/init.sh
 
-# Install asdf versions
-./private/asdf/init.sh
-asdf reshim
-
 # Install Doom Emacs
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install

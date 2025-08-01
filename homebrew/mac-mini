@@ -24,12 +24,10 @@ brew "openssl@3"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin", restart_service: :changed
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Library for command-line editing
 brew "readline"
 # Programmable completion for Bash 3.2
@@ -218,6 +216,8 @@ brew "mactop"
 brew "mas"
 # Fast and user friendly build system
 brew "meson"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
 # Feature-rich command-line audio/video downloader

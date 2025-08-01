@@ -16,8 +16,6 @@ brew "asciidoctor"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
-# Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Programmable completion for Bash 3.2
 brew "bash-completion"

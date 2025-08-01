@@ -93,13 +93,6 @@ set -x VOLTA_HOME $HOME/.volta
 
 # *** *** Session Paths *** ***
 
-# asdf
-set -l asdf_path (brew --prefix asdf)
-if test -f $asdf_path/libexec/asdf.fish
-    source $asdf_path/libexec/asdf.fish
-    set -x PATH $HOME/.asdf/shims $PATH
-end
-
 # Volta
 set -x PATH $PATH $VOLTA_HOME/bin
 
@@ -127,9 +120,6 @@ set -x PATH $PATH /usr/local/sbin
 # Emacs
 set -x PATH $PATH $HOME/.config/emacs/bin
 
-# Make sure asdf comes first
-set -x PATH $HOME/.asdf/shims $PATH
-
 # Stable Diffusion Webui
 # set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 
@@ -138,11 +128,6 @@ set -x PATH $HOME/.asdf/shims $PATH
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1
     eval "$(gh completion -s fish)"
-end
-
-# Mise
-if command -v mise >/dev/null 2>&1
-    $HOME/.local/bin/mise activate fish | source
 end
 
 # fzf
