@@ -18,10 +18,10 @@ brew "openssl@3"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Library for command-line editing
 brew "readline"
 # Programmable completion for Bash 3.2
@@ -172,11 +172,13 @@ brew "lynx"
 brew "mas"
 # Fast and user friendly build system
 brew "meson"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
 # Open source relational database management system
 brew "mysql"
-# Parser generator tool and incremental parsing library
+# Incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
