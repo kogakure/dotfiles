@@ -226,7 +226,7 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
-# Parser generator tool and incremental parsing library
+# Incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
@@ -344,6 +344,8 @@ brew "yq"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
+brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
 brew "charmbracelet/tap/soft-serve"
 # GNU Emacs text editor
