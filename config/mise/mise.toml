@@ -1,15 +1,15 @@
 [tools]
 bun = "latest"
-deno = "2.0.0"
-direnv = "2.32.2"
-go = "1.22.5"
-lua = "5.4.6"
-neovim = "0.11.1"
+deno = "2.4.3"
+direnv = "2.37.1"
+go = "1.24.5"
+lua = "5.4.8"
+neovim = "0.11.3"
 node = "22.17.1"
-python = "3.10.9"
+python = "3.13.5"
 ruby = "3.4.2"
 rust = "nightly"
-usage = "latest"
+usage = "2.2.2"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]
