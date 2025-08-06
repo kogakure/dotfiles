@@ -120,10 +120,6 @@ if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace 2"
-
-[[on-window-detected]]
 if.app-id = 'tw.ogdesign.eagle'
 run = "move-node-to-workspace 3"
 
@@ -144,24 +140,21 @@ if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 7"
 
 [[on-window-detected]]
-if.app-id = 'com.figma.Desktop'
-run = "move-node-to-workspace 9"
+if.app-id = 'com.seriflabs.affinitydesigner2'
+run = "move-node-to-workspace 8"
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-check-further-callbacks = true
-run = 'layout floating'
+if.app-id = 'com.seriflabs.affinityphoto2'
+run = "move-node-to-workspace 8"
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = "move-node-to-workspace 9"
 
 [[on-window-detected]]
 if.app-id = 'com.daisydiskapp.DaisyDiskStandAlone'
 check-further-callbacks = true
 run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-if.window-title-regex-substring = '^[^Space|Little]'
-check-further-callbacks = true
-run = 'layout tiling'
 
 [[on-window-detected]]
 if.app-id = 'io.zsa.keymapp'
