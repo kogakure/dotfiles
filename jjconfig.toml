@@ -5,3 +5,6 @@ email = "gpg@kogakure.8shield.net"
 [ui]
 default-command = "log"
 paginate = "never"
+
+[lazyjj]
+diff-format = "color-words"
