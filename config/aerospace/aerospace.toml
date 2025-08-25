@@ -136,6 +136,14 @@ if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace 6"
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = "move-node-to-workspace 6"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.podcasts'
+run = "move-node-to-workspace 6"
+
+[[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 7"
 
