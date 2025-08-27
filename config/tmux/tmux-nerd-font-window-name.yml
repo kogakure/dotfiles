@@ -3,13 +3,14 @@ config:
   show-name: true
 
 icons:
-  nvim: ""
   bat: "󰭟"
   gh: ""
   nix-env: "󱄅"
   nix-shell: "󱄅"
   nix: "󱄅"
+  nvim: ""
   ollama: "󰚩"
+  opencode: "󰚩"
   pnpm: ""
   reattach-to-user-namespace: ""
   spf: "󰪶"
