@@ -161,34 +161,8 @@ alias icloud 'cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias dropbox 'cd $HOME/Dropbox'
 
 # Git
-alias ga 'git add'
-alias gb 'git branch'
-alias gba 'git branch -a'
-alias gc 'git commit -v'
-alias gca 'git commit -v -a'
-alias gcam 'git commit --amend'
-alias gcan 'git commit --amend --no-edit'
-alias gd 'git diff -- . ":(exclude)yarn.lock"'
-alias gdc 'git diff --cached' # Show changes in next commit (differences between index and last commit)
-alias gdh 'git diff head' # Show difference between files in working tree and last commit
-alias gdt 'git difftool'
-alias gfa 'git fetch --all'
-alias gg 'git log'
-alias ghi 'git hist'
-alias gl 'git pull'
-alias glr 'git pull --rebase'
 alias glu 'git config user.name "Stefan Imhoff" && git config user.email "gpg@kogakure.8shield.net" && git config user.signingkey "7A7253E8!"'
 alias glx 'git config user.name "Stefan Imhoff" && git config user.email "stefan.imhoff@xing.com" && git config user.signingkey "73C3E2E3!"'
-alias gmb 'git merge-base master HEAD'
-alias gp 'git push'
-alias gpf 'git push --force-with-lease'
-alias gpp 'PATCHNAME=`git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/\1/"`-`date "+%Y-%m-%d-%H%M.patch"`; git diff --full-index master > ../patches/$PATCHNAME'
-alias gpu 'git push -u origin HEAD'
-alias gpv 'git push --no-verify'
-alias grb 'git rebase master'
-alias grbc 'git rebase --continue'
-alias grbi 'git rebase -i '
-alias grbs 'git rebase --skip'
 alias lg lazygit
 
 # Vim/Neovim
