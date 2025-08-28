@@ -179,6 +179,9 @@ alias emacs "emacs -nw"
 alias t tmux
 alias ta 'tmux attach'
 
+# Atuin
+alias ars 'atuin run script'
+
 # Can't remember the fork name
 alias youtube-dl yt-dlp
 
