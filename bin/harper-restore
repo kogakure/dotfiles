@@ -1,3 +1,0 @@
-#!/bin/bash
-
-rsync -av ~/.config/harper-ls/ "$HOME/Library/Application Support/harper-ls/"
