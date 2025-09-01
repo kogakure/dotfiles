@@ -8,3 +8,6 @@ paginate = "never"
 
 [lazyjj]
 diff-format = "color-words"
+
+[git]
+push-new-bookmarks = true
