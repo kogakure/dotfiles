@@ -38,5 +38,9 @@ name = " Crate"
 path = "~/Code/XING/crate/"
 
 [[session]]
+name = " XDS-Kit"
+path = "~/Code/XING/xds-kit/"
+
+[[session]]
 name = " Component Scanner"
 path = "~/Code/XING/measurement/component-scanner"
