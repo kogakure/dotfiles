@@ -11,3 +11,6 @@ diff-format = "color-words"
 
 [git]
 push-new-bookmarks = true
+
+[revsets]
+immutable = "main@origin | master@origin"
