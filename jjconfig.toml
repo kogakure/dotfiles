@@ -14,3 +14,8 @@ push-new-bookmarks = true
 
 [revsets]
 immutable = "main@origin | master@origin"
+
+[signing]
+backend = "gpg"
+behavior = "own"
+key = "7A7253E8!"
