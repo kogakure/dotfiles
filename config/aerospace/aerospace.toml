@@ -116,6 +116,10 @@ if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
+if.app-id = 'com.reederapp.5.macOS'
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
 if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace 2"
 
