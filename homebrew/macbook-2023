@@ -6,6 +6,7 @@ tap "homebrew/services"
 tap "joshmedeski/sesh"
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
+tap "sst/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -266,8 +267,6 @@ brew "vhs"
 brew "volta"
 # Watch files and take action when they change
 brew "watchman"
-# Homebrew, but with Docker images
-brew "whalebrew"
 # Port of OpenAI's Whisper model in C/C++
 brew "whisper-cpp"
 # Utilities to create and convert Web Open Font File (WOFF) files
@@ -468,7 +467,6 @@ cask "whatsapp"
 cask "wiso-steuer-2024"
 # Multiplayer code editor
 cask "zed"
-whalebrew "whalebrew/whalesay"
 vscode "adamvoss.vscode-languagetool"
 vscode "ahmadalli.vscode-nginx-conf"
 vscode "akamud.vscode-caniuse"

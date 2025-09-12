@@ -13,10 +13,10 @@ brew "antidote"
 brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "atuin"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -77,8 +77,6 @@ brew "eza"
 brew "fd"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
 brew "sdl2"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # macOS CLI for managing custom icons for files and folders
@@ -137,12 +135,16 @@ brew "htop"
 brew "httpie"
 # Command-line benchmarking tool
 brew "hyperfine"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # Database of common MIME types
 brew "shared-mime-info"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Make XML documents translatable through PO files
 brew "itstool"
+# Git-compatible distributed version control system
+brew "jj"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
@@ -163,6 +165,8 @@ brew "lynx"
 brew "mas"
 # Fast and user friendly build system
 brew "meson"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
 # Feature-rich command-line audio/video downloader
@@ -171,7 +175,7 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
-# Parser generator tool and incremental parsing library
+# Incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
@@ -257,8 +261,6 @@ brew "vhs"
 brew "volta"
 # Watch files and take action when they change
 brew "watchman"
-# Homebrew, but with Docker images
-brew "whalebrew"
 # Port of OpenAI's Whisper model in C/C++
 brew "whisper-cpp"
 # Utilities to create and convert Web Open Font File (WOFF) files
@@ -329,7 +331,7 @@ cask "db-browser-for-sqlite"
 # Collect, organise, edit and annotate documents
 cask "devonthink"
 # App to build and share containerised applications and microservices
-cask "docker"
+cask "docker-desktop"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Collaborative team software
@@ -356,7 +358,7 @@ cask "google-japanese-ime"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
 # Open-source video transcoder
-cask "handbrake"
+cask "handbrake-app"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
 # Free and open-source media player
@@ -378,7 +380,7 @@ cask "keycastr"
 # ZSA keyboard firmware flasher
 cask "keymapp"
 # Grammar, spelling and style suggestions in all the writing apps
-cask "languagetool"
+cask "languagetool-desktop"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
@@ -438,7 +440,7 @@ cask "spotify"
 # Interior design application
 cask "sweet-home3d"
 # Mesh VPN based on WireGuard
-cask "tailscale"
+cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Unpacks archive files
@@ -449,7 +451,7 @@ cask "tor-browser"
 cask "transmit"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
-# Virtualizer for x86 and arm64 hardware
+# Virtualiser for x86 hardware
 cask "virtualbox@beta"
 # Open-source code editor
 cask "visual-studio-code"
@@ -468,7 +470,6 @@ cask "wiso-steuer-2024"
 # Multiplayer code editor
 cask "zed"
 mas "1-Click Video Converter", id: 717545086
-mas "Amazon Kindle", id: 302584613
 mas "DaVinci Resolve", id: 571213070
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
@@ -479,6 +480,7 @@ mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825

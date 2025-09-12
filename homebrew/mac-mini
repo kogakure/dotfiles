@@ -6,6 +6,7 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
 tap "nikitabobko/tap"
+tap "sst/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -94,6 +95,8 @@ brew "docker-buildx"
 brew "docutils"
 # Tool that bootstraps your dotfiles
 brew "dotbot"
+# Terminal document viewer for .docx files
+brew "doxx"
 # More intuitive version of du in rust
 brew "dust"
 # Compression/decompression library aiming for high speed
@@ -102,6 +105,8 @@ brew "snappy"
 brew "folly"
 # Maintain consistent coding style between multiple editors
 brew "editorconfig"
+# Speech synthesizer that supports more than hundred languages and accents
+brew "espeak-ng"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
@@ -188,6 +193,8 @@ brew "hyperfine"
 brew "shared-mime-info"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Convert images to PDF via direct JPEG inclusion
+brew "img2pdf"
 # Make XML documents translatable through PO files
 brew "itstool"
 # Git-compatible distributed version control system
@@ -202,6 +209,8 @@ brew "jq"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# TUI for Jujutsu/jj
+brew "lazyjj"
 # Terminal file manager
 brew "lf"
 # JIT library for the GNU compiler collection
@@ -232,10 +241,10 @@ brew "tree-sitter"
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
-# Platform built on V8 to build network applications
-brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
+# Modern shell for the GitHub era
+brew "nushell"
 # General-purpose speech recognition model
 brew "openai-whisper"
 # 7-Zip (high compression file archiver) implementation
@@ -280,8 +289,6 @@ brew "ripgrep-all"
 brew "ronn"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# Safe, concurrent, practical language
-brew "rust"
 # CLI search and replace | Space Age seD
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
@@ -322,8 +329,6 @@ brew "volta"
 brew "watchman"
 # Internet file retriever
 brew "wget"
-# Homebrew, but with Docker images
-brew "whalebrew"
 # Port of OpenAI's Whisper model in C/C++
 brew "whisper-cpp"
 # Utilities to create and convert Web Open Font File (WOFF) files
@@ -348,14 +353,14 @@ brew "zsh"
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
 brew "charmbracelet/tap/soft-serve"
-# GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus@30"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
+# The AI coding agent built for the terminal.
+brew "sst/tap/opencode"
 # Sound and music editor
 cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -578,6 +583,7 @@ mas "Free MP4 Converter", id: 693443591
 mas "fullmoon", id: 6727014156
 mas "GarageBand", id: 682658836
 mas "Goodnotes", id: 1444383602
+mas "HP Smart", id: 1474276998
 mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
 mas "Key Codes", id: 414568915
@@ -600,7 +606,6 @@ mas "Typeface", id: 1062679359
 mas "Wunderbar", id: 6479203386
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
-whalebrew "directory"
 vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
 vscode "anteprimorac.html-end-tag-labels"
