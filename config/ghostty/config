@@ -32,7 +32,7 @@ font-feature = ss08
 theme = tokyonight
 
 # Window settings
-window-decoration = false
+window-decoration = auto
 background-opacity = 0.70
 background-blur-radius = 50
 window-padding-x = 30
@@ -42,16 +42,17 @@ window-width = 100
 window-colorspace = "display-p3"
 
 # Macos
-macos-non-native-fullscreen = true
-macos-titlebar-style = hidden
-macos-option-as-alt = true
-mouse-hide-while-typing = true
 confirm-close-surface = false
+macos-non-native-fullscreen = true
+macos-option-as-alt = true
+macos-titlebar-style = hidden
+macos-window-buttons = hidden
+mouse-hide-while-typing = true
 
 # Macos custom icon
-macos-icon = custom-style
-macos-icon-ghost-color = white
-macos-icon-screen-color = black,darkgrey
+# macos-icon = custom-style
+# macos-icon-ghost-color = white
+# macos-icon-screen-color = black,darkgrey
 
 # Clipboard
 clipboard-write = allow
