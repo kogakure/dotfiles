@@ -1,7 +1,7 @@
 -- Package manager for LSP servers, DAP servers, linters, and formatters
--- https://github.com/williamboman/mason.nvim
+-- https://github.com/mason-org/mason.nvim
 return {
-	"williamboman/mason.nvim",
+	"mason-org/mason.nvim",
 	opts = {
 		ensure_installed = {
 			"astro-language-server",
