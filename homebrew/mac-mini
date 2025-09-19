@@ -371,8 +371,6 @@ cask "affinity-designer"
 cask "affinity-photo"
 # Professional desktop publishing software
 cask "affinity-publisher"
-# Application launcher and productivity software
-cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Network scanner
@@ -497,10 +495,6 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Get up and running with large language models locally
 cask "ollama-app"
-# Interact with Ollama models
-cask "ollamac"
-# WebKit based web browser
-cask "orion"
 # Control your smart light system
 cask "philips-hue-sync"
 # Browse, manage, inspect containers and images
@@ -533,8 +527,6 @@ cask "session"
 cask "sf-symbols"
 # Instant messaging application focusing on security
 cask "signal"
-# Team communication and collaboration software
-cask "slack"
 # Control your Sonos system
 cask "sonos"
 # Music streaming service
@@ -561,8 +553,6 @@ cask "visual-studio-code"
 cask "vlc"
 # Torrent streaming application
 cask "webtorrent"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Tax declaration for the fiscal year 2023
@@ -598,12 +588,12 @@ mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
 mas "Reeder", id: 1529448980
+mas "Reeder 2", id: 6475002485
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
-mas "Wunderbar", id: 6479203386
 mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
 vscode "adamvoss.vscode-languagetool"
