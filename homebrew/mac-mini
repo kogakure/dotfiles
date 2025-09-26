@@ -235,10 +235,6 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
-# Incremental parsing library
-brew "tree-sitter"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
 # Libraries for security-enabled client and server applications
@@ -311,6 +307,8 @@ brew "texinfo"
 brew "the_silver_searcher"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Incremental parsing library
+brew "tree-sitter"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation
