@@ -167,6 +167,8 @@ brew "go"
 brew "pkgconf"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
+# Pure Go implementation of jq
+brew "gojq"
 # Google Testing and Mocking Framework
 brew "googletest"
 # Version Control Visualization Tool
@@ -473,8 +475,6 @@ cask "lbry"
 cask "ledger-live"
 # File system integration
 cask "macfuse"
-# Video format converter (transcoder)
-cask "makemkv"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 # Email client
@@ -663,3 +663,5 @@ vscode "xadillax.viml"
 vscode "xyc.vscode-mdx-preview"
 vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
+go "cmd/go"
+go "cmd/gofmt"
