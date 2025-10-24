@@ -19,8 +19,8 @@ default-root-container-orientation = 'auto'
 key-mapping.preset = 'qwerty'
 
 # Mouse follows focus when focused monitor changes
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = "move-mouse window-lazy-center"
+# on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# on-focus-changed = "move-mouse window-lazy-center"
 
 # Gaps
 [gaps]
