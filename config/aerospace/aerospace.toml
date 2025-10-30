@@ -152,11 +152,7 @@ if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 7"
 
 [[on-window-detected]]
-if.app-id = 'com.seriflabs.affinitydesigner2'
-run = "move-node-to-workspace 8"
-
-[[on-window-detected]]
-if.app-id = 'com.seriflabs.affinityphoto2'
+if.app-id = 'com.canva.affinity'
 run = "move-node-to-workspace 8"
 
 [[on-window-detected]]
