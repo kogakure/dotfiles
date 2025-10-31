@@ -85,6 +85,28 @@ set -x LDFLAGS "-L$brew_prefix/opt/openssl/lib"
 set -x CPPFLAGS "-I$brew_prefix/opt/openssl/include"
 set -x PKG_CONFIG_PATH "$brew_prefix/opt/openssl/lib/pkgconfig"
 
+# mise
+if type -q mise
+    mise activate fish | source
+end
+
+# Force shims to the absolute front (in case anything appended before)
+set -l MISE_SHIMS $HOME/.local/share/mise/shims
+if test -d $MISE_SHIMS
+    if not contains $MISE_SHIMS $PATH
+        set -x PATH $MISE_SHIMS $PATH
+    else
+        # Move it to the front if it exists but not first
+        set -l NEWPATH $MISE_SHIMS
+        for p in $PATH
+            if test $p != $MISE_SHIMS
+                set NEWPATH $NEWPATH $p
+            end
+        end
+        set -x PATH $NEWPATH
+    end
+end
+
 # Man
 set -x MANPATH /usr/local/man $MANPATH
 
