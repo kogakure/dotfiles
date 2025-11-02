@@ -138,6 +138,7 @@ set -x PATH $PATH $HOME/.dotfiles/private/bin
 set -x PATH $PATH /usr/bin
 set -x PATH $PATH /usr/local/bin
 set -x PATH $PATH /usr/local/sbin
+set -x PATH $PATH $HOME/.local/bin
 
 # Emacs
 set -x PATH $PATH $HOME/.config/emacs/bin
