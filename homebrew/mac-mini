@@ -21,8 +21,6 @@ brew "webp"
 brew "libyaml"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
 # Improved shell history for zsh, bash, fish and nushell
@@ -472,7 +470,7 @@ cask "languagetool-desktop"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
-cask "ledger-live"
+cask "ledger-wallet"
 # File system integration
 cask "macfuse"
 # Provides updates to various Microsoft products

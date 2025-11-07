@@ -1,8 +1,8 @@
 git:
   overrideGpg: true
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never syntax-theme=Dracula
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never syntax-theme=Dracula
 customCommands:
   - key: "C"
     command: "git cz c"
