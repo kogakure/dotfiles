@@ -15,11 +15,11 @@
     "edit_prediction_provider": "copilot"
   },
   "agent": {
-    "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
-    }
+      "model": "claude-sonnet-4.5"
+    },
+    "model_parameters": []
   },
   "theme": "Catppuccin Mocha",
   "autosave": "on_window_change",
@@ -79,7 +79,7 @@
   },
   "ui_font_size": 20,
   "vim_mode": true,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "auto_install_extensions": {
     "astro": true,
     "basher": true,
