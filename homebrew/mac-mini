@@ -2,10 +2,12 @@ tap "charmbracelet/tap"
 tap "d12frosted/emacs-plus"
 tap "dustinblackman/tap"
 tap "felixkratz/formulae"
+tap "gabrie30/utils"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
 tap "nikitabobko/tap"
+tap "safedep/tap"
 tap "sst/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
@@ -29,6 +31,8 @@ brew "atuin", restart_service: :changed
 brew "gettext"
 # Library for command-line editing
 brew "readline"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -355,8 +359,12 @@ brew "charmbracelet/tap/soft-serve"
 brew "dustinblackman/tap/oatmeal"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
+# Quickly clone an entire org/users repositories into one directory
+brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
+# SafeDep vet is a tool for identifying open source software supply chain risks
+brew "safedep/tap/vet"
 # The AI coding agent built for the terminal.
 brew "sst/tap/opencode"
 # Sound and music editor
