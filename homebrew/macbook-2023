@@ -1,11 +1,13 @@
 tap "charmbracelet/tap"
 tap "dustinblackman/tap"
 tap "felixkratz/formulae"
+tap "gabrie30/utils"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
+tap "safedep/tap"
 tap "sst/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
@@ -25,6 +27,8 @@ brew "atuin"
 brew "gettext"
 # Library for command-line editing
 brew "readline"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -185,7 +189,7 @@ brew "tree-sitter"
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
@@ -291,8 +295,12 @@ brew "charmbracelet/tap/soft-serve"
 brew "dustinblackman/tap/oatmeal"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
+# Quickly clone an entire org/users repositories into one directory
+brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
+# SafeDep vet is a tool for identifying open source software supply chain risks
+brew "safedep/tap/vet"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
 # Professional graphic design software
@@ -384,7 +392,7 @@ cask "keymapp"
 # Grammar, spelling and style suggestions in all the writing apps
 cask "languagetool-desktop"
 # Wallet desktop application to maintain multiple cryptocurrencies
-cask "ledger-live"
+cask "ledger-wallet"
 # File system integration
 cask "macfuse"
 # Provides updates to various Microsoft products
@@ -483,7 +491,7 @@ mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
-mas "MindNode", id: 1289197285
+mas "MindNode Classic", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pieoneer", id: 6739781207
