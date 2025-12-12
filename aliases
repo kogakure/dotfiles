@@ -12,7 +12,6 @@ alias dropbox="cd $HOME/Dropbox"
 
 # Git
 alias glu='git config user.name "Stefan Imhoff" && git config user.email "gpg@kogakure.8shield.net" && git config user.signingkey "7A7253E8!"'
-alias glx='git config user.name "Stefan Imhoff" && git config user.email "stefan.imhoff@xing.com" && git config user.signingkey "73C3E2E3!"'
 alias lg='lazygit'
 
 # Vim

@@ -33,14 +33,3 @@ path = "~/Code/GitHub/websites/kogakure-de/"
 name = " hamburg-stefanimhoff-de"
 path = "~/Code/GitHub/websites/hamburg-stefanimhoff-de/"
 
-[[session]]
-name = " Crate"
-path = "~/Code/XING/crate/"
-
-[[session]]
-name = " XDS-Kit"
-path = "~/Code/XING/xds-kit/"
-
-[[session]]
-name = " Component Scanner"
-path = "~/Code/XING/measurement/component-scanner"
