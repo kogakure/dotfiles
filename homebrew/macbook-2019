@@ -89,6 +89,8 @@ brew "fisher"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Conversion library
+brew "libiconv"
 # Enable transparent encryption/decryption of files in a git repo
 brew "git-crypt"
 # Syntax-highlighting pager for git and diff output
@@ -155,8 +157,6 @@ brew "lazydocker"
 brew "lazygit"
 # Terminal file manager
 brew "lf"
-# Conversion library
-brew "libiconv"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
 # Text-based web browser
@@ -175,13 +175,11 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
-# Incremental parsing library
-brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
@@ -247,6 +245,8 @@ brew "the_silver_searcher"
 brew "tldr"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Incremental parsing library
+brew "tree-sitter"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation
@@ -382,7 +382,7 @@ cask "languagetool-desktop"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
-cask "ledger-live"
+cask "ledger-wallet"
 # File system integration
 cask "macfuse"
 # Video format converter (transcoder)
@@ -480,7 +480,7 @@ mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
-mas "MindNode", id: 1289197285
+mas "MindNode Classic", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
@@ -492,75 +492,5 @@ mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Typeface", id: 1062679359
 mas "Yoink", id: 457622435
-vscode "adamvoss.vscode-languagetool"
-vscode "akamud.vscode-caniuse"
-vscode "anteprimorac.html-end-tag-labels"
-vscode "arcticicestudio.nord-visual-studio-code"
-vscode "astro-build.astro-vscode"
-vscode "asvetliakov.vscode-neovim"
-vscode "bierner.markdown-preview-github-styles"
-vscode "bradlc.vscode-tailwindcss"
-vscode "catppuccin.catppuccin-vsc"
-vscode "christian-kohler.npm-intellisense"
-vscode "christian-kohler.path-intellisense"
-vscode "chrmarti.regex"
-vscode "codeium.codeium"
-vscode "codezombiech.gitignore"
-vscode "csstools.postcss"
-vscode "davidlday.languagetool-linter"
-vscode "daylerees.rainglow"
-vscode "dbaeumer.vscode-eslint"
-vscode "docker.docker"
-vscode "ecmel.vscode-html-css"
-vscode "editorconfig.editorconfig"
-vscode "elijah-potter.harper"
-vscode "enkia.tokyo-night"
-vscode "equinusocio.vsc-material-theme"
-vscode "equinusocio.vsc-material-theme-icons"
-vscode "esbenp.prettier-vscode"
-vscode "file-icons.file-icons"
-vscode "gerane.theme-tomorrownight"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "github.vscode-pull-request-github"
-vscode "gruntfuggly.todo-tree"
-vscode "hextorgb.hex-to-rgb"
-vscode "jasonnutter.search-node-modules"
-vscode "kamikillerto.vscode-colorize"
-vscode "liviuschera.noctis"
-vscode "mechatroner.rainbow-csv"
-vscode "mgmcdermott.vscode-language-babel"
-vscode "miguelsolorio.fluent-icons"
-vscode "miguelsolorio.symbols"
-vscode "mikestead.dotenv"
-vscode "mrmlnc.vscode-attrs-sorter"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-playwright.playwright"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode-remote.remote-ssh"
-vscode "ms-vscode-remote.remote-ssh-edit"
-vscode "ms-vscode-remote.remote-wsl"
-vscode "ms-vscode-remote.vscode-remote-extensionpack"
-vscode "ms-vscode.extension-test-runner"
-vscode "ms-vscode.remote-explorer"
-vscode "ms-vscode.remote-server"
-vscode "ms-vsliveshare.vsliveshare"
-vscode "pkief.material-icon-theme"
-vscode "pnp.polacode"
-vscode "redhat.vscode-yaml"
-vscode "rvest.vs-code-prettier-eslint"
-vscode "styled-components.vscode-styled-components"
-vscode "tobermory.es6-string-html"
-vscode "tyriar.sort-lines"
-vscode "unifiedjs.vscode-mdx"
-vscode "visualstudioexptteam.intellicode-api-usage-examples"
-vscode "visualstudioexptteam.vscodeintellicode"
-vscode "wakatime.vscode-wakatime"
-vscode "wayou.vscode-todo-highlight"
-vscode "xabikos.javascriptsnippets"
-vscode "xadillax.viml"
-vscode "xyc.vscode-mdx-preview"
-vscode "yutengjing.open-in-external-app"
-vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
