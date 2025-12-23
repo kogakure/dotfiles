@@ -499,6 +499,8 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Get up and running with large language models locally
 cask "ollama-app"
+# LLM server built on MLX
+cask "osaurus"
 # Control your smart light system
 cask "philips-hue-sync"
 # Browse, manage, inspect containers and images
