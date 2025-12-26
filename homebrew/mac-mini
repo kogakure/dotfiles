@@ -223,7 +223,7 @@ brew "libgccjit"
 brew "libiconv"
 # Text-based web browser
 brew "lynx"
-# Apple Silicon Monitor Top written in Golang
+# Apple Silicon Monitor Top written in Go Lang
 brew "mactop"
 # Mac App Store command-line interface
 brew "mas"

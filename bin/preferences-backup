@@ -10,9 +10,6 @@ defaults export com.apple.finder ~/.dotfiles/private/preferences/finder.plist
 # Export all Dock settings
 defaults export com.apple.dock ~/.dotfiles/private/preferences/dock.plist
 
-# Save the Stable Diffusion Settings file
-cp ~/Code/AI/stable-diffusion-webui/webui-macos-env.sh ~/.dotfiles/private/preferences/webui-macos-env.sh
-
 # Affinity
 cp ~/Library/Preferences/com.seriflabs.affinitydesigner2.plist ~/.dotfiles/private/preferences/
 cp ~/Library/Preferences/com.seriflabs.affinityphoto2.plist ~/.dotfiles/private/preferences/

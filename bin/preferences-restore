@@ -15,9 +15,6 @@ defaults import com.apple.dock ~/.dotfiles/private/preferences/dock.plist
 
 echo "Please log out and back in to apply the changes."
 
-# Restore the Stable Diffusion Settings file
-cp ~/.dotfiles/private/preferences/webui-macos-env.sh ~/Code/AI/stable-diffusion-webui/webui-macos-env.sh
-
 # Affinity
 cp ~/.dotfiles/private/preferences/com.seriflabs.affinitydesigner2.plist ~/Library/Preferences/
 cp ~/.dotfiles/private/preferences/com.seriflabs.affinityphoto2.plist ~/Library/Preferences/
