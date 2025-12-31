@@ -35,6 +35,10 @@ fisher update
 # Update Neovim
 nvim --headless "+Lazy! sync" +qa
 
+# Maintenance
+mo clean
+mo optimize
+
 # Update macOS software
 sudo softwareupdate -i -a
 
