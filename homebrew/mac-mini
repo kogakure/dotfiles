@@ -9,6 +9,7 @@ tap "joshmedeski/sesh"
 tap "nikitabobko/tap"
 tap "safedep/tap"
 tap "sst/tap"
+tap "tw93/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -367,16 +368,14 @@ brew "joshmedeski/sesh/sesh"
 brew "safedep/tap/vet"
 # The AI coding agent built for the terminal.
 brew "sst/tap/opencode"
+# Comprehensive macOS cleanup and application uninstall tool
+brew "tw93/tap/mole"
 # Sound and music editor
 cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
-# Professional graphic design software
-cask "affinity-designer"
-# Professional image editing software
-cask "affinity-photo"
-# Professional desktop publishing software
-cask "affinity-publisher"
+# Image editing and design software
+cask "affinity"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Network scanner
@@ -420,8 +419,6 @@ cask "devonthink"
 cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
-# Client for the Dropbox cloud storage service
-cask "dropbox"
 # Web browser focusing on privacy
 cask "duckduckgo"
 # Collaborative team software
@@ -567,41 +564,6 @@ cask "wiso-steuer-2024"
 cask "zed"
 # Gecko based web browser
 cask "zen"
-mas "1-Click Video Converter", id: 717545086
-mas "Aiko", id: 1672085276
-mas "Cake Wallet", id: 1334702542
-mas "DaVinci Resolve", id: 571213070
-mas "Day One", id: 1055511498
-mas "Deliveries", id: 290986013
-mas "Draw Things", id: 6444050820
-mas "Exporter", id: 1099120373
-mas "Free MP4 Converter", id: 693443591
-mas "fullmoon", id: 6727014156
-mas "GarageBand", id: 682658836
-mas "Goodnotes", id: 1444383602
-mas "HP Smart", id: 1474276998
-mas "iA Writer", id: 775737590
-mas "iFinance 5", id: 1500241909
-mas "Key Codes", id: 414568915
-mas "Keynote", id: 409183694
-mas "Kindle", id: 302584613
-mas "Mela", id: 1568924476
-mas "MindNode Classic", id: 1289197285
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Pieoneer", id: 6739781207
-mas "Proton Pass for Safari", id: 6502835663
-mas "Pure Paste", id: 1611378436
-mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 1529448980
-mas "Reeder 2", id: 6475002485
-mas "Save to Raindrop.io", id: 1549370672
-mas "Smart Converter", id: 447513724
-mas "Things", id: 904280696
-mas "Time Sink", id: 404363161
-mas "Typeface", id: 1062679359
-mas "Xcode", id: 497799835
-mas "Yoink", id: 457622435
 vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
 vscode "anteprimorac.html-end-tag-labels"
