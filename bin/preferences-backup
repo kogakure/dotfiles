@@ -11,9 +11,7 @@ defaults export com.apple.finder ~/.dotfiles/private/preferences/finder.plist
 defaults export com.apple.dock ~/.dotfiles/private/preferences/dock.plist
 
 # Affinity
-cp ~/Library/Preferences/com.seriflabs.affinitydesigner2.plist ~/.dotfiles/private/preferences/
-cp ~/Library/Preferences/com.seriflabs.affinityphoto2.plist ~/.dotfiles/private/preferences/
-cp ~/Library/Preferences/com.seriflabs.affinitypublisher2.plist ~/.dotfiles/private/preferences/
+cp ~/Library/Preferences/com.canva.affinity.plist ~/.dotfiles/private/preferences/
 
 # Alfred
 cp ~/Library/Preferences/com.runningwithcrayons.Alfred.plist ~/.dotfiles/private/preferences/

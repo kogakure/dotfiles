@@ -16,9 +16,7 @@ defaults import com.apple.dock ~/.dotfiles/private/preferences/dock.plist
 echo "Please log out and back in to apply the changes."
 
 # Affinity
-cp ~/.dotfiles/private/preferences/com.seriflabs.affinitydesigner2.plist ~/Library/Preferences/
-cp ~/.dotfiles/private/preferences/com.seriflabs.affinityphoto2.plist ~/Library/Preferences/
-cp ~/.dotfiles/private/preferences/com.seriflabs.affinitypublisher2.plist ~/Library/Preferences/
+cp ~/.dotfiles/private/preferences/com.canva.affinity.plist ~/Library/Preferences/
 
 # Alfred
 cp ~/.dotfiles/private/preferences/com.runningwithcrayons.Alfred.plist ~/Library/Preferences/
