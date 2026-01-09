@@ -386,6 +386,8 @@ cask "ankerwork"
 cask "anki"
 # Application uninstaller
 cask "appcleaner"
+# User-friendly GUI app for Homebrew
+cask "applite"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
@@ -452,6 +454,8 @@ cask "gpg-suite-no-mail"
 cask "handbrake-app"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
+# Apple tool to create multi-platform icons
+cask "icon-composer"
 # Free and open-source media player
 cask "iina"
 # Tool to optimise images to a smaller size
@@ -460,6 +464,8 @@ cask "imageoptim"
 cask "integrity"
 # Menu bar calendar
 cask "itsycal"
+# Jellyfin desktop client
+cask "jellyfin-media-player"
 # Spot and merge differences in text and image files or folders
 cask "kaleidoscope@3"
 # Open-source screen recorder built with web technology
@@ -496,8 +502,6 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Get up and running with large language models locally
 cask "ollama-app"
-# LLM server built on MLX
-cask "osaurus"
 # Control your smart light system
 cask "philips-hue-sync"
 # Browse, manage, inspect containers and images
