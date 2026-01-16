@@ -118,12 +118,12 @@ brew "eza"
 brew "fd"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
 brew "sdl2"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # High-performance, asynchronous messaging library
 brew "zeromq"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg@6"
 # Create thumbnails for your video files
@@ -406,6 +406,8 @@ cask "blurred"
 cask "brave-browser"
 # E-books management software
 cask "calibre"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Screen capturing tool
 cask "cleanshot"
 cask "color-oracle"
@@ -488,8 +490,6 @@ cask "macfuse"
 cask "microsoft-auto-update"
 # Email client
 cask "microsoft-outlook"
-# Meet, chat, call, and collaborate in just one place
-cask "microsoft-teams"
 # Display MIDI signals going in and out of your computer
 cask "midi-monitor"
 # App to write, plan, collaborate, and get organised
