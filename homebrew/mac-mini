@@ -118,7 +118,7 @@ brew "eza"
 brew "fd"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
 brew "sdl2"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
@@ -196,7 +196,7 @@ brew "httpie"
 brew "hyperfine"
 # Database of common MIME types
 brew "shared-mime-info"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Convert images to PDF via direct JPEG inclusion
 brew "img2pdf"
@@ -246,6 +246,8 @@ brew "nginx"
 brew "nss"
 # Modern shell for the GitHub era
 brew "nushell"
+# Create, run, and share large language models (LLMs)
+brew "ollama", link: false
 # General-purpose speech recognition model
 brew "openai-whisper"
 # 7-Zip (high compression file archiver) implementation
@@ -373,7 +375,7 @@ brew "tw93/tap/mole"
 # Sound and music editor
 cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
-cask "aerospace"
+cask "nikitabobko/tap/aerospace"
 # Image editing and design software
 cask "affinity"
 # Enable Windows-like alt-tab
@@ -394,6 +396,8 @@ cask "audacity"
 cask "balenaetcher"
 # Menu bar icon organiser
 cask "bartender"
+# Compact TeX distribution as alternative to the full TeX Live / MacTeX
+cask "basictex"
 # Edit and manage bibliographies
 cask "bibdesk"
 # 3D creation suite
@@ -500,8 +504,6 @@ cask "numi"
 cask "obsidian"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
-# Get up and running with large language models locally
-cask "ollama-app"
 # Control your smart light system
 cask "philips-hue-sync"
 # Browse, manage, inspect containers and images
@@ -550,6 +552,8 @@ cask "the-unarchiver"
 cask "tor-browser"
 # File transfer application
 cask "transmit"
+# Font manager application
+cask "typeface"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
 # Virtualiser for arm64 hardware
@@ -568,6 +572,38 @@ cask "wiso-steuer-2024"
 cask "zed"
 # Gecko based web browser
 cask "zen"
+mas "1-Click Video Converter", id: 717545086
+mas "Aiko", id: 1672085276
+mas "Cake Wallet", id: 1334702542
+mas "DaVinci Resolve", id: 571213070
+mas "Day One", id: 1055511498
+mas "Deliveries", id: 290986013
+mas "Draw Things", id: 6444050820
+mas "Exporter", id: 1099120373
+mas "Free MP4 Converter", id: 693443591
+mas "fullmoon", id: 6727014156
+mas "GarageBand", id: 682658836
+mas "Goodnotes", id: 1444383602
+mas "HP Smart", id: 1474276998
+mas "iA Writer", id: 775737590
+mas "iFinance 5", id: 1500241909
+mas "Key Codes", id: 414568915
+mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
+mas "Mela", id: 1568924476
+mas "MindNode 2", id: 6446116532
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Proton Pass for Safari", id: 6502835663
+mas "Pure Paste", id: 1611378436
+mas "Raycast Companion", id: 6738274497
+mas "Reeder", id: 1529448980
+mas "Reeder 2", id: 6475002485
+mas "Save to Raindrop.io", id: 1549370672
+mas "Smart Converter", id: 447513724
+mas "Things", id: 904280696
+mas "Time Sink", id: 404363161
+mas "Yoink", id: 457622435
 vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
 vscode "anteprimorac.html-end-tag-labels"
@@ -599,6 +635,7 @@ vscode "github.copilot-chat"
 vscode "github.vscode-pull-request-github"
 vscode "gruntfuggly.todo-tree"
 vscode "hextorgb.hex-to-rgb"
+vscode "james-yu.latex-workshop"
 vscode "jasonnutter.search-node-modules"
 vscode "kamikillerto.vscode-colorize"
 vscode "liviuschera.noctis"
@@ -628,8 +665,6 @@ vscode "styled-components.vscode-styled-components"
 vscode "tobermory.es6-string-html"
 vscode "tyriar.sort-lines"
 vscode "unifiedjs.vscode-mdx"
-vscode "visualstudioexptteam.intellicode-api-usage-examples"
-vscode "visualstudioexptteam.vscodeintellicode"
 vscode "wakatime.vscode-wakatime"
 vscode "wayou.vscode-todo-highlight"
 vscode "xabikos.javascriptsnippets"
