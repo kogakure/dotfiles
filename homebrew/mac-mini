@@ -226,6 +226,8 @@ brew "libiconv"
 brew "lynx"
 # Apple Silicon Monitor Top written in Go Lang
 brew "mactop"
+# Compile and build packages suitable for installation with pacman
+brew "makepkg"
 # Mac App Store command-line interface
 brew "mas"
 # Fast and user friendly build system
@@ -410,10 +412,14 @@ cask "blurred"
 cask "brave-browser"
 # E-books management software
 cask "calibre"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Screen capturing tool
 cask "cleanshot"
+# Colemak mod for more comfortable typing (DH variant)
+cask "colemak-dh"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
@@ -546,6 +552,8 @@ cask "sweet-home3d"
 cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
+# LaTeX editor
+cask "texmaker"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security

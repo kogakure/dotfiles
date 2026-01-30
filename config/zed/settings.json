@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "mode": "subtle"
+  },
   "telemetry": {
     "metrics": false,
     "diagnostics": false
@@ -69,7 +72,7 @@
       }
     }
   },
-  "preferred_line_length": 120,
+  "preferred_line_length": 100,
   "remove_trailing_whitespace_on_save": true,
   "show_whitespaces": "selection",
   "soft_wrap": "preferred_line_length",
