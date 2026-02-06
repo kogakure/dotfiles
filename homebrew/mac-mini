@@ -392,6 +392,8 @@ cask "anki"
 cask "appcleaner"
 # User-friendly GUI app for Homebrew
 cask "applite"
+# Markdown editor for Astro content collections
+cask "astro-editor"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
@@ -600,6 +602,7 @@ mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
+mas "Numbers", id: 361304891
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
