@@ -11,3 +11,5 @@
 m~
 tags
 .tool-versions
+
+**/.claude/settings.local.json
