@@ -50,3 +50,6 @@ preferences-backup
 
 # Write launch agents
 launchagents-backup
+
+# Backup Claude Code Settings
+claude-backup
