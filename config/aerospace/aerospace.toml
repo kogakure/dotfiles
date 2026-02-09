@@ -170,6 +170,11 @@ check-further-callbacks = true
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'io.zsa.keymapp'
 check-further-callbacks = true
 run = 'layout floating'
