@@ -1,6 +1,7 @@
 tap "charmbracelet/tap"
 tap "d12frosted/emacs-plus"
 tap "dustinblackman/tap"
+tap "f/textream"
 tap "felixkratz/formulae"
 tap "gabrie30/utils"
 tap "homebrew/bundle"
@@ -9,6 +10,7 @@ tap "joshmedeski/sesh"
 tap "nikitabobko/tap"
 tap "safedep/tap"
 tap "sst/tap"
+tap "steipete/tap"
 tap "tw93/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
@@ -140,6 +142,8 @@ brew "fisher"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Conversion library
+brew "libiconv"
 # Automatic git commit --fixup
 brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo
@@ -210,6 +214,8 @@ brew "jless"
 brew "jpeg"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
@@ -220,8 +226,6 @@ brew "lazyjj"
 brew "lf"
 # JIT library for the GNU compiler collection
 brew "libgccjit"
-# Conversion library
-brew "libiconv"
 # Text-based web browser
 brew "lynx"
 # Apple Silicon Monitor Top written in Go Lang
@@ -310,6 +314,8 @@ brew "snzip"
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale", restart_service: :changed
 # Official documentation format of the GNU project
 brew "texinfo"
 # Code-search similar to ack
@@ -420,6 +426,8 @@ cask "claude"
 cask "claude-code"
 # Screen capturing tool
 cask "cleanshot"
+# Menu bar usage monitor for Codex and Claude
+cask "steipete/tap/codexbar"
 # Colemak mod for more comfortable typing (DH variant)
 cask "colemak-dh"
 cask "color-oracle"
@@ -496,6 +504,8 @@ cask "languagetool-desktop"
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-wallet"
+# Software for Logitech devices
+cask "logi-options+"
 # File system integration
 cask "macfuse"
 # Provides updates to various Microsoft products
@@ -556,6 +566,8 @@ cask "tailscale-app"
 cask "telegram-desktop"
 # LaTeX editor
 cask "texmaker"
+# macOS teleprompter that highlights your script in real-time as you speak
+cask "f/textream/textream"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security
@@ -602,8 +614,8 @@ mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
-mas "Numbers", id: 361304891
 mas "Numbers", id: 409203825
+mas "Numbers", id: 361304891
 mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
