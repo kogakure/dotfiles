@@ -31,10 +31,6 @@ brew "bison"
 brew "btop"
 # Freely available high-quality data compressor
 brew "bzip2"
-# GNU compiler collection
-brew "gcc"
-# High performance message passing library
-brew "open-mpi"
 # C routines to compute the Discrete Fourier Transform
 brew "fftw"
 # Console-based Audio Visualizer for ALSA
@@ -83,10 +79,14 @@ brew "ffmpegthumbnailer"
 brew "fileicon"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
 # Plugin manager for the Fish shell
 brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Conversion library
@@ -141,7 +141,7 @@ brew "hyperfine"
 brew "icu4c@76"
 # Database of common MIME types
 brew "shared-mime-info"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Make XML documents translatable through PO files
 brew "itstool"
@@ -167,6 +167,8 @@ brew "mas"
 brew "meson"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
 # Feature-rich command-line audio/video downloader
@@ -183,6 +185,8 @@ brew "nginx"
 brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
+# High performance message passing library
+brew "open-mpi"
 # General-purpose speech recognition model
 brew "openai-whisper"
 # Cryptography and SSL/TLS Toolkit
@@ -286,7 +290,9 @@ brew "felixkratz/formulae/borders"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
 # AeroSpace is an i3-like tiling window manager for macOS
-cask "aerospace"
+cask "nikitabobko/tap/aerospace"
+# Image editing and design software
+cask "affinity"
 # Professional graphic design software
 cask "affinity-designer"
 # Professional image editing software
@@ -305,6 +311,8 @@ cask "anki"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
+# Markdown editor for Astro content collections
+cask "astro-editor"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
@@ -321,8 +329,12 @@ cask "blender-benchmark"
 cask "brave-browser"
 # E-books management software
 cask "calibre"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Screen capturing tool
 cask "cleanshot"
+# Colemak mod for more comfortable typing (DH variant)
+cask "colemak-dh"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
