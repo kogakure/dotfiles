@@ -119,3 +119,6 @@ keybind = ctrl+alt+y=text:\x02W
 
 # Zoom into window
 keybind = ctrl+alt+z=text:\x02z
+
+# New line in tmux
+keybind = shift+enter=text:\x1b\r
