@@ -130,6 +130,9 @@ set -x PATH $PATH $HOME/.local/share/../bin
 set -x PATH $PATH $HOME/.tmux/plugins/tmux-nvr/bin
 set -x PATH $PATH $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
 
+# Obsidian
+set -x PATH $PATH /Applications/Obsidian.app/Contents/MacOS
+
 # Personal
 set -x PATH $PATH $HOME/.dotfiles/bin
 set -x PATH $PATH $HOME/.dotfiles/private/bin

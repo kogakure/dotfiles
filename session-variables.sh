@@ -6,8 +6,8 @@ export SESSION_VARS_SOURCED=1
 export KEYTIMEOUT="1"
 
 if command -v nvim >/dev/null 2>&1; then
-	export EDITOR="nvim"
-	export GIT_EDITOR="nvim"
+    export EDITOR="nvim"
+    export GIT_EDITOR="nvim"
 fi
 
 # XDG base directory specification
@@ -62,8 +62,11 @@ export PATH="$(brew --prefix)/sbin:$PATH"
 export PATH="$(brew --prefix)/whalebrew/bin:$PATH"
 
 if command -v brew >/dev/null 2>&1; then
-	eval "$(brew shellenv)"
+    eval "$(brew shellenv)"
 fi
+
+# Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 
 # System
 export PATH="/usr/bin:$PATH"
