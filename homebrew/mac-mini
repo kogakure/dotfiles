@@ -418,8 +418,6 @@ cask "blender-benchmark"
 cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
-# E-books management software
-cask "calibre"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
@@ -476,8 +474,6 @@ cask "gpg-suite-no-mail"
 cask "handbrake-app"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
-# Apple tool to create multi-platform icons
-cask "icon-composer"
 # Free and open-source media player
 cask "iina"
 # Tool to optimise images to a smaller size
@@ -538,8 +534,6 @@ cask "proton-pass"
 cask "protonvpn"
 # All-in-one bookmark manager
 cask "raindropio"
-# Imaging utility to install operating systems to a microSD card
-cask "raspberry-pi-imager"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Save articles to read, highlight key content, and organise notes for review
@@ -558,6 +552,8 @@ cask "signal"
 cask "sonos"
 # Music streaming service
 cask "spotify"
+# Dictation tool including LLM reformatting
+cask "superwhisper"
 # Interior design application
 cask "sweet-home3d"
 # Mesh VPN based on WireGuard
@@ -566,8 +562,6 @@ cask "tailscale-app"
 cask "telegram-desktop"
 # LaTeX editor
 cask "texmaker"
-# macOS teleprompter that highlights your script in real-time as you speak
-cask "f/textream/textream"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security
@@ -594,6 +588,8 @@ cask "wiso-steuer-2024"
 cask "zed"
 # Gecko based web browser
 cask "zen"
+# Video communication and virtual meeting platform
+cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "Cake Wallet", id: 1334702542
@@ -697,3 +693,4 @@ vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
+uv "jiratui"
