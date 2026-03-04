@@ -346,6 +346,8 @@ brew "wget"
 brew "whisper-cpp"
 # Utilities to create and convert Web Open Font File (WOFF) files
 brew "woff2"
+# CLI for Git worktree management, designed for parallel AI agent workflows
+brew "worktrunk"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
 # Convert XML to another format (based on XSL or other tools)

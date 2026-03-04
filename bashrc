@@ -22,33 +22,38 @@ bind "set show-all-if-ambiguous on"
 
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1; then
-	eval "$(gh completion -s bash)"
+    eval "$(gh completion -s bash)"
 fi
 
 # fzf
 if command -v fzf >/dev/null 2>&1 && [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-	eval "$(fzf --bash)"
+    eval "$(fzf --bash)"
 fi
 
 # Direnv
 if command -v direnv >/dev/null 2>&1; then
-	eval "$(direnv hook bash)"
+    eval "$(direnv hook bash)"
 fi
 
 # Zoxide
 if command -v zoxide >/dev/null 2>&1; then
-	eval "$(zoxide init bash)"
+    eval "$(zoxide init bash)"
 fi
 
 # Atuin
 if command -v atuin >/dev/null 2>&1; then
-	eval "$(atuin init bash)"
+    eval "$(atuin init bash)"
+fi
+
+# Worktrunk
+if command -v wt >/dev/null 2>&1; then
+    eval "$(command wt config shell init bash)"
 fi
 
 # Starship
 if command -v starship >/dev/null 2>&1 && [[ $TERM != "dumb" ]]; then
-	eval "$(starship init bash)"
-	PS1="$(/opt/homebrew/bin/starship prompt)"
+    eval "$(starship init bash)"
+    PS1="$(/opt/homebrew/bin/starship prompt)"
 fi
 
 # *** *** Aliases *** ***
@@ -59,5 +64,5 @@ source "$HOME/.aliases"
 # *** *** Functions *** ***
 
 for file in ~/.functions/*.sh; do
-	source "$file"
+    source "$file"
 done

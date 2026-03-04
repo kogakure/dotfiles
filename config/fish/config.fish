@@ -156,6 +156,11 @@ if command -v gh >/dev/null 2>&1
     eval "$(gh completion -s fish)"
 end
 
+# Worktrunk
+if command -v wt >/dev/null 2>&1
+    eval "$(command wt config shell init fish)"
+end
+
 # fzf
 fzf --fish | source
 

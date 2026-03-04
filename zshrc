@@ -17,32 +17,37 @@ bindkey -M viins '^z' fzf-cd-widget      # (z) jump
 
 # GitHub CLI completion
 if command -v gh &>/dev/null; then
-  eval "$(gh completion -s zsh)"
+    eval "$(gh completion -s zsh)"
 fi
 
 # fzf
 if command -v fzf &>/dev/null; then
-  source <(fzf --zsh)
+    source <(fzf --zsh)
 fi
 
 # Direnv
 if command -v direnv &>/dev/null; then
-  eval "$(direnv hook zsh)"
+    eval "$(direnv hook zsh)"
 fi
 
 # Zoxide
 if command -v zoxide &>/dev/null; then
-  eval "$(zoxide init zsh)"
+    eval "$(zoxide init zsh)"
 fi
 
 # Atuin
 if command -v atuin &>/dev/null; then
-	eval "$(atuin init zsh)"
+    eval "$(atuin init zsh)"
+fi
+
+# Worktrunk
+if command -v wt >/dev/null 2>&1; then
+    eval "$(command wt config shell init zsh)"
 fi
 
 # Starship
 if command -v starship &>/dev/null; then
-  eval "$(starship init zsh)"
+    eval "$(starship init zsh)"
 fi
 
 # Antidote
@@ -57,6 +62,5 @@ source "$HOME/.aliases"
 # *** *** Functions *** ***
 
 for file in ~/.functions/*.sh; do
-  source "$file"
+    source "$file"
 done
-
