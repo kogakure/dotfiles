@@ -50,7 +50,7 @@
 [core]
   editor = code --wait
   legacyheaders = false
-  pager = delta
+  pager = diffnav
   whitespace = trailing-space,space-before-tab
 
 [credential "https://gist.github.com"]
@@ -148,3 +148,6 @@
 
 [include]
 	path = "~/.gitconfig.local"
+
+[pager]
+	diff = diffnav

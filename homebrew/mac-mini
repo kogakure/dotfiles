@@ -1,5 +1,6 @@
 tap "charmbracelet/tap"
 tap "d12frosted/emacs-plus"
+tap "dlvhdr/formulae"
 tap "dustinblackman/tap"
 tap "f/textream"
 tap "felixkratz/formulae"
@@ -226,6 +227,8 @@ brew "lazyjj"
 brew "lf"
 # JIT library for the GNU compiler collection
 brew "libgccjit"
+# Find what models run on your hardware
+brew "llmfit"
 # Text-based web browser
 brew "lynx"
 # Apple Silicon Monitor Top written in Go Lang
@@ -368,6 +371,8 @@ brew "zsh"
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
 brew "charmbracelet/tap/soft-serve"
+# Git diff pager based on delta but with a file tree, à la GitHub
+brew "dlvhdr/formulae/diffnav"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
 # A window border system for macOS
