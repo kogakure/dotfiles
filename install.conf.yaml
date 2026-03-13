@@ -20,6 +20,8 @@
     ~/.aliases: aliases
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
+    ~/.claude.json: private/claude.json
+    ~/.claude: private/claude
     ~/.ctags: ctags
     ~/.curlrc: curlrc
     ~/.default-gems: default-gems
@@ -43,7 +45,4 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [
-        ~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1,
-        Installing tmux plugins,
-      ]
+    - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
