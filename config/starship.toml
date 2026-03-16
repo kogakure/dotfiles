@@ -15,3 +15,19 @@ style = "bold red"
 [[battery.display]]
 threshold = 30
 style = "bold yellow"
+
+[cship]
+lines = ["$cship.model  $cship.cost  $cship.context_bar"]
+
+[cship.cost]
+warn_threshold     = 2.0
+warn_style         = "yellow"
+critical_threshold = 5.0
+critical_style     = "bold red"
+
+[cship.context_bar]
+width              = 10
+warn_threshold     = 40.0
+warn_style         = "yellow"
+critical_threshold = 70.0
+critical_style     = "bold red"
