@@ -33,3 +33,6 @@ path = "~/Code/GitHub/websites/kogakure-de/"
 name = " hamburg-stefanimhoff-de"
 path = "~/Code/GitHub/websites/hamburg-stefanimhoff-de/"
 
+[[session]]
+name = "󱓟 Skills"
+path = "~/Code/GitHub/skills"
