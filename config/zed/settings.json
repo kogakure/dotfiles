@@ -39,6 +39,7 @@
   "theme": "Catppuccin Mocha",
   "autosave": "on_window_change",
   "buffer_font_family": "Monaspace Neon",
+  "buffer_font_fallbacks": ["Monaspace Neon Var", "FiraCode Nerd Font", "Symbols Nerd Font Mono"],
   "buffer_font_features": {
     "calt": true,
     "clig": true,
