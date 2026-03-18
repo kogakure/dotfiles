@@ -17,6 +17,7 @@
     ~/.config/karabiner: darwin/karabiner
     ~/.ack: ack
     ~/.ag: ag
+    ~/.agents: private/agents
     ~/.aliases: aliases
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
