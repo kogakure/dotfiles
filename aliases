@@ -24,6 +24,10 @@ fi
 # Emacs
 alias emacs "emacs -nw"
 
+# Claude Code
+alias cl='claude --dangerously-skip-permissions'
+alias clp='claude --permission-mode plan'
+alias clr='claude --resume'
 
 # Tmux
 alias t='tmux'
@@ -37,4 +41,3 @@ alias ia='open $1 -a /Applications/iA\ Writer.app'
 
 # Clear the screen
 alias c="clear"
-

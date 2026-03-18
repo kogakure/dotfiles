@@ -7,7 +7,7 @@ lua = "latest"
 neovim = "latest"
 node = "22.17.1"
 python = "latest"
-ruby = "latest"
+ruby = "3.4.2"
 rust = "latest"
 usage = "latest"
 

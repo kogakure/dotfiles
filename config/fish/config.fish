@@ -212,6 +212,11 @@ alias ta 'tmux attach'
 # Atuin
 alias ars 'atuin run script'
 
+# Claude Code
+alias cl 'claude --dangerously-skip-permissions'
+alias clp 'claude --permission-mode plan'
+alias clr 'claude --resume'
+
 # Can't remember the fork name
 alias youtube-dl yt-dlp
 
