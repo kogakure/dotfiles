@@ -1,3 +1,6 @@
+@playwright/cli
+@readwise/cli
+@tobilu/qmd
 browser-sync
 caniuse-cmd
 commitizen
