@@ -49,6 +49,10 @@ brew "cpptoml"
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Git diff pager based on delta but with a file tree
+brew "diffnav"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Standard XML representation system for technical documents
@@ -93,8 +97,6 @@ brew "gh"
 brew "libiconv"
 # Enable transparent encryption/decryption of files in a git repo
 brew "git-crypt"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
 # Small git utilities
 brew "git-extras"
 # Alias for git commit --fixup <ref>
@@ -342,8 +344,6 @@ cask "cryptomator"
 cask "db-browser-for-sqlite"
 # Collect, organise, edit and annotate documents
 cask "devonthink"
-# Client for the Dropbox cloud storage service
-cask "dropbox"
 # Collaborative team software
 cask "figma"
 # Web browser
@@ -461,8 +461,6 @@ cask "tor-browser"
 cask "transmit"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
-# Virtualiser for x86 hardware
-cask "virtualbox@beta"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player

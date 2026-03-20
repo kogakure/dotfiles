@@ -8,6 +8,9 @@
 // from the command palette or from `Zed` application menu.
 {
   "agent_servers": {
+    "cursor": {
+      "type": "registry"
+    },
     "codex-acp": {
       "type": "registry"
     },
