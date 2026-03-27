@@ -4,6 +4,7 @@ config:
 
 icons:
   bat: "󰭟"
+  claude: "󰚩"
   gh: ""
   nix-env: "󱄅"
   nix-shell: "󱄅"
