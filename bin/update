@@ -6,21 +6,21 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do
     sudo -n true
-    sleep 60
+    sleep 30
     kill -0 "$$" || exit
 done 2>/dev/null &
 
 cd ~/.dotfiles
 
 # Update Homebrew
-brew update
+NONINTERACTIVE=1 brew update
 brew outdated
-brew upgrade
+NONINTERACTIVE=1 brew upgrade
 brew cleanup
 
 # Ruby
-gem update --system
-gem update
+gem update --system --no-document
+gem update --no-document
 gem cleanup all
 
 # Update tmux plugins
