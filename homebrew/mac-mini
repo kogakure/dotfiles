@@ -143,8 +143,6 @@ brew "fisher"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
-# Conversion library
-brew "libiconv"
 # Automatic git commit --fixup
 brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo
@@ -227,6 +225,8 @@ brew "lazyjj"
 brew "lf"
 # JIT library for the GNU compiler collection
 brew "libgccjit"
+# Conversion library
+brew "libiconv"
 # Find what models run on your hardware
 brew "llmfit"
 # Text-based web browser
@@ -432,12 +432,14 @@ cask "cleanshot"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Menu bar usage monitor for Codex and Claude
-cask "codexbar"
+cask "steipete/tap/codexbar"
 # Colemak mod for more comfortable typing (DH variant)
 cask "colemak-dh"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Disk space visualiser
 cask "daisydisk"
 # Browser for SQLite databases
@@ -463,8 +465,6 @@ cask "font-ia-writer-quattro"
 cask "font-monaspace"
 cask "font-noto-emoji"
 cask "font-symbols-only-nerd-font"
-# 3D parametric modeller
-cask "freecad"
 # Tool to measure the computer system's performance
 cask "geekbench"
 # Disk space cleaner that finds and deletes duplicated and similar files
@@ -698,3 +698,22 @@ vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
 uv "jiratui"
+npm "@github/copilot"
+npm "@readwise/cli"
+npm "@tobilu/qmd"
+npm "@vercel/before-and-after"
+npm "browser-sync"
+npm "caniuse-cmd"
+npm "commitizen"
+npm "corepack"
+npm "cz-conventional-changelog"
+npm "fast-cli"
+npm "json-server"
+npm "jsonlint"
+npm "lighthouse"
+npm "neovim"
+npm "pageres-cli"
+npm "pnpm"
+npm "trash-cli"
+npm "unlighthouse"
+npm "yarn"
