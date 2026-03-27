@@ -66,3 +66,4 @@ source "$HOME/.aliases"
 for file in ~/.functions/*.sh; do
     source "$file"
 done
+
