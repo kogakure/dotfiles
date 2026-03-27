@@ -93,8 +93,6 @@ brew "fzf"
 brew "gcc"
 # GitHub command-line tool
 brew "gh"
-# Conversion library
-brew "libiconv"
 # Enable transparent encryption/decryption of files in a git repo
 brew "git-crypt"
 # Small git utilities
@@ -159,6 +157,8 @@ brew "lazydocker"
 brew "lazygit"
 # Terminal file manager
 brew "lf"
+# Conversion library
+brew "libiconv"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
 # Text-based web browser
