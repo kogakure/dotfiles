@@ -142,6 +142,9 @@
 
 [user]
   useConfigOnly = true
+	name = Stefan Imhoff
+	email = gpg@kogakure.8shield.net
+	signingkey = 7A7253E8!
 
 [web]
 	browser = "open"
