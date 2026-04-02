@@ -92,6 +92,7 @@ keybind = ctrl+alt+f=text:\x02O
 
 # Lazygit
 keybind = ctrl+alt+g=text:\x02G
+keybind = ctrl+cmd+g=text:\x02G
 
 # Select windows
 keybind = ctrl+alt+j=text:\x02s
