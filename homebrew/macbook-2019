@@ -179,6 +179,8 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
+# Incremental parsing library
+brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
@@ -251,8 +253,6 @@ brew "the_silver_searcher"
 brew "tldr"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Incremental parsing library
-brew "tree-sitter"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation
@@ -504,3 +504,15 @@ mas "Typeface", id: 1062679359
 mas "Yoink", id: 457622435
 go "cmd/go"
 go "cmd/gofmt"
+npm "browser-sync"
+npm "caniuse-cmd"
+npm "commitizen"
+npm "corepack"
+npm "cz-conventional-changelog"
+npm "fast-cli"
+npm "json-server"
+npm "jsonlint"
+npm "neovim"
+npm "pageres-cli"
+npm "trash-cli"
+npm "yarn"
