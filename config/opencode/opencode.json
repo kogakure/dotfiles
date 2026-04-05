@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/gemma4",
+  "provider": {
+    "ollama": {
+      "models": {
+        "gemma4": {
+          "_launch": true,
+          "name": "gemma4"
+        },
+        "kimi-k2.5:cloud": {
+          "_launch": true,
+          "limit": {
+            "context": 262144,
+            "output": 262144
+          },
+          "name": "kimi-k2.5:cloud"
+        }
+      },
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      }
+    }
+  }
+}
