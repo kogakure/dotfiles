@@ -154,3 +154,5 @@
 
 [pager]
 	diff = diffnav
+[init]
+	defaultBranch = master
