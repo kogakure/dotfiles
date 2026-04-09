@@ -65,3 +65,5 @@ for file in ~/.functions/*.sh; do
     source "$file"
 done
 
+
+alias claude-mem='bun "/Users/kogakure/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
