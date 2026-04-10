@@ -1,3 +1,4 @@
+tap "arthur-ficial/tap"
 tap "charmbracelet/tap"
 tap "d12frosted/emacs-plus"
 tap "dlvhdr/formulae"
@@ -5,6 +6,7 @@ tap "dustinblackman/tap"
 tap "f/textream"
 tap "felixkratz/formulae"
 tap "gabrie30/utils"
+tap "hmans/beans"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh"
@@ -17,8 +19,6 @@ tap "tw93/tap"
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
-# Library and utilities for processing GIFs
-brew "giflib"
 # Library for manipulating PNG images
 brew "libpng"
 # YAML Parser
@@ -45,6 +45,8 @@ brew "bat-extras"
 brew "pixman"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# Library and utilities for processing GIFs
+brew "giflib"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -256,7 +258,7 @@ brew "nss"
 # Modern shell for the GitHub era
 brew "nushell"
 # Create, run, and share large language models (LLMs)
-brew "ollama", link: false
+brew "ollama"
 # General-purpose speech recognition model
 brew "openai-whisper"
 # 7-Zip (high compression file archiver) implementation
@@ -301,6 +303,8 @@ brew "ripgrep-all"
 brew "ronn"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# CLI proxy to minimize LLM token consumption
+brew "rtk"
 # CLI search and replace | Space Age seD
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
@@ -367,6 +371,8 @@ brew "yq"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# On-device Apple FoundationModels CLI and OpenAI-compatible server
+brew "arthur-ficial/tap/apfel"
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
@@ -415,6 +421,8 @@ cask "balenaetcher"
 cask "bartender"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
+# Agentic-first issue tracker
+cask "hmans/beans/beans"
 # Edit and manage bibliographies
 cask "bibdesk"
 # 3D creation suite
@@ -523,6 +531,10 @@ cask "numi"
 cask "obsidian"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
+# Get up and running with large language models locally
+cask "ollama-app"
+# AI coding agent desktop client
+cask "opencode-desktop"
 # Control your smart light system
 cask "philips-hue-sync"
 # Browse, manage, inspect containers and images
@@ -611,12 +623,13 @@ mas "iFinance 5", id: 1500241909
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
+mas "Locally AI", id: 6741426692
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
-mas "Numbers", id: 409203825
 mas "Numbers", id: 361304891
-mas "Pages", id: 409201541
+mas "Numbers", id: 409203825
 mas "Pages", id: 361309726
+mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
@@ -698,24 +711,20 @@ vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
 uv "jiratui"
-npm "@github/copilot"
-npm "@mariozechner/pi-coding-agent"
-npm "@readwise/cli"
-npm "@tobilu/qmd"
-npm "@vercel/before-and-after"
+npm "@playwright/cli"
 npm "browser-sync"
 npm "caniuse-cmd"
 npm "commitizen"
 npm "corepack"
 npm "cz-conventional-changelog"
 npm "fast-cli"
-npm "jscpd"
 npm "json-server"
 npm "jsonlint"
 npm "lighthouse"
 npm "neovim"
 npm "pageres-cli"
-npm "pnpm"
+npm "playwright-cli"
+npm "playwright"
 npm "trash-cli"
 npm "unlighthouse"
 npm "yarn"
