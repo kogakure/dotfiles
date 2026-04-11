@@ -36,6 +36,7 @@
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.jjconfig.toml: jjconfig.toml
     ~/.markdownlint.yaml: markdownlint.yaml
+    ~/.pi: pi
     ~/.profile: profile
     ~/.session-variables.sh: session-variables.sh
     ~/.wakatime.cfg: private/wakatime.cfg
