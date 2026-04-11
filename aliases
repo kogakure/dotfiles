@@ -28,6 +28,7 @@ alias emacs "emacs -nw"
 alias cl='claude --dangerously-skip-permissions'
 alias clp='claude --permission-mode plan'
 alias clr='claude --resume'
+alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
 # Tmux
 alias t='tmux'
