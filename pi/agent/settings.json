@@ -1,0 +1,14 @@
+{
+  "defaultModel": "claude-3-5-haiku-latest",
+  "defaultProvider": "anthropic",
+  "lastChangelogVersion": "0.66.1",
+  "packages": [
+    "npm:pi-subagents",
+    "npm:taskplane",
+    "npm:@plannotator/pi-extension",
+    "npm:pi-mcp-adapter",
+    "npm:pi-lens",
+    "npm:pi-web-access",
+    "npm:pi-teams"
+  ]
+}
