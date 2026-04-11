@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "root": "/Users/kogakure/.config/opencode",
+  "installed": {
+    "https://registry.kdco.dev::kdco/kdco-primitives@sha256:688d2d5f536e8db0b44fdff5d588000a5a9ed7028ec715828cc458d27f34dd8d": {
+      "registryUrl": "https://registry.kdco.dev",
+      "registryName": "kdco",
+      "name": "kdco-primitives",
+      "revision": "sha256:688d2d5f536e8db0b44fdff5d588000a5a9ed7028ec715828cc458d27f34dd8d",
+      "hash": "688d2d5f536e8db0b44fdff5d588000a5a9ed7028ec715828cc458d27f34dd8d",
+      "files": [
+        {
+          "path": "plugins/kdco-primitives/get-project-id.ts",
+          "hash": "2bdcb8e839171e8a9ddff36f7b9c28c90fae972cb395cec38f8d3e85cfd66ad9"
+        },
+        {
+          "path": "plugins/kdco-primitives/with-timeout.ts",
+          "hash": "3c582e3e89f5d0de8230122ef0fea2066b3ebff3d77579515cef251628439527"
+        },
+        {
+          "path": "plugins/kdco-primitives/log-warn.ts",
+          "hash": "7ed7eb195fd4d67cbee8057ae35593b92693e1e5e84012fcf5402a14df071311"
+        },
+        {
+          "path": "plugins/kdco-primitives/types.ts",
+          "hash": "4471c8d97b16e06906f3446e89e01c4a436130a42e5fa6c31f107e63f3b42666"
+        },
+        {
+          "path": "plugins/kdco-primitives/mutex.ts",
+          "hash": "4caacfd38bb4b971c356ed9dbfb4dcc10634a83a39c51e724852325d84be941e"
+        },
+        {
+          "path": "plugins/kdco-primitives/shell.ts",
+          "hash": "9941f4f642c10f04795304a7657111b2cd10ec066b08f0e0866ae87de5160669"
+        },
+        {
+          "path": "plugins/kdco-primitives/temp.ts",
+          "hash": "b66983f2a747d87fb84dcdaa3ed88e5da2e8e46c8151e98f74e76755148f7e08"
+        },
+        {
+          "path": "plugins/kdco-primitives/terminal-detect.ts",
+          "hash": "523435085e8fc31883a6a702e70fd9ba82c5d799026d0f04be890c84dbab6b41"
+        },
+        {
+          "path": "plugins/kdco-primitives/index.ts",
+          "hash": "012301f644639e930b30ea09f43b0a3808d8dfed3970c242dd60ab1c530fc5e6"
+        }
+      ],
+      "installedAt": "2026-04-11T13:46:31.546Z"
+    },
+    "https://registry.kdco.dev::kdco/notify@sha256:2d51712c24f6ab7430f22fd429bf97cc665ed64c97ae1f751e83f3857623e0a5": {
+      "registryUrl": "https://registry.kdco.dev",
+      "registryName": "kdco",
+      "name": "notify",
+      "revision": "sha256:2d51712c24f6ab7430f22fd429bf97cc665ed64c97ae1f751e83f3857623e0a5",
+      "hash": "2d51712c24f6ab7430f22fd429bf97cc665ed64c97ae1f751e83f3857623e0a5",
+      "files": [
+        {
+          "path": "plugins/notify.ts",
+          "hash": "b922f7f95d20ccf429d7966b125928b9546aa16147aca80a3c9772726830eb84"
+        },
+        {
+          "path": "plugins/notify/backend.ts",
+          "hash": "d8398dedaba3a14bd85221df0da4415aba85158a33f16899f3010f8746e9c636"
+        },
+        {
+          "path": "plugins/notify/cmux.ts",
+          "hash": "ced0bf06554b6b4af506e07848928fbe34deaf715fb871c9abedf5620fb2bb80"
+        }
+      ],
+      "installedAt": "2026-04-11T13:46:31.547Z"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "notifyChildSessions": false,
+  "terminal": "ghostty",
+  "sounds": {
+    "idle": "Glass",
+    "error": "Basso",
+    "permission": "Submarine",
+    "question": "Submarine"
+  },
+  "quietHours": {
+    "enabled": false,
+    "start": "22:00",
+    "end": "08:00"
+  }
+}
