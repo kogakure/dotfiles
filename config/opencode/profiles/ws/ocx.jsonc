@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ocx.kdco.dev/schemas/profile.json",
+  "registries": {
+    "kdco": {
+      "url": "https://registry.kdco.dev"
+    }
+  },
+  "exclude": [
+    "**/CLAUDE.md",
+    "**/CONTEXT.md",
+    "**/.opencode/**"
+  ]
+}
