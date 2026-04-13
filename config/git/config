@@ -44,9 +44,6 @@
   status = "auto"
   ui = 1
 
-[commit]
-  gpgsign = true
-
 [core]
   editor = code --wait
   legacyheaders = false
@@ -142,15 +139,18 @@
 
 [user]
   useConfigOnly = true
-	name = Stefan Imhoff
-	email = gpg@kogakure.8shield.net
-	signingkey = 7A7253E8!
+
+[includeIf "gitdir:~/Code/personal/"]
+  path = ~/.config/git/config-personal
+
+[includeIf "gitdir:~/Code/work/"]
+  path = ~/.config/git/config-work
 
 [web]
-	browser = "open"
+  browser = "open"
 
 [include]
-	path = "~/.gitconfig.local"
+  path = "~/.gitconfig.local"
 
 [pager]
 	diff = diffnav

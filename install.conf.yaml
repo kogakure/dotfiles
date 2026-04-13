@@ -18,6 +18,8 @@
     ~/.ack: ack
     ~/.ag: ag
     ~/.agents: private/agents
+    ~/.config/git/config-personal: private/git/config-personal
+    ~/.config/git/config-work: private/git/config-work
     ~/.aliases: aliases
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
