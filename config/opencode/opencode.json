@@ -1,27 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "plan",
-  "instructions": [
-    "https://opencode.school/api/progress/extra-hacker-8940"
-  ],
   "mcp": {
     "chrome-devtools": {
-      "command": [
-        "npx",
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--autoConnect"
-      ],
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--autoConnect"],
       "type": "local"
     },
     "open-meteo": {
-      "command": [
-        "npx",
-        "-y",
-        "-p",
-        "open-meteo-mcp-server",
-        "open-meteo-mcp-server"
-      ],
+      "command": ["npx", "-y", "-p", "open-meteo-mcp-server", "open-meteo-mcp-server"],
       "type": "local"
     },
     "claude-mem": {
@@ -32,9 +18,7 @@
       "enabled": true
     }
   },
-  "plugin": [
-    "@bloodf/opencode-claude-mem"
-  ],
+  "plugin": ["@bloodf/opencode-claude-mem"],
   "provider": {
     "ollama": {
       "models": {},
