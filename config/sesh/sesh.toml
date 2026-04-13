@@ -1,7 +1,7 @@
 default_startup_script = "~/.config/sesh/scripts/open_files"
 
 [[startup_scripts]]
-session_path = "~/Code/GitHub/websites/stefanimhoff-de"
+session_path = "~/Code/personal/websites/stefanimhoff-de"
 script_path = "~/.config/sesh/scripts/node_dev"
 
 [[session]]
@@ -15,24 +15,24 @@ startup_command = "la"
 
 [[session]]
 name = "󰪶 Zettelkasten"
-path = "~/Code/GitHub/obsidian/zettelkasten/"
+path = "~/Code/personal/obsidian/zettelkasten/"
 
 [[session]]
 name = " Highlights"
-path = "~/Code/GitHub/obsidian/highlights/"
+path = "~/Code/personal/obsidian/highlights/"
 
 [[session]]
 name = " stefanimhoff-de"
-path = "~/Code/GitHub/websites/stefanimhoff-de/"
+path = "~/Code/personal/websites/stefanimhoff-de/"
 
 [[session]]
 name = "󰝴 kogakure-de"
-path = "~/Code/GitHub/websites/kogakure-de/"
+path = "~/Code/personal/websites/kogakure-de/"
 
 [[session]]
 name = " hamburg-stefanimhoff-de"
-path = "~/Code/GitHub/websites/hamburg-stefanimhoff-de/"
+path = "~/Code/personal/websites/hamburg-stefanimhoff-de/"
 
 [[session]]
 name = "󱓟 Skills"
-path = "~/Code/GitHub/skills"
+path = "~/Code/personal/skills"

@@ -50,8 +50,8 @@ keybindings:
   issues: []
   prs: []
 repoPaths:
-  kogakure/*: ~/Code/GitHub/*
-  work/*: ~/Code/XING/*
+  kogakure/*: ~/Code/personal/*
+  work/*: ~/Code/work/*
 theme:
   ui:
     table:
