@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# claude-set-profile
+# Sets the machine profile used by claude-backup and claude-restore
+# Run once on each machine after initial setup
+#
+# Usage: claude-set-profile work|private
+
+set -e
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+PROFILE="$1"
+
+if [ -z "$PROFILE" ]; then
+    echo -e "${RED}Usage: claude-set-profile work|private${NC}"
+    exit 1
+fi
+
+if [ "$PROFILE" != "work" ] && [ "$PROFILE" != "private" ]; then
+    echo -e "${RED}Error: profile must be 'work' or 'private', got '$PROFILE'${NC}"
+    exit 1
+fi
+
+echo "$PROFILE" > "$HOME/.machine-profile"
+echo -e "${GREEN}✓ Machine profile set to: $PROFILE${NC}"
+echo "  claude-backup and claude-restore will now use: ~/.dotfiles/private/claude/$PROFILE/"

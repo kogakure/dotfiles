@@ -2,6 +2,11 @@
 
 # claude-restore
 # Restores Claude Code configuration from private/ submodule backup
+# Merges shared/ config with profile-specific (work or private) config
+#
+# Usage: claude-restore
+# Requires: ~/.machine-profile containing "work" or "private"
+# Set with: claude-set-profile work|private
 
 set -e
 
@@ -13,22 +18,28 @@ NC='\033[0m' # No Color
 
 # Directories
 CLAUDE_DIR="$HOME/.claude"
-BACKUP_DIR="$HOME/.dotfiles/private/claude"
+DOTFILES="$HOME/.dotfiles"
+
+# Profile detection
+PROFILE=$(cat "$HOME/.machine-profile" 2>/dev/null || echo "private")
+SHARED_DIR="$DOTFILES/private/claude/shared"
+PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
 
 echo -e "${GREEN}Starting Claude Code restore...${NC}"
+echo -e "Profile: ${YELLOW}$PROFILE${NC}"
 
-# Check if backup exists
-if [ ! -d "$BACKUP_DIR" ]; then
-    echo -e "${RED}Error: Backup directory not found at $BACKUP_DIR${NC}"
-    echo "Please run ./bin/claude-backup first or ensure private submodule is initialized."
+# Check that backup directories exist
+if [ ! -d "$SHARED_DIR" ] && [ ! -d "$PROFILE_DIR" ]; then
+    echo -e "${RED}Error: No backup found at $DOTFILES/private/claude/${NC}"
+    echo "Run claude-backup first or ensure the private submodule is initialized."
     exit 1
 fi
 
 # Display backup info if available
-if [ -f "$BACKUP_DIR/BACKUP_INFO.txt" ]; then
+if [ -f "$PROFILE_DIR/BACKUP_INFO.txt" ]; then
     echo ""
     echo -e "${YELLOW}Backup Information:${NC}"
-    cat "$BACKUP_DIR/BACKUP_INFO.txt"
+    cat "$PROFILE_DIR/BACKUP_INFO.txt"
     echo ""
 fi
 
@@ -40,7 +51,6 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 0
 fi
 
-# Create .claude directory if it doesn't exist
 mkdir -p "$CLAUDE_DIR"
 
 # Function to restore a file if it exists in backup
@@ -71,63 +81,52 @@ restore_dir() {
     fi
 }
 
-# Restore global settings
-echo ""
-echo "Restoring global settings..."
-restore_file "$BACKUP_DIR/.claude.json" "$HOME/.claude.json"
-restore_file "$BACKUP_DIR/settings.json" "$CLAUDE_DIR/settings.json"
-restore_file "$BACKUP_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json"
-restore_file "$BACKUP_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
+# ── Shared ────────────────────────────────────────────────────────────────────
 
-# Restore history
 echo ""
-echo "Restoring history..."
-restore_file "$BACKUP_DIR/history.jsonl" "$CLAUDE_DIR/history.jsonl"
+echo "Restoring shared settings..."
+restore_file "$SHARED_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
+restore_file "$SHARED_DIR/settings.json" "$CLAUDE_DIR/settings.json"
+restore_file "$SHARED_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json"
 
-# Restore stats
 echo ""
-echo "Restoring stats..."
-restore_file "$BACKUP_DIR/stats-cache.json" "$CLAUDE_DIR/stats-cache.json"
+echo "Restoring shared commands, scripts & hooks..."
+restore_dir "$SHARED_DIR/commands" "$CLAUDE_DIR/commands"
+restore_dir "$SHARED_DIR/scripts" "$CLAUDE_DIR/scripts"
+restore_dir "$SHARED_DIR/hooks" "$CLAUDE_DIR/hooks"
+restore_file "$SHARED_DIR/RTK.md" "$CLAUDE_DIR/RTK.md"
 
-# Restore commands directory
 echo ""
-echo "Restoring commands..."
-restore_dir "$BACKUP_DIR/commands" "$CLAUDE_DIR/commands"
+echo "Restoring shared plugins configuration..."
+restore_file "$SHARED_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json"
 
-# Restore scripts directory
-echo ""
-echo "Restoring scripts..."
-restore_dir "$BACKUP_DIR/scripts" "$CLAUDE_DIR/scripts"
+# ── Profile-specific ─────────────────────────────────────────────────────────
 
-# Restore plugins configuration
 echo ""
-echo "Restoring plugins configuration..."
-restore_file "$BACKUP_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json"
+echo "Restoring profile-specific settings ($PROFILE)..."
+restore_file "$PROFILE_DIR/.claude.json" "$HOME/.claude.json"
+restore_file "$PROFILE_DIR/history.jsonl" "$CLAUDE_DIR/history.jsonl"
+restore_file "$PROFILE_DIR/stats-cache.json" "$CLAUDE_DIR/stats-cache.json"
 
-# Restore project-specific configurations
 echo ""
-echo "Restoring project configurations..."
-if [ -d "$BACKUP_DIR/projects" ]; then
-    for project_backup in "$BACKUP_DIR/projects"/*; do
+echo "Restoring project configurations ($PROFILE)..."
+if [ -d "$PROFILE_DIR/projects" ]; then
+    for project_backup in "$PROFILE_DIR/projects"/*; do
         if [ -d "$project_backup" ]; then
             project_name=$(basename "$project_backup")
 
-            # Restore .claude.json
             if [ -f "$project_backup/.claude.json" ]; then
                 restore_file "$project_backup/.claude.json" "$CLAUDE_DIR/projects/$project_name/.claude.json"
             fi
 
-            # Restore CLAUDE.md
             if [ -f "$project_backup/CLAUDE.md" ]; then
                 restore_file "$project_backup/CLAUDE.md" "$CLAUDE_DIR/projects/$project_name/CLAUDE.md"
             fi
 
-            # Restore memory directory
             if [ -d "$project_backup/memory" ]; then
                 restore_dir "$project_backup/memory" "$CLAUDE_DIR/projects/$project_name/memory"
             fi
 
-            # Restore hooks
             if [ -f "$project_backup/hooks.json" ]; then
                 restore_file "$project_backup/hooks.json" "$CLAUDE_DIR/projects/$project_name/hooks.json"
             fi
@@ -135,13 +134,16 @@ if [ -d "$BACKUP_DIR/projects" ]; then
     done
 fi
 
-# Restore shell snapshots
 echo ""
-echo "Restoring shell snapshots..."
-restore_dir "$BACKUP_DIR/shell-snapshots" "$CLAUDE_DIR/shell-snapshots"
+echo "Restoring plans ($PROFILE)..."
+restore_dir "$PROFILE_DIR/plans" "$CLAUDE_DIR/plans"
+
+echo ""
+echo "Restoring shell snapshots ($PROFILE)..."
+restore_dir "$PROFILE_DIR/shell-snapshots" "$CLAUDE_DIR/shell-snapshots"
 
 echo ""
 echo -e "${GREEN}✓ Restore complete!${NC}"
 echo ""
-echo "Claude Code settings have been restored from: $BACKUP_DIR"
+echo "Claude Code settings restored from profile: $PROFILE"
 echo "Restart Claude Code to apply all settings."

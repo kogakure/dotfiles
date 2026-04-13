@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # claude-backup
-# Backs up Claude Code configuration and project files to private/ submodule
+# Backs up Claude Code configuration to private/ submodule
+# Splits into shared/ (all machines) and profile-specific/ (work or private)
+#
+# Usage: claude-backup
+# Requires: ~/.machine-profile containing "work" or "private"
+# Set with: claude-set-profile work|private
 
 set -e
 
@@ -12,13 +17,18 @@ NC='\033[0m' # No Color
 
 # Directories
 CLAUDE_DIR="$HOME/.claude"
-BACKUP_DIR="$HOME/.dotfiles/private/claude"
+DOTFILES="$HOME/.dotfiles"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
-echo -e "${GREEN}Starting Claude Code backup...${NC}"
+# Profile detection
+PROFILE=$(cat "$HOME/.machine-profile" 2>/dev/null || echo "private")
+SHARED_DIR="$DOTFILES/private/claude/shared"
+PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
 
-# Create backup directory if it doesn't exist
-mkdir -p "$BACKUP_DIR"
+echo -e "${GREEN}Starting Claude Code backup...${NC}"
+echo -e "Profile: ${YELLOW}$PROFILE${NC}"
+
+mkdir -p "$SHARED_DIR" "$PROFILE_DIR"
 
 # Function to backup a file if it exists
 backup_file() {
@@ -48,110 +58,105 @@ backup_dir() {
     fi
 }
 
-# Backup global settings
-echo ""
-echo "Backing up global settings..."
-backup_file "$HOME/.claude.json" "$BACKUP_DIR/.claude.json"
-backup_file "$CLAUDE_DIR/settings.json" "$BACKUP_DIR/settings.json"
-backup_file "$CLAUDE_DIR/keybindings.json" "$BACKUP_DIR/keybindings.json"
-backup_file "$CLAUDE_DIR/CLAUDE.md" "$BACKUP_DIR/CLAUDE.md"
+# ── Shared (same across all machines) ────────────────────────────────────────
 
-# Backup history
 echo ""
-echo "Backing up history..."
-backup_file "$CLAUDE_DIR/history.jsonl" "$BACKUP_DIR/history.jsonl"
+echo "Backing up shared settings..."
+backup_file "$CLAUDE_DIR/CLAUDE.md" "$SHARED_DIR/CLAUDE.md"
+backup_file "$CLAUDE_DIR/settings.json" "$SHARED_DIR/settings.json"
+backup_file "$CLAUDE_DIR/keybindings.json" "$SHARED_DIR/keybindings.json"
 
-# Backup stats
 echo ""
-echo "Backing up stats..."
-backup_file "$CLAUDE_DIR/stats-cache.json" "$BACKUP_DIR/stats-cache.json"
+echo "Backing up shared commands, scripts & hooks..."
+backup_dir "$CLAUDE_DIR/commands" "$SHARED_DIR/commands"
+backup_dir "$CLAUDE_DIR/scripts" "$SHARED_DIR/scripts"
+backup_dir "$CLAUDE_DIR/hooks" "$SHARED_DIR/hooks"
+backup_file "$CLAUDE_DIR/RTK.md" "$SHARED_DIR/RTK.md"
 
-# Backup commands directory
 echo ""
-echo "Backing up commands..."
-backup_dir "$CLAUDE_DIR/commands" "$BACKUP_DIR/commands"
+echo "Backing up shared plugins configuration..."
+backup_file "$CLAUDE_DIR/plugins/known_marketplaces.json" "$SHARED_DIR/plugins/known_marketplaces.json"
 
-# Backup scripts directory
-echo ""
-echo "Backing up scripts..."
-backup_dir "$CLAUDE_DIR/scripts" "$BACKUP_DIR/scripts"
+# ── Profile-specific ─────────────────────────────────────────────────────────
 
-# Backup plugins (excluding large marketplace directories, just config)
 echo ""
-echo "Backing up plugins configuration..."
-backup_file "$CLAUDE_DIR/plugins/known_marketplaces.json" "$BACKUP_DIR/plugins/known_marketplaces.json"
+echo "Backing up profile-specific settings ($PROFILE)..."
+backup_file "$HOME/.claude.json" "$PROFILE_DIR/.claude.json"
+backup_file "$CLAUDE_DIR/history.jsonl" "$PROFILE_DIR/history.jsonl"
+backup_file "$CLAUDE_DIR/stats-cache.json" "$PROFILE_DIR/stats-cache.json"
 
-# Backup project-specific configurations (CLAUDE.md, memory, etc.)
 echo ""
-echo "Backing up project configurations..."
+echo "Backing up project configurations ($PROFILE)..."
 if [ -d "$CLAUDE_DIR/projects" ]; then
     for project_dir in "$CLAUDE_DIR/projects"/*; do
         if [ -d "$project_dir" ]; then
             project_name=$(basename "$project_dir")
 
-            # Backup .claude.json if exists
             if [ -f "$project_dir/.claude.json" ]; then
-                backup_file "$project_dir/.claude.json" "$BACKUP_DIR/projects/$project_name/.claude.json"
+                backup_file "$project_dir/.claude.json" "$PROFILE_DIR/projects/$project_name/.claude.json"
             fi
 
-            # Backup CLAUDE.md if exists
             if [ -f "$project_dir/CLAUDE.md" ]; then
-                backup_file "$project_dir/CLAUDE.md" "$BACKUP_DIR/projects/$project_name/CLAUDE.md"
+                backup_file "$project_dir/CLAUDE.md" "$PROFILE_DIR/projects/$project_name/CLAUDE.md"
             fi
 
-            # Backup memory directory if exists
             if [ -d "$project_dir/memory" ] && [ "$(ls -A "$project_dir/memory" 2>/dev/null)" ]; then
-                backup_dir "$project_dir/memory" "$BACKUP_DIR/projects/$project_name/memory"
+                backup_dir "$project_dir/memory" "$PROFILE_DIR/projects/$project_name/memory"
             fi
 
-            # Backup hooks if they exist
             if [ -f "$project_dir/hooks.json" ]; then
-                backup_file "$project_dir/hooks.json" "$BACKUP_DIR/projects/$project_name/hooks.json"
+                backup_file "$project_dir/hooks.json" "$PROFILE_DIR/projects/$project_name/hooks.json"
             fi
         fi
     done
 fi
 
-# Backup shell snapshots (useful for restoring context)
 echo ""
-echo "Backing up shell snapshots..."
+echo "Backing up plans ($PROFILE)..."
+backup_dir "$CLAUDE_DIR/plans" "$PROFILE_DIR/plans"
+
+echo ""
+echo "Backing up shell snapshots ($PROFILE)..."
 if [ -d "$CLAUDE_DIR/shell-snapshots" ] && [ "$(ls -A "$CLAUDE_DIR/shell-snapshots" 2>/dev/null)" ]; then
-    # Only backup the most recent snapshots (last 5)
-    mkdir -p "$BACKUP_DIR/shell-snapshots"
+    mkdir -p "$PROFILE_DIR/shell-snapshots"
     ls -t "$CLAUDE_DIR/shell-snapshots" | head -5 | while read -r file; do
-        cp "$CLAUDE_DIR/shell-snapshots/$file" "$BACKUP_DIR/shell-snapshots/"
+        cp "$CLAUDE_DIR/shell-snapshots/$file" "$PROFILE_DIR/shell-snapshots/"
     done
     echo -e "  ✓ Backed up: shell-snapshots/ (latest 5 snapshots)"
 else
     echo -e "  ${YELLOW}⊗ Not found or empty: shell-snapshots/${NC}"
 fi
 
-# Create a backup manifest
+# ── Manifest ──────────────────────────────────────────────────────────────────
+
 echo ""
 echo "Creating backup manifest..."
-cat > "$BACKUP_DIR/BACKUP_INFO.txt" <<EOF
+cat > "$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
 Claude Code Backup
 ==================
 Timestamp: $TIMESTAMP
-Hostname: $(hostname)
+Hostname:  $(hostname)
+Profile:   $PROFILE
 Claude Dir: $CLAUDE_DIR
 
-Backed up:
-- Global settings (.claude.json, settings.json, keybindings.json)
-- Global CLAUDE.md
-- Command history (history.jsonl)
-- Stats cache
-- Commands directory
-- Scripts directory
-- Plugins configuration
-- Project-specific configurations (.claude.json, CLAUDE.md, memory, hooks)
+Backed up (shared):
+- settings.json, keybindings.json, CLAUDE.md, RTK.md
+- commands/, scripts/, hooks/
+- plugins/known_marketplaces.json
+
+Backed up (profile: $PROFILE):
+- .claude.json (auth)
+- history.jsonl, stats-cache.json
+- Project configs (.claude.json, CLAUDE.md, memory, hooks)
+- plans/
 - Recent shell snapshots (last 5)
 
-Note: Conversation history (.jsonl files in projects/) and debug logs
+Note: Conversation history (.jsonl in projects/) and debug logs
 are excluded to keep backup size manageable.
 EOF
 
 echo -e "${GREEN}✓ Backup complete!${NC}"
-echo -e "Backup location: $BACKUP_DIR"
+echo -e "  Shared:  $SHARED_DIR"
+echo -e "  Profile: $PROFILE_DIR"
 echo ""
-echo "To restore these settings on another machine, run: ./bin/claude-restore"
+echo "To restore on another machine, run: claude-restore"

@@ -21,8 +21,6 @@
     ~/.aliases: aliases
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
-    ~/.claude.json: private/claude.json
-    ~/.claude: private/claude
     ~/.ctags: ctags
     ~/.curlrc: curlrc
     ~/.default-gems: default-gems
