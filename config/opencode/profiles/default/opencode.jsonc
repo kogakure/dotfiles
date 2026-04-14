@@ -69,31 +69,6 @@
       "command": ["npx", "-y", "-p", "open-meteo-mcp-server", "open-meteo-mcp-server"],
       "type": "local",
     },
-    "claude-mem": {
-      "type": "local",
-      "command": [
-        "/Users/kogakure/.claude/plugins/cache/thedotmack/claude-mem/12.1.0/scripts/mcp-server.cjs",
-      ],
-      "enabled": true,
-    },
   },
-  "plugin": ["@bloodf/opencode-claude-mem"],
-  "command": {
-    "mem-search": {
-      "description": "Search claude-mem persistent memory",
-      "template": "Search my claude-mem persistent memory for: $ARGUMENTS\n\nUse the claude-mem MCP search tool. Follow the 3-layer workflow:\n1. search(query=\"$ARGUMENTS\") to get an index with IDs\n2. timeline(anchor=ID) for context around interesting results\n3. get_observations([IDs]) for full details\n\nPresent results with observation IDs, titles, and relevant content.",
-    },
-    "mem-save": {
-      "description": "Save a manual memory to claude-mem",
-      "template": "Save this to my claude-mem persistent memory: $ARGUMENTS\n\nUse the claude-mem MCP save_memory tool with the text provided. Confirm when saved with the observation ID.",
-    },
-    "mem-status": {
-      "description": "Show claude-mem memory status",
-      "template": "Show my claude-mem memory status. Check:\n1. Worker connection (curl http://localhost:37777/health)\n2. Available MCP tools (claude-mem search, timeline, get_observations, save_memory)\n3. Recent memory for this project\n\nPresent as a clean status report.",
-    },
-    "mem-timeline": {
-      "description": "Show recent memory timeline",
-      "template": "Show my recent claude-mem memory timeline using the claude-mem MCP timeline tool. Present observations chronologically with IDs and summaries.",
-    },
-  },
+  "plugin": [],
 }
