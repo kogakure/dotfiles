@@ -51,10 +51,12 @@
   whitespace = trailing-space,space-before-tab
 
 [credential "https://gist.github.com"]
-	helper = "gh auth git-credential"
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [credential "https://github.com"]
-	helper = "gh auth git-credential"
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [delta]
   light = false
