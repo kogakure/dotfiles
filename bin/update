@@ -42,6 +42,9 @@ mo optimize
 # Update macOS software
 sudo softwareupdate -i -a
 
+# Claude
+claude-backup
+
 # Write Homebrew Brewfile
 homebrew-backup
 
