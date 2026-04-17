@@ -1,3 +1,4 @@
+tap "anomalyco/tap"
 tap "arthur-ficial/tap"
 tap "charmbracelet/tap"
 tap "d12frosted/emacs-plus"
@@ -199,8 +200,6 @@ brew "htop"
 brew "httpie"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Database of common MIME types
-brew "shared-mime-info"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Convert images to PDF via direct JPEG inclusion
@@ -257,8 +256,6 @@ brew "nginx"
 brew "nss"
 # Modern shell for the GitHub era
 brew "nushell"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # General-purpose speech recognition model
 brew "openai-whisper"
 # 7-Zip (high compression file archiver) implementation
@@ -309,6 +306,8 @@ brew "rtk"
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Database of common MIME types
+brew "shared-mime-info"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -371,6 +370,8 @@ brew "yq"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode"
 # On-device Apple FoundationModels CLI and OpenAI-compatible server
 brew "arthur-ficial/tap/apfel"
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
@@ -389,8 +390,6 @@ brew "gabrie30/utils/ghorg"
 brew "joshmedeski/sesh/sesh"
 # SafeDep vet is a tool for identifying open source software supply chain risks
 brew "safedep/tap/vet"
-# The AI coding agent built for the terminal.
-brew "sst/tap/opencode"
 # Comprehensive macOS cleanup and application uninstall tool
 brew "tw93/tap/mole"
 # Sound and music editor
@@ -513,6 +512,8 @@ cask "languagetool-desktop"
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-wallet"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Software for Logitech devices
 cask "logi-options+"
 # File system integration
@@ -531,8 +532,6 @@ cask "numi"
 cask "obsidian"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
-# Get up and running with large language models locally
-cask "ollama-app"
 # AI coding agent desktop client
 cask "opencode-desktop"
 # Control your smart light system
@@ -573,6 +572,8 @@ cask "spotify"
 cask "superwhisper"
 # Interior design application
 cask "sweet-home3d"
+# Minimal GUI for AI code agents
+cask "t3-code"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Desktop client for Telegram messenger
@@ -626,10 +627,10 @@ mas "Kindle", id: 302584613
 mas "Locally AI", id: 6741426692
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
-mas "Numbers", id: 361304891
 mas "Numbers", id: 409203825
-mas "Pages", id: 361309726
+mas "Numbers", id: 361304891
 mas "Pages", id: 409201541
+mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
@@ -711,20 +712,26 @@ vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
 uv "jiratui"
-npm "@playwright/cli"
+npm "@github/copilot"
+npm "@mariozechner/pi-coding-agent"
+npm "@readwise/cli"
+npm "@tobilu/qmd"
+npm "@vercel/before-and-after"
 npm "browser-sync"
 npm "caniuse-cmd"
 npm "commitizen"
 npm "corepack"
 npm "cz-conventional-changelog"
 npm "fast-cli"
+npm "jscpd"
 npm "json-server"
 npm "jsonlint"
 npm "lighthouse"
 npm "neovim"
+npm "opencode-wakatime"
 npm "pageres-cli"
-npm "playwright-cli"
-npm "playwright"
+npm "pnpm"
+npm "port-whisperer"
 npm "trash-cli"
 npm "unlighthouse"
 npm "yarn"
