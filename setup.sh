@@ -4,18 +4,18 @@ echo "Installing dotfiles"
 
 # Function to run a command with sudo
 run_with_sudo() {
-	echo "$SUDO_PASSWORD" | sudo -S "$@"
+    echo "$SUDO_PASSWORD" | sudo -S "$@"
 }
 
 # Function to prevent sleep
 prevent_sleep() {
-	caffeinate -d -i -m -s &
-	CAFFEINATE_PID=$!
+    caffeinate -d -i -m -s &
+    CAFFEINATE_PID=$!
 }
 
 # Function to allow sleep again
 allow_sleep() {
-	kill $CAFFEINATE_PID
+    kill $CAFFEINATE_PID
 }
 
 # Ask for the administrator password upfront and store it
@@ -24,8 +24,8 @@ echo
 
 # Verify the sudo password
 if ! echo "$SUDO_PASSWORD" | sudo -S true; then
-	echo "Incorrect sudo password. Exiting."
-	exit 1
+    echo "Incorrect sudo password. Exiting."
+    exit 1
 fi
 
 echo "Sudo access granted."
@@ -60,15 +60,15 @@ curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.t
 
 # Check if Homebrew is installed
 if ! command -v brew &>/dev/null; then
-	echo "Homebrew not found. Installing Homebrew..."
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "Homebrew not found. Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-	# Add Homebrew to PATH for the current session
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+    # Add Homebrew to PATH for the current session
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
-	echo "Homebrew installed successfully."
+    echo "Homebrew installed successfully."
 else
-	echo "Homebrew is already installed."
+    echo "Homebrew is already installed."
 fi
 
 # Install Homebrew packages
@@ -76,7 +76,6 @@ echo "Restoring Homebrew packages..."
 ./bin/homebrew-restore
 
 # GitHub CLI extensions
-gh extension install github/gh-copilot
 gh extension install dlvhdr/gh-dash
 gh extension install jrnxf/gh-eco
 gh extension install gennaro-tedesco/gh-f
@@ -100,8 +99,8 @@ nvim --headless "+Lazy! sync" +qa
 # Setup fish shell as default shell
 echo "Configuring fish as default shell"
 if ! command -v fish &>/dev/null; then
-	echo "Fish shell not found. Installing fish..."
-	brew install fish
+    echo "Fish shell not found. Installing fish..."
+    brew install fish
 fi
 
 # Add fish to /etc/shells

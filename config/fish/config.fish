@@ -34,14 +34,6 @@ else
     set brew_prefix /usr/local
 end
 
-# Check if essential commands are in PATH, if not add them
-if not command -v podman >/dev/null 2>&1 || not command -v brew >/dev/null 2>&1
-    # Add Homebrew to PATH if not already there
-    if not contains $brew_prefix/bin $PATH
-        set -x PATH $brew_prefix/bin $PATH
-    end
-end
-
 # Initialize Homebrew environment
 eval "$($brew_prefix/bin/brew shellenv)"
 
@@ -65,9 +57,6 @@ set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAge
 
 # fd
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
-
-# Make Podman work with LazyDocker
-set -x DOCKER_HOST "unix://"(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')
 
 # fzf
 set -x FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
