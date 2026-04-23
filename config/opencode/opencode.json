@@ -70,15 +70,10 @@
       "type": "local"
     }
   },
-  "plugin": [],
-  "provider": {
-    "ollama": {
-      "models": {},
-      "name": "Ollama",
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "http://127.0.0.1:11434/v1"
-      }
-    }
+  "plugin": ["@cortexkit/opencode-magic-context@latest"],
+  "provider": {},
+  "compaction": {
+    "auto": false,
+    "prune": false
   }
 }

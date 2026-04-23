@@ -5,5 +5,6 @@
     "enabled": true
   },
   "diff_style": "auto",
-  "theme": "catppuccin"
+  "theme": "catppuccin",
+  "plugin": ["@cortexkit/opencode-magic-context@latest"]
 }

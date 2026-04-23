@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cortexkit/opencode-magic-context/master/assets/magic-context.schema.json",
+  "historian": {
+    "model": "opencode-go/minimax-m2.7"
+  },
+  "dreamer": {
+    "enabled": false
+  }
+}

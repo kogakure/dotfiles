@@ -70,5 +70,9 @@
       "type": "local",
     },
   },
-  "plugin": [],
+  "plugin": ["@cortexkit/opencode-magic-context@latest"],
+  "compaction": {
+    "auto": false,
+    "prune": false,
+  },
 }
