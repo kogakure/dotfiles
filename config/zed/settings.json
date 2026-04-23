@@ -7,6 +7,30 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "icon_theme": "Catppuccin Mocha",
+  "proxy": "",
+  "prettier": {
+    "allowed": true
+  },
+  "which_key": {
+    "enabled": true
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "project_panel": {
+    "dock": "right",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "git_panel": {
+    "tree_view": false,
+    "dock": "right",
+  },
   "agent_servers": {
     "cursor": {
       "type": "registry",
@@ -28,10 +52,8 @@
     "metrics": false,
     "diagnostics": false,
   },
-  "features": {
-    "edit_prediction_provider": "zed",
-  },
   "agent": {
+    "dock": "left",
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
@@ -57,7 +79,7 @@
     "ss07": true,
     "ss08": true,
   },
-  "buffer_font_size": 18,
+  "buffer_font_size": 20.0,
   "confirm_quit": false,
   "cursor_blink": false,
   "format_on_save": "on",
@@ -90,7 +112,7 @@
   "preferred_line_length": 100,
   "remove_trailing_whitespace_on_save": true,
   "show_whitespaces": "selection",
-  "soft_wrap": "preferred_line_length",
+  "soft_wrap": "editor_width",
   "terminal": {
     "copy_on_select": true,
     "font_family": "FiraCode Nerd Font",
