@@ -108,7 +108,7 @@ echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
 
 # Change default shell to fish
 echo "Changing default shell to fish"
-run_with_sudo chsh -s $(which fish) $USER
+run_with_sudo chsh -s "$(which fish)" $USER
 
 # Add fish to /etc/shells
 echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
