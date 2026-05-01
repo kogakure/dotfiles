@@ -574,6 +574,8 @@ cask "signal"
 cask "sonos"
 # Music streaming service
 cask "spotify"
+# System monitor for the menu bar
+cask "stats"
 # Dictation tool including LLM reformatting
 cask "superwhisper"
 # Interior design application
@@ -604,6 +606,8 @@ cask "veracrypt"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Rust-based terminal
+cask "warp"
 # Torrent streaming application
 cask "webtorrent"
 # Native desktop client for WhatsApp
@@ -677,7 +681,6 @@ vscode "enkia.tokyo-night"
 vscode "esbenp.prettier-vscode"
 vscode "file-icons.file-icons"
 vscode "gerane.theme-tomorrownight"
-vscode "github.copilot-chat"
 vscode "github.vscode-pull-request-github"
 vscode "gruntfuggly.todo-tree"
 vscode "hextorgb.hex-to-rgb"
@@ -721,6 +724,7 @@ vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
 uv "jiratui"
+npm "@daisy/ace"
 npm "@github/copilot"
 npm "@gitlawb/openclaude"
 npm "@mariozechner/pi-coding-agent"

@@ -1,6 +1,23 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "plan",
+  "provider": {
+    "lmstudio": {
+      "options": {
+        "type": "openai-compatible",
+        "baseURL": "http://127.0.0.1:1234/v1",
+        "apiKey": "lmstudio",
+      },
+      "models": {
+        "gemma_4_e4b": {
+          "options": {
+            "provider": "lmstudio",
+            "model": "google/gemma-4-e4b",
+          },
+        },
+      },
+    },
+  },
   "permission": {
     "read": {
       "*": "allow",
