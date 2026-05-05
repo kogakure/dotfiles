@@ -50,12 +50,10 @@
     "claude-acp": {
       "default_config_options": {
         "model": "opus",
-        "mode": "plan"
+        "mode": "plan",
       },
       "favorite_config_option_values": {
-        "mode": [
-          "plan"
-        ]
+        "mode": ["plan"],
       },
       "type": "registry",
     },
@@ -152,7 +150,6 @@
     "docker-compose": true,
     "dockerfile": true,
     "emmet": true,
-    "emoji-completions": true,
     "fish": true,
     "ghostty": true,
     "git-firefly": true,

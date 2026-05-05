@@ -1,3 +1,4 @@
+tap "anomalyco/tap"
 tap "charmbracelet/tap"
 tap "d12frosted/emacs-plus"
 tap "dlvhdr/formulae"
@@ -415,8 +416,6 @@ cask "balenaetcher"
 cask "bartender"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
-# Edit and manage bibliographies
-cask "bibdesk"
 # 3D creation suite
 cask "blender"
 # Utility to dim background/inactive content in the screen
@@ -454,6 +453,8 @@ cask "discord"
 cask "docker-desktop"
 # Web browser focusing on privacy
 cask "duckduckgo"
+# Collaborative team software
+cask "figma"
 # Web browser
 cask "firefox"
 cask "font-fira-code"
@@ -529,6 +530,8 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # Control your smart light system
 cask "philips-hue-sync"
+# Client for Proton Drive
+cask "proton-drive"
 # Client for Proton Mail and Proton Calendar
 cask "proton-mail"
 # Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
@@ -571,6 +574,8 @@ cask "tailscale-app"
 cask "telegram-desktop"
 # LaTeX editor
 cask "texmaker"
+# Menu bar manager
+cask "thaw"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security
@@ -600,10 +605,8 @@ cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "Deliveries", id: 290986013
-mas "Exporter", id: 1099120373
 mas "Free MP4 Converter", id: 693443591
 mas "GarageBand", id: 682658836
-mas "Goodnotes", id: 1444383602
 mas "HP", id: 1474276998
 mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
@@ -618,8 +621,8 @@ mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 1529448980
 mas "Reeder", id: 6475002485
+mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
