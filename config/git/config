@@ -51,11 +51,11 @@
   whitespace = trailing-space,space-before-tab
 
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [delta]
@@ -79,6 +79,7 @@
 [fetch]
   fsckobjects = false
   prune = true
+	recurseSubmodules = true
 
 [filter "lfs"]
 	clean = "git-lfs clean -- %f"
@@ -158,3 +159,5 @@
 	diff = diffnav
 [init]
 	defaultBranch = master
+[submodule]
+	recurse = true
