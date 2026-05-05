@@ -45,6 +45,8 @@ alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
+alt-m = 'focus-monitor --wrap-around next'
+alt-i = 'focus-monitor --wrap-around prev'
 
 # Moving
 alt-shift-h = 'move left'
