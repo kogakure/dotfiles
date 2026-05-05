@@ -70,7 +70,7 @@
       "type": "local",
     },
   },
-  "plugin": ["@cortexkit/opencode-magic-context@latest"],
+  "plugin": ["@cortexkit/opencode-magic-context@latest", "@mohak34/opencode-notifier@latest"],
   "compaction": {
     "auto": false,
     "prune": false,
