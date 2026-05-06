@@ -2,10 +2,49 @@
   {
     "context": "Terminal",
     "bindings": {
-      "shift-enter": [
-        "terminal::SendText",
-        "\u001b\r"
-      ]
-    }
-  }
+      "shift-enter": ["terminal::SendText", "\u001b\r"],
+    },
+  },
+  {
+    "context": "vim_mode == normal",
+    "unbind": {
+      "g w": "vim::PushRewrap",
+    },
+  },
+  {
+    "context": "vim_operator == gq",
+    "unbind": {
+      "g w": "vim::CurrentLine",
+    },
+  },
+  {
+    "context": "vim_mode == visual",
+    "unbind": {
+      "g w": "vim::Rewrap",
+    },
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      "g s": "vim::FirstNonWhitespace",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "g s": "outline::Toggle",
+    },
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      "space s": "outline::Toggle",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g w": "vim::HelixJumpToWord",
+    },
+  },
 ]
