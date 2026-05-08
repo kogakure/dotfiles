@@ -422,6 +422,8 @@ cask "blender"
 cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
+# E-books management software
+cask "calibre"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
@@ -528,6 +530,8 @@ cask "numi"
 cask "obsidian"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
+# AI coding agent desktop client
+cask "opencode-desktop"
 # Control your smart light system
 cask "philips-hue-sync"
 # Client for Proton Drive
@@ -560,6 +564,8 @@ cask "signal"
 cask "sonos"
 # Music streaming service
 cask "spotify"
+# System monitor for the menu bar
+cask "stats"
 # Dictation tool including LLM reformatting
 cask "superwhisper"
 # Interior design application
@@ -590,6 +596,8 @@ cask "veracrypt"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Rust-based terminal
+cask "warp"
 # Torrent streaming application
 cask "webtorrent"
 # Native desktop client for WhatsApp
