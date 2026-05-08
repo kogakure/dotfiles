@@ -47,7 +47,7 @@
 [core]
   editor = code --wait
   legacyheaders = false
-  pager = less
+  pager = hunk pager
   whitespace = trailing-space,space-before-tab
 
 [credential "https://gist.github.com"]
