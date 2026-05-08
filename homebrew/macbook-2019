@@ -139,8 +139,6 @@ brew "httpie"
 brew "hyperfine"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
-# Database of common MIME types
-brew "shared-mime-info"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Make XML documents translatable through PO files
@@ -193,6 +191,10 @@ brew "nss"
 brew "open-mpi"
 # General-purpose speech recognition model
 brew "openai-whisper"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
 # 7-Zip (high compression file archiver) implementation
@@ -225,8 +227,6 @@ brew "python-setuptools"
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
 brew "remarshal"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Builds manuals - the opposite of roff
 brew "ronn"
 # Utility that provides fast incremental file transfer
@@ -237,6 +237,8 @@ brew "rust"
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Database of common MIME types
+brew "shared-mime-info"
 # Autoformat shell script source code
 brew "shfmt"
 # Create beautiful image of your source code
@@ -331,6 +333,8 @@ cask "blender-benchmark"
 cask "brave-browser"
 # E-books management software
 cask "calibre"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Screen capturing tool
@@ -411,6 +415,8 @@ cask "notion"
 cask "obsidian"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
+# AI coding agent desktop client
+cask "opencode-desktop"
 # Control your smart light system
 cask "philips-hue-sync"
 # Browse, manage, inspect containers and images
