@@ -25,9 +25,6 @@ cp ~/.dotfiles/private/preferences/com.runningwithcrayons.Alfred-Preferences.pli
 # AltTab
 cp ~/.dotfiles/private/preferences/com.lwouis.alt-tab-macos.plist ~/Library/Preferences/
 
-# Anki
-cp ~/.dotfiles/private/preferences/net.ankiweb.dtop.plist ~/Library/Preferences/
-
 # Arc
 cp ~/.dotfiles/private/preferences/company.thebrowser.Browser.plist ~/Library/Preferences/
 

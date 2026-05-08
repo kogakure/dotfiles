@@ -352,6 +352,8 @@ brew "watchman"
 brew "wget"
 # Port of OpenAI's Whisper model in C/C++
 brew "whisper-cpp"
+# Why is this running?
+brew "witr"
 # Utilities to create and convert Web Open Font File (WOFF) files
 brew "woff2"
 # CLI for Git worktree management, designed for parallel AI agent workflows
@@ -482,6 +484,8 @@ cask "geekbench"
 cask "gemini"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
+cask "google-chrome"
 # Japanese input software
 cask "google-japanese-ime"
 # Tools to protect your files
@@ -641,15 +645,14 @@ mas "Kindle", id: 302584613
 mas "Locally AI", id: 6741426692
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
-mas "Numbers", id: 361304891
 mas "Numbers", id: 409203825
-mas "Pages", id: 361309726
+mas "Numbers", id: 361304891
 mas "Pages", id: 409201541
+mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
 mas "Reeder", id: 1529448980
-mas "Reeder 2", id: 6475002485
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
@@ -681,6 +684,7 @@ vscode "enkia.tokyo-night"
 vscode "esbenp.prettier-vscode"
 vscode "file-icons.file-icons"
 vscode "gerane.theme-tomorrownight"
+vscode "github.copilot-chat"
 vscode "github.vscode-pull-request-github"
 vscode "gruntfuggly.todo-tree"
 vscode "hextorgb.hex-to-rgb"
@@ -723,10 +727,12 @@ vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
+cargo "ytsub"
 uv "jiratui"
 npm "@daisy/ace"
 npm "@github/copilot"
 npm "@gitlawb/openclaude"
+npm "@kitlangton/ghui"
 npm "@mariozechner/pi-coding-agent"
 npm "@readwise/cli"
 npm "@tobilu/qmd"

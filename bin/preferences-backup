@@ -20,9 +20,6 @@ cp ~/Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist ~/.dotf
 # AltTab
 cp ~/Library/Preferences/com.lwouis.alt-tab-macos.plist ~/.dotfiles/private/preferences/
 
-# Anki
-cp ~/Library/Preferences/net.ankiweb.dtop.plist ~/.dotfiles/private/preferences/
-
 # Arc
 cp ~/Library/Preferences/company.thebrowser.Browser.plist ~/.dotfiles/private/preferences/
 
