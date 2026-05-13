@@ -5,5 +5,12 @@
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "high",
-  "hideThinkingBlock": false
+  "hideThinkingBlock": false,
+  "enabledModels": [
+    "openai-codex/gpt-5.5",
+    "opencode-go/deepseek-v4-flash",
+    "opencode-go/deepseek-v4-pro",
+    "opencode-go/glm-5.1",
+    "opencode-go/kimi-k2.6"
+  ]
 }
