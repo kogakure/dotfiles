@@ -4,6 +4,9 @@
   "scroll_acceleration": {
     "enabled": true
   },
+  "attention": {
+    "enabled": true
+  },
   "diff_style": "auto",
   "theme": "catppuccin",
   "plugin": ["@cortexkit/opencode-magic-context@latest"]
