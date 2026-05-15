@@ -2,7 +2,7 @@
 
 # claude-restore
 # Restores Claude Code configuration from private/ submodule backup
-# Merges shared/ config with profile-specific (work or private) config
+# Each profile (work or private) is fully isolated — no shared/ directory.
 #
 # Usage: claude-restore
 # Requires: ~/.machine-profile containing "work" or "private"
@@ -10,32 +10,26 @@
 
 set -e
 
-# Colors for output
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Directories
 CLAUDE_DIR="$HOME/.claude"
 DOTFILES="$HOME/.dotfiles"
 
-# Profile detection
 PROFILE=$(cat "$HOME/.machine-profile" 2>/dev/null || echo "private")
-SHARED_DIR="$DOTFILES/private/claude/shared"
 PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
 
 echo -e "${GREEN}Starting Claude Code restore...${NC}"
 echo -e "Profile: ${YELLOW}$PROFILE${NC}"
 
-# Check that backup directories exist
-if [ ! -d "$SHARED_DIR" ] && [ ! -d "$PROFILE_DIR" ]; then
-    echo -e "${RED}Error: No backup found at $DOTFILES/private/claude/${NC}"
+if [ ! -d "$PROFILE_DIR" ]; then
+    echo -e "${RED}Error: No backup found at $PROFILE_DIR${NC}"
     echo "Run claude-backup first or ensure the private submodule is initialized."
     exit 1
 fi
 
-# Display backup info if available
 if [ -f "$PROFILE_DIR/BACKUP_INFO.txt" ]; then
     echo ""
     echo -e "${YELLOW}Backup Information:${NC}"
@@ -43,7 +37,6 @@ if [ -f "$PROFILE_DIR/BACKUP_INFO.txt" ]; then
     echo ""
 fi
 
-# Prompt for confirmation
 read -p "Do you want to restore Claude Code settings from backup? (y/N) " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -51,9 +44,48 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 0
 fi
 
+# ── Overwrite conflict check ──────────────────────────────────────────────────
+
+conflict_count=0
+conflict_samples=()
+
+check_conflict_file() {
+    local src="$1"
+    local dest="$2"
+    if [ -f "$src" ] && [ -f "$dest" ]; then
+        conflict_count=$((conflict_count + 1))
+        if [ ${#conflict_samples[@]} -lt 5 ]; then
+            conflict_samples+=("$dest")
+        fi
+    fi
+}
+
+check_conflict_file "$PROFILE_DIR/.claude.json"                    "$HOME/.claude.json"
+check_conflict_file "$PROFILE_DIR/CLAUDE.md"                       "$CLAUDE_DIR/CLAUDE.md"
+check_conflict_file "$PROFILE_DIR/RTK.md"                          "$CLAUDE_DIR/RTK.md"
+check_conflict_file "$PROFILE_DIR/settings.json"                   "$CLAUDE_DIR/settings.json"
+check_conflict_file "$PROFILE_DIR/keybindings.json"                "$CLAUDE_DIR/keybindings.json"
+check_conflict_file "$PROFILE_DIR/mcp-needs-auth-cache.json"       "$CLAUDE_DIR/mcp-needs-auth-cache.json"
+check_conflict_file "$PROFILE_DIR/policy-limits.json"              "$CLAUDE_DIR/policy-limits.json"
+check_conflict_file "$PROFILE_DIR/history.jsonl"                   "$CLAUDE_DIR/history.jsonl"
+check_conflict_file "$PROFILE_DIR/stats-cache.json"                "$CLAUDE_DIR/stats-cache.json"
+check_conflict_file "$PROFILE_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json"
+
+if [ "$conflict_count" -gt 0 ]; then
+    echo -e "${YELLOW}$conflict_count existing file(s) will be overwritten. Examples:${NC}"
+    for sample in "${conflict_samples[@]}"; do
+        echo -e "  $sample"
+    done
+    read -p "Continue? (y/N) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Restore cancelled."
+        exit 0
+    fi
+fi
+
 mkdir -p "$CLAUDE_DIR"
 
-# Function to restore a file if it exists in backup
 restore_file() {
     local src="$1"
     local dest="$2"
@@ -67,7 +99,6 @@ restore_file() {
     fi
 }
 
-# Function to restore a directory if it exists in backup
 restore_dir() {
     local src="$1"
     local dest="$2"
@@ -81,35 +112,44 @@ restore_dir() {
     fi
 }
 
-# ── Shared ────────────────────────────────────────────────────────────────────
+# ── Settings & identity ───────────────────────────────────────────────────────
 
 echo ""
-echo "Restoring shared settings..."
-restore_file "$SHARED_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
-restore_file "$SHARED_DIR/settings.json" "$CLAUDE_DIR/settings.json"
-restore_file "$SHARED_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json"
+echo "Restoring settings..."
+restore_file "$PROFILE_DIR/CLAUDE.md"          "$CLAUDE_DIR/CLAUDE.md"
+restore_file "$PROFILE_DIR/RTK.md"             "$CLAUDE_DIR/RTK.md"
+restore_file "$PROFILE_DIR/settings.json"      "$CLAUDE_DIR/settings.json"
+restore_file "$PROFILE_DIR/keybindings.json"   "$CLAUDE_DIR/keybindings.json"
+restore_file "$PROFILE_DIR/mcp-needs-auth-cache.json" "$CLAUDE_DIR/mcp-needs-auth-cache.json"
+restore_file "$PROFILE_DIR/policy-limits.json" "$CLAUDE_DIR/policy-limits.json"
+
+# ── Commands, scripts, hooks, skills ─────────────────────────────────────────
 
 echo ""
-echo "Restoring shared commands, scripts & hooks..."
-restore_dir "$SHARED_DIR/commands" "$CLAUDE_DIR/commands"
-restore_dir "$SHARED_DIR/scripts" "$CLAUDE_DIR/scripts"
-restore_dir "$SHARED_DIR/hooks" "$CLAUDE_DIR/hooks"
-restore_file "$SHARED_DIR/RTK.md" "$CLAUDE_DIR/RTK.md"
+echo "Restoring commands, scripts, hooks & skills..."
+restore_dir "$PROFILE_DIR/commands" "$CLAUDE_DIR/commands"
+restore_dir "$PROFILE_DIR/scripts"  "$CLAUDE_DIR/scripts"
+restore_dir "$PROFILE_DIR/hooks"    "$CLAUDE_DIR/hooks"
+restore_dir "$PROFILE_DIR/skills"   "$CLAUDE_DIR/skills"
+
+# ── Plugins ───────────────────────────────────────────────────────────────────
 
 echo ""
-echo "Restoring shared plugins configuration..."
-restore_file "$SHARED_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json"
+echo "Restoring plugins configuration..."
+restore_file "$PROFILE_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json"
 
-# ── Profile-specific ─────────────────────────────────────────────────────────
-
-echo ""
-echo "Restoring profile-specific settings ($PROFILE)..."
-restore_file "$PROFILE_DIR/.claude.json" "$HOME/.claude.json"
-restore_file "$PROFILE_DIR/history.jsonl" "$CLAUDE_DIR/history.jsonl"
-restore_file "$PROFILE_DIR/stats-cache.json" "$CLAUDE_DIR/stats-cache.json"
+# ── Profile-specific state ────────────────────────────────────────────────────
 
 echo ""
-echo "Restoring project configurations ($PROFILE)..."
+echo "Restoring profile state..."
+restore_file "$PROFILE_DIR/.claude.json"           "$HOME/.claude.json"
+restore_file "$PROFILE_DIR/history.jsonl"          "$CLAUDE_DIR/history.jsonl"
+restore_file "$PROFILE_DIR/stats-cache.json"       "$CLAUDE_DIR/stats-cache.json"
+
+# ── Projects ─────────────────────────────────────────────────────────────────
+
+echo ""
+echo "Restoring project configurations..."
 if [ -d "$PROFILE_DIR/projects" ]; then
     for project_backup in "$PROFILE_DIR/projects"/*; do
         if [ -d "$project_backup" ]; then
@@ -134,12 +174,16 @@ if [ -d "$PROFILE_DIR/projects" ]; then
     done
 fi
 
-echo ""
-echo "Restoring plans ($PROFILE)..."
-restore_dir "$PROFILE_DIR/plans" "$CLAUDE_DIR/plans"
+# ── Plans ─────────────────────────────────────────────────────────────────────
 
 echo ""
-echo "Restoring shell snapshots ($PROFILE)..."
+echo "Restoring plans..."
+restore_dir "$PROFILE_DIR/plans" "$CLAUDE_DIR/plans"
+
+# ── Shell snapshots ───────────────────────────────────────────────────────────
+
+echo ""
+echo "Restoring shell snapshots..."
 restore_dir "$PROFILE_DIR/shell-snapshots" "$CLAUDE_DIR/shell-snapshots"
 
 echo ""

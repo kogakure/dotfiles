@@ -2,7 +2,7 @@
 
 # claude-backup
 # Backs up Claude Code configuration to private/ submodule
-# Splits into shared/ (all machines) and profile-specific/ (work or private)
+# Each profile (work or private) is fully isolated — no shared/ directory.
 #
 # Usage: claude-backup
 # Requires: ~/.machine-profile containing "work" or "private"
@@ -10,27 +10,36 @@
 
 set -e
 
-# Colors for output
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Directories
 CLAUDE_DIR="$HOME/.claude"
 DOTFILES="$HOME/.dotfiles"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
-# Profile detection
 PROFILE=$(cat "$HOME/.machine-profile" 2>/dev/null || echo "private")
-SHARED_DIR="$DOTFILES/private/claude/shared"
 PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
+LEGACY_SHARED="$DOTFILES/private/claude/shared"
 
 echo -e "${GREEN}Starting Claude Code backup...${NC}"
 echo -e "Profile: ${YELLOW}$PROFILE${NC}"
 
-mkdir -p "$SHARED_DIR" "$PROFILE_DIR"
+# Remove legacy shared/ if present
+if [ -d "$LEGACY_SHARED" ]; then
+    echo -e "${YELLOW}Legacy shared/ directory found: $LEGACY_SHARED${NC}"
+    read -p "Delete it? All content moves to per-profile dirs from now on. (y/N) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        rm -rf "$LEGACY_SHARED"
+        echo -e "  ✓ Deleted: $LEGACY_SHARED"
+    else
+        echo -e "  ${YELLOW}Skipped deletion — shared/ still exists.${NC}"
+    fi
+fi
 
-# Function to backup a file if it exists
+mkdir -p "$PROFILE_DIR"
+
 backup_file() {
     local src="$1"
     local dest="$2"
@@ -44,7 +53,6 @@ backup_file() {
     fi
 }
 
-# Function to backup a directory if it exists
 backup_dir() {
     local src="$1"
     local dest="$2"
@@ -58,35 +66,44 @@ backup_dir() {
     fi
 }
 
-# ── Shared (same across all machines) ────────────────────────────────────────
+# ── Settings & identity ───────────────────────────────────────────────────────
 
 echo ""
-echo "Backing up shared settings..."
-backup_file "$CLAUDE_DIR/CLAUDE.md" "$SHARED_DIR/CLAUDE.md"
-backup_file "$CLAUDE_DIR/settings.json" "$SHARED_DIR/settings.json"
-backup_file "$CLAUDE_DIR/keybindings.json" "$SHARED_DIR/keybindings.json"
+echo "Backing up settings..."
+backup_file "$CLAUDE_DIR/CLAUDE.md"          "$PROFILE_DIR/CLAUDE.md"
+backup_file "$CLAUDE_DIR/RTK.md"             "$PROFILE_DIR/RTK.md"
+backup_file "$CLAUDE_DIR/settings.json"      "$PROFILE_DIR/settings.json"
+backup_file "$CLAUDE_DIR/keybindings.json"   "$PROFILE_DIR/keybindings.json"
+backup_file "$CLAUDE_DIR/mcp-needs-auth-cache.json" "$PROFILE_DIR/mcp-needs-auth-cache.json"
+backup_file "$CLAUDE_DIR/policy-limits.json" "$PROFILE_DIR/policy-limits.json"
+
+# ── Commands, scripts, hooks, skills ─────────────────────────────────────────
 
 echo ""
-echo "Backing up shared commands, scripts & hooks..."
-backup_dir "$CLAUDE_DIR/commands" "$SHARED_DIR/commands"
-backup_dir "$CLAUDE_DIR/scripts" "$SHARED_DIR/scripts"
-backup_dir "$CLAUDE_DIR/hooks" "$SHARED_DIR/hooks"
-backup_file "$CLAUDE_DIR/RTK.md" "$SHARED_DIR/RTK.md"
+echo "Backing up commands, scripts, hooks & skills..."
+backup_dir "$CLAUDE_DIR/commands" "$PROFILE_DIR/commands"
+backup_dir "$CLAUDE_DIR/scripts"  "$PROFILE_DIR/scripts"
+backup_dir "$CLAUDE_DIR/hooks"    "$PROFILE_DIR/hooks"
+backup_dir "$CLAUDE_DIR/skills"   "$PROFILE_DIR/skills"
+
+# ── Plugins ───────────────────────────────────────────────────────────────────
 
 echo ""
-echo "Backing up shared plugins configuration..."
-backup_file "$CLAUDE_DIR/plugins/known_marketplaces.json" "$SHARED_DIR/plugins/known_marketplaces.json"
+echo "Backing up plugins configuration..."
+backup_file "$CLAUDE_DIR/plugins/known_marketplaces.json" "$PROFILE_DIR/plugins/known_marketplaces.json"
 
-# ── Profile-specific ─────────────────────────────────────────────────────────
-
-echo ""
-echo "Backing up profile-specific settings ($PROFILE)..."
-backup_file "$HOME/.claude.json" "$PROFILE_DIR/.claude.json"
-backup_file "$CLAUDE_DIR/history.jsonl" "$PROFILE_DIR/history.jsonl"
-backup_file "$CLAUDE_DIR/stats-cache.json" "$PROFILE_DIR/stats-cache.json"
+# ── Profile-specific state ────────────────────────────────────────────────────
 
 echo ""
-echo "Backing up project configurations ($PROFILE)..."
+echo "Backing up profile state..."
+backup_file "$HOME/.claude.json"             "$PROFILE_DIR/.claude.json"
+backup_file "$CLAUDE_DIR/history.jsonl"      "$PROFILE_DIR/history.jsonl"
+backup_file "$CLAUDE_DIR/stats-cache.json"   "$PROFILE_DIR/stats-cache.json"
+
+# ── Projects ─────────────────────────────────────────────────────────────────
+
+echo ""
+echo "Backing up project configurations..."
 if [ -d "$CLAUDE_DIR/projects" ]; then
     for project_dir in "$CLAUDE_DIR/projects"/*; do
         if [ -d "$project_dir" ]; then
@@ -111,12 +128,16 @@ if [ -d "$CLAUDE_DIR/projects" ]; then
     done
 fi
 
-echo ""
-echo "Backing up plans ($PROFILE)..."
-backup_dir "$CLAUDE_DIR/plans" "$PROFILE_DIR/plans"
+# ── Plans ─────────────────────────────────────────────────────────────────────
 
 echo ""
-echo "Backing up shell snapshots ($PROFILE)..."
+echo "Backing up plans..."
+backup_dir "$CLAUDE_DIR/plans" "$PROFILE_DIR/plans"
+
+# ── Shell snapshots (latest 5) ────────────────────────────────────────────────
+
+echo ""
+echo "Backing up shell snapshots..."
 if [ -d "$CLAUDE_DIR/shell-snapshots" ] && [ "$(ls -A "$CLAUDE_DIR/shell-snapshots" 2>/dev/null)" ]; then
     mkdir -p "$PROFILE_DIR/shell-snapshots"
     ls -t "$CLAUDE_DIR/shell-snapshots" | head -5 | while read -r file; do
@@ -127,36 +148,36 @@ else
     echo -e "  ${YELLOW}⊗ Not found or empty: shell-snapshots/${NC}"
 fi
 
-# ── Manifest ──────────────────────────────────────────────────────────────────
+# ── Manifest ─────────────────────────────────────────────────────────────────
 
 echo ""
 echo "Creating backup manifest..."
 cat > "$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
 Claude Code Backup
 ==================
-Timestamp: $TIMESTAMP
-Hostname:  $(hostname)
-Profile:   $PROFILE
+Timestamp:  $TIMESTAMP
+Hostname:   $(hostname)
+Profile:    $PROFILE
 Claude Dir: $CLAUDE_DIR
 
-Backed up (shared):
-- settings.json, keybindings.json, CLAUDE.md, RTK.md
-- commands/, scripts/, hooks/
+Backed up:
+- CLAUDE.md, RTK.md, settings.json, keybindings.json
+- mcp-needs-auth-cache.json, policy-limits.json
+- commands/, scripts/, hooks/, skills/
 - plugins/known_marketplaces.json
-
-Backed up (profile: $PROFILE):
 - .claude.json (auth)
 - history.jsonl, stats-cache.json
-- Project configs (.claude.json, CLAUDE.md, memory, hooks)
+- Project configs (.claude.json, CLAUDE.md, memory/, hooks.json)
 - plans/
 - Recent shell snapshots (last 5)
 
-Note: Conversation history (.jsonl in projects/) and debug logs
-are excluded to keep backup size manageable.
+Excluded (large / transient):
+- projects/**/*.jsonl (conversation history)
+- cache/, telemetry/, file-history/, session-env/, sessions/, backups/
+- settings.json.bak, .caveman-active, .last-cleanup
 EOF
 
 echo -e "${GREEN}✓ Backup complete!${NC}"
-echo -e "  Shared:  $SHARED_DIR"
-echo -e "  Profile: $PROFILE_DIR"
+echo -e "  Profile dir: $PROFILE_DIR"
 echo ""
 echo "To restore on another machine, run: claude-restore"
