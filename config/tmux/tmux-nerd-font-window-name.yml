@@ -5,6 +5,7 @@ config:
 icons:
   bat: "󰭟"
   claude: "󰚩"
+  codex: "󰚩"
   gh: ""
   nix-env: "󱄅"
   nix-shell: "󱄅"
@@ -13,6 +14,7 @@ icons:
   ocx: "󰚩"
   ollama: "󰚩"
   opencode: "󰚩"
+  pi: "󰚩"
   pnpm: ""
   reattach-to-user-namespace: ""
   spf: "󰪶"
