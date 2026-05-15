@@ -202,7 +202,7 @@ alias ta 'tmux attach'
 alias ars 'atuin run script'
 
 # Claude Code
-alias cl 'claude --dangerously-skip-permissions'
+alias cl 'claude --enable-auto-mode'
 alias clp 'claude --permission-mode plan'
 alias clr 'claude --resume'
 
