@@ -39,9 +39,6 @@ nvim --headless "+Lazy! sync" +qa
 mo clean
 mo optimize
 
-# Update macOS software
-sudo softwareupdate -i -a
-
 # Claude
 claude-backup
 
@@ -53,3 +50,6 @@ preferences-backup
 
 # Write launch agents
 launchagents-backup
+
+# Update macOS software
+sudo softwareupdate -i -a
