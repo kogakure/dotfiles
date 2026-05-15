@@ -7,6 +7,7 @@ tap "f/textream"
 tap "felixkratz/formulae"
 tap "gabrie30/utils"
 tap "joshmedeski/sesh"
+tap "modem-dev/tap"
 tap "nikitabobko/tap"
 tap "safedep/tap"
 tap "sst/tap"
@@ -300,6 +301,8 @@ brew "ripgrep-all"
 brew "ronn"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# CLI proxy to minimize LLM token consumption
+brew "rtk"
 # CLI search and replace | Space Age seD
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
@@ -380,6 +383,8 @@ brew "felixkratz/formulae/borders"
 brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
+# Desktop-inspired terminal diff viewer for agent-authored changesets
+brew "modem-dev/tap/hunk"
 # SafeDep vet is a tool for identifying open source software supply chain risks
 brew "safedep/tap/vet"
 # The AI coding agent built for the terminal.
@@ -416,6 +421,8 @@ cask "balenaetcher"
 cask "bartender"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
+# Edit and manage bibliographies
+cask "bibdesk"
 # 3D creation suite
 cask "blender"
 # Utility to dim background/inactive content in the screen
@@ -708,6 +715,8 @@ go "cmd/gofmt"
 cargo "nixpkgs-fmt"
 uv "jiratui"
 uv "posting"
+npm "@devcontainers/cli"
+npm "@earendil-works/pi-coding-agent"
 npm "@playwright/cli"
 npm "@readwise/cli"
 npm "@tobilu/qmd"
