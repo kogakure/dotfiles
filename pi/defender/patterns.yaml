@@ -1,0 +1,185 @@
+# =============================================================================
+# Pi Defender — Security Patterns
+# =============================================================================
+#
+# Edit this file to customize which operations are blocked.
+# Each extension loads this file from:
+#   1. .pi/defender/patterns.yaml  (project-local)
+#   2. ~/.pi/defender/patterns.yaml  (global fallback)
+#
+# -----------------------------------------------------------------------------
+# BASH TOOL PATTERNS — Matched against Bash tool commands
+# -----------------------------------------------------------------------------
+# Patterns support JS regex syntax. Use \b for word boundaries.
+# Set to prompt for confirmation instead of blocking.
+# -----------------------------------------------------------------------------
+
+bashToolPatterns:
+  # === Destructive file operations ===
+  - pattern: '\brm\s+-[rRf]'
+    reason: rm with recursive or force flags
+
+  - pattern: '\bfind\s+.*\s+-delete\b'
+    reason: find with -delete
+
+  # === Privilege escalation ===
+  - pattern: '\bsudo\b'
+    reason: sudo command execution
+
+  - pattern: '\bsu\s+-'
+    reason: switch user
+
+  # === Database destruction ===
+  - pattern: '\bDROP\s+(TABLE|DATABASE|SCHEMA)\b'
+    reason: SQL DROP statement
+
+  - pattern: '\bDELETE\s+FROM\s+\w+\s*;'
+    reason: DELETE without WHERE clause
+
+  - pattern: '\bTRUNCATE\s+(TABLE\s+)?\w+'
+    reason: SQL TRUNCATE
+
+  # === Git force/destructive operations (ask mode) ===
+  - pattern: '\bgit\s+push\s+.*--force'
+    reason: git push --force
+    
+  - pattern: '\bgit\s+push\s+.*--delete\b'
+    reason: git push --delete
+    
+  - pattern: '\bgit\s+reset\s+--hard\b'
+    reason: git reset --hard
+
+  - pattern: '\bgit\s+clean\s+-[fd]+'
+    reason: git clean
+
+  # === Network attacks ===
+  - pattern: '\bcurl\s+.*\|\s*(ba)?sh'
+    reason: curl piped to bash
+
+  - pattern: '\bwget\s+.*\|\s*(ba)?sh'
+    reason: wget piped to bash
+
+  # === Disk/device destruction ===
+  - pattern: '\bdd\s+if='
+    reason: dd disk operations
+
+  - pattern: '\bmkfs\.\w+'
+    reason: filesystem formatting
+
+  # === Docker dangerous operations ===
+  - pattern: '\bdocker\s+rm\s+-f\b'
+    reason: docker forced container removal
+
+  - pattern: '\bdocker\s+system\s+prune\b'
+    reason: docker system prune (ask)
+    
+  # === Package manager destructive ===
+  - pattern: '\bnpm\s+unpublish\b'
+    reason: npm unpublish
+    
+  # === Permission changes ===
+  - pattern: '\bchmod\s+.*777'
+    reason: chmod 777 (world-writable)
+
+  - pattern: '\bchown\s+-R\b'
+    reason: recursive chown
+
+  # === Fork bombs ===
+  - pattern: ':\(\)\s*\{'
+    reason: fork bomb pattern
+
+  # === Reboot/shutdown ===
+  - pattern: '\b(shutdown|reboot|halt|poweroff)\b'
+    reason: system shutdown/reboot
+
+# -----------------------------------------------------------------------------
+# ZERO-ACCESS PATHS — No read, write, or any access allowed
+# -----------------------------------------------------------------------------
+# These contain secrets/credentials — block ALL operations including reads.
+# Supports glob patterns: *.pem, .env*, *-credentials.json
+# -----------------------------------------------------------------------------
+
+zeroAccessPaths:
+  - ~/.ssh/
+  - ~/.aws/
+  - ~/.gcloud/
+  - ~/.config/gcloud/
+  - ~/.azure/
+  - ~/.docker/config.json
+  - ~/.npmrc
+  - ~/.git-credentials
+  - ~/.gitconfig
+  - "*.pem"
+  - "*.key"
+  - "*.p12"
+  - "*.pfx"
+  - id_rsa
+  - id_ed25519
+  - id_ecdsa
+  - "*.env.private"
+  - "*-credentials.json"
+  - "*-secrets.yaml"
+  - "*-secrets.yml"
+  - secrets.yml
+  - secrets.yaml
+  - .env.production.local
+
+# -----------------------------------------------------------------------------
+# READ-ONLY PATHS — Can read, but not write/edit/delete
+# -----------------------------------------------------------------------------
+# Safe to read but should never be modified by AI.
+# Supports glob patterns: *.lock, *.min.js
+# -----------------------------------------------------------------------------
+
+readOnlyPaths:
+  - /etc/
+  - /boot/
+  - /usr/
+  - /bin/
+  - /sbin/
+  - /lib/
+  - /lib64/
+  - ~/.bashrc
+  - ~/.zshrc
+  - ~/.profile
+  - ~/.bash_profile
+  - ~/.zprofile
+  - "*.lock"
+  - package-lock.json
+  - yarn.lock
+  - pnpm-lock.yaml
+  - deno.lock
+  - Cargo.lock
+  - Gemfile.lock
+  - poetry.lock
+  - Pipfile.lock
+  - go.sum
+  - "*.min.js"
+  - "*.min.css"
+
+# -----------------------------------------------------------------------------
+# STRICT MODE WHITELIST — Auto-approve in strict mode
+# -----------------------------------------------------------------------------
+# Commands matching these patterns skip the strict mode prompt.
+# Patterns are JS regex. Add via the "Allow & Whitelist" selector option.
+# -----------------------------------------------------------------------------
+
+strictModeWhiteList: []
+
+# -----------------------------------------------------------------------------
+# NO-DELETE PATHS — Can read/write/edit, but not delete
+# -----------------------------------------------------------------------------
+# Protect important files from accidental deletion.
+# Supports glob patterns: *.md, LICENSE*
+# -----------------------------------------------------------------------------
+
+noDeletePaths:
+  - .pi/
+  - LICENSE
+  - LICENSE.md
+  - LICENSE.txt
+  - README.md
+  - CHANGELOG.md
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - SECURITY.md

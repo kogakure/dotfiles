@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "provider": "auto",
+  "writable": ["${PROJECT_ROOT}"],
+  "denyRead": [
+    "~/.ssh",
+    "~/.aws",
+    "~/.config",
+    "~/.gnupg",
+    "~/.pi/agent/auth.json",
+    "**/.env",
+    "**/.env.*"
+  ],
+  "denyWithin": ["${PROJECT_ROOT}/.env", "${PROJECT_ROOT}/.env.local", "${PROJECT_ROOT}/secrets"],
+  "network": false
+}

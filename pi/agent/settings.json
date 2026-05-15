@@ -1,8 +1,5 @@
 {
   "lastChangelogVersion": "0.74.0",
-  "packages": [
-    "npm:pi-agent-browser-native"
-  ],
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
@@ -14,5 +11,6 @@
     "opencode-go/deepseek-v4-pro",
     "opencode-go/glm-5.1",
     "opencode-go/kimi-k2.6"
-  ]
+  ],
+  "packages": ["npm:pi-agent-browser-native", "npm:@nqbao/pi-sandbox", "npm:pi-defender"]
 }
