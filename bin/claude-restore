@@ -2,11 +2,11 @@
 
 # claude-restore
 # Restores Claude Code configuration from private/ submodule backup
-# Each profile (work or private) is fully isolated — no shared/ directory.
+# Each profile (work or personal) is fully isolated — no shared/ directory.
 #
 # Usage: claude-restore
-# Requires: ~/.machine-profile containing "work" or "private"
-# Set with: claude-set-profile work|private
+# Requires: ~/.machine-profile containing "work" or "personal"
+# Set with: claude-set-profile work|personal
 
 set -e
 
@@ -18,7 +18,7 @@ NC='\033[0m'
 CLAUDE_DIR="$HOME/.claude"
 DOTFILES="$HOME/.dotfiles"
 
-PROFILE=$(cat "$HOME/.machine-profile" 2>/dev/null || echo "private")
+PROFILE=$(cat "$HOME/.machine-profile" 2>/dev/null || echo "personal")
 PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
 
 echo -e "${GREEN}Starting Claude Code restore...${NC}"
@@ -26,7 +26,7 @@ echo -e "Profile: ${YELLOW}$PROFILE${NC}"
 
 if [ ! -d "$PROFILE_DIR" ]; then
     echo -e "${RED}Error: No backup found at $PROFILE_DIR${NC}"
-    echo "Run claude-backup first or ensure the private submodule is initialized."
+    echo "Run claude-backup first or ensure the private/ submodule is initialized."
     exit 1
 fi
 
