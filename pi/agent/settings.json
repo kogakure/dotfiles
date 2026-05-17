@@ -1,9 +1,9 @@
 {
-  "lastChangelogVersion": "0.74.0",
+  "lastChangelogVersion": "0.74.1",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "low",
   "hideThinkingBlock": false,
   "enabledModels": [
     "openai-codex/gpt-5.5",
@@ -12,5 +12,10 @@
     "opencode-go/glm-5.1",
     "opencode-go/kimi-k2.6"
   ],
-  "packages": ["npm:pi-agent-browser-native", "npm:@nqbao/pi-sandbox", "npm:pi-defender"]
+  "packages": [
+    "npm:pi-agent-browser-native",
+    "npm:@nqbao/pi-sandbox",
+    "npm:pi-defender",
+    "npm:pi-subagents"
+  ]
 }
