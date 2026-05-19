@@ -135,6 +135,12 @@ set -x PATH $PATH $HOME/.local/bin
 # Emacs
 set -x PATH $PATH $HOME/.config/emacs/bin
 
+# pnpm
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+
 # Stable Diffusion Webui
 # set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
 
