@@ -1,3 +1,6 @@
+# Private secrets (optional, not in repo)
+[[ -f "$HOME/.secrets" ]] && source "$HOME/.secrets"
+
 # Session variables
 source "$HOME/.session-variables.sh"
 
