@@ -96,6 +96,9 @@ if test -d $MISE_SHIMS
     end
 end
 
+# Pi agent
+fish_add_path --prepend --move $HOME/.local/pi-agent-npm/bin
+
 # Man
 set -x MANPATH /usr/local/man $MANPATH
 

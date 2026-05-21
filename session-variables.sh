@@ -45,6 +45,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# Pi Agent
+export PATH="$HOME/.local/pi-agent-npm/bin:$PATH"
+
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
