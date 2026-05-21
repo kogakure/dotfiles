@@ -223,3 +223,6 @@ alias ia 'open $1 -a /Applications/iA\ Writer.app'
 
 # Clear the screen
 alias c clear
+
+# Pi Agent
+alias q 'pi --model opencode-go/deepseek-v4-flash -p'
