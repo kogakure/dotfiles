@@ -369,6 +369,8 @@ brew "yq"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode"
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
@@ -387,8 +389,6 @@ brew "joshmedeski/sesh/sesh"
 brew "modem-dev/tap/hunk"
 # SafeDep vet is a tool for identifying open source software supply chain risks
 brew "safedep/tap/vet"
-# The AI coding agent built for the terminal.
-brew "sst/tap/opencode"
 # Comprehensive macOS cleanup and application uninstall tool
 brew "tw93/tap/mole"
 # Sound and music editor
@@ -636,8 +636,8 @@ mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 6475002485
 mas "Reeder", id: 1529448980
+mas "Reeder", id: 6475002485
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
@@ -715,8 +715,10 @@ go "cmd/gofmt"
 cargo "nixpkgs-fmt"
 uv "jiratui"
 uv "posting"
+npm "@agentmemory/agentmemory"
 npm "@devcontainers/cli"
 npm "@earendil-works/pi-coding-agent"
+npm "@nqbao/pi-sandbox"
 npm "@playwright/cli"
 npm "@readwise/cli"
 npm "@tobilu/qmd"
@@ -730,5 +732,8 @@ npm "json-server"
 npm "jsonlint"
 npm "neovim"
 npm "pageres-cli"
+npm "pi-agent-browser-native"
+npm "pi-defender"
+npm "pi-subagents"
 npm "trash-cli"
 npm "yarn"
