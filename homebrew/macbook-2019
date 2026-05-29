@@ -305,8 +305,6 @@ cask "affinity-photo"
 cask "affinity-publisher"
 # Application launcher and productivity software
 cask "alfred"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Network scanner
 cask "angry-ip-scanner"
 # Memory training application
