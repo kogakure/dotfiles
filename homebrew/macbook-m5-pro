@@ -73,6 +73,8 @@ brew "cloc"
 brew "cmake"
 # Command-line interface for SQLite
 brew "sqlite"
+# See where your AI coding tokens go - by task, tool, model, and project
+brew "codeburn"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # GNU File, Shell, and Text utilities
@@ -397,8 +399,6 @@ cask "ableton-live-lite"
 cask "nikitabobko/tap/aerospace"
 # Image editing and design software
 cask "affinity"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Network scanner
 cask "angry-ip-scanner"
 # Webcam & audio device software
@@ -636,8 +636,8 @@ mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 1529448980
 mas "Reeder", id: 6475002485
+mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
@@ -715,7 +715,6 @@ go "cmd/gofmt"
 cargo "nixpkgs-fmt"
 uv "jiratui"
 uv "posting"
-npm "@agentmemory/agentmemory"
 npm "@devcontainers/cli"
 npm "@earendil-works/pi-coding-agent"
 npm "@nqbao/pi-sandbox"
@@ -724,6 +723,7 @@ npm "@readwise/cli"
 npm "@tobilu/qmd"
 npm "browser-sync"
 npm "caniuse-cmd"
+npm "codeburn"
 npm "commitizen"
 npm "corepack"
 npm "cz-conventional-changelog"
