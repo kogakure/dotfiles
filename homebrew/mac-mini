@@ -83,6 +83,8 @@ brew "chafa"
 brew "cloc"
 # Cross-platform make
 brew "cmake"
+# See where your AI coding tokens go - by task, tool, model, and project
+brew "codeburn"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # GNU File, Shell, and Text utilities
@@ -405,8 +407,6 @@ cask "ableton-live-lite"
 cask "nikitabobko/tap/aerospace"
 # Image editing and design software
 cask "affinity"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Network scanner
 cask "angry-ip-scanner"
 # Webcam & audio device software
@@ -454,8 +454,6 @@ cask "colemak-dh"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # Disk space visualiser
 cask "daisydisk"
 # Browser for SQLite databases

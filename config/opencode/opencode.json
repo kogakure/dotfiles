@@ -68,6 +68,15 @@
     "open-meteo": {
       "command": ["npx", "-y", "-p", "open-meteo-mcp-server", "open-meteo-mcp-server"],
       "type": "local"
+    },
+    "codegraph": {
+      "type": "local",
+      "command": [
+        "codegraph",
+        "serve",
+        "--mcp"
+      ],
+      "enabled": true
     }
   },
   "plugin": ["@cortexkit/opencode-magic-context@latest", "@mohak34/opencode-notifier@latest"],
