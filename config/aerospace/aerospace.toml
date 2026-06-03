@@ -158,6 +158,10 @@ if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 7"
 
 [[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = "move-node-to-workspace 8"
+
+[[on-window-detected]]
 if.app-id = 'com.canva.affinity'
 run = "move-node-to-workspace 8"
 
@@ -167,14 +171,6 @@ run = "move-node-to-workspace 9"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = "move-node-to-workspace 10"
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.Outlook'
-run = "move-node-to-workspace 10"
-
-[[on-window-detected]]
-if.app-id = 'com.electron.asana'
 run = "move-node-to-workspace 10"
 
 [[on-window-detected]]
