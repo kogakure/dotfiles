@@ -1,0 +1,56 @@
+[general]
+default_session_mode = "agent"
+
+[agents]
+
+[agents.third_party]
+should_render_cli_agent_toolbar = true
+
+[agents.warp_agent]
+is_any_ai_enabled = true
+
+[agents.warp_agent.other]
+show_agent_notifications = true
+show_conversation_history = true
+
+[appearance]
+
+[appearance.vertical_tabs]
+enabled = true
+view_mode = "compact"
+display_granularity = "panes"
+tab_item_mode = "focused_session"
+primary_info = "command"
+compact_subtitle = "branch"
+
+[appearance.window]
+zoom_level = 150
+
+[appearance.icon]
+app_icon = "classic_2"
+
+[appearance.text]
+notebook_font_size = 14.0
+font_size = 13.0
+
+[appearance.themes]
+system_theme = false
+
+[code]
+
+[code.editor]
+show_code_review_button = true
+show_project_explorer = true
+show_global_search = true
+
+[warp_drive]
+enabled = true
+
+[notifications]
+toast_duration_secs = 8
+
+[terminal]
+
+[terminal.input]
+input_box_type_setting = "universal"
+honor_ps1 = false

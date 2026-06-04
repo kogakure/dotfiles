@@ -1,0 +1,8 @@
+name = "New tab: stefanimhoff"
+
+[[panes]]
+id = "main"
+type = "terminal"
+directory = "~"
+
+[params]
