@@ -7,6 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "context_servers": {
+    "mcp-server-github": {
+      "enabled": true,
+      "remote": false,
+      "settings": {}
+    },
+    "shadcn-mcp-server": {
+      "enabled": true,
+      "remote": false,
+      "settings": {}
+    }
+  },
   "code_lens": "on",
   "cli_default_open_behavior": "new_window",
   "minimum_split_diff_width": 80.0,
@@ -131,6 +143,9 @@
   "show_whitespaces": "selection",
   "soft_wrap": "editor_width",
   "terminal": {
+    "toolbar": {
+      "breadcrumbs": true
+    },
     "copy_on_select": true,
     "font_family": "FiraCode Nerd Font",
     "font_size": 20,
