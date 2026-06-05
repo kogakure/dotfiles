@@ -1,22 +1,22 @@
-tap "anomalyco/tap"
-tap "arthur-ficial/tap"
-tap "charmbracelet/tap"
-tap "d12frosted/emacs-plus"
-tap "dlvhdr/formulae"
-tap "dustinblackman/tap"
-tap "f/textream"
-tap "felixkratz/formulae"
-tap "gabrie30/utils"
-tap "hmans/beans"
+tap "anomalyco/tap", trusted: true
+tap "arthur-ficial/tap", trusted: true
+tap "charmbracelet/tap", trusted: true
+tap "d12frosted/emacs-plus", trusted: true
+tap "dlvhdr/formulae", trusted: true
+tap "dustinblackman/tap", trusted: true
+tap "f/textream", trusted: true
+tap "felixkratz/formulae", trusted: true
+tap "gabrie30/utils", trusted: true
+tap "hmans/beans", trusted: true
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "joshmedeski/sesh"
-tap "modem-dev/tap"
-tap "nikitabobko/tap"
-tap "safedep/tap"
-tap "sst/tap"
-tap "steipete/tap"
-tap "tw93/tap"
+tap "joshmedeski/sesh", trusted: true
+tap "modem-dev/tap", trusted: true
+tap "nikitabobko/tap", trusted: true
+tap "safedep/tap", trusted: true
+tap "sst/tap", trusted: true
+tap "steipete/tap", trusted: true
+tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Cryptography and SSL/TLS Toolkit
@@ -650,8 +650,8 @@ mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
 mas "Numbers", id: 409203825
 mas "Numbers", id: 361304891
-mas "Pages", id: 409201541
 mas "Pages", id: 361309726
+mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
@@ -732,6 +732,7 @@ go "cmd/gofmt"
 cargo "ytsub"
 uv "jiratui"
 npm "@agentmemory/agentmemory"
+npm "@colbymchenry/codegraph"
 npm "@daisy/ace"
 npm "@github/copilot"
 npm "@gitlawb/openclaude"
