@@ -70,7 +70,11 @@
       "type": "local",
     },
   },
-  "plugin": ["@cortexkit/opencode-magic-context@latest", "@mohak34/opencode-notifier@latest"],
+  "plugin": [
+    "@cortexkit/opencode-magic-context@latest",
+    "@mohak34/opencode-notifier@latest",
+    "@warp-dot-dev/opencode-warp@0.1.5",
+  ],
   "compaction": {
     "auto": false,
     "prune": false,
