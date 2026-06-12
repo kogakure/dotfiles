@@ -1,18 +1,18 @@
-tap "anomalyco/tap"
-tap "charmbracelet/tap"
-tap "d12frosted/emacs-plus"
-tap "dlvhdr/formulae"
-tap "dustinblackman/tap"
-tap "f/textream"
-tap "felixkratz/formulae"
-tap "gabrie30/utils"
-tap "joshmedeski/sesh"
-tap "modem-dev/tap"
-tap "nikitabobko/tap"
-tap "safedep/tap"
-tap "sst/tap"
-tap "steipete/tap"
-tap "tw93/tap"
+tap "anomalyco/tap", trusted: true
+tap "charmbracelet/tap", trusted: true
+tap "d12frosted/emacs-plus", trusted: true
+tap "dlvhdr/formulae", trusted: true
+tap "dustinblackman/tap", trusted: true
+tap "f/textream", trusted: true
+tap "felixkratz/formulae", trusted: true
+tap "gabrie30/utils", trusted: true
+tap "joshmedeski/sesh", trusted: true
+tap "modem-dev/tap", trusted: true
+tap "nikitabobko/tap", trusted: true
+tap "safedep/tap", trusted: true
+tap "sst/tap", trusted: true
+tap "steipete/tap", trusted: true
+tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Cryptography and SSL/TLS Toolkit
@@ -374,7 +374,7 @@ brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode"
+brew "anomalyco/tap/opencode", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
@@ -436,7 +436,7 @@ cask "calibre"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
-cask "claude-code"
+cask "claude-code@latest"
 # Screen capturing tool
 cask "cleanshot"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
@@ -485,6 +485,8 @@ cask "geekbench"
 cask "gemini"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
+cask "google-chrome"
 # Japanese input software
 cask "google-japanese-ime"
 # Tools to protect your files
@@ -519,6 +521,8 @@ cask "languagetool-desktop"
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-wallet"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Software for Logitech devices
 cask "logi-options+"
 # File system integration
@@ -541,6 +545,8 @@ cask "obsidian"
 cask "ogdesign-eagle"
 # AI coding agent desktop client
 cask "opencode-desktop"
+# Local-first alternative to Logitech Options+ for HID++ devices
+cask "openlogi"
 # Control your smart light system
 cask "philips-hue-sync"
 # Client for Proton Drive
