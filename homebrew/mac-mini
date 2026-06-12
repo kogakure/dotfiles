@@ -194,7 +194,7 @@ brew "grex"
 # Tool for glamorous shell scripts
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake"
+brew "handbrake", link: false
 # Grammar Checker for Developers
 brew "harper"
 # Convert source code to formatted text with syntax highlighting
@@ -440,7 +440,7 @@ cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
-cask "claude-code"
+cask "claude-code@latest"
 # Screen capturing tool
 cask "cleanshot"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
@@ -547,6 +547,8 @@ cask "october"
 cask "ogdesign-eagle"
 # AI coding agent desktop client
 cask "opencode-desktop"
+# Local-first alternative to Logitech Options+ for HID++ devices
+cask "openlogi"
 # Control your smart light system
 cask "philips-hue-sync"
 # Client for Proton Drive
@@ -648,10 +650,10 @@ mas "Kindle", id: 302584613
 mas "Locally AI", id: 6741426692
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
-mas "Numbers", id: 409203825
 mas "Numbers", id: 361304891
-mas "Pages", id: 361309726
+mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
@@ -730,6 +732,7 @@ vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
 cargo "ytsub"
+uv "graphifyy"
 uv "jiratui"
 npm "@agentmemory/agentmemory"
 npm "@colbymchenry/codegraph"
