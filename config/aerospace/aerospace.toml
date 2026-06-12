@@ -130,12 +130,12 @@ if.app-id = 'app.zen-browser.zen'
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
-if.app-id = 'tw.ogdesign.eagle'
-run = "move-node-to-workspace 3"
+if.app-id = 'com.apple.reminders'
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
-if.app-id = 'com.apple.reminders'
-run = "move-node-to-workspace 4"
+if.app-id = 'tw.ogdesign.eagle'
+run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
 if.app-id = 'com.devon-technologies.think3'
