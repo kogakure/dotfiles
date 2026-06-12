@@ -99,6 +99,9 @@ end
 # Pi agent
 fish_add_path --prepend --move $HOME/.local/pi-agent-npm/bin
 
+# Grok agent
+fish_add_path $HOME/.grok/bin
+
 # Man
 set -x MANPATH /usr/local/man $MANPATH
 
