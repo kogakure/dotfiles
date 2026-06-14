@@ -177,7 +177,7 @@
     "latex": true,
     "log": true,
     "lua": true,
-    "markdownlint": false,
+    "markdownlint": true,
     "mcp-server-contex7": true,
     "mcp-server-github": true,
     "mcp-server-nextjs": true,

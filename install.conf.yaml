@@ -35,7 +35,7 @@
     ~/.gnupg/dirmngr.conf: gnupg/dirmngr.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.jjconfig.toml: jjconfig.toml
-    ~/.markdownlint.yaml: markdownlint.yaml
+    ~/.markdownlint.yaml: .markdownlint.yaml
     ~/.pi: pi
     ~/.profile: profile
     ~/.session-variables.sh: session-variables.sh
