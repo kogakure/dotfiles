@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 5027 nodes · 5696 edges · 970 communities (735 shown, 235 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 133 edges (avg confidence: 0.82)
+- 5011 nodes · 5669 edges · 977 communities (736 shown, 241 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 132 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8b5bc569`
+- Built from commit: `707b5184`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -817,6 +817,13 @@
 - [[_COMMUNITY_Community 941|Community 941]]
 - [[_COMMUNITY_Community 942|Community 942]]
 - [[_COMMUNITY_Community 943|Community 943]]
+- [[_COMMUNITY_Community 970|Community 970]]
+- [[_COMMUNITY_Community 971|Community 971]]
+- [[_COMMUNITY_Community 972|Community 972]]
+- [[_COMMUNITY_Community 973|Community 973]]
+- [[_COMMUNITY_Community 974|Community 974]]
+- [[_COMMUNITY_Community 975|Community 975]]
+- [[_COMMUNITY_Community 976|Community 976]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `$()` - 364 edges
@@ -835,12 +842,12 @@
   .agents/skills/git-commit/SKILL.md → config/opencode/commands/caveman-commit.md
 - `RtkOpenCodePlugin()` --calls--> `$()`  [INFERRED]
   config/opencode/plugins/rtk.ts → config/opencode/plugins/claude-mem.js
-- `Lazygit Configuration` --conceptually_related_to--> `Conventional Commits`  [INFERRED]
-  config/lazygit/config.yml → AGENTS.md
-- `OpenCode AGENTS.md` --references--> `Conventional Commits`  [EXTRACTED]
-  config/opencode/AGENTS.md → AGENTS.md
-- `Caveman Commit Command` --implements--> `Conventional Commits`  [EXTRACTED]
-  config/opencode/commands/caveman-commit.md → AGENTS.md
+- `Coder Agent` --conceptually_related_to--> `Researcher Agent`  [INFERRED]
+  config/opencode/profiles/ws/agents/coder.md → config/opencode/profiles/ws/agents/researcher.md
+- `Coder Agent` --conceptually_related_to--> `Scribe Agent`  [INFERRED]
+  config/opencode/profiles/ws/agents/coder.md → config/opencode/profiles/ws/agents/scribe.md
+- `Contributing Guidelines` --references--> `Continuous Integration Testing`  [EXTRACTED]
+  config/tmux/plugins/tmux-fzf-url/test/libs/bats-core/docs/CONTRIBUTING.md → config/tmux/plugins/tmux-fzf-url/test/libs/bats-core/.github/workflows/tests.yml
 
 ## Import Cycles
 - 1-file cycle: `config/tmux/plugins/tmux-thumbs/src/colors.rs -> config/tmux/plugins/tmux-thumbs/src/colors.rs`
@@ -858,7 +865,7 @@
 - **TPM Plugin Ecosystem Docs** — tpm_concept_plugin_manager, managing_plugins_via_cmd_line_tpm_cli, tpm_not_working_troubleshooting, tmux_test_readme_framework [INFERRED 0.85]
 - **Pi Security Pattern Files** — pi_patterns_security_rules, pi_defender_patterns_security, pi_concept_defender [INFERRED 0.85]
 
-## Communities (970 total, 235 thin omitted)
+## Communities (977 total, 241 thin omitted)
 
 ### Community 0 - "Claude Mem Plugin Core"
 Cohesion: 0.01
@@ -874,7 +881,7 @@ Nodes (39): buildExecOptions(), checkAndInstallCli(), constructor(), debug(), do
 
 ### Community 3 - "Claude Mem Search"
 Cohesion: 0.05
-Nodes (53): ce(), check(), constructor(), fe(), fl(), gr(), gt(), gte() (+45 more)
+Nodes (50): ce(), check(), fe(), fl(), gr(), gt(), gte(), H() (+42 more)
 
 ### Community 4 - "OpenCode Notify Plugin"
 Cohesion: 0.08
@@ -917,8 +924,8 @@ Cohesion: 0.08
 Nodes (26): AssistantSessionMessageItem, BackgroundAgentsPlugin(), createDelegate(), createDelegationList(), createDelegationRead(), createLogger(), DelegateArgs, DelegateInput (+18 more)
 
 ### Community 14 - "Dotfiles Documentation"
-Cohesion: 0.08
-Nodes (29): Conventional Commits, Dotbot, Dotfiles Repository, Fish Shell, Fisher (Fish Plugin Manager), GitHub CLI (gh), Graphify Knowledge Graph, Homebrew (+21 more)
+Cohesion: 0.67
+Nodes (3): Antidote Zsh Plugin Manager, Oh My Zsh Plugins, zsh-users Plugins
 
 ### Community 15 - "Claude Worktree Plugin"
 Cohesion: 0.09
@@ -977,8 +984,8 @@ Cohesion: 0.12
 Nodes (9): bats_internal_load(), bats_load_library(), bats_load_library_safe(), bats_load_safe(), bats_separate_lines(), find_in_bats_lib_path(), load(), run() (+1 more)
 
 ### Community 31 - "tmux Config"
-Cohesion: 0.17
-Nodes (13): Box, Color, String, Vec, Match, Read, CaptureEvent, hint_text() (+5 more)
+Cohesion: 0.40
+Nodes (5): bell, command, notification, sound, complete
 
 ### Community 33 - "tmux Config"
 Cohesion: 0.18
@@ -1106,7 +1113,7 @@ Nodes (10): dependencies, devDependencies, detect-terminal, jsonc-parser, node-n
 
 ### Community 67 - "019E411A 6Ef6"
 Cohesion: 0.20
-Nodes (10): name, role, name, role, name, role, refs, e36 (+2 more)
+Nodes (10): name, role, name, role, name, role, refs, e18 (+2 more)
 
 ### Community 68 - "019E411A 6Ef6"
 Cohesion: 0.20
@@ -1342,7 +1349,7 @@ Nodes (5): extras, install_version, news, NEWS.md, version
 
 ### Community 137 - "Opencode Opencode"
 Cohesion: 0.18
-Nodes (11): bell, command, notification, sound, events, complete, user_message, bell (+3 more)
+Nodes (11): bell, command, notification, sound, events, client_connected, user_message, bell (+3 more)
 
 ### Community 138 - "Opencode Package"
 Cohesion: 0.33
@@ -1405,8 +1412,8 @@ Cohesion: 0.40
 Nodes (3): STAGE_DESCRIPTIONS, Workflow, WorkflowStage
 
 ### Community 157 - "Opencode Opencode"
-Cohesion: 0.40
-Nodes (5): bell, command, notification, sound, client_connected
+Cohesion: 0.67
+Nodes (3): name, role, e36
 
 ### Community 158 - "Opencode Opencode"
 Cohesion: 0.40
@@ -1445,8 +1452,8 @@ Cohesion: 0.40
 Nodes (5): user_cancelled, bell, command, notification, sound
 
 ### Community 167 - "Plugins Claude"
-Cohesion: 0.25
-Nodes (9): de(), dr(), emit(), ia(), Me(), ml(), mr(), pl() (+1 more)
+Cohesion: 0.18
+Nodes (12): constructor(), de(), dr(), emit(), ia(), Le(), Me(), ml() (+4 more)
 
 ### Community 168 - "Save Command"
 Cohesion: 0.70
@@ -2010,7 +2017,7 @@ Nodes (3): name, role, e43
 
 ### Community 342 - "019E411A 6Ef6"
 Cohesion: 0.67
-Nodes (3): name, role, e45
+Nodes (3): name, role, e44
 
 ### Community 343 - "019E411A 6Ef6"
 Cohesion: 0.67
@@ -2062,7 +2069,7 @@ Nodes (3): name, role, e56
 
 ### Community 355 - "019E411A 6Ef6"
 Cohesion: 0.67
-Nodes (3): name, role, e58
+Nodes (3): name, role, e57
 
 ### Community 356 - "019E411A 6Ef6"
 Cohesion: 0.67
@@ -2752,6 +2759,10 @@ Nodes (15): Changelog, master, v0.0.1, Jun 25, 2014, v0.0.2, Jun 26, 2014, v0.0.
 Cohesion: 0.07
 Nodes (24): Changelog, v0.0.1, 2014-06-03, v0.0.2, 2014-06-03, v1.0.0, 2014-08-31, v1.1.0, 2015-03-14, v1.2.0, 2016-09-24, v2.0.0, 2025-12-30, Changing the Defaults (+16 more)
 
+### Community 631 - "Opencode Opencode"
+Cohesion: 0.67
+Nodes (3): Commitizen, delta diff pager, Lazygit Configuration
+
 ### Community 654 - "bats Testing Framework"
 Cohesion: 0.22
 Nodes (8): 0.1.0 - 2016-02-16, [0.2.0] - 2016-03-22, [0.3.0] - 2016-11-29, Added, Added, Added, Change Log, Changed
@@ -3088,10 +3099,6 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.50
 Nodes (3): Dependencies, Running the test suite, Tmux copycat test suite
 
-### Community 898 - "Community 898"
-Cohesion: 0.67
-Nodes (3): name, role, e18
-
 ### Community 899 - "Community 899"
 Cohesion: 0.67
 Nodes (3): Code Philosophy (5 Laws), Frontend Philosophy (5 Pillars), Philosophy Checklist (Verify Before Completing)
@@ -3128,22 +3135,26 @@ Nodes (3): tmux-copycat Plugin, tmux-copycat Screencast README, tmux-copycat Vid
 Cohesion: 0.67
 Nodes (3): Alphabets, Colors, @thumbs-osc52
 
+### Community 975 - "Community 975"
+Cohesion: 0.17
+Nodes (13): Box, Color, String, Vec, Match, Read, CaptureEvent, hint_text() (+5 more)
+
 ## Knowledge Gaps
-- **2139 isolated node(s):** `PreToolUse`, `PreToolUse`, `plugin`, `convert-2-imdb3-format.sh script`, `previewer.sh script` (+2134 more)
+- **2136 isolated node(s):** `PreToolUse`, `PreToolUse`, `plugin`, `Repository Overview`, `Documentation` (+2131 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **235 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **241 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `$()` connect `Claude Mem Plugin Core` to `Plugins Claude`, `Claude Mem Search`, `Worktree Terminal`, `Plugins Claude`, `Plugins Claude`, `Plugins Claude`, `Claude Mem Helpers`, `Plugins Claude`, `Community 910`, `Claude Mem Arrays`, `Plugins Claude`, `Plugins Claude`, `Plugins Rtk`, `Plugins Claude`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `Community 897`, `Community 898`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `Community 897`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `Opencode Opencode`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
 - **What connects `PreToolUse`, `PreToolUse`, `plugin` to the rest of the system?**
-  _2141 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _2138 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Claude Mem Plugin Core` be split into smaller, more focused modules?**
   _Cohesion score 0.014988573733028632 - nodes in this community are weakly interconnected._
 - **Should `Catppuccin Mocha Theme` be split into smaller, more focused modules?**

@@ -1,12 +1,18 @@
-# Graph Report - .  (2026-06-14)
+# Graph Report - .dotfiles  (2026-06-14)
 
 ## Corpus Check
-- Large corpus: 731 files · ~939,499 words. Semantic extraction will be expensive (many Claude tokens). Consider running on a subfolder.
+- 618 files · ~939,703 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3970 nodes · 4746 edges · 815 communities (610 shown, 205 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 133 edges (avg confidence: 0.82)
-- Token cost: 8,962 input · 1,298 output
+- 5012 nodes · 5671 edges · 975 communities (735 shown, 240 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 132 edges (avg confidence: 0.82)
+- Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `21be5c25`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Claude Mem Plugin Core|Claude Mem Plugin Core]]
@@ -650,10 +656,8 @@
 - [[_COMMUNITY_Commands Explain|Commands Explain]]
 - [[_COMMUNITY_Commands Summarize|Commands Summarize]]
 - [[_COMMUNITY_Docs Examples|Docs Examples]]
-- [[_COMMUNITY_Docs Pull|Docs Pull]]
 - [[_COMMUNITY_Docs Requirements|Docs Requirements]]
 - [[_COMMUNITY_Docs Support|Docs Support]]
-- [[_COMMUNITY_Docs Versions|Docs Versions]]
 - [[_COMMUNITY_Lazydocker Config|Lazydocker Config]]
 - [[_COMMUNITY_Memory Human|Memory Human]]
 - [[_COMMUNITY_Memory Persona|Memory Persona]]
@@ -684,6 +688,140 @@
 - [[_COMMUNITY_tmux Config|tmux Config]]
 - [[_COMMUNITY_tmux Config|tmux Config]]
 - [[_COMMUNITY_Workflows Dependency|Workflows Dependency]]
+- [[_COMMUNITY_Community 815|Community 815]]
+- [[_COMMUNITY_Community 816|Community 816]]
+- [[_COMMUNITY_Community 817|Community 817]]
+- [[_COMMUNITY_Community 818|Community 818]]
+- [[_COMMUNITY_Community 819|Community 819]]
+- [[_COMMUNITY_Community 820|Community 820]]
+- [[_COMMUNITY_Community 821|Community 821]]
+- [[_COMMUNITY_Community 822|Community 822]]
+- [[_COMMUNITY_Community 823|Community 823]]
+- [[_COMMUNITY_Community 824|Community 824]]
+- [[_COMMUNITY_Community 825|Community 825]]
+- [[_COMMUNITY_Community 826|Community 826]]
+- [[_COMMUNITY_Community 827|Community 827]]
+- [[_COMMUNITY_Community 828|Community 828]]
+- [[_COMMUNITY_Community 829|Community 829]]
+- [[_COMMUNITY_Community 830|Community 830]]
+- [[_COMMUNITY_Community 831|Community 831]]
+- [[_COMMUNITY_Community 832|Community 832]]
+- [[_COMMUNITY_Community 833|Community 833]]
+- [[_COMMUNITY_Community 834|Community 834]]
+- [[_COMMUNITY_Community 835|Community 835]]
+- [[_COMMUNITY_Community 836|Community 836]]
+- [[_COMMUNITY_Community 837|Community 837]]
+- [[_COMMUNITY_Community 838|Community 838]]
+- [[_COMMUNITY_Community 839|Community 839]]
+- [[_COMMUNITY_Community 840|Community 840]]
+- [[_COMMUNITY_Community 841|Community 841]]
+- [[_COMMUNITY_Community 842|Community 842]]
+- [[_COMMUNITY_Community 843|Community 843]]
+- [[_COMMUNITY_Community 844|Community 844]]
+- [[_COMMUNITY_Community 845|Community 845]]
+- [[_COMMUNITY_Community 846|Community 846]]
+- [[_COMMUNITY_Community 847|Community 847]]
+- [[_COMMUNITY_Community 848|Community 848]]
+- [[_COMMUNITY_Community 849|Community 849]]
+- [[_COMMUNITY_Community 850|Community 850]]
+- [[_COMMUNITY_Community 851|Community 851]]
+- [[_COMMUNITY_Community 852|Community 852]]
+- [[_COMMUNITY_Community 853|Community 853]]
+- [[_COMMUNITY_Community 854|Community 854]]
+- [[_COMMUNITY_Community 855|Community 855]]
+- [[_COMMUNITY_Community 856|Community 856]]
+- [[_COMMUNITY_Community 857|Community 857]]
+- [[_COMMUNITY_Community 858|Community 858]]
+- [[_COMMUNITY_Community 859|Community 859]]
+- [[_COMMUNITY_Community 860|Community 860]]
+- [[_COMMUNITY_Community 861|Community 861]]
+- [[_COMMUNITY_Community 862|Community 862]]
+- [[_COMMUNITY_Community 863|Community 863]]
+- [[_COMMUNITY_Community 864|Community 864]]
+- [[_COMMUNITY_Community 865|Community 865]]
+- [[_COMMUNITY_Community 866|Community 866]]
+- [[_COMMUNITY_Community 867|Community 867]]
+- [[_COMMUNITY_Community 868|Community 868]]
+- [[_COMMUNITY_Community 869|Community 869]]
+- [[_COMMUNITY_Community 870|Community 870]]
+- [[_COMMUNITY_Community 871|Community 871]]
+- [[_COMMUNITY_Community 872|Community 872]]
+- [[_COMMUNITY_Community 873|Community 873]]
+- [[_COMMUNITY_Community 874|Community 874]]
+- [[_COMMUNITY_Community 875|Community 875]]
+- [[_COMMUNITY_Community 876|Community 876]]
+- [[_COMMUNITY_Community 877|Community 877]]
+- [[_COMMUNITY_Community 878|Community 878]]
+- [[_COMMUNITY_Community 879|Community 879]]
+- [[_COMMUNITY_Community 880|Community 880]]
+- [[_COMMUNITY_Community 881|Community 881]]
+- [[_COMMUNITY_Community 882|Community 882]]
+- [[_COMMUNITY_Community 883|Community 883]]
+- [[_COMMUNITY_Community 884|Community 884]]
+- [[_COMMUNITY_Community 885|Community 885]]
+- [[_COMMUNITY_Community 886|Community 886]]
+- [[_COMMUNITY_Community 887|Community 887]]
+- [[_COMMUNITY_Community 888|Community 888]]
+- [[_COMMUNITY_Community 889|Community 889]]
+- [[_COMMUNITY_Community 890|Community 890]]
+- [[_COMMUNITY_Community 891|Community 891]]
+- [[_COMMUNITY_Community 892|Community 892]]
+- [[_COMMUNITY_Community 893|Community 893]]
+- [[_COMMUNITY_Community 894|Community 894]]
+- [[_COMMUNITY_Community 895|Community 895]]
+- [[_COMMUNITY_Community 896|Community 896]]
+- [[_COMMUNITY_Community 897|Community 897]]
+- [[_COMMUNITY_Community 898|Community 898]]
+- [[_COMMUNITY_Community 899|Community 899]]
+- [[_COMMUNITY_Community 900|Community 900]]
+- [[_COMMUNITY_Community 901|Community 901]]
+- [[_COMMUNITY_Community 902|Community 902]]
+- [[_COMMUNITY_Community 903|Community 903]]
+- [[_COMMUNITY_Community 904|Community 904]]
+- [[_COMMUNITY_Community 905|Community 905]]
+- [[_COMMUNITY_Community 906|Community 906]]
+- [[_COMMUNITY_Community 907|Community 907]]
+- [[_COMMUNITY_Community 908|Community 908]]
+- [[_COMMUNITY_Community 909|Community 909]]
+- [[_COMMUNITY_Community 910|Community 910]]
+- [[_COMMUNITY_Community 911|Community 911]]
+- [[_COMMUNITY_Community 912|Community 912]]
+- [[_COMMUNITY_Community 913|Community 913]]
+- [[_COMMUNITY_Community 914|Community 914]]
+- [[_COMMUNITY_Community 915|Community 915]]
+- [[_COMMUNITY_Community 916|Community 916]]
+- [[_COMMUNITY_Community 917|Community 917]]
+- [[_COMMUNITY_Community 918|Community 918]]
+- [[_COMMUNITY_Community 919|Community 919]]
+- [[_COMMUNITY_Community 920|Community 920]]
+- [[_COMMUNITY_Community 921|Community 921]]
+- [[_COMMUNITY_Community 922|Community 922]]
+- [[_COMMUNITY_Community 923|Community 923]]
+- [[_COMMUNITY_Community 924|Community 924]]
+- [[_COMMUNITY_Community 925|Community 925]]
+- [[_COMMUNITY_Community 926|Community 926]]
+- [[_COMMUNITY_Community 927|Community 927]]
+- [[_COMMUNITY_Community 928|Community 928]]
+- [[_COMMUNITY_Community 929|Community 929]]
+- [[_COMMUNITY_Community 930|Community 930]]
+- [[_COMMUNITY_Community 931|Community 931]]
+- [[_COMMUNITY_Community 932|Community 932]]
+- [[_COMMUNITY_Community 933|Community 933]]
+- [[_COMMUNITY_Community 934|Community 934]]
+- [[_COMMUNITY_Community 935|Community 935]]
+- [[_COMMUNITY_Community 936|Community 936]]
+- [[_COMMUNITY_Community 937|Community 937]]
+- [[_COMMUNITY_Community 938|Community 938]]
+- [[_COMMUNITY_Community 939|Community 939]]
+- [[_COMMUNITY_Community 940|Community 940]]
+- [[_COMMUNITY_Community 941|Community 941]]
+- [[_COMMUNITY_Community 942|Community 942]]
+- [[_COMMUNITY_Community 943|Community 943]]
+- [[_COMMUNITY_Community 970|Community 970]]
+- [[_COMMUNITY_Community 971|Community 971]]
+- [[_COMMUNITY_Community 972|Community 972]]
+- [[_COMMUNITY_Community 973|Community 973]]
+- [[_COMMUNITY_Community 974|Community 974]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `$()` - 364 edges
@@ -694,20 +832,20 @@
 6. `bash` - 37 edges
 7. `check()` - 34 edges
 8. `vars` - 31 edges
-9. `split()` - 24 edges
-10. `id()` - 16 edges
+9. `Changelog` - 29 edges
+10. `Changelog` - 25 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Git Commit Skill (SKILL.md)` --semantically_similar_to--> `Caveman Commit Command`  [INFERRED] [semantically similar]
   .agents/skills/git-commit/SKILL.md → config/opencode/commands/caveman-commit.md
 - `RtkOpenCodePlugin()` --calls--> `$()`  [INFERRED]
   config/opencode/plugins/rtk.ts → config/opencode/plugins/claude-mem.js
-- `Lazygit Configuration` --conceptually_related_to--> `Conventional Commits`  [INFERRED]
-  config/lazygit/config.yml → AGENTS.md
-- `OpenCode AGENTS.md` --references--> `Conventional Commits`  [EXTRACTED]
-  config/opencode/AGENTS.md → AGENTS.md
-- `Caveman Commit Command` --implements--> `Conventional Commits`  [EXTRACTED]
-  config/opencode/commands/caveman-commit.md → AGENTS.md
+- `Coder Agent` --conceptually_related_to--> `Researcher Agent`  [INFERRED]
+  config/opencode/profiles/ws/agents/coder.md → config/opencode/profiles/ws/agents/researcher.md
+- `Coder Agent` --conceptually_related_to--> `Scribe Agent`  [INFERRED]
+  config/opencode/profiles/ws/agents/coder.md → config/opencode/profiles/ws/agents/scribe.md
+- `Contributing Guidelines` --references--> `Continuous Integration Testing`  [EXTRACTED]
+  config/tmux/plugins/tmux-fzf-url/test/libs/bats-core/docs/CONTRIBUTING.md → config/tmux/plugins/tmux-fzf-url/test/libs/bats-core/.github/workflows/tests.yml
 
 ## Import Cycles
 - 1-file cycle: `config/tmux/plugins/tmux-thumbs/src/colors.rs -> config/tmux/plugins/tmux-thumbs/src/colors.rs`
@@ -725,11 +863,11 @@
 - **TPM Plugin Ecosystem Docs** — tpm_concept_plugin_manager, managing_plugins_via_cmd_line_tpm_cli, tpm_not_working_troubleshooting, tmux_test_readme_framework [INFERRED 0.85]
 - **Pi Security Pattern Files** — pi_patterns_security_rules, pi_defender_patterns_security, pi_concept_defender [INFERRED 0.85]
 
-## Communities (815 total, 205 thin omitted)
+## Communities (975 total, 240 thin omitted)
 
 ### Community 0 - "Claude Mem Plugin Core"
-Cohesion: 0.02
-Nodes (89): $(), aa(), ai(), am(), and(), ar(), as(), bl() (+81 more)
+Cohesion: 0.01
+Nodes (94): $(), aa(), am(), and(), ar(), as(), ba(), bl() (+86 more)
 
 ### Community 1 - "Catppuccin Mocha Theme"
 Cohesion: 0.04
@@ -740,16 +878,16 @@ Cohesion: 0.10
 Nodes (39): buildExecOptions(), checkAndInstallCli(), constructor(), debug(), downloadFile(), ensureCliInstalled(), error(), errorException() (+31 more)
 
 ### Community 3 - "Claude Mem Search"
-Cohesion: 0.06
-Nodes (44): check(), endsWith(), fl(), gr(), gt(), gte(), H(), he() (+36 more)
+Cohesion: 0.05
+Nodes (50): ce(), check(), fe(), fl(), gr(), gt(), gte(), H() (+42 more)
 
 ### Community 4 - "OpenCode Notify Plugin"
 Cohesion: 0.08
 Nodes (36): NotifyBackendOptions, sendNotificationWithFallback(), buildCmuxNotifyArgs(), canUseCmuxNotification(), CmuxNotificationPayload, CmuxProcess, EnvironmentVariables, ResolveExecutable (+28 more)
 
 ### Community 5 - "Worktree Terminal"
-Cohesion: 0.09
-Nodes (41): buildBashCommandFromArgv(), buildBatchCommandFromArgv(), buildCmuxCommandSequence(), buildWarpLaunchConfigYaml(), canUseCmuxWorkflow(), CmuxCommandResult, CmuxContext, CmuxEnvironment (+33 more)
+Cohesion: 0.06
+Nodes (46): Mutex, Mutex, fn(), keyof(), buildBashCommandFromArgv(), buildBatchCommandFromArgv(), buildCmuxCommandSequence(), buildWarpLaunchConfigYaml() (+38 more)
 
 ### Community 6 - "tmux-resurrect Restore"
 Cohesion: 0.10
@@ -760,20 +898,20 @@ Cohesion: 0.15
 Nodes (34): Option, Result, String, Vec, Debug, Formatter, PartialEq, Match (+26 more)
 
 ### Community 8 - "bats-assert Library"
-Cohesion: 0.07
-Nodes (38): bats-assert Contributing Guide, bats-assert Library, bats-assert README, bats-assert Release Workflow, bats-assert Test Workflow, bats-core Testing Framework, bats-core README, bats-core Security Policy (+30 more)
+Cohesion: 0.16
+Nodes (16): bats-core Testing Framework, fzf Fuzzy Finder, fzf-url.sh Core Script, fzf-url.tmux Entry Point, tmux-fzf-url Plugin, 🛠️ Development, 📥 Installation, 📃 License (+8 more)
 
 ### Community 9 - "OpenCode Bash Utilities"
 Cohesion: 0.05
 Nodes (37): *, cat *, chgrp *, chmod -R *, chown *, curl *, dd *, > /dev/* (+29 more)
 
 ### Community 10 - "tmux-thumbs Swapper (Rust)"
-Cohesion: 0.15
-Nodes (17): ArgMatches, Box, Option, Result, String, Vec, app_args(), dbg() (+9 more)
+Cohesion: 0.08
+Nodes (30): ArgMatches, Box, Option, Result, String, Vec, Box, Color (+22 more)
 
 ### Community 11 - "Claude Mem Helpers"
-Cohesion: 0.09
-Nodes (31): add(), apply(), au(), de(), default(), describe(), emit(), get() (+23 more)
+Cohesion: 0.07
+Nodes (40): add(), apply(), au(), catchall(), clone(), default(), describe(), get() (+32 more)
 
 ### Community 12 - "Catppuccin Theme Vars"
 Cohesion: 0.06
@@ -784,16 +922,16 @@ Cohesion: 0.08
 Nodes (26): AssistantSessionMessageItem, BackgroundAgentsPlugin(), createDelegate(), createDelegationList(), createDelegationRead(), createLogger(), DelegateArgs, DelegateInput (+18 more)
 
 ### Community 14 - "Dotfiles Documentation"
-Cohesion: 0.08
-Nodes (29): Conventional Commits, Dotbot, Dotfiles Repository, Fish Shell, Fisher (Fish Plugin Manager), GitHub CLI (gh), Graphify Knowledge Graph, Homebrew (+21 more)
+Cohesion: 0.40
+Nodes (5): Dotbot Symlink Configuration, Markdownlint Configuration, Antidote Zsh Plugin Manager, Oh My Zsh Plugins, zsh-users Plugins
 
 ### Community 15 - "Claude Worktree Plugin"
 Cohesion: 0.09
 Nodes (22): branchNameSchema, ensureLaunchContextExecutable(), ensureLaunchContextProfile(), ErrResult, ForkResult, getDb(), initDb(), isPathLikeCommand() (+14 more)
 
 ### Community 16 - "tmux Plugin Ecosystem Docs"
-Cohesion: 0.08
-Nodes (29): tmux plugin ecosystem, tmux-thumbs audit workflow, tmux-thumbs issue template, tmux-thumbs matched patterns, tmux-thumbs, Rust (tmux-thumbs language), TPM (Tmux Plugin Manager) dependency, tmux-thumbs release workflow (+21 more)
+Cohesion: 0.12
+Nodes (17): tmux plugin ecosystem, TPM (Tmux Plugin Manager) dependency, extract_url dependency, tmux-urlview, System clipboard integration, tmux-yank, reattach-to-user-namespace, tmux-yank Travis CI config (+9 more)
 
 ### Community 17 - "tmux-copycat Helper Scripts"
 Cohesion: 0.10
@@ -812,8 +950,8 @@ Cohesion: 0.14
 Nodes (20): bats_add_debug_exclude_path(), bats_capture_stack_trace(), bats_check_status_from_trap(), bats_debug_trap(), bats_emit_trace(), bats_emit_trace_command(), bats_emit_trace_context(), bats_error_trap() (+12 more)
 
 ### Community 21 - "Claude Mem Arrays"
-Cohesion: 0.09
-Nodes (24): A(), array(), catchall(), clone(), et(), execute(), ha(), includes() (+16 more)
+Cohesion: 0.17
+Nodes (12): A(), array(), et(), execute(), includes(), Ne(), oe(), pf() (+4 more)
 
 ### Community 22 - "Fish Shell Variables"
 Cohesion: 0.08
@@ -829,7 +967,7 @@ Nodes (16): _copycat_create_padding_below_result(), _copycat_enter_mode(), _copy
 
 ### Community 26 - "Neovim Lazy Lockfile"
 Cohesion: 0.09
-Nodes (21): cheatsheet.nvim, branch, commit, friendly-snippets, branch, commit, harpoon-lualine, branch (+13 more)
+Nodes (21): bufferline.nvim, branch, commit, cheatsheet.nvim, branch, commit, harpoon-lualine, branch (+13 more)
 
 ### Community 28 - "Claude Worktree State"
 Cohesion: 0.13
@@ -844,8 +982,8 @@ Cohesion: 0.12
 Nodes (9): bats_internal_load(), bats_load_library(), bats_load_library_safe(), bats_load_safe(), bats_separate_lines(), find_in_bats_lib_path(), load(), run() (+1 more)
 
 ### Community 31 - "tmux Config"
-Cohesion: 0.17
-Nodes (13): Box, Color, String, Vec, Match, Read, CaptureEvent, hint_text() (+5 more)
+Cohesion: 0.40
+Nodes (5): bell, command, notification, sound, complete
 
 ### Community 33 - "tmux Config"
 Cohesion: 0.18
@@ -860,8 +998,8 @@ Cohesion: 0.11
 Nodes (17): author, bugs, description, directories, bin, doc, man, test (+9 more)
 
 ### Community 36 - "Concept Bash"
-Cohesion: 0.16
-Nodes (18): Bash Coding Conventions, bats-core (Bash Automated Testing System), Continuous Integration Testing, NPM Release Process, Semantic Versioning, Bats-Core Changelog, Code of Conduct, Contributing Guidelines (+10 more)
+Cohesion: 0.33
+Nodes (8): bats-core (Bash Automated Testing System), FAQ, Gotchas, Documentation Index, Installation Documentation, Tutorial, Usage Documentation, Codespell Workflow
 
 ### Community 38 - "Plugins Claude"
 Cohesion: 0.11
@@ -872,24 +1010,24 @@ Cohesion: 0.13
 Nodes (13): activeCoderCalls, cleanupInterval, ExtractedParts, extractMarkdownParts(), formatZodErrors(), FrontmatterSchema, parsePlanMarkdown(), ParseResult (+5 more)
 
 ### Community 40 - "tmux Config"
-Cohesion: 0.16
-Nodes (17): Tmux Mouse Control Behavior, tmux-better-mouse-mode Plugin, Mouse Scroll Configuration Options, Tmux Plugin Manager (TPM), tmux Auto-Start on System Boot, tmux-continuum Automatic Start Documentation, tmux-continuum FAQ, Automatic tmux Environment Restore (+9 more)
+Cohesion: 0.08
+Nodes (30): Tmux Mouse Control Behavior, tmux-better-mouse-mode Plugin, Mouse Scroll Configuration Options, Tmux Plugin Manager (TPM), tmux Auto-Start on System Boot, tmux-continuum Automatic Start Documentation, tmux-continuum FAQ, Automatic tmux Environment Restore (+22 more)
 
 ### Community 41 - "Opencode Opencode"
 Cohesion: 0.13
 Nodes (14): bell, customIconPath, enableOnDesktop, linux, grouping, minDuration, notification, notificationSystem (+6 more)
 
 ### Community 42 - "Plugins Claude"
-Cohesion: 0.14
-Nodes (15): ce(), constructor(), fe(), je(), Le(), normalize(), overwrite(), Re() (+7 more)
+Cohesion: 0.07
+Nodes (26): Add a snippet, Additional Customization, Autosave on leave, Custom Key Bindings, Disable While Zoomed, Disable Wrapping, Faster performance, Ignoring programs that use Ctrl+hjkl movement (+18 more)
 
 ### Community 44 - "Agents Coder"
-Cohesion: 0.23
-Nodes (14): Coder Agent, Researcher Agent, Reviewer Agent, Scribe Agent, Review Command, Completed Staff Work Doctrine, 5 Laws of Elegant Defense, 5 Pillars of Intentional UI (+6 more)
+Cohesion: 0.16
+Nodes (15): Authority: Autonomous Actions, Bash Command Guidelines, Coder Agent, Example Workflow, FORBIDDEN ACTIONS, Output Format, Prime Directive, Process (+7 more)
 
 ### Community 45 - "tmux Config"
-Cohesion: 0.15
-Nodes (14): tmux-resurrect Plugin, tmux-sensible Plugin, tmuxinator Session Manager, Vagrant, tpope/vim-obsession Plugin, tmux-resurrect Save & Restore Hooks, Migrating from tmuxinator to tmux-resurrect, Restoring Bash History Per Pane (+6 more)
+Cohesion: 0.13
+Nodes (15): tmux-resurrect Plugin, tmux-sensible Plugin, tmuxinator Session Manager, Vagrant, tpope/vim-obsession Plugin, Examples, Save & Restore Hooks, Migrating from tmuxinator to tmux-resurrect (+7 more)
 
 ### Community 47 - "Extensions Git"
 Cohesion: 0.31
@@ -908,8 +1046,8 @@ Cohesion: 0.15
 Nodes (13): *, permission, edit, external_directory, read, webfetch, *, credentials.* (+5 more)
 
 ### Community 51 - "bats Testing Framework"
-Cohesion: 0.20
-Nodes (12): BW01: run command not found warning, BW02: feature requires minimum BATS_VERSION warning, BW03: setup_suite not in setup_suite.bash warning, Bats Warnings Index, Bats Writing Tests Guide, bats-support Library README, bats-support GitHub Actions test workflow, Bats bats_load_library system library loading (+4 more)
+Cohesion: 0.11
+Nodes (19): BW01: run command not found warning, BW02: feature requires minimum BATS_VERSION warning, BW03: setup_suite not in setup_suite.bash warning, Bats Warnings Index, Bats Writing Tests Guide, bats-support, Error reporting, `fail` (+11 more)
 
 ### Community 52 - "Caveman Plugin"
 Cohesion: 0.18
@@ -924,8 +1062,8 @@ Cohesion: 0.17
 Nodes (11): notifyChildSessions, quietHours, enabled, end, start, sounds, error, idle (+3 more)
 
 ### Community 55 - "Plugins Claude"
-Cohesion: 0.26
-Nodes (12): ae(), ee(), em(), Gd(), im(), N(), nm(), qd() (+4 more)
+Cohesion: 0.16
+Nodes (17): ae(), ee(), em(), endsWith(), Gd(), im(), kf(), N() (+9 more)
 
 ### Community 56 - "Scripts Battery"
 Cohesion: 0.36
@@ -973,7 +1111,7 @@ Nodes (10): dependencies, devDependencies, detect-terminal, jsonc-parser, node-n
 
 ### Community 67 - "019E411A 6Ef6"
 Cohesion: 0.20
-Nodes (9): name, role, name, role, origin, refs, e18, e44 (+1 more)
+Nodes (10): name, role, name, role, name, role, refs, e18 (+2 more)
 
 ### Community 68 - "019E411A 6Ef6"
 Cohesion: 0.20
@@ -984,8 +1122,8 @@ Cohesion: 0.20
 Nodes (9): openai-codex, access, accountId, expires, refresh, type, opencode-go, key (+1 more)
 
 ### Community 70 - "Config Opencode"
-Cohesion: 0.24
-Nodes (6): Mutex, fn(), hl(), keyof(), vr(), withTempScript()
+Cohesion: 0.08
+Nodes (25): Before Saving Checklist, Citations & Delegations, ✅ CORRECT: Well-formed plan, Critical Rules, Examples, Frontmatter Fields, How to Find Delegation IDs, ❌ NEVER (+17 more)
 
 ### Community 71 - "tmux Config"
 Cohesion: 0.31
@@ -1208,8 +1346,8 @@ Cohesion: 0.33
 Nodes (5): extras, install_version, news, NEWS.md, version
 
 ### Community 137 - "Opencode Opencode"
-Cohesion: 0.33
-Nodes (6): events, user_message, bell, command, notification, sound
+Cohesion: 0.18
+Nodes (11): bell, command, notification, sound, events, client_connected, user_message, bell (+3 more)
 
 ### Community 138 - "Opencode Package"
 Cohesion: 0.33
@@ -1251,6 +1389,10 @@ Nodes (5): manually_install_the_plugin(), test_plugin_uninstallation_via_script(
 Cohesion: 0.50
 Nodes (3): bats_export_preprocess_source_BATS_TEST_SOURCE(), bats_preprocess_source(), preprocessing.bash script
 
+### Community 151 - "Config Opencode"
+Cohesion: 0.08
+Nodes (25): Changelog, master, v0.0.1, 2014-08-26, v0.0.2, 2014-08-26, v0.0.3, 2014-08-26, v0.0.4, 2014-08-26, v0.0.5, 2014-08-28, v0.1.0, 2014-08-28 (+17 more)
+
 ### Community 152 - "Config Opencode"
 Cohesion: 0.70
 Nodes (4): assertShellSafe(), escapeAppleScript(), escapeBash(), escapeBatch()
@@ -1268,16 +1410,16 @@ Cohesion: 0.40
 Nodes (3): STAGE_DESCRIPTIONS, Workflow, WorkflowStage
 
 ### Community 157 - "Opencode Opencode"
-Cohesion: 0.40
-Nodes (5): bell, command, notification, sound, client_connected
+Cohesion: 0.67
+Nodes (3): name, role, e36
 
 ### Community 158 - "Opencode Opencode"
 Cohesion: 0.40
 Nodes (5): command, args, enabled, minDuration, path
 
 ### Community 159 - "Opencode Opencode"
-Cohesion: 0.40
-Nodes (5): bell, command, notification, sound, complete
+Cohesion: 0.08
+Nodes (23): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+15 more)
 
 ### Community 160 - "Opencode Opencode"
 Cohesion: 0.40
@@ -1308,8 +1450,8 @@ Cohesion: 0.40
 Nodes (5): user_cancelled, bell, command, notification, sound
 
 ### Community 167 - "Plugins Claude"
-Cohesion: 0.40
-Nodes (5): dr(), ia(), ml(), pl(), ud()
+Cohesion: 0.18
+Nodes (12): constructor(), de(), dr(), emit(), ia(), Le(), Me(), ml() (+4 more)
 
 ### Community 168 - "Save Command"
 Cohesion: 0.70
@@ -1386,6 +1528,14 @@ Nodes (3): remove_directory(), remove_file(), uninstall.sh script
 ### Community 188 - "bats Testing Framework"
 Cohesion: 0.67
 Nodes (3): bats_generate_warning(), bats_warn_minimum_guaranteed_version(), warnings.bash script
+
+### Community 204 - "Folder1 Setup"
+Cohesion: 0.08
+Nodes (23): `bats_load_library`: Load system wide libraries, `bats::on_failure` hook, `bats_pipe`: Run commands with pipes, `bats_require_minimum_version <Bats version number>`, Code outside of test cases, Comment syntax, Dynamic test registration via `bats_test_function`, File descriptor 3 (read this if Bats hangs) (+15 more)
+
+### Community 205 - "Folder2 Setup"
+Cohesion: 0.09
+Nodes (22): 1. Early Exit (Guard Clauses), 2. Parse, Don't Validate, 3. Atomic Predictability, 4. Fail Fast, Fail Loud, 5. Intentional Naming, Authority, Code Review Agent, 🔴 Critical Issues (+14 more)
 
 ### Community 215 - "Plugins Claude"
 Cohesion: 0.50
@@ -1544,8 +1694,8 @@ Cohesion: 0.67
 Nodes (3): name, role, e35
 
 ### Community 261 - "019E411A 6Ef6"
-Cohesion: 0.67
-Nodes (3): name, role, e36
+Cohesion: 0.09
+Nodes (22): tmux-thumbs audit workflow, tmux-thumbs issue template, Background, Contribute, Demo, Donations, Extra features, Installation checking out the source code (+14 more)
 
 ### Community 262 - "019E411A 6Ef6"
 Cohesion: 0.67
@@ -1716,8 +1866,8 @@ Cohesion: 0.67
 Nodes (3): name, role, e8
 
 ### Community 304 - "019E411A 6Ef6"
-Cohesion: 0.67
-Nodes (3): name, role, e9
+Cohesion: 0.10
+Nodes (19): Controlling Yank Behavior, Cygwin, Debian & Ubuntu, Default and Preferred Clipboard Programs, [HomeBrew](https://brew.sh/) (recommended), Key bindings, License, Linux (+11 more)
 
 ### Community 306 - "019E411A 6Ef6"
 Cohesion: 0.67
@@ -1865,7 +2015,7 @@ Nodes (3): name, role, e43
 
 ### Community 342 - "019E411A 6Ef6"
 Cohesion: 0.67
-Nodes (3): name, role, e45
+Nodes (3): name, role, e44
 
 ### Community 343 - "019E411A 6Ef6"
 Cohesion: 0.67
@@ -1917,7 +2067,7 @@ Nodes (3): name, role, e56
 
 ### Community 355 - "019E411A 6Ef6"
 Cohesion: 0.67
-Nodes (3): name, role, e58
+Nodes (3): name, role, e57
 
 ### Community 356 - "019E411A 6Ef6"
 Cohesion: 0.67
@@ -1996,8 +2146,8 @@ Cohesion: 1.00
 Nodes (3): Docker Release Process, Docker Usage Documentation, Release to DockerHub Workflow
 
 ### Community 383 - "tmux Config"
-Cohesion: 0.67
-Nodes (3): tmux pane logging and screen capture features, tmux-logging Configuration Docs, tmux-logging Plugin README
+Cohesion: 0.14
+Nodes (13): tmux pane logging and screen capture features, tmux-logging Configuration Docs, 1. Logging, 2. "Screen Capture", 3. Save complete history, 4. Clear pane history, Configuration Docs, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended) (+5 more)
 
 ### Community 384 - "tmux Config"
 Cohesion: 0.67
@@ -2032,8 +2182,8 @@ Cohesion: 0.67
 Nodes (3): bookmarks.nvim, branch, commit
 
 ### Community 422 - "Neovim Config"
-Cohesion: 0.67
-Nodes (3): bufferline.nvim, branch, commit
+Cohesion: 0.11
+Nodes (19): Configuration, @thumbs-alphabet, @thumbs-bg-color, @thumbs-command, @thumbs-contrast, @thumbs-fg-color, @thumbs-hint-bg-color, @thumbs-hint-fg-color (+11 more)
 
 ### Community 423 - "Neovim Config"
 Cohesion: 0.67
@@ -2596,35 +2746,411 @@ Cohesion: 1.00
 Nodes (3): Pi Defender Security Layer, Pi Defender Security Patterns, Pi Patterns Security Rules
 
 ### Community 563 - "Plugins Claude"
-Cohesion: 0.67
-Nodes (3): ba(), hr(), xl()
+Cohesion: 0.12
+Nodes (16): Added, Added, Added, Added, Added, Added, Added, Fixed (+8 more)
 
 ### Community 564 - "Plugins Claude"
-Cohesion: 0.67
-Nodes (3): ga(), kl(), yr()
+Cohesion: 0.12
+Nodes (15): Changelog, master, v0.0.1, Jun 25, 2014, v0.0.2, Jun 26, 2014, v0.0.3, Jun 29, 2014, v0.0.4, Jul 9, 2014, v0.0.5, Jul 24, 2014, v0.0.6, Jul 28, 2014 (+7 more)
 
 ### Community 588 - "tmux Config"
+Cohesion: 0.07
+Nodes (24): Changelog, v0.0.1, 2014-06-03, v0.0.2, 2014-06-03, v1.0.0, 2014-08-31, v1.1.0, 2015-03-14, v1.2.0, 2016-09-24, v2.0.0, 2025-12-30, Changing the Defaults (+16 more)
+
+### Community 631 - "Opencode Opencode"
 Cohesion: 0.67
-Nodes (3): Tmux Battery Plugin Changelog, Tmux Battery Plugin License, Tmux Battery Plugin README
+Nodes (3): Commitizen, delta diff pager, Lazygit Configuration
+
+### Community 654 - "bats Testing Framework"
+Cohesion: 0.22
+Nodes (8): 0.1.0 - 2016-02-16, [0.2.0] - 2016-03-22, [0.3.0] - 2016-11-29, Added, Added, Added, Change Log, Changed
+
+### Community 802 - "tmux Config"
+Cohesion: 0.25
+Nodes (7): Changelog, master, v0.0.1, 2014-06-02, v0.0.2, 2014-08-26, v1.0.0, 2014-11-09, v2.0.0, 2015-03-14, v2.1.0, 2015-03-18
+
+### Community 815 - "Community 815"
+Cohesion: 0.12
+Nodes (14): Contributing, Reporting a bug, tmux-resurrect custom key bindings doc, About, Credits, Docs, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended), Key bindings (+6 more)
+
+### Community 816 - "Community 816"
+Cohesion: 0.13
+Nodes (14): Adherence Checklist, Code Review Philosophy, Confidence Threshold, Layer 1: Correctness, Layer 2: Security, Layer 3: Performance, Layer 4: Style & Maintainability, Output Format (+6 more)
+
+### Community 817 - "Community 817"
+Cohesion: 0.13
+Nodes (14): neovim-remote (nvr), nvr-tmux executable, tmux-nvr plugin, Installation Using TPM, Manual Installation, Miscellaneous, nvr-tmux, Optional: Zsh Plugin Installation with OhMyZsh (+6 more)
+
+### Community 818 - "Community 818"
+Cohesion: 0.13
+Nodes (13): Changelog, master, v0.0.1, 2014-05-23, v0.0.2, 2014-06-03, v1.0.0, 2014-08-30, tmux-pain-control plugin, Bindings, Configuration (+5 more)
+
+### Community 819 - "Community 819"
+Cohesion: 0.14
+Nodes (11): tmux-continuum plugin, Changelog, master, v0.0.1, Aug 01, 2014, v0.0.2, Aug 02, 2014, v1.0.0, Aug 03, 2014, v2.0.0, Nov 01, 2014, v3.0.0, Nov 01, 2017 (+3 more)
+
+### Community 820 - "Community 820"
+Cohesion: 0.15
+Nodes (12): Authority: Autonomous Follow-Up, Bad Output (What NOT To Return), Example Output, FORBIDDEN ACTIONS, Good Output (What You Should Return), Process, Researcher Agent, Responsibilities (+4 more)
+
+### Community 821 - "Community 821"
+Cohesion: 0.15
+Nodes (13): [0.1.0] - 2011-12-30, [0.2.0] - 2012-11-16, [0.3.0] - 2013-10-21, [0.3.1] - 2013-10-28, [0.4.0] - 2014-08-13, [1.0.0] - 2018-06-08, [1.0.1] - 2018-06-09, [1.0.2] - 2018-06-18 (+5 more)
+
+### Community 822 - "Community 822"
+Cohesion: 0.15
+Nodes (12): 1. Analyze Diff, 2. Stage Files (if needed), 3. Generate Commit Message, 4. Execute Commit, Best Practices, Breaking Changes, Commit Types, Conventional Commit Format (+4 more)
+
+### Community 823 - "Community 823"
+Cohesion: 0.15
+Nodes (12): 1. Structure (Pre-validated), 2. Citation Quality, 3. Completeness, 4. Actionability, Adherence Checklist, Output Format, Plan Review, Plan Review Checklist (+4 more)
+
+### Community 824 - "Community 824"
+Cohesion: 0.15
+Nodes (12): Automatic restore, Automatic tmux start, Continuous saving, Dependencies, Docs, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended), Known Issues, License (+4 more)
+
+### Community 825 - "Community 825"
+Cohesion: 0.15
+Nodes (12): Changelog, master, v0.0.1, 2014-05-21, v0.0.2, 2014-07-17, v1.0.0, 2014-08-05, v1.1.0, 2014-11-19, v1.2.0, 2014-11-20, v1.2.1, 2014-11-21 (+4 more)
+
+### Community 826 - "Community 826"
+Cohesion: 0.17
+Nodes (12): `assert`, `assert_equal`, `assert_failure`, `assert_not_equal`, `assert_regex`, `assert_success`, Expected status, Full Assertion API (+4 more)
+
+### Community 827 - "Community 827"
+Cohesion: 0.17
+Nodes (11): Additional tmux plugins, Configuration, Contributing, Custom Configuration File Path, Custom Placeholder Support, Installation, Intro Video, Nix (flakes) (+3 more)
+
+### Community 828 - "Community 828"
+Cohesion: 0.18
+Nodes (10): 1. Think Before Coding, 2. Simplicity First, 3. Surgical Changes, 4. Goal-Driven Execution, 5. General, 6. Workflow, 7. Code quality, 8. Safety (+2 more)
+
+### Community 829 - "Community 829"
+Cohesion: 0.18
+Nodes (10): AGENTS.md Location Guidelines, Authority, Commit Message Format, Content Types, Documentation Guidelines, FORBIDDEN ACTIONS, Output Quality Standards, Process (+2 more)
+
+### Community 830 - "Community 830"
+Cohesion: 0.18
+Nodes (10): Bash Coding Conventions, Asking questions, Code of conduct, Contributing Guidelines, Credits, Quick links, Table of contents, Testing (+2 more)
+
+### Community 831 - "Community 831"
+Cohesion: 0.18
+Nodes (10): Attribution, Contributor Covenant Code of Conduct, Current Maintainers, Enforcement, Our Pledge, Our Responsibilities, Our Standards, Past Maintainers (+2 more)
+
+### Community 832 - "Community 832"
+Cohesion: 0.18
+Nodes (10): Development Environment, Editor: Neovim (LazyVim), Fish Plugins (fisher), Git, GitHub CLI Extensions, Neovim Plugins (Lazy), Shell: Fish, Terminal Multiplexer: tmux (+2 more)
+
+### Community 833 - "Community 833"
+Cohesion: 0.18
+Nodes (10): Another problem, Clarifications <a name="clarfications"></a>, General instructions <a name="general-instructions"></a>, gulp, npm, nvm, Restoring Mosh <a name="#mosh"></a>, Restoring programs (+2 more)
+
+### Community 834 - "Community 834"
+Cohesion: 0.18
+Nodes (10): Changelog, master, v1.0.0, 2014-06-01, v1.1.0, 2014-07-30, v1.2.0, 2014-08-03, v2.0.0, 2014-08-03, v2.0.1, 2014-11-21, v2.1.0, 2015-01-11 (+2 more)
+
+### Community 835 - "Community 835"
+Cohesion: 0.22
+Nodes (9): bats-assert Contributing Guide, bats-assert Library, bats-assert, Install, Options, Usage, bats-assert Release Workflow, bats-assert Test Workflow (+1 more)
+
+### Community 836 - "Community 836"
+Cohesion: 0.20
+Nodes (10): Background, Bats-core: Bash Automated Testing System, Contact, Contributing, Copyright, Support, Table of contents, Testing (+2 more)
+
+### Community 837 - "Community 837"
+Cohesion: 0.20
+Nodes (9): Configuration, Contributions, Inspiration, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended), Key bindings, License, Manual Installation, Requirements (+1 more)
+
+### Community 838 - "Community 838"
+Cohesion: 0.20
+Nodes (9): Configuration, Contributions, Inspiration, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended), Key bindings, License, Manual Installation, Requirements (+1 more)
+
+### Community 839 - "Community 839"
+Cohesion: 0.20
+Nodes (9): Configuration, Demo, Dependencies, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended), Key bindings, License, Manual Installation, Other goodies (+1 more)
+
+### Community 840 - "Community 840"
+Cohesion: 0.22
+Nodes (8): 1. The Law of the Early Exit (Guard Clauses), 2. Make Illegal States Unrepresentable (Parse, Don't Validate), 3. The Law of Atomic Predictability, 4. The Law of "Fail Fast, Fail Loud", 5. The Law of Intentional Naming, Adherence Checklist, Internal Logic Philosophy: The 5 Laws of Elegant Defense, The 5 Laws
+
+### Community 841 - "Community 841"
+Cohesion: 0.22
+Nodes (8): Continuous integration, License, Notes, Other goodies, Running `tmux-test` framework tests, Setup, tmux-test, Writing and running tests
+
+### Community 842 - "Community 842"
+Cohesion: 0.22
+Nodes (8): Continuous integration, License, Notes, Other goodies, Running `tmux-test` framework tests, Setup, tmux-test, Writing and running tests
+
+### Community 843 - "Community 843"
+Cohesion: 0.22
+Nodes (9): [1.3.0] - 2021-03-08, Added, Changed, Correctness, Documentation, Documentation, Documentation, Fixed (+1 more)
+
+### Community 844 - "Community 844"
+Cohesion: 0.22
+Nodes (8): 1. create a new git project, 2. create a `*.tmux` plugin run file, 3. create a plugin key binding, 4. listing plugins, 5. try it out, 6. publish the plugin, Conclusion, How to create Tmux plugins
+
+### Community 845 - "Community 845"
+Cohesion: 0.22
+Nodes (8): 1. Typography with Character, 2. Committed Color & Theme, 3. Purposeful Motion, 4. Brave Spatial Composition, 5. Atmosphere & Depth, Adherence Checklist, Frontend Design Philosophy: The 5 Pillars of Intentional UI, The 5 Pillars
+
+### Community 846 - "Community 846"
+Cohesion: 0.22
+Nodes (8): Clone Dotfiles, Dotfiles, Install Dependencies, Install Homebrew, Install Initial Software, Setup Hostname, Setup SSH, Setup the Mac
+
+### Community 847 - "Community 847"
+Cohesion: 0.22
+Nodes (8): Changelog, master, v1.0.0, 2015-02-12, v2.0.0, 2015-02-15, v2.1.0, 2015-02-18, v2.2.0, 2015-02-20, v3.0.0, 2015-02-20, v3.1.0, 2015-03-14
+
+### Community 848 - "Community 848"
+Cohesion: 0.22
+Nodes (8): Architecture, Configuration Options, Development Guidelines, Project Overview, Repository Structure, Tech Stack, Testing, URL Pattern Types
+
+### Community 849 - "Community 849"
+Cohesion: 0.22
+Nodes (7): Architecture, Commands, Config Resolution, Contributing, Output Logic in `main()`, Project Overview, Testing
+
+### Community 850 - "Community 850"
+Cohesion: 0.22
+Nodes (9): Configuration, Examples, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended), Key bindings, License, Manual Installation, Other goodies, Screencast (+1 more)
+
+### Community 851 - "Community 851"
+Cohesion: 0.22
+Nodes (8): Docs, Installation, Installing plugins, Key bindings, License, Tests, Tmux Plugin Manager, Uninstalling plugins
+
+### Community 852 - "Community 852"
+Cohesion: 0.25
+Nodes (7): Backup/Restore, Commands, Homebrew, Initial Setup, macOS Settings, Symlink Management, System Updates
+
+### Community 853 - "Community 853"
+Cohesion: 0.25
+Nodes (8): Coding conventions, Command substitution, Conditionals and loops, Function declarations, Generating output, Process substitution, Signal names, Variable and parameter declarations
+
+### Community 854 - "Community 854"
+Cohesion: 0.25
+Nodes (8): Alpine Linux, Announce, Bumping the version number, Create a GitHub release, Homebrew, NPM, Releasing a new Bats version, Update docs/CHANGELOG.md
+
+### Community 855 - "Community 855"
+Cohesion: 0.25
+Nodes (7): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
+
+### Community 856 - "Community 856"
+Cohesion: 0.25
+Nodes (7): Features, Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended), License, Manual Installation, Other plugins, Problem(s), Tmux sessionist
+
+### Community 857 - "Community 857"
+Cohesion: 0.29
+Nodes (6): CLAUDE.md, Documentation, Graphify, graphify, Notes, Repository Overview
+
+### Community 858 - "Community 858"
+Cohesion: 0.38
+Nodes (5): Continuous Integration Testing, NPM Release Process, Semantic Versioning, Release Workflow, Tests Workflow
+
+### Community 859 - "Community 859"
+Cohesion: 0.29
+Nodes (6): Adding a New Icon, Contributing, Getting Started, Guidelines, Project Structure, Running Tests
+
+### Community 860 - "Community 860"
+Cohesion: 0.33
+Nodes (6): `assert_output`, Existence, Literal matching, Partial matching, Regular expression matching, Standard Input, HereDocs and HereStrings
+
+### Community 861 - "Community 861"
+Cohesion: 0.33
+Nodes (6): Existence, Literal matching, Partial matching, `refute_output`, Regular expression matching, Standard Input, HereDocs and HereStrings
+
+### Community 862 - "Community 862"
+Cohesion: 0.33
+Nodes (5): Changelog, master, v0.0.1, 2015-02-21, v0.1.0, 2015-02-22, v0.2.0, 2015-02-22
+
+### Community 863 - "Community 863"
+Cohesion: 0.33
+Nodes (5): Changelog, master, v0.0.1, 2015-02-21, v0.1.0, 2015-02-22, v0.2.0, 2015-02-22
+
+### Community 864 - "Community 864"
+Cohesion: 0.33
+Nodes (5): Architecture, File Organization, Hostname-Specific Configs, Private Submodule, Symlink Management
+
+### Community 865 - "Community 865"
+Cohesion: 0.33
+Nodes (5): Automatic Tmux start, Linux, OS X, Systemd, this will only start the tmux server, it will *not* start any terminal emulator
+
+### Community 866 - "Community 866"
+Cohesion: 0.33
+Nodes (6): [1.11.1] - 2024-11-29, Added, Changed, Documentation, Documentation, Fixed
+
+### Community 867 - "Community 867"
+Cohesion: 0.33
+Nodes (5): How to migrate?, Migrating from `tmuxinator`, Other questions?, Usage differences, Why migrate to `tmux-resurrect`?
+
+### Community 868 - "Community 868"
+Cohesion: 0.33
+Nodes (5): Automatic Tmux start, Linux, OS X, Systemd, this will only start the tmux server, it will *not* start any terminal emulator
+
+### Community 869 - "Community 869"
+Cohesion: 0.33
+Nodes (5): Basic Usage, Basic Usage for Bats Project, Docker Gotchas, Docker Usage Guide, Extending from the base image
+
+### Community 870 - "Community 870"
+Cohesion: 0.40
+Nodes (5): Code Examples, Documentation Lookup, GitHub CLI, Research Tools, Web Search
+
+### Community 871 - "Community 871"
+Cohesion: 0.60
+Nodes (5): Reviewer Agent, Review Command, Code Review Skill, Plan Protocol Skill, Plan Review Skill
+
+### Community 872 - "Community 872"
+Cohesion: 0.40
+Nodes (5): `assert_line`, Looking for a line in the output, Matching a specific line, Partial matching, Regular expression matching
+
+### Community 873 - "Community 873"
+Cohesion: 0.40
+Nodes (5): `assert_stderr`, Existence, Literal matching, Partial matching, Regular expression matching
+
+### Community 874 - "Community 874"
+Cohesion: 0.40
+Nodes (5): `assert_stderr_line`, Looking for a line in the stderr, Matching a specific line, Partial matching, Regular expression matching
+
+### Community 875 - "Community 875"
+Cohesion: 0.40
+Nodes (5): Looking for a line in the output, Matching a specific line, Partial matching, `refute_line`, Regular expression matching
+
+### Community 876 - "Community 876"
+Cohesion: 0.40
+Nodes (5): [1.10.0] - 2023-07-15, Added, Documentation, Documentation, Fixed
+
+### Community 877 - "Community 877"
+Cohesion: 0.40
+Nodes (5): [1.11.0] - 2024-03-24, Added, Changed, Documentation, Fixed
+
+### Community 878 - "Community 878"
+Cohesion: 0.40
+Nodes (5): [1.7.0] - 2022-05-14, Added, Documentation, Documentation, Fixed
+
+### Community 879 - "Community 879"
+Cohesion: 0.40
+Nodes (5): [1.8.0] - 2022-09-15, Added, Documentation, Documentation, Fixed
+
+### Community 880 - "Community 880"
+Cohesion: 0.40
+Nodes (5): [1.9.0] - 2023-02-12, Added, Documentation, Documentation, Fixed
+
+### Community 881 - "Community 881"
+Cohesion: 0.40
+Nodes (5): Added, Changed, Documentation, Fixed, [Unreleased]
+
+### Community 882 - "Community 882"
+Cohesion: 0.40
+Nodes (4): Installing plugins, Managing plugins via the command line, Removing plugins, Updating plugins
+
+### Community 883 - "Community 883"
+Cohesion: 0.50
+Nodes (4): Citation Format, Code Snippet Format, OUTPUT REQUIREMENTS, Required Output Structure
+
+### Community 884 - "Community 884"
+Cohesion: 0.50
+Nodes (3): Credits, Our Logo, Usage Guide for Third Parties
+
+### Community 885 - "Community 885"
+Cohesion: 0.50
+Nodes (3): Reporting a Vulnerability, Security Policy, Supported Versions
+
+### Community 886 - "Community 886"
+Cohesion: 0.50
+Nodes (4): [1.12.0] - 2025-05-18, Added, Documentation, Fixed
+
+### Community 887 - "Community 887"
+Cohesion: 0.50
+Nodes (4): [1.13.0] - 2025-11-07, Added, Documentation, Fixed
+
+### Community 888 - "Community 888"
+Cohesion: 0.50
+Nodes (4): [1.1.0] - 2018-07-08, Added, Changed, Fixed
+
+### Community 889 - "Community 889"
+Cohesion: 0.50
+Nodes (4): [1.4.0] - 2021-07-23, Added, Documentation, Fixed
+
+### Community 890 - "Community 890"
+Cohesion: 0.50
+Nodes (4): [1.5.0] - 2021-10-22, Added, Documentation, Fixed
+
+### Community 891 - "Community 891"
+Cohesion: 0.50
+Nodes (4): [1.6.0] - 2022-02-24, Added, Documentation, Fixed
+
+### Community 892 - "Community 892"
+Cohesion: 0.50
+Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
+
+### Community 893 - "Community 893"
+Cohesion: 0.50
+Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify reference: commit hook and native CLAUDE.md integration
+
+### Community 894 - "Community 894"
+Cohesion: 0.50
+Nodes (3): For /graphify explain, For /graphify path, graphify reference: query, path, explain
+
+### Community 895 - "Community 895"
+Cohesion: 0.50
+Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
+
+### Community 896 - "Community 896"
+Cohesion: 0.50
+Nodes (3): Dependencies, Running the test suite, Tmux copycat test suite
+
+### Community 899 - "Community 899"
+Cohesion: 0.67
+Nodes (3): Code Philosophy (5 Laws), Frontend Philosophy (5 Pillars), Philosophy Checklist (Verify Before Completing)
+
+### Community 901 - "Community 901"
+Cohesion: 0.67
+Nodes (3): [1.2.0] - 2020-04-25, Added, Changed
+
+### Community 902 - "Community 902"
+Cohesion: 0.67
+Nodes (3): [1.2.1] - 2020-07-06, Added, Changed
+
+### Community 903 - "Community 903"
+Cohesion: 0.67
+Nodes (3): [1.4.1] - 2021-07-24, Added, Fixed
+
+### Community 904 - "Community 904"
+Cohesion: 0.67
+Nodes (3): [1.6.1] - 2022-05-14, Documentation, Fixed
+
+### Community 908 - "Community 908"
+Cohesion: 0.67
+Nodes (3): friendly-snippets, branch, commit
+
+### Community 910 - "Community 910"
+Cohesion: 0.67
+Nodes (3): ai(), oi(), Zu()
+
+### Community 915 - "Community 915"
+Cohesion: 1.00
+Nodes (3): tmux-copycat Plugin, tmux-copycat Screencast README, tmux-copycat Video Script
+
+### Community 916 - "Community 916"
+Cohesion: 0.67
+Nodes (3): Alphabets, Colors, @thumbs-osc52
 
 ## Knowledge Gaps
-- **1396 isolated node(s):** `PreToolUse`, `PreToolUse`, `plugin`, `convert-2-imdb3-format.sh script`, `previewer.sh script` (+1391 more)
+- **2136 isolated node(s):** `PreToolUse`, `PreToolUse`, `plugin`, `Repository Overview`, `Documentation` (+2131 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **205 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **240 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `$()` connect `Claude Mem Plugin Core` to `Plugins Claude`, `Claude Mem Search`, `Plugins Claude`, `Plugins Claude`, `Config Opencode`, `Plugins Claude`, `Plugins Claude`, `Claude Mem Helpers`, `Plugins Claude`, `Plugins Claude`, `Plugins Claude`, `Claude Mem Arrays`, `Plugins Claude`, `Plugins Claude`, `Plugins Rtk`, `Plugins Claude`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `rm()` connect `Plugins Claude` to `Claude Mem Plugin Core`, `Plugins Claude`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `fn()` connect `Config Opencode` to `Claude Mem Plugin Core`, `Config Opencode`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `$()` connect `Claude Mem Plugin Core` to `Plugins Claude`, `Claude Mem Search`, `Worktree Terminal`, `Plugins Claude`, `Plugins Claude`, `Plugins Claude`, `Claude Mem Helpers`, `Plugins Claude`, `Community 910`, `Claude Mem Arrays`, `Plugins Claude`, `Plugins Claude`, `Plugins Rtk`, `Plugins Claude`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `Community 897`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `Opencode Opencode`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
+  _High betweenness centrality (0.001) - this node is a cross-community bridge._
 - **What connects `PreToolUse`, `PreToolUse`, `plugin` to the rest of the system?**
-  _1398 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _2138 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Claude Mem Plugin Core` be split into smaller, more focused modules?**
-  _Cohesion score 0.015326489877388081 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.014988573733028632 - nodes in this community are weakly interconnected._
 - **Should `Catppuccin Mocha Theme` be split into smaller, more focused modules?**
   _Cohesion score 0.038461538461538464 - nodes in this community are weakly interconnected._
 - **Should `WakaTime Plugin` be split into smaller, more focused modules?**
