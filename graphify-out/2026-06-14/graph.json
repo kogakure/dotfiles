@@ -160,12 +160,22 @@
     {
       "label": "settings.json",
       "file_type": "code",
+      "source_file": "config/zed/settings.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "zed_settings",
+      "community": 814,
+      "norm_label": "settings.json"
+    },
+    {
+      "label": "settings.json",
+      "file_type": "code",
       "source_file": ".claude/settings.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "claude_settings",
       "community": 377,
-      "norm_label": "settings.json"
+      "norm_label": "settings.json",
+      "id": "claude_settings"
     },
     {
       "label": "hooks",
@@ -173,9 +183,9 @@
       "source_file": ".claude/settings.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "claude_settings_hooks",
       "community": 377,
-      "norm_label": "hooks"
+      "norm_label": "hooks",
+      "id": "claude_settings_hooks"
     },
     {
       "label": "PreToolUse",
@@ -183,9 +193,9 @@
       "source_file": ".claude/settings.json",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "claude_settings_hooks_pretooluse",
       "community": 377,
-      "norm_label": "pretooluse"
+      "norm_label": "pretooluse",
+      "id": "claude_settings_hooks_pretooluse"
     },
     {
       "label": "hooks.json",
@@ -193,9 +203,9 @@
       "source_file": ".codex/hooks.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "codex_hooks",
       "community": 378,
-      "norm_label": "hooks.json"
+      "norm_label": "hooks.json",
+      "id": "codex_hooks"
     },
     {
       "label": "hooks",
@@ -203,9 +213,9 @@
       "source_file": ".codex/hooks.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "codex_hooks_hooks",
       "community": 378,
-      "norm_label": "hooks"
+      "norm_label": "hooks",
+      "id": "codex_hooks_hooks"
     },
     {
       "label": "PreToolUse",
@@ -213,9 +223,9 @@
       "source_file": ".codex/hooks.json",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "codex_hooks_hooks_pretooluse",
       "community": 378,
-      "norm_label": "pretooluse"
+      "norm_label": "pretooluse",
+      "id": "codex_hooks_hooks_pretooluse"
     },
     {
       "label": "opencode.json",
@@ -223,9 +233,9 @@
       "source_file": ".opencode/opencode.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "opencode_opencode",
       "community": 970,
-      "norm_label": "opencode.json"
+      "norm_label": "opencode.json",
+      "id": "opencode_opencode"
     },
     {
       "label": "plugin",
@@ -233,9 +243,9 @@
       "source_file": ".opencode/opencode.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "opencode_opencode_plugin",
       "community": 970,
-      "norm_label": "plugin"
+      "norm_label": "plugin",
+      "id": "opencode_opencode_plugin"
     },
     {
       "label": "graphify.js",
@@ -243,9 +253,9 @@
       "source_file": ".opencode/plugins/graphify.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "plugins_graphify",
       "community": 634,
-      "norm_label": "graphify.js"
+      "norm_label": "graphify.js",
+      "id": "plugins_graphify"
     },
     {
       "label": "GraphifyPlugin()",
@@ -253,9 +263,9 @@
       "source_file": ".opencode/plugins/graphify.js",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "plugins_graphify_graphifyplugin",
       "community": 634,
-      "norm_label": "graphifyplugin()"
+      "norm_label": "graphifyplugin()",
+      "id": "plugins_graphify_graphifyplugin"
     },
     {
       "label": "AGENTS.md",
@@ -263,9 +273,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "agents",
       "community": 857,
-      "norm_label": "agents.md"
+      "norm_label": "agents.md",
+      "id": "agents"
     },
     {
       "label": "CLAUDE.md",
@@ -273,9 +283,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "agents_claude_md",
       "community": 857,
-      "norm_label": "claude.md"
+      "norm_label": "claude.md",
+      "id": "agents_claude_md"
     },
     {
       "label": "Repository Overview",
@@ -283,9 +293,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "agents_repository_overview",
       "community": 857,
-      "norm_label": "repository overview"
+      "norm_label": "repository overview",
+      "id": "agents_repository_overview"
     },
     {
       "label": "Documentation",
@@ -293,9 +303,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "agents_documentation",
       "community": 857,
-      "norm_label": "documentation"
+      "norm_label": "documentation",
+      "id": "agents_documentation"
     },
     {
       "label": "Notes",
@@ -303,9 +313,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "agents_notes",
       "community": 857,
-      "norm_label": "notes"
+      "norm_label": "notes",
+      "id": "agents_notes"
     },
     {
       "label": "Graphify",
@@ -313,9 +323,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "agents_graphify",
       "community": 857,
-      "norm_label": "graphify"
+      "norm_label": "graphify",
+      "id": "agents_graphify"
     },
     {
       "label": "graphify",
@@ -323,9 +333,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L39",
       "_origin": "ast",
-      "id": "agents_graphify_39",
       "community": 857,
-      "norm_label": "graphify"
+      "norm_label": "graphify",
+      "id": "agents_graphify_39"
     },
     {
       "label": "CLAUDE.md",
@@ -333,9 +343,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "claude",
       "community": 918,
-      "norm_label": "claude.md"
+      "norm_label": "claude.md",
+      "id": "claude"
     },
     {
       "label": "graphify",
@@ -343,9 +353,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "claude_graphify",
       "community": 918,
-      "norm_label": "graphify"
+      "norm_label": "graphify",
+      "id": "claude_graphify"
     },
     {
       "label": "convert-2-imdb3-format.sh",
@@ -31957,7 +31967,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "view.rs",
       "id": "src_view"
     },
@@ -31967,7 +31977,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "view",
       "id": "src_view_view"
     },
@@ -31977,7 +31987,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "state",
       "id": "state"
     },
@@ -31987,7 +31997,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "vec",
       "id": "config_tmux_plugins_tmux_thumbs_src_view_rs_vec"
     },
@@ -31997,7 +32007,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "match",
       "id": "match"
     },
@@ -32007,7 +32017,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "box",
       "id": "config_tmux_plugins_tmux_thumbs_src_view_rs_box"
     },
@@ -32017,7 +32027,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "color",
       "id": "config_tmux_plugins_tmux_thumbs_src_view_rs_color"
     },
@@ -32027,7 +32037,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "string",
       "id": "config_tmux_plugins_tmux_thumbs_src_view_rs_string"
     },
@@ -32037,7 +32047,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L31",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "captureevent",
       "id": "src_view_captureevent"
     },
@@ -32047,7 +32057,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "view<'a>",
       "id": "src_view_view_a"
     },
@@ -32057,7 +32067,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": ".new()",
       "id": "src_view_view_a_new"
     },
@@ -32067,7 +32077,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L75",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": ".prev()",
       "id": "src_view_view_a_prev"
     },
@@ -32077,7 +32087,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L81",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": ".next()",
       "id": "src_view_view_a_next"
     },
@@ -32087,7 +32097,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L87",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": ".make_hint_text()",
       "id": "src_view_view_a_make_hint_text"
     },
@@ -32097,7 +32107,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L95",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": ".render()",
       "id": "src_view_view_a_render"
     },
@@ -32107,7 +32117,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L95",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "write",
       "id": "write"
     },
@@ -32117,7 +32127,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L181",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": ".listen()",
       "id": "src_view_view_a_listen"
     },
@@ -32127,7 +32137,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L181",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "read",
       "id": "read"
     },
@@ -32137,7 +32147,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L296",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": ".present()",
       "id": "src_view_view_a_present"
     },
@@ -32147,7 +32157,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L315",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "split()",
       "id": "src_view_split"
     },
@@ -32157,7 +32167,7 @@
       "source_file": "config/tmux/plugins/tmux-thumbs/src/view.rs",
       "source_location": "L320",
       "_origin": "ast",
-      "community": 10,
+      "community": 975,
       "norm_label": "hint_text()",
       "id": "src_view_hint_text"
     },
@@ -34742,16 +34752,6 @@
       "community": 813,
       "norm_label": "keymap.json",
       "id": "zed_keymap"
-    },
-    {
-      "label": "settings.json",
-      "file_type": "code",
-      "source_file": "config/zed/settings.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 814,
-      "norm_label": "settings.json",
-      "id": "zed_settings"
     },
     {
       "label": "1668261369.json",
@@ -52922,19 +52922,6 @@
       "id": "references_update_for_cluster_only"
     },
     {
-      "label": "Dotbot Symlink Configuration",
-      "file_type": "code",
-      "source_file": "install.conf.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 14,
-      "norm_label": "dotbot symlink configuration",
-      "id": "install_conf_yaml_dotbot_config"
-    },
-    {
       "label": "Dotfiles Setup Instructions",
       "file_type": "document",
       "source_file": "README.md",
@@ -52956,7 +52943,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 976,
       "norm_label": "markdownlint configuration",
       "id": "markdownlint_yaml_config"
     },
@@ -56065,9 +56052,9 @@
       "source_file": ".opencode/opencode.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "opencode_opencode",
-      "target": "opencode_opencode_plugin",
-      "confidence_score": 1.0
+      "target": "opencode_opencode_plugin"
     },
     {
       "relation": "contains",
@@ -112287,26 +112274,6 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "install.conf.yaml",
-      "source_location": "22",
-      "weight": 1.0,
-      "source": "install_conf_yaml_dotbot_config",
-      "target": "markdownlint_yaml_config"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "install.conf.yaml",
-      "source_location": "45",
-      "weight": 1.0,
-      "source": "install_conf_yaml_dotbot_config",
-      "target": "zsh_plugins_txt_antidote"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "zsh_plugins.txt",
       "source_location": "1",
       "weight": 1.0,
@@ -114197,5 +114164,5 @@
       "source_file": "pi/patterns.yaml"
     }
   ],
-  "built_at_commit": "21be5c25e9e616d9df5b26e525be656a3971b9ac"
+  "built_at_commit": "707b5184d5f0298e1b776b2a207c28b5fa80d369"
 }

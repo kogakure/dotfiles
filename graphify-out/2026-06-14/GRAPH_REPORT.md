@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 5012 nodes · 5671 edges · 975 communities (735 shown, 240 thin omitted)
+- 5011 nodes · 5669 edges · 977 communities (736 shown, 241 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 132 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `21be5c25`
+- Built from commit: `707b5184`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -822,6 +822,8 @@
 - [[_COMMUNITY_Community 972|Community 972]]
 - [[_COMMUNITY_Community 973|Community 973]]
 - [[_COMMUNITY_Community 974|Community 974]]
+- [[_COMMUNITY_Community 975|Community 975]]
+- [[_COMMUNITY_Community 976|Community 976]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `$()` - 364 edges
@@ -863,7 +865,7 @@
 - **TPM Plugin Ecosystem Docs** — tpm_concept_plugin_manager, managing_plugins_via_cmd_line_tpm_cli, tpm_not_working_troubleshooting, tmux_test_readme_framework [INFERRED 0.85]
 - **Pi Security Pattern Files** — pi_patterns_security_rules, pi_defender_patterns_security, pi_concept_defender [INFERRED 0.85]
 
-## Communities (975 total, 240 thin omitted)
+## Communities (977 total, 241 thin omitted)
 
 ### Community 0 - "Claude Mem Plugin Core"
 Cohesion: 0.01
@@ -906,8 +908,8 @@ Cohesion: 0.05
 Nodes (37): *, cat *, chgrp *, chmod -R *, chown *, curl *, dd *, > /dev/* (+29 more)
 
 ### Community 10 - "tmux-thumbs Swapper (Rust)"
-Cohesion: 0.08
-Nodes (30): ArgMatches, Box, Option, Result, String, Vec, Box, Color (+22 more)
+Cohesion: 0.15
+Nodes (17): ArgMatches, Box, Option, Result, String, Vec, app_args(), dbg() (+9 more)
 
 ### Community 11 - "Claude Mem Helpers"
 Cohesion: 0.07
@@ -922,8 +924,8 @@ Cohesion: 0.08
 Nodes (26): AssistantSessionMessageItem, BackgroundAgentsPlugin(), createDelegate(), createDelegationList(), createDelegationRead(), createLogger(), DelegateArgs, DelegateInput (+18 more)
 
 ### Community 14 - "Dotfiles Documentation"
-Cohesion: 0.40
-Nodes (5): Dotbot Symlink Configuration, Markdownlint Configuration, Antidote Zsh Plugin Manager, Oh My Zsh Plugins, zsh-users Plugins
+Cohesion: 0.67
+Nodes (3): Antidote Zsh Plugin Manager, Oh My Zsh Plugins, zsh-users Plugins
 
 ### Community 15 - "Claude Worktree Plugin"
 Cohesion: 0.09
@@ -3133,10 +3135,14 @@ Nodes (3): tmux-copycat Plugin, tmux-copycat Screencast README, tmux-copycat Vid
 Cohesion: 0.67
 Nodes (3): Alphabets, Colors, @thumbs-osc52
 
+### Community 975 - "Community 975"
+Cohesion: 0.17
+Nodes (13): Box, Color, String, Vec, Match, Read, CaptureEvent, hint_text() (+5 more)
+
 ## Knowledge Gaps
 - **2136 isolated node(s):** `PreToolUse`, `PreToolUse`, `plugin`, `Repository Overview`, `Documentation` (+2131 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **240 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **241 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

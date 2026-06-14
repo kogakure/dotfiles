@@ -2385,9 +2385,9 @@
     "semantic_hash": "1c89d9b3cf3beb13fe5f849b9fa0c19c"
   },
   "config/gh/hosts.yml": {
-    "mtime": 1780207270.81126,
-    "ast_hash": "657868dda45422340fee8344e74db877",
-    "semantic_hash": "657868dda45422340fee8344e74db877"
+    "mtime": 1781442048.8880246,
+    "ast_hash": "a214f5490e3d60c3502c386147fa8400",
+    "semantic_hash": ""
   },
   "config/harper-ls/dictionary.txt": {
     "mtime": 1756293907.3873482,
@@ -2435,9 +2435,9 @@
     "semantic_hash": "f3a7ea39d5c2f5212299422d71aacf50"
   },
   "config/opencode/AGENTS.md": {
-    "mtime": 1781259058.4514492,
-    "ast_hash": "a00e4c13c4665262da0af389ca14c110",
-    "semantic_hash": "a00e4c13c4665262da0af389ca14c110"
+    "mtime": 1781439376.2452488,
+    "ast_hash": "e0a38ab74937fa8ea6f40085428a826c",
+    "semantic_hash": ""
   },
   "config/opencode/commands/caveman-commit.md": {
     "mtime": 1778519593.6947255,

@@ -1,16 +1,16 @@
 # Graph Report - .dotfiles  (2026-06-14)
 
 ## Corpus Check
-- 618 files · ~939,703 words
+- 618 files · ~939,831 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 5011 nodes · 5669 edges · 977 communities (736 shown, 241 thin omitted)
+- 5011 nodes · 5670 edges · 976 communities (737 shown, 239 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 132 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `707b5184`
+- Built from commit: `9f367ba8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -820,7 +820,6 @@
 - [[_COMMUNITY_Community 970|Community 970]]
 - [[_COMMUNITY_Community 971|Community 971]]
 - [[_COMMUNITY_Community 972|Community 972]]
-- [[_COMMUNITY_Community 973|Community 973]]
 - [[_COMMUNITY_Community 974|Community 974]]
 - [[_COMMUNITY_Community 975|Community 975]]
 - [[_COMMUNITY_Community 976|Community 976]]
@@ -865,7 +864,7 @@
 - **TPM Plugin Ecosystem Docs** — tpm_concept_plugin_manager, managing_plugins_via_cmd_line_tpm_cli, tpm_not_working_troubleshooting, tmux_test_readme_framework [INFERRED 0.85]
 - **Pi Security Pattern Files** — pi_patterns_security_rules, pi_defender_patterns_security, pi_concept_defender [INFERRED 0.85]
 
-## Communities (977 total, 241 thin omitted)
+## Communities (976 total, 239 thin omitted)
 
 ### Community 0 - "Claude Mem Plugin Core"
 Cohesion: 0.01
@@ -3123,6 +3122,10 @@ Nodes (3): [1.6.1] - 2022-05-14, Documentation, Fixed
 Cohesion: 0.67
 Nodes (3): friendly-snippets, branch, commit
 
+### Community 909 - "Community 909"
+Cohesion: 0.50
+Nodes (3): CodeGraph, Git, Memory Context from Past Sessions
+
 ### Community 910 - "Community 910"
 Cohesion: 0.67
 Nodes (3): ai(), oi(), Zu()
@@ -3140,9 +3143,9 @@ Cohesion: 0.17
 Nodes (13): Box, Color, String, Vec, Match, Read, CaptureEvent, hint_text() (+5 more)
 
 ## Knowledge Gaps
-- **2136 isolated node(s):** `PreToolUse`, `PreToolUse`, `plugin`, `Repository Overview`, `Documentation` (+2131 more)
+- **2135 isolated node(s):** `Git`, `CodeGraph`, `PreToolUse`, `PreToolUse`, `plugin` (+2130 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **241 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **239 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -3153,8 +3156,8 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **What connects `PreToolUse`, `PreToolUse`, `plugin` to the rest of the system?**
-  _2138 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Git`, `CodeGraph`, `PreToolUse` to the rest of the system?**
+  _2137 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Claude Mem Plugin Core` be split into smaller, more focused modules?**
   _Cohesion score 0.014988573733028632 - nodes in this community are weakly interconnected._
 - **Should `Catppuccin Mocha Theme` be split into smaller, more focused modules?**

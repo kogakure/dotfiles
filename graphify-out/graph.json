@@ -158,14 +158,54 @@
   },
   "nodes": [
     {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "config/opencode/AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "opencode_agents",
+      "community": 909,
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "Git",
+      "file_type": "document",
+      "source_file": "config/opencode/AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "opencode_agents_git",
+      "community": 909,
+      "norm_label": "git"
+    },
+    {
+      "label": "Memory Context from Past Sessions",
+      "file_type": "document",
+      "source_file": "config/opencode/AGENTS.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "opencode_agents_memory_context_from_past_sessions",
+      "community": 909,
+      "norm_label": "memory context from past sessions"
+    },
+    {
+      "label": "CodeGraph",
+      "file_type": "document",
+      "source_file": "config/opencode/AGENTS.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "opencode_agents_codegraph",
+      "community": 909,
+      "norm_label": "codegraph"
+    },
+    {
       "label": "settings.json",
       "file_type": "code",
       "source_file": "config/zed/settings.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "zed_settings",
       "community": 814,
-      "norm_label": "settings.json"
+      "norm_label": "settings.json",
+      "id": "zed_settings"
     },
     {
       "label": "settings.json",
@@ -42222,36 +42262,6 @@
       "id": "nvim_readme_lazyvim"
     },
     {
-      "label": "AGENTS.md",
-      "file_type": "document",
-      "source_file": "config/opencode/AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 909,
-      "norm_label": "agents.md",
-      "id": "opencode_agents"
-    },
-    {
-      "label": "Git",
-      "file_type": "document",
-      "source_file": "config/opencode/AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 909,
-      "norm_label": "git",
-      "id": "opencode_agents_git"
-    },
-    {
-      "label": "Memory Context from Past Sessions",
-      "file_type": "document",
-      "source_file": "config/opencode/AGENTS.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 909,
-      "norm_label": "memory context from past sessions",
-      "id": "opencode_agents_memory_context_from_past_sessions"
-    },
-    {
       "label": "caveman-commit.md",
       "file_type": "document",
       "source_file": "config/opencode/commands/caveman-commit.md",
@@ -53078,19 +53088,6 @@
       "id": "lazydocker_config_yml_lazydocker"
     },
     {
-      "label": "OpenCode AGENTS.md",
-      "file_type": "document",
-      "source_file": "config/opencode/AGENTS.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 973,
-      "norm_label": "opencode agents.md",
-      "id": "opencode_agents_md_opencode"
-    },
-    {
       "label": "Caveman Commit Command",
       "file_type": "document",
       "source_file": "config/opencode/commands/caveman-commit.md",
@@ -56006,6 +56003,36 @@
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_agents",
+      "target": "opencode_agents_git"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/AGENTS.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_agents",
+      "target": "opencode_agents_memory_context_from_past_sessions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/AGENTS.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "opencode_agents_memory_context_from_past_sessions",
+      "target": "opencode_agents_codegraph",
+      "confidence_score": 1.0
+    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -102313,26 +102340,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "config/opencode/AGENTS.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_agents",
-      "target": "opencode_agents_git"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/AGENTS.md",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_agents",
-      "target": "opencode_agents_memory_context_from_past_sessions"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "config/opencode/profiles/bt/AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -114164,5 +114171,5 @@
       "source_file": "pi/patterns.yaml"
     }
   ],
-  "built_at_commit": "707b5184d5f0298e1b776b2a207c28b5fa80d369"
+  "built_at_commit": "9f367ba8c080b94d52c9f6df76217ca023dc7989"
 }
