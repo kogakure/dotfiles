@@ -62,39 +62,25 @@
   },
   "mcp": {
     "chrome-devtools": {
-      "command": [
-        "npx",
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--autoConnect"
-      ],
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--autoConnect"],
       "type": "local"
     },
     "open-meteo": {
-      "command": [
-        "npx",
-        "-y",
-        "-p",
-        "open-meteo-mcp-server",
-        "open-meteo-mcp-server"
-      ],
+      "command": ["npx", "-y", "-p", "open-meteo-mcp-server", "open-meteo-mcp-server"],
       "type": "local"
     },
     "codegraph": {
       "type": "local",
-      "command": [
-        "codegraph",
-        "serve",
-        "--mcp"
-      ],
+      "command": ["codegraph", "serve", "--mcp"],
       "enabled": true
     }
   },
   "plugin": [
+    "./plugins/claude-mem.js",
     "@cortexkit/opencode-magic-context@latest",
     "@mohak34/opencode-notifier@latest",
     "@warp-dot-dev/opencode-warp@0.1.5",
-    "./plugins/claude-mem.js"
+    "opencode-wakatime"
   ],
   "provider": {},
   "compaction": {
