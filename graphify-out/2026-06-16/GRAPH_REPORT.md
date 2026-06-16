@@ -1,16 +1,16 @@
-# Graph Report - .dotfiles  (2026-06-16)
+# Graph Report - .dotfiles  (2026-06-14)
 
 ## Corpus Check
-- 617 files · ~939,826 words
+- 618 files · ~939,831 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 5009 nodes · 5669 edges · 978 communities (740 shown, 238 thin omitted)
+- 5011 nodes · 5670 edges · 976 communities (737 shown, 239 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 132 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e2aca5ae`
+- Built from commit: `9f367ba8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -820,11 +820,9 @@
 - [[_COMMUNITY_Community 970|Community 970]]
 - [[_COMMUNITY_Community 971|Community 971]]
 - [[_COMMUNITY_Community 972|Community 972]]
-- [[_COMMUNITY_Community 973|Community 973]]
 - [[_COMMUNITY_Community 974|Community 974]]
 - [[_COMMUNITY_Community 975|Community 975]]
 - [[_COMMUNITY_Community 976|Community 976]]
-- [[_COMMUNITY_Community 977|Community 977]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `$()` - 364 edges
@@ -866,11 +864,11 @@
 - **TPM Plugin Ecosystem Docs** — tpm_concept_plugin_manager, managing_plugins_via_cmd_line_tpm_cli, tpm_not_working_troubleshooting, tmux_test_readme_framework [INFERRED 0.85]
 - **Pi Security Pattern Files** — pi_patterns_security_rules, pi_defender_patterns_security, pi_concept_defender [INFERRED 0.85]
 
-## Communities (978 total, 238 thin omitted)
+## Communities (976 total, 239 thin omitted)
 
 ### Community 0 - "Claude Mem Plugin Core"
-Cohesion: 0.02
-Nodes (87): $(), aa(), am(), and(), ar(), as(), ba(), bl() (+79 more)
+Cohesion: 0.01
+Nodes (94): $(), aa(), am(), and(), ar(), as(), ba(), bl() (+86 more)
 
 ### Community 1 - "Catppuccin Mocha Theme"
 Cohesion: 0.04
@@ -881,16 +879,16 @@ Cohesion: 0.10
 Nodes (39): buildExecOptions(), checkAndInstallCli(), constructor(), debug(), downloadFile(), ensureCliInstalled(), error(), errorException() (+31 more)
 
 ### Community 3 - "Claude Mem Search"
-Cohesion: 0.06
-Nodes (48): ce(), check(), constructor(), fe(), fl(), gr(), gt(), gte() (+40 more)
+Cohesion: 0.05
+Nodes (50): ce(), check(), fe(), fl(), gr(), gt(), gte(), H() (+42 more)
 
 ### Community 4 - "OpenCode Notify Plugin"
 Cohesion: 0.08
 Nodes (36): NotifyBackendOptions, sendNotificationWithFallback(), buildCmuxNotifyArgs(), canUseCmuxNotification(), CmuxNotificationPayload, CmuxProcess, EnvironmentVariables, ResolveExecutable (+28 more)
 
 ### Community 5 - "Worktree Terminal"
-Cohesion: 0.09
-Nodes (41): buildBashCommandFromArgv(), buildBatchCommandFromArgv(), buildCmuxCommandSequence(), buildWarpLaunchConfigYaml(), canUseCmuxWorkflow(), CmuxCommandResult, CmuxContext, CmuxEnvironment (+33 more)
+Cohesion: 0.06
+Nodes (46): Mutex, Mutex, fn(), keyof(), buildBashCommandFromArgv(), buildBatchCommandFromArgv(), buildCmuxCommandSequence(), buildWarpLaunchConfigYaml() (+38 more)
 
 ### Community 6 - "tmux-resurrect Restore"
 Cohesion: 0.10
@@ -1005,8 +1003,8 @@ Cohesion: 0.33
 Nodes (8): bats-core (Bash Automated Testing System), FAQ, Gotchas, Documentation Index, Installation Documentation, Tutorial, Usage Documentation, Codespell Workflow
 
 ### Community 38 - "Plugins Claude"
-Cohesion: 0.10
-Nodes (20): al(), Bu(), C(), catch(), jl(), Ku(), ma(), Mu() (+12 more)
+Cohesion: 0.11
+Nodes (18): Bu(), C(), catch(), ea(), hc(), is(), Mu(), Pt() (+10 more)
 
 ### Community 39 - "Plugins Workspace"
 Cohesion: 0.13
@@ -1101,8 +1099,8 @@ Cohesion: 0.18
 Nodes (11): volumes, client_connected, complete, error, permission, plan_exit, question, session_started (+3 more)
 
 ### Community 64 - "Plugins Claude"
-Cohesion: 0.11
-Nodes (19): ea(), el(), gn(), hc(), is(), kr(), kt(), nullable() (+11 more)
+Cohesion: 0.20
+Nodes (11): el(), gn(), kr(), kt(), nullable(), nullish(), optional(), pipe() (+3 more)
 
 ### Community 65 - "Worktree Launch"
 Cohesion: 0.27
@@ -1145,8 +1143,8 @@ Cohesion: 0.20
 Nodes (9): attention, enabled, diff_style, plugin, $schema, scroll_acceleration, enabled, scroll_speed (+1 more)
 
 ### Community 76 - "Plugins Claude"
-Cohesion: 0.17
-Nodes (7): Mutex, Mutex, fn(), hl(), keyof(), vr(), withTempScript()
+Cohesion: 0.20
+Nodes (10): al(), jl(), Ku(), ma(), nl(), superRefine(), Ve(), wa() (+2 more)
 
 ### Community 77 - "Plugins Replicate"
 Cohesion: 0.20
@@ -1234,7 +1232,7 @@ Nodes (8): bashunit test framework, Nerd Font icon mappings for tmux windows, tm
 
 ### Community 99 - "Config Opencode"
 Cohesion: 0.25
-Nodes (7): compaction, auto, prune, default_agent, plugin, provider, $schema
+Nodes (7): plugin, compaction, auto, prune, default_agent, provider, $schema
 
 ### Community 101 - "tmux Config"
 Cohesion: 0.29
@@ -1453,8 +1451,8 @@ Cohesion: 0.40
 Nodes (5): user_cancelled, bell, command, notification, sound
 
 ### Community 167 - "Plugins Claude"
-Cohesion: 0.25
-Nodes (9): de(), dr(), emit(), ia(), Me(), ml(), mr(), pl() (+1 more)
+Cohesion: 0.18
+Nodes (12): constructor(), de(), dr(), emit(), ia(), Le(), Me(), ml() (+4 more)
 
 ### Community 168 - "Save Command"
 Cohesion: 0.70
@@ -1541,8 +1539,8 @@ Cohesion: 0.09
 Nodes (22): 1. Early Exit (Guard Clauses), 2. Parse, Don't Validate, 3. Atomic Predictability, 4. Fail Fast, Fail Loud, 5. Intentional Naming, Authority, Code Review Agent, 🔴 Critical Issues (+14 more)
 
 ### Community 215 - "Plugins Claude"
-Cohesion: 0.40
-Nodes (5): lt(), negative(), or(), pn(), X()
+Cohesion: 0.50
+Nodes (4): ct(), indented(), r(), write()
 
 ### Community 218 - "Scripts Battery"
 Cohesion: 0.83
@@ -3140,40 +3138,28 @@ Nodes (3): tmux-copycat Plugin, tmux-copycat Screencast README, tmux-copycat Vid
 Cohesion: 0.67
 Nodes (3): Alphabets, Colors, @thumbs-osc52
 
-### Community 970 - "Community 970"
-Cohesion: 0.67
-Nodes (3): fa(), fr(), gl()
-
-### Community 973 - "Community 973"
-Cohesion: 0.67
-Nodes (3): ga(), kl(), yr()
-
 ### Community 975 - "Community 975"
 Cohesion: 0.17
 Nodes (13): Box, Color, String, Vec, Match, Read, CaptureEvent, hint_text() (+5 more)
 
-### Community 977 - "Community 977"
-Cohesion: 0.67
-Nodes (3): ll(), lr(), oa()
-
 ## Knowledge Gaps
-- **2134 isolated node(s):** `$schema`, `default_agent`, `*`, `.env`, `*.key` (+2129 more)
+- **2135 isolated node(s):** `Git`, `CodeGraph`, `PreToolUse`, `PreToolUse`, `plugin` (+2130 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **238 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **239 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `$()` connect `Claude Mem Plugin Core` to `Plugins Claude`, `Claude Mem Search`, `Plugins Claude`, `Plugins Claude`, `Plugins Claude`, `Community 970`, `Claude Mem Helpers`, `Plugins Claude`, `Community 973`, `Community 910`, `Community 977`, `Claude Mem Arrays`, `Plugins Claude`, `Plugins Claude`, `Plugins Rtk`, `Plugins Claude`?**
+- **Why does `$()` connect `Claude Mem Plugin Core` to `Plugins Claude`, `Claude Mem Search`, `Worktree Terminal`, `Plugins Claude`, `Plugins Claude`, `Plugins Claude`, `Claude Mem Helpers`, `Plugins Claude`, `Community 910`, `Claude Mem Arrays`, `Plugins Claude`, `Plugins Claude`, `Plugins Rtk`, `Plugins Claude`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `Community 897`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `Opencode Opencode`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Why does `refs` connect `019E411A 6Ef6` to `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`, `019E411A 6Ef6`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **What connects `$schema`, `default_agent`, `*` to the rest of the system?**
-  _2136 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Git`, `CodeGraph`, `PreToolUse` to the rest of the system?**
+  _2137 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Claude Mem Plugin Core` be split into smaller, more focused modules?**
-  _Cohesion score 0.015480102227090179 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.014988573733028632 - nodes in this community are weakly interconnected._
 - **Should `Catppuccin Mocha Theme` be split into smaller, more focused modules?**
   _Cohesion score 0.038461538461538464 - nodes in this community are weakly interconnected._
 - **Should `WakaTime Plugin` be split into smaller, more focused modules?**

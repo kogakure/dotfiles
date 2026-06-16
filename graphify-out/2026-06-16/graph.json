@@ -158,724 +158,14 @@
   },
   "nodes": [
     {
-      "label": "opencode.json",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "opencode_opencode",
-      "community": 99,
-      "norm_label": "opencode.json"
-    },
-    {
-      "label": "$schema",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "opencode_opencode_schema",
-      "community": 99,
-      "norm_label": "$schema"
-    },
-    {
-      "label": "default_agent",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "opencode_opencode_default_agent",
-      "community": 99,
-      "norm_label": "default_agent"
-    },
-    {
-      "label": "permission",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "opencode_opencode_permission",
-      "community": 50,
-      "norm_label": "permission"
-    },
-    {
-      "label": "read",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "opencode_opencode_permission_read",
-      "community": 50,
-      "norm_label": "read"
-    },
-    {
-      "label": "*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "opencode_opencode_read",
-      "community": 50,
-      "norm_label": "*"
-    },
-    {
-      "label": ".env",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "opencode_opencode_read_env",
-      "community": 50,
-      "norm_label": ".env"
-    },
-    {
-      "label": "*.key",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "opencode_opencode_read_key",
-      "community": 50,
-      "norm_label": "*.key"
-    },
-    {
-      "label": "*.pem",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "opencode_opencode_read_pem",
-      "community": 50,
-      "norm_label": "*.pem"
-    },
-    {
-      "label": "id_rsa*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "opencode_opencode_read_id_rsa",
-      "community": 50,
-      "norm_label": "id_rsa*"
-    },
-    {
-      "label": "secrets.*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L12",
-      "_origin": "ast",
-      "id": "opencode_opencode_read_secrets",
-      "community": 50,
-      "norm_label": "secrets.*"
-    },
-    {
-      "label": "credentials.*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "opencode_opencode_read_credentials",
-      "community": 50,
-      "norm_label": "credentials.*"
-    },
-    {
-      "label": "edit",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "opencode_opencode_permission_edit",
-      "community": 50,
-      "norm_label": "edit"
-    },
-    {
-      "label": "external_directory",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L16",
-      "_origin": "ast",
-      "id": "opencode_opencode_permission_external_directory",
-      "community": 50,
-      "norm_label": "external_directory"
-    },
-    {
-      "label": "*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "opencode_opencode_external_directory",
-      "community": 50,
-      "norm_label": "*"
-    },
-    {
-      "label": "webfetch",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "opencode_opencode_permission_webfetch",
-      "community": 50,
-      "norm_label": "webfetch"
-    },
-    {
-      "label": "bash",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "opencode_opencode_permission_bash",
-      "community": 9,
-      "norm_label": "bash"
-    },
-    {
-      "label": "ls",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_ls",
-      "community": 9,
-      "norm_label": "ls"
-    },
-    {
-      "label": "pwd",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_pwd",
-      "community": 9,
-      "norm_label": "pwd"
-    },
-    {
-      "label": "cat *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_cat",
-      "community": 9,
-      "norm_label": "cat *"
-    },
-    {
-      "label": "echo *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_echo",
-      "community": 9,
-      "norm_label": "echo *"
-    },
-    {
-      "label": "git status",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_git_status",
-      "community": 9,
-      "norm_label": "git status"
-    },
-    {
-      "label": "git diff",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_git_diff",
-      "community": 9,
-      "norm_label": "git diff"
-    },
-    {
-      "label": "git log",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_git_log",
-      "community": 9,
-      "norm_label": "git log"
-    },
-    {
-      "label": "git add *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_git_add",
-      "community": 9,
-      "norm_label": "git add *"
-    },
-    {
-      "label": "git commit *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_git_commit",
-      "community": 9,
-      "norm_label": "git commit *"
-    },
-    {
-      "label": "*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash",
-      "community": 9,
-      "norm_label": "*"
-    },
-    {
-      "label": "sudo *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L35",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_sudo",
-      "community": 9,
-      "norm_label": "sudo *"
-    },
-    {
-      "label": "su *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_su",
-      "community": 9,
-      "norm_label": "su *"
-    },
-    {
-      "label": "dd *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_dd",
-      "community": 9,
-      "norm_label": "dd *"
-    },
-    {
-      "label": "mkfs *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_mkfs",
-      "community": 9,
-      "norm_label": "mkfs *"
-    },
-    {
-      "label": "rm -rf /*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L39",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_rm_rf",
-      "community": 9,
-      "norm_label": "rm -rf /*"
-    },
-    {
-      "label": "> /dev/*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L40",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_dev",
-      "community": 9,
-      "norm_label": "> /dev/*"
-    },
-    {
-      "label": "chmod -R *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L41",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_chmod_r",
-      "community": 9,
-      "norm_label": "chmod -r *"
-    },
-    {
-      "label": "chown *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_chown",
-      "community": 9,
-      "norm_label": "chown *"
-    },
-    {
-      "label": "chgrp *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_chgrp",
-      "community": 9,
-      "norm_label": "chgrp *"
-    },
-    {
-      "label": "printenv*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_printenv",
-      "community": 9,
-      "norm_label": "printenv*"
-    },
-    {
-      "label": "env*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L45",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_env",
-      "community": 9,
-      "norm_label": "env*"
-    },
-    {
-      "label": "export*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L46",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_export",
-      "community": 9,
-      "norm_label": "export*"
-    },
-    {
-      "label": "curl *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_curl",
-      "community": 9,
-      "norm_label": "curl *"
-    },
-    {
-      "label": "wget *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L48",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_wget",
-      "community": 9,
-      "norm_label": "wget *"
-    },
-    {
-      "label": "nc *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_nc",
-      "community": 9,
-      "norm_label": "nc *"
-    },
-    {
-      "label": "scp *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L50",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_scp",
-      "community": 9,
-      "norm_label": "scp *"
-    },
-    {
-      "label": "ssh *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_ssh",
-      "community": 9,
-      "norm_label": "ssh *"
-    },
-    {
-      "label": "ftp *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L52",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_ftp",
-      "community": 9,
-      "norm_label": "ftp *"
-    },
-    {
-      "label": "telnet *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_telnet",
-      "community": 9,
-      "norm_label": "telnet *"
-    },
-    {
-      "label": "nmap *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L54",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_nmap",
-      "community": 9,
-      "norm_label": "nmap *"
-    },
-    {
-      "label": "git push*",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L55",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_git_push",
-      "community": 9,
-      "norm_label": "git push*"
-    },
-    {
-      "label": "npm install *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L56",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_npm_install",
-      "community": 9,
-      "norm_label": "npm install *"
-    },
-    {
-      "label": "npm i *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L57",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_npm_i",
-      "community": 9,
-      "norm_label": "npm i *"
-    },
-    {
-      "label": "yarn add *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L58",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_yarn_add",
-      "community": 9,
-      "norm_label": "yarn add *"
-    },
-    {
-      "label": "pip install *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L59",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_pip_install",
-      "community": 9,
-      "norm_label": "pip install *"
-    },
-    {
-      "label": "pip3 install *",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L60",
-      "_origin": "ast",
-      "id": "opencode_opencode_bash_pip3_install",
-      "community": 9,
-      "norm_label": "pip3 install *"
-    },
-    {
-      "label": "mcp",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L63",
-      "_origin": "ast",
-      "id": "opencode_opencode_mcp",
-      "community": 60,
-      "norm_label": "mcp"
-    },
-    {
-      "label": "chrome-devtools",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L64",
-      "_origin": "ast",
-      "id": "opencode_opencode_mcp_chrome_devtools",
-      "community": 60,
-      "norm_label": "chrome-devtools"
-    },
-    {
-      "label": "command",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L65",
-      "_origin": "ast",
-      "id": "opencode_opencode_chrome_devtools_command",
-      "community": 60,
-      "norm_label": "command"
-    },
-    {
-      "label": "type",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L66",
-      "_origin": "ast",
-      "id": "opencode_opencode_chrome_devtools_type",
-      "community": 60,
-      "norm_label": "type"
-    },
-    {
-      "label": "open-meteo",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L68",
-      "_origin": "ast",
-      "id": "opencode_opencode_mcp_open_meteo",
-      "community": 60,
-      "norm_label": "open-meteo"
-    },
-    {
-      "label": "command",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L69",
-      "_origin": "ast",
-      "id": "opencode_opencode_open_meteo_command",
-      "community": 60,
-      "norm_label": "command"
-    },
-    {
-      "label": "type",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L70",
-      "_origin": "ast",
-      "id": "opencode_opencode_open_meteo_type",
-      "community": 60,
-      "norm_label": "type"
-    },
-    {
-      "label": "codegraph",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L72",
-      "_origin": "ast",
-      "id": "opencode_opencode_mcp_codegraph",
-      "community": 60,
-      "norm_label": "codegraph"
-    },
-    {
-      "label": "type",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L73",
-      "_origin": "ast",
-      "id": "opencode_opencode_codegraph_type",
-      "community": 60,
-      "norm_label": "type"
-    },
-    {
-      "label": "command",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L74",
-      "_origin": "ast",
-      "id": "opencode_opencode_codegraph_command",
-      "community": 60,
-      "norm_label": "command"
-    },
-    {
-      "label": "enabled",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L75",
-      "_origin": "ast",
-      "id": "opencode_opencode_codegraph_enabled",
-      "community": 60,
-      "norm_label": "enabled"
-    },
-    {
-      "label": "plugin",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L78",
-      "_origin": "ast",
-      "id": "opencode_opencode_plugin",
-      "community": 99,
-      "norm_label": "plugin"
-    },
-    {
-      "label": "provider",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L86",
-      "_origin": "ast",
-      "id": "opencode_opencode_provider",
-      "community": 99,
-      "norm_label": "provider"
-    },
-    {
-      "label": "compaction",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L87",
-      "_origin": "ast",
-      "id": "opencode_opencode_compaction",
-      "community": 99,
-      "norm_label": "compaction"
-    },
-    {
-      "label": "auto",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L88",
-      "_origin": "ast",
-      "id": "opencode_opencode_compaction_auto",
-      "community": 99,
-      "norm_label": "auto"
-    },
-    {
-      "label": "prune",
-      "file_type": "code",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L89",
-      "_origin": "ast",
-      "id": "opencode_opencode_compaction_prune",
-      "community": 99,
-      "norm_label": "prune"
-    },
-    {
-      "label": "graphify.js",
-      "file_type": "code",
-      "source_file": "config/opencode/plugins/graphify.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "plugins_graphify",
-      "community": 634,
-      "norm_label": "graphify.js"
-    },
-    {
-      "label": "GraphifyPlugin()",
-      "file_type": "code",
-      "source_file": "config/opencode/plugins/graphify.js",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "plugins_graphify_graphifyplugin",
-      "community": 634,
-      "norm_label": "graphifyplugin()"
-    },
-    {
       "label": "AGENTS.md",
       "file_type": "document",
       "source_file": "config/opencode/AGENTS.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "opencode_agents",
       "community": 909,
-      "norm_label": "agents.md",
-      "id": "opencode_agents"
+      "norm_label": "agents.md"
     },
     {
       "label": "Git",
@@ -883,9 +173,9 @@
       "source_file": "config/opencode/AGENTS.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "opencode_agents_git",
       "community": 909,
-      "norm_label": "git",
-      "id": "opencode_agents_git"
+      "norm_label": "git"
     },
     {
       "label": "Memory Context from Past Sessions",
@@ -893,9 +183,9 @@
       "source_file": "config/opencode/AGENTS.md",
       "source_location": "L6",
       "_origin": "ast",
+      "id": "opencode_agents_memory_context_from_past_sessions",
       "community": 909,
-      "norm_label": "memory context from past sessions",
-      "id": "opencode_agents_memory_context_from_past_sessions"
+      "norm_label": "memory context from past sessions"
     },
     {
       "label": "CodeGraph",
@@ -903,9 +193,9 @@
       "source_file": "config/opencode/AGENTS.md",
       "source_location": "L14",
       "_origin": "ast",
+      "id": "opencode_agents_codegraph",
       "community": 909,
-      "norm_label": "codegraph",
-      "id": "opencode_agents_codegraph"
+      "norm_label": "codegraph"
     },
     {
       "label": "settings.json",
@@ -976,6 +266,46 @@
       "community": 378,
       "norm_label": "pretooluse",
       "id": "codex_hooks_hooks_pretooluse"
+    },
+    {
+      "label": "opencode.json",
+      "file_type": "code",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 970,
+      "norm_label": "opencode.json",
+      "id": "opencode_opencode"
+    },
+    {
+      "label": "plugin",
+      "file_type": "code",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 970,
+      "norm_label": "plugin",
+      "id": "opencode_opencode_plugin"
+    },
+    {
+      "label": "graphify.js",
+      "file_type": "code",
+      "source_file": ".opencode/plugins/graphify.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 634,
+      "norm_label": "graphify.js",
+      "id": "plugins_graphify"
+    },
+    {
+      "label": "GraphifyPlugin()",
+      "file_type": "code",
+      "source_file": ".opencode/plugins/graphify.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 634,
+      "norm_label": "graphifyplugin()",
+      "id": "plugins_graphify_graphifyplugin"
     },
     {
       "label": "AGENTS.md",
@@ -8354,6 +7684,696 @@
       "id": "opencode_opencode_notifier_volumes_client_connected"
     },
     {
+      "label": "opencode.json",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "opencode.json",
+      "id": "config_opencode_opencode_json_opencode_opencode"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "$schema",
+      "id": "opencode_opencode_schema"
+    },
+    {
+      "label": "default_agent",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "default_agent",
+      "id": "opencode_opencode_default_agent"
+    },
+    {
+      "label": "permission",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "permission",
+      "id": "opencode_opencode_permission"
+    },
+    {
+      "label": "read",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "read",
+      "id": "opencode_opencode_permission_read"
+    },
+    {
+      "label": "*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "*",
+      "id": "opencode_opencode_read"
+    },
+    {
+      "label": ".env",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": ".env",
+      "id": "opencode_opencode_read_env"
+    },
+    {
+      "label": "*.key",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "*.key",
+      "id": "opencode_opencode_read_key"
+    },
+    {
+      "label": "*.pem",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "*.pem",
+      "id": "opencode_opencode_read_pem"
+    },
+    {
+      "label": "id_rsa*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "id_rsa*",
+      "id": "opencode_opencode_read_id_rsa"
+    },
+    {
+      "label": "secrets.*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "secrets.*",
+      "id": "opencode_opencode_read_secrets"
+    },
+    {
+      "label": "credentials.*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "credentials.*",
+      "id": "opencode_opencode_read_credentials"
+    },
+    {
+      "label": "edit",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "edit",
+      "id": "opencode_opencode_permission_edit"
+    },
+    {
+      "label": "external_directory",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "external_directory",
+      "id": "opencode_opencode_permission_external_directory"
+    },
+    {
+      "label": "*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "*",
+      "id": "opencode_opencode_external_directory"
+    },
+    {
+      "label": "webfetch",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 50,
+      "norm_label": "webfetch",
+      "id": "opencode_opencode_permission_webfetch"
+    },
+    {
+      "label": "bash",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "bash",
+      "id": "opencode_opencode_permission_bash"
+    },
+    {
+      "label": "ls",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "ls",
+      "id": "opencode_opencode_bash_ls"
+    },
+    {
+      "label": "pwd",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L23",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "pwd",
+      "id": "opencode_opencode_bash_pwd"
+    },
+    {
+      "label": "cat *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L24",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "cat *",
+      "id": "opencode_opencode_bash_cat"
+    },
+    {
+      "label": "echo *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "echo *",
+      "id": "opencode_opencode_bash_echo"
+    },
+    {
+      "label": "git status",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L26",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "git status",
+      "id": "opencode_opencode_bash_git_status"
+    },
+    {
+      "label": "git diff",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L28",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "git diff",
+      "id": "opencode_opencode_bash_git_diff"
+    },
+    {
+      "label": "git log",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "git log",
+      "id": "opencode_opencode_bash_git_log"
+    },
+    {
+      "label": "git add *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "git add *",
+      "id": "opencode_opencode_bash_git_add"
+    },
+    {
+      "label": "git commit *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L33",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "git commit *",
+      "id": "opencode_opencode_bash_git_commit"
+    },
+    {
+      "label": "*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L34",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "*",
+      "id": "opencode_opencode_bash"
+    },
+    {
+      "label": "sudo *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L35",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "sudo *",
+      "id": "opencode_opencode_bash_sudo"
+    },
+    {
+      "label": "su *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L36",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "su *",
+      "id": "opencode_opencode_bash_su"
+    },
+    {
+      "label": "dd *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L37",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "dd *",
+      "id": "opencode_opencode_bash_dd"
+    },
+    {
+      "label": "mkfs *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L38",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "mkfs *",
+      "id": "opencode_opencode_bash_mkfs"
+    },
+    {
+      "label": "rm -rf /*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L39",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "rm -rf /*",
+      "id": "opencode_opencode_bash_rm_rf"
+    },
+    {
+      "label": "> /dev/*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L40",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "> /dev/*",
+      "id": "opencode_opencode_bash_dev"
+    },
+    {
+      "label": "chmod -R *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L41",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "chmod -r *",
+      "id": "opencode_opencode_bash_chmod_r"
+    },
+    {
+      "label": "chown *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "chown *",
+      "id": "opencode_opencode_bash_chown"
+    },
+    {
+      "label": "chgrp *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L43",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "chgrp *",
+      "id": "opencode_opencode_bash_chgrp"
+    },
+    {
+      "label": "printenv*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L44",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "printenv*",
+      "id": "opencode_opencode_bash_printenv"
+    },
+    {
+      "label": "env*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L45",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "env*",
+      "id": "opencode_opencode_bash_env"
+    },
+    {
+      "label": "export*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L46",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "export*",
+      "id": "opencode_opencode_bash_export"
+    },
+    {
+      "label": "curl *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L47",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "curl *",
+      "id": "opencode_opencode_bash_curl"
+    },
+    {
+      "label": "wget *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L48",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "wget *",
+      "id": "opencode_opencode_bash_wget"
+    },
+    {
+      "label": "nc *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "nc *",
+      "id": "opencode_opencode_bash_nc"
+    },
+    {
+      "label": "scp *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L50",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "scp *",
+      "id": "opencode_opencode_bash_scp"
+    },
+    {
+      "label": "ssh *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L51",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "ssh *",
+      "id": "opencode_opencode_bash_ssh"
+    },
+    {
+      "label": "ftp *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L52",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "ftp *",
+      "id": "opencode_opencode_bash_ftp"
+    },
+    {
+      "label": "telnet *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L53",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "telnet *",
+      "id": "opencode_opencode_bash_telnet"
+    },
+    {
+      "label": "nmap *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L54",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "nmap *",
+      "id": "opencode_opencode_bash_nmap"
+    },
+    {
+      "label": "git push*",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L55",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "git push*",
+      "id": "opencode_opencode_bash_git_push"
+    },
+    {
+      "label": "npm install *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "npm install *",
+      "id": "opencode_opencode_bash_npm_install"
+    },
+    {
+      "label": "npm i *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L57",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "npm i *",
+      "id": "opencode_opencode_bash_npm_i"
+    },
+    {
+      "label": "yarn add *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L58",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "yarn add *",
+      "id": "opencode_opencode_bash_yarn_add"
+    },
+    {
+      "label": "pip install *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L59",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "pip install *",
+      "id": "opencode_opencode_bash_pip_install"
+    },
+    {
+      "label": "pip3 install *",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L60",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "pip3 install *",
+      "id": "opencode_opencode_bash_pip3_install"
+    },
+    {
+      "label": "mcp",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L63",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "mcp",
+      "id": "opencode_opencode_mcp"
+    },
+    {
+      "label": "chrome-devtools",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L64",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "chrome-devtools",
+      "id": "opencode_opencode_mcp_chrome_devtools"
+    },
+    {
+      "label": "command",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L65",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "command",
+      "id": "opencode_opencode_chrome_devtools_command"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L71",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "type",
+      "id": "opencode_opencode_chrome_devtools_type"
+    },
+    {
+      "label": "open-meteo",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L73",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "open-meteo",
+      "id": "opencode_opencode_mcp_open_meteo"
+    },
+    {
+      "label": "command",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L74",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "command",
+      "id": "opencode_opencode_open_meteo_command"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L81",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "type",
+      "id": "opencode_opencode_open_meteo_type"
+    },
+    {
+      "label": "codegraph",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L83",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "codegraph",
+      "id": "opencode_opencode_mcp_codegraph"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L84",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "type",
+      "id": "opencode_opencode_codegraph_type"
+    },
+    {
+      "label": "command",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L85",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "command",
+      "id": "opencode_opencode_codegraph_command"
+    },
+    {
+      "label": "enabled",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L90",
+      "_origin": "ast",
+      "community": 60,
+      "norm_label": "enabled",
+      "id": "opencode_opencode_codegraph_enabled"
+    },
+    {
+      "label": "plugin",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L93",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "plugin",
+      "id": "config_opencode_opencode_json_opencode_opencode_plugin"
+    },
+    {
+      "label": "provider",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L99",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "provider",
+      "id": "opencode_opencode_provider"
+    },
+    {
+      "label": "compaction",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L100",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "compaction",
+      "id": "opencode_opencode_compaction"
+    },
+    {
+      "label": "auto",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L101",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "auto",
+      "id": "opencode_opencode_compaction_auto"
+    },
+    {
+      "label": "prune",
+      "file_type": "code",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L102",
+      "_origin": "ast",
+      "community": 99,
+      "norm_label": "prune",
+      "id": "opencode_opencode_compaction_prune"
+    },
+    {
       "label": "package.json",
       "file_type": "code",
       "source_file": "config/opencode/package.json",
@@ -9089,7 +9109,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
+      "community": 167,
       "norm_label": "constructor()",
       "id": "plugins_claude_mem_constructor"
     },
@@ -9619,7 +9639,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 215,
       "norm_label": "ct()",
       "id": "plugins_claude_mem_ct"
     },
@@ -9719,7 +9739,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 215,
+      "community": 3,
       "norm_label": "lt()",
       "id": "plugins_claude_mem_lt"
     },
@@ -9739,7 +9759,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 0,
+      "community": 215,
       "norm_label": "indented()",
       "id": "plugins_claude_mem_indented"
     },
@@ -9749,7 +9769,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 0,
+      "community": 215,
       "norm_label": "write()",
       "id": "plugins_claude_mem_write"
     },
@@ -9809,7 +9829,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "qt()",
       "id": "plugins_claude_mem_qt"
     },
@@ -9829,7 +9849,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "is()",
       "id": "plugins_claude_mem_is"
     },
@@ -9879,7 +9899,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "ku()",
       "id": "plugins_claude_mem_ku"
     },
@@ -9909,7 +9929,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "xu()",
       "id": "plugins_claude_mem_xu"
     },
@@ -9959,7 +9979,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "yt()",
       "id": "plugins_claude_mem_yt"
     },
@@ -9979,7 +9999,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 0,
+      "community": 215,
       "norm_label": "r()",
       "id": "plugins_claude_mem_r"
     },
@@ -10089,7 +10109,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 215,
+      "community": 3,
       "norm_label": "or()",
       "id": "plugins_claude_mem_or"
     },
@@ -10259,7 +10279,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "nl()",
       "id": "plugins_claude_mem_nl"
     },
@@ -10339,7 +10359,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "wo()",
       "id": "plugins_claude_mem_wo"
     },
@@ -10359,7 +10379,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 977,
+      "community": 0,
       "norm_label": "lr()",
       "id": "plugins_claude_mem_lr"
     },
@@ -10409,7 +10429,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 970,
+      "community": 0,
       "norm_label": "fr()",
       "id": "plugins_claude_mem_fr"
     },
@@ -10429,7 +10449,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 76,
+      "community": 0,
       "norm_label": "vr()",
       "id": "plugins_claude_mem_vr"
     },
@@ -10449,7 +10469,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 973,
+      "community": 0,
       "norm_label": "yr()",
       "id": "plugins_claude_mem_yr"
     },
@@ -10489,7 +10509,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "xo()",
       "id": "plugins_claude_mem_xo"
     },
@@ -10559,7 +10579,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "ea()",
       "id": "plugins_claude_mem_ea"
     },
@@ -10609,7 +10629,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 977,
+      "community": 0,
       "norm_label": "oa()",
       "id": "plugins_claude_mem_oa"
     },
@@ -10679,7 +10699,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "ma()",
       "id": "plugins_claude_mem_ma"
     },
@@ -10699,7 +10719,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 970,
+      "community": 0,
       "norm_label": "fa()",
       "id": "plugins_claude_mem_fa"
     },
@@ -10709,7 +10729,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 973,
+      "community": 0,
       "norm_label": "ga()",
       "id": "plugins_claude_mem_ga"
     },
@@ -10779,7 +10799,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 215,
+      "community": 3,
       "norm_label": "x()",
       "id": "plugins_claude_mem_x"
     },
@@ -10959,7 +10979,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 3,
+      "community": 167,
       "norm_label": "le()",
       "id": "plugins_claude_mem_le"
     },
@@ -11209,7 +11229,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "wa()",
       "id": "plugins_claude_mem_wa"
     },
@@ -11219,7 +11239,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "al()",
       "id": "plugins_claude_mem_al"
     },
@@ -11229,7 +11249,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "ve()",
       "id": "plugins_claude_mem_ve"
     },
@@ -11359,7 +11379,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "hc()",
       "id": "plugins_claude_mem_hc"
     },
@@ -11419,7 +11439,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 64,
+      "community": 38,
       "norm_label": "refine()",
       "id": "plugins_claude_mem_refine"
     },
@@ -11429,7 +11449,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "superrefine()",
       "id": "plugins_claude_mem_superrefine"
     },
@@ -11739,7 +11759,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 3,
+      "community": 167,
       "norm_label": "normalize()",
       "id": "plugins_claude_mem_normalize"
     },
@@ -11779,7 +11799,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 977,
+      "community": 0,
       "norm_label": "ll()",
       "id": "plugins_claude_mem_ll"
     },
@@ -11829,7 +11849,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 970,
+      "community": 0,
       "norm_label": "gl()",
       "id": "plugins_claude_mem_gl"
     },
@@ -11849,7 +11869,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 76,
+      "community": 0,
       "norm_label": "hl()",
       "id": "plugins_claude_mem_hl"
     },
@@ -11889,7 +11909,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 973,
+      "community": 0,
       "norm_label": "kl()",
       "id": "plugins_claude_mem_kl"
     },
@@ -11909,7 +11929,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "zl()",
       "id": "plugins_claude_mem_zl"
     },
@@ -11949,7 +11969,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 38,
+      "community": 76,
       "norm_label": "jl()",
       "id": "plugins_claude_mem_jl"
     },
@@ -12029,7 +12049,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 215,
+      "community": 3,
       "norm_label": "negative()",
       "id": "plugins_claude_mem_negative"
     },
@@ -12149,7 +12169,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": "keyof()",
       "id": "plugins_claude_mem_keyof"
     },
@@ -12289,7 +12309,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 215,
+      "community": 3,
       "norm_label": "pn()",
       "id": "plugins_claude_mem_pn"
     },
@@ -12369,7 +12389,7 @@
       "source_file": "config/opencode/plugins/claude-mem.js",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": "fn()",
       "id": "plugins_claude_mem_fn"
     },
@@ -12749,7 +12769,7 @@
       "source_file": "config/opencode/plugins/kdco-primitives/mutex.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": "mutex.ts",
       "id": "config_opencode_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex"
     },
@@ -12759,7 +12779,7 @@
       "source_file": "config/opencode/plugins/kdco-primitives/mutex.ts",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": "mutex",
       "id": "config_opencode_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex"
     },
@@ -12769,7 +12789,7 @@
       "source_file": "config/opencode/plugins/kdco-primitives/mutex.ts",
       "source_location": "L56",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": ".acquire()",
       "id": "config_opencode_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex_acquire"
     },
@@ -12779,7 +12799,7 @@
       "source_file": "config/opencode/plugins/kdco-primitives/mutex.ts",
       "source_location": "L80",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": ".release()",
       "id": "config_opencode_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex_release"
     },
@@ -12789,7 +12809,7 @@
       "source_file": "config/opencode/plugins/kdco-primitives/mutex.ts",
       "source_location": "L114",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": ".runexclusive()",
       "id": "config_opencode_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex_runexclusive"
     },
@@ -14099,7 +14119,7 @@
       "source_file": "config/opencode/profiles/ws/plugins/kdco-primitives/mutex.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": "mutex.ts",
       "id": "config_opencode_profiles_ws_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex"
     },
@@ -14109,7 +14129,7 @@
       "source_file": "config/opencode/profiles/ws/plugins/kdco-primitives/mutex.ts",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": "mutex",
       "id": "config_opencode_profiles_ws_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex"
     },
@@ -14119,7 +14139,7 @@
       "source_file": "config/opencode/profiles/ws/plugins/kdco-primitives/mutex.ts",
       "source_location": "L56",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": ".acquire()",
       "id": "config_opencode_profiles_ws_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex_acquire"
     },
@@ -14129,7 +14149,7 @@
       "source_file": "config/opencode/profiles/ws/plugins/kdco-primitives/mutex.ts",
       "source_location": "L80",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": ".release()",
       "id": "config_opencode_profiles_ws_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex_release"
     },
@@ -14139,7 +14159,7 @@
       "source_file": "config/opencode/profiles/ws/plugins/kdco-primitives/mutex.ts",
       "source_location": "L114",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": ".runexclusive()",
       "id": "config_opencode_profiles_ws_plugins_kdco_primitives_mutex_ts_kdco_primitives_mutex_mutex_runexclusive"
     },
@@ -15709,7 +15729,7 @@
       "source_file": "config/opencode/profiles/ws/plugins/worktree/terminal.ts",
       "source_location": "L41",
       "_origin": "ast",
-      "community": 76,
+      "community": 5,
       "norm_label": "withtempscript()",
       "id": "worktree_terminal_withtempscript"
     },
@@ -55986,696 +56006,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L87",
-      "weight": 1.0,
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_compaction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_default_agent",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L63",
-      "weight": 1.0,
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_mcp",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_permission",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_plugin"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L86",
-      "weight": 1.0,
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_provider",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_schema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission",
-      "target": "opencode_opencode_permission_bash"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission",
-      "target": "opencode_opencode_permission_edit"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission",
-      "target": "opencode_opencode_permission_external_directory"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission",
-      "target": "opencode_opencode_permission_read"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission",
-      "target": "opencode_opencode_permission_webfetch"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_read",
-      "target": "opencode_opencode_read"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_read",
-      "target": "opencode_opencode_read_credentials"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_read",
-      "target": "opencode_opencode_read_env"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_read",
-      "target": "opencode_opencode_read_id_rsa"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_read",
-      "target": "opencode_opencode_read_key"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_read",
-      "target": "opencode_opencode_read_pem"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_read",
-      "target": "opencode_opencode_read_secrets"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_external_directory",
-      "target": "opencode_opencode_external_directory"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_cat"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L43",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_chgrp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L41",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_chmod_r"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_chown"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_curl"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_dd"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L40",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_dev"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_echo"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L45",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_env"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L46",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_export"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L52",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_ftp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L32",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_git_add"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_git_commit"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_git_diff"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_git_log"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L55",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_git_push"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_git_status"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_ls"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L38",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_mkfs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_nc"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L54",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_nmap"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L57",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_npm_i"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L56",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_npm_install"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L60",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_pip3_install"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L59",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_pip_install"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L44",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_printenv"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_pwd"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L39",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_rm_rf"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L50",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_scp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L51",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_ssh"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_su"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L35",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_sudo"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L53",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_telnet"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L48",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_wget"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L58",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_yarn_add"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L64",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp",
-      "target": "opencode_opencode_mcp_chrome_devtools"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L83",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp",
-      "target": "opencode_opencode_mcp_codegraph"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L73",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp",
-      "target": "opencode_opencode_mcp_open_meteo"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L65",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp_chrome_devtools",
-      "target": "opencode_opencode_chrome_devtools_command"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L71",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp_chrome_devtools",
-      "target": "opencode_opencode_chrome_devtools_type"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L74",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp_open_meteo",
-      "target": "opencode_opencode_open_meteo_command"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L81",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp_open_meteo",
-      "target": "opencode_opencode_open_meteo_type"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L85",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp_codegraph",
-      "target": "opencode_opencode_codegraph_command"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L90",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp_codegraph",
-      "target": "opencode_opencode_codegraph_enabled"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L84",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_mcp_codegraph",
-      "target": "opencode_opencode_codegraph_type"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L101",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_compaction",
-      "target": "opencode_opencode_compaction_auto"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "config/opencode/opencode.json",
-      "source_location": "L102",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "opencode_opencode_compaction",
-      "target": "opencode_opencode_compaction_prune"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".opencode/plugins/graphify.js",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "plugins_graphify",
-      "target": "plugins_graphify_graphifyplugin"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "config/opencode/AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -56699,9 +56029,9 @@
       "source_file": "config/opencode/AGENTS.md",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "opencode_agents_memory_context_from_past_sessions",
-      "target": "opencode_agents_codegraph"
+      "target": "opencode_agents_codegraph",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -56742,6 +56072,26 @@
       "confidence_score": 1.0,
       "source": "codex_hooks_hooks",
       "target": "codex_hooks_hooks_pretooluse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode",
+      "target": "opencode_opencode_plugin"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plugins/graphify.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "plugins_graphify",
+      "target": "plugins_graphify_graphifyplugin"
     },
     {
       "relation": "contains",
@@ -63153,6 +62503,686 @@
       "confidence_score": 1.0,
       "source": "opencode_opencode_notifier_volumes",
       "target": "opencode_opencode_notifier_volumes_user_message"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "config_opencode_opencode_json_opencode_opencode",
+      "target": "config_opencode_opencode_json_opencode_opencode_plugin"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L100",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "config_opencode_opencode_json_opencode_opencode",
+      "target": "opencode_opencode_compaction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "config_opencode_opencode_json_opencode_opencode",
+      "target": "opencode_opencode_default_agent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "config_opencode_opencode_json_opencode_opencode",
+      "target": "opencode_opencode_mcp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "config_opencode_opencode_json_opencode_opencode",
+      "target": "opencode_opencode_permission"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "config_opencode_opencode_json_opencode_opencode",
+      "target": "opencode_opencode_provider"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "config_opencode_opencode_json_opencode_opencode",
+      "target": "opencode_opencode_schema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission",
+      "target": "opencode_opencode_permission_bash"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission",
+      "target": "opencode_opencode_permission_edit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission",
+      "target": "opencode_opencode_permission_external_directory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission",
+      "target": "opencode_opencode_permission_read"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission",
+      "target": "opencode_opencode_permission_webfetch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_read",
+      "target": "opencode_opencode_read"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_read",
+      "target": "opencode_opencode_read_credentials"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_read",
+      "target": "opencode_opencode_read_env"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_read",
+      "target": "opencode_opencode_read_id_rsa"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_read",
+      "target": "opencode_opencode_read_key"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_read",
+      "target": "opencode_opencode_read_pem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_read",
+      "target": "opencode_opencode_read_secrets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_external_directory",
+      "target": "opencode_opencode_external_directory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_cat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_chgrp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_chmod_r"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_chown"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_curl"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_dd"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_dev"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_echo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_env"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_export"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_ftp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_git_add"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_git_commit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_git_diff"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_git_log"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_git_push"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_git_status"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_ls"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_mkfs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_nc"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_nmap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_npm_i"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_npm_install"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_pip3_install"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_pip_install"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_printenv"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_pwd"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_rm_rf"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_scp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_ssh"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_su"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_sudo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_telnet"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_wget"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_yarn_add"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp",
+      "target": "opencode_opencode_mcp_chrome_devtools"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp",
+      "target": "opencode_opencode_mcp_codegraph"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp",
+      "target": "opencode_opencode_mcp_open_meteo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp_chrome_devtools",
+      "target": "opencode_opencode_chrome_devtools_command"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp_chrome_devtools",
+      "target": "opencode_opencode_chrome_devtools_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp_open_meteo",
+      "target": "opencode_opencode_open_meteo_command"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L81",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp_open_meteo",
+      "target": "opencode_opencode_open_meteo_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp_codegraph",
+      "target": "opencode_opencode_codegraph_command"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp_codegraph",
+      "target": "opencode_opencode_codegraph_enabled"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_mcp_codegraph",
+      "target": "opencode_opencode_codegraph_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_compaction",
+      "target": "opencode_opencode_compaction_auto"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/opencode/opencode.json",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "opencode_opencode_compaction",
+      "target": "opencode_opencode_compaction_prune"
     },
     {
       "relation": "contains",
@@ -114141,5 +114171,5 @@
       "source_file": "pi/patterns.yaml"
     }
   ],
-  "built_at_commit": "e2aca5ae5913a7a407cb705750a3ce8a5bad680a"
+  "built_at_commit": "9f367ba8c080b94d52c9f6df76217ca023dc7989"
 }

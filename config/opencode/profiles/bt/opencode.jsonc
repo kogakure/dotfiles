@@ -71,7 +71,8 @@
     },
   },
   "plugin": [
-    "./plugins/claude-mem.js",
+    "../../plugins/claude-mem.js",
+    "../../plugins/graphify.js",
     "@cortexkit/opencode-magic-context@latest",
     "@mohak34/opencode-notifier@latest",
     "@warp-dot-dev/opencode-warp@0.1.5",
