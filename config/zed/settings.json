@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
   "context_servers": {
     "mcp-server-github": {
       "enabled": true,
@@ -152,7 +155,7 @@
   },
   "ui_font_size": 20,
   "vim_mode": true,
-  "relative_line_numbers": "enabled",
+  "relative_line_numbers": "disabled",
   "auto_install_extensions": {
     "astro": true,
     "basher": true,
