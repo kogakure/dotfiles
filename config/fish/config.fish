@@ -218,6 +218,9 @@ alias cl 'claude --dangerously-skip-permissions'
 alias clp 'claude --permission-mode plan'
 alias clr 'claude --resume'
 
+# Codex
+alias cx 'codex --dangerously-bypass-approvals-and-sandbox'
+
 # Can't remember the fork name
 alias youtube-dl yt-dlp
 

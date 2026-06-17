@@ -29,6 +29,9 @@ alias cl='claude --dangerously-skip-permissions'
 alias clp='claude --permission-mode plan'
 alias clr='claude --resume'
 
+# Codex
+alias cx='codex --dangerously-bypass-approvals-and-sandbox'
+
 # Tmux
 alias t='tmux'
 alias ta='tmux attach'
