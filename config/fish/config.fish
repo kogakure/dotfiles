@@ -27,17 +27,16 @@ if command -v nvim >/dev/null 2>&1
     set -x GIT_EDITOR nvim
 end
 
-# Determine Homebrew prefix based on architecture
-if test (uname -m) = arm64
-    set brew_prefix /opt/homebrew
-else
-    set brew_prefix /usr/local
+# Homebrew — macOS only (Linux uses apt/direct installs)
+if test (uname) = Darwin
+    if test (uname -m) = arm64
+        set brew_prefix /opt/homebrew
+    else
+        set brew_prefix /usr/local
+    end
+    eval "$($brew_prefix/bin/brew shellenv)"
+    set -x HOMEBREW_NO_AUTO_UPDATE 1
 end
-
-# Initialize Homebrew environment
-eval "$($brew_prefix/bin/brew shellenv)"
-
-set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 # XDG base directory specification
 set -x XDG_CACHE_HOME $HOME/.cache
@@ -47,13 +46,17 @@ set -x XDG_STATE_HOME $HOME/.local/state
 
 # jj
 set -x JJ_CONFIG_DIR $HOME/.config/jj
-jj util completion fish | source
+if command -v jj >/dev/null 2>&1
+    jj util completion fish | source
+end
 
 # GPG
 set -gx GPG_TTY (tty)
 
-# SSH
-set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+# SSH — macOS uses Secretive secure-enclave agent; Linux uses forwarded SSH_AUTH_SOCK
+if test (uname) = Darwin
+    set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+end
 
 # fd
 set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
@@ -69,10 +72,12 @@ set -x FZF_DEFAULT_OPTS --no-height
 set -x FZF_TMUX 1
 set -x FZF_TMUX_OPTS -p
 
-# OpenSSL
-set -x LDFLAGS "-L$brew_prefix/opt/openssl/lib"
-set -x CPPFLAGS "-I$brew_prefix/opt/openssl/include"
-set -x PKG_CONFIG_PATH "$brew_prefix/opt/openssl/lib/pkgconfig"
+# OpenSSL — macOS only (Homebrew-linked; Linux uses system OpenSSL)
+if test (uname) = Darwin
+    set -x LDFLAGS "-L$brew_prefix/opt/openssl/lib"
+    set -x CPPFLAGS "-I$brew_prefix/opt/openssl/include"
+    set -x PKG_CONFIG_PATH "$brew_prefix/opt/openssl/lib/pkgconfig"
+end
 
 # mise
 if type -q mise
@@ -102,6 +107,9 @@ fish_add_path --prepend --move $HOME/.local/pi-agent-npm/bin
 # Grok agent
 fish_add_path $HOME/.grok/bin
 
+# OpenCode
+fish_add_path $HOME/.opencode/bin
+
 # Man
 set -x MANPATH /usr/local/man $MANPATH
 
@@ -125,8 +133,10 @@ set -x PATH $PATH $HOME/.local/share/../bin
 set -x PATH $PATH $HOME/.tmux/plugins/tmux-nvr/bin
 set -x PATH $PATH $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
 
-# Obsidian
-set -x PATH $PATH /Applications/Obsidian.app/Contents/MacOS
+# Obsidian — macOS only
+if test (uname) = Darwin
+    set -x PATH $PATH /Applications/Obsidian.app/Contents/MacOS
+end
 
 # Personal
 set -x PATH $PATH $HOME/.dotfiles/bin
@@ -163,19 +173,29 @@ if command -v wt >/dev/null 2>&1
 end
 
 # fzf
-fzf --fish | source
+if command -v fzf >/dev/null 2>&1
+    fzf --fish | source
+end
 
 # Direnv
-direnv hook fish | source
+if command -v direnv >/dev/null 2>&1
+    direnv hook fish | source
+end
 
 # Zoxide
-zoxide init fish | source
+if command -v zoxide >/dev/null 2>&1
+    zoxide init fish | source
+end
 
 # Atuin
-atuin init fish | source
+if command -v atuin >/dev/null 2>&1
+    atuin init fish | source
+end
 
 # Starship
-starship init fish | source
+if command -v starship >/dev/null 2>&1
+    starship init fish | source
+end
 
 # *** *** Aliases *** ***
 
@@ -189,8 +209,11 @@ alias ll 'eza -l --git --group-directories-first --icons'
 alias lt 'eza --git --group-directories-first --icons --tree'
 alias mkdir 'mkdir -p'
 alias dotfiles 'cd $HOME/.dotfiles'
-alias icloud 'cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
-alias dropbox 'cd $HOME/Dropbox'
+# macOS-only folder shortcuts
+if test (uname) = Darwin
+    alias icloud 'cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
+    alias dropbox 'cd $HOME/Dropbox'
+end
 
 # Git
 alias glu 'git config user.name "Stefan Imhoff" && git config user.email "gpg@kogakure.8shield.net" && git config user.signingkey "7A7253E8!"'
@@ -224,8 +247,10 @@ alias cx 'codex --dangerously-bypass-approvals-and-sandbox'
 # Can't remember the fork name
 alias youtube-dl yt-dlp
 
-# iA Writer
-alias ia 'open $1 -a /Applications/iA\ Writer.app'
+# iA Writer — macOS only
+if test (uname) = Darwin
+    alias ia 'open $1 -a /Applications/iA\ Writer.app'
+end
 
 # Clear the screen
 alias c clear

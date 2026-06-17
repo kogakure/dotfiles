@@ -16,8 +16,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# SSH
-export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+# SSH — macOS uses Secretive secure-enclave agent; Linux uses forwarded SSH_AUTH_SOCK
+if [[ "$(uname)" == "Darwin" ]]; then
+    export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+fi
 
 # fd
 FD_OPTIONS="--follow --exclude .git --exclude node_modules"
@@ -33,10 +35,12 @@ export FZF_DEFAULT_OPTS="--no-height"
 export FZF_TMUX="1"
 export FZF_TMUX_OPTS="-p"
 
-# OpenSSL
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+# OpenSSL — macOS only (Homebrew-linked; Linux uses system OpenSSL)
+if [[ "$(uname)" == "Darwin" ]]; then
+    export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+    export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+fi
 
 # Man
 export MANPATH="/usr/local/man:$MANPATH"
@@ -59,17 +63,15 @@ export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 export PATH="$HOME/.dotfiles/bin:$PATH"
 export PATH="$HOME/.dotfiles/private/bin:$PATH"
 
-# Homebrew
-export PATH="$(brew --prefix)/bin:$PATH"
-export PATH="$(brew --prefix)/sbin:$PATH"
-export PATH="$(brew --prefix)/whalebrew/bin:$PATH"
-
-if command -v brew >/dev/null 2>&1; then
-    eval "$(brew shellenv)"
+# Homebrew — macOS only
+if [[ "$(uname)" == "Darwin" ]]; then
+    if command -v brew >/dev/null 2>&1; then
+        eval "$(brew shellenv)"
+        export PATH="$(brew --prefix)/whalebrew/bin:$PATH"
+    fi
+    # Obsidian
+    export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 fi
-
-# Obsidian
-export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 
 # System
 export PATH="/usr/bin:$PATH"
