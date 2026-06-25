@@ -85,6 +85,7 @@
     "diagnostics": false,
   },
   "agent": {
+    "terminal_init_command": "claude --dangerously-skip-permissions",
     "dock": "left",
     "default_profile": "write",
     "default_model": {
