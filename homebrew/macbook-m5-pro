@@ -192,6 +192,8 @@ brew "gum"
 brew "handbrake"
 # Grammar Checker for Developers
 brew "harper"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
@@ -572,8 +574,6 @@ cask "raycast"
 cask "reader"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
-# Tool for sending personal documents to Kindles from Macs
-cask "send-to-kindle"
 # Onion routing based messenger
 cask "session"
 # Tool that provides consistent, highly configurable symbols for apps
