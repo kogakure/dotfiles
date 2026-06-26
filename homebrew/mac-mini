@@ -1,5 +1,5 @@
 tap "anomalyco/tap", trusted: true
-tap "arthur-ficial/tap", trusted: true
+tap "arthur-ficial/tap", "https://github.com/Arthur-Ficial/homebrew-tap", trusted: true
 tap "charmbracelet/tap", trusted: true
 tap "d12frosted/emacs-plus", trusted: true
 tap "dlvhdr/formulae", trusted: true
@@ -13,8 +13,9 @@ tap "homebrew/services"
 tap "joshmedeski/sesh", trusted: true
 tap "modem-dev/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
+tap "nkzw-tech/tap"
 tap "safedep/tap", trusted: true
-tap "sst/tap", trusted: true
+tap "sst/tap", "https://github.com/anomalyco/homebrew-tap.git", trusted: true
 tap "steipete/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
@@ -63,10 +64,6 @@ brew "btop"
 brew "bzip2"
 # C routines to compute the Discrete Fourier Transform
 brew "fftw"
-# GNU compiler collection
-brew "gcc"
-# High performance message passing library
-brew "open-mpi"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
 # Library for encoding and decoding .avif files
@@ -127,8 +124,8 @@ brew "exiftool"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Low-level access to audio, keyboard, mouse, joystick, and graphics
-brew "sdl2"
+# SDL2 compatibility layer that uses SDL3 behind the scenes
+brew "sdl2-compat"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # OCR (Optical Character Recognition) engine
@@ -149,6 +146,8 @@ brew "fish"
 brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Automatic git commit --fixup
@@ -194,9 +193,11 @@ brew "grex"
 # Tool for glamorous shell scripts
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake", link: false
+brew "handbrake"
 # Grammar Checker for Developers
 brew "harper"
+# Agent multiplexer that lives in your terminal
+brew "herdr", restart_service: :changed
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
@@ -263,6 +264,8 @@ brew "nginx"
 brew "nss"
 # Modern shell for the GitHub era
 brew "nushell"
+# High performance message passing library
+brew "open-mpi"
 # General-purpose speech recognition model
 brew "openai-whisper"
 # 7-Zip (high compression file archiver) implementation
@@ -293,6 +296,8 @@ brew "python-setuptools"
 brew "python@3.10"
 # Python interface to Tcl/Tk
 brew "python-tk@3.10"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
@@ -449,6 +454,8 @@ cask "cmux"
 cask "codex"
 # Menu bar usage monitor for Codex and Claude
 cask "steipete/tap/codexbar"
+# Visual diff tool for Git changes
+cask "nkzw-tech/tap/codiff", trusted: true
 # Colemak mod for more comfortable typing (DH variant)
 cask "colemak-dh"
 cask "color-oracle"
@@ -493,6 +500,8 @@ cask "google-chrome"
 cask "google-japanese-ime"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
+# Extensible coding agent for the terminal
+cask "grok-build"
 # Open-source video transcoder
 cask "handbrake-app"
 # Create presentation slides from a Markdown document
@@ -523,6 +532,8 @@ cask "languagetool-desktop"
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-wallet"
+# App to manage software development and track bugs
+cask "linear"
 # Discover, download, and run local LLMs
 cask "lm-studio"
 # Software for Logitech devices
@@ -732,8 +743,9 @@ vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
 cargo "ytsub"
-uv "graphifyy"
+uv "graphifyy[svg]"
 uv "jiratui"
+uv "posting"
 npm "@agentmemory/agentmemory"
 npm "@colbymchenry/codegraph"
 npm "@daisy/ace"
