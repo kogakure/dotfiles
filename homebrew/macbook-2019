@@ -1,16 +1,16 @@
-tap "charmbracelet/tap"
-tap "dustinblackman/tap"
-tap "felixkratz/formulae"
+tap "charmbracelet/tap", trusted: true
+tap "dustinblackman/tap", trusted: true
+tap "felixkratz/formulae", trusted: true
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "joshmedeski/sesh"
-tap "nikitabobko/tap"
+tap "joshmedeski/sesh", trusted: true
+tap "nikitabobko/tap", trusted: true
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
 # Powerful, clean, object-oriented scripting language
-brew "ruby"
+brew "ruby", link: false
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
 # Improved shell history for zsh, bash, fish and nushell
@@ -75,8 +75,8 @@ brew "exiftool"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Low-level access to audio, keyboard, mouse, joystick, and graphics
-brew "sdl2"
+# SDL2 compatibility layer that uses SDL3 behind the scenes
+brew "sdl2-compat"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # macOS CLI for managing custom icons for files and folders
@@ -128,7 +128,7 @@ brew "gpgme"
 # Command-line tool for generating regular expressions
 brew "grex"
 # Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake", link: false
+brew "handbrake"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
