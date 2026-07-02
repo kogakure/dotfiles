@@ -22,9 +22,9 @@ bind -M viins '^z' fzf-cd-widget
 # General
 set -x KEYTIMEOUT 1
 
-if command -v nvim >/dev/null 2>&1
-    set -x EDITOR nvim
-    set -x GIT_EDITOR nvim
+if command -v zed >/dev/null 2>&1
+    set -x EDITOR zed
+    set -x GIT_EDITOR zed
 end
 
 # Homebrew — macOS only (Linux uses apt/direct installs)

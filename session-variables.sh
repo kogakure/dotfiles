@@ -5,9 +5,9 @@ export SESSION_VARS_SOURCED=1
 # General
 export KEYTIMEOUT="1"
 
-if command -v nvim >/dev/null 2>&1; then
-    export EDITOR="nvim"
-    export GIT_EDITOR="nvim"
+if command -v zed >/dev/null 2>&1; then
+    export EDITOR="zed"
+    export GIT_EDITOR="zed"
 fi
 
 # XDG base directory specification
