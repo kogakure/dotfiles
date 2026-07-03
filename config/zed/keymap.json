@@ -47,4 +47,9 @@
       "g w": "vim::HelixJumpToWord",
     },
   },
+  {
+    "bindings": {
+      "ctrl-t": "text_finder::Toggle"
+    }
+  }
 ]
