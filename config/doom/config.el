@@ -92,8 +92,10 @@
                     (evil-visual-restore)))
 
 ;; Center the window on the next/prev search match (nvim `nzzzv`).
-(map! :n "n" (cmd! (evil-search-next) (evil-scroll-line-to-center nil))
-      :n "N" (cmd! (evil-search-previous) (evil-scroll-line-to-center nil)))
+;; Doom's `/` is evil's ex-search, so `n`/`N` must call the ex-search
+;; movers (evil-search-next/-previous are the *other*, unused module).
+(map! :n "n" (cmd! (evil-ex-search-next) (evil-scroll-line-to-center nil))
+      :n "N" (cmd! (evil-ex-search-previous) (evil-scroll-line-to-center nil)))
 
 ;; Fold open/close on +/- (nvim map). The `fold` module (init.el) provides
 ;; the backend evil-open-fold/evil-close-fold hook into.
