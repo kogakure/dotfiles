@@ -1,56 +1,104 @@
-[general]
-default_session_mode = "agent"
-
-[agents]
-
-[agents.third_party]
-should_render_cli_agent_toolbar = true
-
-[agents.warp_agent]
-is_any_ai_enabled = true
-
-[agents.warp_agent.other]
-show_agent_notifications = true
-show_conversation_history = true
+[privacy]
+telemetry_enabled = true
+crash_reporting_enabled = true
+custom_secret_regex_list = [
+  { name = "IPv4 Address", pattern = '\b((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}\b' },
+  {
+    name = "IPv6 Address",
+    pattern = '\b((([0-9A-Fa-f]{1,4}:){1,6}:)|(([0-9A-Fa-f]{1,4}:){7}))([0-9A-Fa-f]{1,4})\b',
+  },
+  { name = "Phone Number", pattern = '\b(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b' },
+  {
+    name = "MAC Address",
+    pattern = '\b((([a-zA-z0-9]{2}[-:]){5}([a-zA-z0-9]{2}))|(([a-zA-z0-9]{2}:){5}([a-zA-z0-9]{2})))\b',
+  },
+  { name = "Google API Key", pattern = '\bAIza[0-9A-Za-z-_]{35}\b' },
+  {
+    name = "AWS Access ID",
+    pattern = '\b(AKIA|A3T|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{12,}\b',
+  },
+  { name = "Slack App Token", pattern = '\bxapp-[0-9]+-[A-Za-z0-9_]+-[0-9]+-[a-f0-9]+\b' },
+  { name = "GitHub Classic Personal Access Token", pattern = '\bghp_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Fine-Grained Personal Access Token", pattern = '\bgithub_pat_[A-Za-z0-9_]{82}\b' },
+  { name = "GitHub OAuth Access Token", pattern = '\bgho_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub User-to-Server Token", pattern = '\bghu_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Server-to-Server Token", pattern = '\bghs_[A-Za-z0-9_]{36}\b' },
+  { name = "Stripe Key", pattern = '\b(?:r|s)k_(test|live)_[0-9a-zA-Z]{24}\b' },
+  { name = "Firebase Auth Domain", pattern = '\b([a-z0-9-]){1,30}(\.firebaseapp\.com)\b' },
+  { name = "JWT", pattern = '\b(ey[a-zA-z0-9_\-=]{10,}\.){2}[a-zA-z0-9_\-=]{10,}\b' },
+  { name = "OpenAI API Key", pattern = '\bsk-[a-zA-Z0-9]{48}\b' },
+  { name = "Anthropic API Key", pattern = '\bsk-ant-api\d{0,2}-[a-zA-Z0-9\-]{80,120}\b' },
+  { name = "Generic SK API Key", pattern = '\bsk-[a-zA-Z0-9\-]{10,100}\b' },
+  { name = "Fireworks API Key", pattern = '\bfw_[a-zA-Z0-9]{24}\b' },
+  { name = "Warp API Key", pattern = '\bwk-[0-9]+\.[A-Fa-f0-9.\-]+\b' },
+]
 
 [appearance]
+spacing = "normal"
 
 [appearance.vertical_tabs]
 enabled = true
+display_granularity = "tabs"
 view_mode = "compact"
-display_granularity = "panes"
-tab_item_mode = "focused_session"
 primary_info = "command"
 compact_subtitle = "branch"
 
+[appearance.themes]
+theme = "dark"
+system_theme = false
+
 [appearance.window]
 zoom_level = 150
-
-[appearance.icon]
-app_icon = "classic_2"
 
 [appearance.text]
 notebook_font_size = 14.0
 font_size = 13.0
 
-[appearance.themes]
-system_theme = false
+[appearance.icon]
+app_icon = "classic_1"
+
+[appearance.tabs]
+header_toolbar_chip_selection = "default"
+
+[agents]
+cloud_conversation_storage_enabled = true
+
+[agents.warp_agent]
+is_any_ai_enabled = false
+
+[agents.warp_agent.other]
+show_conversation_history = true
+show_agent_notifications = true
+
+[agents.warp_agent.input]
+nld_in_terminal_enabled = true
+
+[agents.third_party]
+should_render_cli_agent_toolbar = true
+
+[warp_drive]
+enabled = true
+
+[general]
+default_session_mode = "agent"
 
 [code]
 
 [code.editor]
 show_code_review_button = true
-show_project_explorer = true
 show_global_search = true
+show_project_explorer = true
+open_file_editor = { external_editor = "zed" }
 
-[warp_drive]
-enabled = true
+[code.indexing]
+agent_mode_codebase_context_auto_indexing = false
 
 [notifications]
 toast_duration_secs = 8
 
-[terminal]
+[text_editing]
+vim_mode_enabled = true
+vim_unnamed_system_clipboard = true
 
-[terminal.input]
-input_box_type_setting = "universal"
-honor_ps1 = false
+[account]
+is_settings_sync_enabled = true

@@ -40,7 +40,8 @@
     ~/.profile: profile
     ~/.session-variables.sh: session-variables.sh
     ~/.wakatime.cfg: private/wakatime.cfg
-    ~/.warp: warp
+    ~/.warp/settings.toml: warp/settings.toml
+    ~/.warp/tab_configs: warp/tab_configs
     ~/.wget: wget
     ~/.zsh_plugins.txt: zsh_plugins.txt
     ~/.zshenv: zshenv
