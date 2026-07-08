@@ -51,3 +51,7 @@
 
 ;; Catppuccin Theme
 (package! catppuccin-theme)
+
+;; solaire-mode dims non-file buffers; only useful in GUI. In the terminal it
+;; repaints an opaque background over our transparency, so disable it.
+(package! solaire-mode :disable t)

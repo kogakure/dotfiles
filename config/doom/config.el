@@ -27,13 +27,67 @@
 (setq display-line-numbers-type 'relative)
 
 ;; Let the terminal's own (possibly transparent) background show through
-;; instead of Emacs painting an opaque one — only applies to `emacs -nw`;
-;; GUI frames always paint their own background regardless of this.
+;; instead of Emacs painting an opaque one. This only applies to `emacs -nw`;
+;; GUI frames keep their theme background.
+(defconst +tty-transparent-bg-faces
+  '(default
+    fringe
+    line-number
+    line-number-current-line
+    vertical-border
+    window-divider
+    window-divider-first-pixel
+    window-divider-last-pixel
+    header-line
+    tab-bar
+    tab-bar-tab
+    tab-bar-tab-inactive
+    tab-line
+    tab-line-tab
+    tab-line-tab-current
+    tab-line-tab-inactive
+    mode-line
+    mode-line-active
+    mode-line-inactive
+    doom-modeline-bar
+    doom-modeline-bar-inactive
+    solaire-default-face
+    solaire-fringe-face
+    solaire-line-number-face
+    solaire-header-line-face
+    solaire-mode-line-face
+    solaire-mode-line-active-face
+    solaire-mode-line-inactive-face)
+  "Faces whose background should inherit the terminal background in TTY Emacs.")
+
+(defconst +tty-transparent-bg-colors
+  '("#1e1e2e" "#181825" "#11111b" "#313244" "#292c3c")
+  "Theme background colors to clear in TTY Emacs.")
+
+(defun +tty-transparent-bg--clear-face (face frame)
+  (set-face-background face "unspecified-bg" frame)
+  (set-face-background face "unspecified-bg"))
+
 (defun +tty-transparent-bg (&optional frame)
-  (when (or frame (not (display-graphic-p)))
-    (set-face-background 'default "unspecified-bg" (or frame (selected-frame)))))
-(+tty-transparent-bg)
+  (let ((frame (or frame (selected-frame))))
+    (unless (display-graphic-p frame)
+      (dolist (face +tty-transparent-bg-faces)
+        (when (facep face)
+          (+tty-transparent-bg--clear-face face frame)))
+      (dolist (face (face-list))
+        (when (member (face-attribute face :background frame 'default)
+                      +tty-transparent-bg-colors)
+          (+tty-transparent-bg--clear-face face frame))))))
+
+(add-hook 'doom-load-theme-hook #'+tty-transparent-bg)
 (add-hook 'server-after-make-frame-hook #'+tty-transparent-bg)
+(add-hook 'window-setup-hook #'+tty-transparent-bg)
+(add-hook 'after-change-major-mode-hook #'+tty-transparent-bg)
+(+tty-transparent-bg)
+
+(after! solaire-mode
+  (solaire-global-mode -1)
+  (+tty-transparent-bg))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
