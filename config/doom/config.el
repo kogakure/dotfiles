@@ -9,6 +9,9 @@
 (setq user-full-name "Stefan Imhoff"
       user-mail-address "gpg@kogakure.8shield.net")
 
+(map! :leader
+      :desc "Avy jump" "j j" #'avy-goto-char-timer)
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
