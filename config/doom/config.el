@@ -26,6 +26,15 @@
 ;; such as '5j' or 'd3k'.
 (setq display-line-numbers-type 'relative)
 
+;; Let the terminal's own (possibly transparent) background show through
+;; instead of Emacs painting an opaque one — only applies to `emacs -nw`;
+;; GUI frames always paint their own background regardless of this.
+(defun +tty-transparent-bg (&optional frame)
+  (when (or frame (not (display-graphic-p)))
+    (set-face-background 'default "unspecified-bg" (or frame (selected-frame)))))
+(+tty-transparent-bg)
+(add-hook 'server-after-make-frame-hook #'+tty-transparent-bg)
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
