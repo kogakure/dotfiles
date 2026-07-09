@@ -8,6 +8,6 @@
     "enabled": true
   },
   "diff_style": "auto",
-  "theme": "catppuccin",
+  "theme": "system",
   "plugin": ["@cortexkit/opencode-magic-context@latest"]
 }
