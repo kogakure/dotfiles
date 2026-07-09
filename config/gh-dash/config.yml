@@ -51,7 +51,7 @@ keybindings:
   prs: []
 repoPaths:
   kogakure/*: ~/Code/personal/*
-  work/*: ~/Code/work/*
+  bookingtime/*: ~/Code/work/*
 theme:
   ui:
     table:
