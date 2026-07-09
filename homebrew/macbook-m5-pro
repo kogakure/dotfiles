@@ -50,6 +50,8 @@ brew "pixman"
 brew "cairo"
 # Library and utilities for processing GIFs
 brew "giflib"
+# TIFF library and utilities
+brew "libtiff"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -68,8 +70,6 @@ brew "libavif"
 brew "pango"
 # Library to render SVG files using Cairo
 brew "librsvg"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
 # Statistics utility to count lines of code
@@ -382,6 +382,8 @@ brew "anomalyco/tap/opencode", trusted: true
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
 brew "charmbracelet/tap/soft-serve"
+# GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
 # Git diff pager based on delta but with a file tree, à la GitHub
 brew "dlvhdr/formulae/diffnav"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
@@ -473,6 +475,8 @@ cask "duckduckgo"
 cask "figma"
 # Web browser
 cask "firefox"
+# Offline voice-to-text dictation app with AI enhancement
+cask "fluidvoice"
 cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
@@ -649,8 +653,8 @@ mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 6475002485
 mas "Reeder", id: 1529448980
+mas "Reeder", id: 6475002485
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
