@@ -23,6 +23,7 @@ fi
 
 # Emacs
 alias emacs "emacs -nw"
+alias e "emacs -nw"
 
 # Claude Code
 alias cl='claude --dangerously-skip-permissions'

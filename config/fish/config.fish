@@ -228,6 +228,7 @@ end
 
 # Emacs
 alias emacs "emacs -nw"
+alias e "emacs -nw"
 
 # TMUX
 alias t tmux
