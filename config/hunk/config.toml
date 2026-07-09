@@ -1,6 +1,10 @@
-theme = "graphite"   # graphite, midnight, paper, ember
-mode = "auto"        # auto, split, stack
-exclude_untracked = false
+agent_notes = true
+exclude_untracked = true
 line_numbers = true
-wrap_lines = false
-agent_notes = false
+menu_bar = true
+mode = "auto" # auto, split, stack
+theme = "catppuccin-mocha"
+transparent_background = true
+vcs = "git" # git, jj, sl
+watch = false
+wrap_lines = true
