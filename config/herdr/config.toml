@@ -65,15 +65,15 @@ prefix = "ctrl+b"
 # help = "prefix+?"
 settings = "prefix+,"
 # detach = "prefix+q"
-# reload_config = "prefix+shift+r"
+reload_config = "prefix+r"
 # open_notification_target = "prefix+o"
 # workspace_picker = "prefix+w"
 # goto = "prefix+g"
 # new_workspace = "prefix+shift+n"
-# new_worktree = "prefix+shift+g"
+new_worktree = "prefix+shift+w"
 # open_worktree = ""    # optional, unset by default
 # remove_worktree = ""  # optional, unset by default; opens confirmation
-# rename_workspace = "prefix+shift+w"
+rename_workspace = "prefix+$"
 # close_workspace = "prefix+shift+d"
 # previous_workspace = "" # optional, unset by default
 # next_workspace = ""     # optional, unset by default
@@ -90,24 +90,24 @@ settings = "prefix+,"
 # close_tab = "prefix+shift+x"
 # rename_pane = "prefix+shift+p"
 # edit_scrollback = "prefix+e"
-focus_pane_left = "ctrl+h"
-focus_pane_down = "ctrl+j"
-focus_pane_up = "ctrl+k"
-focus_pane_right = "ctrl+l"
+# focus_pane_left = "ctrl+h"
+# focus_pane_down = "ctrl+k"
+# focus_pane_up = "ctrl+j"
+# focus_pane_right = "ctrl+l"
 # cycle_pane_next = "prefix+tab"
 # cycle_pane_previous = "prefix+shift+tab"
 # last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
-# split_vertical = "prefix+v"
-# split_horizontal = "prefix+minus"
+split_vertical = "prefix+|"
+split_horizontal = "prefix+minus"
 # close_pane = "prefix+x"
 # zoom = "prefix+z"       # legacy alias: fullscreen
-# resize_mode = "prefix+r"
+resize_mode = "prefix+shift+r"
 # toggle_sidebar = "prefix+b"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
 # They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
-# navigate_workspace_up = "up"
-# navigate_workspace_down = "down"
+navigate_workspace_up = "ctrl+j"
+navigate_workspace_down = "ctrl+k"
 # navigate_pane_left = "h"      # left arrow always focuses the pane to the left
 # navigate_pane_down = "j"
 # navigate_pane_up = "k"
@@ -117,10 +117,23 @@ focus_pane_right = "ctrl+l"
 # type = "shell" runs detached in the background.
 # type = "pane" opens a temporary pane and closes it when the command exits.
 # On Windows, command strings run through cmd.exe /d /c.
-# [[keys.command]]
-# key = "prefix+alt+g"
-# type = "pane"
-# command = "lazygit"
+[[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
+description = "Opens LazyGit"
+
+[[keys.command]]
+key = "prefix+alt+f"
+type = "pane"
+command = "spf"
+description = "Opens Superfile"
+
+[[keys.command]]
+key = "prefix+alt+d"
+type = "pane"
+command = "hunk diff --watch"
+description = "Opens Hunk"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
@@ -130,7 +143,7 @@ focus_pane_right = "ctrl+l"
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
 
 # [worktrees]
-# directory = "~/.herdr/worktrees"
+directory = "~/.herdr/worktrees"
 
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
@@ -231,7 +244,7 @@ delivery = "herdr"
 [session]
 # Resume supported AI-agent panes into their native conversation sessions after
 # a Herdr server restart. Requires official integrations that report session refs.
-# resume_agents_on_restore = true
+resume_agents_on_restore = true
 
 [remote]
 # Whether herdr manages the ssh config used for `herdr --remote`.
