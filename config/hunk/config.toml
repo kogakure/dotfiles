@@ -1,5 +1,5 @@
 agent_notes = true
-exclude_untracked = true
+exclude_untracked = false
 line_numbers = true
 menu_bar = true
 mode = "auto" # auto, split, stack
