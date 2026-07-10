@@ -66,10 +66,6 @@ return {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
 
-		cmdline = {
-			sources = {},
-		},
-
 		keymap = {
 			preset = "enter",
 			["<C-y>"] = { "select_and_accept" },
