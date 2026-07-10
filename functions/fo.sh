@@ -20,7 +20,7 @@ EOF
                 echo "No suitable 'open' command found."
             fi
         else
-            ${EDITOR:-vim} "$file"
+            ${EDITOR:-nvim} "$file"
         fi
     fi
 }
