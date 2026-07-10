@@ -296,6 +296,8 @@ brew "python-setuptools"
 brew "python@3.10"
 # Python interface to Tcl/Tk
 brew "python-tk@3.10"
+# File browser
+brew "ranger"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
@@ -328,6 +330,8 @@ brew "snzip"
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Modern and pretty fancy file manager for the terminal
+brew "superfile"
 # Easiest, most secure way to use WireGuard and 2FA
 brew "tailscale", restart_service: :changed
 # Official documentation format of the GNU project
