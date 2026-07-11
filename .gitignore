@@ -7,6 +7,10 @@ homebrew/*.lock.json
 # Tmux Plugin Manager
 config/tmux/plugins/
 
+# Herdr plugins (machine-generated state, absolute paths baked in)
+config/herdr/plugins/
+config/herdr/plugins.json
+
 # Fish
 config/fish/completions
 config/fish/conf.d
