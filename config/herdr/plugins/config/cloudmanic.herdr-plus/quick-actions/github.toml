@@ -1,0 +1,3 @@
+name = "GitHub"
+description = "Open https://github.com"
+command = "open https://github.com"

@@ -8,8 +8,8 @@ homebrew/*.lock.json
 config/tmux/plugins/
 
 # Herdr plugins (machine-generated state, absolute paths baked in)
-config/herdr/plugins/
 config/herdr/plugins.json
+config/herdr/plugins/github
 
 # Fish
 config/fish/completions

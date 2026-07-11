@@ -1,0 +1,26 @@
+name = "Dotfiles"
+description = "Dotfiles"
+group = "Privat"
+working_dir = "~/.dotfiles"
+
+[[tabs]]
+name = "Agent"
+
+[[tabs.panes]]
+command = "claude --dangerously-skip-permissions --chrome"
+split = "right"
+
+[[tabs.panes]]
+command = "nvim"
+split = "right"
+
+[[tabs]]
+name = "Hunk"
+command = "hunk diff --watch"
+
+[[tabs]]
+name = "Git"
+command = "lazygit"
+
+[[tabs]]
+name = "Terminal"

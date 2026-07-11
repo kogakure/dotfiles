@@ -1,0 +1,19 @@
+name = "Open Repo on GitHub"
+description = "Pick one of our repos and open it"
+type = "select"
+command = "open https://github.com/kogakure/{{.Value}}"
+
+[[options]]
+label = "Dotfiles"
+value = "dotfiles"
+description = "kogakure/dotfiles"
+
+[[options]]
+label = "Personal Website"
+value = "website-astro-stefanimhoff.de"
+description = "kogakure/website-astro-stefanimhoff.de"
+
+[[options]]
+label = "Skills"
+value = "skills"
+description = "kogakure/skills"

@@ -1,0 +1,6 @@
+# Another plain command action.
+
+name = "Brave Search"
+description = "Open https://search.brave.com"
+type = "command"
+command = "open https://search.brave.com"
