@@ -120,20 +120,32 @@ navigate_workspace_down = "ctrl+k"
 [[keys.command]]
 key = "prefix+alt+g"
 type = "pane"
-command = "lazygit"
+command = "/opt/homebrew/bin/fish -lc 'lazygit'"
 description = "Opens LazyGit"
 
 [[keys.command]]
 key = "prefix+alt+f"
 type = "pane"
-command = "spf"
+command = "/opt/homebrew/bin/fish -lc 'spf'"
 description = "Opens Superfile"
 
 [[keys.command]]
 key = "prefix+alt+d"
 type = "pane"
-command = "hunk diff --watch"
+command = "/opt/homebrew/bin/fish -lc 'hunk diff --watch'"
 description = "Opens Hunk"
+
+[[keys.command]]
+key = "prefix+up"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.projects"
+description = "herdr-plus: projects"
+
+[[keys.command]]
+key = "prefix+down"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.quick-actions"
+description = "herdr-plus: quick actions"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
