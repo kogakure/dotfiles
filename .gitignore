@@ -17,10 +17,3 @@ config/fish/conf.d
 config/fish/fish_variables
 config/fish/functions/*
 file_dictionaries/
-
-# Graphify
-graphify-out/.graphify_python
-graphify-out/.graphify_root
-graphify-out/cache/
-graphify-out/**/cost.json
-graphify-out/**/manifest.json
