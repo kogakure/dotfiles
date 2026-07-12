@@ -26,6 +26,34 @@
 ;; such as '5j' or 'd3k'.
 (setq display-line-numbers-type 'relative)
 
+;; Show available key bindings promptly. LazyVim waits 300 ms; the shorter
+;; delay compensates for terminal Emacs' additional popup/rendering overhead.
+(after! which-key
+  (setq which-key-idle-delay 0.15)
+
+  ;; Like which-key.nvim: Backspace returns to the previous prefix menu.
+  (defun +which-key-go-back ()
+    (interactive)
+    ;; `this-command-keys-vector' ends with the current prefix key and DEL.
+    ;; Replay everything before those two events to reopen the parent prefix.
+    (which-key-reload-key-sequence
+     (butlast (listify-key-sequence (this-command-keys-vector)) 2)))
+
+  (defun +which-key-bind-backspace (map &optional seen)
+    "Bind Backspace in MAP and all of its nested prefix maps."
+    (let ((seen (or seen (make-hash-table :test #'eq))))
+      (unless (gethash map seen)
+        (puthash map t seen)
+        (map-keymap
+         (lambda (_event binding)
+           (when (keymapp binding)
+             (+which-key-bind-backspace binding seen)))
+         map)
+        (define-key map (kbd "DEL") #'+which-key-go-back)
+        (define-key map (kbd "<backspace>") #'+which-key-go-back))))
+
+  (+which-key-bind-backspace doom-leader-map))
+
 ;; Let the terminal's own (possibly transparent) background show through
 ;; instead of Emacs painting an opaque one. This only applies to `emacs -nw`;
 ;; GUI frames keep their theme background.
@@ -112,6 +140,10 @@
 ;;; ----------------------------------------------------------------------------
 ;;; Editor behaviour
 ;;; ----------------------------------------------------------------------------
+
+;; Use a slim bar cursor while typing; keep Evil's defaults in other states.
+(after! evil
+  (setq evil-insert-state-cursor '(bar . 2)))
 
 ;; 2-space indentation everywhere (matches nvim's shiftwidth/tabstop = 2).
 (setq-default tab-width 2)
