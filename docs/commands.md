@@ -30,17 +30,22 @@
               # - Fish plugins (via fisher)
               # - Neovim plugins (via Lazy)
               # - macOS software
-              # - Writes backups of Homebrew, preferences, launch agents
+              # - Writes backups of Claude, Codex, Homebrew, preferences, launch agents
 ```
 
 ## Backup/Restore
 
 ```bash
+./bin/agentic-set-profile work|personal  # Select the shared Claude/Codex profile
+./bin/claude-set-profile work|personal   # Legacy compatibility wrapper
 ./bin/gpg-keys-backup         # Export GPG keys
 ./bin/gpg-keys-restore        # Import GPG keys
 ./bin/launchagents-backup     # Save launch agents
 ./bin/launchagents-restore    # Restore launch agents
 ./bin/preferences-backup      # Export app preferences
+./bin/codex-backup            # Save Codex config to private/codex/<profile>
+./bin/codex-restore           # Restore Codex config for the current profile
+./bin/codex-restore personal  # Bootstrap another profile from the personal backup
 ./bin/preferences-restore     # Import app preferences
 ```
 

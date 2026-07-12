@@ -42,6 +42,9 @@ mo optimize
 # Claude
 claude-backup
 
+# Codex
+codex-backup
+
 # Write Homebrew Brewfile
 homebrew-backup
 

@@ -1,29 +1,9 @@
 #!/bin/bash
 
 # claude-set-profile
-# Sets the machine profile used by claude-backup and claude-restore
-# Run once on each machine after initial setup
+# Backwards-compatible wrapper for agentic-set-profile.
 #
 # Usage: claude-set-profile work|personal
 
-set -e
-
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m'
-
-PROFILE="$1"
-
-if [ -z "$PROFILE" ]; then
-    echo -e "${RED}Usage: claude-set-profile work|personal${NC}"
-    exit 1
-fi
-
-if [ "$PROFILE" != "work" ] && [ "$PROFILE" != "personal" ]; then
-    echo -e "${RED}Error: profile must be 'work' or 'personal', got '$PROFILE'${NC}"
-    exit 1
-fi
-
-echo "$PROFILE" > "$HOME/.machine-profile"
-echo -e "${GREEN}✓ Machine profile set to: $PROFILE${NC}"
-echo "  claude-backup and claude-restore will now use: ~/.dotfiles/personal/claude/$PROFILE/"
+echo "claude-set-profile is deprecated; use agentic-set-profile instead." >&2
+exec "$(dirname "$0")/agentic-set-profile" "$@"

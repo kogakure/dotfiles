@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# agentic-set-profile
+# Sets the machine profile shared by agent backup and restore scripts.
+#
+# Usage: agentic-set-profile work|personal
+
+set -e
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+PROFILE="$1"
+PROFILE_FILE="$HOME/.agentic-profile"
+LEGACY_PROFILE_FILE="$HOME/.machine-profile"
+
+if [ -z "$PROFILE" ]; then
+    echo -e "${RED}Usage: agentic-set-profile work|personal${NC}"
+    exit 1
+fi
+
+if [ "$PROFILE" != "work" ] && [ "$PROFILE" != "personal" ]; then
+    echo -e "${RED}Error: profile must be 'work' or 'personal', got '$PROFILE'${NC}"
+    exit 1
+fi
+
+echo "$PROFILE" > "$PROFILE_FILE"
+
+echo -e "${GREEN}✓ Agentic profile set to: $PROFILE${NC}"
+echo "  Claude and Codex backups will use their respective $PROFILE directories."
+
+if [ -f "$LEGACY_PROFILE_FILE" ]; then
+    echo -e "${YELLOW}  Legacy ~/.machine-profile remains supported and can now be removed.${NC}"
+fi

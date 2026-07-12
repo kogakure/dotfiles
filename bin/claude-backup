@@ -5,8 +5,8 @@
 # Each profile (work or personal) is fully isolated — no shared/ directory.
 #
 # Usage: claude-backup
-# Requires: ~/.machine-profile containing "work" or "personal"
-# Set with: claude-set-profile work|personal
+# Reads ~/.agentic-profile, falling back to legacy ~/.machine-profile.
+# Set with: agentic-set-profile work|personal
 
 set -e
 
@@ -18,7 +18,7 @@ CLAUDE_DIR="$HOME/.claude"
 DOTFILES="$HOME/.dotfiles"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
-PROFILE=$(cat "$HOME/.machine-profile" 2>/dev/null || echo "personal")
+PROFILE=$(cat "$HOME/.agentic-profile" 2>/dev/null || cat "$HOME/.machine-profile" 2>/dev/null || echo "personal")
 PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
 LEGACY_SHARED="$DOTFILES/private/claude/shared"
 
