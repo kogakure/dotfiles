@@ -47,7 +47,7 @@
 		"dock": "right",
 	},
 	"git_panel": {
-		"tree_view": false,
+		"tree_view": true,
 		"dock": "right",
 	},
 	"agent_servers": {
