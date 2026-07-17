@@ -22,6 +22,8 @@ brew "openssl@3"
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Browser automation CLI for AI agents
 brew "agent-browser"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -190,8 +192,6 @@ brew "grex"
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
-# Grammar Checker for Developers
-brew "harper"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
 # Convert source code to formatted text with syntax highlighting
@@ -530,8 +530,6 @@ cask "karabiner-elements"
 cask "keycastr"
 # ZSA keyboard firmware flasher
 cask "keymapp"
-# Grammar, spelling and style suggestions in all the writing apps
-cask "languagetool-desktop"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
@@ -652,13 +650,14 @@ mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
 mas "MindNode", id: 6446116532
+mas "mymind", id: 1532801185
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 1529448980
 mas "Reeder", id: 6475002485
+mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
