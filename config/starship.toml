@@ -3,6 +3,16 @@ add_newline = false
 
 command_timeout = 2000
 
+format = "$directory${custom.git_worktree}$all"
+
+[custom.git_worktree]
+command = "basename \"$(git rev-parse --show-toplevel)\""
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+symbol = "󰙅 "
+style = "bold purple"
+format = "on [$symbol$output]($style) "
+disabled = false
+
 [battery]
 disabled = true
 
