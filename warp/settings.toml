@@ -33,6 +33,9 @@ custom_secret_regex_list = [
   { name = "Warp API Key", pattern = '\bwk-[0-9]+\.[A-Fa-f0-9.\-]+\b' },
 ]
 
+[privacy.secret_redaction]
+enabled = true
+
 [appearance]
 spacing = "normal"
 
@@ -42,45 +45,79 @@ display_granularity = "tabs"
 view_mode = "compact"
 primary_info = "command"
 compact_subtitle = "branch"
+tab_item_mode = "focused_session"
+show_details_on_hover = true
+use_latest_prompt_as_title = true
 
 [appearance.themes]
 theme = "dark"
-system_theme = false
+system_theme = true
 
 [appearance.window]
 zoom_level = 150
+override_opacity = 55
+override_blur = 36
 
 [appearance.text]
 notebook_font_size = 14.0
 font_size = 13.0
+ligature_rendering_enabled = true
 
 [appearance.icon]
-app_icon = "classic_1"
+app_icon = "default"
 
 [appearance.tabs]
-header_toolbar_chip_selection = "default"
+
+[appearance.tabs.header_toolbar_chip_selection ]
+
+[appearance.tabs.header_toolbar_chip_selection.custom]
+left = ["tabs_panel", "tools_panel", "agent_management"]
+right = ["notifications_mailbox", "code_review"]
 
 [agents]
 cloud_conversation_storage_enabled = true
 
 [agents.warp_agent]
-is_any_ai_enabled = false
+is_any_ai_enabled = true
 
 [agents.warp_agent.other]
 show_conversation_history = true
 show_agent_notifications = true
 
 [agents.warp_agent.input]
-nld_in_terminal_enabled = true
+nld_in_terminal_enabled = false
+ai_auto_detection_enabled = true
+
+[agents.warp_agent.input.agent_toolbar_chip_selection_setting]
+
+[agents.warp_agent.input.agent_toolbar_chip_selection_setting.custom]
+left = [
+  { context_chip = "username" },
+  { context_chip = "ssh" },
+  { context_chip = "working_directory" },
+  { context_chip = "shell_git_branch" },
+  { context_chip = "git_diff_stats" },
+  { context_chip = "github_pull_request" },
+  "nld_toggle",
+]
+right = [
+  { context_chip = "agent_plan_and_todo_list" },
+  "context_window_usage",
+  "model_selector",
+  "handoff_to_cloud",
+  "voice_input",
+  "file_attach",
+]
 
 [agents.third_party]
 should_render_cli_agent_toolbar = true
 
 [warp_drive]
-enabled = true
+enabled = false
 
 [general]
 default_session_mode = "agent"
+login_item = false
 
 [code]
 
@@ -89,6 +126,7 @@ show_code_review_button = true
 show_global_search = true
 show_project_explorer = true
 open_file_editor = { external_editor = "zed" }
+auto_open_code_review_pane_on_first_agent_change = true
 
 [code.indexing]
 agent_mode_codebase_context_auto_indexing = false
@@ -96,9 +134,26 @@ agent_mode_codebase_context_auto_indexing = false
 [notifications]
 toast_duration_secs = 8
 
+[notifications.preferences]
+is_agent_task_completed_enabled = true
+is_long_running_enabled = true
+is_needs_attention_enabled = true
+is_password_prompt_enabled = true
+long_running_threshold = 30
+mode = "enabled"
+play_notification_sound = true
+
 [text_editing]
 vim_mode_enabled = true
 vim_unnamed_system_clipboard = true
 
 [account]
 is_settings_sync_enabled = true
+
+[terminal]
+osc52_clipboard_access = "write_only"
+use_audible_bell = true
+
+[terminal.input]
+input_box_type_setting = "classic"
+honor_ps1 = true
