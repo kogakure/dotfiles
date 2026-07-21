@@ -486,6 +486,7 @@ cask "font-ia-writer-duo"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
 cask "font-monaspace"
+cask "font-monaspice-nerd-font"
 cask "font-noto-emoji"
 cask "font-symbols-only-nerd-font"
 # Tool to measure the computer system's performance
