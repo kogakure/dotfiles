@@ -12,12 +12,12 @@
 	},
 	"context_servers": {
 		"mcp-server-github": {
-   "enabled": true,
+			"enabled": true,
 			"remote": false,
 			"settings": {},
 		},
 		"shadcn-mcp-server": {
-   "enabled": true,
+			"enabled": true,
 			"remote": false,
 			"settings": {},
 		},

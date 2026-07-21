@@ -41,7 +41,7 @@ spacing = "normal"
 
 [appearance.vertical_tabs]
 enabled = true
-display_granularity = "tabs"
+display_granularity = "panes"
 view_mode = "compact"
 primary_info = "command"
 compact_subtitle = "branch"
@@ -160,5 +160,5 @@ osc52_clipboard_access = "read_write"
 use_audible_bell = true
 
 [terminal.input]
-input_box_type_setting = "universal"
-honor_ps1 = false
+input_box_type_setting = "classic"
+honor_ps1 = true
