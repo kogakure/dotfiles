@@ -1,0 +1,42 @@
+name = "New Work Project Worktree (Agent + Server)"
+title = "{{branch_name}}"
+color = "green"
+
+[[panes]]
+id = "root"
+split = "vertical"
+children = ["agent", "server"]
+
+[[panes]]
+id = "agent"
+type = "terminal"
+directory = "{{repo}}"
+commands = [
+    "git worktree add -b {{branch_name}} $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}} {{base_branch}} 2>/dev/null || true",
+    "cd $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}}",
+    "claude --dangerously-skip-permissions --chrome",
+]
+is_focused = true
+
+[[panes]]
+id = "server"
+type = "terminal"
+directory = "{{repo}}"
+commands = [
+    "git worktree add -b {{branch_name}} $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}} {{base_branch}} 2>/dev/null || true",
+    "cd $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}}",
+    "yarn",
+    "yarn start:stage",
+]
+
+[params.repo]
+type = "repo"
+description = "Project directory"
+
+[params.base_branch]
+type = "branch"
+description = "Base branch to branch from"
+
+[params.branch_name]
+type = "text"
+description = "New branch/worktree name"

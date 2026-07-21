@@ -41,7 +41,7 @@ spacing = "normal"
 
 [appearance.vertical_tabs]
 enabled = true
-display_granularity = "panes"
+display_granularity = "tabs"
 view_mode = "compact"
 primary_info = "command"
 compact_subtitle = "branch"
@@ -53,7 +53,7 @@ hide_title_bar_search_bar = false
 
 [appearance.themes]
 theme = "dark"
-system_theme = false
+system_theme = true
 
 [appearance.window]
 zoom_level = 150
@@ -76,15 +76,19 @@ header_toolbar_chip_selection = "default"
 cloud_conversation_storage_enabled = true
 
 [agents.warp_agent]
-is_any_ai_enabled = false
+is_any_ai_enabled = true
 
 [agents.warp_agent.other]
-show_conversation_history = true
+show_conversation_history = false
 show_agent_notifications = true
+should_show_oz_updates_in_zero_state = false
+should_render_use_agent_toolbar_for_user_commands = false
+agent_attribution_enabled = false
 
 [agents.warp_agent.input]
-nld_in_terminal_enabled = true
-ai_auto_detection_enabled = true
+nld_in_terminal_enabled = false
+ai_auto_detection_enabled = false
+show_agent_tips = false
 
 [agents.warp_agent.input.agent_toolbar_chip_selection_setting]
 
@@ -107,15 +111,21 @@ right = [
   "file_attach",
 ]
 
+[agents.warp_agent.active_ai]
+enabled = false
+
 [agents.third_party]
 should_render_cli_agent_toolbar = true
 auto_open_composer_on_cli_agent_start = false
+
+[agents.voice]
+voice_input_toggle_key = "fn"
 
 [warp_drive]
 enabled = true
 
 [general]
-default_session_mode = "agent"
+default_session_mode = "terminal"
 login_item = false
 show_warning_before_quitting = false
 
@@ -125,7 +135,7 @@ show_warning_before_quitting = false
 show_code_review_button = true
 show_global_search = true
 show_project_explorer = true
-open_file_editor = "warp"
+open_file_editor = "env_editor"
 auto_open_code_review_pane_on_first_agent_change = true
 open_code_panels_file_editor = "warp"
 open_file_layout = "new_tab"
@@ -155,7 +165,9 @@ is_settings_sync_enabled = true
 [terminal]
 osc52_clipboard_access = "read_write"
 use_audible_bell = true
+show_terminal_zero_state_block = false
 
 [terminal.input]
 input_box_type_setting = "classic"
 honor_ps1 = true
+show_hint_text = false
