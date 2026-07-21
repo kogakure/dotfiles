@@ -117,7 +117,7 @@ should_render_cli_agent_toolbar = true
 auto_open_composer_on_cli_agent_start = false
 
 [warp_drive]
-enabled = false
+enabled = true
 
 [general]
 default_session_mode = "agent"
