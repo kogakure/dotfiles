@@ -53,7 +53,7 @@ hide_title_bar_search_bar = false
 
 [appearance.themes]
 theme = "dark"
-system_theme = true
+system_theme = false
 
 [appearance.window]
 zoom_level = 150
@@ -63,19 +63,14 @@ override_blur = 36
 [appearance.text]
 font_name = "MonaspiceNe Nerd Font Mono"
 notebook_font_size = 14.0
-font_size = 13.0
+font_size = 16.0
 ligature_rendering_enabled = true
 
 [appearance.icon]
 app_icon = "default"
 
 [appearance.tabs]
-
-[appearance.tabs.header_toolbar_chip_selection ]
-
-[appearance.tabs.header_toolbar_chip_selection.custom]
-left = ["tabs_panel", "tools_panel", "agent_management"]
-right = ["notifications_mailbox", "code_review"]
+header_toolbar_chip_selection = "default"
 
 [agents]
 cloud_conversation_storage_enabled = true
@@ -122,6 +117,7 @@ enabled = true
 [general]
 default_session_mode = "agent"
 login_item = false
+show_warning_before_quitting = false
 
 [code]
 
@@ -131,7 +127,8 @@ show_global_search = true
 show_project_explorer = true
 open_file_editor = "warp"
 auto_open_code_review_pane_on_first_agent_change = true
-open_code_panels_file_editor = { external_editor = "zed" }
+open_code_panels_file_editor = "warp"
+open_file_layout = "new_tab"
 
 [code.indexing]
 agent_mode_codebase_context_auto_indexing = false

@@ -1,0 +1,24 @@
+name = "stefanimhoff.de"
+title = "stefanimhoff.de"
+color = "green"
+
+[[panes]]
+id = "root"
+split = "horizontal"
+children = [
+    "agent",
+    "Server",
+]
+
+[[panes]]
+id = "agent"
+type = "terminal"
+directory = "/Users/kogakure/Code/personal/websites/stefanimhoff-de"
+commands = ["claude --dangerously-skip-permissions --chrome"]
+is_focused = true
+
+[[panes]]
+id = "Server"
+type = "terminal"
+directory = "/Users/kogakure/Code/personal/websites/stefanimhoff-de"
+commands = ["pnpm dev"]
