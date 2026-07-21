@@ -48,6 +48,8 @@ compact_subtitle = "branch"
 tab_item_mode = "focused_session"
 show_details_on_hover = true
 use_latest_prompt_as_title = true
+show_panel_in_restored_windows = true
+hide_title_bar_search_bar = false
 
 [appearance.themes]
 theme = "dark"
@@ -59,6 +61,7 @@ override_opacity = 55
 override_blur = 36
 
 [appearance.text]
+font_name = "MonaspiceNe Nerd Font Mono"
 notebook_font_size = 14.0
 font_size = 13.0
 ligature_rendering_enabled = true
@@ -78,14 +81,14 @@ right = ["notifications_mailbox", "code_review"]
 cloud_conversation_storage_enabled = true
 
 [agents.warp_agent]
-is_any_ai_enabled = true
+is_any_ai_enabled = false
 
 [agents.warp_agent.other]
 show_conversation_history = true
 show_agent_notifications = true
 
 [agents.warp_agent.input]
-nld_in_terminal_enabled = false
+nld_in_terminal_enabled = true
 ai_auto_detection_enabled = true
 
 [agents.warp_agent.input.agent_toolbar_chip_selection_setting]
@@ -111,6 +114,7 @@ right = [
 
 [agents.third_party]
 should_render_cli_agent_toolbar = true
+auto_open_composer_on_cli_agent_start = false
 
 [warp_drive]
 enabled = false
@@ -125,8 +129,9 @@ login_item = false
 show_code_review_button = true
 show_global_search = true
 show_project_explorer = true
-open_file_editor = { external_editor = "zed" }
+open_file_editor = "warp"
 auto_open_code_review_pane_on_first_agent_change = true
+open_code_panels_file_editor = { external_editor = "zed" }
 
 [code.indexing]
 agent_mode_codebase_context_auto_indexing = false
@@ -151,9 +156,9 @@ vim_unnamed_system_clipboard = true
 is_settings_sync_enabled = true
 
 [terminal]
-osc52_clipboard_access = "write_only"
+osc52_clipboard_access = "read_write"
 use_audible_bell = true
 
 [terminal.input]
-input_box_type_setting = "classic"
-honor_ps1 = true
+input_box_type_setting = "universal"
+honor_ps1 = false
