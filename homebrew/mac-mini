@@ -54,6 +54,8 @@ brew "pixman"
 brew "cairo"
 # Library and utilities for processing GIFs
 brew "giflib"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -72,8 +74,6 @@ brew "libavif"
 brew "pango"
 # Library to render SVG files using Cairo
 brew "librsvg"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
 # Statistics utility to count lines of code
@@ -122,6 +122,8 @@ brew "espeak-ng"
 brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # SDL2 compatibility layer that uses SDL3 behind the scenes
@@ -194,8 +196,6 @@ brew "grex"
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
-# Grammar Checker for Developers
-brew "harper"
 # Agent multiplexer that lives in your terminal
 brew "herdr", restart_service: :changed
 # Convert source code to formatted text with syntax highlighting
@@ -204,6 +204,8 @@ brew "highlight"
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
@@ -268,6 +270,8 @@ brew "nushell"
 brew "open-mpi"
 # General-purpose speech recognition model
 brew "openai-whisper"
+# Painless compression and decompression for your terminal
+brew "ouch"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
@@ -310,8 +314,6 @@ brew "ripgrep-all"
 brew "ronn"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# CLI proxy to minimize LLM token consumption
-brew "rtk"
 # CLI search and replace | Space Age seD
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
@@ -330,16 +332,20 @@ brew "snzip"
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Easiest, most secure way to use WireGuard and 2FA
-brew "tailscale", restart_service: :changed
+# Modern and pretty fancy file manager for the terminal
+brew "superfile"
 # Official documentation format of the GNU project
 brew "texinfo"
 # Code-search similar to ack
 brew "the_silver_searcher"
+# Program that allows you to count code, quickly
+brew "tokei"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Incremental parsing library
 brew "tree-sitter"
+# Source code spell checker
+brew "typos-cli"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation
@@ -383,13 +389,15 @@ brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode"
+brew "anomalyco/tap/opencode", trusted: true
 # On-device Apple FoundationModels CLI and OpenAI-compatible server
 brew "arthur-ficial/tap/apfel"
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
 brew "charmbracelet/tap/soft-serve"
+# GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
 # Git diff pager based on delta but with a file tree, à la GitHub
 brew "dlvhdr/formulae/diffnav"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
@@ -400,8 +408,6 @@ brew "felixkratz/formulae/borders"
 brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
-# Desktop-inspired terminal diff viewer for agent-authored changesets
-brew "modem-dev/tap/hunk"
 # SafeDep vet is a tool for identifying open source software supply chain risks
 brew "safedep/tap/vet"
 # Comprehensive macOS cleanup and application uninstall tool
@@ -428,8 +434,6 @@ cask "astro-editor"
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# Menu bar icon organiser
-cask "bartender"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
 # Agentic-first issue tracker
@@ -438,8 +442,6 @@ cask "hmans/beans/beans"
 cask "bibdesk"
 # 3D creation suite
 cask "blender"
-# Utility to dim background/inactive content in the screen
-cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
@@ -475,6 +477,8 @@ cask "docker-desktop"
 cask "duckduckgo"
 # Electronic design automation software
 cask "eagle"
+# Text editor
+cask "emacs-app"
 # Web browser
 cask "firefox"
 cask "font-fira-code"
@@ -527,8 +531,6 @@ cask "karabiner-elements"
 cask "keycastr"
 # ZSA keyboard firmware flasher
 cask "keymapp"
-# Grammar, spelling and style suggestions in all the writing apps
-cask "languagetool-desktop"
 # Official client for LBRY, a decentralised file-sharing and payment network
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
@@ -583,8 +585,6 @@ cask "reader"
 cask "readest"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
-# Tool for sending personal documents to Kindles from Macs
-cask "send-to-kindle"
 # Onion routing based messenger
 cask "session"
 # Tool that provides consistent, highly configurable symbols for apps
@@ -597,6 +597,8 @@ cask "sonos"
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
+# Video game digital distribution service
+cask "steam"
 # Dictation tool including LLM reformatting
 cask "superwhisper"
 # Interior design application
@@ -662,10 +664,11 @@ mas "Kindle", id: 302584613
 mas "Locally AI", id: 6741426692
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
+mas "mymind", id: 1532801185
 mas "Numbers", id: 361304891
 mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Pages", id: 361309726
+mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
@@ -743,6 +746,7 @@ vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
+cargo "ghzinga"
 cargo "ytsub"
 uv "jiratui"
 uv "posting"
@@ -755,6 +759,7 @@ npm "@kitlangton/ghui"
 npm "@nqbao/pi-sandbox"
 npm "@plannotator/pi-extension"
 npm "@readwise/cli"
+npm "@rynfar/meridian"
 npm "@tobilu/qmd"
 npm "@vercel/before-and-after"
 npm "@zeeg/dex"
@@ -764,7 +769,6 @@ npm "commitizen"
 npm "corepack"
 npm "cz-conventional-changelog"
 npm "fast-cli"
-npm "hunkdiff"
 npm "jscpd"
 npm "json-server"
 npm "jsonlint"
