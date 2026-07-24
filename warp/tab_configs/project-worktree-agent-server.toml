@@ -1,10 +1,10 @@
-name = "New Work Project Worktree (Agent + Server)"
+name = "New Project Worktree (Agent + Server)"
 title = "{{branch_name}}"
 color = "green"
 
 [[panes]]
 id = "root"
-split = "vertical"
+split = "horizontal"
 children = ["agent", "server"]
 
 [[panes]]
@@ -12,7 +12,7 @@ id = "agent"
 type = "terminal"
 directory = "{{repo}}"
 commands = [
-    "git worktree add -b {{branch_name}} $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}} {{base_branch}} 2>/dev/null || true",
+    "WT=\"$HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}}\"; rmdir \"$WT\" 2>/dev/null; git worktree add -b {{branch_name}} \"$WT\" {{base_branch}} 2>/dev/null || git worktree add \"$WT\" {{branch_name}} 2>/dev/null || true",
     "cd $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}}",
     "claude --dangerously-skip-permissions --chrome",
 ]
@@ -23,7 +23,7 @@ id = "server"
 type = "terminal"
 directory = "{{repo}}"
 commands = [
-    "git worktree add -b {{branch_name}} $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}} {{base_branch}} 2>/dev/null || true",
+    "WT=\"$HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}}\"; rmdir \"$WT\" 2>/dev/null; git worktree add -b {{branch_name}} \"$WT\" {{base_branch}} 2>/dev/null || git worktree add \"$WT\" {{branch_name}} 2>/dev/null || true",
     "cd $HOME/.warp/worktrees/$(basename {{repo}})/{{branch_name}}",
     "yarn",
     "yarn start:stage",

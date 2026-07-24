@@ -57,13 +57,13 @@ system_theme = true
 
 [appearance.window]
 zoom_level = 150
-override_opacity = 55
-override_blur = 36
+override_opacity = 50
+override_blur = 45
 
 [appearance.text]
 font_name = "MonaspiceNe Nerd Font Mono"
 notebook_font_size = 14.0
-font_size = 16.0
+font_size = 14.0
 ligature_rendering_enabled = true
 
 [appearance.icon]
