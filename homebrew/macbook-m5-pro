@@ -22,8 +22,6 @@ brew "openssl@3"
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # Browser automation CLI for AI agents
 brew "agent-browser"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -310,8 +308,6 @@ brew "ripgrep-all"
 brew "ronn"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# CLI proxy to minimize LLM token consumption
-brew "rtk"
 # CLI search and replace | Space Age seD
 brew "sad"
 # 7-Zip is a file archiver with a high compression ratio
@@ -593,6 +589,8 @@ cask "sonos"
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
+# Video game digital distribution service
+cask "steam"
 # Dictation tool including LLM reformatting
 cask "superwhisper"
 # Interior design application
@@ -657,8 +655,8 @@ mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 6475002485
 mas "Reeder", id: 1529448980
+mas "Reeder", id: 6475002485
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
@@ -732,6 +730,7 @@ vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
+cargo "ghzinga"
 cargo "nixpkgs-fmt"
 uv "jiratui"
 uv "posting"
