@@ -155,7 +155,12 @@ description = "herdr-plus: quick actions"
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
 
 [worktrees]
-directory = "../worktrees"
+# Where herdr creates worktree checkouts, as <directory>/<repo>/<branch>.
+# NOTE: relative paths (e.g. "../worktrees") resolve against the herdr
+# server's launch CWD, not the repo, so they land in unpredictable places.
+# Use an absolute path (~ is expanded) so it matches Zed's worktree folder
+# and stays stable regardless of where herdr was started.
+directory = "~/Code/work/worktrees"
 
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
