@@ -136,6 +136,12 @@ command = "/opt/homebrew/bin/fish -lc 'hunk diff --watch'"
 description = "Opens Hunk"
 
 [[keys.command]]
+key = "prefix+alt+t"
+type = "pane"
+command = "/opt/homebrew/bin/fish -lc 'tuicr'"
+description = "Opens tuicr"
+
+[[keys.command]]
 key = "prefix+up"
 type = "plugin_action"
 command = "cloudmanic.herdr-plus.projects"
