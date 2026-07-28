@@ -1,12 +1,27 @@
 # =============================================================================
-# Pi Defender — Security Patterns
+# Pi Defender — Essential Security Patterns (shipped with package)
 # =============================================================================
 #
-# Edit this file to customize which operations are blocked.
-# Each extension loads this file from:
-#   1. .pi/defender/patterns.yaml  (project-local)
-#   2. ~/.pi/defender/patterns.yaml  (global fallback)
+# This file is copied to ~/.pi/patterns.yaml on install and .pi/patterns.yaml
+# via /defender:patterns — it contains the essential protection rules.
+# These files are overwritten on every install/update.
 #
+# User customizations (additional patterns, whitelist entries) go in:
+#   1. .pi/defender.yaml  (project-local, NEVER overwritten)
+#   2. ~/.pi/defender.yaml  (global, NEVER overwritten)
+#
+# All four files are merged together at load time.
+#
+
+# -----------------------------------------------------------------------------
+# PROMPT TIMEOUT — Auto-dismiss strict mode prompts
+# -----------------------------------------------------------------------------
+# Seconds before strict mode prompts auto-dismiss. 0 = no timeout.
+promptTimeout: 120
+
+# What to do when the timeout fires: false = auto-deny (secure-by-default), true = auto-approve.
+autoApprove: false
+
 # -----------------------------------------------------------------------------
 # BASH TOOL PATTERNS — Matched against Bash tool commands
 # -----------------------------------------------------------------------------
@@ -17,79 +32,101 @@
 bashToolPatterns:
   # === Destructive file operations ===
   - pattern: '\brm\s+-[rRf]'
+    autoReject: true
     reason: rm with recursive or force flags
 
   - pattern: '\bfind\s+.*\s+-delete\b'
+    autoReject: true
     reason: find with -delete
 
   # === Privilege escalation ===
   - pattern: '\bsudo\b'
+    autoReject: true
     reason: sudo command execution
 
   - pattern: '\bsu\s+-'
+    autoReject: true
     reason: switch user
 
   # === Database destruction ===
   - pattern: '\bDROP\s+(TABLE|DATABASE|SCHEMA)\b'
+    autoReject: true
     reason: SQL DROP statement
 
   - pattern: '\bDELETE\s+FROM\s+\w+\s*;'
+    autoReject: true
     reason: DELETE without WHERE clause
 
   - pattern: '\bTRUNCATE\s+(TABLE\s+)?\w+'
+    autoReject: true
     reason: SQL TRUNCATE
 
   # === Git force/destructive operations (ask mode) ===
   - pattern: '\bgit\s+push\s+.*--force'
+    autoReject: true
     reason: git push --force
     
   - pattern: '\bgit\s+push\s+.*--delete\b'
+    autoReject: true
     reason: git push --delete
     
   - pattern: '\bgit\s+reset\s+--hard\b'
+    autoReject: true
     reason: git reset --hard
 
   - pattern: '\bgit\s+clean\s+-[fd]+'
+    autoReject: true
     reason: git clean
 
   # === Network attacks ===
   - pattern: '\bcurl\s+.*\|\s*(ba)?sh'
+    autoReject: true
     reason: curl piped to bash
 
   - pattern: '\bwget\s+.*\|\s*(ba)?sh'
+    autoReject: true
     reason: wget piped to bash
 
   # === Disk/device destruction ===
   - pattern: '\bdd\s+if='
+    autoReject: true
     reason: dd disk operations
 
   - pattern: '\bmkfs\.\w+'
+    autoReject: true
     reason: filesystem formatting
 
   # === Docker dangerous operations ===
   - pattern: '\bdocker\s+rm\s+-f\b'
+    autoReject: true
     reason: docker forced container removal
 
   - pattern: '\bdocker\s+system\s+prune\b'
+    autoReject: true
     reason: docker system prune (ask)
     
   # === Package manager destructive ===
   - pattern: '\bnpm\s+unpublish\b'
+    autoReject: true
     reason: npm unpublish
     
   # === Permission changes ===
   - pattern: '\bchmod\s+.*777'
+    autoReject: true
     reason: chmod 777 (world-writable)
 
   - pattern: '\bchown\s+-R\b'
+    autoReject: true
     reason: recursive chown
 
   # === Fork bombs ===
   - pattern: ':\(\)\s*\{'
+    autoReject: true
     reason: fork bomb pattern
 
   # === Reboot/shutdown ===
   - pattern: '\b(shutdown|reboot|halt|poweroff)\b'
+    autoReject: true
     reason: system shutdown/reboot
 
 # -----------------------------------------------------------------------------
