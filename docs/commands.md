@@ -54,3 +54,18 @@
 ```bash
 ./bin/macos-settings  # Apply macOS system preferences
 ```
+
+## Worktrees
+
+```bash
+./bin/node-install [directory]  # Detect npm/yarn/pnpm (packageManager field, then
+                                 # lockfile, then npm) and run its install command.
+                                 # No-op (exit 0) if there's no package.json.
+```
+
+The `tdi.worktree-setup` herdr plugin runs `bin/node-install` automatically whenever
+`herdr worktree create`/`open` creates a new git worktree, via herdr's `worktree.created`
+event hook. Its config lives at
+`config/herdr/plugins/config/tdi.worktree-setup/config.toml` — add a `[[project]]` entry
+there for repo-specific setup steps (e.g. copying `.env` files). See that file for the
+format and available `$HERDR_*` environment variables.

@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# node-install
+# Detects the package manager a JS/TS repo actually uses and runs its install
+# command. Meant as the default step for herdr's worktree.created hook (see
+# config/herdr/plugins/config/tdi.worktree-setup/config.toml), so a fresh
+# worktree gets its dependencies without per-repo configuration.
+#
+# Usage: node-install [directory]   (defaults to $PWD)
+
+set -e
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+TARGET_DIR="${1:-$PWD}"
+cd "$TARGET_DIR"
+
+# Repair PATH: plugin hooks run via `sh -c` and may not have the mise shims
+# that interactive shells get from config/fish/config.fish.
+MISE_SHIMS="$HOME/.local/share/mise/shims"
+if [ -d "$MISE_SHIMS" ]; then
+    PATH="$MISE_SHIMS:$PATH"
+fi
+
+if [ ! -f package.json ]; then
+    echo -e "${YELLOW}node-install: no package.json in $TARGET_DIR, nothing to do.${NC}"
+    exit 0
+fi
+
+# Prefer the explicit packageManager field (e.g. "yarn@4.1.0"); fall back to
+# whichever lockfile is present, then default to npm.
+DECLARED_PM=$(node -p "try { (require('./package.json').packageManager || '').split('@')[0] } catch (e) { '' }" 2>/dev/null || true)
+
+if [ -n "$DECLARED_PM" ]; then
+    PM="$DECLARED_PM"
+elif [ -f yarn.lock ]; then
+    PM="yarn"
+elif [ -f pnpm-lock.yaml ]; then
+    PM="pnpm"
+elif [ -f package-lock.json ]; then
+    PM="npm"
+else
+    PM="npm"
+fi
+
+if ! command -v "$PM" >/dev/null 2>&1; then
+    echo -e "${RED}node-install: package manager '$PM' not found on PATH.${NC}"
+    exit 1
+fi
+
+# Run through corepack when the repo pins a version and corepack is available,
+# so the pinned version runs rather than whatever's globally installed
+# (e.g. Homebrew's Yarn 1 vs. a project on Yarn Berry). Corepack occasionally
+# fails with a signature-verification error ("Cannot find matching keyid") when
+# its bundled trusted-key set lags a package manager's key rotation, so fall
+# back to the plain binary on PATH rather than leaving the worktree unset up.
+if [ -n "$DECLARED_PM" ] && command -v corepack >/dev/null 2>&1; then
+    echo -e "${GREEN}node-install: using $PM (via corepack) in $TARGET_DIR${NC}"
+    if ! corepack "$PM" install; then
+        echo -e "${YELLOW}node-install: corepack failed (likely a stale signing-key set); retrying with the plain '$PM' on PATH.${NC}"
+        "$PM" install
+    fi
+else
+    echo -e "${GREEN}node-install: using $PM in $TARGET_DIR${NC}"
+    "$PM" install
+fi

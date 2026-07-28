@@ -1,0 +1,14 @@
+# tdi.worktree-setup config
+# Runs on herdr's `worktree.created` event. Docs: docs/commands.md (Worktrees).
+
+# Applies to every repo that has no more specific [[project]] entry below.
+[default]
+steps = ["$HOME/.dotfiles/bin/node-install"]
+
+# Per-repo overrides, e.g. to also copy gitignored env files:
+# [[project]]
+# path = "~/Code/work/some-repo"
+# steps = [
+#   'cp "$HERDR_MAIN_REPO"/.env* . 2>/dev/null || true',
+#   "$HOME/.dotfiles/bin/node-install",
+# ]
