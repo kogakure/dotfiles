@@ -113,6 +113,13 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# Resize to Percentage of Monitor Width
+3 = ['exec-and-forget ~/.dotfiles/bin/aerospace-resize-percent width 30', 'mode main']
+4 = ['exec-and-forget ~/.dotfiles/bin/aerospace-resize-percent width 40', 'mode main']
+5 = ['exec-and-forget ~/.dotfiles/bin/aerospace-resize-percent width 50', 'mode main']
+6 = ['exec-and-forget ~/.dotfiles/bin/aerospace-resize-percent width 60', 'mode main']
+7 = ['exec-and-forget ~/.dotfiles/bin/aerospace-resize-percent width 70', 'mode main']
+
 # ✂---✂---✂---✂---✂---✂---✂---✂
 
 # Window Autodetection

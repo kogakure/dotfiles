@@ -1,0 +1,59 @@
+#!/bin/bash
+#
+# Resize the focused AeroSpace window to a percentage of its monitor.
+# Usage: aerospace-resize-percent <width|height> <percent>
+# Example: aerospace-resize-percent width 30
+
+set -euo pipefail
+
+dimension="${1:-}"
+percent="${2:-}"
+
+if [[ "$dimension" != "width" && "$dimension" != "height" ]] || [[ -z "$percent" ]]; then
+  echo "Usage: aerospace-resize-percent <width|height> <percent>" 1>&2
+  exit 127
+fi
+
+screen_size=$(osascript -l JavaScript <<'EOF'
+ObjC.import('AppKit')
+
+const se = Application('System Events')
+const proc = se.processes.whose({frontmost: true})[0]
+const win = proc.windows[0]
+const winPos = win.position()
+const winSize = win.size()
+const cx = winPos[0] + winSize[0] / 2
+const cy = winPos[1] + winSize[1] / 2
+
+const mainHeight = $.NSScreen.mainScreen.frame.size.height
+const screens = $.NSScreen.screens
+
+let result = null
+for (let i = 0; i < screens.count; i++) {
+  const f = screens.objectAtIndex(i).frame
+  const x1 = f.origin.x
+  const y1 = mainHeight - (f.origin.y + f.size.height)
+  const x2 = x1 + f.size.width
+  const y2 = y1 + f.size.height
+  if (cx >= x1 && cx <= x2 && cy >= y1 && cy <= y2) {
+    result = { width: f.size.width, height: f.size.height }
+    break
+  }
+}
+
+JSON.stringify(result)
+EOF
+)
+
+if [[ "$screen_size" == "null" || -z "$screen_size" ]]; then
+  echo "aerospace-resize-percent: could not determine focused window's screen" 1>&2
+  exit 1
+fi
+
+value=$(echo "$screen_size" | python3 -c "
+import json, sys
+d = json.load(sys.stdin)
+print(round(d['$dimension'] * $percent / 100))
+")
+
+aerospace resize "$dimension" "$value"
