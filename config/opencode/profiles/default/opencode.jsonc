@@ -67,7 +67,13 @@
       "type": "local",
     },
     "open-meteo": {
-      "command": ["npx", "-y", "-p", "open-meteo-mcp-server", "open-meteo-mcp-server"],
+      "command": [
+        "npx",
+        "-y",
+        "-p",
+        "open-meteo-mcp-server",
+        "open-meteo-mcp-server",
+      ],
       "type": "local",
     },
   },
@@ -75,6 +81,7 @@
     "../../plugins/claude-mem.js",
     "@cortexkit/opencode-magic-context@latest",
     "@mohak34/opencode-notifier@latest",
+    "@plannotator/opencode@latest",
     "@warp-dot-dev/opencode-warp",
     "opencode-wakatime",
   ],

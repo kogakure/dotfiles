@@ -16,6 +16,7 @@
     "npm:pi-agent-browser-native",
     "npm:@nqbao/pi-sandbox",
     "npm:pi-defender",
-    "npm:pi-subagents"
+    "npm:pi-subagents",
+    "npm:@plannotator/pi-extension"
   ]
 }
