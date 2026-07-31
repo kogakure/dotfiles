@@ -1,3 +1,4 @@
+tap "agavra/tap"
 tap "anomalyco/tap", trusted: true
 tap "arthur-ficial/tap", "https://github.com/Arthur-Ficial/homebrew-tap", trusted: true
 tap "charmbracelet/tap", trusted: true
@@ -11,9 +12,10 @@ tap "hmans/beans", trusted: true
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh", trusted: true
+tap "kdlbs/kandev"
 tap "modem-dev/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
-tap "nkzw-tech/tap"
+tap "nkzw-tech/tap", trusted: { casks: ["codiff"] }
 tap "safedep/tap", trusted: true
 tap "sst/tap", "https://github.com/anomalyco/homebrew-tap.git", trusted: true
 tap "steipete/tap", trusted: true
@@ -54,8 +56,8 @@ brew "pixman"
 brew "cairo"
 # Library and utilities for processing GIFs
 brew "giflib"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
+# TIFF library and utilities
+brew "libtiff"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -252,6 +254,8 @@ brew "mas"
 brew "meson"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
 # Feature-rich command-line audio/video downloader
@@ -388,6 +392,8 @@ brew "yq"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
+brew "agavra/tap/tuicr", trusted: true
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
 # On-device Apple FoundationModels CLI and OpenAI-compatible server
@@ -402,16 +408,14 @@ brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
 brew "dlvhdr/formulae/diffnav"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
 # Quickly clone an entire org/users repositories into one directory
 brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
+# Manage tasks, orchestrate agents, review changes, and ship value
+brew "kdlbs/kandev/kandev", trusted: true
 # SafeDep vet is a tool for identifying open source software supply chain risks
 brew "safedep/tap/vet"
-# Comprehensive macOS cleanup and application uninstall tool
-brew "tw93/tap/mole"
 # Sound and music editor
 cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -420,14 +424,10 @@ cask "nikitabobko/tap/aerospace"
 cask "affinity"
 # Network scanner
 cask "angry-ip-scanner"
-# Webcam & audio device software
-cask "ankerwork"
 # Memory training application
 cask "anki"
 # Application uninstaller
 cask "appcleaner"
-# User-friendly GUI app for Homebrew
-cask "applite"
 # Markdown editor for Astro content collections
 cask "astro-editor"
 # Multi-track audio editor and recorder
@@ -450,14 +450,10 @@ cask "claude"
 cask "claude-code@latest"
 # Screen capturing tool
 cask "cleanshot"
-# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
-cask "cmux"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Menu bar usage monitor for Codex and Claude
 cask "steipete/tap/codexbar"
-# Visual diff tool for Git changes
-cask "nkzw-tech/tap/codiff", trusted: true
 # Colemak mod for more comfortable typing (DH variant)
 cask "colemak-dh"
 cask "color-oracle"
@@ -477,7 +473,7 @@ cask "docker-desktop"
 cask "duckduckgo"
 # Electronic design automation software
 cask "eagle"
-# Text editor
+# GNU Emacs text editor
 cask "emacs-app"
 # Web browser
 cask "firefox"
@@ -531,8 +527,6 @@ cask "karabiner-elements"
 cask "keycastr"
 # ZSA keyboard firmware flasher
 cask "keymapp"
-# Official client for LBRY, a decentralised file-sharing and payment network
-cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-wallet"
 # App to manage software development and track bugs
@@ -604,8 +598,6 @@ cask "superwhisper"
 # Interior design application
 cask "sweet-home3d"
 # Minimal GUI for AI code agents
-cask "t3-code"
-# Minimal GUI for AI code agents
 cask "t3-code@nightly"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
@@ -645,14 +637,13 @@ cask "zen"
 cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
-mas "Cake Wallet", id: 1334702542
+mas "Blurred", id: 1497527363
 mas "DaVinci Resolve", id: 571213070
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
-mas "Draw Things", id: 6444050820
+mas "Dynamic wallpaper", id: 1582358382
 mas "Exporter", id: 1099120373
 mas "Free MP4 Converter", id: 693443591
-mas "fullmoon", id: 6727014156
 mas "GarageBand", id: 682658836
 mas "Goodnotes", id: 1444383602
 mas "HP Smart", id: 1474276998
@@ -661,12 +652,10 @@ mas "iFinance 5", id: 1500241909
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
-mas "Locally AI", id: 6741426692
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
 mas "mymind", id: 1532801185
 mas "Numbers", id: 361304891
-mas "Numbers", id: 409203825
 mas "Pages", id: 361309726
 mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
