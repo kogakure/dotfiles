@@ -1,3 +1,4 @@
+tap "agavra/tap"
 tap "anomalyco/tap", trusted: true
 tap "charmbracelet/tap", trusted: true
 tap "d12frosted/emacs-plus", trusted: true
@@ -7,6 +8,7 @@ tap "f/textream", trusted: true
 tap "felixkratz/formulae", trusted: true
 tap "gabrie30/utils", trusted: true
 tap "joshmedeski/sesh", trusted: true
+tap "kdlbs/kandev"
 tap "modem-dev/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap"
@@ -242,6 +244,8 @@ brew "mas"
 brew "meson"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
 # Feature-rich command-line audio/video downloader
@@ -288,6 +292,8 @@ brew "postgresql@14"
 brew "prettier"
 # Prettier daemon
 brew "prettierd"
+# Command-line interface for Proton Pass
+brew "proton-pass-cli"
 # Easily download, build, install, upgrade, and uninstall Python packages
 brew "python-setuptools"
 # Interpreted, interactive, object-oriented programming language
@@ -376,6 +382,8 @@ brew "yq"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
+brew "agavra/tap/tuicr", trusted: true
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
@@ -388,18 +396,16 @@ brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
 brew "dlvhdr/formulae/diffnav"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
 # Quickly clone an entire org/users repositories into one directory
 brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
 brew "joshmedeski/sesh/sesh"
+# Manage tasks, orchestrate agents, review changes, and ship value
+brew "kdlbs/kandev/kandev", trusted: true
 # Desktop-inspired terminal diff viewer for agent-authored changesets
 brew "modem-dev/tap/hunk"
 # SafeDep vet is a tool for identifying open source software supply chain risks
 brew "safedep/tap/vet"
-# Comprehensive macOS cleanup and application uninstall tool
-brew "tw93/tap/mole"
 # Sound and music editor
 cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -444,8 +450,6 @@ cask "claude"
 cask "claude-code@latest"
 # Screen capturing tool
 cask "cleanshot"
-# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
-cask "cmux"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Menu bar usage monitor for Codex and Claude
@@ -475,8 +479,6 @@ cask "duckduckgo"
 cask "figma"
 # Web browser
 cask "firefox"
-# Offline voice-to-text dictation app with AI enhancement
-cask "fluidvoice"
 cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
@@ -537,6 +539,8 @@ cask "lm-studio"
 cask "logi-options+"
 # File system integration
 cask "macfuse"
+# Markdown previewer with bundled Quick Look extension
+cask "markdown-preview"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 # Email client
@@ -595,10 +599,6 @@ cask "steam"
 cask "superwhisper"
 # Interior design application
 cask "sweet-home3d"
-# Minimal GUI for AI code agents
-cask "t3-code"
-# Minimal GUI for AI code agents
-cask "t3-code@nightly"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Desktop client for Telegram messenger
@@ -638,6 +638,7 @@ cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "Deliveries", id: 290986013
+mas "Dynamic wallpaper", id: 1582358382
 mas "Free MP4 Converter", id: 693443591
 mas "GarageBand", id: 682658836
 mas "HP", id: 1474276998
@@ -734,6 +735,7 @@ cargo "ghzinga"
 cargo "nixpkgs-fmt"
 uv "jiratui"
 uv "posting"
+npm "@agentclientprotocol/claude-agent-acp"
 npm "@devcontainers/cli"
 npm "@earendil-works/pi-coding-agent"
 npm "@nqbao/pi-sandbox"
