@@ -10,7 +10,7 @@ brew "ack"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: false
+brew "ruby"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
 # Improved shell history for zsh, bash, fish and nushell
@@ -23,6 +23,8 @@ brew "bash-completion"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
+# TIFF library and utilities
+brew "libtiff"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Parser generator
@@ -129,12 +131,16 @@ brew "gpgme"
 brew "grex"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # Command-line benchmarking tool
 brew "hyperfine"
 # C/C++ and Java libraries for Unicode and globalization
@@ -211,8 +217,6 @@ brew "pngpaste"
 brew "pnpm"
 # Perl documentation generator
 brew "pod2man"
-# Tool for managing OCI containers and pods
-brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
@@ -319,8 +323,6 @@ cask "astro-editor"
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# Menu bar icon organiser
-cask "bartender"
 # Edit and manage bibliographies
 cask "bibdesk"
 # 3D creation suite
@@ -439,9 +441,6 @@ cask "raycast"
 cask "reader"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
-# Tool for sending personal documents to Kindles from Macs
-cask "send-to-kindle"
-# MySQL/MariaDB database management platform
 cask "sequel-pro"
 # Onion routing based messenger
 cask "session"
@@ -457,6 +456,8 @@ cask "sweet-home3d"
 cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
+# Menu bar manager
+cask "thaw"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security
@@ -469,7 +470,6 @@ cask "veracrypt"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# Web browser plugin
 cask "vlc-webplugin"
 # Torrent streaming application
 cask "webtorrent"
