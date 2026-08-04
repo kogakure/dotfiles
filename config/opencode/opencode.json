@@ -83,7 +83,7 @@
   },
   "plugin": [
     "./plugins/claude-mem.js",
-    "@cortexkit/opencode-magic-context@latest",
+    "@cortexkit/opencode-magic-context@0.33.1",
     "@mohak34/opencode-notifier@latest",
     "@plannotator/opencode@latest",
     "@warp-dot-dev/opencode-warp",

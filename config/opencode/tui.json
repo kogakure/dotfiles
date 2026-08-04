@@ -9,5 +9,5 @@
   },
   "diff_style": "auto",
   "theme": "system",
-  "plugin": ["@cortexkit/opencode-magic-context@latest"]
+  "plugin": ["@cortexkit/opencode-magic-context@0.33.1"]
 }
