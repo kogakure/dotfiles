@@ -154,7 +154,7 @@ set -x PATH $PATH $HOME/.config/emacs/bin
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 if not string match -q -- "$PNPM_HOME/bin" $PATH
-  set -gx PATH "$PNPM_HOME/bin" $PATH
+    set -gx PATH "$PNPM_HOME/bin" $PATH
 end
 
 # Stable Diffusion Webui
@@ -239,7 +239,6 @@ alias ars 'atuin run script'
 
 # Claude Code
 alias cl 'claude --dangerously-skip-permissions'
-alias clp 'claude --permission-mode plan'
 alias clr 'claude --resume'
 
 # Codex
@@ -255,6 +254,3 @@ end
 
 # Clear the screen
 alias c clear
-
-# Pi Agent
-alias q 'pi --model opencode-go/deepseek-v4-flash -p'
