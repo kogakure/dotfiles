@@ -101,6 +101,7 @@
   "rustaceanvim": { "branch": "main", "commit": "6eac8d9116408a6c45dbc45148d9912dacfffd3f" },
   "smart-open.nvim": { "branch": "0.2.x", "commit": "7763800068bef69334870c10cb595d49ce27580a" },
   "smart-splits.nvim": { "branch": "master", "commit": "32f67888ac71942442fdab3819864a10449dfc41" },
+  "smear-cursor.nvim": { "branch": "main", "commit": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "sqlite.lua": { "branch": "master", "commit": "50092d60feb242602d7578398c6eb53b4a8ffe7b" },
   "symbols-outline.nvim": { "branch": "master", "commit": "564ee65dfc9024bdde73a6621820866987cbb256" },
