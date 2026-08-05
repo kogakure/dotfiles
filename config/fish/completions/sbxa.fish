@@ -15,6 +15,7 @@ complete -c sbxa -n __fish_is_first_arg -f -a shell -d "Plain shell (no herdr de
 # Custom sandboxes: not built into `sbx run`, launched via a bin/sbx-<agent>
 # wrapper or a bare kit (see config/sbx/kits/). Add a line here for each.
 complete -c sbxa -n __fish_is_first_arg -f -a pi -d "Pi (custom kit sandbox)"
+complete -c sbxa -n __fish_is_first_arg -f -a omp -d "omp / oh-my-pi (custom kit sandbox)"
 
 # Everything after the agent is passed to `sbx run`: workspace paths plus flags.
 complete -c sbxa -n "not __fish_is_first_arg" -F

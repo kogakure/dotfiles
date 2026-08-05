@@ -1,0 +1,56 @@
+schemaVersion: "1"
+kind: sandbox
+name: omp
+displayName: omp
+description: oh-my-pi (omp) coding agent in a Docker sandbox.
+
+sandbox:
+  image: "docker/sandbox-templates:shell-docker"
+  aiFilename: AGENTS.md
+  entrypoint:
+    run: [omp]
+
+caps:
+  network:
+    allow:
+      # Model providers currently authenticated on this host (see
+      # ~/.omp/agent/agent.db auth_credentials) — no serviceDomains/
+      # serviceAuth entries, same reasoning as the pi kit: omp carries its
+      # own OAuth bearer tokens, and TLS interception would break them.
+      - "api.anthropic.com:443"
+      - "console.anthropic.com:443"
+      - "claude.ai:443"
+      - "chatgpt.com:443"
+      - "*.chatgpt.com:443"
+      - "api.openai.com:443"
+      - "auth.openai.com:443"
+      - "api.x.ai:443"
+      - "*.x.ai:443"
+      # Binary download (GitHub Releases; release-assets.githubusercontent.com
+      # confirmed by following the actual redirect chain, NOT
+      # objects.githubusercontent.com as used by npm-based installs).
+      - "github.com:443"
+      - "release-assets.githubusercontent.com:443"
+
+commands:
+  install:
+    - command: |
+        set -e
+        ARCH="$(uname -m)"
+        case "$ARCH" in
+          aarch64|arm64) OMP_ARCH=arm64 ;;
+          x86_64|amd64) OMP_ARCH=x64 ;;
+          *) echo "omp: unsupported arch $ARCH" >&2; exit 1 ;;
+        esac
+        curl -fsSL -o /usr/local/bin/omp \
+          "https://github.com/can1357/oh-my-pi/releases/latest/download/omp-linux-$OMP_ARCH"
+        chmod 0555 /usr/local/bin/omp
+      description: Install the omp (oh-my-pi) binary for the container's architecture
+
+agentContext: |
+  ## Sandbox environment
+
+  You are running inside a Docker sandbox. The workspace is mounted at its
+  absolute host path. `sudo` is passwordless; use it for package installs.
+  Network access is restricted to an allowlist — if a request is blocked,
+  say so rather than working around it.

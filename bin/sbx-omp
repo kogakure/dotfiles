@@ -1,0 +1,141 @@
+#!/bin/bash
+
+# sbx-omp
+# Runs omp (oh-my-pi, https://omp.sh — can1357's fork of pi-mono) inside a
+# Docker Sandboxes (sbx) container, using the custom "omp" sandbox kit at
+# config/sbx/kits/omp (see that directory's README.md). Docker Sandboxes has
+# no built-in "omp" agent, so this kit teaches it one.
+#
+# On first launch for a given name, seeds the sandbox with the host's omp
+# config (~/.omp/agent): OAuth logins (agent.db, a SQLite store) and model
+# role config (config.yml). Subsequent launches just re-attach.
+#
+# The final `sbx run` is exec'd with argv0 renamed to "omp" (same trick as
+# config/fish/functions/sbxa.fish uses for built-in sbx agents, and bin/sbx-pi
+# uses for pi), so herdr detects the pane as an omp agent instead of seeing a
+# bare `sbx` process. This is also what makes sbx-omp work as an `sbxa omp`
+# tier-1 launcher. Note: herdr has no dedicated detection manifest for omp
+# yet, so it only gets idle-fallback tracking, not working/blocked states.
+#
+# Usage: sbx-omp [PATH...] [--name NAME] [sbx create flags] [-- OMP_ARGS...]
+#   PATH...     Extra workspaces to mount (append ":ro" for read-only),
+#               passed through to `sbx create`. Defaults to the current
+#               directory.
+#   --name      Sandbox name (default: omp-<basename of $PWD>).
+#   sbx create  --template/-t, --profile, --publish/-p, --memory/-m, --cpus,
+#   flags       --clone are forwarded to `sbx create` (only used when the
+#               sandbox doesn't already exist).
+#   -- ARGS     Arguments forwarded to `omp` itself.
+
+set -e
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+KIT_DIR="$DOTFILES_DIR/config/sbx/kits/omp"
+OMP_HOST_DIR="$HOME/.omp"
+
+if ! command -v sbx >/dev/null 2>&1; then
+    echo -e "${RED}sbx-omp: 'sbx' (Docker Sandboxes CLI) not found on PATH.${NC}"
+    exit 1
+fi
+
+if [ ! -f "$OMP_HOST_DIR/agent/agent.db" ]; then
+    echo -e "${RED}sbx-omp: $OMP_HOST_DIR/agent/agent.db not found.${NC}"
+    echo -e "${RED}Log in to omp on the host first (run 'omp' and '/login <provider>') before sandboxing it.${NC}"
+    exit 1
+fi
+
+NAME="omp-$(basename "$PWD")"
+WORKSPACES=()
+CREATE_FLAGS=()
+OMP_ARGS=()
+PARSING_OMP_ARGS=false
+
+while [ $# -gt 0 ]; do
+    if [ "$PARSING_OMP_ARGS" = true ]; then
+        OMP_ARGS+=("$1")
+        shift
+        continue
+    fi
+    case "$1" in
+        --name)
+            NAME="$2"
+            shift 2
+            ;;
+        # sbx create flags that take a value: forward flag + value untouched.
+        --template | -t | --profile | --publish | -p | --memory | -m | --cpus)
+            CREATE_FLAGS+=("$1" "$2")
+            shift 2
+            ;;
+        # sbx create flags that take no value.
+        --clone)
+            CREATE_FLAGS+=("$1")
+            shift
+            ;;
+        --)
+            PARSING_OMP_ARGS=true
+            shift
+            ;;
+        -h | --help)
+            grep '^#' "$0" | tail -n +2 | cut -c3-
+            exit 0
+            ;;
+        *)
+            WORKSPACES+=("$1")
+            shift
+            ;;
+    esac
+done
+
+run_omp() {
+    if [ ${#OMP_ARGS[@]} -gt 0 ]; then
+        exec -a omp sbx run --name "$NAME" -- "${OMP_ARGS[@]}"
+    else
+        exec -a omp sbx run --name "$NAME"
+    fi
+}
+
+if sbx ls 2>/dev/null | grep -q "^$NAME"; then
+    echo -e "${GREEN}sbx-omp: re-attaching to existing sandbox '$NAME'.${NC}"
+    run_omp
+fi
+
+if [ ${#WORKSPACES[@]} -eq 0 ]; then
+    WORKSPACES=(".")
+fi
+
+echo -e "${GREEN}sbx-omp: creating sandbox '$NAME' from kit $KIT_DIR${NC}"
+sbx create omp --kit "$KIT_DIR" --name "$NAME" "${CREATE_FLAGS[@]}" "${WORKSPACES[@]}"
+
+echo -e "${GREEN}sbx-omp: seeding omp config from $OMP_HOST_DIR${NC}"
+
+# agent.db is a live SQLite store; checkpoint its WAL into the main file
+# first so a plain `sbx cp` of agent.db alone is complete and consistent
+# (otherwise a committed-but-not-yet-checkpointed row could be missed).
+# Non-fatal if sqlite3 isn't on the host PATH — copy proceeds regardless.
+if command -v sqlite3 >/dev/null 2>&1; then
+    sqlite3 "$OMP_HOST_DIR/agent/agent.db" 'PRAGMA wal_checkpoint(FULL);' >/dev/null
+else
+    echo -e "${YELLOW}sbx-omp: sqlite3 not found on host PATH, skipping WAL checkpoint.${NC}"
+fi
+
+sbx exec "$NAME" -- mkdir -p /home/agent/.omp/agent
+
+for item in agent/agent.db agent/config.yml; do
+    if [ -e "$OMP_HOST_DIR/$item" ]; then
+        sbx cp "$OMP_HOST_DIR/$item" "$NAME:/home/agent/.omp/$item"
+    else
+        echo -e "${YELLOW}sbx-omp: skipping $item (not present on host).${NC}"
+    fi
+done
+
+# sbx cp preserves host ownership/permissions, which the sandbox's uid-1000
+# "agent" user can't read. Reclaim it as root.
+sbx exec -u root "$NAME" -- chown -R agent:agent /home/agent/.omp
+
+echo -e "${GREEN}sbx-omp: attaching to '$NAME'.${NC}"
+run_omp

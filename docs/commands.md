@@ -68,6 +68,13 @@ sbxa pi [PATH...] [--name NAME] [sbx create flags] [-- PI_ARGS...]
   # See config/sbx/kits/pi/README.md for details.
 
 ./bin/sbx-pi ...  # what sbxa pi delegates to; same usage, callable directly
+
+sbxa omp [PATH...] [--name NAME] [sbx create flags] [-- OMP_ARGS...]
+  # Same pattern for omp (https://omp.sh, a batteries-included pi-mono fork),
+  # via config/sbx/kits/omp. Seeds the sandbox with the host's ~/.omp/agent
+  # OAuth logins and model-role config. See config/sbx/kits/omp/README.md.
+
+./bin/sbx-omp ...  # what sbxa omp delegates to; same usage, callable directly
 ```
 
 ## Worktrees
