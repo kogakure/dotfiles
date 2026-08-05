@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# sbx-pi
+# Runs the Pi coding agent (https://github.com/badlogic/pi-mono) inside a
+# Docker Sandboxes (sbx) container, using the custom "pi" sandbox kit at
+# config/sbx/kits/pi (see that directory's README.md). Docker Sandboxes has
+# no built-in "pi" agent, so this kit teaches it one.
+#
+# On first launch for a given name, seeds the sandbox with the host's pi
+# config (~/.pi/agent, symlinked from this repo's pi/agent): OAuth auth,
+# settings, extensions, skills, themes. Subsequent launches just re-attach.
+#
+# Usage: sbx-pi [PATH...] [--name NAME] [-- PI_ARGS...]
+#   PATH...   Extra workspaces to mount (append ":ro" for read-only), passed
+#             through to `sbx run`. Defaults to the current directory.
+#   --name    Sandbox name (default: pi-<basename of $PWD>).
+#   -- ARGS   Arguments forwarded to `pi` itself.
+
+set -e
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+KIT_DIR="$DOTFILES_DIR/config/sbx/kits/pi"
+PI_HOST_DIR="$HOME/.pi/agent"
+
+if ! command -v sbx >/dev/null 2>&1; then
+    echo -e "${RED}sbx-pi: 'sbx' (Docker Sandboxes CLI) not found on PATH.${NC}"
+    exit 1
+fi
+
+if [ ! -f "$PI_HOST_DIR/auth.json" ]; then
+    echo -e "${RED}sbx-pi: $PI_HOST_DIR/auth.json not found.${NC}"
+    echo -e "${RED}Log in to pi on the host first (run 'pi' and complete auth) before sandboxing it.${NC}"
+    exit 1
+fi
+
+NAME="pi-$(basename "$PWD")"
+WORKSPACES=()
+PI_ARGS=()
+PARSING_PI_ARGS=false
+
+while [ $# -gt 0 ]; do
+    if [ "$PARSING_PI_ARGS" = true ]; then
+        PI_ARGS+=("$1")
+        shift
+        continue
+    fi
+    case "$1" in
+        --name)
+            NAME="$2"
+            shift 2
+            ;;
+        --)
+            PARSING_PI_ARGS=true
+            shift
+            ;;
+        -h | --help)
+            grep '^#' "$0" | tail -n +2 | cut -c3-
+            exit 0
+            ;;
+        *)
+            WORKSPACES+=("$1")
+            shift
+            ;;
+    esac
+done
+
+run_pi() {
+    if [ ${#PI_ARGS[@]} -gt 0 ]; then
+        sbx run --name "$NAME" -- "${PI_ARGS[@]}"
+    else
+        sbx run --name "$NAME"
+    fi
+}
+
+if sbx ls 2>/dev/null | grep -q "^$NAME"; then
+    echo -e "${GREEN}sbx-pi: re-attaching to existing sandbox '$NAME'.${NC}"
+    run_pi
+    exit $?
+fi
+
+if [ ${#WORKSPACES[@]} -eq 0 ]; then
+    WORKSPACES=(".")
+fi
+
+echo -e "${GREEN}sbx-pi: creating sandbox '$NAME' from kit $KIT_DIR${NC}"
+sbx create pi --kit "$KIT_DIR" --name "$NAME" "${WORKSPACES[@]}"
+
+echo -e "${GREEN}sbx-pi: seeding pi config from $PI_HOST_DIR${NC}"
+sbx exec "$NAME" -- mkdir -p /home/agent/.pi/agent
+
+sbx cp "$PI_HOST_DIR/auth.json" "$NAME:/home/agent/.pi/agent/"
+
+for item in settings.json AGENTS.md extensions skills themes; do
+    if [ -e "$PI_HOST_DIR/$item" ]; then
+        sbx cp "$PI_HOST_DIR/$item" "$NAME:/home/agent/.pi/agent/"
+    else
+        echo -e "${YELLOW}sbx-pi: skipping $item (not present on host).${NC}"
+    fi
+done
+
+# sbx cp preserves host ownership/permissions; auth.json (mode 600) lands
+# owned by the host UID, which the sandbox's uid-1000 "agent" user can't
+# read. Reclaim it as root.
+sbx exec -u root "$NAME" -- chown -R agent:agent /home/agent/.pi
+
+echo -e "${GREEN}sbx-pi: attaching to '$NAME'.${NC}"
+run_pi

@@ -1,0 +1,46 @@
+schemaVersion: "1"
+kind: sandbox
+name: pi
+displayName: Pi
+description: Pi coding agent in a Docker sandbox.
+
+sandbox:
+  image: "docker/sandbox-templates:shell-docker"
+  aiFilename: AGENTS.md
+  entrypoint:
+    run: [pi]
+
+caps:
+  network:
+    allow:
+      # Model providers — no serviceDomains/serviceAuth entries on purpose:
+      # pi carries its own OAuth bearer tokens, and TLS interception would break them.
+      - "chatgpt.com:443"
+      - "*.chatgpt.com:443"
+      - "pi.dev"
+      - "api.openai.com:443"
+      - "auth.openai.com:443"
+      - "api.x.ai:443"
+      - "*.x.ai:443"
+      # pi self-update, model catalogs, extension packages
+      - "registry.npmjs.org:443"
+      - "github.com:443"
+      - "raw.githubusercontent.com:443"
+      - "objects.githubusercontent.com:443"
+
+commands:
+  install:
+    - command: "command -v node >/dev/null 2>&1 || (curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt-get install -y nodejs)"
+      description: Ensure Node.js is present
+    - command: "command -v g++ >/dev/null 2>&1 || (apt-get update && apt-get install -y build-essential)"
+      description: Ensure a C/C++ toolchain is present (pi's packages, e.g. pi-agent-browser-native, build native modules like node-pty)
+    - command: "npm install -g @earendil-works/pi-coding-agent@latest"
+      description: Install the Pi coding agent
+
+agentContext: |
+  ## Sandbox environment
+
+  You are running inside a Docker sandbox. The workspace is mounted at its
+  absolute host path. `sudo` is passwordless; use it for package installs.
+  Network access is restricted to an allowlist — if a request is blocked,
+  say so rather than working around it.

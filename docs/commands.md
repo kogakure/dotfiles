@@ -55,6 +55,17 @@
 ./bin/macos-settings  # Apply macOS system preferences
 ```
 
+## AI Sandboxes
+
+```bash
+./bin/sbx-pi [PATH...] [--name NAME] [-- PI_ARGS...]
+  # Run the Pi coding agent (https://github.com/badlogic/pi-mono) inside a
+  # Docker Sandboxes (sbx) container via the custom "pi" sandbox kit at
+  # config/sbx/kits/pi (sbx has no built-in pi agent). Seeds the sandbox
+  # with the host's ~/.pi/agent config (auth, settings, extensions, skills,
+  # themes) on first launch. See config/sbx/kits/pi/README.md for details.
+```
+
 ## Worktrees
 
 ```bash
