@@ -58,12 +58,16 @@
 ## AI Sandboxes
 
 ```bash
-./bin/sbx-pi [PATH...] [--name NAME] [-- PI_ARGS...]
-  # Run the Pi coding agent (https://github.com/badlogic/pi-mono) inside a
-  # Docker Sandboxes (sbx) container via the custom "pi" sandbox kit at
-  # config/sbx/kits/pi (sbx has no built-in pi agent). Seeds the sandbox
-  # with the host's ~/.pi/agent config (auth, settings, extensions, skills,
-  # themes) on first launch. See config/sbx/kits/pi/README.md for details.
+sbxa pi [PATH...] [--name NAME] [sbx create flags] [-- PI_ARGS...]
+  # Herdr-aware launcher (config/fish/functions/sbxa.fish) for the Pi coding
+  # agent (https://github.com/badlogic/pi-mono) in a Docker Sandboxes (sbx)
+  # container, via the custom "pi" sandbox kit at config/sbx/kits/pi (sbx has
+  # no built-in pi agent). Seeds the sandbox with the host's ~/.pi/agent
+  # config (auth, settings, extensions, skills, themes) on first launch.
+  # Also works for built-in sbx agents, e.g. `sbxa claude`.
+  # See config/sbx/kits/pi/README.md for details.
+
+./bin/sbx-pi ...  # what sbxa pi delegates to; same usage, callable directly
 ```
 
 ## Worktrees

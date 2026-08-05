@@ -10,11 +10,20 @@
 # config (~/.pi/agent, symlinked from this repo's pi/agent): OAuth auth,
 # settings, extensions, skills, themes. Subsequent launches just re-attach.
 #
-# Usage: sbx-pi [PATH...] [--name NAME] [-- PI_ARGS...]
-#   PATH...   Extra workspaces to mount (append ":ro" for read-only), passed
-#             through to `sbx run`. Defaults to the current directory.
-#   --name    Sandbox name (default: pi-<basename of $PWD>).
-#   -- ARGS   Arguments forwarded to `pi` itself.
+# The final `sbx run` is exec'd with argv0 renamed to "pi" (same trick as
+# config/fish/functions/sbxa.fish uses for built-in sbx agents), so herdr
+# detects the pane as a pi agent instead of seeing a bare `sbx` process.
+# This is also what makes sbx-pi work as an `sbxa pi` tier-1 launcher.
+#
+# Usage: sbx-pi [PATH...] [--name NAME] [sbx create flags] [-- PI_ARGS...]
+#   PATH...     Extra workspaces to mount (append ":ro" for read-only),
+#               passed through to `sbx create`. Defaults to the current
+#               directory.
+#   --name      Sandbox name (default: pi-<basename of $PWD>).
+#   sbx create  --template/-t, --profile, --publish/-p, --memory/-m, --cpus,
+#   flags       --clone are forwarded to `sbx create` (only used when the
+#               sandbox doesn't already exist).
+#   -- ARGS     Arguments forwarded to `pi` itself.
 
 set -e
 
@@ -40,6 +49,7 @@ fi
 
 NAME="pi-$(basename "$PWD")"
 WORKSPACES=()
+CREATE_FLAGS=()
 PI_ARGS=()
 PARSING_PI_ARGS=false
 
@@ -53,6 +63,16 @@ while [ $# -gt 0 ]; do
         --name)
             NAME="$2"
             shift 2
+            ;;
+        # sbx create flags that take a value: forward flag + value untouched.
+        --template | -t | --profile | --publish | -p | --memory | -m | --cpus)
+            CREATE_FLAGS+=("$1" "$2")
+            shift 2
+            ;;
+        # sbx create flags that take no value.
+        --clone)
+            CREATE_FLAGS+=("$1")
+            shift
             ;;
         --)
             PARSING_PI_ARGS=true
@@ -71,16 +91,15 @@ done
 
 run_pi() {
     if [ ${#PI_ARGS[@]} -gt 0 ]; then
-        sbx run --name "$NAME" -- "${PI_ARGS[@]}"
+        exec -a pi sbx run --name "$NAME" -- "${PI_ARGS[@]}"
     else
-        sbx run --name "$NAME"
+        exec -a pi sbx run --name "$NAME"
     fi
 }
 
 if sbx ls 2>/dev/null | grep -q "^$NAME"; then
     echo -e "${GREEN}sbx-pi: re-attaching to existing sandbox '$NAME'.${NC}"
     run_pi
-    exit $?
 fi
 
 if [ ${#WORKSPACES[@]} -eq 0 ]; then
@@ -88,7 +107,7 @@ if [ ${#WORKSPACES[@]} -eq 0 ]; then
 fi
 
 echo -e "${GREEN}sbx-pi: creating sandbox '$NAME' from kit $KIT_DIR${NC}"
-sbx create pi --kit "$KIT_DIR" --name "$NAME" "${WORKSPACES[@]}"
+sbx create pi --kit "$KIT_DIR" --name "$NAME" "${CREATE_FLAGS[@]}" "${WORKSPACES[@]}"
 
 echo -e "${GREEN}sbx-pi: seeding pi config from $PI_HOST_DIR${NC}"
 sbx exec "$NAME" -- mkdir -p /home/agent/.pi/agent

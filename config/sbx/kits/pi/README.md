@@ -5,10 +5,12 @@ kit that teaches `sbx` a `pi` agent — the [Pi coding
 agent](https://github.com/badlogic/pi-mono) (`@earendil-works/pi-coding-agent`),
 which has no built-in support in Docker Sandboxes.
 
-Launch it with `bin/sbx-pi` (from the repo root, or anywhere once the repo's
-`bin/` is on `PATH`) rather than calling `sbx` directly — the wrapper seeds
-the sandbox with the host's pi auth and config after creation, which a bare
-`sbx run --kit` cannot do.
+Launch it with `sbxa pi` (herdr-aware, see `config/fish/functions/sbxa.fish`)
+or `bin/sbx-pi` directly rather than calling `sbx` yourself — the wrapper
+seeds the sandbox with the host's pi auth and config after creation, which a
+bare `sbx run --kit` cannot do. It also `exec`s the final `sbx run` with
+argv0 renamed to `pi`, the same trick `sbxa` uses for built-in agents, so
+herdr detects the pane as pi instead of a bare `sbx` process.
 
 ## Why no `credentials:`/`serviceAuth` block
 
