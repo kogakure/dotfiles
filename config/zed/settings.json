@@ -85,7 +85,11 @@
 		"diagnostics": false,
 	},
 	"agent": {
-		"terminal_init_command": "claude --dangerously-skip-permissions",
+		"sandbox_permissions": {
+   "allow_fs_write_all": false,
+   "allow_unsandboxed": false
+  },
+  "terminal_init_command": "claude --dangerously-skip-permissions",
 		"dock": "left",
 		"default_profile": "write",
 		"default_model": {
