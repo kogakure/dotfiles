@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.83.0",
+  "lastChangelogVersion": "0.84.0",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
@@ -20,5 +20,6 @@
     "npm:pi-defender",
     "npm:pi-subagents",
     "npm:@plannotator/pi-extension"
-  ]
+  ],
+  "tuiMode": "fullscreen"
 }

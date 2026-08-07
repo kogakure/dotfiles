@@ -1,8 +1,10 @@
 tap "agavra/tap"
 tap "anomalyco/tap", trusted: true
+tap "can1357/tap"
 tap "charmbracelet/tap", trusted: true
 tap "d12frosted/emacs-plus", trusted: true
 tap "dlvhdr/formulae", trusted: true
+tap "docker/tap", trusted: true
 tap "dustinblackman/tap", trusted: true
 tap "f/textream", trusted: true
 tap "felixkratz/formulae", trusted: true
@@ -342,6 +344,8 @@ brew "texinfo"
 brew "the_silver_searcher"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Markup-based typesetting system
+brew "typst"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation
@@ -362,6 +366,8 @@ brew "watchman"
 brew "wget"
 # Port of OpenAI's Whisper model in C/C++
 brew "whisper-cpp"
+# Why is this running?
+brew "witr"
 # Utilities to create and convert Web Open Font File (WOFF) files
 brew "woff2"
 # CLI for Git worktree management, designed for parallel AI agent workflows
@@ -386,6 +392,8 @@ brew "zsh"
 brew "agavra/tap/tuicr", trusted: true
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
+# Coding agent with the IDE wired in
+brew "can1357/tap/omp", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
@@ -579,6 +587,8 @@ cask "raindropio"
 cask "raycast"
 # Save articles to read, highlight key content, and organise notes for review
 cask "reader"
+# Build, run, and govern agents across the software development lifecycle
+cask "docker/tap/sbx", trusted: true
 # Store SSH keys in the Secure Enclave
 cask "secretive"
 # Onion routing based messenger
@@ -656,8 +666,8 @@ mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 1529448980
 mas "Reeder", id: 6475002485
+mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
 mas "Things", id: 904280696
@@ -739,6 +749,7 @@ npm "@agentclientprotocol/claude-agent-acp"
 npm "@devcontainers/cli"
 npm "@earendil-works/pi-coding-agent"
 npm "@nqbao/pi-sandbox"
+npm "@plannotator/pi-extension"
 npm "@playwright/cli"
 npm "@readwise/cli"
 npm "@tobilu/qmd"
