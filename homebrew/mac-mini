@@ -1,9 +1,11 @@
 tap "agavra/tap"
 tap "anomalyco/tap", trusted: true
 tap "arthur-ficial/tap", "https://github.com/Arthur-Ficial/homebrew-tap", trusted: true
+tap "can1357/tap"
 tap "charmbracelet/tap", trusted: true
 tap "d12frosted/emacs-plus", trusted: true
 tap "dlvhdr/formulae", trusted: true
+tap "docker/tap", trusted: true
 tap "dustinblackman/tap", trusted: true
 tap "f/textream", trusted: true
 tap "felixkratz/formulae", trusted: true
@@ -398,6 +400,8 @@ brew "agavra/tap/tuicr", trusted: true
 brew "anomalyco/tap/opencode", trusted: true
 # On-device Apple FoundationModels CLI and OpenAI-compatible server
 brew "arthur-ficial/tap/apfel"
+# Coding agent with the IDE wired in
+brew "can1357/tap/omp", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush"
 # A tasty, self-hostable Git server for the command line🍦
@@ -577,6 +581,8 @@ cask "raycast"
 cask "reader"
 # Ebook reader
 cask "readest"
+# Build, run, and govern agents across the software development lifecycle
+cask "docker/tap/sbx", trusted: true
 # Store SSH keys in the Secure Enclave
 cask "secretive"
 # Onion routing based messenger
