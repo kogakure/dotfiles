@@ -10,7 +10,9 @@ or `bin/sbx-pi` directly rather than calling `sbx` yourself — the wrapper
 seeds the sandbox with the host's pi auth and config after creation, which a
 bare `sbx run --kit` cannot do. It also `exec`s the final `sbx run` with
 argv0 renamed to `pi`, the same trick `sbxa` uses for built-in agents, so
-herdr detects the pane as pi instead of a bare `sbx` process.
+herdr detects the pane as pi instead of a bare `sbx` process. It also mounts
+`~/Downloads` read-only alongside the workspace, so images dropped there on the
+host are readable by the agent.
 
 ## Why no `credentials:`/`serviceAuth` block
 

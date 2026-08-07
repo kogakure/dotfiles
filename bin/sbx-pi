@@ -18,7 +18,7 @@
 # Usage: sbx-pi [PATH...] [--name NAME] [sbx create flags] [-- PI_ARGS...]
 #   PATH...     Extra workspaces to mount (append ":ro" for read-only),
 #               passed through to `sbx create`. Defaults to the current
-#               directory.
+#               directory. ~/Downloads:ro is always added.
 #   --name      Sandbox name (default: pi-<basename of $PWD>).
 #   sbx create  --template/-t, --profile, --publish/-p, --memory/-m, --cpus,
 #   flags       --clone are forwarded to `sbx create` (only used when the
@@ -104,6 +104,22 @@ fi
 
 if [ ${#WORKSPACES[@]} -eq 0 ]; then
     WORKSPACES=(".")
+fi
+
+# ~/Downloads is where screenshots and downloaded assets land, so the agent
+# almost always wants to read from it. Read-only: the agent should never be
+# able to delete or overwrite anything there. Skipped when the caller already
+# named the directory, so an explicit path can override the mode.
+downloads_mounted=false
+for ws in "${WORKSPACES[@]}"; do
+    case "$ws" in
+        "$HOME/Downloads" | "$HOME/Downloads:"* | ~/Downloads | ~/Downloads:*)
+            downloads_mounted=true
+            ;;
+    esac
+done
+if [ "$downloads_mounted" = false ]; then
+    WORKSPACES+=("$HOME/Downloads:ro")
 fi
 
 echo -e "${GREEN}sbx-pi: creating sandbox '$NAME' from kit $KIT_DIR${NC}"

@@ -75,7 +75,22 @@ sbxa omp [PATH...] [--name NAME] [sbx create flags] [-- OMP_ARGS...]
   # OAuth logins and model-role config. See config/sbx/kits/omp/README.md.
 
 ./bin/sbx-omp ...  # what sbxa omp delegates to; same usage, callable directly
+
+sbxa claude [PATH...] [--name NAME] [sbx create flags] [-- CLAUDE_ARGS...]
+  # Uses sbx's built-in "claude" agent (no kit), but adds the cship statusline
+  # so the sandboxed TUI looks like the host one: the linux-musl cship and
+  # starship builds are cached under ~/.cache/sbx-statusline, pushed in with
+  # `sbx cp`, and enabled via `claude --settings` (the container's
+  # ~/.claude/settings.json is rewritten by sbx on every create, so editing it
+  # would not stick). SBX_CLAUDE_REFRESH=1 re-downloads the cached binaries.
+
+./bin/sbx-claude ...  # what sbxa claude delegates to; same usage, callable directly
 ```
+
+Every `sbxa` launch mounts `~/Downloads` read-only, so images and files dropped there
+are readable by the agent without passing the path. Pass `~/Downloads` explicitly to
+override the mode. Workspace mounts are only applied when the sandbox is **created** —
+`sbx rm <name>` first to add the mount to a sandbox that already exists.
 
 ## Worktrees
 

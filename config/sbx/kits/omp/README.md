@@ -12,7 +12,8 @@ calling `sbx` yourself — the wrapper seeds the sandbox with the host's omp
 logins and config after creation, which a bare `sbx run --kit` cannot do. It
 also `exec`s the final `sbx run` with argv0 renamed to `omp`, the same trick
 `sbxa` and `bin/sbx-pi` use, so herdr detects the pane as omp instead of a
-bare `sbx` process.
+bare `sbx` process. It also mounts `~/Downloads` read-only alongside the
+workspace, so images dropped there on the host are readable by the agent.
 
 ## Why no `credentials:`/`serviceAuth` block
 

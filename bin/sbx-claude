@@ -1,0 +1,236 @@
+#!/bin/bash
+
+# sbx-claude
+# Runs Claude Code inside a Docker Sandboxes (sbx) container using sbx's
+# built-in "claude" agent, and seeds it with the host's cship statusline so the
+# sandboxed TUI looks like the one outside the sandbox.
+#
+# sbx's built-in claude agent already handles the image, OAuth and trust flags;
+# this launcher exists for the two things it does not do:
+#
+#   1. It always mounts ~/Downloads read-only, so images and files dropped
+#      there on the host are readable by the agent without passing the path.
+#   2. It installs the statusline. On the host that is `cship`
+#      (~/.config/cship.toml, symlinked from config/cship.toml), which shells
+#      out to `starship` for its first line. Neither binary exists in the
+#      container, and the host copies are Mach-O — so the linux-musl builds are
+#      fetched once into a host-side cache and pushed in with `sbx cp`.
+#
+# The statusline is enabled by passing `claude --settings <inline JSON>`, not
+# by editing the container's ~/.claude/settings.json: sbx's claude spec
+# rewrites that file unconditionally on every (re)create, so an edit there
+# would not survive. Inline JSON (rather than a settings file in the container)
+# also means the re-attach path has nothing to verify — there is no file that
+# could be missing.
+#
+# The final `sbx run` is exec'd with argv0 renamed to "claude" (same trick as
+# config/fish/functions/sbxa.fish uses for built-in sbx agents, and bin/sbx-pi
+# and bin/sbx-omp use for pi/omp), so herdr detects the pane as a claude agent
+# instead of a bare `sbx` process. This is also what makes sbx-claude work as
+# an `sbxa claude` tier-1 launcher.
+#
+# Known limitation: cship's usage_limits segments (⌛ 5h / 📅 7d / extra:)
+# fetch https://api.anthropic.com/api/oauth/usage with an Authorization header,
+# reading the token from ~/.claude/.credentials.json. Inside the sandbox that
+# file holds sbx's proxy sentinel (sk-ant-oat01-proxy-managed) and the proxy
+# injects x-api-key rather than swapping a bearer on that endpoint, so those
+# segments may render empty. Model, cost, context bar and the starship line are
+# unaffected. Run `sbx exec <name> -- cship explain` to see which modules
+# resolved.
+#
+# Usage: sbx-claude [PATH...] [--name NAME] [sbx create flags] [-- CLAUDE_ARGS...]
+#   PATH...     Extra workspaces to mount (append ":ro" for read-only),
+#               passed through to `sbx create`. Defaults to the current
+#               directory. ~/Downloads:ro is always added.
+#   --name      Sandbox name (default: claude-<basename of $PWD>).
+#   sbx create  --template/-t, --profile, --publish/-p, --memory/-m, --cpus,
+#   flags       --clone are forwarded to `sbx create` (only used when the
+#               sandbox doesn't already exist).
+#   -- ARGS     Arguments forwarded to `claude` itself.
+#
+# Environment:
+#   SBX_CLAUDE_REFRESH=1  Re-download the cached cship/starship binaries.
+
+set -e
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/sbx-statusline"
+STATUSLINE_SETTINGS='{"statusLine":{"type":"command","command":"cship"}}'
+
+if ! command -v sbx >/dev/null 2>&1; then
+    echo -e "${RED}sbx-claude: 'sbx' (Docker Sandboxes CLI) not found on PATH.${NC}"
+    exit 1
+fi
+
+NAME="claude-$(basename "$PWD")"
+WORKSPACES=()
+CREATE_FLAGS=()
+CLAUDE_ARGS=()
+PARSING_CLAUDE_ARGS=false
+
+while [ $# -gt 0 ]; do
+    if [ "$PARSING_CLAUDE_ARGS" = true ]; then
+        CLAUDE_ARGS+=("$1")
+        shift
+        continue
+    fi
+    case "$1" in
+        --name)
+            NAME="$2"
+            shift 2
+            ;;
+        # sbx create flags that take a value: forward flag + value untouched.
+        --template | -t | --profile | --publish | -p | --memory | -m | --cpus)
+            CREATE_FLAGS+=("$1" "$2")
+            shift 2
+            ;;
+        # sbx create flags that take no value.
+        --clone)
+            CREATE_FLAGS+=("$1")
+            shift
+            ;;
+        --)
+            PARSING_CLAUDE_ARGS=true
+            shift
+            ;;
+        -h | --help)
+            grep '^#' "$0" | tail -n +2 | cut -c3-
+            exit 0
+            ;;
+        *)
+            WORKSPACES+=("$1")
+            shift
+            ;;
+    esac
+done
+
+run_claude() {
+    exec -a claude sbx run --name "$NAME" -- \
+        --settings "$STATUSLINE_SETTINGS" "${CLAUDE_ARGS[@]}"
+}
+
+if sbx ls 2>/dev/null | grep -q "^$NAME"; then
+    echo -e "${GREEN}sbx-claude: re-attaching to existing sandbox '$NAME'.${NC}"
+    run_claude
+fi
+
+if [ ${#WORKSPACES[@]} -eq 0 ]; then
+    WORKSPACES=(".")
+fi
+
+# ~/Downloads is where screenshots and downloaded assets land, so the agent
+# almost always wants to read from it. Read-only: the agent should never be
+# able to delete or overwrite anything there. Skipped when the caller already
+# named the directory, so an explicit path can override the mode.
+downloads_mounted=false
+for ws in "${WORKSPACES[@]}"; do
+    case "$ws" in
+        "$HOME/Downloads" | "$HOME/Downloads:"* | ~/Downloads | ~/Downloads:*)
+            downloads_mounted=true
+            ;;
+    esac
+done
+if [ "$downloads_mounted" = false ]; then
+    WORKSPACES+=("$HOME/Downloads:ro")
+fi
+
+echo -e "${GREEN}sbx-claude: creating sandbox '$NAME'${NC}"
+sbx create claude --name "$NAME" "${CREATE_FLAGS[@]}" "${WORKSPACES[@]}"
+
+# --- statusline seeding -----------------------------------------------------
+#
+# Best-effort: a missing statusline is cosmetic and must never keep the sandbox
+# from starting, so every step below reports and bails out rather than exiting.
+# `set -e` does not apply inside a function invoked in a condition, hence the
+# explicit `|| return 1` on each command.
+
+seed_statusline() {
+    local arch target cship_bin starship_bin cfg staging
+
+    arch="$(sbx exec "$NAME" -- uname -m 2>/dev/null | tr -d '\r\n')"
+    case "$arch" in
+        aarch64 | arm64) target="aarch64-unknown-linux-musl" ;;
+        x86_64 | amd64) target="x86_64-unknown-linux-musl" ;;
+        *)
+            echo -e "${YELLOW}sbx-claude: unsupported container arch '$arch'.${NC}"
+            return 1
+            ;;
+    esac
+
+    mkdir -p "$CACHE_DIR" || return 1
+    cship_bin="$CACHE_DIR/cship-$target"
+    starship_bin="$CACHE_DIR/starship-$target"
+
+    if [ -n "$SBX_CLAUDE_REFRESH" ]; then
+        rm -f "$cship_bin" "$starship_bin"
+    fi
+
+    if [ ! -f "$cship_bin" ]; then
+        echo -e "${GREEN}sbx-claude: downloading cship ($target)${NC}"
+        curl -fsSL -o "$cship_bin.part" \
+            "https://github.com/stephenleo/cship/releases/latest/download/cship-$target" || {
+            rm -f "$cship_bin.part"
+            return 1
+        }
+        mv "$cship_bin.part" "$cship_bin" || return 1
+    fi
+
+    if [ ! -f "$starship_bin" ]; then
+        # cship renders its first line by shelling out to `starship module ...`,
+        # so starship has to be in the container too.
+        echo -e "${GREEN}sbx-claude: downloading starship ($target)${NC}"
+        curl -fsSL -o "$starship_bin.tar.gz" \
+            "https://github.com/starship/starship/releases/latest/download/starship-$target.tar.gz" || {
+            rm -f "$starship_bin.tar.gz"
+            return 1
+        }
+        tar -xzOf "$starship_bin.tar.gz" starship > "$starship_bin.part" || {
+            rm -f "$starship_bin.tar.gz" "$starship_bin.part"
+            return 1
+        }
+        rm -f "$starship_bin.tar.gz"
+        mv "$starship_bin.part" "$starship_bin" || return 1
+    fi
+
+    # `sbx cp` runs as the agent uid, which can't write /usr/local/bin — stage
+    # in /tmp and install as root. /usr/local/bin is on the container PATH, so
+    # the statusline's bare `cship` command resolves.
+    sbx cp "$cship_bin" "$NAME:/tmp/cship" || return 1
+    sbx cp "$starship_bin" "$NAME:/tmp/starship" || return 1
+    sbx exec -u root "$NAME" -- install -m 0555 /tmp/cship /usr/local/bin/cship || return 1
+    sbx exec -u root "$NAME" -- install -m 0555 /tmp/starship /usr/local/bin/starship || return 1
+    # As root: `sbx cp` lands the staged copies owned by the host uid, which
+    # the agent user cannot unlink out of sticky-bit /tmp.
+    sbx exec -u root "$NAME" -- rm -f /tmp/cship /tmp/starship || return 1
+
+    sbx exec "$NAME" -- mkdir -p /home/agent/.config || return 1
+    # Both configs are dotbot symlinks into this repo, and `sbx cp` copies the
+    # link rather than following it — which would land a dangling symlink to a
+    # host path the container can't see. Stage a dereferenced copy first.
+    staging="$(mktemp -d)" || return 1
+    for cfg in cship.toml starship.toml; do
+        if [ -e "$HOME/.config/$cfg" ]; then
+            cp -L "$HOME/.config/$cfg" "$staging/$cfg" || return 1
+            sbx cp "$staging/$cfg" "$NAME:/home/agent/.config/$cfg" || return 1
+        else
+            echo -e "${YELLOW}sbx-claude: skipping ~/.config/$cfg (not present on host).${NC}"
+        fi
+    done
+    rm -rf "$staging"
+
+    # sbx cp preserves host ownership/permissions, which the sandbox's uid-1000
+    # "agent" user can't necessarily read. Reclaim it as root.
+    sbx exec -u root "$NAME" -- chown -R agent:agent /home/agent/.config || return 1
+}
+
+echo -e "${GREEN}sbx-claude: seeding cship statusline${NC}"
+if ! seed_statusline; then
+    echo -e "${YELLOW}sbx-claude: statusline setup failed, continuing without it.${NC}"
+fi
+
+echo -e "${GREEN}sbx-claude: attaching to '$NAME'.${NC}"
+run_claude
