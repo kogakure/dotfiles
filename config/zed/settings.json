@@ -85,7 +85,12 @@
 		"diagnostics": false,
 	},
 	"agent": {
-		"sandbox_permissions": {
+		"auto_compact": {
+   "threshold": "70%"
+  },
+  "play_sound_when_agent_done": "always",
+  "notify_when_agent_waiting": "all_screens",
+  "sandbox_permissions": {
    "allow_fs_write_all": false,
    "allow_unsandboxed": false
   },
