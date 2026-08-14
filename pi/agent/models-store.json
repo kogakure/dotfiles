@@ -164,6 +164,7 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       },
@@ -202,6 +203,7 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       },
@@ -240,19 +242,20 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       }
     ],
-    "checkedAt": 1785946159245,
-    "lastModified": 1785917084000,
-    "etag": "W/\"400cac2d73673d9fff4c7d0ed22691b0\""
+    "checkedAt": 1786553969470,
+    "lastModified": 1786550257000,
+    "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
   "opencode-go": {
     "models": [
       {
         "id": "deepseek-v4-flash",
-        "name": "DeepSeek V4 Flash (New)",
+        "name": "DeepSeek V4 Flash (2x usage)",
         "api": "openai-completions",
         "provider": "opencode-go",
         "baseUrl": "https://opencode.ai/zen/go/v1",
@@ -261,9 +264,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.14,
-          "output": 0.28,
-          "cacheRead": 0.0028,
+          "input": 0.07,
+          "output": 0.14,
+          "cacheRead": 0.0014,
           "cacheWrite": 0
         },
         "compat": {
@@ -741,9 +744,9 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1785946159430,
-    "lastModified": 1785917087000,
-    "etag": "W/\"9acd354f1fe084eec04a65a7ad727beb\""
+    "checkedAt": 1786553968570,
+    "lastModified": 1786550259000,
+    "etag": "W/\"fc45c5903aaf73b9f2cdfd74cc3f77f9\""
   },
   "xai": {
     "models": [
@@ -805,6 +808,31 @@
         }
       },
       {
+        "id": "grok-4.6",
+        "name": "Grok 4.6",
+        "api": "openai-completions",
+        "provider": "xai",
+        "baseUrl": "https://api.x.ai/v1",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2,
+          "output": 6,
+          "cacheRead": 0.5,
+          "cacheWrite": 0
+        },
+        "contextWindow": 500000,
+        "maxTokens": 500000,
+        "compat": {
+          "supportsStore": false,
+          "supportsDeveloperRole": false,
+          "supportsReasoningEffort": false
+        }
+      },
+      {
         "id": "grok-build-0.1",
         "name": "Grok Build 0.1",
         "api": "openai-completions",
@@ -830,8 +858,8 @@
         }
       }
     ],
-    "checkedAt": 1785947220786,
-    "lastModified": 1785917095000,
-    "etag": "W/\"6f0c33027c980d7c03f8fb9b81dbcb45\""
+    "checkedAt": 1786553968766,
+    "lastModified": 1786550268000,
+    "etag": "W/\"e6ca3f59bbda74af14a94748691e32d8\""
   }
 }

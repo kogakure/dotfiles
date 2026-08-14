@@ -1,0 +1,24 @@
+{
+  "theme": {
+    "name": "system"
+  },
+  "plugins": [
+    "@cortexkit/opencode-magic-context@0.33.1"
+  ],
+  "scroll": {
+    "speed": 3,
+    "acceleration": true
+  },
+  "attention": {
+    "enabled": true
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "show"
+  },
+  "animations": true
+}

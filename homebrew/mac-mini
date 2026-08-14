@@ -362,6 +362,8 @@ brew "unzip"
 brew "urlview"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Policy driven vetting of open source dependencies
+brew "vet", link: false
 # Your CLI home video recorder
 brew "vhs"
 # JavaScript toolchain manager for reproducible environments
@@ -418,8 +420,6 @@ brew "gabrie30/utils/ghorg"
 brew "joshmedeski/sesh/sesh"
 # Manage tasks, orchestrate agents, review changes, and ship value
 brew "kdlbs/kandev/kandev", trusted: true
-# SafeDep vet is a tool for identifying open source software supply chain risks
-brew "safedep/tap/vet"
 # Sound and music editor
 cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -623,6 +623,8 @@ cask "transmit"
 cask "typeface"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
+# SafeDep vet is a tool for identifying open source software supply chain risks
+cask "safedep/tap/vet", trusted: true
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -752,6 +754,7 @@ npm "@github/copilot"
 npm "@gitlawb/openclaude"
 npm "@kitlangton/ghui"
 npm "@nqbao/pi-sandbox"
+npm "@opencode-ai/cli"
 npm "@plannotator/pi-extension"
 npm "@readwise/cli"
 npm "@rynfar/meridian"
