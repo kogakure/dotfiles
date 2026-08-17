@@ -165,6 +165,9 @@ end
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1
     eval "$(gh completion -s fish)"
+    # Reuse gh's token so other GitHub-aware tools (e.g. mise's github backend)
+    # get the higher authenticated rate limit instead of 60 req/hour per IP
+    set -gx GITHUB_TOKEN (gh auth token 2>/dev/null)
 end
 
 # Worktrunk
