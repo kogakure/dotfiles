@@ -36,18 +36,12 @@ brew "libpng"
 brew "libyaml"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
-# Improved shell history for zsh, bash, fish and nushell
-brew "atuin", restart_service: :changed
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# Bash scripts that integrate bat with various command-line tools
-brew "bat-extras"
 # Low-level library for pixel manipulation
 brew "pixman"
 # Vector graphics library with cross-device output support
@@ -120,10 +114,6 @@ brew "editorconfig"
 brew "espeak-ng"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# Modern, maintained replacement for ls
-brew "eza"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # SDL2 compatibility layer that uses SDL3 behind the scenes
 brew "sdl2-compat"
 # Play, record, convert, and stream select audio and video codecs
@@ -144,28 +134,18 @@ brew "findutils"
 brew "fish"
 # Plugin manager for the Fish shell
 brew "fisher"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GNU compiler collection
 brew "gcc"
-# GitHub command-line tool
-brew "gh"
 # Automatic git commit --fixup
 brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo
 brew "git-crypt"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
 # Small git utilities
 brew "git-extras"
 # Alias for git commit --fixup <ref>
 brew "git-fixup"
-# Git extension for versioning large files
-brew "git-lfs"
 # Simple and efficient way to access statistics in git
 brew "git-quick-stats"
-# Audit git repos for secrets
-brew "gitleaks"
 # C++ mathematics library for graphics software
 brew "glm"
 # Render markdown on the CLI
@@ -194,8 +174,6 @@ brew "grex"
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
-# Agent multiplexer that lives in your terminal
-brew "herdr"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
@@ -210,20 +188,12 @@ brew "imagemagick"
 brew "img2pdf"
 # Make XML documents translatable through PO files
 brew "itstool"
-# Git-compatible distributed version control system
-brew "jj"
 # Command-line pager for JSON data
 brew "jless"
 # Image manipulation library
 brew "jpeg"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
-# Lazier way to manage everything docker
-brew "lazydocker"
-# Simple terminal UI for git commands
-brew "lazygit"
 # TUI for Jujutsu/jj
 brew "lazyjj"
 # Terminal file manager
@@ -274,24 +244,18 @@ brew "open-mpi"
 brew "openai-whisper"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
 # Tool to interact with the Phrase API
 brew "phrase-cli"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Paste PNG into files
 brew "pngpaste"
-# Fast, disk space efficient package manager
-brew "pnpm"
 # Perl documentation generator
 brew "pod2man"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
 brew "postgresql@14"
-# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
-brew "prettier"
 # Prettier daemon
 brew "prettierd"
 # Command-line interface for Proton Pass
@@ -308,8 +272,6 @@ brew "ranger"
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
 brew "remarshal"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Wrapper around ripgrep that adds multiple rich file types
 brew "ripgrep-all"
 # Builds manuals - the opposite of roff
@@ -322,20 +284,12 @@ brew "sad"
 brew "sevenzip"
 # Database of common MIME types
 brew "shared-mime-info"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-# Autoformat shell script source code
-brew "shfmt"
 # Create beautiful image of your source code
 brew "silicon"
 # Compression/decompression tool based on snappy
 brew "snzip"
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
-# Cross-shell prompt for astronauts
-brew "starship"
-# Modern and pretty fancy file manager for the terminal
-brew "superfile"
 # Easiest, most secure way to use WireGuard and 2FA
 brew "tailscale", restart_service: :changed
 # Official documentation format of the GNU project
@@ -344,8 +298,6 @@ brew "texinfo"
 brew "the_silver_searcher"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Markup-based typesetting system
-brew "typst"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation
@@ -354,8 +306,6 @@ brew "universal-ctags"
 brew "unzip"
 # URL extractor/launcher
 brew "urlview"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Policy driven vetting of open source dependencies
 brew "vet", link: false
 # Your CLI home video recorder
@@ -380,20 +330,12 @@ brew "xh"
 brew "xmlto"
 # JavaScript package manager
 brew "yarn"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Dumb downloader that scrapes the web
 brew "you-get"
-# Process YAML, JSON, XML, CSV and properties documents from the CLI
-brew "yq"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
 brew "agavra/tap/tuicr", trusted: true
-# The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode", trusted: true
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
@@ -412,8 +354,6 @@ brew "gabrie30/utils/ghorg"
 brew "joshmedeski/sesh/sesh"
 # Manage tasks, orchestrate agents, review changes, and ship value
 brew "kdlbs/kandev/kandev", trusted: true
-# Desktop-inspired terminal diff viewer for agent-authored changesets
-brew "modem-dev/tap/hunk"
 # Sound and music editor
 cask "ableton-live-lite"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -452,14 +392,10 @@ cask "blurred"
 cask "brave-browser"
 # E-books management software
 cask "calibre"
-# Anthropic's official Claude AI desktop app
-cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # Screen capturing tool
 cask "cleanshot"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 # Menu bar usage monitor for Codex and Claude
 cask "steipete/tap/codexbar"
 # Visual diff tool for Git changes
