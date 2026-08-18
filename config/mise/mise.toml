@@ -1,8 +1,12 @@
 [tools]
+atuin = "18.19.0"
 bun = "latest"
 deno = "latest"
 direnv = "latest"
+fzf = "0.74.2"
+gh = "2.97.0"
 go = "latest"
+jj = "0.44.0"
 lua = "latest"
 neovim = "latest"
 node = "22.17.1"
@@ -10,7 +14,9 @@ node = "22.17.1"
 python = "latest"
 ruby = "3.4.2"
 rust = "latest"
+starship = "1.26.0"
 usage = "latest"
+zoxide = "0.10.0"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]
