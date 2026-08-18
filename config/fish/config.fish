@@ -157,8 +157,8 @@ if not string match -q -- "$PNPM_HOME/bin" $PATH
     set -gx PATH "$PNPM_HOME/bin" $PATH
 end
 
-# Stable Diffusion Webui
-# set VIRTUAL_ENV $HOME/Code/AI/stable-diffusion-webui/venv
+# LM Studio CLI (lms)
+set -gx PATH $PATH /Users/stefanimhoff/.lmstudio/bin
 
 # *** *** Tools *** ***
 

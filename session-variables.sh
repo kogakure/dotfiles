@@ -73,6 +73,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 fi
 
+# LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
+
 # System
 export PATH="/usr/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
