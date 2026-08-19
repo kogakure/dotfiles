@@ -241,8 +241,7 @@ alias ta 'tmux attach'
 alias ars 'atuin run script'
 
 # Claude Code
-alias cl 'claude --dangerously-skip-permissions'
-alias clr 'claude --resume'
+alias cc 'claude --dangerously-skip-permissions'
 
 # Codex
 alias cx 'codex --dangerously-bypass-approvals-and-sandbox'

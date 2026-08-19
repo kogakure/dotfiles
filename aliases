@@ -26,8 +26,7 @@ alias emacs "emacs -nw"
 alias e "emacs -nw"
 
 # Claude Code
-alias cl='claude --dangerously-skip-permissions'
-alias clr='claude --resume'
+alias cc='claude --dangerously-skip-permissions'
 
 # Codex
 alias cx='codex --dangerously-bypass-approvals-and-sandbox'
