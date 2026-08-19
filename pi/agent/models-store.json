@@ -247,7 +247,7 @@
         }
       }
     ],
-    "checkedAt": 1786553969470,
+    "checkedAt": 1787066750692,
     "lastModified": 1786550257000,
     "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
@@ -255,7 +255,7 @@
     "models": [
       {
         "id": "deepseek-v4-flash",
-        "name": "DeepSeek V4 Flash (2x usage)",
+        "name": "DeepSeek V4 Flash",
         "api": "openai-completions",
         "provider": "opencode-go",
         "baseUrl": "https://opencode.ai/zen/go/v1",
@@ -264,9 +264,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.07,
-          "output": 0.14,
-          "cacheRead": 0.0014,
+          "input": 0.22,
+          "output": 0.66,
+          "cacheRead": 0.007,
           "cacheWrite": 0
         },
         "compat": {
@@ -280,7 +280,7 @@
         "maxTokens": 384000,
         "thinkingLevelMap": {
           "minimal": null,
-          "low": null,
+          "low": "low",
           "medium": null,
           "high": "high",
           "max": "max"
@@ -288,7 +288,7 @@
       },
       {
         "id": "deepseek-v4-pro",
-        "name": "DeepSeek V4 Pro",
+        "name": "DeepSeek V4 Pro (New)",
         "api": "openai-completions",
         "provider": "opencode-go",
         "baseUrl": "https://opencode.ai/zen/go/v1",
@@ -297,9 +297,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.435,
-          "output": 0.87,
-          "cacheRead": 0.003625,
+          "input": 0.66,
+          "output": 1.98,
+          "cacheRead": 0.022,
           "cacheWrite": 0
         },
         "compat": {
@@ -370,6 +370,39 @@
           "off": null,
           "minimal": null,
           "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null,
+          "max": "max"
+        }
+      },
+      {
+        "id": "glm-5.3",
+        "name": "GLM-5.3",
+        "api": "openai-completions",
+        "provider": "opencode-go",
+        "baseUrl": "https://opencode.ai/zen/go/v1",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 1.4,
+          "output": 4.4,
+          "cacheRead": 0.26,
+          "cacheWrite": 0
+        },
+        "compat": {
+          "supportsStore": false,
+          "supportsDeveloperRole": false,
+          "maxTokensField": "max_tokens"
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 131072,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
           "medium": null,
           "high": "high",
           "xhigh": null,
@@ -687,9 +720,9 @@
       {
         "id": "qwen3.7-max",
         "name": "Qwen3.7 Max",
-        "api": "anthropic-messages",
+        "api": "openai-completions",
         "provider": "opencode-go",
-        "baseUrl": "https://opencode.ai/zen/go",
+        "baseUrl": "https://opencode.ai/zen/go/v1",
         "reasoning": true,
         "input": [
           "text"
@@ -700,15 +733,20 @@
           "cacheRead": 0.5,
           "cacheWrite": 3.125
         },
+        "compat": {
+          "supportsStore": false,
+          "supportsDeveloperRole": false,
+          "maxTokensField": "max_tokens"
+        },
         "contextWindow": 1000000,
         "maxTokens": 65536
       },
       {
         "id": "qwen3.7-plus",
         "name": "Qwen3.7 Plus",
-        "api": "anthropic-messages",
+        "api": "openai-completions",
         "provider": "opencode-go",
-        "baseUrl": "https://opencode.ai/zen/go",
+        "baseUrl": "https://opencode.ai/zen/go/v1",
         "reasoning": true,
         "input": [
           "text",
@@ -720,15 +758,20 @@
           "cacheRead": 0.04,
           "cacheWrite": 0.5
         },
+        "compat": {
+          "supportsStore": false,
+          "supportsDeveloperRole": false,
+          "maxTokensField": "max_tokens"
+        },
         "contextWindow": 1000000,
         "maxTokens": 65536
       },
       {
         "id": "qwen3.8-max",
         "name": "Qwen3.8 Max",
-        "api": "anthropic-messages",
+        "api": "openai-completions",
         "provider": "opencode-go",
-        "baseUrl": "https://opencode.ai/zen/go",
+        "baseUrl": "https://opencode.ai/zen/go/v1",
         "reasoning": true,
         "input": [
           "text",
@@ -740,22 +783,30 @@
           "cacheRead": 0.25,
           "cacheWrite": 2.5
         },
+        "compat": {
+          "supportsStore": false,
+          "supportsDeveloperRole": false,
+          "maxTokensField": "max_tokens"
+        },
         "contextWindow": 1000000,
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1786553968570,
-    "lastModified": 1786550259000,
-    "etag": "W/\"fc45c5903aaf73b9f2cdfd74cc3f77f9\""
+    "checkedAt": 1787066750689,
+    "lastModified": 1787057801000,
+    "etag": "W/\"ccab3063f2d3e2c38944d884aa972eb8\""
   },
   "xai": {
     "models": [
       {
         "id": "grok-4.3",
         "name": "Grok 4.3",
-        "api": "openai-completions",
+        "api": "openai-responses",
         "provider": "xai",
         "baseUrl": "https://api.x.ai/v1",
+        "compat": {
+          "supportsLongCacheRetention": false
+        },
         "reasoning": true,
         "input": [
           "text",
@@ -769,10 +820,14 @@
         },
         "contextWindow": 1000000,
         "maxTokens": 30000,
-        "compat": {
-          "supportsStore": false,
-          "supportsDeveloperRole": false,
-          "supportsReasoningEffort": false
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null,
+          "max": null
         }
       },
       {
@@ -810,9 +865,12 @@
       {
         "id": "grok-4.6",
         "name": "Grok 4.6",
-        "api": "openai-completions",
+        "api": "openai-responses",
         "provider": "xai",
         "baseUrl": "https://api.x.ai/v1",
+        "compat": {
+          "supportsLongCacheRetention": false
+        },
         "reasoning": true,
         "input": [
           "text",
@@ -826,18 +884,25 @@
         },
         "contextWindow": 500000,
         "maxTokens": 500000,
-        "compat": {
-          "supportsStore": false,
-          "supportsDeveloperRole": false,
-          "supportsReasoningEffort": false
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh",
+          "max": null
         }
       },
       {
         "id": "grok-build-0.1",
         "name": "Grok Build 0.1",
-        "api": "openai-completions",
+        "api": "openai-responses",
         "provider": "xai",
         "baseUrl": "https://api.x.ai/v1",
+        "compat": {
+          "supportsLongCacheRetention": false
+        },
         "reasoning": true,
         "input": [
           "text",
@@ -851,15 +916,14 @@
         },
         "contextWindow": 256000,
         "maxTokens": 256000,
-        "compat": {
-          "supportsStore": false,
-          "supportsDeveloperRole": false,
-          "supportsReasoningEffort": false
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null
         }
       }
     ],
-    "checkedAt": 1786553968766,
-    "lastModified": 1786550268000,
-    "etag": "W/\"e6ca3f59bbda74af14a94748691e32d8\""
+    "checkedAt": 1787066784061,
+    "lastModified": 1787057808000,
+    "etag": "W/\"cd1f983d46f3bac772e16ab0a21e976b\""
   }
 }
