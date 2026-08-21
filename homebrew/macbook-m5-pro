@@ -136,6 +136,8 @@ brew "fish"
 brew "fisher"
 # GNU compiler collection
 brew "gcc"
+# GitHub command-line tool
+brew "gh"
 # Automatic git commit --fixup
 brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo
@@ -585,6 +587,7 @@ cask "zen"
 cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
+mas "Blurred 2", id: 1497527363
 mas "Deliveries", id: 290986013
 mas "Dynamic wallpaper", id: 1582358382
 mas "Free MP4 Converter", id: 693443591
