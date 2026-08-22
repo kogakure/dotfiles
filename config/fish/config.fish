@@ -207,9 +207,9 @@ alias reload 'exec fish'
 # Folders/Lists
 alias ... 'cd ../..'
 alias cd.. 'cd ..'
-alias ls 'eza --git --group-directories-first --icons'
-alias ll 'eza -l --git --group-directories-first --icons'
-alias lt 'eza --git --group-directories-first --icons --tree'
+alias ls 'eza --git --group-directories-first --icons=always'
+alias ll 'eza -l --git --group-directories-first --icons=always'
+alias lt 'eza --git --group-directories-first --icons=always --tree'
 alias mkdir 'mkdir -p'
 alias dotfiles 'cd $HOME/.dotfiles'
 # macOS-only folder shortcuts
