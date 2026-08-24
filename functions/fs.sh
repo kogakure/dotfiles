@@ -2,7 +2,7 @@
 
 fs() {
     # Check if 'du' supports the -b option
-    if du -b /dev/null > /dev/null 2>&1; then
+    if du -b /dev/null >/dev/null 2>&1; then
         arg="-sbh"
     else
         arg="-sh"

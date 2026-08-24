@@ -8,13 +8,13 @@
 set -euo pipefail
 
 if [ $# -ne 1 ]; then
-  echo "Usage: $(basename "$0") <file.csv>" >&2
-  exit 127
+    echo "Usage: $(basename "$0") <file.csv>" >&2
+    exit 127
 fi
 
 if [ ! -f "$1" ]; then
-  echo "Error: file not found: $1" >&2
-  exit 1
+    echo "Error: file not found: $1" >&2
+    exit 1
 fi
 
 exec python3 - "$1" <<'PY'

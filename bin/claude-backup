@@ -70,10 +70,10 @@ backup_dir() {
 
 echo ""
 echo "Backing up settings..."
-backup_file "$CLAUDE_DIR/CLAUDE.md"          "$PROFILE_DIR/CLAUDE.md"
-backup_file "$CLAUDE_DIR/RTK.md"             "$PROFILE_DIR/RTK.md"
-backup_file "$CLAUDE_DIR/settings.json"      "$PROFILE_DIR/settings.json"
-backup_file "$CLAUDE_DIR/keybindings.json"   "$PROFILE_DIR/keybindings.json"
+backup_file "$CLAUDE_DIR/CLAUDE.md" "$PROFILE_DIR/CLAUDE.md"
+backup_file "$CLAUDE_DIR/RTK.md" "$PROFILE_DIR/RTK.md"
+backup_file "$CLAUDE_DIR/settings.json" "$PROFILE_DIR/settings.json"
+backup_file "$CLAUDE_DIR/keybindings.json" "$PROFILE_DIR/keybindings.json"
 backup_file "$CLAUDE_DIR/mcp-needs-auth-cache.json" "$PROFILE_DIR/mcp-needs-auth-cache.json"
 backup_file "$CLAUDE_DIR/policy-limits.json" "$PROFILE_DIR/policy-limits.json"
 
@@ -82,9 +82,9 @@ backup_file "$CLAUDE_DIR/policy-limits.json" "$PROFILE_DIR/policy-limits.json"
 echo ""
 echo "Backing up commands, scripts, hooks & skills..."
 backup_dir "$CLAUDE_DIR/commands" "$PROFILE_DIR/commands"
-backup_dir "$CLAUDE_DIR/scripts"  "$PROFILE_DIR/scripts"
-backup_dir "$CLAUDE_DIR/hooks"    "$PROFILE_DIR/hooks"
-backup_dir "$CLAUDE_DIR/skills"   "$PROFILE_DIR/skills"
+backup_dir "$CLAUDE_DIR/scripts" "$PROFILE_DIR/scripts"
+backup_dir "$CLAUDE_DIR/hooks" "$PROFILE_DIR/hooks"
+backup_dir "$CLAUDE_DIR/skills" "$PROFILE_DIR/skills"
 
 # ── Plugins ───────────────────────────────────────────────────────────────────
 
@@ -96,9 +96,9 @@ backup_file "$CLAUDE_DIR/plugins/known_marketplaces.json" "$PROFILE_DIR/plugins/
 
 echo ""
 echo "Backing up profile state..."
-backup_file "$HOME/.claude.json"             "$PROFILE_DIR/.claude.json"
-backup_file "$CLAUDE_DIR/history.jsonl"      "$PROFILE_DIR/history.jsonl"
-backup_file "$CLAUDE_DIR/stats-cache.json"   "$PROFILE_DIR/stats-cache.json"
+backup_file "$HOME/.claude.json" "$PROFILE_DIR/.claude.json"
+backup_file "$CLAUDE_DIR/history.jsonl" "$PROFILE_DIR/history.jsonl"
+backup_file "$CLAUDE_DIR/stats-cache.json" "$PROFILE_DIR/stats-cache.json"
 
 # ── Projects ─────────────────────────────────────────────────────────────────
 
@@ -152,7 +152,7 @@ fi
 
 echo ""
 echo "Creating backup manifest..."
-cat > "$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
+cat >"$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
 Claude Code Backup
 ==================
 Timestamp:  $TIMESTAMP

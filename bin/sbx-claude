@@ -188,7 +188,7 @@ seed_statusline() {
             rm -f "$starship_bin.tar.gz"
             return 1
         }
-        tar -xzOf "$starship_bin.tar.gz" starship > "$starship_bin.part" || {
+        tar -xzOf "$starship_bin.tar.gz" starship >"$starship_bin.part" || {
             rm -f "$starship_bin.tar.gz" "$starship_bin.part"
             return 1
         }

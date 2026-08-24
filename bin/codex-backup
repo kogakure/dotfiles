@@ -62,7 +62,7 @@ if [ -f "$PROFILE_DIR/config.toml" ] && ! grep -Eq '^[[:space:]]*personality[[:s
     {
         echo 'personality = "friendly"'
         cat "$PROFILE_DIR/config.toml"
-    } > "$PROFILE_DIR/config.toml.tmp"
+    } >"$PROFILE_DIR/config.toml.tmp"
     mv "$PROFILE_DIR/config.toml.tmp" "$PROFILE_DIR/config.toml"
     echo -e "  ✓ Recorded current default personality: friendly"
 fi
@@ -84,7 +84,7 @@ fi
 
 echo ""
 echo "Creating backup manifest..."
-cat > "$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
+cat >"$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
 Codex Configuration Backup
 ==========================
 Timestamp:  $TIMESTAMP

@@ -86,8 +86,8 @@ gh extension install gennaro-tedesco/gh-s
 
 # herdr plugins
 if command -v herdr >/dev/null 2>&1; then
-  herdr plugin install cloudmanic/herdr-plus --yes
-  herdr plugin install tdi/herdr-worktree-setup --yes
+    herdr plugin install cloudmanic/herdr-plus --yes
+    herdr plugin install tdi/herdr-worktree-setup --yes
 fi
 
 # Install Fish plugins
