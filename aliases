@@ -22,8 +22,8 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # Emacs
-alias emacs "emacs -nw"
-alias e "emacs -nw"
+alias emacs='emacs -nw'
+alias e='emacs -nw'
 
 # Claude Code
 alias cc='claude --dangerously-skip-permissions'
