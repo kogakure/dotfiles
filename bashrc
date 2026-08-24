@@ -20,6 +20,11 @@ bind "set show-all-if-ambiguous on"
 
 # *** *** Tools *** ***
 
+# mise — first, so the `command -v` guards below can see mise-managed tools
+if command -v mise >/dev/null 2>&1; then
+	eval "$(mise activate bash)"
+fi
+
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1; then
 	eval "$(gh completion -s bash)"
