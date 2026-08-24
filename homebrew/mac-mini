@@ -344,6 +344,8 @@ brew "superfile"
 brew "texinfo"
 # Code-search similar to ack
 brew "the_silver_searcher"
+# Terminal multiplexer
+brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
 # Display directories as trees (with optional color/HTML output)

@@ -257,6 +257,8 @@ brew "texinfo"
 brew "the_silver_searcher"
 # Simplified and community-driven man pages
 brew "tldr"
+# Terminal multiplexer
+brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
