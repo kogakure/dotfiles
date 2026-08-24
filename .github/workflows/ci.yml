@@ -1,0 +1,134 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+# One in-flight run per ref; a new push supersedes the old one.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: lint (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+
+    steps:
+      # The private submodule is not reachable from CI, so it is deliberately
+      # left uninitialised. bin/dotfiles-lint excludes private/* for exactly
+      # this reason.
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      # fish and zsh are Homebrew/system packages on the real machines rather
+      # than mise tools, so CI installs them the same way.
+      - name: Install fish and zsh (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y fish zsh
+
+      - name: Install fish (macOS)
+        if: runner.os == 'macOS'
+        run: brew install fish
+
+      - name: Install mise
+        uses: jdx/mise-action@v2
+        with:
+          install: false
+          cache: true
+
+      # Read the tool pins out of config/mise/mise.toml — the file that gets
+      # symlinked to ~/.config/mise/mise.toml on a real machine — so CI runs
+      # the exact versions the machines run and the two cannot drift apart.
+      # `just` is a Homebrew package on the machines, so it has no pin here.
+      - name: Install the pinned lint tools
+        run: |
+          set -euo pipefail
+          pin() {
+            sed -n "s/^$1 *= *\"\([^\"]*\)\"$/\1/p" config/mise/mise.toml | head -1
+          }
+          for tool in shellcheck shfmt yq; do
+            version=$(pin "$tool")
+            if [ -z "$version" ]; then
+              echo "::error file=config/mise/mise.toml::no version pin for '$tool'"
+              exit 1
+            fi
+            echo "pinning $tool@$version from config/mise/mise.toml"
+            mise use --global --yes "$tool@$version"
+          done
+          mise use --global --yes just@latest
+          mise install --yes
+          # Mirror session-variables.sh: the shims go on PATH.
+          echo "$HOME/.local/share/mise/shims" >> "$GITHUB_PATH"
+
+      - name: Show tool versions
+        run: |
+          shellcheck --version
+          shfmt --version
+          yq --version
+          just --version
+          fish --version
+          zsh --version
+          bash --version | head -1
+
+      # Proves no recipe secretly depends on cwd: invoke just by absolute path
+      # to the Justfile from a directory outside the checkout.
+      - name: just --list works from outside the repo
+        run: |
+          cd "$RUNNER_TEMP"
+          just -f "$GITHUB_WORKSPACE/Justfile" --list
+
+      # --strict turns a missing linter into a failure instead of a skip, so
+      # this job can never go green by quietly checking nothing.
+      - name: just lint-strict
+        run: just lint-strict
+
+      # The pre-commit hook must never be able to block the commit that fixes
+      # a broken PATH. With PATH cut down to the system directories the linters
+      # are unresolvable, and the hook has to exit 0 anyway.
+      - name: pre-commit hook fails open on a broken PATH
+        run: |
+          set -uo pipefail
+          out=$(env -i HOME="$HOME" PATH=/usr/bin:/bin .githooks/pre-commit 2>&1) && rc=0 || rc=$?
+          printf '%s\n' "$out"
+          if [ "${rc:-0}" -ne 0 ]; then
+            echo "::error::pre-commit exited $rc under PATH=/usr/bin:/bin; it must fail open"
+            exit 1
+          fi
+          case "$out" in
+            *fail-open*) echo "OK: hook exited 0 and reported the fail-open path" ;;
+            *)
+              echo "::error::hook exited 0 but did not take the fail-open path"
+              exit 1
+              ;;
+          esac
+
+      # Guards the highest-value check in the suite. A runtime `source` of the
+      # startup files is the only thing that catches a fish-syntax alias in a
+      # POSIX file — the regression that shipped to three machines, which
+      # `bash -n` parses without complaint. Prove the check can still fail.
+      - name: POSIX source test detects a fish-syntax alias
+        run: |
+          set -euo pipefail
+          cp aliases "$RUNNER_TEMP/aliases.orig"
+          printf '\nalias broken "echo nope"\n' >> aliases
+          if bin/dotfiles-lint posix; then
+            cp "$RUNNER_TEMP/aliases.orig" aliases
+            echo "::error::the POSIX source test passed on a fish-syntax alias"
+            exit 1
+          fi
+          cp "$RUNNER_TEMP/aliases.orig" aliases
+          git diff --exit-code -- aliases
+          echo "OK: the POSIX source test rejects a fish-syntax alias"

@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+# Fast pre-commit gate: lint only the shell files staged for this commit.
+# CI is the thorough gate; this one exists to catch the obvious mistake before
+# it reaches a machine's shell startup.
+#
+# Enable with:  just install-hooks   (sets core.hooksPath to .githooks)
+# Disable with: just uninstall-hooks (unsets core.hooksPath)
+# Skip once:    git commit --no-verify
+#
+# THIS HOOK FAILS OPEN BY DESIGN.
+#
+# core.hooksPath plus a hook that shells out to a linter means a broken PATH
+# would otherwise block the very commit that fixes the broken PATH. Both
+# linters come from mise shims, so a PATH regression in bashrc, zshrc or
+# session-variables.sh is exactly the scenario where you most need to be able
+# to commit. So: if the linters cannot be resolved, this hook warns and exits
+# 0. It never blocks on infrastructure, only on real findings.
+#
+# Deliberately bash-3.2-compatible so it also runs under PATH=/usr/bin:/bin.
+
+set -uo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+LINTER="$REPO_ROOT/bin/dotfiles-lint"
+
+if [ ! -x "$LINTER" ]; then
+    printf 'pre-commit: %s missing or not executable, skipping lint.\n' "$LINTER" >&2
+    exit 0
+fi
+
+# Fail open when the tools themselves are unreachable.
+if ! command -v shellcheck >/dev/null 2>&1 || ! command -v shfmt >/dev/null 2>&1; then
+    printf 'pre-commit: shellcheck/shfmt not on PATH, skipping lint (fail-open).\n' >&2
+    printf 'pre-commit: PATH=%s\n' "$PATH" >&2
+    printf 'pre-commit: restore them with "mise install", then re-run "just lint".\n' >&2
+    exit 0
+fi
+
+# Only the fast, staged-file checks. The POSIX runtime source test, the
+# install.conf.yaml validation and the drift check are whole-repo and belong
+# to `just lint` and CI.
+if ! "$LINTER" --staged shellcheck shfmt fish zsh; then
+    printf '\npre-commit: lint failed. Fix the findings, or bypass with:\n' >&2
+    printf '  git commit --no-verify\n' >&2
+    exit 1
+fi

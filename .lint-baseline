@@ -1,0 +1,7 @@
+# Snapshot of the shellcheck findings that already existed when the lint gate
+# was introduced (SI-80). `just lint` fails when the count goes *up*, so new
+# code is held to a clean bar without this phase silently absorbing the
+# cleanup that belongs to SI-81 and SI-82.
+#
+# Regenerate with: just lint-snapshot
+shellcheck=20
