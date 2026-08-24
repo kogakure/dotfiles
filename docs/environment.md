@@ -46,8 +46,13 @@
 ## Version Management
 
 - **mise**: Primary version manager (Node.js, Python, Ruby, etc.)
-  - Init script: `private/mise/init.sh`
+  - Config: `config/mise/mise.toml` → `~/.config/mise/mise.toml` (the only mise
+    config in this repo; do not add a project-local `mise.toml` at the repo root)
+  - Install pinned versions: `mise install`
   - Shims: `~/.local/share/mise/shims/`
+  - Activated in fish (`config/fish/config.fish`), bash (`bashrc`) and zsh
+    (`zshrc`); `session-variables.sh` puts the shims on `PATH` for
+    non-interactive shells
 - **volta**: Node.js version manager (legacy, being phased out)
 
 ## Git
