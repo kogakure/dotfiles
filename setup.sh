@@ -129,9 +129,14 @@ gpgconf --kill gpg-agent
 gpg-agent --daemon
 ./bin/gpg-keys-restore
 
-# Install mise and mise versions
-curl https://mise.run | sh
-./private/mise/init.sh
+# Install the tool versions pinned in config/mise/mise.toml.
+# mise itself is declared in the Brewfile and installed by homebrew-restore above.
+echo "Installing mise tool versions"
+if command -v mise &>/dev/null; then
+    mise install
+else
+    echo "mise not found — expected it from the Brewfile. Skipping tool install." >&2
+fi
 
 # Install Doom Emacs
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
