@@ -1,0 +1,472 @@
+#!/bin/bash
+#
+# Lint the shell sources of this dotfiles repository.
+#
+# This is the single source of truth for `just lint`, `.githooks/pre-commit`
+# and `.github/workflows/ci.yml`, so all three check exactly the same things.
+# It resolves its own repository root and never depends on the caller's cwd.
+#
+# Deliberately written for bash 3.2 (the /bin/bash macOS ships) so it still
+# runs when PATH has been reduced to /usr/bin:/bin — see .githooks/pre-commit.
+#
+# Usage:
+#   dotfiles-lint [OPTIONS] [CHECK...]
+#
+# Checks (default: all of them). The leading "-" keeps shellcheck from
+# mistaking these lines for `# shellcheck ...` directives:
+#   - shellcheck   over every bash/sh source, gated on .lint-baseline
+#   - shfmt        -d -i 4 -ci over the same set (must be clean)
+#   - fish         fish -n over the hand-written fish config and functions
+#   - zsh          zsh -n over zshrc/zshenv (no zsh dialect in shellcheck)
+#   - posix        source the startup files for real, assert stderr is empty
+#   - yaml         parse install.conf.yaml, assert every link source exists
+#   - drift        re-run the shell-config generator, assert no diff (SI-84)
+#
+# Options:
+#   --staged     only lint files staged for commit (used by the pre-commit hook)
+#   --strict     a missing linter is an error instead of a skip; used in CI
+#   --snapshot   rewrite .lint-baseline from the current findings
+#   --list-shell-sources
+#                print the bash/sh source list and exit; `just fmt` formats
+#                exactly this set, so the formatter and the linter agree
+#   -h, --help   show this help
+#
+# Exit status: 0 if every selected check passed or was skipped, 1 otherwise.
+
+set -uo pipefail
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BASELINE_FILE="$REPO_ROOT/.lint-baseline"
+
+STAGED=0
+STRICT=0
+SNAPSHOT=0
+LIST_ONLY=0
+CHECKS=()
+FAILED=()
+SKIPPED=()
+
+ALL_CHECKS="shellcheck shfmt fish zsh posix yaml drift"
+
+# --- output helpers ---------------------------------------------------------
+
+if [ -t 1 ] && [ -z "${NO_COLOR:-}" ]; then
+    C_RED=$'\033[31m' C_GREEN=$'\033[32m' C_YELLOW=$'\033[33m' C_BOLD=$'\033[1m' C_OFF=$'\033[0m'
+else
+    C_RED='' C_GREEN='' C_YELLOW='' C_BOLD='' C_OFF=''
+fi
+
+heading() { printf '%s==> %s%s\n' "$C_BOLD" "$1" "$C_OFF"; }
+ok() { printf '%s    ok%s %s\n' "$C_GREEN" "$C_OFF" "$1"; }
+warn() { printf '%s  skip%s %s\n' "$C_YELLOW" "$C_OFF" "$1"; }
+fail() { printf '%s  FAIL%s %s\n' "$C_RED" "$C_OFF" "$1"; }
+
+usage() {
+    sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+    exit "${1:-0}"
+}
+
+# Report a check as skipped, or as failed when --strict is in effect.
+missing_tool() {
+    if [ "$STRICT" -eq 1 ]; then
+        fail "$1: '$2' not found (--strict)"
+        FAILED[${#FAILED[@]}]="$1"
+    else
+        warn "$1: '$2' not found, skipping"
+        SKIPPED[${#SKIPPED[@]}]="$1"
+    fi
+}
+
+# Read newline-separated stdin into the global FILES array. A single global
+# rather than a by-name out-parameter, because bash 3.2 has no namerefs and
+# the `eval` alternative is worse than the coupling. Checks run one at a time,
+# so there is never more than one live file list.
+FILES=()
+read_files() {
+    local line
+    FILES=()
+    while IFS= read -r line; do
+        [ -n "$line" ] || continue
+        FILES[${#FILES[@]}]=$line
+    done
+}
+
+# --- argument parsing -------------------------------------------------------
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --staged) STAGED=1 ;;
+        --strict) STRICT=1 ;;
+        --snapshot) SNAPSHOT=1 ;;
+        --list-shell-sources) LIST_ONLY=1 ;;
+        -h | --help) usage 0 ;;
+        -*)
+            printf 'dotfiles-lint: unknown option %s\n' "$1" >&2
+            exit 1
+            ;;
+        *)
+            case " $ALL_CHECKS " in
+                *" $1 "*) CHECKS[${#CHECKS[@]}]="$1" ;;
+                *)
+                    printf 'dotfiles-lint: unknown check %s (want: %s)\n' "$1" "$ALL_CHECKS" >&2
+                    exit 1
+                    ;;
+            esac
+            ;;
+    esac
+    shift
+done
+
+if [ ${#CHECKS[@]} -eq 0 ]; then
+    # shellcheck disable=SC2206,SC2086 # deliberate word split of the check list
+    CHECKS=($ALL_CHECKS)
+fi
+
+cd "$REPO_ROOT" || exit 1
+
+# --- file discovery ---------------------------------------------------------
+#
+# Every list is derived from git or from a shebang, so vendored files that are
+# gitignored stay out and nothing has to be re-listed by hand when a script is
+# added or removed.
+
+# Files staged for commit (added/copied/modified/renamed — never deleted).
+staged_files() {
+    git diff --cached --name-only --diff-filter=ACMR
+}
+
+# True when $1 has a shebang for an interpreter we do not lint as shell.
+is_foreign_script() {
+    local shebang
+    IFS= read -r shebang <"$1" || return 1
+    case "$shebang" in
+        '#!'*python* | '#!'*node* | '#!'*ruby* | '#!'*perl* | '#!'*osascript*) return 0 ;;
+    esac
+    return 1
+}
+
+# bash/sh sources. bin/convert-2-imdb3-format.sh is bash wrapping a python
+# heredoc, so it stays in; bin/key_counter_summary.py and bin/gource-gravatars
+# drop out by their shebangs, not by their names.
+shell_sources() {
+    local f
+    for f in \
+        setup.sh install \
+        bin/* bin/lib/*.sh functions/*.sh .githooks/* \
+        bashrc bash_profile profile aliases session-variables.sh; do
+        [ -f "$f" ] || continue
+        is_foreign_script "$f" && continue
+        printf '%s\n' "$f"
+    done
+}
+
+# zsh sources. shellcheck has no zsh dialect, so these only get `zsh -n`.
+zsh_sources() {
+    local f
+    for f in zshrc zshenv; do
+        [ -f "$f" ] && printf '%s\n' "$f"
+    done
+    return 0
+}
+
+# Hand-written fish sources. The 20-odd vendored fisher functions under
+# config/fish/functions are gitignored and untracked, so git filters them out
+# and this list needs no maintenance when a fisher plugin is added.
+fish_sources() {
+    git ls-files -- 'config/fish/*.fish'
+}
+
+# Intersect a discovery function's output with the staged set when --staged.
+select_files() {
+    if [ "$STAGED" -eq 0 ]; then
+        "$1"
+        return 0
+    fi
+    comm -12 <("$1" | sort) <(staged_files | sort)
+}
+
+# --- shellcheck -------------------------------------------------------------
+#
+# Gated on "no more findings than the snapshot in .lint-baseline", not on zero.
+# Fixing the pre-existing findings is SI-81/SI-82 work; this phase only has to
+# stop the count from growing.
+
+baseline_count() {
+    local n
+    n=$(sed -n 's/^shellcheck=\([0-9]\{1,\}\)$/\1/p' "$BASELINE_FILE" 2>/dev/null | tail -1)
+    printf '%s' "${n:-0}"
+}
+
+write_baseline() {
+    cat >"$BASELINE_FILE" <<EOF
+# Snapshot of the shellcheck findings that already existed when the lint gate
+# was introduced (SI-80). \`just lint\` fails when the count goes *up*, so new
+# code is held to a clean bar without this phase silently absorbing the
+# cleanup that belongs to SI-81 and SI-82.
+#
+# Regenerate with: just lint-snapshot
+shellcheck=$1
+EOF
+}
+
+check_shellcheck() {
+    heading "shellcheck"
+    if ! command -v shellcheck >/dev/null 2>&1; then
+        missing_tool shellcheck shellcheck
+        return
+    fi
+
+    read_files < <(select_files shell_sources)
+    if [ ${#FILES[@]} -eq 0 ]; then
+        ok "no shell sources to check"
+        return
+    fi
+
+    # -s bash: bashrc, aliases and functions/*.sh have no shebang but are bash.
+    local findings count
+    findings=$(shellcheck -x -s bash -f gcc "${FILES[@]}" 2>/dev/null)
+    if [ -n "$findings" ]; then
+        count=$(printf '%s\n' "$findings" | wc -l | tr -d ' ')
+    else
+        count=0
+    fi
+
+    if [ "$SNAPSHOT" -eq 1 ]; then
+        write_baseline "$count"
+        ok "snapshotted $count finding(s) into .lint-baseline"
+        return
+    fi
+
+    # --staged lints a subset, so comparing its count to the whole-repo
+    # baseline is meaningless. Require the staged files to be clean instead.
+    if [ "$STAGED" -eq 1 ]; then
+        if [ "$count" -gt 0 ]; then
+            printf '%s\n' "$findings"
+            fail "shellcheck: $count finding(s) in staged files"
+            FAILED[${#FAILED[@]}]=shellcheck
+        else
+            ok "${#FILES[@]} staged file(s) clean"
+        fi
+        return
+    fi
+
+    local baseline
+    baseline=$(baseline_count)
+    if [ "$count" -gt "$baseline" ]; then
+        printf '%s\n' "$findings"
+        fail "shellcheck: $count finding(s), baseline is $baseline"
+        printf '       Fix the new finding, or add a per-line\n'
+        printf '       "# shellcheck disable=SCxxxx" with a reason comment.\n'
+        FAILED[${#FAILED[@]}]=shellcheck
+    elif [ "$count" -lt "$baseline" ]; then
+        ok "$count finding(s), below the baseline of $baseline"
+        printf '       Findings went down — lock it in with: just lint-snapshot\n'
+    else
+        ok "$count finding(s), at the baseline of $baseline"
+    fi
+}
+
+# --- shfmt ------------------------------------------------------------------
+
+check_shfmt() {
+    heading "shfmt"
+    if ! command -v shfmt >/dev/null 2>&1; then
+        missing_tool shfmt shfmt
+        return
+    fi
+
+    read_files < <(select_files shell_sources)
+    if [ ${#FILES[@]} -eq 0 ]; then
+        ok "no shell sources to check"
+        return
+    fi
+
+    local diff
+    diff=$(shfmt -d -i 4 -ci "${FILES[@]}" 2>&1)
+    if [ -n "$diff" ]; then
+        printf '%s\n' "$diff"
+        fail "shfmt: formatting differs in the diff above. Run: just fmt"
+        FAILED[${#FAILED[@]}]=shfmt
+    else
+        ok "${#FILES[@]} file(s) formatted"
+    fi
+}
+
+# --- fish / zsh syntax ------------------------------------------------------
+
+check_syntax() {
+    local label=$1 tool=$2 sources=$3 check=$4
+    heading "$label"
+    if ! command -v "$tool" >/dev/null 2>&1; then
+        missing_tool "$check" "$tool"
+        return
+    fi
+
+    read_files < <(select_files "$sources")
+    if [ ${#FILES[@]} -eq 0 ]; then
+        ok "nothing to check"
+        return
+    fi
+
+    local bad=0 f
+    for f in "${FILES[@]}"; do
+        "$tool" -n "$f" || bad=1
+    done
+    if [ "$bad" -eq 1 ]; then
+        fail "$label: syntax errors above"
+        FAILED[${#FAILED[@]}]="$check"
+    else
+        ok "${#FILES[@]} file(s) parse"
+    fi
+}
+
+check_fish() { check_syntax "fish -n" fish fish_sources fish; }
+check_zsh() { check_syntax "zsh -n" zsh zsh_sources zsh; }
+
+# --- POSIX runtime source test ----------------------------------------------
+#
+# The highest-value check in the suite. `bash -n` happily parses fish-syntax
+# aliases such as `alias e "emacs -nw"` — only actually sourcing the file
+# catches them, and only stderr (not the exit status) reveals them.
+
+POSIX_TARGETS="aliases session-variables.sh profile bash_profile"
+
+check_posix() {
+    heading "startup files source cleanly"
+
+    local have_zsh=0
+    command -v zsh >/dev/null 2>&1 && have_zsh=1
+
+    local bad=0 f err
+    for f in $POSIX_TARGETS; do
+        [ -f "$f" ] || continue
+
+        err=$(bash --noprofile --norc -c '. "$1"' _ "$REPO_ROOT/$f" 2>&1 >/dev/null)
+        if [ -n "$err" ]; then
+            bad=1
+            fail "bash: sourcing $f wrote to stderr"
+            printf '%s\n' "$err" | sed 's/^/       /'
+        fi
+
+        [ "$have_zsh" -eq 1 ] || continue
+        err=$(zsh -f -c '. "$1"' _ "$REPO_ROOT/$f" 2>&1 >/dev/null)
+        if [ -n "$err" ]; then
+            bad=1
+            fail "zsh: sourcing $f wrote to stderr"
+            printf '%s\n' "$err" | sed 's/^/       /'
+        fi
+    done
+
+    [ "$have_zsh" -eq 1 ] || warn "zsh not found, only checked bash"
+
+    if [ "$bad" -eq 1 ]; then
+        FAILED[${#FAILED[@]}]=posix
+    else
+        ok "startup files source silently"
+    fi
+}
+
+# --- install.conf.yaml ------------------------------------------------------
+#
+# Parse the dotbot config and assert every `link:` source exists on disk.
+# private/* is excluded: the submodule is unavailable in CI and on any machine
+# that has not been granted access to it.
+
+check_yaml() {
+    heading "install.conf.yaml"
+    if ! command -v yq >/dev/null 2>&1; then
+        missing_tool yaml yq
+        return
+    fi
+
+    if ! yq -e 'type == "!!seq"' install.conf.yaml >/dev/null 2>&1; then
+        fail "install.conf.yaml: not a valid dotbot config (expected a YAML list)"
+        FAILED[${#FAILED[@]}]=yaml
+        return
+    fi
+
+    # For each link entry emit its source path. `.path // .` yields `path:` for
+    # a glob entry (a map) and the value itself for a plain scalar mapping.
+    local sources bad=0 src
+    if ! sources=$(yq -r '.[] | select(has("link")) | .link | .[] | (.path // .)' install.conf.yaml); then
+        fail "install.conf.yaml: could not extract link sources with yq"
+        FAILED[${#FAILED[@]}]=yaml
+        return
+    fi
+
+    while IFS= read -r src; do
+        [ -n "$src" ] || continue
+        case "$src" in
+            private/*) continue ;;
+            # A glob source only needs an existing parent directory.
+            */\*)
+                [ -d "${src%/\*}" ] || {
+                    bad=1
+                    fail "link source missing: $src"
+                }
+                ;;
+            *)
+                [ -e "$src" ] || {
+                    bad=1
+                    fail "link source missing: $src"
+                }
+                ;;
+        esac
+    done <<<"$sources"
+
+    if [ "$bad" -eq 1 ]; then
+        FAILED[${#FAILED[@]}]=yaml
+    else
+        ok "parses, and every non-private link source exists"
+    fi
+}
+
+# --- generated-file drift ---------------------------------------------------
+#
+# Placeholder until SI-84 lands the generator. The wiring is already in place
+# in the recipe, the CI job and the hook so that phase only adds the script.
+
+GENERATOR="bin/generate-shell-config"
+
+check_drift() {
+    heading "generated-file drift"
+    if [ ! -x "$GENERATOR" ]; then
+        warn "no $GENERATOR yet (arrives with SI-84)"
+        SKIPPED[${#SKIPPED[@]}]=drift
+        return
+    fi
+
+    if ! "$GENERATOR"; then
+        fail "$GENERATOR exited non-zero"
+        FAILED[${#FAILED[@]}]=drift
+        return
+    fi
+
+    if git diff --exit-code; then
+        ok "generated files are up to date"
+    else
+        fail "generated files are stale. Run: $GENERATOR && git add -A"
+        FAILED[${#FAILED[@]}]=drift
+    fi
+}
+
+# --- main -------------------------------------------------------------------
+
+if [ "$LIST_ONLY" -eq 1 ]; then
+    select_files shell_sources
+    exit 0
+fi
+
+[ "$STAGED" -eq 1 ] && printf 'Linting staged files only.\n'
+
+for check in "${CHECKS[@]}"; do
+    "check_$check"
+done
+
+printf '\n'
+[ ${#SKIPPED[@]} -gt 0 ] && warn "skipped: ${SKIPPED[*]}"
+if [ ${#FAILED[@]} -gt 0 ]; then
+    fail "failed: ${FAILED[*]}"
+    exit 1
+fi
+printf '%sAll checks passed.%s\n' "$C_GREEN" "$C_OFF"

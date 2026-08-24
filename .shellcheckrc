@@ -1,0 +1,14 @@
+# shellcheck configuration for this repository.
+#
+# Deliberately permissive so the baseline is green from day one; tighten over
+# time. Per-finding suppressions belong in the scripts themselves as
+# `# shellcheck disable=SCxxxx` with a reason comment — do not blanket-disable
+# a check here just to silence one script.
+
+# Follow `source`/`.` targets so sourced helpers are type-checked too.
+external-sources=true
+
+# SC1091: "not following" a sourced file. Most of the sourced paths here point
+# at $HOME (~/.session-variables.sh, ~/.functions/*.sh) which only exist once
+# dotbot has linked them, so they are unresolvable at lint time by design.
+disable=SC1091

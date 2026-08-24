@@ -1,0 +1,60 @@
+# Repo-local EditorConfig for ~/.dotfiles.
+#
+# NOT the same file as `editorconfig` (no leading dot) in this directory —
+# that one is symlinked to ~/.editorconfig by install.conf.yaml and is the
+# *global user* config, which by design does not apply inside a repository
+# that has its own. Leave it alone.
+#
+# `root = true` is deliberate: it stops the global ~/.editorconfig from
+# leaking in, so what your editor does inside this repo is fully described by
+# this file and nothing else. The [*] block below intentionally reproduces the
+# global defaults, so the only behaviour that actually changes is in the
+# per-language blocks — where a formatter already has an opinion.
+
+root = true
+
+# Same defaults as the global ~/.editorconfig, restated so nothing is inherited.
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Shell sources. 4 spaces, because `shfmt -i 4 -ci` is what `just lint`
+# enforces and what `just fmt` writes — a tab default here would put the
+# editor and the formatter in a fight the formatter always wins.
+[*.{sh,bash,zsh}]
+indent_style = space
+indent_size = 4
+
+[{bashrc,bash_profile,profile,zshrc,zshenv,aliases,install,Justfile}]
+indent_style = space
+indent_size = 4
+
+[bin/**]
+indent_style = space
+indent_size = 4
+
+[.githooks/*]
+indent_style = space
+indent_size = 4
+
+# fish: 4 spaces, matching the hand-written functions and `fish_indent`.
+[*.fish]
+indent_style = space
+indent_size = 4
+
+# YAML cannot be indented with tabs at all.
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# dotbot's config predates this file and nests at 4.
+[install.conf.yaml]
+indent_style = space
+indent_size = 4
+
+# Markdown: trailing whitespace is a hard line break.
+[*.{md,markdown,pandoc}]
+trim_trailing_whitespace = false
