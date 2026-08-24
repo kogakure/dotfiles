@@ -1,27 +1,75 @@
+# Global mise config -> ~/.config/mise/mise.toml
+#
+# This is the ONLY mise config in this repo. Do not add a project-local
+# mise.toml at the repo root: tools declared there resolve only while the cwd
+# is inside ~/.dotfiles, which silently breaks every bash script, cron job and
+# non-repo shell (SI-118).
+#
+# CLI tools are pinned to exact versions. Language runtimes and a few
+# self-updating helpers stay on "latest".
+#
+# Deliberately NOT owned by mise:
+#   tmux            - Homebrew. Long-running server and parent of every shell;
+#                     a shim that vanishes on a config-resolution change is a
+#                     far worse failure mode than a slightly stale binary.
+#   postgres        - Homebrew postgresql@14, which owns the existing cluster
+#                     in /opt/homebrew/var/postgresql@14.
+#   youtube-dl      - Homebrew yt-dlp; `aliases` redirects youtube-dl to it.
+#   claude-code     - duplicate of `claude` (same aqua:anthropics/claude-code
+#                     package, same `claude` binary).
+
 [tools]
 atuin = "18.19.0"
+bat = "0.26.1"
+bat-extras = "2024.08.24"
 bun = "latest"
+claude = "2.1.235"
+codex = "0.147.0"
+delta = "0.19.2"
 deno = "latest"
 direnv = "latest"
+docker-cli = "29.7.2"
+eza = "0.23.5"
 fd = "10.4.2"
 fzf = "0.74.2"
 gh = "2.97.0"
+git-lfs = "3.7.1"
+gitleaks = "8.30.1"
 go = "latest"
+grok = "1.0.5"
 herdr = "0.8.0"
 hunk = "0.19.0"
 hunkdiff = "0.19.0"
 jj = "0.44.0"
+jq = "1.8.2"
+lazydocker = "0.25.2"
 lazygit = "0.64.1"
+lazyssh = "0.3.0"
 lua = "latest"
-neovim = "latest"
+neovim = "0.12.4"
 node = "22.17.1"
 "npm:playwright-cli" = "latest"
+opencode = "1.18.18"
+oxlint = "1.79.0"
+pandoc = "3.10.2"
+pi = "0.84.2"
+pnpm = "11.22.0"
+prettier = "3.9.6"
 python = "latest"
+ripgrep = "15.2.0"
 ruby = "3.4.2"
 rust = "latest"
+shellcheck = "0.11.0"
+shfmt = "3.13.1"
+sqlite = "3.53.4"
 starship = "1.26.0"
 superfile = "1.6.0"
+typst = "0.15.1"
 usage = "latest"
+uv = "0.12.5"
+worktrunk = "0.74.0"
+yazi = "26.8.15"
+yq = "4.53.4"
 zoxide = "0.10.0"
 
 [settings]
