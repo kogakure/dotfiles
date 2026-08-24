@@ -10,11 +10,12 @@ dimension="${1:-}"
 percent="${2:-}"
 
 if [[ "$dimension" != "width" && "$dimension" != "height" ]] || [[ -z "$percent" ]]; then
-  echo "Usage: aerospace-resize-percent <width|height> <percent>" 1>&2
-  exit 127
+    echo "Usage: aerospace-resize-percent <width|height> <percent>" 1>&2
+    exit 127
 fi
 
-screen_size=$(osascript -l JavaScript <<'EOF'
+screen_size=$(
+    osascript -l JavaScript <<'EOF'
 ObjC.import('AppKit')
 
 const se = Application('System Events')
@@ -46,8 +47,8 @@ EOF
 )
 
 if [[ "$screen_size" == "null" || -z "$screen_size" ]]; then
-  echo "aerospace-resize-percent: could not determine focused window's screen" 1>&2
-  exit 1
+    echo "aerospace-resize-percent: could not determine focused window's screen" 1>&2
+    exit 1
 fi
 
 value=$(echo "$screen_size" | python3 -c "

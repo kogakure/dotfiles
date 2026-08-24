@@ -17,8 +17,8 @@ alias lg='lazygit'
 # Vim
 alias v='vim'
 
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
+if type nvim >/dev/null 2>&1; then
+    alias vim='nvim'
 fi
 
 # Emacs
@@ -43,4 +43,3 @@ alias ia='open $1 -a /Applications/iA\ Writer.app'
 
 # Clear the screen
 alias c="clear"
-

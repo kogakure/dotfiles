@@ -12,10 +12,10 @@ EOF
     if [ -n "$file" ]; then
         if [ "$key" = "ctrl-o" ]; then
             # Check which "open" command to use
-            if command -v xdg-open > /dev/null 2>&1; then
-                xdg-open "$file"  # For Linux
-            elif command -v open > /dev/null 2>&1; then
-                open "$file"  # For macOS
+            if command -v xdg-open >/dev/null 2>&1; then
+                xdg-open "$file" # For Linux
+            elif command -v open >/dev/null 2>&1; then
+                open "$file" # For macOS
             else
                 echo "No suitable 'open' command found."
             fi

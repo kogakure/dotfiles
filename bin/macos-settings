@@ -9,9 +9,9 @@ sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `macos.sh` has finished
 while true; do
-	sudo -n true
-	sleep 60
-	kill -0 "$$" || exit
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
 done 2>/dev/null &
 
 # Set Dark Mode
@@ -218,10 +218,10 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 defaults write -g NSWindowShouldDragOnGesture YES
 
 for app in "Dock" \
-	"Finder" \
-	"Messages" \
-	"SystemUIServer"; do
-	killall "${app}" &>/dev/null
+    "Finder" \
+    "Messages" \
+    "SystemUIServer"; do
+    killall "${app}" &>/dev/null
 done
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."

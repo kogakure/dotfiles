@@ -18,10 +18,13 @@ fco() {
         sort -u | awk '{print "\033[34;1mbranch\033[m\t" $1}') || return
 
     # Combine tags and branches
-    target=$( (echo "$tags"; echo "$branches") |
+    target=$( (
+        echo "$tags"
+        echo "$branches"
+    ) |
         fzf-tmux --no-hscroll --ansi +m -d "\t" -n 2 \
-        --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(echo {} | awk "{print \$2}")' \
-        --preview-window right:60%) || return
+            --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(echo {} | awk "{print \$2}")' \
+            --preview-window right:60%) || return
 
     # Extract the branch or tag name and checkout
     local branch_or_tag

@@ -60,15 +60,15 @@ check_conflict_file() {
     fi
 }
 
-check_conflict_file "$PROFILE_DIR/.claude.json"                    "$HOME/.claude.json"
-check_conflict_file "$PROFILE_DIR/CLAUDE.md"                       "$CLAUDE_DIR/CLAUDE.md"
-check_conflict_file "$PROFILE_DIR/RTK.md"                          "$CLAUDE_DIR/RTK.md"
-check_conflict_file "$PROFILE_DIR/settings.json"                   "$CLAUDE_DIR/settings.json"
-check_conflict_file "$PROFILE_DIR/keybindings.json"                "$CLAUDE_DIR/keybindings.json"
-check_conflict_file "$PROFILE_DIR/mcp-needs-auth-cache.json"       "$CLAUDE_DIR/mcp-needs-auth-cache.json"
-check_conflict_file "$PROFILE_DIR/policy-limits.json"              "$CLAUDE_DIR/policy-limits.json"
-check_conflict_file "$PROFILE_DIR/history.jsonl"                   "$CLAUDE_DIR/history.jsonl"
-check_conflict_file "$PROFILE_DIR/stats-cache.json"                "$CLAUDE_DIR/stats-cache.json"
+check_conflict_file "$PROFILE_DIR/.claude.json" "$HOME/.claude.json"
+check_conflict_file "$PROFILE_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
+check_conflict_file "$PROFILE_DIR/RTK.md" "$CLAUDE_DIR/RTK.md"
+check_conflict_file "$PROFILE_DIR/settings.json" "$CLAUDE_DIR/settings.json"
+check_conflict_file "$PROFILE_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json"
+check_conflict_file "$PROFILE_DIR/mcp-needs-auth-cache.json" "$CLAUDE_DIR/mcp-needs-auth-cache.json"
+check_conflict_file "$PROFILE_DIR/policy-limits.json" "$CLAUDE_DIR/policy-limits.json"
+check_conflict_file "$PROFILE_DIR/history.jsonl" "$CLAUDE_DIR/history.jsonl"
+check_conflict_file "$PROFILE_DIR/stats-cache.json" "$CLAUDE_DIR/stats-cache.json"
 check_conflict_file "$PROFILE_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json"
 
 if [ "$conflict_count" -gt 0 ]; then
@@ -116,10 +116,10 @@ restore_dir() {
 
 echo ""
 echo "Restoring settings..."
-restore_file "$PROFILE_DIR/CLAUDE.md"          "$CLAUDE_DIR/CLAUDE.md"
-restore_file "$PROFILE_DIR/RTK.md"             "$CLAUDE_DIR/RTK.md"
-restore_file "$PROFILE_DIR/settings.json"      "$CLAUDE_DIR/settings.json"
-restore_file "$PROFILE_DIR/keybindings.json"   "$CLAUDE_DIR/keybindings.json"
+restore_file "$PROFILE_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
+restore_file "$PROFILE_DIR/RTK.md" "$CLAUDE_DIR/RTK.md"
+restore_file "$PROFILE_DIR/settings.json" "$CLAUDE_DIR/settings.json"
+restore_file "$PROFILE_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json"
 restore_file "$PROFILE_DIR/mcp-needs-auth-cache.json" "$CLAUDE_DIR/mcp-needs-auth-cache.json"
 restore_file "$PROFILE_DIR/policy-limits.json" "$CLAUDE_DIR/policy-limits.json"
 
@@ -128,9 +128,9 @@ restore_file "$PROFILE_DIR/policy-limits.json" "$CLAUDE_DIR/policy-limits.json"
 echo ""
 echo "Restoring commands, scripts, hooks & skills..."
 restore_dir "$PROFILE_DIR/commands" "$CLAUDE_DIR/commands"
-restore_dir "$PROFILE_DIR/scripts"  "$CLAUDE_DIR/scripts"
-restore_dir "$PROFILE_DIR/hooks"    "$CLAUDE_DIR/hooks"
-restore_dir "$PROFILE_DIR/skills"   "$CLAUDE_DIR/skills"
+restore_dir "$PROFILE_DIR/scripts" "$CLAUDE_DIR/scripts"
+restore_dir "$PROFILE_DIR/hooks" "$CLAUDE_DIR/hooks"
+restore_dir "$PROFILE_DIR/skills" "$CLAUDE_DIR/skills"
 
 # ── Plugins ───────────────────────────────────────────────────────────────────
 
@@ -142,9 +142,9 @@ restore_file "$PROFILE_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins
 
 echo ""
 echo "Restoring profile state..."
-restore_file "$PROFILE_DIR/.claude.json"           "$HOME/.claude.json"
-restore_file "$PROFILE_DIR/history.jsonl"          "$CLAUDE_DIR/history.jsonl"
-restore_file "$PROFILE_DIR/stats-cache.json"       "$CLAUDE_DIR/stats-cache.json"
+restore_file "$PROFILE_DIR/.claude.json" "$HOME/.claude.json"
+restore_file "$PROFILE_DIR/history.jsonl" "$CLAUDE_DIR/history.jsonl"
+restore_file "$PROFILE_DIR/stats-cache.json" "$CLAUDE_DIR/stats-cache.json"
 
 # ── Projects ─────────────────────────────────────────────────────────────────
 
