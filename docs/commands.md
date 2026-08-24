@@ -1,5 +1,21 @@
 # Commands
 
+## Justfile — the entry point
+
+`just` wraps the scripts below so you do not have to remember which one to
+run. It works from any cwd. Full reference: [guardrails.md](guardrails.md).
+
+```bash
+just                  # list every recipe
+just setup            # ./setup.sh
+just link             # ./install
+just check-links      # ./install --dry-run
+just update           # bin/update
+just lint             # shellcheck, shfmt, fish/zsh syntax, POSIX source test, yaml
+just fmt              # shfmt -w over every shell source
+just install-hooks    # enable the pre-commit hook
+```
+
 ## Initial Setup
 
 ```bash
@@ -9,7 +25,19 @@
 ## Symlink Management
 
 ```bash
-./install  # Re-run dotbot to update symlinks
+./install              # Re-run dotbot to update symlinks
+./install --dry-run    # Show what it would do, without touching anything
+```
+
+## Linting
+
+```bash
+bin/dotfiles-lint                 # every check
+bin/dotfiles-lint posix yaml      # a subset, by name
+bin/dotfiles-lint --staged        # staged files only (what the hook runs)
+bin/dotfiles-lint --strict        # a missing linter is an error (what CI runs)
+bin/dotfiles-lint --snapshot      # re-snapshot .lint-baseline
+bin/dotfiles-lint --help
 ```
 
 ## Homebrew
