@@ -328,8 +328,49 @@ check_zsh() { check_syntax "zsh -n" zsh zsh_sources zsh; }
 # The highest-value check in the suite. `bash -n` happily parses fish-syntax
 # aliases such as `alias e "emacs -nw"` — only actually sourcing the file
 # catches them, and only stderr (not the exit status) reveals them.
+#
+# bashrc and zshrc are deliberately absent: they are interactive-shell config
+# full of `eval "$(tool init ...)"` whose output depends on which tools happen
+# to be installed, so their stderr is not a stable signal. The syntax checks
+# above cover them instead.
 
 POSIX_TARGETS="aliases session-variables.sh profile bash_profile"
+
+# The files a sandbox $HOME needs, as "<dotfile-name> <repo-path>" pairs. Taken
+# from install.conf.yaml — every startup file that another one sources.
+POSIX_SANDBOX_LINKS="\
+.aliases:aliases
+.session-variables.sh:session-variables.sh
+.profile:profile
+.bash_profile:bash_profile
+.bashrc:bashrc
+.functions:functions"
+
+# Build a throwaway $HOME containing just the dotbot symlinks the startup
+# files reach for. Without it this check would pass or fail depending on
+# whether the *installed* ~/.session-variables.sh happens to exist, which is
+# exactly the kind of accidental pass a lint gate must not have.
+posix_sandbox_create() {
+    local dir pair
+    dir=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint.XXXXXX") || return 1
+    for pair in $POSIX_SANDBOX_LINKS; do
+        ln -s "$REPO_ROOT/${pair#*:}" "$dir/${pair%%:*}" || return 1
+    done
+    printf '%s' "$dir"
+}
+
+# Remove the sandbox by name rather than with `rm -rf`: it contains nothing but
+# the symlinks created above, so there is no reason to reach for a recursive
+# delete inside a dotfiles repo.
+posix_sandbox_remove() {
+    local dir=$1 pair
+    [ -n "$dir" ] && [ -d "$dir" ] || return 0
+    for pair in $POSIX_SANDBOX_LINKS; do
+        [ -L "$dir/${pair%%:*}" ] && rm -f "$dir/${pair%%:*}"
+    done
+    rmdir "$dir" 2>/dev/null
+    return 0
+}
 
 check_posix() {
     heading "startup files source cleanly"
@@ -337,11 +378,18 @@ check_posix() {
     local have_zsh=0
     command -v zsh >/dev/null 2>&1 && have_zsh=1
 
+    local sandbox
+    if ! sandbox=$(posix_sandbox_create) || [ -z "$sandbox" ]; then
+        fail "could not create the sandbox HOME"
+        FAILED[${#FAILED[@]}]=posix
+        return
+    fi
+
     local bad=0 f err
     for f in $POSIX_TARGETS; do
         [ -f "$f" ] || continue
 
-        err=$(bash --noprofile --norc -c '. "$1"' _ "$REPO_ROOT/$f" 2>&1 >/dev/null)
+        err=$(HOME="$sandbox" bash --noprofile --norc -c '. "$1"' _ "$REPO_ROOT/$f" 2>&1 >/dev/null)
         if [ -n "$err" ]; then
             bad=1
             fail "bash: sourcing $f wrote to stderr"
@@ -349,7 +397,7 @@ check_posix() {
         fi
 
         [ "$have_zsh" -eq 1 ] || continue
-        err=$(zsh -f -c '. "$1"' _ "$REPO_ROOT/$f" 2>&1 >/dev/null)
+        err=$(HOME="$sandbox" zsh -f -c '. "$1"' _ "$REPO_ROOT/$f" 2>&1 >/dev/null)
         if [ -n "$err" ]; then
             bad=1
             fail "zsh: sourcing $f wrote to stderr"
@@ -357,12 +405,14 @@ check_posix() {
         fi
     done
 
+    posix_sandbox_remove "$sandbox"
+
     [ "$have_zsh" -eq 1 ] || warn "zsh not found, only checked bash"
 
     if [ "$bad" -eq 1 ]; then
         FAILED[${#FAILED[@]}]=posix
     else
-        ok "startup files source silently"
+        ok "startup files source silently in a sandbox HOME"
     fi
 }
 

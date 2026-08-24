@@ -52,23 +52,33 @@ jobs:
       # Read the tool pins out of config/mise/mise.toml — the file that gets
       # symlinked to ~/.config/mise/mise.toml on a real machine — so CI runs
       # the exact versions the machines run and the two cannot drift apart.
-      # `just` is a Homebrew package on the machines, so it has no pin here.
+      # A missing pin fails the job rather than silently floating to latest.
+      #
+      # Only the four tools the lint job needs, not all ~55: installing node,
+      # ruby, rust and friends here would be slow and would fail for reasons
+      # that have nothing to do with linting shell scripts.
+      #
+      # `just` has no pin to read — it is a Homebrew package on the machines.
       - name: Install the pinned lint tools
         run: |
           set -euo pipefail
           pin() {
-            sed -n "s/^$1 *= *\"\([^\"]*\)\"$/\1/p" config/mise/mise.toml | head -1
+            sed -n "s/^$1 *= *\"\([^\"]*\)\"\$/\1/p" config/mise/mise.toml | head -1
           }
-          for tool in shellcheck shfmt yq; do
-            version=$(pin "$tool")
-            if [ -z "$version" ]; then
-              echo "::error file=config/mise/mise.toml::no version pin for '$tool'"
-              exit 1
-            fi
-            echo "pinning $tool@$version from config/mise/mise.toml"
-            mise use --global --yes "$tool@$version"
-          done
-          mise use --global --yes just@latest
+          mkdir -p "$HOME/.config/mise"
+          {
+            echo '[tools]'
+            for tool in shellcheck shfmt yq; do
+              version=$(pin "$tool")
+              if [ -z "$version" ]; then
+                echo "::error file=config/mise/mise.toml::no version pin for '$tool'" >&2
+                exit 1
+              fi
+              echo "$tool = \"$version\""
+            done
+            echo 'just = "latest"'
+          } > "$HOME/.config/mise/mise.toml"
+          cat "$HOME/.config/mise/mise.toml"
           mise install --yes
           # Mirror session-variables.sh: the shims go on PATH.
           echo "$HOME/.local/share/mise/shims" >> "$GITHUB_PATH"

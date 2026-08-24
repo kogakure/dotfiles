@@ -85,6 +85,18 @@ it — the exit status is 0. So the check sources `aliases`,
 `session-variables.sh`, `profile` and `bash_profile` in a clean
 `bash --noprofile --norc` (and in `zsh -f`) and **asserts stderr is empty**.
 
+It sources them under a throwaway `$HOME` holding just the dotbot symlinks
+those files reach for. Without that, `profile` — which unconditionally sources
+`~/.session-variables.sh` — would pass or fail depending on whether the
+*installed* symlink happens to exist on the machine running the lint. A gate
+that passes by accident of local state is not a gate. The sandbox is torn down
+by removing the symlinks it created and `rmdir`-ing the directory; no `rm -rf`
+anywhere near a dotfiles repo.
+
+`bashrc` and `zshrc` are deliberately excluded. They are interactive-shell
+config full of `eval "$(tool init …)"`, so their stderr depends on which tools
+are installed and is not a stable signal. `shellcheck` and `zsh -n` cover them.
+
 CI additionally appends a fish-syntax alias to `aliases` and asserts the check
 *fails*, so it cannot silently stop gating anything.
 
