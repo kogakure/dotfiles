@@ -11,6 +11,7 @@ Personal macOS dotfiles repository managed with [dotbot](https://github.com/anis
 @docs/architecture.md — Symlink management, private submodule, hostname-specific configs, file layout
 @docs/commands.md — Setup, install, homebrew, update, backup/restore, and macOS settings scripts
 @docs/environment.md — Fish, Neovim, tmux, version managers, git, and plugin ecosystems
+@docs/guardrails.md — Justfile, `bin/dotfiles-lint`, the pre-commit hook, CI, and `.editorconfig`
 @docs/git-workflow.md — Conventional commit format, types, and examples
 
 ## Notes
@@ -21,3 +22,7 @@ Personal macOS dotfiles repository managed with [dotbot](https://github.com/anis
 - **GPG**: Uses pinentry-mac for password prompts
 - **Fish as default**: Setup script changes login shell to fish
 - **Caffeinate**: Setup script prevents sleep during installation
+- **Run `just lint` before committing shell changes**: everything here gets
+  sourced by a login shell, so a syntax error is a broken shell, not a failing
+  test. `just install-hooks` wires up the pre-commit hook. See
+  @docs/guardrails.md
