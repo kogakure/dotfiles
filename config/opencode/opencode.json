@@ -62,7 +62,12 @@
   },
   "mcp": {
     "chrome-devtools": {
-      "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--autoConnect"],
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--autoConnect"
+      ],
       "type": "local"
     },
     "open-meteo": {
@@ -77,12 +82,15 @@
     },
     "codegraph": {
       "type": "local",
-      "command": ["codegraph", "serve", "--mcp"],
+      "command": [
+        "codegraph",
+        "serve",
+        "--mcp"
+      ],
       "enabled": true
     }
   },
   "plugin": [
-    "./plugins/claude-mem.js",
     "@cortexkit/opencode-magic-context@0.33.1",
     "@mohak34/opencode-notifier@latest",
     "@plannotator/opencode@latest",
