@@ -80,3 +80,10 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 export PATH="/usr/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+# mise — must come last so the shims win over Homebrew and /usr/local.
+# PATH only: the `mise activate` shell hook lives in bashrc/zshrc, because
+# this file is also sourced by non-interactive shells via profile/zshenv.
+if [ -d "$HOME/.local/share/mise/shims" ]; then
+    export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
