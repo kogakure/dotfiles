@@ -15,6 +15,11 @@ bindkey -M viins '^z' fzf-cd-widget      # (z) jump
 
 # *** *** Tools *** ***
 
+# mise — first, so the `command -v` guards below can see mise-managed tools
+if command -v mise &>/dev/null; then
+    eval "$(mise activate zsh)"
+fi
+
 # GitHub CLI completion
 if command -v gh &>/dev/null; then
     eval "$(gh completion -s zsh)"
