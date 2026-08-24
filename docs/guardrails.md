@@ -127,6 +127,10 @@ checks only. The whole-repo checks (POSIX source, yaml, drift) belong to
 be **clean**, since comparing a subset's count against the whole-repo baseline
 would be meaningless.
 
+Caveat: it lints the *worktree* copy of each staged path, not the staged blob.
+With a partially staged file the hook judges what is on disk. CI, which sees
+only what was committed, is the authority.
+
 ### It fails open, on purpose
 
 `core.hooksPath` plus a hook that shells out to shellcheck means a broken PATH
