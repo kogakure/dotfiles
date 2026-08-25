@@ -662,6 +662,61 @@ unit_log_plain() {
     return 0
 }
 
+# Three of the four agent scripts validated nothing, so a typo in
+# ~/.agentic-profile silently produced private/claude/<typo>/. profile_read is
+# pure and takes its paths as arguments, so the whitespace and fallback cases
+# are checked here against fixtures rather than against the real $HOME.
+unit_profile() {
+    unit_require bin/lib/profile.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        # shellcheck source=bin/lib/profile.sh
+        . bin/lib/profile.sh
+
+        bad=0
+        d=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-profile.XXXXXX") || exit 1
+
+        printf 'work\n' >"$d/plain"
+        printf '  work  \n' >"$d/padded"
+        printf 'personal\n\n\n' >"$d/trailing"
+        : >"$d/empty"
+        printf 'garbage\n' >"$d/garbage"
+
+        unit_expect "plain file" work "$(profile_read "$d/plain")" || bad=1
+        # `read` trims with the default IFS, which `cat` did not.
+        unit_expect "padded file" work "$(profile_read "$d/padded")" || bad=1
+        unit_expect "trailing blank lines" personal "$(profile_read "$d/trailing")" || bad=1
+        unit_expect "empty file falls through" personal "$(profile_read "$d/empty")" || bad=1
+        unit_expect "absent file falls through" personal "$(profile_read "$d/nope")" || bad=1
+        # The fallback chain: first readable non-empty file wins.
+        unit_expect "second file used" work "$(profile_read "$d/nope" "$d/plain")" || bad=1
+        unit_expect "first file wins" personal "$(profile_read "$d/trailing" "$d/plain")" || bad=1
+
+        profile_is_valid work || {
+            fail "unit: profile_is_valid rejected work"
+            bad=1
+        }
+        profile_is_valid personal || {
+            fail "unit: profile_is_valid rejected personal"
+            bad=1
+        }
+        for junk in garbage '' Work WORK 'work personal' ../escape; do
+            if profile_is_valid "$junk"; then
+                fail "unit: profile_is_valid accepted '$junk'"
+                bad=1
+            fi
+        done
+
+        rm -f "$d"/plain "$d"/padded "$d"/trailing "$d"/empty "$d"/garbage
+        rmdir "$d"
+
+        [ "$bad" -eq 0 ] && ok "profile_read trims and falls back; only work|personal validate"
+        exit "$bad"
+    )
+}
+
 # Each unit_* function prints its own ok/fail lines and returns 0 or 1, so one
 # failing property does not hide the others.
 check_unit() {
@@ -670,6 +725,7 @@ check_unit() {
     unit_source_directives || bad=1
     unit_shells || bad=1
     unit_brew_prefix || bad=1
+    unit_profile || bad=1
     unit_log_plain || bad=1
     [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit
 }
