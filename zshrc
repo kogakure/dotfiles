@@ -66,6 +66,10 @@ source "$HOME/.aliases"
 
 # *** *** Functions *** ***
 
-for file in ~/.functions/*.sh; do
+# (N) is zsh's per-pattern nullglob. Without it an empty ~/.functions/ is a hard
+# error under the default `nomatch` — unlike bash, where the glob would merely
+# expand to itself. The -e test then skips any dangling symlink.
+for file in ~/.functions/*.sh(N); do
+    [ -e "$file" ] || continue
     source "$file"
 done
