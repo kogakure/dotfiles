@@ -43,69 +43,28 @@ fi
 
 # ── Overwrite conflict check ──────────────────────────────────────────────────
 
-conflict_count=0
-conflict_samples=()
+conflicts=$(sync_conflicts \
+    "$PROFILE_DIR/.claude.json" "$HOME/.claude.json" \
+    "$PROFILE_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md" \
+    "$PROFILE_DIR/RTK.md" "$CLAUDE_DIR/RTK.md" \
+    "$PROFILE_DIR/settings.json" "$CLAUDE_DIR/settings.json" \
+    "$PROFILE_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json" \
+    "$PROFILE_DIR/mcp-needs-auth-cache.json" "$CLAUDE_DIR/mcp-needs-auth-cache.json" \
+    "$PROFILE_DIR/policy-limits.json" "$CLAUDE_DIR/policy-limits.json" \
+    "$PROFILE_DIR/history.jsonl" "$CLAUDE_DIR/history.jsonl" \
+    "$PROFILE_DIR/stats-cache.json" "$CLAUDE_DIR/stats-cache.json" \
+    "$PROFILE_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json")
 
-check_conflict_file() {
-    local src="$1"
-    local dest="$2"
-    if [ -f "$src" ] && [ -f "$dest" ]; then
-        conflict_count=$((conflict_count + 1))
-        if [ ${#conflict_samples[@]} -lt 5 ]; then
-            conflict_samples+=("$dest")
-        fi
-    fi
-}
-
-check_conflict_file "$PROFILE_DIR/.claude.json" "$HOME/.claude.json"
-check_conflict_file "$PROFILE_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
-check_conflict_file "$PROFILE_DIR/RTK.md" "$CLAUDE_DIR/RTK.md"
-check_conflict_file "$PROFILE_DIR/settings.json" "$CLAUDE_DIR/settings.json"
-check_conflict_file "$PROFILE_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json"
-check_conflict_file "$PROFILE_DIR/mcp-needs-auth-cache.json" "$CLAUDE_DIR/mcp-needs-auth-cache.json"
-check_conflict_file "$PROFILE_DIR/policy-limits.json" "$CLAUDE_DIR/policy-limits.json"
-check_conflict_file "$PROFILE_DIR/history.jsonl" "$CLAUDE_DIR/history.jsonl"
-check_conflict_file "$PROFILE_DIR/stats-cache.json" "$CLAUDE_DIR/stats-cache.json"
-check_conflict_file "$PROFILE_DIR/plugins/known_marketplaces.json" "$CLAUDE_DIR/plugins/known_marketplaces.json"
-
-if [ "$conflict_count" -gt 0 ]; then
-    log_warn "$conflict_count existing file(s) will be overwritten. Examples:"
-    for sample in "${conflict_samples[@]}"; do
-        log_info "  $sample"
-    done
+if [ -n "$conflicts" ]; then
+    log_warn "$(printf '%s\n' "$conflicts" | wc -l | tr -d ' ') existing file(s) will be overwritten. Examples:"
+    printf '%s\n' "$conflicts" | head -5 | sed 's/^/  /'
     if ! confirm "Continue?"; then
         log_info "Restore cancelled."
         exit 0
     fi
 fi
 
-mkdir -p "$CLAUDE_DIR"
-
-restore_file() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -f "$src" ]; then
-        mkdir -p "$(dirname "$dest")"
-        cp "$src" "$dest"
-        log_ok "Restored: $(basename "$dest")"
-    else
-        log_skip "Not in backup: $(basename "$dest")"
-    fi
-}
-
-restore_dir() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -d "$src" ] && [ "$(ls -A "$src" 2>/dev/null)" ]; then
-        mkdir -p "$dest"
-        rsync -a "$src/" "$dest/"
-        log_ok "Restored: $(basename "$dest")/ ($(find "$src" -type f | wc -l | tr -d ' ') files)"
-    else
-        log_skip "Not in backup: $(basename "$dest")/"
-    fi
-}
+run mkdir -p "$CLAUDE_DIR"
 
 # ── Settings & identity ───────────────────────────────────────────────────────
 

@@ -31,40 +31,14 @@ if [ -d "$LEGACY_SHARED" ]; then
     read -p "Delete it? All content moves to per-profile dirs from now on. (y/N) " -n 1 -r
     echo
     if [[ ${REPLY:-} =~ ^[Yy]$ ]]; then
-        rm -rf "$LEGACY_SHARED"
+        run rm -rf "$LEGACY_SHARED"
         log_ok "Deleted: $LEGACY_SHARED"
     else
         log_warn "  Skipped deletion — shared/ still exists."
     fi
 fi
 
-mkdir -p "$PROFILE_DIR"
-
-backup_file() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -f "$src" ]; then
-        mkdir -p "$(dirname "$dest")"
-        cp "$src" "$dest"
-        log_ok "Backed up: $(basename "$src")"
-    else
-        log_skip "Not found: $(basename "$src")"
-    fi
-}
-
-backup_dir() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -d "$src" ] && [ "$(ls -A "$src" 2>/dev/null)" ]; then
-        mkdir -p "$(dirname "$dest")"
-        rsync -a --delete "$src/" "$dest/"
-        log_ok "Backed up: $(basename "$src")/ ($(find "$src" -type f | wc -l | tr -d ' ') files)"
-    else
-        log_skip "Not found or empty: $(basename "$src")/"
-    fi
-}
+run mkdir -p "$PROFILE_DIR"
 
 # ── Settings & identity ───────────────────────────────────────────────────────
 
@@ -132,7 +106,7 @@ backup_dir "$CLAUDE_DIR/plans" "$PROFILE_DIR/plans"
 
 log_step "Backing up shell snapshots..."
 if [ -d "$CLAUDE_DIR/shell-snapshots" ] && [ "$(ls -A "$CLAUDE_DIR/shell-snapshots" 2>/dev/null)" ]; then
-    mkdir -p "$PROFILE_DIR/shell-snapshots"
+    run mkdir -p "$PROFILE_DIR/shell-snapshots"
     # `find -exec stat` rather than `ls -t`: parsing ls output is SC2012, and
     # the pre-commit hook requires a staged file to be clean rather than merely
     # at the baseline. Sorting stat's mtime descending is the same "newest
@@ -140,7 +114,7 @@ if [ -d "$CLAUDE_DIR/shell-snapshots" ] && [ "$(ls -A "$CLAUDE_DIR/shell-snapsho
     find "$CLAUDE_DIR/shell-snapshots" -maxdepth 1 -type f -exec stat -f '%m %N' {} + |
         sort -rn | head -5 | cut -d' ' -f2- |
         while IFS= read -r snapshot; do
-            cp "$snapshot" "$PROFILE_DIR/shell-snapshots/"
+            run cp "$snapshot" "$PROFILE_DIR/shell-snapshots/"
         done
     log_ok "Backed up: shell-snapshots/ (latest 5 snapshots)"
 else
@@ -150,7 +124,7 @@ fi
 # ── Manifest ─────────────────────────────────────────────────────────────────
 
 log_step "Creating backup manifest..."
-cat >"$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
+write_file "$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
 Claude Code Backup
 ==================
 Timestamp:  $TIMESTAMP

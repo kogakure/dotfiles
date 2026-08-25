@@ -83,6 +83,25 @@ run() {
     fi
 }
 
+# Write stdin to <dest>, or report it under --dry-run.
+#
+# run() cannot wrap a redirect, so a `cat >file <<EOF` heredoc needs its own
+# helper — and it needs one, because the backup manifests were exactly the
+# mutation that slipped past --dry-run when every `cp` had been accounted for.
+# The heredoc is still consumed in dry-run mode so the caller's pipeline does
+# not see EPIPE.
+#
+# Usage: write_file <dest> <<EOF ... EOF
+write_file() {
+    local dest=$1
+    if [ "${DOTFILES_DRY_RUN:-0}" -eq 1 ]; then
+        cat >/dev/null
+        printf '  write %s\n' "$dest"
+    else
+        cat >"$dest"
+    fi
+}
+
 # So that `. lib/common.sh || exit 1` in the caller means "the library failed to
 # load", not "the last function definition happened to return non-zero".
 true
