@@ -3,5 +3,10 @@
 # code is held to a clean bar without this phase silently absorbing the
 # cleanup that belongs to SI-81 and SI-82.
 #
+# Started at 20. SI-81 took it to 14, not as a cleanup pass but as a side
+# effect: the pre-commit hook requires *staged* files to be clean rather than
+# merely at baseline, so every file that phase touched had to lose its existing
+# findings too. The rest is SI-82's.
+#
 # Regenerate with: just lint-snapshot
-shellcheck=18
+shellcheck=14
