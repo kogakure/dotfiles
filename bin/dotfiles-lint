@@ -717,6 +717,126 @@ unit_profile() {
     )
 }
 
+unit_conflicts() {
+    unit_require bin/lib/sync.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/common.sh
+        . bin/lib/common.sh
+
+        bad=0
+        d=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-sync.XXXXXX") || exit 1
+        printf 'a\n' >"$d/src1"
+        printf 'b\n' >"$d/dest1"
+        printf 'c\n' >"$d/src2"
+        # src3 has no dest; dest4 has no src. Neither is a conflict.
+        printf 'd\n' >"$d/src3"
+        printf 'e\n' >"$d/dest4"
+
+        unit_expect "one collision reported" "$d/dest1" \
+            "$(sync_conflicts "$d/src1" "$d/dest1" "$d/src2" "$d/dest2")" || bad=1
+        unit_expect "no collision is empty" "" \
+            "$(sync_conflicts "$d/src3" "$d/dest3" "$d/src4" "$d/dest4")" || bad=1
+        unit_expect "an odd trailing argument is ignored" "" \
+            "$(sync_conflicts "$d/src3")" || bad=1
+
+        rm -f "$d"/src1 "$d"/dest1 "$d"/src2 "$d"/src3 "$d"/dest4
+        rmdir "$d"
+        [ "$bad" -eq 0 ] && ok "sync_conflicts reports only real collisions"
+        exit "$bad"
+    )
+}
+
+# The highest-value test in SI-82. codex-backup used to rm the destination when
+# the source was absent, which on a non-host-namespaced private/ deletes another
+# machine's committed backup. Reverting backup_file or backup_dir to that
+# behaviour fails exactly here.
+unit_no_prune() {
+    unit_require bin/lib/sync.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/common.sh
+        . bin/lib/common.sh
+        dotfiles_flags_init
+
+        bad=0
+        d=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-noprune.XXXXXX") || exit 1
+
+        # A destination that exists while its source does not: the other
+        # machine's backup. It must survive.
+        printf 'other machine\n' >"$d/stale-file"
+        mkdir -p "$d/stale-dir" && printf 'other machine\n' >"$d/stale-dir/x"
+
+        backup_file "$d/absent-source" "$d/stale-file" >/dev/null
+        backup_dir "$d/absent-source-dir" "$d/stale-dir" >/dev/null
+
+        [ -f "$d/stale-file" ] || {
+            fail "unit: backup_file deleted a destination whose source is absent"
+            bad=1
+        }
+        [ -f "$d/stale-dir/x" ] || {
+            fail "unit: backup_dir deleted a destination whose source is absent"
+            bad=1
+        }
+
+        # And the copy path still works.
+        printf 'live\n' >"$d/live-source"
+        backup_file "$d/live-source" "$d/copied" >/dev/null
+        unit_expect "backup_file copies" live "$(cat "$d/copied" 2>/dev/null)" || bad=1
+
+        rm -f "$d"/stale-file "$d"/stale-dir/x "$d"/live-source "$d"/copied
+        rmdir "$d/stale-dir" "$d"
+        [ "$bad" -eq 0 ] && ok "backup_file and backup_dir never delete a stale destination"
+        exit "$bad"
+    )
+}
+
+unit_prune() {
+    unit_require bin/lib/sync.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/common.sh
+        . bin/lib/common.sh
+        dotfiles_flags_init
+
+        bad=0
+        d=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-prune.XXXXXX") || exit 1
+        mkdir -p "$d/root"
+        printf 'x\n' >"$d/root/keep-me"
+        printf 'x\n' >"$d/root/drop-me"
+        printf 'keep-me\n' >"$d/keeplist"
+
+        # It prints the unwanted entry...
+        unit_expect "names the entry absent from the keep-list" "$d/root/drop-me" \
+            "$(sync_prune_extra "$d/root" "$d/keeplist")" || bad=1
+        # ...and deletes nothing while doing so.
+        [ -f "$d/root/drop-me" ] || {
+            fail "unit: sync_prune_extra deleted something"
+            bad=1
+        }
+        [ -f "$d/root/keep-me" ] || {
+            fail "unit: sync_prune_extra removed a kept entry"
+            bad=1
+        }
+
+        # A missing root is not an error.
+        unit_expect "absent root prints nothing" "" \
+            "$(sync_prune_extra "$d/nope" "$d/keeplist")" || bad=1
+
+        # sync_prune_apply is inert under --dry-run.
+        DOTFILES_DRY_RUN=1 sync_prune_apply "$d/root/drop-me" >/dev/null
+        [ -f "$d/root/drop-me" ] || {
+            fail "unit: sync_prune_apply deleted under --dry-run"
+            bad=1
+        }
+
+        rm -f "$d"/root/keep-me "$d"/root/drop-me "$d"/keeplist
+        rmdir "$d/root" "$d"
+        [ "$bad" -eq 0 ] && ok "sync_prune_extra only reports; sync_prune_apply honours --dry-run"
+        exit "$bad"
+    )
+}
+
 # Each unit_* function prints its own ok/fail lines and returns 0 or 1, so one
 # failing property does not hide the others.
 check_unit() {
@@ -726,6 +846,9 @@ check_unit() {
     unit_shells || bad=1
     unit_brew_prefix || bad=1
     unit_profile || bad=1
+    unit_conflicts || bad=1
+    unit_no_prune || bad=1
+    unit_prune || bad=1
     unit_log_plain || bad=1
     [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit
 }
