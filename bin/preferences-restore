@@ -1,49 +1,132 @@
 #!/bin/bash
+#
+# Restore application preferences from private/preferences/.
+#
+# Pass --yes to skip the confirmation prompt (for unattended runs).
 
-# Import all Keyboard Shortcuts
-defaults import com.apple.symbolichotkeys ~/.dotfiles/private/preferences/keyboard_shortcuts.plist
-defaults import com.apple.universalaccess ~/.dotfiles/private/preferences/universal_access_shortcuts.plist
+set -uo pipefail
 
-# Finder sidebar favorites
-defaults import com.apple.finder ~/.dotfiles/private/preferences/finder.plist
-killall Finder
+ASSUME_YES=0
 
-# Remove default Dock and import all Dock settings
-defaults delete com.apple.dock persistent-apps
-defaults delete com.apple.dock persistent-others
-defaults import com.apple.dock ~/.dotfiles/private/preferences/dock.plist
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -y | --yes)
+            ASSUME_YES=1
+            shift
+            ;;
+        -h | --help)
+            echo "Usage: preferences-restore [--yes]"
+            exit 0
+            ;;
+        *)
+            echo "preferences-restore: unknown argument: $1" >&2
+            exit 1
+            ;;
+    esac
+done
 
-echo "Please log out and back in to apply the changes."
+PREFS="${HOME}/.dotfiles/private/preferences"
 
-# Affinity
-cp ~/.dotfiles/private/preferences/com.canva.affinity.plist ~/Library/Preferences/
+if [ ! -d "$PREFS" ]; then
+    echo "preferences-restore: ${PREFS} not found — is the private submodule initialised?" >&2
+    exit 1
+fi
 
-# Alfred
-cp ~/.dotfiles/private/preferences/com.runningwithcrayons.Alfred.plist ~/Library/Preferences/
-cp ~/.dotfiles/private/preferences/com.runningwithcrayons.Alfred-Preferences.plist ~/Library/Preferences/
+confirm() {
+    [ "$ASSUME_YES" -eq 1 ] && return 0
+    local reply
+    printf '%s [y/N] ' "$1"
+    read -r reply
+    case "$reply" in
+        [yY] | [yY][eE][sS]) return 0 ;;
+        *) return 1 ;;
+    esac
+}
 
-# Arc
-cp ~/.dotfiles/private/preferences/company.thebrowser.Browser.plist ~/Library/Preferences/
+# Copy a plist into ~/Library/Preferences, skipping anything the backup does not
+# have. On a fresh machine many of these apps have never launched.
+restore_plist() {
+    local name="$1"
+    if [ -f "${PREFS}/${name}" ]; then
+        cp "${PREFS}/${name}" "${HOME}/Library/Preferences/"
+    else
+        echo "  skip: ${name} is not in the backup" >&2
+    fi
+}
 
-# Bartender
-cp -R ~/.dotfiles/private/preferences/Bartender.BartenderPreferences ~/Library/Application\ Support/Bartender/
-cp ~/.dotfiles/private/preferences/com.surteesstudios.Bartender.plist ~/Library/Preferences/
+# Guard a support-directory copy: the backup has to hold it, and the destination
+# has to exist already. Creating the destination ourselves would leave a
+# half-configured app. Returns non-zero when the caller should skip.
+support_dir_ready() {
+    local source="$1" destination="$2"
+    if [ ! -e "${PREFS}/${source}" ]; then
+        echo "  skip: ${source} is not in the backup" >&2
+        return 1
+    fi
+    if [ ! -d "$destination" ]; then
+        echo "  skip: ${destination} does not exist — launch the app once first." >&2
+        return 1
+    fi
+    return 0
+}
 
-# BibDesk
-cp -R ~/.dotfiles/private/preferences/BibDesk/ ~/Library/Application\ Support/
-cp ~/.dotfiles/private/preferences/edu.ucsd.cs.mmccrack.bibdesk.plist ~/Library/Preferences/
+# *** *** Keyboard shortcuts *** ***
 
-# Brave
-cp ~/.dotfiles/private/preferences/com.brave.Browser.plist ~/Library/Preferences/
+defaults import com.apple.symbolichotkeys "${PREFS}/keyboard_shortcuts.plist"
+defaults import com.apple.universalaccess "${PREFS}/universal_access_shortcuts.plist"
 
-# CleanShot X
-cp ~/.dotfiles/private/preferences/pl.maketheweb.cleanshotx.plist ~/Library/Preferences/
+# *** *** Finder *** ***
 
-# DEVONthink 3
-cp ~/.dotfiles/private/preferences/com.devon-technologies.think3.plist ~/Library/Preferences/
+defaults import com.apple.finder "${PREFS}/finder.plist"
+killall Finder 2>/dev/null || true
 
-# Itsycal
-cp ~/.dotfiles/private/preferences/com.mowglii.itsycalApp.plist ~/Library/Preferences/
+# *** *** Dock *** ***
 
-# Raycast
-cp ~/.dotfiles/private/preferences/com.raycast.macos.plist ~/Library/Preferences/
+# This wipes the current Dock. It used to run with no prompt at all, so simply
+# invoking the script — including from setup.sh on an already-configured
+# machine — silently destroyed the Dock layout before importing the backup.
+if confirm "Remove the current Dock contents and import the backup?"; then
+    defaults delete com.apple.dock persistent-apps 2>/dev/null || true
+    defaults delete com.apple.dock persistent-others 2>/dev/null || true
+    defaults import com.apple.dock "${PREFS}/dock.plist"
+    echo "Dock restored. Please log out and back in to apply the changes."
+else
+    echo "Leaving the Dock alone."
+fi
+
+# *** *** Application preferences *** ***
+
+restore_plist com.canva.affinity.plist
+restore_plist com.runningwithcrayons.Alfred.plist
+restore_plist com.runningwithcrayons.Alfred-Preferences.plist
+restore_plist company.thebrowser.Browser.plist
+restore_plist com.surteesstudios.Bartender.plist
+restore_plist edu.ucsd.cs.mmccrack.bibdesk.plist
+restore_plist com.brave.Browser.plist
+restore_plist pl.maketheweb.cleanshotx.plist
+restore_plist com.devon-technologies.think3.plist
+restore_plist com.mowglii.itsycalApp.plist
+restore_plist com.raycast.macos.plist
+
+# Bartender and BibDesk also keep state outside ~/Library/Preferences. Both
+# destinations only exist once the app has been launched, which on a fresh
+# machine it has not — the Bartender copy used to fail outright there.
+#
+# Both copies keep the exact source spelling the previous version used, trailing
+# slash included. That matters: on BSD cp, `src/` copies the *contents* of src,
+# while `src` copies the directory itself. So BibDesk's Bookmarks.plist,
+# Templates and friends land directly in Application Support rather than in an
+# Application Support/BibDesk subdirectory. That looks wrong, but it is
+# long-standing behaviour and guessing at an app's on-disk layout is not worth
+# the risk — see SI-81 for the open question.
+BARTENDER_DEST="${HOME}/Library/Application Support/Bartender/"
+if support_dir_ready Bartender.BartenderPreferences "$BARTENDER_DEST"; then
+    cp -R "${PREFS}/Bartender.BartenderPreferences" "$BARTENDER_DEST"
+fi
+
+BIBDESK_DEST="${HOME}/Library/Application Support/"
+if support_dir_ready BibDesk "$BIBDESK_DEST"; then
+    cp -R "${PREFS}/BibDesk/" "$BIBDESK_DEST"
+fi
+
+echo "Done."
