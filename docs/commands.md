@@ -65,7 +65,6 @@ bin/dotfiles-lint --help
 
 ```bash
 ./bin/agentic-set-profile work|personal  # Select the shared Claude/Codex profile
-./bin/claude-set-profile work|personal   # Legacy compatibility wrapper
 ./bin/gpg-keys-backup         # Export GPG keys
 ./bin/gpg-keys-restore        # Import GPG keys
 ./bin/preferences-backup      # Export app preferences

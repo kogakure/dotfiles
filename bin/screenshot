@@ -1,11 +1,16 @@
 #!/bin/bash
 #
 # Create a set of screenshots from a URL
-# Usage: screenshot <url>
+# Usage: screenshot <url> [pageres options...]
+
+set -euo pipefail
 
 if [ $# -lt 1 ]; then
-    echo 1>&2 Usage: screenshot \<url\> \(parameters\)
+    echo "Usage: screenshot <url> (parameters)" >&2
     exit 127
 fi
 
-pageres 375x667 768x1024 1280x800 $*
+# "$@" rather than $*: unquoted $* collapses the arguments into one
+# whitespace-split string, so a URL containing a space or a shell glob was
+# mangled before pageres ever saw it.
+pageres 375x667 768x1024 1280x800 "$@"

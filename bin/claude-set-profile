@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# claude-set-profile
-# Backwards-compatible wrapper for agentic-set-profile.
-#
-# Usage: claude-set-profile work|personal
-
-echo "claude-set-profile is deprecated; use agentic-set-profile instead." >&2
-exec "$(dirname "$0")/agentic-set-profile" "$@"
