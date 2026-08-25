@@ -44,14 +44,25 @@ LEGACY_SHARED="$DOTFILES/private/claude/shared"
 log_done "Starting Claude Code backup..."
 log_field "Profile" "$PROFILE"
 
-# Remove legacy shared/ if present
+# Remove legacy shared/ if present.
+#
+# This used to be a bare `read -p`, which under `set -e` returns non-zero when
+# stdin is not a terminal — so on any machine that still had a legacy shared/
+# directory, claude-backup aborted here and took no backup at all. bin/update
+# calls it without a terminal and has no `set -e` of its own, so it carried on
+# to the next step and still exited 0: the backup silently stopped happening and
+# nothing said so. No machine here has shared/ any more, which is why it was
+# never noticed.
+#
+# confirm() answers "no" without a terminal rather than failing, so the
+# unattended case now skips the deletion — the safe answer for an rm -rf — and
+# the backup proceeds. --yes opts in.
 if [ -d "$LEGACY_SHARED" ]; then
     log_warn "Legacy shared/ directory found: $LEGACY_SHARED"
-    read -p "Delete it? All content moves to per-profile dirs from now on. (y/N) " -n 1 -r
-    echo
-    if [[ ${REPLY:-} =~ ^[Yy]$ ]]; then
+    if [ "$DOTFILES_ASSUME_YES" -eq 1 ] ||
+        confirm "Delete it? All content moves to per-profile dirs from now on."; then
         run rm -rf "$LEGACY_SHARED"
-        log_ok "Deleted: $LEGACY_SHARED"
+        [ "$DOTFILES_DRY_RUN" -eq 1 ] || log_ok "Deleted: $LEGACY_SHARED"
     else
         log_warn "  Skipped deletion — shared/ still exists."
     fi
