@@ -20,6 +20,7 @@
 #   - zsh          zsh -n over zshrc/zshenv (no zsh dialect in shellcheck)
 #   - posix        source the startup files for real, assert stderr is empty
 #   - yaml         parse install.conf.yaml, assert every link source exists
+#   - unit         run the pure helpers in bin/lib/ against fixtures
 #   - drift        re-run the shell-config generator, assert no diff (SI-84)
 #
 # Options:
@@ -46,7 +47,7 @@ CHECKS=()
 FAILED=()
 SKIPPED=()
 
-ALL_CHECKS="shellcheck shfmt fish zsh posix yaml drift"
+ALL_CHECKS="shellcheck shfmt fish zsh posix yaml unit drift"
 
 # --- output helpers ---------------------------------------------------------
 
@@ -468,6 +469,92 @@ check_yaml() {
         FAILED[${#FAILED[@]}]=yaml
     else
         ok "parses, and every non-private link source exists"
+    fi
+}
+
+# --- unit tests for the pure helpers in bin/lib/ -----------------------------
+#
+# This check is the reason bin/lib/shells.sh exists as its own file.
+# `register_login_shell` writes to /etc/shells behind sudo, so it can never be a
+# lint gate — but it delegates the interesting part to a transformation that
+# takes the shells file as an argument, and that part is testable here with no
+# privileges and no fresh machine.
+#
+# The criterion this replaces was "exactly one fish entry after two consecutive
+# setup.sh runs" (SI-81), which only a VM could ever have shown. The fixtures
+# below cover that fresh-machine case *and* the repair case the three real
+# machines were actually in — four accumulated duplicates — which the original
+# wording did not ask about at all.
+
+UNIT_SHELL=/opt/homebrew/bin/fish
+
+# A fixture holding two unrelated shells plus $1 copies of UNIT_SHELL.
+unit_fixture() {
+    local n=$1 f i=0
+    f=$(mktemp "${TMPDIR:-/tmp}/dotfiles-lint-shells.XXXXXX") || return 1
+    printf '%s\n%s\n' /bin/sh /bin/bash >"$f"
+    while [ "$i" -lt "$n" ]; do
+        printf '%s\n' "$UNIT_SHELL" >>"$f"
+        i=$((i + 1))
+    done
+    printf '%s' "$f"
+}
+
+# Apply the transformation to $1 in place.
+unit_apply() {
+    local desired
+    desired=$(shells_file_desired "$UNIT_SHELL" "$1") || return 1
+    printf '%s\n' "$desired" >"$1"
+}
+
+check_unit() {
+    heading "unit tests (bin/lib)"
+
+    if [ ! -f bin/lib/shells.sh ]; then
+        warn "unit: bin/lib/shells.sh not found, skipping"
+        SKIPPED[${#SKIPPED[@]}]=unit
+        return
+    fi
+    # shellcheck source=bin/lib/shells.sh
+    . bin/lib/shells.sh
+
+    local bad=0 start f first second
+    for start in 0 1 2 4; do
+        if ! f=$(unit_fixture "$start"); then
+            fail "unit: could not create a fixture"
+            FAILED[${#FAILED[@]}]=unit
+            return
+        fi
+
+        # Twice: the second application must be a no-op, which is the whole
+        # idempotency claim.
+        unit_apply "$f"
+        first=$(grep -cxF -- "$UNIT_SHELL" "$f" | tr -d ' ')
+        unit_apply "$f"
+        second=$(grep -cxF -- "$UNIT_SHELL" "$f" | tr -d ' ')
+
+        if [ "$first" != 1 ] || [ "$second" != 1 ]; then
+            bad=1
+            fail "unit: starting from $start, got $first then $second (want 1 then 1)"
+        fi
+
+        # The collapse rewrites the whole file, so prove it preserves the rest.
+        if ! grep -qxF -- /bin/sh "$f" || ! grep -qxF -- /bin/bash "$f"; then
+            bad=1
+            fail "unit: starting from $start, unrelated shell entries were lost"
+        fi
+        if [ "$(head -1 "$f")" != /bin/sh ]; then
+            bad=1
+            fail "unit: starting from $start, original ordering was not preserved"
+        fi
+
+        rm -f "$f"
+    done
+
+    if [ "$bad" -eq 1 ]; then
+        FAILED[${#FAILED[@]}]=unit
+    else
+        ok "shells_file_desired is idempotent from 0, 1, 2 and 4 entries"
     fi
 }
 

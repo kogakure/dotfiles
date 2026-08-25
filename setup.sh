@@ -16,6 +16,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" || {
     exit 1
 }
 
+# shellcheck source=bin/lib/shells.sh
+source bin/lib/shells.sh
+
 echo "Installing dotfiles"
 
 # *** *** sudo *** ***
@@ -161,22 +164,10 @@ for plugin in "${FISH_PLUGINS[@]}"; do
 done
 
 # Register fish as a login shell. This was two byte-identical `tee -a` calls, so
-# every run appended the path twice and /etc/shells grew forever. Collapse what
-# earlier runs left behind, then append at most once.
-if [ "$(grep -cxF -- "$FISH_PATH" /etc/shells || true)" -gt 1 ]; then
-    echo "Collapsing duplicate ${FISH_PATH} entries in /etc/shells"
-    shells_tmp="$(mktemp)"
-    awk -v line="$FISH_PATH" '$0 == line && seen++ { next } { print }' /etc/shells >"$shells_tmp"
-    # shellcheck disable=SC2024  # the redirect reads our own mktemp file; only
-    # the write to /etc/shells needs privileges, which is exactly what tee does.
-    sudo tee /etc/shells <"$shells_tmp" >/dev/null
-    rm -f "$shells_tmp"
-fi
-
-if ! grep -qxF -- "$FISH_PATH" /etc/shells; then
-    echo "Adding ${FISH_PATH} to /etc/shells"
-    echo "$FISH_PATH" | sudo tee -a /etc/shells >/dev/null
-fi
+# every run appended the path twice and /etc/shells grew forever. The logic now
+# lives in bin/lib/shells.sh so `just lint unit` can exercise it against a
+# fixture — see docs/guardrails.md.
+register_login_shell "$FISH_PATH"
 
 echo "Changing default shell to fish"
 sudo chsh -s "$FISH_PATH" "$USER"

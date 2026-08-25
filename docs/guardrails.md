@@ -50,6 +50,7 @@ written for bash 3.2 so it still runs under a reduced PATH.
 | `zsh`        | `zsh -n` over `zshrc`/`zshenv` — shellcheck has no zsh dialect    |
 | `posix`      | **sources** the startup files and asserts stderr is empty         |
 | `yaml`       | parses `install.conf.yaml`, asserts every `link:` source exists   |
+| `unit`       | runs the pure helpers in `bin/lib/` against fixtures               |
 | `drift`      | re-runs the shell-config generator, asserts no diff (SI-84)       |
 
 Run a subset by name: `just lint posix yaml`.
@@ -99,6 +100,37 @@ are installed and is not a stable signal. `shellcheck` and `zsh -n` cover them.
 
 CI additionally appends a fish-syntax alias to `aliases` and asserts the check
 *fails*, so it cannot silently stop gating anything.
+
+### The `unit` check — and why `bin/lib/` exists
+
+`bin/lib/shells.sh` is not there for reuse. It exists so that logic buried
+inside a privileged, un-runnable script can still be tested.
+
+`setup.sh` registers fish in `/etc/shells`. That write needs `sudo`, and the
+surrounding script installs Homebrew and changes your login shell, so it can
+never be a lint gate — which is exactly how the original bug survived: two
+byte-identical `tee -a` calls appended the path on every run, and `/etc/shells`
+grew to **four** fish entries across three machines before anyone noticed.
+
+The split is the fix. `shells_file_desired` is pure and takes the shells file
+as an argument; `register_login_shell` does the `sudo tee`. The `unit` check
+exercises the first against fixtures starting at 0, 1, 2 and 4 entries, applies
+it **twice** each time, and asserts every case converges to exactly one entry
+and stays there — plus that unrelated entries and the original ordering survive
+the rewrite, since the collapse rewrites the whole file rather than appending.
+
+Two properties worth keeping when this grows:
+
+- **Test the transformation, not the write.** Anything needing `sudo`, a
+  network, or a fresh machine belongs on the other side of the split. If a
+  helper cannot be called with a path argument and no privileges, it is not
+  ready for this check.
+- **The fixtures include the broken state, not just the clean one.** The
+  original acceptance criterion was "exactly one entry after two consecutive
+  `setup.sh` runs" — the 0-entry row only, which no machine here could produce.
+  The 2- and 4-entry rows are the repair path, and reverting to the old
+  append-only rule fails on exactly those two while 0 and 1 still pass. That
+  asymmetry is why the bug shipped, and it is what the check now pins down.
 
 ### The shellcheck baseline
 
