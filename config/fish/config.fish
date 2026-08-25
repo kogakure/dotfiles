@@ -164,10 +164,16 @@ set -gx PATH $PATH /Users/stefanimhoff/.lmstudio/bin
 
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1
-    eval "$(gh completion -s fish)"
+    eval "$(command gh completion -s fish)"
     # Reuse gh's token so other GitHub-aware tools (e.g. mise's github backend)
-    # get the higher authenticated rate limit instead of 60 req/hour per IP
-    set -gx GITHUB_TOKEN (gh auth token 2>/dev/null)
+    # get the higher authenticated rate limit instead of 60 req/hour per IP.
+    #
+    # `command env -u ...` rather than plain `gh`: this must resolve to the
+    # keyring's active account, deterministically. Going through the gh wrapper
+    # in functions/gh.fish would make the answer depend on the cwd at shell
+    # startup, and a bare `gh auth token` would just echo back whatever
+    # GITHUB_TOKEN this shell happened to inherit.
+    set -gx GITHUB_TOKEN (command env -u GITHUB_TOKEN -u GH_TOKEN gh auth token 2>/dev/null)
 end
 
 # Worktrunk
