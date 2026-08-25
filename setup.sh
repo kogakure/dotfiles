@@ -220,7 +220,16 @@ fi
 
 # Launch agents in private/launch-agents/ are not restored automatically —
 # see docs/commands.md.
-./bin/preferences-restore
+#
+# --yes because this is an unattended bootstrap under strict mode. The Dock
+# prompt 0c89693 added would otherwise block ten lines from the end of a long
+# run, and with stdin closed confirm() answers "no" — which silently skips the
+# Dock on the one kind of machine that actually needs it restored. The case
+# 0c89693 was protecting against, a human re-running this on a configured
+# machine, is covered instead by prefs_reset exporting the live domain to
+# $TMPDIR before it deletes anything, and by a bare `bin/preferences-restore`
+# still prompting.
+./bin/preferences-restore --yes
 ./bin/macos-settings
 
 # *** *** Services *** ***

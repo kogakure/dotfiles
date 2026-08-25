@@ -2,136 +2,77 @@
 #
 # Restore application preferences from private/preferences/.
 #
-# Pass --yes to skip the confirmation prompt (for unattended runs).
+# Usage: preferences-restore [--dry-run] [--yes]
+#
+# Pass --yes to skip the confirmation prompts (for unattended runs).
+#
+# The table lives in bin/lib/preferences.manifest. This walks it three times —
+# defaults, then plists, then the two support directories — which is the order
+# the hand-written version used, and the reason one manifest can drive both
+# directions: it is the same ordered list read through a kind filter.
+#
+# `set -uo pipefail`, deliberately without -e: on a fresh machine most of these
+# apps have never launched, and one missing plist must not abort the rest.
 
 set -uo pipefail
 
-ASSUME_YES=0
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+dotfiles_flags_init
 
 while [ $# -gt 0 ]; do
     case "$1" in
-        -y | --yes)
-            ASSUME_YES=1
-            shift
-            ;;
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
         -h | --help)
-            echo "Usage: preferences-restore [--yes]"
+            log_info "Usage: preferences-restore [--dry-run] [--yes]"
             exit 0
             ;;
         *)
-            echo "preferences-restore: unknown argument: $1" >&2
+            log_err "preferences-restore: unknown argument: $1"
             exit 1
             ;;
     esac
+    shift
 done
 
-PREFS="${HOME}/.dotfiles/private/preferences"
+PREFS=$(prefs_dir)
 
 if [ ! -d "$PREFS" ]; then
-    echo "preferences-restore: ${PREFS} not found — is the private submodule initialised?" >&2
+    log_err "preferences-restore: ${PREFS} not found — is the private submodule initialised?"
     exit 1
 fi
 
-confirm() {
-    [ "$ASSUME_YES" -eq 1 ] && return 0
-    local reply
-    printf '%s [y/N] ' "$1"
-    read -r reply
-    case "$reply" in
-        [yY] | [yY][eE][sS]) return 0 ;;
-        *) return 1 ;;
-    esac
+prefs_load "$(prefs_manifest)" || exit 1
+
+# One pass over the rows whose kind matches $1.
+restore_pass() {
+    local want=$1 i=0
+    while [ "$i" -lt ${#PREFS_ROWS[@]} ]; do
+        prefs_split "${PREFS_ROWS[$i]}"
+        i=$((i + 1))
+        case "$PREFS_KIND" in
+            "$want") prefs_restore "$PREFS" ;;
+        esac
+    done
 }
 
-# Copy a plist into ~/Library/Preferences, skipping anything the backup does not
-# have. On a fresh machine many of these apps have never launched.
-restore_plist() {
-    local name="$1"
-    if [ -f "${PREFS}/${name}" ]; then
-        cp "${PREFS}/${name}" "${HOME}/Library/Preferences/"
-    else
-        echo "  skip: ${name} is not in the backup" >&2
-    fi
-}
+log_step "Restoring preference domains..."
+restore_pass defaults
 
-# Guard a support-directory copy: the backup has to hold it, and the destination
-# has to exist already. Creating the destination ourselves would leave a
-# half-configured app. Returns non-zero when the caller should skip.
-support_dir_ready() {
-    local source="$1" destination="$2"
-    if [ ! -e "${PREFS}/${source}" ]; then
-        echo "  skip: ${source} is not in the backup" >&2
-        return 1
-    fi
-    if [ ! -d "$destination" ]; then
-        echo "  skip: ${destination} does not exist — launch the app once first." >&2
-        return 1
-    fi
-    return 0
-}
+log_step "Restoring application plists..."
+restore_pass plist
 
-# *** *** Keyboard shortcuts *** ***
+# Both support directories go last, as they did before: they are the two entries
+# whose destination the app itself has to create first.
+log_step "Restoring application support directories..."
+restore_pass support_dir
+restore_pass support_contents
 
-defaults import com.apple.symbolichotkeys "${PREFS}/keyboard_shortcuts.plist"
-defaults import com.apple.universalaccess "${PREFS}/universal_access_shortcuts.plist"
-
-# *** *** Finder *** ***
-
-defaults import com.apple.finder "${PREFS}/finder.plist"
-killall Finder 2>/dev/null || true
-
-# *** *** Dock *** ***
-
-# This wipes the current Dock. It used to run with no prompt at all, so simply
-# invoking the script — including from setup.sh on an already-configured
-# machine — silently destroyed the Dock layout before importing the backup.
-if confirm "Remove the current Dock contents and import the backup?"; then
-    defaults delete com.apple.dock persistent-apps 2>/dev/null || true
-    defaults delete com.apple.dock persistent-others 2>/dev/null || true
-    defaults import com.apple.dock "${PREFS}/dock.plist"
-    echo "Dock restored. Please log out and back in to apply the changes."
+if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+    log_warn "dry run: nothing was changed"
 else
-    echo "Leaving the Dock alone."
+    log_done "Done."
 fi
-
-# *** *** Application preferences *** ***
-
-restore_plist com.canva.affinity.plist
-restore_plist com.runningwithcrayons.Alfred.plist
-restore_plist com.runningwithcrayons.Alfred-Preferences.plist
-restore_plist company.thebrowser.Browser.plist
-restore_plist com.surteesstudios.Bartender.plist
-restore_plist edu.ucsd.cs.mmccrack.bibdesk.plist
-restore_plist com.brave.Browser.plist
-restore_plist pl.maketheweb.cleanshotx.plist
-restore_plist com.devon-technologies.think3.plist
-restore_plist com.mowglii.itsycalApp.plist
-restore_plist com.raycast.macos.plist
-
-# Bartender and BibDesk also keep state outside ~/Library/Preferences.
-
-# Bartender's preference bundle lives inside a directory the app creates on
-# first launch, so this skips rather than pre-creating a half-configured app.
-# The copy used to fail outright on a fresh machine for that reason.
-BARTENDER_DEST="${HOME}/Library/Application Support/Bartender/"
-if support_dir_ready Bartender.BartenderPreferences "$BARTENDER_DEST"; then
-    cp -R "${PREFS}/Bartender.BartenderPreferences" "$BARTENDER_DEST"
-fi
-
-# BibDesk is the exact inverse of bin/preferences-backup, which copies the
-# *contents* of ~/Library/Application Support/BibDesk/ into
-# private/preferences/BibDesk/. This restore used to target Application Support
-# itself — one level too high — so Bookmarks.plist, Templates and the rest
-# landed loose beside every other app's data and the pair never round-tripped.
-#
-# The trailing slash on the source is what makes it a contents-copy: on BSD cp
-# `src/` copies the contents while `src` copies the directory. Naming BibDesk/
-# on the destination side too makes it self-creating, so unlike Bartender there
-# is nothing to guard beyond the backup actually having the content.
-if [ -d "${PREFS}/BibDesk" ]; then
-    cp -R "${PREFS}/BibDesk/" "${HOME}/Library/Application Support/BibDesk/"
-else
-    echo "  skip: BibDesk is not in the backup" >&2
-fi
-
-echo "Done."
