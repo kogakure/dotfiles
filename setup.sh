@@ -187,8 +187,11 @@ atuin login
 
 # *** *** GPG *** ***
 
-echo "Configuring GPG to use pinentry-mac …"
-echo "pinentry-program /opt/homebrew/bin/pinentry-mac" >>~/.gnupg/gpg-agent.conf
+# gpg-agent.conf is linked from gnupg/gpg-agent.conf by ./install above. This
+# used to append the pinentry line here on *every* run, which both duplicated
+# the line and — because a real file cannot be replaced by a dotbot relink —
+# meant the repo's default-cache-ttl and max-cache-ttl never applied at all.
+echo "Restarting gpg-agent"
 gpgconf --kill gpg-agent
 gpg-agent --daemon
 ./bin/gpg-keys-restore
