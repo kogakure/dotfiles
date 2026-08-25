@@ -13,11 +13,41 @@ set -euo pipefail
 # shellcheck source=lib/common.sh
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
+dotfiles_flags_init
+
+# The one entry point with a positional argument: the profile to restore *from*,
+# which need not be this machine's own. Flags and the positional may be
+# interleaved, as they can everywhere else in bin/.
+SOURCE_ARG=""
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        -h | --help)
+            log_info "Usage: codex-restore [--dry-run] [--yes] [source-profile]"
+            exit 0
+            ;;
+        -*)
+            log_err "codex-restore: unknown option: $1"
+            exit 1
+            ;;
+        *)
+            if [ -n "$SOURCE_ARG" ]; then
+                log_err "codex-restore: more than one source profile given"
+                exit 1
+            fi
+            SOURCE_ARG="$1"
+            ;;
+    esac
+    shift
+done
+
 CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
 DOTFILES=$(dotfiles_root)
 
 PROFILE=$(agentic_profile) || exit 1
-SOURCE_PROFILE="${1:-$PROFILE}"
+SOURCE_PROFILE="${SOURCE_ARG:-$PROFILE}"
 
 assert_valid_profile "$SOURCE_PROFILE" "source profile" || exit 1
 
@@ -41,7 +71,7 @@ if [ -f "$PROFILE_DIR/BACKUP_INFO.txt" ]; then
     log_info ""
 fi
 
-if ! confirm "Do you want to restore Codex settings from backup?"; then
+if [ "$DOTFILES_ASSUME_YES" -eq 0 ] && ! confirm "Do you want to restore Codex settings from backup?"; then
     log_info "Restore cancelled."
     exit 0
 fi
@@ -55,7 +85,7 @@ conflicts=$(sync_conflicts \
 if [ -n "$conflicts" ]; then
     log_warn "$(printf '%s\n' "$conflicts" | wc -l | tr -d ' ') existing file(s) will be overwritten. Examples:"
     printf '%s\n' "$conflicts" | head -5 | sed 's/^/  /'
-    if ! confirm "Continue?"; then
+    if [ "$DOTFILES_ASSUME_YES" -eq 0 ] && ! confirm "Continue?"; then
         log_info "Restore cancelled."
         exit 0
     fi

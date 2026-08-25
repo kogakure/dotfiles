@@ -14,6 +14,24 @@ set -euo pipefail
 # shellcheck source=lib/common.sh
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        -h | --help)
+            log_info "Usage: claude-restore [--dry-run] [--yes]"
+            exit 0
+            ;;
+        *)
+            log_err "claude-restore: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
 CLAUDE_DIR="$HOME/.claude"
 DOTFILES=$(dotfiles_root)
 
@@ -36,7 +54,7 @@ if [ -f "$PROFILE_DIR/BACKUP_INFO.txt" ]; then
     log_info ""
 fi
 
-if ! confirm "Do you want to restore Claude Code settings from backup?"; then
+if [ "$DOTFILES_ASSUME_YES" -eq 0 ] && ! confirm "Do you want to restore Claude Code settings from backup?"; then
     log_info "Restore cancelled."
     exit 0
 fi
@@ -58,7 +76,7 @@ conflicts=$(sync_conflicts \
 if [ -n "$conflicts" ]; then
     log_warn "$(printf '%s\n' "$conflicts" | wc -l | tr -d ' ') existing file(s) will be overwritten. Examples:"
     printf '%s\n' "$conflicts" | head -5 | sed 's/^/  /'
-    if ! confirm "Continue?"; then
+    if [ "$DOTFILES_ASSUME_YES" -eq 0 ] && ! confirm "Continue?"; then
         log_info "Restore cancelled."
         exit 0
     fi
