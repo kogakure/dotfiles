@@ -648,6 +648,7 @@ unit_log_plain() {
         log_field label value
         log_ok ok
         log_skip skip
+        log_note note
         log_warn warn
         log_done finished
     )

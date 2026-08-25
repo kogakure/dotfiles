@@ -51,6 +51,12 @@ log_ok() { printf '  ✓ %s\n' "$*"; }
 # separate name from log_warn. Usage: log_skip <message>
 log_skip() { printf '  %s⊗ %s%s\n' "$_DL_YELLOW" "$*" "$_DL_OFF"; }
 
+# A coloured progress line with no glyph — "creating sandbox 'x'", as opposed to
+# log_done's "✓ finished". The sbx-* launchers print about twenty of these, and
+# prefixing them with a tick would misreport work that has not happened yet.
+# Usage: log_note <message>
+log_note() { printf '%s%s%s\n' "$_DL_GREEN" "$*" "$_DL_OFF"; }
+
 # Something the user should notice but which is not a failure.
 # Usage: log_warn <message>
 log_warn() { printf '%s%s%s\n' "$_DL_YELLOW" "$*" "$_DL_OFF"; }
