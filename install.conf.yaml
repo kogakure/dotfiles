@@ -2,9 +2,23 @@
     link:
       relink: true
 
-- clean: ["~"]
+# Every directory this file links *into* needs cleaning, not just ~. With "~"
+# alone, deleting a config/* entry left a dangling link in ~/.config forever.
+- clean: ["~", "~/.config", "~/.gnupg", "~/.warp"]
 
+# These are the parents the links below need. setup.sh also mkdirs ~/.config and
+# ~/.gnupg, but only declaring them here makes `./install` work standalone on a
+# fresh machine — without them the ~/.config/* and ~/.gnupg/*.conf links have no
+# parent directory and fail.
+#
+# Note that `mode:` applies only when dotbot creates the directory. On a path
+# that already exists the plugin returns early and never chmods, so these are
+# not a repair for existing permissions on any current machine.
 - create:
+    ~/.config:
+      mode: 0755
+    ~/.gnupg:
+      mode: 0700
     ~/.ssh:
       mode: 0700
     ~/.warp:
@@ -20,6 +34,11 @@
     ~/.ack: ack
     ~/.ag: ag
     ~/.agents: private/agents
+    # Trap: ~/.config/git is itself a symlink to config/git (created by the glob
+    # above), so these two write *through* it — dotbot ends up creating symlinks
+    # inside this repo's working tree at config/git/config-{personal,work}. They
+    # are hidden only by a nested config/git/.gitignore containing `config-*`.
+    # One rename away from a permanently dirty repo. Do not "tidy" that ignore.
     ~/.config/git/config-personal: private/git/config-personal
     ~/.config/git/config-work: private/git/config-work
     ~/.aliases: aliases
@@ -35,6 +54,15 @@
     ~/.gemrc: gemrc
     ~/.gitmux.conf: gitmux.conf
     ~/.gnupg/dirmngr.conf: gnupg/dirmngr.conf
+    # force, not relink, because on every existing machine this path is a real
+    # file: setup.sh used to append the pinentry line to it on every run, and
+    # relink only ever replaces symlinks — so without force ./install exits 1.
+    # Losing that file is provably harmless; the repo copy is a strict content
+    # superset (same pinentry line, plus the cache TTLs that consequently have
+    # never applied). Droppable once all three machines are converted.
+    ~/.gnupg/gpg-agent.conf:
+      path: gnupg/gpg-agent.conf
+      force: true
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.jjconfig.toml: jjconfig.toml
     ~/.markdownlint.yaml: .markdownlint.yaml
@@ -49,6 +77,9 @@
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
 
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-    - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
+# No `shell:` block on purpose. It used to re-run `git submodule update` and the
+# tmux plugin install, both of which setup.sh already does — the submodule init
+# has to happen *before* ./install so private/* is there to link, and the tmux
+# install has to happen *after* brew and after this file has linked config/tmux.
+# Neither ordering is expressible here, and duplicating them made the tmux
+# plugin install run three times per setup.
