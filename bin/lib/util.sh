@@ -164,15 +164,19 @@ brew_prefix() {
 # Usage: confirm <prompt>
 confirm() {
     local prompt=$1 reply
-    if [ ! -t 0 ] && [ ! -r /dev/tty ]; then
-        printf '%s [y/N] no (not a terminal)\n' "$prompt"
-        return 1
-    fi
     printf '%s [y/N] ' "$prompt"
-    if [ -t 0 ]; then
-        read -r reply || return 1
-    else
-        read -r reply </dev/tty || return 1
+    # Plain stdin, like the copy this replaces. Reading from /dev/tty instead
+    # would look more thorough and would be a regression: it ignores piped
+    # input, so `printf 'y\n' | preferences-restore` stops working, and `-r
+    # /dev/tty` can test true in a context where opening it still fails.
+    #
+    # A failed read means EOF — no terminal and no piped answer — and the answer
+    # is then "no", which is what an unattended run should get for something
+    # irreversible. Under `set -e` this is also the fix for the bare `read -p`
+    # it replaces, which aborted the whole script instead.
+    if ! read -r reply; then
+        printf 'no (no input)\n'
+        return 1
     fi
     case $reply in
         [yY] | [yY][eE][sS]) return 0 ;;

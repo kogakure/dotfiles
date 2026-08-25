@@ -1,44 +1,69 @@
 #!/bin/bash
+#
+# Export application preferences into private/preferences/.
+#
+# Usage: preferences-backup [--dry-run] [--allow-dirty]
+#
+# The table lives in bin/lib/preferences.manifest; this walks it top to bottom.
+# Adding an app is one line there and nothing here.
+#
+# `set -uo pipefail`, deliberately without -e, matching bin/preferences-restore.
+# One app that was never installed must not stop the other eighteen — and this
+# script runs late in bin/update, so aborting here used to mean the remaining
+# steps silently stopped happening. Every entry is guarded individually instead.
 
-# Export all Keyboard Shortcuts
-defaults export com.apple.symbolichotkeys ~/.dotfiles/private/preferences/keyboard_shortcuts.plist
-defaults export com.apple.universalaccess ~/.dotfiles/private/preferences/universal_access_shortcuts.plist
+set -uo pipefail
 
-# Finder sidebar favorites
-defaults export com.apple.finder ~/.dotfiles/private/preferences/finder.plist
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
-# Export all Dock settings
-defaults export com.apple.dock ~/.dotfiles/private/preferences/dock.plist
+dotfiles_flags_init
 
-# Affinity
-cp ~/Library/Preferences/com.canva.affinity.plist ~/.dotfiles/private/preferences/
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        --allow-dirty) DOTFILES_ALLOW_DIRTY=1 ;;
+        -h | --help)
+            log_info "Usage: preferences-backup [--dry-run] [--allow-dirty]"
+            exit 0
+            ;;
+        *)
+            log_err "preferences-backup: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
 
-# Alfred
-cp ~/Library/Preferences/com.runningwithcrayons.Alfred.plist ~/.dotfiles/private/preferences/
-cp ~/Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist ~/.dotfiles/private/preferences/
+PREFS=$(prefs_dir)
 
-# Arc
-cp ~/Library/Preferences/company.thebrowser.Browser.plist ~/.dotfiles/private/preferences/
+if [ ! -d "$PREFS" ]; then
+    log_err "preferences-backup: ${PREFS} not found — is the private submodule initialised?"
+    exit 1
+fi
 
-# Bartender
-cp -R ~/Library/Application\ Support/Bartender/Bartender.BartenderPreferences ~/.dotfiles/private/preferences/
-cp ~/Library/Preferences/com.surteesstudios.Bartender.plist ~/.dotfiles/private/preferences/
+private_gate preferences || exit 1
 
-# BibDesk
-cp -R ~/Library/Application\ Support/BibDesk/ ~/.dotfiles/private/preferences/BibDesk/
-cp ~/Library/Preferences/edu.ucsd.cs.mmccrack.bibdesk.plist ~/.dotfiles/private/preferences/
+prefs_load "$(prefs_manifest)" || exit 1
 
-# Brave
-cp ~/Library/Preferences/com.brave.Browser.plist ~/.dotfiles/private/preferences/
+log_step "Backing up ${#PREFS_ROWS[@]} preference entries..."
 
-# CleanShot X
-cp ~/Library/Preferences/pl.maketheweb.cleanshotx.plist ~/.dotfiles/private/preferences/
+i=0
+failed=0
+while [ "$i" -lt ${#PREFS_ROWS[@]} ]; do
+    prefs_split "${PREFS_ROWS[$i]}"
+    i=$((i + 1))
+    prefs_backup "$PREFS" || failed=$((failed + 1))
+done
 
-# DEVONthink 3
-cp ~/Library/Preferences/com.devon-technologies.think3.plist ~/.dotfiles/private/preferences/
+if [ "$failed" -gt 0 ]; then
+    log_err "preferences-backup: ${failed} entr(y|ies) failed."
+    exit 1
+fi
 
-# Itsycal
-cp ~/Library/Preferences/com.mowglii.itsycalApp.plist ~/.dotfiles/private/preferences/
-
-# Raycast
-cp ~/Library/Preferences/com.raycast.macos.plist ~/.dotfiles/private/preferences/
+if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+    log_warn "dry run: nothing was changed"
+else
+    log_done "Preferences written to ${PREFS}"
+fi
