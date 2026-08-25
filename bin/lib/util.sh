@@ -88,9 +88,15 @@ private_gate() {
         log_err "private has uncommitted changes under: $*"
         printf '%s\n' "$dirty" >&2
         log_err ""
-        log_err "Pruning deletes backup content that may be another machine's"
-        log_err "only copy, so it will not run on top of uncommitted changes."
-        log_err "Commit or discard them first:"
+        if [ "${DOTFILES_PRUNE:-0}" -eq 1 ]; then
+            log_err "Pruning deletes backup content that may be another"
+            log_err "machine's only copy, so it will not run on top of"
+            log_err "uncommitted changes."
+        else
+            log_err "DOTFILES_REQUIRE_CLEAN_PRIVATE is set, which makes a"
+            log_err "clean submodule a hard precondition."
+        fi
+        log_err "Commit or discard the changes first:"
         log_err "    git -C ${root} status"
         log_err "Or accept the risk with --allow-dirty."
         return 1

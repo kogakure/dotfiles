@@ -10,58 +10,88 @@ while true; do
     kill -0 "$$" || exit
 done 2>/dev/null &
 
-cd ~/.dotfiles || {
-    echo "update: cannot cd into ~/.dotfiles — aborting." >&2
+# `set -uo pipefail`, deliberately without -e: a broken tap or an offline plugin
+# registry must not skip the ten steps after it. Every step goes through
+# run_step instead, which keeps going and makes the run exit non-zero with the
+# failing steps named. Previously every step's status was discarded and the run
+# exited with softwareupdate's, so a failed backup was invisible.
+set -uo pipefail
+
+# Derived from this script's own location rather than a fixed ~/.dotfiles: that
+# path is not necessarily *this* checkout, which matters with worktrees.
+cd "$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || {
+    echo "update: cannot cd to the repository root — aborting." >&2
     exit 1
 }
 
-# Update Homebrew
-NONINTERACTIVE=1 brew update
-brew outdated
-NONINTERACTIVE=1 brew upgrade
-brew cleanup
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
-# Ruby
-gem update --system --no-document
-gem update --no-document
-gem cleanup all
+dotfiles_flags_init
 
-# Update tmux plugins
-~/.tmux/plugins/tpm/bin/update_plugins all
+# Every step below goes through run_step, so one failure is reported by name in
+# the summary instead of scrolling past and leaving the run's exit status to
+# whatever happened to come last.
 
-# Update GitHub extensions
-gh extension upgrade --all
+update_homebrew() {
+    NONINTERACTIVE=1 brew update || return 1
+    brew outdated
+    NONINTERACTIVE=1 brew upgrade || return 1
+    brew cleanup
+}
 
-# Update Fish plugins
-# fisher is a fish *function*, not an executable — the brew formula ships only
-# share/fish/vendor_functions.d/fisher.fish. It has to be driven through fish.
-fish -c "fisher update"
+update_ruby() {
+    gem update --system --no-document || return 1
+    gem update --no-document || return 1
+    gem cleanup all
+}
 
-# Update Neovim
-nvim --headless "+Lazy! sync" +qa
-
-# Maintenance
 # `mo` is the binary shipped by the `mole` formula (https://mole.fit), which is
 # in all three Brewfiles under that name — hence the guard, since the command
 # and the package are spelled differently.
-if command -v mo >/dev/null 2>&1; then
-    mo clean
+update_maintenance() {
+    if ! have mo; then
+        log_warn "mo not found — install the 'mole' formula. Skipping maintenance."
+        return 0
+    fi
+    mo clean || return 1
     mo optimize
-else
-    echo "update: mo not found — install the 'mole' formula. Skipping maintenance." >&2
-fi
+}
 
-# Claude
-claude-backup
+# Wrapped in a function only so run_step can name it in the summary.
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+softwareupdate_all() {
+    sudo softwareupdate -i -a
+}
 
-# Codex
-codex-backup
+run_step homebrew update_homebrew
+run_step ruby update_ruby
+run_step "tmux plugins" "$HOME/.tmux/plugins/tpm/bin/update_plugins" all
+run_step "gh extensions" gh extension upgrade --all
+# fisher is a fish *function*, not an executable — the brew formula ships only
+# share/fish/vendor_functions.d/fisher.fish. It has to be driven through fish.
+run_step "fish plugins" fish -c "fisher update"
+run_step neovim nvim --headless "+Lazy! sync" +qa
+run_step maintenance update_maintenance
 
-# Write Homebrew Brewfile
-homebrew-backup
+# *** *** Backups *** ***
 
-# Write preferences
-preferences-backup
+# One aggregator instead of four bare names. bin/dotfiles-backup checks the
+# private submodule once, isolates each backup's failure from the others, and
+# reports the failures in its exit code — none of which four bare calls could
+# do.
+#
+# `./bin/…` rather than a bare name: the old calls resolved through PATH, which
+# works only because session-variables.sh puts ~/.dotfiles/bin on it. That made
+# bin/update depend on the shell configuration it is updating — a PATH
+# regression would make all four backups vanish with "command not found" and,
+# with no `set -e`, the run would carry on and still exit 0. It also ran
+# whichever checkout came first on PATH rather than this one.
+run_step backups ./bin/dotfiles-backup
 
-# Update macOS software
-sudo softwareupdate -i -a
+# Update macOS software. Last, and still reached even when a step above failed,
+# which is the reason this script does not use `set -e`.
+run_step "macos software update" softwareupdate_all
+
+step_summary || exit 1

@@ -86,6 +86,53 @@ run() {
     fi
 }
 
+# Step accounting, shared by bin/dotfiles-backup and bin/update.
+#
+# Both need the same thing and neither had it: run every step even when one
+# fails, then exit non-zero naming the failures. bin/update's four bare backup
+# calls discarded every exit status and left the run reporting softwareupdate's
+# alone, so a failed backup was invisible.
+_DL_STEP_OK=()
+_DL_STEP_FAILED=()
+
+# Run one step, keep going when it fails, remember the name.
+#
+# `"$@" || rc=$?` rather than reading $? after an if/fi, where what comes back
+# is the compound statement's status rather than the command's.
+#
+# Usage: run_step <name> <command> [arg...]
+run_step() {
+    local name=$1 rc=0
+    shift
+    log_step "$name"
+    "$@" || rc=$?
+    if [ "$rc" -eq 0 ]; then
+        _DL_STEP_OK[${#_DL_STEP_OK[@]}]=$name
+    else
+        log_err "${name}: exited ${rc}"
+        _DL_STEP_FAILED[${#_DL_STEP_FAILED[@]}]=$name
+    fi
+    return 0
+}
+
+# Print what happened and return 1 if anything failed. The grammar deliberately
+# matches bin/dotfiles-lint's ("failed: a b c") — two scripts that report a list
+# of named failures should read the same way.
+#
+# ${a[@]+"${a[@]}"} rather than "${a[@]}": bash 3.2 treats an empty array as
+# unbound under `set -u`.
+#
+# Usage: step_summary
+step_summary() {
+    log_step "summary"
+    [ ${#_DL_STEP_OK[@]} -gt 0 ] && log_ok "${_DL_STEP_OK[*]}"
+    if [ ${#_DL_STEP_FAILED[@]} -gt 0 ]; then
+        log_err "failed: ${_DL_STEP_FAILED[*]}"
+        return 1
+    fi
+    return 0
+}
+
 # Write stdin to <dest>, or report it under --dry-run.
 #
 # run() cannot wrap a redirect, so a `cat >file <<EOF` heredoc needs its own
