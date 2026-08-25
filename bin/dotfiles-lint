@@ -600,6 +600,67 @@ unit_shells() {
     return "$bad"
 }
 
+# brew_prefix_choose is the pure half of brew_prefix. The acceptance criterion
+# names "both an Apple Silicon and the Intel machine", and only one of the two
+# exists here — so the decision is checked against a supplied architecture and
+# candidate list instead of against the machine the linter happens to run on.
+unit_brew_prefix() {
+    unit_require bin/lib/util.sh || return 1
+    (
+        # A subshell: util.sh reads $_DL_ROOT, and sourcing it into the linter
+        # would also drop `have` and `confirm` into the linter's namespace.
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        # shellcheck source=bin/lib/util.sh
+        . bin/lib/util.sh
+
+        bad=0
+        unit_expect "arm64, both installed" /opt/homebrew \
+            "$(brew_prefix_choose arm64 /opt/homebrew /usr/local)" || bad=1
+        unit_expect "x86_64, both installed" /usr/local \
+            "$(brew_prefix_choose x86_64 /opt/homebrew /usr/local)" || bad=1
+        unit_expect "arm64, only /usr/local" /usr/local \
+            "$(brew_prefix_choose arm64 /usr/local)" || bad=1
+        unit_expect "x86_64, only /opt/homebrew" /opt/homebrew \
+            "$(brew_prefix_choose x86_64 /opt/homebrew)" || bad=1
+        unit_expect "arm64, nothing installed" /opt/homebrew \
+            "$(brew_prefix_choose arm64)" || bad=1
+        unit_expect "x86_64, nothing installed" /usr/local \
+            "$(brew_prefix_choose x86_64)" || bad=1
+
+        [ "$bad" -eq 0 ] && ok "brew_prefix_choose is right on arm64 and x86_64"
+        exit "$bad"
+    )
+}
+
+# The ticket's "colour codes are currently emitted even when output is piped".
+# Captured in a command substitution, so stdout is a pipe, so every log_*
+# function must emit no escape sequence at all.
+unit_log_plain() {
+    unit_require bin/lib/log.sh || return 1
+    local out
+    out=$(
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        log_info info
+        log_step step
+        log_field label value
+        log_ok ok
+        log_skip skip
+        log_warn warn
+        log_done finished
+    )
+    case $out in
+        *$'\033'*)
+            fail "unit: log_* emitted colour into a pipe"
+            return 1
+            ;;
+    esac
+    ok "log_* emits no colour when stdout is not a terminal"
+    return 0
+}
+
 # Each unit_* function prints its own ok/fail lines and returns 0 or 1, so one
 # failing property does not hide the others.
 check_unit() {
@@ -607,6 +668,8 @@ check_unit() {
     local bad=0
     unit_source_directives || bad=1
     unit_shells || bad=1
+    unit_brew_prefix || bad=1
+    unit_log_plain || bad=1
     [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit
 }
 
