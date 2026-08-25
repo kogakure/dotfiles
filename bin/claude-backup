@@ -14,6 +14,25 @@ set -euo pipefail
 # shellcheck source=lib/common.sh
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        --allow-dirty) DOTFILES_ALLOW_DIRTY=1 ;;
+        -h | --help)
+            log_info "Usage: claude-backup [--dry-run] [--yes] [--allow-dirty]"
+            exit 0
+            ;;
+        *)
+            log_err "claude-backup: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
 CLAUDE_DIR="$HOME/.claude"
 DOTFILES=$(dotfiles_root)
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)

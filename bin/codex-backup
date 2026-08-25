@@ -14,6 +14,25 @@ set -euo pipefail
 # shellcheck source=lib/common.sh
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        --allow-dirty) DOTFILES_ALLOW_DIRTY=1 ;;
+        -h | --help)
+            log_info "Usage: codex-backup [--dry-run] [--yes] [--allow-dirty]"
+            exit 0
+            ;;
+        *)
+            log_err "codex-backup: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
 CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
 DOTFILES=$(dotfiles_root)
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
@@ -30,12 +49,16 @@ run mkdir -p "$PROFILE_DIR"
 log_step "Backing up settings and global instructions..."
 backup_file "$CODEX_DIR/config.toml" "$PROFILE_DIR/config.toml"
 if [ -f "$PROFILE_DIR/config.toml" ] && ! grep -Eq '^[[:space:]]*personality[[:space:]]*=' "$PROFILE_DIR/config.toml"; then
-    {
-        echo 'personality = "friendly"'
-        cat "$PROFILE_DIR/config.toml"
-    } >"$PROFILE_DIR/config.toml.tmp"
-    mv "$PROFILE_DIR/config.toml.tmp" "$PROFILE_DIR/config.toml"
-    log_ok "Recorded current default personality: friendly"
+    if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+        log_info "  would prepend the default personality to config.toml"
+    else
+        {
+            echo 'personality = "friendly"'
+            cat "$PROFILE_DIR/config.toml"
+        } >"$PROFILE_DIR/config.toml.tmp"
+        mv "$PROFILE_DIR/config.toml.tmp" "$PROFILE_DIR/config.toml"
+        log_ok "Recorded current default personality: friendly"
+    fi
 fi
 backup_file "$CODEX_DIR/AGENTS.md" "$PROFILE_DIR/AGENTS.md"
 backup_file "$CODEX_DIR/AGENTS.override.md" "$PROFILE_DIR/AGENTS.override.md"
@@ -43,13 +66,21 @@ backup_file "$CODEX_DIR/hooks.json" "$PROFILE_DIR/hooks.json"
 backup_dir "$CODEX_DIR/rules" "$PROFILE_DIR/rules"
 
 log_step "Backing up user-installed skills..."
+# Not backup_dir: this one excludes the bundled .system/ skills, which is the
+# whole reason it is written out by hand.
+#
+# The `else` branch used to `rm -rf "$PROFILE_DIR/skills"`. That is the last of
+# codex-backup's prunes, and it is the dangerous one: a machine with no
+# ~/.codex/skills at all would delete the skills another machine had committed
+# under the same profile. Absent locally now means "leave the backup alone",
+# matching every other helper in bin/lib/sync.sh. Removing a skill from the
+# backup is a --prune job, once that is wired.
 if [ -d "$CODEX_DIR/skills" ]; then
     run mkdir -p "$PROFILE_DIR/skills"
     run rsync -a --delete --exclude='.system/' "$CODEX_DIR/skills/" "$PROFILE_DIR/skills/"
-    log_ok "Backed up: skills/ (bundled .system/ excluded)"
+    [ "$DOTFILES_DRY_RUN" -eq 1 ] || log_ok "Backed up: skills/ (bundled .system/ excluded)"
 else
-    run rm -rf "$PROFILE_DIR/skills"
-    log_skip "Not found: skills/"
+    log_skip "Not found: skills/ (the backup is left as it is)"
 fi
 
 log_step "Creating backup manifest..."
