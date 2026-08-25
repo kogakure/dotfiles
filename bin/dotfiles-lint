@@ -22,6 +22,8 @@
 #   - yaml         parse install.conf.yaml, assert every link source exists
 #   - unit         exercise the pure helpers in bin/lib/, and check that
 #                  every "shellcheck source=" directive resolves
+#   - manifest     parse bin/lib/preferences.manifest and assert it covers
+#                  everything in private/preferences/
 #   - drift        re-run the shell-config generator, assert no diff (SI-84)
 #
 # Options:
@@ -48,7 +50,7 @@ CHECKS=()
 FAILED=()
 SKIPPED=()
 
-ALL_CHECKS="shellcheck shfmt fish zsh posix yaml unit drift"
+ALL_CHECKS="shellcheck shfmt fish zsh posix yaml unit manifest drift"
 
 # --- output helpers ---------------------------------------------------------
 
@@ -851,6 +853,151 @@ check_unit() {
     unit_prune || bad=1
     unit_log_plain || bad=1
     [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit
+}
+
+# --- preferences manifest ---------------------------------------------------
+#
+# bin/lib/preferences.manifest is the table bin/preferences-{backup,restore}
+# drive from, so its shape is load-bearing in a way a comment cannot enforce.
+# Five properties, all checkable with no privileges and nothing installed.
+#
+# Property 5 needs the private submodule, which CI does not have, so it warns
+# and skips there rather than failing — the same contract check_yaml uses.
+
+check_manifest() {
+    heading "preferences manifest"
+
+    if [ ! -f bin/lib/preferences.sh ] || [ ! -f bin/lib/preferences.manifest ]; then
+        fail "manifest: bin/lib/preferences.{sh,manifest} is missing"
+        FAILED[${#FAILED[@]}]=manifest
+        return
+    fi
+
+    # A real subshell writing to a temp file, not `out=$(...)`. bash 3.2 cannot
+    # parse a `case` statement inside a command substitution — the closing paren
+    # of a case pattern ends the substitution early — and this script is
+    # deliberately bash 3.2. Verified: /bin/bash rejects the $() form outright
+    # while bash 5 accepts it, which is exactly the trap the header warns about.
+    local tmp rc rows
+    tmp=$(mktemp "${TMPDIR:-/tmp}/dotfiles-lint-manifest.XXXXXX") || {
+        fail "manifest: could not create a temp file"
+        FAILED[${#FAILED[@]}]=manifest
+        return
+    }
+
+    (
+        set -uo pipefail
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/common.sh
+        . bin/lib/common.sh
+
+        bad=0
+        manifest=bin/lib/preferences.manifest
+        prefs=private/preferences
+
+        # 1. It parses, and prefs_load applies every per-row validation.
+        prefs_load "$manifest" || exit 1
+
+        seen_backup=""
+        seen_live=""
+        n_defaults=0
+        n_plist=0
+        n_support=0
+
+        i=0
+        while [ "$i" -lt ${#PREFS_ROWS[@]} ]; do
+            prefs_split "${PREFS_ROWS[$i]}"
+            i=$((i + 1))
+
+            # 2. No duplicate backup path, no duplicate (kind, live) pair.
+            case " $seen_backup " in
+                *" $PREFS_BACKUP "*)
+                    printf 'duplicate backup path: %s\n' "$PREFS_BACKUP"
+                    bad=1
+                    ;;
+            esac
+            seen_backup="$seen_backup $PREFS_BACKUP"
+
+            case " $seen_live " in
+                *" $PREFS_KIND:$PREFS_LIVE "*)
+                    printf 'duplicate (kind, live): %s %s\n' "$PREFS_KIND" "$PREFS_LIVE"
+                    bad=1
+                    ;;
+            esac
+            seen_live="$seen_live $PREFS_KIND:$PREFS_LIVE"
+
+            # 3. Inverse property: the slash pattern is fixed by the kind, which
+            #    is what a1c332c and the cp -R nesting hazard become as an
+            #    assertion. A support_dir is restored into the *parent* of live,
+            #    so live must have one.
+            # 4. Order: every row lands in exactly one restore pass.
+            case "$PREFS_KIND" in
+                defaults)
+                    n_defaults=$((n_defaults + 1))
+                    ;;
+                plist)
+                    n_plist=$((n_plist + 1))
+                    if [ "${PREFS_LIVE%/*}" = "$PREFS_LIVE" ]; then
+                        printf 'plist live needs a parent directory: %s\n' "$PREFS_LIVE"
+                        bad=1
+                    fi
+                    ;;
+                support_dir)
+                    n_support=$((n_support + 1))
+                    if [ "${PREFS_LIVE%/*}" = "$PREFS_LIVE" ]; then
+                        printf 'support_dir live has no parent directory: %s\n' "$PREFS_LIVE"
+                        bad=1
+                    fi
+                    ;;
+                support_contents)
+                    n_support=$((n_support + 1))
+                    ;;
+            esac
+        done
+
+        if [ "$((n_defaults + n_plist + n_support))" -ne "${#PREFS_ROWS[@]}" ]; then
+            printf 'the three restore passes do not partition the rows\n'
+            bad=1
+        fi
+
+        # 5. Coverage: everything at the top level of private/preferences/ is
+        #    either a backup field or listed under "manual:".
+        if [ -d "$prefs" ]; then
+            manual=$(sed -n 's/^# manual|\([^|]*\)|.*/\1/p' "$manifest")
+            for entry in "$prefs"/*; do
+                [ -e "$entry" ] || continue
+                name=${entry##*/}
+                case " $seen_backup " in
+                    *" $name "*) continue ;;
+                esac
+                printf '%s\n' "$manual" | grep -qxF -- "$name" && continue
+                printf 'untracked in private/preferences/: %s\n' "$name"
+                bad=1
+            done
+        else
+            printf 'SKIP\n'
+        fi
+
+        printf 'ROWS %s\n' "${#PREFS_ROWS[@]}"
+        exit "$bad"
+    ) >"$tmp" 2>&1
+    rc=$?
+
+    rows=$(sed -n 's/^ROWS //p' "$tmp")
+    if grep -q '^SKIP$' "$tmp"; then
+        warn "manifest: private/preferences not present, coverage not checked"
+        SKIPPED[${#SKIPPED[@]}]=manifest
+    fi
+    grep -v '^ROWS \|^SKIP$' "$tmp" | while IFS= read -r line; do
+        [ -n "$line" ] && fail "manifest: $line"
+    done
+    rm -f "$tmp"
+
+    if [ "$rc" -ne 0 ]; then
+        FAILED[${#FAILED[@]}]=manifest
+        return
+    fi
+    ok "${rows:-0} entries parse, are unique, and cover private/preferences/"
 }
 
 # --- generated-file drift ---------------------------------------------------

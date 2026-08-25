@@ -1,0 +1,80 @@
+# The application preferences this repository tracks, in *backup* order.
+#
+# Read by bin/preferences-backup and bin/preferences-restore through
+# bin/lib/preferences.sh. This file is data, not a shell source:
+# bin/dotfiles-lint globs bin/lib/*.sh, so it is deliberately not linted or
+# formatted.
+#
+# One entry per line, exactly five fields separated by a single "|" with NO
+# padding — a space next to a "|" becomes part of a field:
+#
+#   kind|label|live|backup|options
+#
+#   kind      defaults | plist | support_dir | support_contents
+#   label     human name. Used verbatim in log lines and prompts, so "Dock" is
+#             what produces "Remove the current Dock contents...".
+#   live      for `defaults`: the preference domain.
+#             otherwise: a path relative to $HOME. Spaces are literal — do not
+#             quote and do not escape them.
+#   backup    a path relative to private/preferences/.
+#   options   comma-separated, or "-" for none:
+#               restart=<App>     restore only: killall <App> after the import
+#               reset=<k>[:<k>]   restore only: confirm, save the live domain to
+#                                 $TMPDIR, `defaults delete <domain> <k>` per
+#                                 key, then import. Declining skips the import
+#                                 too, because `defaults import` replaces the
+#                                 domain and is itself the destructive act.
+#
+# NEITHER `live` NOR `backup` EVER ENDS IN "/".
+#
+# The directory-versus-contents copy is carried by the *kind* and composed once
+# in bin/lib/preferences.sh:
+#
+#   support_dir       cp -R "<live>"  "<backup parent>/"  -> the directory
+#   support_contents  cp -R "<live>/" "<backup>/"         -> the contents
+#
+# Getting that backwards is what broke the BibDesk round-trip before a1c332c.
+# And naming the target rather than the parent for support_dir is what would
+# make the Bartender copy nest one level deeper on every run, because BSD
+# `cp -R src dest` copies *into* an existing destination directory. Neither
+# mistake is expressible here: bin/lib/preferences.sh rejects a trailing slash,
+# and rejects a "/" in a support_dir backup name.
+#
+# bin/preferences-backup walks this file top to bottom.
+# bin/preferences-restore walks it three times — defaults, then plist, then the
+# two support kinds — which reproduces the existing restore order exactly. So
+# adding an entry to the right group is the only ordering decision.
+#
+# `bin/dotfiles-lint manifest` asserts that everything at the top level of
+# private/preferences/ is either a `backup` field below or listed under
+# "manual:" at the bottom.
+
+defaults|Keyboard shortcuts|com.apple.symbolichotkeys|keyboard_shortcuts.plist|-
+defaults|Universal Access shortcuts|com.apple.universalaccess|universal_access_shortcuts.plist|-
+defaults|Finder|com.apple.finder|finder.plist|restart=Finder
+defaults|Dock|com.apple.dock|dock.plist|reset=persistent-apps:persistent-others
+plist|Affinity|Library/Preferences/com.canva.affinity.plist|com.canva.affinity.plist|-
+plist|Alfred|Library/Preferences/com.runningwithcrayons.Alfred.plist|com.runningwithcrayons.Alfred.plist|-
+plist|Alfred Preferences|Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist|com.runningwithcrayons.Alfred-Preferences.plist|-
+plist|Arc|Library/Preferences/company.thebrowser.Browser.plist|company.thebrowser.Browser.plist|-
+support_dir|Bartender|Library/Application Support/Bartender/Bartender.BartenderPreferences|Bartender.BartenderPreferences|-
+plist|Bartender|Library/Preferences/com.surteesstudios.Bartender.plist|com.surteesstudios.Bartender.plist|-
+support_contents|BibDesk|Library/Application Support/BibDesk|BibDesk|-
+plist|BibDesk|Library/Preferences/edu.ucsd.cs.mmccrack.bibdesk.plist|edu.ucsd.cs.mmccrack.bibdesk.plist|-
+plist|Brave|Library/Preferences/com.brave.Browser.plist|com.brave.Browser.plist|-
+plist|CleanShot X|Library/Preferences/pl.maketheweb.cleanshotx.plist|pl.maketheweb.cleanshotx.plist|-
+plist|DEVONthink 3|Library/Preferences/com.devon-technologies.think3.plist|com.devon-technologies.think3.plist|-
+plist|Itsycal|Library/Preferences/com.mowglii.itsycalApp.plist|com.mowglii.itsycalApp.plist|-
+plist|Raycast|Library/Preferences/com.raycast.macos.plist|com.raycast.macos.plist|-
+plist|AltTab|Library/Preferences/com.lwouis.alt-tab-macos.plist|com.lwouis.alt-tab-macos.plist|-
+plist|Anki|Library/Preferences/net.ankiweb.dtop.plist|net.ankiweb.dtop.plist|-
+
+# manual: present in private/preferences/ on purpose, not automated.
+#
+# manual|BartenderSavedPreferences.json|Bartender's own "Export settings" dump.
+#        It has no fixed source path — the app writes it wherever the save panel
+#        points — so there is nothing to automate, and it is the only artefact
+#        that survives a Bartender major-version upgrade.
+# manual|webui-macos-env.sh|An executable stable-diffusion-webui launcher
+#        environment, not a preference. Its own comment says to modify
+#        webui-user.sh instead. Kept until the checkout it belongs to is found.
