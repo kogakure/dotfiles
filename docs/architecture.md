@@ -11,12 +11,26 @@
 
 - `private/`: Git submodule containing sensitive/machine-specific data
   - GPG keys backups
-  - Application preferences
+  - Application preferences — the table of what is tracked lives in
+    `bin/lib/preferences.manifest`
   - Machine-specific scripts
   - Wakatime config
-  - Launch agents (stored only — nothing restores them automatically, see
-    [commands.md](commands.md))
+  - Launch agents (backed up by `bin/dotfiles-backup`, but never
+    `launchctl bootstrap`ed — see [commands.md](commands.md))
 - Referenced in: `.gitmodules`, `setup.sh`, various backup/restore scripts
+
+### It is shared between machines, and not host-namespaced
+
+`private/claude/<profile>/` and `private/codex/<profile>/` are keyed on the
+work/personal profile only, so two machines using the same profile write to the
+same directory. Today `personal` was last written from `mac-mini` and `work`
+from `macbook-m5-pro`.
+
+That is why no backup deletes a destination whose source is missing locally:
+"not on this machine" is not "not wanted". Pruning is a separate opt-in pass
+guarded by a clean-submodule check — see [guardrails.md](guardrails.md).
+`rsync -a --delete` still mirrors *within* a directory both machines have, so
+sharing a profile across hosts is still not something to rely on.
 
 ## Hostname-Specific Configs
 
