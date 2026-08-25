@@ -63,8 +63,5 @@ homebrew-backup
 # Write preferences
 preferences-backup
 
-# Write launch agents
-launchagents-backup
-
 # Update macOS software
 sudo softwareupdate -i -a

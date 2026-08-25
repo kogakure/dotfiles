@@ -224,7 +224,8 @@ fi
 
 # *** *** macOS settings and preferences *** ***
 
-./bin/launchagents-restore
+# Launch agents in private/launch-agents/ are not restored automatically —
+# see docs/commands.md.
 ./bin/preferences-restore
 ./bin/macos-settings
 
