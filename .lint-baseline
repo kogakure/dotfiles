@@ -8,5 +8,21 @@
 # merely at baseline, so every file that phase touched had to lose its existing
 # findings too. The rest is SI-82's.
 #
-# Regenerate with: just lint-snapshot
-shellcheck=14
+# SI-82 took it to 9, the same way — every bin/ script it routed through
+# bin/lib/ had to be clean to get past the hook. What it cleared:
+#   claude-backup      SC2012  `ls -t | head -5` -> find -exec stat | sort -rn
+#   homebrew-restore   SC2046  unquoted $(hostname), twice  -> host_id
+#   screenshot         SC2048  unquoted $* -> "$@"
+#                      SC2086  same line
+#
+# The 9 that remain are all in files SI-82 never touched, and they belong to
+# SI-84's shell-config consolidation:
+#   aliases              SC2139 x3, SC2142
+#   bash_profile         SC1090 x2
+#   session-variables.sh SC2155
+#   functions/fcd.sh     SC2164
+#   functions/fco.sh     SC2016
+#
+# Hand-edited rather than regenerated: `just lint-snapshot` rewrites this file
+# from a heredoc in bin/dotfiles-lint and would destroy every comment above.
+shellcheck=9

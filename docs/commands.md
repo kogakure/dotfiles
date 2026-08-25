@@ -11,8 +11,9 @@ just setup            # ./setup.sh
 just link             # ./install
 just check-links      # ./install --dry-run
 just update           # bin/update
-just lint             # shellcheck, shfmt, fish/zsh syntax, POSIX source test, yaml
+just lint             # shellcheck, shfmt, fish/zsh syntax, POSIX source, yaml, unit, manifest
 just fmt              # shfmt -w over every shell source
+just backup *ARGS     # every backup; `just backup --dry-run`, `just backup preferences`
 just install-hooks    # enable the pre-commit hook
 ```
 
@@ -47,6 +48,10 @@ bin/dotfiles-lint --help
 ./bin/homebrew-restore   # Install packages from homebrew/<hostname>
 ```
 
+Both take `--dry-run`. `homebrew-restore` still runs `brew bundle cleanup
+--force`, which **uninstalls** anything not in the Brewfile — use
+`brew bundle check --file homebrew/<host>` to report drift (SI-119).
+
 ## System Updates
 
 ```bash
@@ -58,28 +63,79 @@ bin/dotfiles-lint --help
               # - Fish plugins (via fisher)
               # - Neovim plugins (via Lazy)
               # - macOS software
-              # - Writes backups of Claude, Codex, Homebrew and preferences
+              # - Runs bin/dotfiles-backup (Claude, Codex, Homebrew,
+              #   preferences, launch agents), isolating each step's failure
+              #   and naming it in the summary
 ```
 
 ## Backup/Restore
 
+`bin/dotfiles-backup` is the aggregator. It runs every backup, isolates their
+failures from each other, and exits non-zero naming the ones that failed —
+which is what `bin/update` calls.
+
+```bash
+./bin/dotfiles-backup                    # claude, codex, homebrew, preferences, launch-agents
+./bin/dotfiles-backup --dry-run          # print the whole plan, change nothing
+./bin/dotfiles-backup preferences        # one named step
+./bin/dotfiles-backup --gpg              # include the GPG export (see below)
+./bin/dotfiles-backup --help
+```
+
+Every backup and restore script takes `--dry-run`, and every one that prompts
+takes `--yes`. Flags also travel through the environment, so a sub-script
+invoked directly honours what the aggregator set:
+
+| Variable | Effect |
+| --- | --- |
+| `DOTFILES_DRY_RUN=1` | print mutations instead of applying them |
+| `DOTFILES_ASSUME_YES=1` | answer prompts with yes |
+| `DOTFILES_ALLOW_DIRTY=1` | run even though `private/` has uncommitted changes |
+| `DOTFILES_PRUNE=1` | allow deletion of backup entries (nothing wires this yet) |
+| `DOTFILES_REQUIRE_CLEAN_PRIVATE=1` | make a clean `private/` a hard precondition |
+
+The individual entry points:
+
 ```bash
 ./bin/agentic-set-profile work|personal  # Select the shared Claude/Codex profile
-./bin/gpg-keys-backup         # Export GPG keys
-./bin/gpg-keys-restore        # Import GPG keys
-./bin/preferences-backup      # Export app preferences
+./bin/claude-backup           # Save Claude Code config to private/claude/<profile>
+./bin/claude-restore          # Restore Claude Code config for the current profile
 ./bin/codex-backup            # Save Codex config to private/codex/<profile>
 ./bin/codex-restore           # Restore Codex config for the current profile
 ./bin/codex-restore personal  # Bootstrap another profile from the personal backup
+./bin/preferences-backup      # Export app preferences
 ./bin/preferences-restore     # Import app preferences
+./bin/gpg-keys-backup         # Export GPG keys — opt-in, see below
+./bin/gpg-keys-restore        # Import GPG keys
 ```
 
-**Launch agents are not automated.** `private/launch-agents/` holds the plists,
-but `bin/launchagents-backup` and `bin/launchagents-restore` were empty stubs —
-a shebang and nothing else — while `setup.sh` and `bin/update` called them and
-these docs claimed they worked. They were deleted in SI-81 rather than left as
-silent no-ops. Copy the plists by hand and `launchctl bootstrap` them; if this
-is ever automated it belongs in `bin/dotfiles-backup` (SI-82).
+**Adding an app to the preferences backup is one line.** The table lives in
+`bin/lib/preferences.manifest`; the two scripts just walk it. `just lint
+manifest` asserts every file in `private/preferences/` is either listed there
+or recorded as deliberately manual.
+
+**GPG is opt-in.** `bin/gpg-keys-backup` writes an armoured *secret* key to
+disk and can block on a pinentry prompt, so it is not part of a routine
+`just update`; pass `--gpg` to include it. It is named as skipped in every
+summary so it cannot be forgotten.
+
+**Pruning is off.** No backup deletes a destination whose source is missing,
+because `private/<agent>/<profile>/` is shared between machines: two hosts on
+the same profile would delete each other's content. See
+[guardrails.md](guardrails.md).
+
+**Launch agents: the backup is automated, `launchctl` is not.**
+`bin/dotfiles-backup`'s `launch-agents` step refreshes the plists already
+tracked in `private/launch-agents/` from `~/Library/LaunchAgents/`. It is
+deliberately a whitelist and never adopts a new agent, because that directory is
+full of Dropbox, Google and Steam updaters. Installing an agent on a new machine
+is still a manual `launchctl bootstrap`.
+
+(The old `bin/launchagents-backup` and `bin/launchagents-restore` were empty
+stubs — a shebang and nothing else — that `setup.sh` and `bin/update` called
+while these docs claimed they worked. SI-81 deleted them rather than leave
+silent no-ops; SI-82 implemented the half that can be verified without a fresh
+machine.)
 
 ## macOS Settings
 

@@ -23,7 +23,7 @@ just fmt              # shfmt -w over every shell source
 just install-hooks    # git config core.hooksPath .githooks
 just uninstall-hooks  # git config --unset core.hooksPath
 just doctor           # bin/dotfiles-doctor      (arrives with SI-85)
-just backup           # bin/dotfiles-backup      (arrives with SI-82)
+just backup *ARGS     # bin/dotfiles-backup      (e.g. just backup --dry-run)
 ```
 
 `just` chdirs into the Justfile's directory before running a recipe, so no
@@ -51,6 +51,7 @@ written for bash 3.2 so it still runs under a reduced PATH.
 | `posix`      | **sources** the startup files and asserts stderr is empty         |
 | `yaml`       | parses `install.conf.yaml`, asserts every `link:` source exists   |
 | `unit`       | runs the pure helpers in `bin/lib/` against fixtures               |
+| `manifest`   | parses `preferences.manifest`, asserts it covers `private/preferences/` |
 | `drift`      | re-runs the shell-config generator, asserts no diff (SI-84)       |
 
 Run a subset by name: `just lint posix yaml`.
@@ -132,11 +133,140 @@ Two properties worth keeping when this grows:
   append-only rule fails on exactly those two while 0 and 1 still pass. That
   asymmetry is why the bug shipped, and it is what the check now pins down.
 
+## `bin/lib/` — the shared library
+
+SI-82 grew `bin/lib/` from one file into the library every `bin/` script that
+needs a shared helper sources. `bin/lib/common.sh` is the only entry point; it
+sources the rest.
+
+```bash
+set -euo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+```
+
+`${BASH_SOURCE[0]}` and not `$0`, and `source-path=SCRIPTDIR` and not a
+repo-relative path: these scripts are invoked by bare name from `PATH`, so
+anything cwd-relative resolves by luck. The older
+`# shellcheck source=bin/lib/shells.sh` form silently stops resolving as soon as
+shellcheck runs from anywhere but the repo root.
+
+| File | Holds |
+| --- | --- |
+| `common.sh` | entry point, `_DL_ROOT`, `run`, `write_file`, `run_step`, `step_summary`, `dotfiles_flags_init` |
+| `log.sh` | `log_info/step/field/ok/skip/note/warn/err/done` |
+| `util.sh` | `have`, `dotfiles_root`, `private_root`, `private_gate`, `host_id`, `brew_prefix`, `confirm` |
+| `profile.sh` | `agentic_profile`, `profile_read`, `profile_is_valid`, `assert_valid_profile` |
+| `sync.sh` | `backup_file/dir`, `restore_file/dir`, `sync_conflicts`, `sync_prune_extra/apply` |
+| `sudo.sh` | *(not yet — see below)* |
+| `preferences.sh` | the manifest parser and both direction handlers |
+| `shells.sh` | `/etc/shells` registration; **not** sourced by `common.sh`, since only `setup.sh` needs it |
+
+### Sourcing the library has no side effects
+
+The library defines functions and `_DL_`-prefixed names. It sets **no shell
+option**, writes nothing and prints nothing.
+
+That is not style. `set -euo pipefail` inside a sourced file changes the
+*caller's* options, from the source line onward, in a dozen scripts at once and
+invisibly — and it would break four of them:
+
+- `bin/dotfiles-lint` and `bin/preferences-restore` run without `-e`
+  deliberately, the first for its `FAILED` accumulator and the second so one
+  missing plist does not abort the other eighteen.
+- bash 3.2 — the `/bin/bash` macOS ships, which runs all of these — treats an
+  **empty array as unbound** under `set -u`. That makes `-u` fatal to the three
+  `sbx-*` launchers on their *default* invocation:
+
+  ```console
+  $ /bin/bash -c 'set -u; a=(); printf "[%s]" "${a[@]}"'
+  /bin/bash: a[@]: unbound variable
+  ```
+
+So every script declares its own `set` line literally, above the source line,
+and anything weaker than `set -euo pipefail` carries a comment saying why.
+
+### Two copies that stay, on purpose
+
+The "one definition outside `bin/lib/`" rule has exactly two exemptions, both
+structural:
+
+- **`bin/dotfiles-lint` keeps its own `C_*` colours and `heading/ok/warn/fail`.**
+  The lint engine may not depend on the code it lints: a syntax error in
+  `common.sh` would disable the only tool that catches it. It also promises to
+  run under `PATH=/usr/bin:/bin`, and `check_unit` dot-sources the libraries into
+  its own process to test them — which is why the library uses the `log_` and
+  `_DL_` prefixes and never defines `warn`, `ok` or `fail`.
+- **`config/fish/config.fish` keeps its own brew-prefix branch.** Fish cannot
+  source a bash library.
+
+### bash 3.2 traps this phase walked into
+
+Both cost real time, and neither is visible from an interactive shell where
+`bash` is Homebrew's 5.x:
+
+- **`case` inside `$( )` does not parse.** `out=$(case x in y) ;; esac)` is a
+  syntax error on `/bin/bash` and fine on bash 5. `check_manifest` uses a real
+  `( … ) >"$tmp"` subshell for that reason. Always verify with `/bin/bash -n`,
+  not `bash -n`.
+- **Empty-array expansion under `set -u`**, above. Use
+  `${arr[@]+"${arr[@]}"}` where an array may be empty.
+
+### Pruning is opt-in, and off
+
+No helper in `bin/lib/sync.sh` deletes anything. `codex-backup` used to `rm` a
+destination whose source was absent and `claude-backup` did not; unifying onto
+the pruning version would delete, from a `private/<agent>/<profile>/` that is
+per-profile but **not per-host**, everything another machine had committed and
+this one lacks. `private/claude/personal` and `private/codex/personal` were last
+written from `mac-mini`; both `work` profiles from `macbook-m5-pro`.
+
+Pruning is therefore a separate keep-list pass — `sync_prune_extra` prints,
+`sync_prune_apply` deletes — behind `--prune`, behind `private_gate`, and wired
+into nothing yet. `unit_no_prune` fails if a helper starts deleting again.
+
+### The private-submodule gate
+
+`private_gate <path>...` answers three ways, because three callers want three
+answers:
+
+| Situation | Answer |
+| --- | --- |
+| nested call from `bin/dotfiles-backup` | return at once — it checked once already, and its own first step dirties the submodule |
+| routine backup, submodule dirty | warn and continue — the dirt is this machine's own uncommitted backup, and refusing would make `just update` fail on the second consecutive day while protecting nothing |
+| `--prune`, or `DOTFILES_REQUIRE_CLEAN_PRIVATE=1` | refuse — the only irreversible mode |
+
+`--allow-dirty` downgrades a refusal. The status query is scoped to the paths a
+step writes, so an uncommitted `claude/work` change does not block
+`preferences-backup`.
+
+### Flags travel by environment, not argv
+
+`bin/dotfiles-backup` exports `DOTFILES_DRY_RUN`, `DOTFILES_ASSUME_YES`,
+`DOTFILES_ALLOW_DIRTY` and `DOTFILES_PRUNE`; each sub-script seeds its flags
+from them via `dotfiles_flags_init` and lets its own argv win. Forwarding argv
+would mean expanding a possibly-empty flag array, which is the bash 3.2 fatality
+above, and this way adding a sub-script needs no plumbing in the aggregator.
+`DOTFILES_REQUIRE_CLEAN_PRIVATE=1` is the extra one, for CI and for asserting
+the strict reading of the clean-submodule criterion.
+
+### Still to do
+
+`bin/lib/sudo.sh` is **not** in the repository yet. `setup.sh` and `bin/update`
+still carry their own `sudo` keep-alive loops, and `bin/update`'s does not
+capture the background PID, so every interrupted run leaks a refresher for up to
+its poll interval. Writing the shared helper was blocked by a local guard hook
+that treats a file containing `sudo -v` as privilege escalation; it needs to be
+done by hand or with the hook consulted. Until then the two copies stand.
+
 ### The shellcheck baseline
 
 `shellcheck` is gated on **"no more findings than `.lint-baseline`"**, not on
-zero. There were 20 pre-existing findings when the gate went in; cleaning them
-up is SI-81/SI-82 work and belongs in its own reviewable commit.
+zero. There were 20 pre-existing findings when the gate went in. SI-81 took it
+to 14 and SI-82 to 9; the 9 that remain are all in `aliases`, `bash_profile`,
+`session-variables.sh` and `functions/`, and belong to SI-84.
 
 - New code is still held to a clean bar — any increase fails.
 - A decrease is reported, not failed. Lock it in with `just lint-snapshot`.
@@ -154,8 +284,8 @@ just install-hooks     # sets core.hooksPath to .githooks
 ```
 
 Runs `dotfiles-lint --staged shellcheck shfmt fish zsh` — the fast, per-file
-checks only. The whole-repo checks (POSIX source, yaml, drift) belong to
-`just lint` and CI. In `--staged` mode shellcheck requires the staged files to
+checks only. The whole-repo checks (POSIX source, yaml, unit, manifest, drift)
+belong to `just lint` and CI. In `--staged` mode shellcheck requires the staged files to
 be **clean**, since comparing a subset's count against the whole-repo baseline
 would be meaningless.
 
