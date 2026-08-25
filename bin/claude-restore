@@ -15,9 +15,9 @@ set -euo pipefail
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
 CLAUDE_DIR="$HOME/.claude"
-DOTFILES="$HOME/.dotfiles"
+DOTFILES=$(dotfiles_root)
 
-PROFILE=$(cat "$HOME/.agentic-profile" 2>/dev/null || cat "$HOME/.machine-profile" 2>/dev/null || echo "personal")
+PROFILE=$(agentic_profile) || exit 1
 PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
 
 log_done "Starting Claude Code restore..."

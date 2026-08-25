@@ -14,18 +14,15 @@ set -euo pipefail
 # "${1:-}" rather than "$1": under `set -u` an absent argument is an unbound
 # variable, which would abort before the usage message below could print.
 PROFILE="${1:-}"
-PROFILE_FILE="$HOME/.agentic-profile"
-LEGACY_PROFILE_FILE="$HOME/.machine-profile"
+PROFILE_FILE=$(profile_file)
+LEGACY_PROFILE_FILE=$(profile_legacy_file)
 
 if [ -z "$PROFILE" ]; then
     log_err "Usage: agentic-set-profile work|personal"
     exit 1
 fi
 
-if [ "$PROFILE" != "work" ] && [ "$PROFILE" != "personal" ]; then
-    log_err "Error: profile must be 'work' or 'personal', got '$PROFILE'"
-    exit 1
-fi
+assert_valid_profile "$PROFILE" profile || exit 1
 
 echo "$PROFILE" >"$PROFILE_FILE"
 
