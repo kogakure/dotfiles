@@ -25,25 +25,28 @@
 #               sandbox doesn't already exist).
 #   -- ARGS     Arguments forwarded to `pi` itself.
 
+# Bare `set -e`, deliberately not -euo pipefail: this script expands
+# possibly-empty arrays, and bash 3.2 — the /bin/bash macOS ships — treats
+# an empty array as unbound under `set -u`, which is fatal on the default
+# invocation. See docs/guardrails.md.
 set -e
 
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 KIT_DIR="$DOTFILES_DIR/config/sbx/kits/pi"
 PI_HOST_DIR="$HOME/.pi/agent"
 
 if ! command -v sbx >/dev/null 2>&1; then
-    echo -e "${RED}sbx-pi: 'sbx' (Docker Sandboxes CLI) not found on PATH.${NC}"
+    log_err "sbx-pi: 'sbx' (Docker Sandboxes CLI) not found on PATH."
     exit 1
 fi
 
 if [ ! -f "$PI_HOST_DIR/auth.json" ]; then
-    echo -e "${RED}sbx-pi: $PI_HOST_DIR/auth.json not found.${NC}"
-    echo -e "${RED}Log in to pi on the host first (run 'pi' and complete auth) before sandboxing it.${NC}"
+    log_err "sbx-pi: $PI_HOST_DIR/auth.json not found."
+    log_err "Log in to pi on the host first (run 'pi' and complete auth) before sandboxing it."
     exit 1
 fi
 
@@ -98,7 +101,7 @@ run_pi() {
 }
 
 if sbx ls 2>/dev/null | grep -q "^$NAME"; then
-    echo -e "${GREEN}sbx-pi: re-attaching to existing sandbox '$NAME'.${NC}"
+    log_note "sbx-pi: re-attaching to existing sandbox '$NAME'."
     run_pi
 fi
 
@@ -122,10 +125,10 @@ if [ "$downloads_mounted" = false ]; then
     WORKSPACES+=("$HOME/Downloads:ro")
 fi
 
-echo -e "${GREEN}sbx-pi: creating sandbox '$NAME' from kit $KIT_DIR${NC}"
+log_note "sbx-pi: creating sandbox '$NAME' from kit $KIT_DIR"
 sbx create pi --kit "$KIT_DIR" --name "$NAME" "${CREATE_FLAGS[@]}" "${WORKSPACES[@]}"
 
-echo -e "${GREEN}sbx-pi: seeding pi config from $PI_HOST_DIR${NC}"
+log_note "sbx-pi: seeding pi config from $PI_HOST_DIR"
 sbx exec "$NAME" -- mkdir -p /home/agent/.pi/agent
 
 sbx cp "$PI_HOST_DIR/auth.json" "$NAME:/home/agent/.pi/agent/"
@@ -134,7 +137,7 @@ for item in settings.json AGENTS.md extensions skills themes; do
     if [ -e "$PI_HOST_DIR/$item" ]; then
         sbx cp "$PI_HOST_DIR/$item" "$NAME:/home/agent/.pi/agent/"
     else
-        echo -e "${YELLOW}sbx-pi: skipping $item (not present on host).${NC}"
+        log_warn "sbx-pi: skipping $item (not present on host)."
     fi
 done
 
@@ -143,5 +146,5 @@ done
 # read. Reclaim it as root.
 sbx exec -u root "$NAME" -- chown -R agent:agent /home/agent/.pi
 
-echo -e "${GREEN}sbx-pi: attaching to '$NAME'.${NC}"
+log_note "sbx-pi: attaching to '$NAME'."
 run_pi
