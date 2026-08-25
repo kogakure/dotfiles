@@ -10,7 +10,10 @@ while true; do
     kill -0 "$$" || exit
 done 2>/dev/null &
 
-cd ~/.dotfiles
+cd ~/.dotfiles || {
+    echo "update: cannot cd into ~/.dotfiles — aborting." >&2
+    exit 1
+}
 
 # Update Homebrew
 NONINTERACTIVE=1 brew update
@@ -30,14 +33,23 @@ gem cleanup all
 gh extension upgrade --all
 
 # Update Fish plugins
-fisher update
+# fisher is a fish *function*, not an executable — the brew formula ships only
+# share/fish/vendor_functions.d/fisher.fish. It has to be driven through fish.
+fish -c "fisher update"
 
 # Update Neovim
 nvim --headless "+Lazy! sync" +qa
 
 # Maintenance
-mo clean
-mo optimize
+# `mo` is the binary shipped by the `mole` formula (https://mole.fit), which is
+# in all three Brewfiles under that name — hence the guard, since the command
+# and the package are spelled differently.
+if command -v mo >/dev/null 2>&1; then
+    mo clean
+    mo optimize
+else
+    echo "update: mo not found — install the 'mole' formula. Skipping maintenance." >&2
+fi
 
 # Claude
 claude-backup
