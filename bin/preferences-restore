@@ -108,25 +108,30 @@ restore_plist com.devon-technologies.think3.plist
 restore_plist com.mowglii.itsycalApp.plist
 restore_plist com.raycast.macos.plist
 
-# Bartender and BibDesk also keep state outside ~/Library/Preferences. Both
-# destinations only exist once the app has been launched, which on a fresh
-# machine it has not — the Bartender copy used to fail outright there.
-#
-# Both copies keep the exact source spelling the previous version used, trailing
-# slash included. That matters: on BSD cp, `src/` copies the *contents* of src,
-# while `src` copies the directory itself. So BibDesk's Bookmarks.plist,
-# Templates and friends land directly in Application Support rather than in an
-# Application Support/BibDesk subdirectory. That looks wrong, but it is
-# long-standing behaviour and guessing at an app's on-disk layout is not worth
-# the risk — see SI-81 for the open question.
+# Bartender and BibDesk also keep state outside ~/Library/Preferences.
+
+# Bartender's preference bundle lives inside a directory the app creates on
+# first launch, so this skips rather than pre-creating a half-configured app.
+# The copy used to fail outright on a fresh machine for that reason.
 BARTENDER_DEST="${HOME}/Library/Application Support/Bartender/"
 if support_dir_ready Bartender.BartenderPreferences "$BARTENDER_DEST"; then
     cp -R "${PREFS}/Bartender.BartenderPreferences" "$BARTENDER_DEST"
 fi
 
-BIBDESK_DEST="${HOME}/Library/Application Support/"
-if support_dir_ready BibDesk "$BIBDESK_DEST"; then
-    cp -R "${PREFS}/BibDesk/" "$BIBDESK_DEST"
+# BibDesk is the exact inverse of bin/preferences-backup, which copies the
+# *contents* of ~/Library/Application Support/BibDesk/ into
+# private/preferences/BibDesk/. This restore used to target Application Support
+# itself — one level too high — so Bookmarks.plist, Templates and the rest
+# landed loose beside every other app's data and the pair never round-tripped.
+#
+# The trailing slash on the source is what makes it a contents-copy: on BSD cp
+# `src/` copies the contents while `src` copies the directory. Naming BibDesk/
+# on the destination side too makes it self-creating, so unlike Bartender there
+# is nothing to guard beyond the backup actually having the content.
+if [ -d "${PREFS}/BibDesk" ]; then
+    cp -R "${PREFS}/BibDesk/" "${HOME}/Library/Application Support/BibDesk/"
+else
+    echo "  skip: BibDesk is not in the backup" >&2
 fi
 
 echo "Done."
