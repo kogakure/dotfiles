@@ -25,35 +25,7 @@ log_done "Starting Codex configuration backup..."
 log_field "Profile" "$PROFILE"
 log_field "Codex home" "$CODEX_DIR"
 
-mkdir -p "$PROFILE_DIR"
-
-backup_file() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -f "$src" ]; then
-        mkdir -p "$(dirname "$dest")"
-        cp "$src" "$dest"
-        log_ok "Backed up: $(basename "$src")"
-    else
-        rm -f "$dest"
-        log_skip "Not found: $(basename "$src")"
-    fi
-}
-
-backup_dir() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -d "$src" ] && [ "$(ls -A "$src" 2>/dev/null)" ]; then
-        mkdir -p "$dest"
-        rsync -a --delete "$src/" "$dest/"
-        log_ok "Backed up: $(basename "$src")/ ($(find "$src" -type f | wc -l | tr -d ' ') files)"
-    else
-        rm -rf "$dest"
-        log_skip "Not found or empty: $(basename "$src")/"
-    fi
-}
+run mkdir -p "$PROFILE_DIR"
 
 log_step "Backing up settings and global instructions..."
 backup_file "$CODEX_DIR/config.toml" "$PROFILE_DIR/config.toml"
@@ -72,16 +44,16 @@ backup_dir "$CODEX_DIR/rules" "$PROFILE_DIR/rules"
 
 log_step "Backing up user-installed skills..."
 if [ -d "$CODEX_DIR/skills" ]; then
-    mkdir -p "$PROFILE_DIR/skills"
-    rsync -a --delete --exclude='.system/' "$CODEX_DIR/skills/" "$PROFILE_DIR/skills/"
+    run mkdir -p "$PROFILE_DIR/skills"
+    run rsync -a --delete --exclude='.system/' "$CODEX_DIR/skills/" "$PROFILE_DIR/skills/"
     log_ok "Backed up: skills/ (bundled .system/ excluded)"
 else
-    rm -rf "$PROFILE_DIR/skills"
+    run rm -rf "$PROFILE_DIR/skills"
     log_skip "Not found: skills/"
 fi
 
 log_step "Creating backup manifest..."
-cat >"$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
+write_file "$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
 Codex Configuration Backup
 ==========================
 Timestamp:  $TIMESTAMP

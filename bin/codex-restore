@@ -46,63 +46,22 @@ if ! confirm "Do you want to restore Codex settings from backup?"; then
     exit 0
 fi
 
-conflict_count=0
-conflict_samples=()
+conflicts=$(sync_conflicts \
+    "$PROFILE_DIR/config.toml" "$CODEX_DIR/config.toml" \
+    "$PROFILE_DIR/AGENTS.md" "$CODEX_DIR/AGENTS.md" \
+    "$PROFILE_DIR/AGENTS.override.md" "$CODEX_DIR/AGENTS.override.md" \
+    "$PROFILE_DIR/hooks.json" "$CODEX_DIR/hooks.json")
 
-check_conflict_file() {
-    local src="$1"
-    local dest="$2"
-    if [ -f "$src" ] && [ -f "$dest" ]; then
-        conflict_count=$((conflict_count + 1))
-        if [ ${#conflict_samples[@]} -lt 5 ]; then
-            conflict_samples+=("$dest")
-        fi
-    fi
-}
-
-check_conflict_file "$PROFILE_DIR/config.toml" "$CODEX_DIR/config.toml"
-check_conflict_file "$PROFILE_DIR/AGENTS.md" "$CODEX_DIR/AGENTS.md"
-check_conflict_file "$PROFILE_DIR/AGENTS.override.md" "$CODEX_DIR/AGENTS.override.md"
-check_conflict_file "$PROFILE_DIR/hooks.json" "$CODEX_DIR/hooks.json"
-
-if [ "$conflict_count" -gt 0 ]; then
-    log_warn "$conflict_count existing file(s) will be overwritten. Examples:"
-    for sample in "${conflict_samples[@]}"; do
-        log_info "  $sample"
-    done
+if [ -n "$conflicts" ]; then
+    log_warn "$(printf '%s\n' "$conflicts" | wc -l | tr -d ' ') existing file(s) will be overwritten. Examples:"
+    printf '%s\n' "$conflicts" | head -5 | sed 's/^/  /'
     if ! confirm "Continue?"; then
         log_info "Restore cancelled."
         exit 0
     fi
 fi
 
-mkdir -p "$CODEX_DIR"
-
-restore_file() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -f "$src" ]; then
-        mkdir -p "$(dirname "$dest")"
-        cp "$src" "$dest"
-        log_ok "Restored: $(basename "$dest")"
-    else
-        log_skip "Not in backup: $(basename "$dest")"
-    fi
-}
-
-restore_dir() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -d "$src" ] && [ "$(ls -A "$src" 2>/dev/null)" ]; then
-        mkdir -p "$dest"
-        rsync -a "$src/" "$dest/"
-        log_ok "Restored: $(basename "$dest")/ ($(find "$src" -type f | wc -l | tr -d ' ') files)"
-    else
-        log_skip "Not in backup: $(basename "$dest")/"
-    fi
-}
+run mkdir -p "$CODEX_DIR"
 
 log_step "Restoring settings and global instructions..."
 restore_file "$PROFILE_DIR/config.toml" "$CODEX_DIR/config.toml"

@@ -8,9 +8,12 @@
 # `rm -rf "$dest"` when the source was absent; claude-backup's did not. Nobody
 # chose that divergence, and adopting the pruning version as the shared default
 # would, on any one machine, delete from private/<agent>/<profile>/ everything
-# committed from another host and absent here — that directory is not
-# host-namespaced. It is not hypothetical: private/codex/{personal,work} were
-# last written from mac-mini.
+# committed from another host and absent here — a profile directory is
+# per-profile but not per-host, so two machines sharing a profile overwrite each
+# other. It is not hypothetical: private/claude/personal and
+# private/codex/personal were both last written from mac-mini, while the work
+# profiles were last written on macbook-m5-pro. Switching this machine to the
+# personal profile and running a pruning backup is all it would take.
 #
 # So the unification goes the safe way, and pruning becomes an explicit second
 # pass driven by a keep-list rather than by each source's absence. The
