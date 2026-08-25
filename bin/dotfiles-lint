@@ -20,7 +20,8 @@
 #   - zsh          zsh -n over zshrc/zshenv (no zsh dialect in shellcheck)
 #   - posix        source the startup files for real, assert stderr is empty
 #   - yaml         parse install.conf.yaml, assert every link source exists
-#   - unit         run the pure helpers in bin/lib/ against fixtures
+#   - unit         exercise the pure helpers in bin/lib/, and check that
+#                  every "shellcheck source=" directive resolves
 #   - drift        re-run the shell-config generator, assert no diff (SI-84)
 #
 # Options:
@@ -507,14 +508,59 @@ unit_apply() {
     printf '%s\n' "$desired" >"$1"
 }
 
-check_unit() {
-    heading "unit tests (bin/lib)"
-
-    if [ ! -f bin/lib/shells.sh ]; then
-        warn "unit: bin/lib/shells.sh not found, skipping"
-        SKIPPED[${#SKIPPED[@]}]=unit
-        return
+# A file under bin/lib/ is a tracked file, not an optional external tool, so a
+# missing one is a repository defect. missing_tool() above is for tools; this
+# fails outright, including without --strict, because the previous skip meant
+# `git rm bin/lib/shells.sh` passed CI green.
+#
+# Usage: unit_require <path>
+unit_require() {
+    if [ ! -f "$1" ]; then
+        fail "unit: $1 is missing"
+        return 1
     fi
+    return 0
+}
+
+# Compare one expected value against one actual value.
+# Usage: unit_expect <label> <want> <got>
+unit_expect() {
+    local label=$1 want=$2 got=$3
+    [ "$want" = "$got" ] && return 0
+    fail "unit: $label: want '$want', got '$got'"
+    return 1
+}
+
+# `disable=SC1091` in .shellcheckrc means a `# shellcheck source=` directive
+# pointing at a file that does not exist is completely silent — shellcheck
+# reports nothing for setup.sh when run from a cwd where its directive cannot
+# resolve. So `external-sources=true` cannot police its own directives, and the
+# directive is documentation unless something checks it. This is that something.
+#
+# Both spellings are accepted: repo-relative (bin/lib/shells.sh, what setup.sh
+# used before SI-82) and SCRIPTDIR-relative (lib/common.sh, the cwd-independent
+# form the bin/ scripts use). `source=/dev/null` is shellcheck's own idiom for
+# "deliberately not resolvable" — bashrc:75 sources user-supplied files — so it
+# is exempt rather than a finding.
+unit_source_directives() {
+    local bad=0 f target
+    while IFS= read -r f; do
+        while IFS= read -r target; do
+            [ -n "$target" ] || continue
+            [ "$target" = /dev/null ] && continue
+            [ -f "$target" ] && continue
+            [ -f "${f%/*}/$target" ] && continue
+            bad=1
+            fail "unit: $f: 'shellcheck source=$target' does not resolve"
+        done < <(sed -n 's/^[[:space:]]*#[[:space:]]*shellcheck.*source=\([^ ]*\).*/\1/p' "$f")
+    done < <(shell_sources)
+
+    [ "$bad" -eq 0 ] && ok "every 'shellcheck source=' directive resolves"
+    return "$bad"
+}
+
+unit_shells() {
+    unit_require bin/lib/shells.sh || return 1
     # shellcheck source=bin/lib/shells.sh
     . bin/lib/shells.sh
 
@@ -522,8 +568,7 @@ check_unit() {
     for start in 0 1 2 4; do
         if ! f=$(unit_fixture "$start"); then
             fail "unit: could not create a fixture"
-            FAILED[${#FAILED[@]}]=unit
-            return
+            return 1
         fi
 
         # Twice: the second application must be a no-op, which is the whole
@@ -551,11 +596,18 @@ check_unit() {
         rm -f "$f"
     done
 
-    if [ "$bad" -eq 1 ]; then
-        FAILED[${#FAILED[@]}]=unit
-    else
-        ok "shells_file_desired is idempotent from 0, 1, 2 and 4 entries"
-    fi
+    [ "$bad" -eq 0 ] && ok "shells_file_desired is idempotent from 0, 1, 2 and 4 entries"
+    return "$bad"
+}
+
+# Each unit_* function prints its own ok/fail lines and returns 0 or 1, so one
+# failing property does not hide the others.
+check_unit() {
+    heading "unit tests (bin/lib)"
+    local bad=0
+    unit_source_directives || bad=1
+    unit_shells || bad=1
+    [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit
 }
 
 # --- generated-file drift ---------------------------------------------------
