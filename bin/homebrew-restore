@@ -1,3 +1,47 @@
 #!/bin/bash
-brew bundle cleanup --force --file ~/.dotfiles/homebrew/$(hostname)
-brew bundle --file ~/.dotfiles/homebrew/$(hostname)
+#
+# Install the packages in homebrew/<hostname>.
+#
+# Usage: homebrew-restore [--dry-run]
+#
+# ⚠️ `brew bundle cleanup --force` UNINSTALLS everything not named in the
+# Brewfile. Do not use this to check for drift — that is what
+# `brew bundle check --file homebrew/<host>` is for (SI-119 de-fangs this).
+
+set -euo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -h | --help)
+            log_info "Usage: homebrew-restore [--dry-run]"
+            exit 0
+            ;;
+        *)
+            log_err "homebrew-restore: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+if ! have brew; then
+    log_err "homebrew-restore: brew not found on PATH."
+    exit 1
+fi
+
+BREWFILE="$(dotfiles_root)/homebrew/$(host_id)"
+
+if [ ! -f "$BREWFILE" ]; then
+    log_err "homebrew-restore: no Brewfile for this host at $BREWFILE"
+    exit 1
+fi
+
+run brew bundle cleanup --force --file "$BREWFILE"
+run brew bundle --file "$BREWFILE"
