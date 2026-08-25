@@ -15,10 +15,10 @@ set -euo pipefail
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
 CLAUDE_DIR="$HOME/.claude"
-DOTFILES="$HOME/.dotfiles"
+DOTFILES=$(dotfiles_root)
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
-PROFILE=$(cat "$HOME/.agentic-profile" 2>/dev/null || cat "$HOME/.machine-profile" 2>/dev/null || echo "personal")
+PROFILE=$(agentic_profile) || exit 1
 PROFILE_DIR="$DOTFILES/private/claude/$PROFILE"
 LEGACY_SHARED="$DOTFILES/private/claude/shared"
 
@@ -154,7 +154,7 @@ cat >"$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
 Claude Code Backup
 ==================
 Timestamp:  $TIMESTAMP
-Hostname:   $(hostname)
+Hostname:   $(host_id)
 Profile:    $PROFILE
 Claude Dir: $CLAUDE_DIR
 

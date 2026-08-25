@@ -10,6 +10,14 @@
 # ever restore from. agentic_profile below cannot be used without validating,
 # which is the point of the split.
 
+# Where the profile is stored, and the legacy location still honoured as a
+# fallback. Functions rather than literals so agentic-set-profile, which writes
+# the file, and agentic_profile, which reads it, cannot drift apart.
+#
+# Usage: profile_file / profile_legacy_file
+profile_file() { printf '%s\n' "$HOME/.agentic-profile"; }
+profile_legacy_file() { printf '%s\n' "$HOME/.machine-profile"; }
+
 # Pure. Usage: profile_is_valid <value>
 profile_is_valid() {
     case $1 in
@@ -51,7 +59,7 @@ profile_read() {
 # Usage: agentic_profile
 agentic_profile() {
     local value
-    value=$(profile_read "$HOME/.agentic-profile" "$HOME/.machine-profile")
+    value=$(profile_read "$(profile_file)" "$(profile_legacy_file)")
     if ! profile_is_valid "$value"; then
         log_err "agentic profile must be 'work' or 'personal', got '$value'"
         log_err "Set it with: agentic-set-profile work|personal"

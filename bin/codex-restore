@@ -14,15 +14,12 @@ set -euo pipefail
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
 CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
-DOTFILES="$HOME/.dotfiles"
+DOTFILES=$(dotfiles_root)
 
-PROFILE=$(cat "$HOME/.agentic-profile" 2>/dev/null || cat "$HOME/.machine-profile" 2>/dev/null || echo "personal")
+PROFILE=$(agentic_profile) || exit 1
 SOURCE_PROFILE="${1:-$PROFILE}"
 
-if [ "$SOURCE_PROFILE" != "work" ] && [ "$SOURCE_PROFILE" != "personal" ]; then
-    log_err "Error: source profile must be 'work' or 'personal', got '$SOURCE_PROFILE'"
-    exit 1
-fi
+assert_valid_profile "$SOURCE_PROFILE" "source profile" || exit 1
 
 PROFILE_DIR="$DOTFILES/private/codex/$SOURCE_PROFILE"
 
