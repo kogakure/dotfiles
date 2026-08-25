@@ -58,7 +58,7 @@ bin/dotfiles-lint --help
               # - Fish plugins (via fisher)
               # - Neovim plugins (via Lazy)
               # - macOS software
-              # - Writes backups of Claude, Codex, Homebrew, preferences, launch agents
+              # - Writes backups of Claude, Codex, Homebrew and preferences
 ```
 
 ## Backup/Restore
@@ -68,14 +68,19 @@ bin/dotfiles-lint --help
 ./bin/claude-set-profile work|personal   # Legacy compatibility wrapper
 ./bin/gpg-keys-backup         # Export GPG keys
 ./bin/gpg-keys-restore        # Import GPG keys
-./bin/launchagents-backup     # Save launch agents
-./bin/launchagents-restore    # Restore launch agents
 ./bin/preferences-backup      # Export app preferences
 ./bin/codex-backup            # Save Codex config to private/codex/<profile>
 ./bin/codex-restore           # Restore Codex config for the current profile
 ./bin/codex-restore personal  # Bootstrap another profile from the personal backup
 ./bin/preferences-restore     # Import app preferences
 ```
+
+**Launch agents are not automated.** `private/launch-agents/` holds the plists,
+but `bin/launchagents-backup` and `bin/launchagents-restore` were empty stubs —
+a shebang and nothing else — while `setup.sh` and `bin/update` called them and
+these docs claimed they worked. They were deleted in SI-81 rather than left as
+silent no-ops. Copy the plists by hand and `launchctl bootstrap` them; if this
+is ever automated it belongs in `bin/dotfiles-backup` (SI-82).
 
 ## macOS Settings
 

@@ -14,7 +14,8 @@
   - Application preferences
   - Machine-specific scripts
   - Wakatime config
-  - Launch agents
+  - Launch agents (stored only — nothing restores them automatically, see
+    [commands.md](commands.md))
 - Referenced in: `.gitmodules`, `setup.sh`, various backup/restore scripts
 
 ## Hostname-Specific Configs
