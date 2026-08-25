@@ -1,9 +1,51 @@
 #!/bin/bash
+#
+# Write this machine's Brewfile to homebrew/<hostname>.
+#
+# Usage: homebrew-backup [--dry-run]
+#
+# The file is `brew bundle dump` output and is rewritten on every run — see
+# docs/architecture.md. A package is in it if and only if it is installed on
+# request on this host, so hand-edits do not survive.
 
 set -euo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -h | --help)
+            log_info "Usage: homebrew-backup [--dry-run]"
+            exit 0
+            ;;
+        *)
+            log_err "homebrew-backup: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+if ! have brew; then
+    log_err "homebrew-backup: brew not found on PATH."
+    exit 1
+fi
+
+BREWFILE="$(dotfiles_root)/homebrew/$(host_id)"
 
 # --describe is the default now and passing it explicitly prints a deprecation
 # warning. The tilde is spelled out because bash does not expand `~` after `=`
 # in a plain argument — the old `--file=~/…` worked only because brew expanded
 # the literal tilde itself.
-brew bundle dump --force --file="${HOME}/.dotfiles/homebrew/$(hostname)"
+#
+# `brew bundle dump` has no plan mode, so --dry-run prints the command rather
+# than a diff. That is the honest thing it can offer.
+run brew bundle dump --force --file="$BREWFILE"
+if [ "$DOTFILES_DRY_RUN" -eq 0 ]; then
+    log_ok "Brewfile written: $BREWFILE"
+fi
