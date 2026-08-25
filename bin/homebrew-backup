@@ -1,2 +1,9 @@
 #!/bin/bash
-brew bundle dump --force --describe --file=~/.dotfiles/homebrew/$(hostname)
+
+set -euo pipefail
+
+# --describe is the default now and passing it explicitly prints a deprecation
+# warning. The tilde is spelled out because bash does not expand `~` after `=`
+# in a plain argument — the old `--file=~/…` worked only because brew expanded
+# the literal tilde itself.
+brew bundle dump --force --file="${HOME}/.dotfiles/homebrew/$(hostname)"

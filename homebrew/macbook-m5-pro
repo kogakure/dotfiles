@@ -138,6 +138,8 @@ brew "fisher"
 brew "gcc"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # Automatic git commit --fixup
 brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo
@@ -228,8 +230,6 @@ brew "yt-dlp"
 brew "mpv"
 # Open source relational database management system
 brew "mysql"
-# Incremental parsing library
-brew "tree-sitter"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
 # Libraries for security-enabled client and server applications
@@ -300,6 +300,8 @@ brew "the_silver_searcher"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Incremental parsing library
+brew "tree-sitter"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation

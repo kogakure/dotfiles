@@ -96,4 +96,7 @@ this function.
 
 ### GitHub CLI Extensions
 
-- gh-copilot, gh-dash, gh-eco, gh-f, gh-markdown-preview, gh-notify, gh-poi, gh-s
+- gh-dash, gh-eco, gh-f, gh-markdown-preview, gh-notify, gh-poi, gh-s
+
+The list `setup.sh` actually installs is the `GH_EXTENSIONS` array there. This
+line used to claim `gh-copilot`, which has never been in it.
