@@ -87,13 +87,8 @@ doctor:
     echo "just doctor: bin/dotfiles-doctor does not exist yet (SI-85, Phase 6)." >&2
     exit 1
 
-# Back up Homebrew and preferences (arrives with SI-82, Phase 3).
-backup:
-    #!/usr/bin/env bash
-    set -uo pipefail
-    if [ -x bin/dotfiles-backup ]; then
-        exec bin/dotfiles-backup
-    fi
-    echo "just backup: bin/dotfiles-backup does not exist yet (SI-82, Phase 3)." >&2
-    echo "For now: bin/homebrew-backup, bin/preferences-backup" >&2
-    exit 1
+# Take every backup: claude, codex, homebrew, preferences, launch agents.
+# Pass flags or step names through, e.g. `just backup --dry-run` or
+# `just backup preferences`. See bin/dotfiles-backup --help.
+backup *ARGS:
+    bin/dotfiles-backup {{ ARGS }}

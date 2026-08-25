@@ -1,0 +1,147 @@
+#!/bin/bash
+#
+# Take every backup this repository knows how to take, isolate the steps from
+# each other, and report which ones failed.
+#
+# Usage: dotfiles-backup [options] [step...]
+#
+#   --dry-run       print what each step would do; change nothing
+#   --yes           answer the sub-scripts' prompts with yes
+#   --allow-dirty   run even though the private submodule has uncommitted work
+#   --gpg           include the gpg step (off by default; see below)
+#   -h, --help      show this and exit
+#
+# Steps, in order:  claude codex homebrew preferences launch-agents [gpg]
+#
+# Named steps may be given as positional arguments to run a subset, e.g.
+#   dotfiles-backup preferences
+#
+# No `set -e`. The whole point of this script is that one failing backup does
+# not cost you the other five, so failures are collected and named. The four
+# bare `*-backup` calls in bin/update that this replaces could not do that:
+# their exit statuses were discarded and the run reported softwareupdate's.
+
+set -uo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+cd "$(dotfiles_root)" || {
+    log_err "dotfiles-backup: cannot cd to the repository root — aborting."
+    exit 1
+}
+
+dotfiles_flags_init
+
+WITH_GPG=0
+STEPS=""
+DEFAULT_STEPS="claude codex homebrew preferences launch-agents"
+
+usage() {
+    log_info "Usage: dotfiles-backup [--dry-run] [--yes] [--allow-dirty] [--gpg] [step...]"
+    log_info "Steps: ${DEFAULT_STEPS} gpg"
+    log_info ""
+    log_info "Flags also travel through the environment, so a sub-script"
+    log_info "invoked directly honours them too:"
+    log_info "  DOTFILES_DRY_RUN  DOTFILES_ASSUME_YES  DOTFILES_ALLOW_DIRTY"
+    log_info "  DOTFILES_PRUNE    DOTFILES_REQUIRE_CLEAN_PRIVATE"
+}
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        --allow-dirty) DOTFILES_ALLOW_DIRTY=1 ;;
+        --gpg) WITH_GPG=1 ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        -*)
+            log_err "dotfiles-backup: unknown option: $1"
+            usage
+            exit 1
+            ;;
+        *) STEPS="${STEPS} $1" ;;
+    esac
+    shift
+done
+
+if [ -z "$STEPS" ]; then
+    STEPS=$DEFAULT_STEPS
+    [ "$WITH_GPG" -eq 1 ] && STEPS="${STEPS} gpg"
+fi
+
+# The sub-scripts read these. An exported channel rather than forwarded argv,
+# because assembling a possibly-empty flag array is a fatal unbound-variable
+# error under bash 3.2 + `set -u`, and because adding a sub-script then needs no
+# plumbing here. Each one seeds its flags from these and lets its own argv win.
+export DOTFILES_DRY_RUN
+export DOTFILES_ASSUME_YES
+export DOTFILES_ALLOW_DIRTY
+export DOTFILES_PRUNE
+
+wanted() {
+    case " $STEPS " in
+        *" $1 "*) return 0 ;;
+    esac
+    return 1
+}
+
+# Re-sync the launch agents this repository already tracks.
+#
+# Deliberately a whitelist: it refreshes what is in private/launch-agents/ and
+# never adopts a new agent, because ~/Library/LaunchAgents is full of Dropbox,
+# Google and Steam updaters that have no business in a dotfiles repo.
+# Bootstrapping them with launchctl is still manual — see docs/commands.md.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+backup_launch_agents() {
+    local dir plist name rc=0 seen=0
+    dir="$(private_root)/launch-agents"
+    if [ ! -d "$dir" ]; then
+        log_warn "private/launch-agents does not exist"
+        return 0
+    fi
+    for plist in "$dir"/*.plist; do
+        [ -f "$plist" ] || continue
+        seen=1
+        name=$(basename "$plist")
+        if [ -f "$HOME/Library/LaunchAgents/$name" ]; then
+            run cp "$HOME/Library/LaunchAgents/$name" "$plist" || rc=1
+            [ "$DOTFILES_DRY_RUN" -eq 1 ] || log_ok "$name"
+        else
+            log_skip "$name is not installed on this machine"
+        fi
+    done
+    [ "$seen" -eq 0 ] && log_warn "nothing tracked in private/launch-agents"
+    return "$rc"
+}
+
+# --- main -------------------------------------------------------------------
+
+[ "$DOTFILES_DRY_RUN" -eq 1 ] && log_warn "dry run: nothing will be changed"
+
+# Once, here, not once per sub-script. The first step dirties private, so a
+# per-step check would make this script refuse itself on step two. private_gate
+# exports a marker that the children honour.
+private_gate preferences claude codex launch-agents gpg || exit 1
+
+wanted claude && run_step claude ./bin/claude-backup
+wanted codex && run_step codex ./bin/codex-backup
+wanted homebrew && run_step homebrew ./bin/homebrew-backup
+wanted preferences && run_step preferences ./bin/preferences-backup
+wanted launch-agents && run_step launch-agents backup_launch_agents
+
+if wanted gpg; then
+    run_step gpg ./bin/gpg-keys-backup
+else
+    # Named in the summary rather than silently absent: this writes an armoured
+    # *secret* key to disk and can block on pinentry, so it is opt-in — but a
+    # backup nobody remembers exists is worse than one that is merely off.
+    log_warn "skipped gpg (needs --gpg; it exports a secret key)"
+fi
+
+step_summary || exit 1
+exit 0
