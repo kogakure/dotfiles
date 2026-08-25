@@ -4,4 +4,4 @@
 # cleanup that belongs to SI-81 and SI-82.
 #
 # Regenerate with: just lint-snapshot
-shellcheck=20
+shellcheck=18

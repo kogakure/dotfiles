@@ -63,12 +63,16 @@ fi
 
 # *** *** Aliases *** ***
 
-alias reload="source $HOME/.bashrc"
+alias reload='source "$HOME/.bashrc"'
 source "$HOME/.aliases"
 
 # *** *** Functions *** ***
 
+# An unmatched glob expands to itself, so guard before sourcing — otherwise an
+# empty ~/.functions/ makes every shell start try to source a literal `*.sh`.
 for file in ~/.functions/*.sh; do
+    [ -e "$file" ] || continue
+    # shellcheck source=/dev/null  # user-supplied files, not resolvable statically
     source "$file"
 done
 
