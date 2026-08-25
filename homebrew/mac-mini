@@ -156,6 +156,8 @@ brew "fzf"
 brew "gcc"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # Automatic git commit --fixup
 brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo

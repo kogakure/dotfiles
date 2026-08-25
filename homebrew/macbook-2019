@@ -95,6 +95,8 @@ brew "fzf"
 brew "gcc"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # Enable transparent encryption/decryption of files in a git repo
 brew "git-crypt"
 # Small git utilities
