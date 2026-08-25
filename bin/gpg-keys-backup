@@ -1,10 +1,84 @@
 #!/bin/bash
+#
+# Export the GPG keys and trust database into private/gpg/.
+#
+# Usage: gpg-keys-backup [--dry-run]
+#
+# Not wired into bin/update: this writes an armoured *secret* key to disk, and
+# gpg may block on a pinentry prompt. bin/dotfiles-backup registers it behind
+# an explicit --gpg for the same reason.
 
-# Export public keys
-gpg --export --armor >~/.dotfiles/private/gpg/public_keys.asc
+set -euo pipefail
 
-# Export private keys
-gpg --export-secret-keys --armor >~/.dotfiles/private/gpg/private_keys.asc
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
-# Export trust database
-gpg --export-ownertrust >~/.dotfiles/private/gpg/ownertrust.txt
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        --allow-dirty) DOTFILES_ALLOW_DIRTY=1 ;;
+        -h | --help)
+            log_info "Usage: gpg-keys-backup [--dry-run] [--allow-dirty]"
+            exit 0
+            ;;
+        *)
+            log_err "gpg-keys-backup: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+if ! have gpg; then
+    log_err "gpg-keys-backup: gpg not found on PATH."
+    exit 1
+fi
+
+GPG_DIR="$(private_root)/gpg"
+
+if [ ! -d "$GPG_DIR" ]; then
+    log_err "gpg-keys-backup: $GPG_DIR not found — is the private submodule initialised?"
+    exit 1
+fi
+
+private_gate gpg || exit 1
+
+# Export through a temp file, then move it into place.
+#
+# This used to be a plain `gpg --export… >private_keys.asc`. The redirect
+# truncates the destination *before* gpg runs, so a failed export — or a
+# cancelled pinentry prompt — left an empty file where the only offline copy of
+# a secret key had been. Writing beside the target and moving on success means a
+# failure leaves the previous backup untouched.
+#
+# Usage: export_to <dest> <gpg-arg>...
+export_to() {
+    local dest=$1
+    shift
+    if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+        printf '  gpg %s >%s\n' "$*" "$dest"
+        return 0
+    fi
+    if ! gpg "$@" >"$dest.tmp"; then
+        rm -f "$dest.tmp"
+        log_err "gpg-keys-backup: 'gpg $*' failed — $(basename "$dest") left unchanged."
+        return 1
+    fi
+    if [ ! -s "$dest.tmp" ]; then
+        rm -f "$dest.tmp"
+        log_err "gpg-keys-backup: 'gpg $*' produced nothing — $(basename "$dest") left unchanged."
+        return 1
+    fi
+    mv "$dest.tmp" "$dest"
+    log_ok "Exported: $(basename "$dest")"
+}
+
+log_step "Exporting GPG keys..."
+export_to "$GPG_DIR/public_keys.asc" --export --armor
+export_to "$GPG_DIR/private_keys.asc" --export-secret-keys --armor
+export_to "$GPG_DIR/ownertrust.txt" --export-ownertrust
+
+log_done "GPG backup complete: $GPG_DIR"
