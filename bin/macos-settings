@@ -1,227 +1,273 @@
 #!/bin/bash
+#
+# Apply macOS system preferences.
+#
+# Run with --dry-run to print every mutation instead of applying it. That is the
+# only safe way to review this file: `defaults write` has no undo, and a plain
+# run applies ~80 of them.
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+set -euo pipefail
 
-# Ask for the administrator password upfront
-sudo -v
+DRY_RUN=0
 
-# Keep-alive: update existing `sudo` time stamp until `macos.sh` has finished
-while true; do
-    sudo -n true
-    sleep 60
-    kill -0 "$$" || exit
-done 2>/dev/null &
+usage() {
+    cat <<'EOF'
+Usage: macos-settings [--dry-run]
 
-# Set Dark Mode
-defaults write -g AppleInterfaceStyle Dark
+  --dry-run   Print each mutation instead of applying it.
+  -h, --help  Show this help.
+EOF
+}
 
-# Set sidebar icon size
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 3
-
-# Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-
-# Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
-# Disable automatic capitalization as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# Disable automatic period substitution as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# Reduce Motion
-defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
-
-# Menu Bar Size
-defaults write NSGlobalDomain NSTitleBarSize 22
-
-# Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-
-# Set language and text formats
-defaults write NSGlobalDomain AppleLanguages -array "en-DE" "de-DE" "ja-DE"
-defaults write NSGlobalDomain AppleLocale -string "en_DE@currency=EUR"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-
-# Save screenshots to Dropbox
-defaults write com.apple.screencapture location -string "${HOME}/Dropbox/Bilder/Screenshots"
-
-# Set Desktop as the default location for new Finder windows
-# For other paths, use `PfLo` and `file:///full/path/here/`
-defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads/"
-
-# Show/hide icons for hard drives, servers, and removable media on the desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# Finder: show status bar
-defaults write com.apple.finder ShowStatusBar -bool true
-
-# Finder: show path bar
-defaults write com.apple.finder ShowPathbar -bool true
-
-# Keep folders on top when sorting by name
-defaults write com.apple.finder _FXSortFoldersFirst -bool true
-
-# When performing a search, search the current folder by default
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-# Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
-# Enable spring loading for directories
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true
-
-# Remove the spring loading delay for directories
-defaults write NSGlobalDomain com.apple.springing.delay -float 0.5
-
-# Avoid creating .DS_Store files on network or USB volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-# Disable disk image verification
-defaults write com.apple.frameworks.diskimages skip-verify -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
-
-# Automatically open a new Finder window when a volume is mounted
-defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
-
-# Show the ~/Library folder
-chflags nohidden ~/Library
-
-# Show the /Volumes folder
-sudo chflags nohidden /Volumes
-
-# Icon Settings
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:gridSpacing 60" ~/Library/Preferences/com.apple.finder.plist
-
-# Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
-
-# Change minimize/maximize window effect
-defaults write com.apple.dock mineffect -string "scale"
-
-# Minimize windows into their application’s icon
-defaults write com.apple.dock minimize-to-application -bool true
-
-# Disable spring loading for all Dock items
-defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool false
-
-# Hide indicator lights for open applications in the Dock
-defaults write com.apple.dock show-process-indicators -bool false
-
-# Don’t animate opening applications from the Dock
-defaults write com.apple.dock launchanim -bool false
-
-# Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.1
-
-# Group windows by application in Mission Control
-defaults write com.apple.dock "expose-group-apps" -bool "true"
-
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
-
-# Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
-
-# Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
-
-# Disable Display have separate Spaces
-defaults write com.apple.spaces "spans-displays" -bool "true"
-
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
-
-# Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
-
-# Don’t show recent applications in Dock
-defaults write com.apple.dock show-recents -bool false
-
-# Remove all persistent apps and others from the Dock
-# defaults delete com.apple.dock persistent-apps
-# defaults delete com.apple.dock persistent-others
-
-# Hot corner: top left → None
-defaults write com.apple.dock wvous-tl-corner -int 0
-defaults write com.apple.dock wvous-tl-modifier -int 0
-
-# Hot corner: top right → Notification Center
-defaults write com.apple.dock wvous-tr-corner -int 12
-defaults write com.apple.dock wvous-tr-modifier -int 0
-
-# Hot corner: bottom left → Desktop
-defaults write com.apple.dock wvous-bl-corner -int 4
-defaults write com.apple.dock wvous-bl-modifier -int 0
-
-# Hot corner: bottom right → Put display to sleep
-defaults write com.apple.dock wvous-bl-corner -int 10
-defaults write com.apple.dock wvous-bl-modifier -int 0
-
-# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-# Tracking speed: maximum 5.0
-defaults write -g com.apple.trackpad.scaling -float 5.0
-
-# Mouse Tracking speed: maximum 5.0
-defaults write -g com.apple.mouse.scaling -float 1.5
-
-# Trackpad: enable tap to click for this user and for the login screen
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# Mouse Tracking speed: (default is 3 in GUI)
-defaults read -g com.apple.mouse.scaling
-
-# Mouse Tracking speed: maximum 5.0
-defaults write -g com.apple.mouse.scaling 5.0
-
-# Trackpad: map bottom right corner to right-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-
-# Move windows by dragging any part of the window (ctrl + cmd)
-defaults write -g NSWindowShouldDragOnGesture YES
-
-for app in "Dock" \
-    "Finder" \
-    "Messages" \
-    "SystemUIServer"; do
-    killall "${app}" &>/dev/null
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "macos-settings: unknown argument: $1" >&2
+            usage >&2
+            exit 1
+            ;;
+    esac
 done
 
+# Every mutation below goes through this, so --dry-run cannot miss one.
+run() {
+    if [ "$DRY_RUN" -eq 1 ]; then
+        printf '  %s\n' "$*"
+    else
+        "$@"
+    fi
+}
+
+section() {
+    printf '\n== %s\n' "$1"
+}
+
+if [ "$DRY_RUN" -eq 1 ]; then
+    echo "macos-settings: dry run, nothing will be changed."
+else
+    # Close any open System Settings panes, so they cannot overwrite what we are
+    # about to change.
+    osascript -e 'tell application "System Settings" to quit' 2>/dev/null ||
+        osascript -e 'tell application "System Preferences" to quit' 2>/dev/null ||
+        true
+fi
+
+# Only one mutation in this entire file needs root — `chflags nohidden /Volumes`
+# — so it asks for itself, rather than this script taking a blanket grant it
+# does not need.
+
+section "Appearance"
+
+run defaults write NSGlobalDomain AppleInterfaceStyle -string Dark
+
+# Sidebar icon size
+run defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 3
+
+# Expand save panel by default
+run defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+run defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Expand print panel by default
+run defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+run defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Reduce Motion
+run defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
+
+# Disable the "Are you sure you want to open this application?" dialog
+run defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+section "Text input and keyboard"
+
+# All of these are annoying when typing code.
+run defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+run defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+run defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+run defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+run defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# A blazingly fast keyboard repeat rate
+run defaults write NSGlobalDomain KeyRepeat -int 2
+run defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# Full keyboard access for all controls (e.g. Tab in modal dialogs)
+run defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+section "Language and region"
+
+run defaults write NSGlobalDomain AppleLanguages -array "en-DE" "de-DE" "ja-DE"
+run defaults write NSGlobalDomain AppleLocale -string "en_DE@currency=EUR"
+run defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+
+section "Screenshots"
+
+# Only point screencapture at Dropbox if Dropbox is actually there. On a fresh
+# machine setup.sh runs this long before Dropbox has synced, and screencapture
+# silently keeps writing to the Desktop with no hint why.
+SCREENSHOT_DIR="${HOME}/Dropbox/Bilder/Screenshots"
+if [ -d "$SCREENSHOT_DIR" ]; then
+    run defaults write com.apple.screencapture location -string "$SCREENSHOT_DIR"
+else
+    echo "  skip: ${SCREENSHOT_DIR} does not exist yet — leaving the screenshot" >&2
+    echo "        location alone. Re-run this script once Dropbox has synced." >&2
+fi
+
+section "Finder"
+
+# Set Downloads as the default location for new Finder windows.
+# For other paths, use `PfLo` and `file:///full/path/here/`.
+run defaults write com.apple.finder NewWindowTarget -string "PfLo"
+run defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads/"
+
+# Show/hide icons for hard drives, servers and removable media on the desktop
+run defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+run defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+run defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+run defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# Show all filename extensions
+run defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Show status bar and path bar
+run defaults write com.apple.finder ShowStatusBar -bool true
+run defaults write com.apple.finder ShowPathbar -bool true
+
+# Keep folders on top when sorting by name
+run defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# When performing a search, search the current folder by default
+run defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Disable the warning when changing a file extension
+run defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Spring loading for directories, with no delay
+run defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+run defaults write NSGlobalDomain com.apple.springing.delay -float 0.5
+
+# Avoid creating .DS_Store files on network or USB volumes
+run defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+run defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Disable disk image verification
+run defaults write com.apple.frameworks.diskimages skip-verify -bool true
+run defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+run defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+# Automatically open a new Finder window when a volume is mounted
+run defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+run defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+run defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+
+# Show the ~/Library folder
+run chflags nohidden ~/Library
+
+# Show the /Volumes folder. The one mutation here that needs root.
+run sudo chflags nohidden /Volumes
+
+# Desktop icon size and grid spacing.
+# PlistBuddy `Set` fails on a fresh Mac where DesktopViewSettings:IconViewSettings
+# does not exist yet, so create the entry first and fall back to setting it. The
+# old code relied on this failing non-fatally, which strict mode no longer allows.
+FINDER_PLIST="${HOME}/Library/Preferences/com.apple.finder.plist"
+plist_set_int() {
+    local key="$1" value="$2"
+    if [ "$DRY_RUN" -eq 1 ]; then
+        printf '  PlistBuddy Set %s %s (%s)\n' "$key" "$value" "$FINDER_PLIST"
+        return 0
+    fi
+    /usr/libexec/PlistBuddy -c "Add ${key} integer ${value}" "$FINDER_PLIST" 2>/dev/null ||
+        /usr/libexec/PlistBuddy -c "Set ${key} ${value}" "$FINDER_PLIST"
+}
+
+plist_set_int "DesktopViewSettings:IconViewSettings:iconSize" 44
+plist_set_int "DesktopViewSettings:IconViewSettings:gridSpacing" 60
+
+section "Dock and Mission Control"
+
+run defaults write com.apple.dock tilesize -int 36
+run defaults write com.apple.dock mineffect -string "scale"
+run defaults write com.apple.dock minimize-to-application -bool true
+run defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool false
+run defaults write com.apple.dock show-process-indicators -bool false
+run defaults write com.apple.dock launchanim -bool false
+run defaults write com.apple.dock expose-animation-duration -float 0.1
+run defaults write com.apple.dock expose-group-apps -bool true
+run defaults write com.apple.dock mru-spaces -bool false
+run defaults write com.apple.dock autohide -bool true
+run defaults write com.apple.dock autohide-delay -float 0
+run defaults write com.apple.dock autohide-time-modifier -float 0
+run defaults write com.apple.dock showhidden -bool true
+run defaults write com.apple.dock show-recents -bool false
+
+# Disable "Displays have separate Spaces"
+run defaults write com.apple.spaces spans-displays -bool true
+
+# Removing the persistent-apps / persistent-others keys is bin/preferences-restore's
+# job, and it prompts before doing it. Deliberately not done here.
+
+section "Hot corners"
+
+# 0 = None, 4 = Desktop, 10 = Put display to sleep, 12 = Notification Center
+
+# Top left → None
+run defaults write com.apple.dock wvous-tl-corner -int 0
+run defaults write com.apple.dock wvous-tl-modifier -int 0
+
+# Top right → Notification Center
+run defaults write com.apple.dock wvous-tr-corner -int 12
+run defaults write com.apple.dock wvous-tr-modifier -int 0
+
+# Bottom left → Desktop
+run defaults write com.apple.dock wvous-bl-corner -int 4
+run defaults write com.apple.dock wvous-bl-modifier -int 0
+
+# Bottom right → Put display to sleep.
+# This block used to write wvous-bl-corner a second time, under a comment saying
+# "bottom right". wvous-br-corner was never set at all, so the bottom-left corner
+# silently ended up as "sleep display" and the intended Desktop corner was lost.
+run defaults write com.apple.dock wvous-br-corner -int 10
+run defaults write com.apple.dock wvous-br-modifier -int 0
+
+section "Trackpad and mouse"
+
+# Tracking speed: maximum 5.0. The mouse value was previously set to 1.5 and then
+# overwritten with a *string* 5.0 further down, with a stray `defaults read`
+# printing to stdout in between. One float write each.
+run defaults write NSGlobalDomain com.apple.trackpad.scaling -float 5.0
+run defaults write NSGlobalDomain com.apple.mouse.scaling -float 5.0
+
+# Tap to click, for this user and for the login screen
+run defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+run defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+run defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Map the bottom right corner to right-click
+run defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+run defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+run defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+run defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+section "Windows"
+
+# Move windows by dragging any part of the window (ctrl + cmd)
+run defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true
+
+section "Restarting affected applications"
+
+for app in "Dock" "Finder" "Messages" "SystemUIServer"; do
+    # An app that is not running makes killall exit non-zero, which strict mode
+    # would treat as fatal. Not running is a perfectly good outcome here.
+    run killall "${app}" 2>/dev/null || true
+done
+
+echo
 echo "Done. Note that some of these changes require a logout/restart to take effect."
