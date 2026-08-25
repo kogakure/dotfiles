@@ -41,6 +41,9 @@ _DL_ROOT=${_DL_LIB%/*/*}
 # shellcheck source-path=SCRIPTDIR
 # shellcheck source=util.sh
 . "$_DL_LIB/util.sh"
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=profile.sh
+. "$_DL_LIB/profile.sh"
 
 # bin/lib/shells.sh is deliberately absent from that list: setup.sh is its only
 # caller, and register_login_shell writes to /etc/shells behind sudo. That does
