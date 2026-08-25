@@ -1,10 +1,59 @@
 #!/bin/bash
+#
+# Import the GPG keys and trust database from private/gpg/.
+#
+# Usage: gpg-keys-restore [--dry-run]
 
-# Export public keys
-gpg --import ~/.dotfiles/private/gpg/public_keys.asc
+set -euo pipefail
 
-# Export private keys
-gpg --import ~/.dotfiles/private/gpg/private_keys.asc
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
 
-# Export trust database
-gpg --import-ownertrust ~/.dotfiles/private/gpg/ownertrust.txt
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -h | --help)
+            log_info "Usage: gpg-keys-restore [--dry-run]"
+            exit 0
+            ;;
+        *)
+            log_err "gpg-keys-restore: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+if ! have gpg; then
+    log_err "gpg-keys-restore: gpg not found on PATH."
+    exit 1
+fi
+
+GPG_DIR="$(private_root)/gpg"
+
+# Import one file if the backup has it. The comments here used to say
+# "Export public keys" and so on, above three import operations — a copy-paste
+# from gpg-keys-backup that had been wrong since the file was written.
+#
+# Usage: import_from <file> <gpg-flag>
+import_from() {
+    local file=$1 flag=$2
+    if [ ! -f "$GPG_DIR/$file" ]; then
+        log_skip "Not in backup: $file"
+        return 0
+    fi
+    run gpg "$flag" "$GPG_DIR/$file"
+    if [ "$DOTFILES_DRY_RUN" -eq 0 ]; then
+        log_ok "Imported: $file"
+    fi
+}
+
+log_step "Importing GPG keys..."
+import_from public_keys.asc --import
+import_from private_keys.asc --import
+import_from ownertrust.txt --import-ownertrust
+
+log_done "GPG restore complete."
