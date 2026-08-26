@@ -46,7 +46,15 @@
     ~/.config/git/config-personal: private/git/config-personal
     ~/.config/git/config-work: private/git/config-work
     ~/.config/jj/config.toml: private/jj/config.toml
-    ~/.aliases: aliases
+    # Generated from shell/*.spec by bin/generate-shell-config. The old
+    # hand-written `aliases` and `session-variables.sh` at the repo root are
+    # gone; `just generate` rewrites these.
+    ~/.aliases: generated/aliases.sh
+    ~/.hooks.bash: generated/hooks.bash
+    ~/.hooks.zsh: generated/hooks.zsh
+    # fish's hooks are sourced from the bottom of config.fish, not from conf.d
+    # — see the comment there.
+    ~/.hooks.fish: generated/hooks.fish
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.ctags: ctags
@@ -73,7 +81,7 @@
     ~/.markdownlint.yaml: .markdownlint.yaml
     ~/.pi: pi
     ~/.profile: profile
-    ~/.session-variables.sh: session-variables.sh
+    ~/.session-variables.sh: generated/session-variables.sh
     ~/.wakatime.cfg: private/wakatime.cfg
     ~/.warp/settings.toml: warp/settings.toml
     ~/.warp/tab_configs: warp/tab_configs

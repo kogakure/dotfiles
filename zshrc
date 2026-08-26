@@ -15,45 +15,13 @@ bindkey -M viins '^z' fzf-cd-widget      # (z) jump
 
 # *** *** Tools *** ***
 
-# mise — first, so the `command -v` guards below can see mise-managed tools
-if command -v mise &>/dev/null; then
-    eval "$(mise activate zsh)"
-fi
-
-# GitHub CLI completion
-if command -v gh &>/dev/null; then
-    eval "$(gh completion -s zsh)"
-fi
-
-# fzf
-if command -v fzf &>/dev/null; then
-    source <(fzf --zsh)
-fi
-
-# Direnv
-if command -v direnv &>/dev/null; then
-    eval "$(direnv hook zsh)"
-fi
-
-# Zoxide
-if command -v zoxide &>/dev/null; then
-    eval "$(zoxide init zsh)"
-fi
-
-# Atuin
-if command -v atuin &>/dev/null; then
-    eval "$(atuin init zsh)"
-fi
-
-# Worktrunk
-if command -v wt >/dev/null 2>&1; then
-    eval "$(command wt config shell init zsh)"
-fi
-
-# Starship
-if command -v starship &>/dev/null; then
-    eval "$(starship init zsh)"
-fi
+# The nine tool hooks are generated from shell/hooks.spec, so bash, zsh and fish
+# cannot drift apart again. Edit the spec and run `just generate`.
+#
+# This file used three different `command -v` idioms for the same job —
+# `&>/dev/null` everywhere except worktrunk, which used bash's. One spec, one
+# idiom.
+[[ -r "$HOME/.hooks.zsh" ]] && source "$HOME/.hooks.zsh"
 
 # Antidote
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"

@@ -164,7 +164,7 @@ shell_sources() {
         setup.sh install \
         bin/* bin/lib/*.sh functions/*.sh .githooks/* \
         generated/*.sh generated/hooks.bash \
-        bashrc bash_profile profile aliases session-variables.sh; do
+        bashrc bash_profile profile; do
         [ -f "$f" ] || continue
         is_foreign_script "$f" && continue
         printf '%s\n' "$f"
@@ -184,11 +184,12 @@ zsh_sources() {
 # config/fish/functions are gitignored and untracked, so git filters them out
 # and this list needs no maintenance when a fisher plugin is added.
 #
-# git's pathspec `*` matches across `/`, so config/fish/conf.d/*.fish is already
-# covered. generated/fish/ is where the generator parks its fish output until
-# the conf.d cutover; the glob simply goes empty afterwards.
+# git's pathspec `*` matches across `/`, so the four generated
+# config/fish/conf.d/*.fish files are covered by the same pattern as the
+# hand-written ones — and they are tracked, since .gitignore now names the
+# vendored fisher files individually instead of ignoring the directory.
 fish_sources() {
-    git ls-files -- 'config/fish/*.fish' 'generated/fish/*.fish'
+    git ls-files -- 'config/fish/*.fish' 'generated/hooks.fish'
 }
 
 # Intersect a discovery function's output with the staged set when --staged.
@@ -349,13 +350,18 @@ check_zsh() { check_syntax "zsh -n" zsh zsh_sources zsh; }
 # to be installed, so their stderr is not a stable signal. The syntax checks
 # above cover them instead.
 
-POSIX_TARGETS="aliases session-variables.sh profile bash_profile"
+# The generated pair replaced the hand-written `aliases` and
+# `session-variables.sh` at the repo root. Sourcing them for real matters more
+# now, not less: a generator bug reaches every shell at once.
+POSIX_TARGETS="generated/aliases.sh generated/session-variables.sh profile bash_profile"
 
 # The files a sandbox $HOME needs, as "<dotfile-name> <repo-path>" pairs. Taken
-# from install.conf.yaml — every startup file that another one sources.
+# from install.conf.yaml — every startup file that another one sources. The
+# names on the left are what the startup files reach for; only the repo-side
+# targets moved.
 POSIX_SANDBOX_LINKS="\
-.aliases:aliases
-.session-variables.sh:session-variables.sh
+.aliases:generated/aliases.sh
+.session-variables.sh:generated/session-variables.sh
 .profile:profile
 .bash_profile:bash_profile
 .bashrc:bashrc
@@ -1283,7 +1289,7 @@ GENERATOR="bin/generate-shell-config"
 # Scoped rather than whole-repo: an unrelated unstaged edit elsewhere must not
 # be reported as generated-file drift. Update alongside the generator's own
 # output list.
-DRIFT_PATHS="generated config/nushell/env.nu"
+DRIFT_PATHS="generated config/nushell/env.nu config/fish/conf.d"
 
 check_drift() {
     heading "generated-file drift"

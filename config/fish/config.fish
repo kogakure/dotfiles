@@ -1,3 +1,15 @@
+# Fish-specific configuration only.
+#
+# Environment, PATH, aliases and tool hooks are generated from shell/*.spec —
+# the same spec that produces generated/session-variables.sh for bash and zsh.
+# Edit the spec and run `just generate`; do not add any of that back here.
+#
+# Env, PATH and aliases go to conf.d/{00-env,10-path,20-aliases}.fish, which
+# fish sources before this file. The hooks do not: they are sourced at the
+# bottom of this file, because conf.d/z.fish — the vendored jethrokuan/z plugin
+# — defines its own `z` and would shadow zoxide's if the hooks ran first. They
+# sat at the bottom of this file before the refactor for the same reason.
+
 # Use wezterm.terminfo
 # curl https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo | tic -x -
 
@@ -5,6 +17,9 @@
 
 # Enable vi-mode key bindings
 fish_vi_key_bindings
+
+# Set before the hooks are sourced below, so `fzf --fish` still installs its own
+# bindings afterwards — exactly the order these two had before the refactor.
 
 # (r)everse history search
 bind -M viins '^r' fzf-history-widget
@@ -15,250 +30,16 @@ bind -M viins '^f' fzf-file-widget
 # (z) jump
 bind -M viins '^z' fzf-cd-widget
 
-# *** *** Session Variables *** ***
+# *** *** Aliases *** ***
 
-# set TERM wezterm
-
-# General
-set -x KEYTIMEOUT 1
-
-if command -v zed >/dev/null 2>&1
-    set -x EDITOR nvim
-    set -x GIT_EDITOR nvim
-end
-
-# Homebrew — macOS only (Linux uses apt/direct installs)
-if test (uname) = Darwin
-    if test (uname -m) = arm64
-        set brew_prefix /opt/homebrew
-    else
-        set brew_prefix /usr/local
-    end
-    eval "$($brew_prefix/bin/brew shellenv)"
-    set -x HOMEBREW_NO_AUTO_UPDATE 1
-end
-
-# XDG base directory specification
-set -x XDG_CACHE_HOME $HOME/.cache
-set -x XDG_CONFIG_HOME $HOME/.config
-set -x XDG_DATA_HOME $HOME/.local/share
-set -x XDG_STATE_HOME $HOME/.local/state
-
-# jj
-set -x JJ_CONFIG_DIR $HOME/.config/jj
-if command -v jj >/dev/null 2>&1
-    jj util completion fish | source
-end
-
-# GPG
-set -gx GPG_TTY (tty)
-
-# SSH — macOS uses Secretive secure-enclave agent; Linux uses forwarded SSH_AUTH_SOCK
-if test (uname) = Darwin
-    set -x SSH_AUTH_SOCK $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-end
-
-# fd
-set FD_OPTIONS "--follow --exclude .git --exclude node_modules"
-
-# fzf
-set -x FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS --color=never --hidden"
-set -x FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
-set -x FZF_CTRL_R_OPTS --reverse
-set -x FZF_CTRL_T_COMMAND "git ls-files --cached --others --exclude-standard | fd --hidden --type f --type l $FD_OPTIONS"
-set -x FZF_CTRL_T_OPTS "--preview 'bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
-set -x FZF_DEFAULT_COMMAND "git ls-files --cached --others --exclude-standard | fd --hidden --type f --type l $FD_OPTIONS"
-set -x FZF_DEFAULT_OPTS --no-height
-set -x FZF_TMUX 1
-set -x FZF_TMUX_OPTS -p
-
-# OpenSSL — macOS only (Homebrew-linked; Linux uses system OpenSSL)
-if test (uname) = Darwin
-    set -x LDFLAGS "-L$brew_prefix/opt/openssl/lib"
-    set -x CPPFLAGS "-I$brew_prefix/opt/openssl/include"
-    set -x PKG_CONFIG_PATH "$brew_prefix/opt/openssl/lib/pkgconfig"
-end
-
-# mise
-if type -q mise
-    mise activate fish | source
-end
-
-# Force shims to the absolute front (in case anything appended before)
-set -l MISE_SHIMS $HOME/.local/share/mise/shims
-if test -d $MISE_SHIMS
-    if not contains $MISE_SHIMS $PATH
-        set -x PATH $MISE_SHIMS $PATH
-    else
-        # Move it to the front if it exists but not first
-        set -l NEWPATH $MISE_SHIMS
-        for p in $PATH
-            if test $p != $MISE_SHIMS
-                set NEWPATH $NEWPATH $p
-            end
-        end
-        set -x PATH $NEWPATH
-    end
-end
-
-# Pi agent
-fish_add_path --prepend --move $HOME/.local/pi-agent-npm/bin
-
-# Grok agent
-fish_add_path $HOME/.grok/bin
-
-# OpenCode
-fish_add_path $HOME/.opencode/bin
-
-# Man
-set -x MANPATH /usr/local/man $MANPATH
-
-# Volta
-set -x VOLTA_HOME $HOME/.volta
-
-# *** *** Session Paths *** ***
-
-# Volta
-set -x PATH $PATH $VOLTA_HOME/bin
-
-# Bun
-set -x BUN_INSTALL "$HOME/.bun"
-set -x PATH "$BUN_INSTALL/bin" $PATH
-
-# Rust
-set -x PATH $PATH $HOME/.cargo/bin
-set -x PATH $PATH $HOME/.local/share/../bin
-
-# tmux plugins
-set -x PATH $PATH $HOME/.tmux/plugins/tmux-nvr/bin
-set -x PATH $PATH $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
-
-# Obsidian — macOS only
-if test (uname) = Darwin
-    set -x PATH $PATH /Applications/Obsidian.app/Contents/MacOS
-end
-
-# Personal
-set -x PATH $PATH $HOME/.dotfiles/bin
-set -x PATH $PATH $HOME/.dotfiles/private/bin
-
-# System
-set -x PATH $PATH /usr/bin
-set -x PATH $PATH /usr/local/bin
-set -x PATH $PATH /usr/local/sbin
-set -x PATH $PATH $HOME/.local/bin
-
-# Emacs
-set -x PATH $PATH $HOME/.config/emacs/bin
-
-# pnpm
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-if not string match -q -- "$PNPM_HOME/bin" $PATH
-    set -gx PATH "$PNPM_HOME/bin" $PATH
-end
-
-# LM Studio CLI (lms)
-set -gx PATH $PATH /Users/stefanimhoff/.lmstudio/bin
+# Genuinely shell-specific, so not in shell/aliases.spec: bash and zsh
+# re-source their rc file instead.
+alias reload 'exec fish'
 
 # *** *** Tools *** ***
 
-# GitHub CLI completion
-if command -v gh >/dev/null 2>&1
-    eval "$(command gh completion -s fish)"
-    # Reuse gh's token so other GitHub-aware tools (e.g. mise's github backend)
-    # get the higher authenticated rate limit instead of 60 req/hour per IP.
-    #
-    # `command env -u ...` rather than plain `gh`: this must resolve to the
-    # keyring's active account, deterministically. Going through the gh wrapper
-    # in functions/gh.fish would make the answer depend on the cwd at shell
-    # startup, and a bare `gh auth token` would just echo back whatever
-    # GITHUB_TOKEN this shell happened to inherit.
-    set -gx GITHUB_TOKEN (command env -u GITHUB_TOKEN -u GH_TOKEN gh auth token 2>/dev/null)
+# Generated from shell/hooks.spec. Last, so zoxide's `z` beats conf.d/z.fish's
+# and `fzf --fish` gets the final say on its own key bindings.
+if test -r "$HOME/.hooks.fish"
+    source "$HOME/.hooks.fish"
 end
-
-# Worktrunk
-if command -v wt >/dev/null 2>&1
-    eval "$(command wt config shell init fish)"
-end
-
-# fzf
-if command -v fzf >/dev/null 2>&1
-    fzf --fish | source
-end
-
-# Direnv
-if command -v direnv >/dev/null 2>&1
-    direnv hook fish | source
-end
-
-# Zoxide
-if command -v zoxide >/dev/null 2>&1
-    zoxide init fish | source
-end
-
-# Atuin
-if command -v atuin >/dev/null 2>&1
-    atuin init fish | source
-end
-
-# Starship
-if command -v starship >/dev/null 2>&1
-    starship init fish | source
-end
-
-# *** *** Aliases *** ***
-
-alias reload 'exec fish'
-
-# Folders/Lists
-alias ... 'cd ../..'
-alias cd.. 'cd ..'
-alias ls 'eza --git --group-directories-first --icons=always'
-alias ll 'eza -l --git --group-directories-first --icons=always'
-alias lt 'eza --git --group-directories-first --icons=always --tree'
-alias mkdir 'mkdir -p'
-alias dotfiles 'cd $HOME/.dotfiles'
-# macOS-only folder shortcuts
-if test (uname) = Darwin
-    alias icloud 'cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs'
-    alias dropbox 'cd $HOME/Dropbox'
-end
-
-# Git
-alias glu 'git config user.name "Stefan Imhoff" && git config user.email "gpg@kogakure.8shield.net" && git config user.signingkey "7A7253E8!"'
-alias lg lazygit
-
-# Vim/Neovim
-alias v vim
-
-if type nvim >/dev/null 2>&1
-    alias vim nvim
-end
-
-# Emacs
-alias emacs "emacs -nw"
-alias e "emacs -nw"
-
-# TMUX
-alias t tmux
-alias ta 'tmux attach'
-
-# Atuin
-alias ars 'atuin run script'
-
-# Claude Code
-alias cc 'claude --dangerously-skip-permissions'
-
-# Codex
-alias cx 'codex --dangerously-bypass-approvals-and-sandbox'
-
-# Can't remember the fork name
-alias youtube-dl yt-dlp
-
-# iA Writer — macOS only
-if test (uname) = Darwin
-    alias ia 'open $1 -a /Applications/iA\ Writer.app'
-end
-
-# Clear the screen
-alias c clear

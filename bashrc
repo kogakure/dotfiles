@@ -20,46 +20,16 @@ bind "set show-all-if-ambiguous on"
 
 # *** *** Tools *** ***
 
-# mise — first, so the `command -v` guards below can see mise-managed tools
-if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate bash)"
-fi
-
-# GitHub CLI completion
-if command -v gh >/dev/null 2>&1; then
-    eval "$(gh completion -s bash)"
-fi
-
-# fzf
-if command -v fzf >/dev/null 2>&1 && [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-    eval "$(fzf --bash)"
-fi
-
-# Direnv
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook bash)"
-fi
-
-# Zoxide
-if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init bash)"
-fi
-
-# Atuin
-if command -v atuin >/dev/null 2>&1; then
-    eval "$(atuin init bash)"
-fi
-
-# Worktrunk
-if command -v wt >/dev/null 2>&1; then
-    eval "$(command wt config shell init bash)"
-fi
-
-# Starship
-if command -v starship >/dev/null 2>&1 && [[ $TERM != "dumb" ]]; then
-    eval "$(starship init bash)"
-    PS1="$(/opt/homebrew/bin/starship prompt)"
-fi
+# The nine tool hooks are generated from shell/hooks.spec, so bash, zsh and fish
+# cannot drift apart again. Edit the spec and run `just generate`.
+#
+# The starship block here used to follow `starship init bash` with a one-shot
+# PS1="$(/opt/homebrew/bin/starship prompt)", which replaced the dynamic prompt
+# it had just installed with a single frozen render — and starship is
+# mise-managed on this machine, so that hardcoded path does not exist and every
+# interactive bash login printed "No such file or directory". Both gone.
+# shellcheck source=generated/hooks.bash
+[[ -r "$HOME/.hooks.bash" ]] && source "$HOME/.hooks.bash"
 
 # *** *** Aliases *** ***
 

@@ -42,7 +42,7 @@ if status is-interactive
     end
 end
 
-# Set by 00-env.fish, which every other generated conf.d file reads. This is
-# the last of them, so they are cleaned up here.
+# Set by conf.d/00-env.fish and read by the generated conf.d files. config.fish
+# sources this one last of all, so they are cleaned up here.
 set -e __dl_os
 set -e __dl_brew_prefix
