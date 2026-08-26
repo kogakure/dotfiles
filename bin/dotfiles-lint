@@ -152,11 +152,18 @@ is_foreign_script() {
 # bash/sh sources. bin/convert-2-imdb3-format.sh is bash wrapping a python
 # heredoc, so it stays in; bin/key_counter_summary.py and bin/gource-gravatars
 # drop out by their shebangs, not by their names.
+#
+# generated/ is enumerated by hand, and is the one place in this file where that
+# is true: everything else is a glob over a directory whose contents are
+# discovered. bin/generate-shell-config's output has to be held to the same bar
+# as hand-written code — shfmt is a hard zero, so a generator that emits
+# unformatted bash would put shfmt and drift into a fight neither can win.
 shell_sources() {
     local f
     for f in \
         setup.sh install \
         bin/* bin/lib/*.sh functions/*.sh .githooks/* \
+        generated/*.sh generated/hooks.bash \
         bashrc bash_profile profile aliases session-variables.sh; do
         [ -f "$f" ] || continue
         is_foreign_script "$f" && continue
@@ -167,7 +174,7 @@ shell_sources() {
 # zsh sources. shellcheck has no zsh dialect, so these only get `zsh -n`.
 zsh_sources() {
     local f
-    for f in zshrc zshenv; do
+    for f in zshrc zshenv generated/hooks.zsh; do
         [ -f "$f" ] && printf '%s\n' "$f"
     done
     return 0
@@ -176,8 +183,12 @@ zsh_sources() {
 # Hand-written fish sources. The 20-odd vendored fisher functions under
 # config/fish/functions are gitignored and untracked, so git filters them out
 # and this list needs no maintenance when a fisher plugin is added.
+#
+# git's pathspec `*` matches across `/`, so config/fish/conf.d/*.fish is already
+# covered. generated/fish/ is where the generator parks its fish output until
+# the conf.d cutover; the glob simply goes empty afterwards.
 fish_sources() {
-    git ls-files -- 'config/fish/*.fish'
+    git ls-files -- 'config/fish/*.fish' 'generated/fish/*.fish'
 }
 
 # Intersect a discovery function's output with the staged set when --staged.
@@ -890,6 +901,68 @@ unit_steps() {
     )
 }
 
+# Duplicated PATH entries are invisible in normal use — everything still
+# resolves, just from an unpredictable copy — which is how fifteen of them
+# accumulated in a nested fish shell without anyone noticing. Nothing caught it,
+# so this is the gate.
+#
+# Two properties, one about the data and one about the behaviour:
+#
+#   1. shell/path.spec lists no directory twice. A duplicate there is a defect
+#      in the data, the same way a duplicated packages/ entry is.
+#   2. Sourcing the generated POSIX file twice is a no-op, and the PATH it
+#      produces has no duplicates. This is the property `set -x PATH $PATH ...`
+#      got wrong. It is checked by actually running the generated file rather
+#      than by inspecting it, because the emitted text is what ships.
+#
+# Portable by construction: with a $HOME that contains none of the spec's
+# directories — every CI runner — the existence filter drops them all and the
+# test still exercises dedupe and idempotence against the inherited PATH.
+unit_pathspec() {
+    unit_require shell/path.spec || return 1
+    unit_require generated/session-variables.sh || return 1
+    (
+        bad=0
+
+        dupes=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' "$REPO_ROOT/shell/path.spec" |
+            grep -v '^#' | grep -v '^$' | sed 's/^@[^ ]* //' | sort | uniq -d | tr '\n' ' ')
+        if [ -n "$dupes" ]; then
+            fail "unit: shell/path.spec lists duplicates: ${dupes% }"
+            bad=1
+        fi
+
+        # Single-quoted on purpose: $1 and $PATH belong to the child bash, and
+        # expanding them here would compare this shell's PATH against itself.
+        # shellcheck disable=SC2016
+        out=$(env -i HOME="$HOME" PATH=/usr/bin:/bin /bin/bash --noprofile --norc -c '
+            . "$1" >/dev/null 2>&1
+            once=$PATH
+            unset SESSION_VARS_SOURCED
+            . "$1" >/dev/null 2>&1
+            printf "%s\n%s\n" "$once" "$PATH"
+        ' _ "$REPO_ROOT/generated/session-variables.sh" 2>/dev/null)
+
+        once=$(printf '%s\n' "$out" | sed -n 1p)
+        twice=$(printf '%s\n' "$out" | sed -n 2p)
+
+        if [ -z "$once" ]; then
+            fail "unit: sourcing generated/session-variables.sh produced no PATH"
+            exit 1
+        fi
+
+        unit_expect "sourcing the generated PATH twice is a no-op" "$once" "$twice" || bad=1
+
+        pdupes=$(printf '%s' "$once" | tr ':' '\n' | grep . | sort | uniq -d | tr '\n' ' ')
+        if [ -n "$pdupes" ]; then
+            fail "unit: generated PATH contains duplicates: ${pdupes% }"
+            bad=1
+        fi
+
+        [ "$bad" -eq 0 ] && ok "path.spec has no duplicates; the generated PATH is deduped and idempotent"
+        exit "$bad"
+    )
+}
+
 # The packages/ files replace lists that were inline in setup.sh while bin/update
 # needed the same ones, so a parser that silently returns nothing would put the
 # drift straight back — a run that installs no gh extensions and reports success.
@@ -1042,6 +1115,7 @@ check_unit() {
     unit_no_prune || bad=1
     unit_prune || bad=1
     unit_packages || bad=1
+    unit_pathspec || bad=1
     unit_steps || bad=1
     unit_privilege || bad=1
     unit_log_plain || bad=1
@@ -1195,10 +1269,21 @@ check_manifest() {
 
 # --- generated-file drift ---------------------------------------------------
 #
-# Placeholder until SI-84 lands the generator. The wiring is already in place
-# in the recipe, the CI job and the hook so that phase only adds the script.
+# Re-run the generator and assert the tree did not move. This is the only check
+# in the suite that *writes*, which is deliberate: a dry run cannot prove the
+# committed output matches the spec, only regenerating can.
+#
+# The gate is `-x`, not `-f`. A generator committed without its exec bit would
+# make this skip silently, which is the failure mode a drift gate exists to
+# prevent.
 
 GENERATOR="bin/generate-shell-config"
+
+# What the generator writes, and therefore the only paths this check may judge.
+# Scoped rather than whole-repo: an unrelated unstaged edit elsewhere must not
+# be reported as generated-file drift. Update alongside the generator's own
+# output list.
+DRIFT_PATHS="generated config/nushell/env.nu"
 
 check_drift() {
     heading "generated-file drift"
@@ -1208,18 +1293,29 @@ check_drift() {
         return
     fi
 
-    if ! "$GENERATOR"; then
+    if ! "$GENERATOR" >/dev/null; then
         fail "$GENERATOR exited non-zero"
         FAILED[${#FAILED[@]}]=drift
         return
     fi
 
-    if git diff --exit-code; then
+    local changed untracked
+    # shellcheck disable=SC2086  # DRIFT_PATHS is a deliberate pathspec list
+    changed=$(git -C "$REPO_ROOT" diff --name-only -- $DRIFT_PATHS)
+    # `git diff` is blind to untracked files, so a brand-new generated file
+    # would otherwise sail through green on the machine that forgot to add it.
+    # shellcheck disable=SC2086  # as above
+    untracked=$(git -C "$REPO_ROOT" ls-files --others --exclude-standard -- $DRIFT_PATHS)
+
+    if [ -z "$changed" ] && [ -z "$untracked" ]; then
         ok "generated files are up to date"
-    else
-        fail "generated files are stale. Run: $GENERATOR && git add -A"
-        FAILED[${#FAILED[@]}]=drift
+        return
     fi
+
+    [ -z "$changed" ] || fail "stale: $(printf '%s' "$changed" | tr '\n' ' ')"
+    [ -z "$untracked" ] || fail "untracked: $(printf '%s' "$untracked" | tr '\n' ' ')"
+    fail "run: $GENERATOR && git add -A"
+    FAILED[${#FAILED[@]}]=drift
 }
 
 # --- main -------------------------------------------------------------------
