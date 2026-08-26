@@ -54,6 +54,10 @@ lint-strict:
 lint-snapshot:
     bin/dotfiles-lint --snapshot shellcheck
 
+# Regenerate the shell config from shell/*.spec (`just lint drift` gates it).
+generate *ARGS:
+    bin/generate-shell-config {{ ARGS }}
+
 # Reformat every shell source in place (shfmt -i 4 -ci).
 fmt:
     #!/usr/bin/env bash
