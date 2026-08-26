@@ -26,3 +26,16 @@ Personal macOS dotfiles repository managed with [dotbot](https://github.com/anis
   sourced by a login shell, so a syntax error is a broken shell, not a failing
   test. `just install-hooks` wires up the pre-commit hook. See
   @docs/guardrails.md
+- **The shell config is generated. Edit `shell/*.spec`, not the output.**
+  Environment, `PATH`, aliases and tool hooks are described once in `shell/` and
+  emitted for bash, zsh, fish and nushell by `bin/generate-shell-config`. After
+  editing a spec run `just generate` and commit both; `just lint drift` fails if
+  you forget. Never hand-edit `generated/**`,
+  `config/fish/conf.d/{00-env,10-path,20-aliases}.fish` or
+  `config/nushell/env.nu` — each says `DO NOT EDIT` and the next lint overwrites
+  it. `config/fish/config.fish` is fish-only concerns and stays hand-written.
+  See `shell/README.md` and @docs/environment.md
+- **Identity is not in this repo**: name, email and the GPG signing key live in
+  the private submodule (`private/git/`, `private/jj/`, `private/doom/`). Do not
+  reintroduce them here. The one deliberate exception is the public key
+  fingerprint in `gnupg/gpg.conf`, which has a comment explaining why

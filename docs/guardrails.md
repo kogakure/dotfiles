@@ -22,6 +22,7 @@ just lint             # every check (see below)
 just lint-staged      # the same checks, staged files only
 just lint-strict      # missing linter is an error, not a skip (CI)
 just lint-snapshot    # re-snapshot .lint-baseline
+just generate *ARGS   # bin/generate-shell-config (rebuild from shell/*.spec)
 just fmt              # shfmt -w over every shell source
 just install-hooks    # git config core.hooksPath .githooks
 just uninstall-hooks  # git config --unset core.hooksPath
@@ -53,15 +54,15 @@ written for bash 3.2 so it still runs under a reduced PATH.
 | `zsh`        | `zsh -n` over `zshrc`/`zshenv` — shellcheck has no zsh dialect    |
 | `posix`      | **sources** the startup files and asserts stderr is empty         |
 | `yaml`       | parses `install.conf.yaml`, asserts every `link:` source exists   |
-| `unit`       | runs the pure helpers in `bin/lib/` against fixtures, plus two whole-file invariants — see below |
+| `unit`       | runs the pure helpers in `bin/lib/` against fixtures, plus three whole-file invariants — see below |
 | `manifest`   | parses `preferences.manifest`, asserts it covers `private/preferences/` |
-| `drift`      | re-runs the shell-config generator, asserts no diff (SI-84)       |
+| `drift`      | re-runs `bin/generate-shell-config`, asserts the tree did not move |
 
 Run a subset by name: `just lint posix yaml`.
 
-### The file lists maintain themselves
+### The file lists maintain themselves — with one exception
 
-Nothing is enumerated by hand:
+Almost nothing is enumerated by hand:
 
 - Shell sources are the union of `setup.sh`, `install`, `bin/*`,
   `bin/lib/*.sh`, `functions/*.sh`, `.githooks/*` and the shebang-less startup
@@ -73,6 +74,37 @@ Nothing is enumerated by hand:
   untracked. Adding a fisher plugin needs no change here.
 - `just fmt` formats exactly `dotfiles-lint --list-shell-sources`, so the
   formatter and the linter can never diverge on which files are shell.
+
+The exception is **`generated/`**, which is listed explicitly. It has to be:
+generated code is held to the same bar as hand-written code, `shfmt` is a hard
+zero, and a generator emitting unformatted bash would put `shfmt` and `drift`
+into a fight neither can win. Today the generated files carry zero shellcheck
+findings, and that is the bar to keep.
+
+### `drift` — the only check that writes
+
+Every other check is read-only. `drift` re-runs the generator for real, because
+a dry run cannot prove the committed output matches the spec; only regenerating
+can.
+
+Three things follow from that:
+
+- **`just lint` is no longer side-effect-free.** It rewrites `generated/`,
+  `config/fish/conf.d/0*.fish` and `config/nushell/env.nu` in place. Harmless
+  when they are up to date, which is the normal case.
+- **Generated output must be byte-identical on macOS and Linux**, because CI
+  runs this gate on both. That is why guards in `shell/*.spec` are emitted as
+  runtime conditionals and the Homebrew prefix is resolved by the *generated*
+  file rather than by the generator.
+- **An unstaged hand-edit cannot be detected**, because the generator repairs
+  it before the diff runs. That is fine — the case worth catching is a
+  *committed* hand-edit, which shows up as a worktree/index difference. The CI
+  assertion stages its corruption for exactly this reason.
+
+The diff is scoped to those paths, not whole-repo: an unrelated unstaged edit
+elsewhere is not generated-file drift. And it checks `git ls-files --others`
+as well as `git diff`, since `git diff` is blind to untracked files — a brand-new
+generated file that nobody committed would otherwise pass green.
 
 ### The POSIX runtime source test
 
@@ -86,9 +118,14 @@ alias e "emacs -nw"     # bash -n: exit 0. Sourced: two errors on stderr.
 
 Two of those shipped to three machines and errored on every bash and zsh
 startup. Only actually sourcing the file catches it, and only stderr reveals
-it — the exit status is 0. So the check sources `aliases`,
-`session-variables.sh`, `profile` and `bash_profile` in a clean
+it — the exit status is 0. So the check sources `generated/aliases.sh`,
+`generated/session-variables.sh`, `profile` and `bash_profile` in a clean
 `bash --noprofile --norc` (and in `zsh -f`) and **asserts stderr is empty**.
+
+Those first two are now generated from `shell/*.spec`, which makes this check
+matter *more*, not less: a generator bug reaches every shell at once. The
+sandbox link names (`.aliases`, `.session-variables.sh`) are unchanged, since
+those are what the startup files reach for; only the repo-side targets moved.
 
 It sources them under a throwaway `$HOME` holding just the dotbot symlinks
 those files reach for. Without that, `profile` — which unconditionally sources
@@ -102,8 +139,8 @@ anywhere near a dotfiles repo.
 config full of `eval "$(tool init …)"`, so their stderr depends on which tools
 are installed and is not a stable signal. `shellcheck` and `zsh -n` cover them.
 
-CI additionally appends a fish-syntax alias to `aliases` and asserts the check
-*fails*, so it cannot silently stop gating anything.
+CI additionally appends a fish-syntax alias to `generated/aliases.sh` and
+asserts the check *fails*, so it cannot silently stop gating anything.
 
 ### The `unit` check — and why `bin/lib/` exists
 
@@ -136,10 +173,10 @@ Two properties worth keeping when this grows:
   append-only rule fails on exactly those two while 0 and 1 still pass. That
   asymmetry is why the bug shipped, and it is what the check now pins down.
 
-### Two invariants in `unit` that are not about `bin/lib/`
+### Three invariants in `unit` that are not about `bin/lib/`
 
-Most `unit_*` functions exercise a pure helper against a fixture. Two instead
-assert a property of a whole file, because both properties are invisible until a
+Most `unit_*` functions exercise a pure helper against a fixture. Three instead
+assert a property of a whole file, because all three are invisible until a
 fresh machine trips over them.
 
 **`unit_steps` — `setup.sh`'s registry agrees with its functions.** The driver
@@ -159,6 +196,22 @@ back: a run that installs no gh extensions and reports success. So a missing fil
 must stay distinguishable from an empty one, and the real files are checked too —
 a list that parses to no entries, or names an entry twice, is a defect in the
 data rather than a preference.
+
+**`unit_pathspec` — `PATH` has no duplicates and building it is idempotent.**
+Duplicated `PATH` entries are invisible in normal use: everything still
+resolves, just from an unpredictable copy. That is how fifteen of them
+accumulated in a nested fish shell — `config.fish` used unguarded
+`set -x PATH $PATH …`, which appends every time — with nothing to notice.
+
+Two properties. That `shell/path.spec` lists no directory twice, which is a data
+defect of the same kind as a duplicated `packages/` entry. And that **actually
+sourcing** `generated/session-variables.sh` twice is a no-op producing a `PATH`
+with no duplicates. It runs the emitted file rather than inspecting it, because
+the emitted text is what ships.
+
+It is portable by construction: on a `$HOME` containing none of the spec's
+directories — every CI runner — the existence filter drops them all and the
+test still exercises dedupe and idempotence against the inherited `PATH`.
 
 ## `bin/lib/` — the shared library
 
@@ -318,14 +371,27 @@ regardless: it describes the concern, not the binary.
 
 `shellcheck` is gated on **"no more findings than `.lint-baseline`"**, not on
 zero. There were 20 pre-existing findings when the gate went in. SI-81 took it
-to 14 and SI-82 to 9; the 9 that remain are all in `aliases`, `bash_profile`,
-`session-variables.sh` and `functions/`, and belong to SI-84.
+to 14, SI-82 to 9 and SI-84 to 4.
+
+SI-84 cleared five of them by **deleting the files**, not by fixing them: the
+hand-written `aliases` and `session-variables.sh` are now generated from
+`shell/*.spec`, and the generator does not emit what they were flagged for —
+double-quoted alias bodies (`SC2139` ×3), an alias using `$1` (`SC2142`), and
+`export X=$(cmd)` (`SC2155`). The 4 that remain are `bash_profile`'s two
+`SC1090` and the two in `functions/`, which belong to the functions
+consolidation.
 
 - New code is still held to a clean bar — any increase fails.
 - A decrease is reported, not failed. Lock it in with `just lint-snapshot`.
 - Do **not** blanket-disable a check in `.shellcheckrc` to get under the
   number. Fix it, or add a per-line
   `# shellcheck disable=SCxxxx` with a reason comment.
+- **A file-level disable is the exception, and `bin/generate-shell-config` is
+  the one that has it.** Emitting the literal text `$__dl_os` for another shell
+  to expand later is the whole job of a generator, so `SC2016` is the intent on
+  every line it fires on there. Fourteen per-line disables would be more noise
+  than signal, and a `.shellcheckrc` change would weaken the gate for every
+  shell source instead of one.
 
 `shfmt`, by contrast, is a hard zero: formatting has one correct answer and
 `just fmt` produces it.
@@ -351,7 +417,7 @@ only what was committed, is the authority.
 `core.hooksPath` plus a hook that shells out to shellcheck means a broken PATH
 would otherwise block the very commit that fixes the broken PATH. Both linters
 come from mise shims, so a PATH regression in `bashrc`, `zshrc` or
-`session-variables.sh` is exactly when you most need to be able to commit.
+`shell/path.spec` is exactly when you most need to be able to commit.
 
 If `shellcheck` or `shfmt` cannot be resolved, the hook warns and exits 0. It
 blocks on findings, never on infrastructure. CI asserts this by running the
@@ -386,7 +452,7 @@ permanently-vacuous one are both worse than no job:
 - `just lint-strict` is used rather than `just lint`, so a linter that failed
   to install is an error instead of a skip.
 
-Beyond the lint run, CI asserts five properties of the guardrails themselves:
+Beyond the lint run, CI asserts seven properties of the guardrails themselves:
 
 1. `just -f "$GITHUB_WORKSPACE/Justfile" --list` works from outside the
    checkout — no recipe depends on cwd.
@@ -402,11 +468,29 @@ Beyond the lint run, CI asserts five properties of the guardrails themselves:
    submodule, none of which CI has. Skipping *by name* rather than listing what
    to keep means a step added later is covered by default.
 
+6. **The `drift` gate rejects a hand-edited generated file.** The corruption is
+   *staged* before the check runs, because `drift` regenerates the worktree
+   first — an unstaged edit is simply repaired, leaving nothing to detect.
+   Staging is what a committed hand-edit looks like to `git diff`.
+7. **bash and fish build the same `PATH`**, byte for byte, with no duplicates.
+
 That fifth one is worth its cost. A dry run is a promise, and the only way to
 know it holds is to make one and look at the tree afterwards. Two leaks were
 found exactly this way while it was being written: the Homebrew and WezTerm
 installers were command substitutions, which bash expands *before* `run()` can
 decide not to execute anything, so both would have hit the network on a dry run.
+
+The seventh is the reason SI-84 exists. `git` used to resolve to `/usr/bin/git`
+in bash and `/opt/homebrew/bin/git` in fish and zsh, because the POSIX file
+prepended the system directories while `config.fish` appended them. One spec has
+to mean one `PATH` or the divergence comes straight back, and the only way to
+know is to build both and compare.
+
+Note the ordering hazard this creates: `just lint-strict` runs *before* the
+`setup.sh --dry-run is inert` assertion, and `drift` writes. If the generator
+were ever non-deterministic across the macOS/Linux matrix, that earlier
+assertion would fail with a confusing message about the dry run. It is the
+canary for generator determinism.
 
 ## `.editorconfig` — two files, one letter apart
 

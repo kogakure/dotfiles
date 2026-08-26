@@ -13,7 +13,8 @@ just setup-steps      # ./setup.sh --list
 just link             # ./install
 just check-links      # ./install --dry-run
 just update           # bin/update
-just lint             # shellcheck, shfmt, fish/zsh syntax, POSIX source, yaml, unit, manifest
+just generate         # bin/generate-shell-config; rebuild from shell/*.spec
+just lint             # shellcheck, shfmt, fish/zsh syntax, POSIX source, yaml, unit, manifest, drift
 just fmt              # shfmt -w over every shell source
 just backup *ARGS     # every backup; `just backup --dry-run`, `just backup preferences`
 just install-hooks    # enable the pre-commit hook
@@ -81,12 +82,42 @@ uninstalls anything absent from the Brewfile (SI-119). Not `shell_default`,
 `macos` or `interactive`, which change the login shell, overwrite preferences,
 or prompt.
 
+## Shell configuration — generated, not hand-written
+
+```bash
+bin/generate-shell-config              # rebuild from shell/*.spec
+bin/generate-shell-config --dry-run    # print what it would write
+just generate                          # the same, from any cwd
+```
+
+Environment, `PATH`, aliases and tool hooks are described **once** in
+`shell/*.spec` and emitted for bash, zsh, fish and nushell. The output is
+committed, so no shell startup depends on this script.
+
+Workflow: edit a spec → `just generate` → commit both. `just lint drift`
+regenerates and fails if the committed output does not match, so a spec edit
+that was never regenerated cannot ship.
+
+**Never hand-edit anything under `generated/`, `config/fish/conf.d/0*.fish` or
+`config/nushell/env.nu`.** Each carries a `DO NOT EDIT` header, and the next
+`just lint` will overwrite it.
+
+`shell/README.md` documents the syntax. See
+[environment.md](environment.md) for the load order and
+[guardrails.md](guardrails.md) for the drift gate.
+
 ## Symlink Management
 
 ```bash
 ./install              # Re-run dotbot to update symlinks
 ./install --dry-run    # Show what it would do, without touching anything
 ```
+
+`./install` is **required** after anything that changes a link target — in
+particular after pulling the SI-84 shell-config cutover, which repoints
+`~/.aliases` and `~/.session-variables.sh` at `generated/` and adds
+`~/.hooks.{bash,zsh,fish}`. Until it runs, those two point at deleted files and
+every bash and zsh start reports a missing source.
 
 ## Linting
 

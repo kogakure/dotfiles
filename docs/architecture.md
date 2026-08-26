@@ -94,9 +94,36 @@ Key files at repo root:
 - `install.conf.yaml`: Dotbot symlink configuration
 - `packages/`: Shared plugin, extension and service lists read by both
   `setup.sh` and `bin/update`
-- `aliases`: Shell command aliases
+- `shell/`: The shell-neutral spec — env, PATH, aliases, tool hooks, described
+  once for bash, zsh, fish and nushell. See `shell/README.md`
+- `generated/`: `bin/generate-shell-config`'s output. **Committed, and never
+  hand-edited** — `just lint drift` regenerates and fails if the tree moved
 - `functions/`: Bash/zsh function definitions
 - `bin/`: Custom utility scripts
+
+### `generated/` is committed on purpose
+
+Nothing depends on the generator at shell-startup time: a broken or missing
+`bin/generate-shell-config` cannot stop a shell from starting, because the
+files it produces are already on disk and symlinked. The generator is a
+development tool, not a runtime dependency.
+
+The cost is that the output can go stale, which is what the `drift` check
+exists for. The four generated `config/fish/conf.d/*.fish` files are also why
+`.gitignore` names the vendored fisher files individually instead of ignoring
+those directories — see below.
+
+### `~/.config/fish` is a directory symlink, so generated fish files are live
+
+Anything written under `config/fish/conf.d/` takes effect on the next shell,
+immediately, with no install step. There is no "added but not activated" state.
+
+That is why `.gitignore` lists the fisher-installed files one by one rather than
+ignoring `conf.d/`, `completions/` and `functions/` wholesale. Under the old
+blanket rules a generated file was live on disk **and invisible to
+`git status`** — which made the documented `git checkout` recovery a silent
+no-op. Keep the rules narrow; when adding a fisher plugin, add its files there
+alongside the `fish_plugins` line that installs them.
 
 ### Why `packages/` is at the root and not under `config/`
 
