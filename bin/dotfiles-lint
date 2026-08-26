@@ -839,6 +839,67 @@ unit_prune() {
     )
 }
 
+# The packages/ files replace lists that were inline in setup.sh while bin/update
+# needed the same ones, so a parser that silently returns nothing would put the
+# drift straight back — a run that installs no gh extensions and reports success.
+# Both the parse and the real files are checked: a file that parses to nothing,
+# or that lists the same entry twice, is a defect in the data rather than a
+# preference.
+unit_packages() {
+    unit_require bin/lib/util.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        # shellcheck source=bin/lib/util.sh
+        . bin/lib/util.sh
+
+        bad=0
+        d=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-packages.XXXXXX") || exit 1
+
+        printf '# leading comment\n\nowner/one\n   owner/two   \nowner/three # trailing\n\n\n' >"$d/list"
+        unit_expect "comments, blank lines and surrounding space are stripped" \
+            "owner/one owner/two owner/three" \
+            "$(package_list "$d/list" | tr '\n' ' ' | sed 's/ $//')" || bad=1
+
+        : >"$d/empty"
+        unit_expect "an empty file parses to nothing" "" \
+            "$(package_list "$d/empty")" || bad=1
+
+        printf '# only comments\n\n' >"$d/comments"
+        unit_expect "a comment-only file parses to nothing" "" \
+            "$(package_list "$d/comments")" || bad=1
+
+        # A missing file must be distinguishable from an empty one, or a caller
+        # cannot tell "nothing to install" from "the list is gone".
+        if package_list "$d/nope" >/dev/null 2>&1; then
+            fail "unit: package_list succeeded on a missing file"
+            bad=1
+        fi
+
+        rm -f "$d"/list "$d"/empty "$d"/comments
+        rmdir "$d"
+
+        # And the real files, which is where a typo actually costs something.
+        for f in "$REPO_ROOT"/packages/*; do
+            [ -f "$f" ] || continue
+            n=$(package_list "$f" | grep -c .)
+            if [ "$n" -eq 0 ]; then
+                fail "unit: ${f##*/} parses to no entries"
+                bad=1
+            fi
+            dupes=$(package_list "$f" | sort | uniq -d | tr '\n' ' ')
+            if [ -n "$dupes" ]; then
+                fail "unit: ${f##*/} lists duplicates: ${dupes% }"
+                bad=1
+            fi
+        done
+
+        [ "$bad" -eq 0 ] && ok "package_list strips comments and space, fails on a missing file; packages/ has no empty or duplicated list"
+        exit "$bad"
+    )
+}
+
 # bin/update's keep-alive captured no PID and had no trap, so every interrupted
 # run leaked a refresher until the loop next woke up — and setup.sh primed the
 # password before it had parsed --dry-run. Both properties are checked here, and
@@ -929,6 +990,7 @@ check_unit() {
     unit_conflicts || bad=1
     unit_no_prune || bad=1
     unit_prune || bad=1
+    unit_packages || bad=1
     unit_privilege || bad=1
     unit_log_plain || bad=1
     [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit

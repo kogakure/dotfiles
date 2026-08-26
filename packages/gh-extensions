@@ -1,0 +1,22 @@
+# GitHub CLI extensions, installed by setup.sh's `extensions` step.
+#
+# One owner/repo per line. `#` comments and blank lines are ignored.
+#
+# This list lived inline in setup.sh while docs/environment.md kept a second
+# copy in prose and bin/update upgraded whatever happened to be installed. All
+# three disagreed: gh-stack was installed on macbook-m5-pro and named in
+# neither, and docs/environment.md claimed gh-copilot, which has never been in
+# the install list at all.
+#
+# At the repository root and not under config/, because install.conf.yaml globs
+# config/* into ~/.config/ — anything put there is symlinked into the live tree
+# as a side effect.
+
+dlvhdr/gh-dash
+jrnxf/gh-eco
+gennaro-tedesco/gh-f
+github/gh-stack
+yusukebe/gh-markdown-preview
+meiji163/gh-notify
+seachicken/gh-poi
+gennaro-tedesco/gh-s
