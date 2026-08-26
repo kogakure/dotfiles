@@ -187,3 +187,51 @@ jobs:
           cp "$RUNNER_TEMP/aliases.orig" aliases
           git diff --exit-code -- aliases
           echo "OK: the POSIX source test rejects a fish-syntax alias"
+
+      # The drift gate's whole job is to stop a hand-edit to a generated file
+      # from surviving, so prove it still rejects one. The edit has to be
+      # *staged*: the check regenerates the worktree first, so an unstaged edit
+      # is simply repaired and there is nothing left to detect. Staging is what
+      # a committed hand-edit looks like to `git diff`.
+      - name: drift check rejects a hand-edited generated file
+        run: |
+          set -euo pipefail
+          cp generated/aliases.sh "$RUNNER_TEMP/aliases.sh.orig"
+          printf '\nalias hand_edited=oops\n' >> generated/aliases.sh
+          git add generated/aliases.sh
+          if bin/dotfiles-lint drift; then
+            cp "$RUNNER_TEMP/aliases.sh.orig" generated/aliases.sh
+            git add generated/aliases.sh
+            echo "::error::the drift check passed on a hand-edited generated file"
+            exit 1
+          fi
+          cp "$RUNNER_TEMP/aliases.sh.orig" generated/aliases.sh
+          git add generated/aliases.sh
+          git diff --cached --exit-code -- generated/aliases.sh
+          echo "OK: the drift check rejects a hand-edited generated file"
+
+      # The reason this phase exists. `git` used to resolve to /usr/bin/git in
+      # bash and /opt/homebrew/bin/git in fish, because the POSIX file
+      # prepended the system directories while fish appended them. One spec has
+      # to mean one PATH, byte for byte, or the divergence is back.
+      - name: bash and fish build the same PATH
+        run: |
+          set -euo pipefail
+          b=$(env -i HOME="$HOME" PATH=/usr/bin:/bin bash --noprofile --norc \
+                -c '. generated/session-variables.sh >/dev/null 2>&1; echo "$PATH"')
+          f=$(env -i HOME="$HOME" PATH=/usr/bin:/bin fish --no-config \
+                -c 'for x in generated/fish/00-env.fish generated/fish/10-path.fish
+                      source $x
+                    end
+                    string join ":" $PATH' 2>/dev/null)
+          if [ "$b" != "$f" ]; then
+            echo "::error::bash and fish disagree about PATH"
+            diff <(printf '%s' "$b" | tr ':' '\n') <(printf '%s' "$f" | tr ':' '\n') || true
+            exit 1
+          fi
+          dupes=$(printf '%s' "$b" | tr ':' '\n' | grep . | sort | uniq -d || true)
+          if [ -n "$dupes" ]; then
+            echo "::error::the generated PATH contains duplicates: $dupes"
+            exit 1
+          fi
+          echo "OK: bash and fish agree on PATH, with no duplicates"
