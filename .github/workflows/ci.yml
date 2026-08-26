@@ -125,6 +125,51 @@ jobs:
               ;;
           esac
 
+      # setup.sh dispatches steps by name, so the registry is data and a typo in
+      # it is a runtime failure on a fresh machine rather than a syntax error.
+      # `just lint unit` checks ALL_STEPS against the step_* functions; this
+      # checks that the CLI around them still works.
+      - name: setup.sh's step graph is parseable
+        run: |
+          set -uo pipefail
+          ./setup.sh --help >/dev/null || { echo "::error::--help failed"; exit 1; }
+          n=$(./setup.sh --list | grep -c .)
+          ./setup.sh --list
+          if [ "$n" -lt 15 ]; then
+            echo "::error::--list produced only $n steps"
+            exit 1
+          fi
+          # An unknown name must be rejected rather than silently doing nothing.
+          if ./setup.sh --dry-run --only definitely-not-a-step >/dev/null 2>&1; then
+            echo "::error::an unknown step name was accepted"
+            exit 1
+          fi
+          echo "OK: $n steps, --help works, unknown names rejected"
+
+      # A dry run has to be inert, and the only way to know is to do one and
+      # look. Five steps are skipped because they need something CI does not
+      # have — a hostname with a Brewfile, brew, dotbot, or the private
+      # submodule — and skipping by name rather than listing what to keep means
+      # a step added later is covered by default.
+      - name: setup.sh --dry-run changes nothing
+        run: |
+          set -uo pipefail
+          git status --porcelain >"$RUNNER_TEMP/before"
+          if ! ./setup.sh --dry-run --skip preflight,packages,link,gnupg,macos </dev/null; then
+            echo "::error::the dry run exited non-zero"
+            exit 1
+          fi
+          git status --porcelain >"$RUNNER_TEMP/after"
+          if ! diff -u "$RUNNER_TEMP/before" "$RUNNER_TEMP/after"; then
+            echo "::error::the dry run modified the working tree"
+            exit 1
+          fi
+          if [ -e "${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/setup-state" ]; then
+            echo "::error::the dry run wrote a state file"
+            exit 1
+          fi
+          echo "OK: the dry run changed nothing and wrote no state"
+
       # Guards the highest-value check in the suite. A runtime `source` of the
       # startup files is the only thing that catches a fish-syntax alias in a
       # POSIX file — the regression that shipped to three machines, which

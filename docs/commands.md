@@ -7,7 +7,9 @@ run. It works from any cwd. Full reference: [guardrails.md](guardrails.md).
 
 ```bash
 just                  # list every recipe
-just setup            # ./setup.sh
+just setup *ARGS      # ./setup.sh; `just setup --only link,gnupg`
+just setup-dry        # ./setup.sh --dry-run
+just setup-steps      # ./setup.sh --list
 just link             # ./install
 just check-links      # ./install --dry-run
 just update           # bin/update
@@ -19,9 +21,65 @@ just install-hooks    # enable the pre-commit hook
 
 ## Initial Setup
 
+`setup.sh` is a **step registry**, not a straight line. Every action is a
+`step_<name>` function, the ordered list is `ALL_STEPS` at the top of the file,
+and each step runs through `run_step` — so one failure is reported by name in a
+summary rather than aborting the run, and a re-run resumes instead of redoing an
+hour of `brew bundle`.
+
 ```bash
-./setup.sh  # Full system setup (installs everything)
+./setup.sh                        # every step, in order
+./setup.sh --dry-run              # print every mutation, change nothing
+./setup.sh --list                 # the ordered step list
+./setup.sh --only link,gnupg      # just these
+./setup.sh --skip macos,services  # everything but these
+./setup.sh --from editors         # that step and everything after it
+./setup.sh --force                # ignore the state file
+./setup.sh --no-interactive       # skip the steps that prompt
+./setup.sh --help
 ```
+
+The steps, in order:
+
+```
+preflight  submodules  directories  homebrew  packages  link  terminfo
+tmux_plugins  extensions  shell_default  gnupg  runtimes  editors  projects
+macos  services  interactive
+```
+
+Four things about that order are load-bearing:
+
+- **`link` runs after `packages`.** `./install` execs dotbot, and dotbot is a
+  brew formula — so it only exists once `brew bundle` has run. The old order
+  called it nineteen lines earlier, which worked on every machine that already
+  had it and on no fresh one. `packages` supplies `fish` for the same reason.
+- **`preflight` stops the run when it fails**, rather than being recorded and
+  continued past. The steps after it fail as consequences of one cause; a
+  hostname with no Brewfile aborts `brew bundle` and then nine steps fail for
+  want of their binaries. `--skip preflight` overrides.
+- **`interactive` is last and gated.** `atuin login` and `doom install` are the
+  only things that block on a prompt, and they used to sit mid-script with ten
+  steps after them. Interactive mode is on only when stdin is a TTY, so
+  `./setup.sh </dev/null` completes without stopping.
+- **`macos` restores preferences before applying settings.** Deliberate — see
+  the comment on `step_macos`.
+
+**Resume.** Completed steps are recorded one per line in
+`${XDG_STATE_HOME:-~/.local/state}/dotfiles/setup-state`. The file only grows on
+success, so a resumed run retries exactly what failed. `preflight` and
+`interactive` are never recorded: a precondition that can be resumed past is one
+that passes on the strength of having once passed, and `interactive` reports
+success when it skipped itself for want of a terminal.
+
+**`--dry-run` is inert, not nominal.** It changes nothing, never prompts for a
+password, and writes no state file. CI asserts all three.
+
+**Which steps are safe to `--only`.** The re-runnable ones: `link`,
+`tmux_plugins`, `extensions`, `runtimes`, `editors`. Not `packages` —
+`bin/homebrew-restore` still runs `brew bundle cleanup --force`, which
+uninstalls anything absent from the Brewfile (SI-119). Not `shell_default`,
+`macos` or `interactive`, which change the login shell, overwrite preferences,
+or prompt.
 
 ## Symlink Management
 
@@ -52,6 +110,39 @@ Both take `--dry-run`. `homebrew-restore` still runs `brew bundle cleanup
 --force`, which **uninstalls** anything not in the Brewfile — use
 `brew bundle check --file homebrew/<host>` to report drift (SI-119).
 
+## `packages/` — the shared plugin and service lists
+
+Plain-text lists, one entry per line, `#` comments ignored. `setup.sh` installs
+from them and `bin/update` updates from them, so there is one definition instead
+of two that drift.
+
+| File | Holds |
+| --- | --- |
+| `packages/gh-extensions` | `owner/repo` per gh extension |
+| `packages/herdr-plugins` | `owner/repo` per herdr plugin |
+| `packages/services` | one brew formula per service to start |
+| `config/fish/fish_plugins` | fisher's own file, reused rather than copied |
+
+**At the repository root, never under `config/`.** `install.conf.yaml` globs
+`config/*` into `~/.config/`, so anything put there is symlinked into the live
+tree as a side effect.
+
+Adding an entry is one line. `just lint unit` asserts each file parses to at
+least one entry and lists nothing twice.
+
+These files exist because the lists were inline in `setup.sh` while `bin/update`
+needed the same ones and `docs/environment.md` kept a third copy in prose. All
+three disagreed: `gh-stack` was installed and named nowhere, `gh-copilot` was
+documented and never installed, and one of three herdr plugins was missing from
+the install list.
+
+`packages/services` is also a bug fix. The two lines it replaced were
+unconditional `brew services start atuin` / `... borders`, but `atuin` is
+mise-managed on `macbook-m5-pro` and `borders` is only in `macbook-2019`'s
+Brewfile — so both failed here and one failed on `mac-mini`. Second-to-last,
+under `set -e`, which is why `Setup complete.` was unreachable on two of three
+machines. Each service is now started only if brew has the formula.
+
 ## System Updates
 
 ```bash
@@ -60,6 +151,8 @@ Both take `--dry-run`. `homebrew-restore` still runs `brew bundle cleanup
               # - Ruby gems
               # - tmux plugins (via tpm)
               # - GitHub CLI extensions
+              # - herdr plugins (re-installed from packages/herdr-plugins —
+              #   herdr has no `plugin update`, so re-install is the update)
               # - Fish plugins (via fisher)
               # - Neovim plugins (via Lazy)
               # - macOS software

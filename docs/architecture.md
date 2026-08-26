@@ -90,8 +90,17 @@ config/
 
 Key files at repo root:
 
-- `setup.sh`: Complete system setup script
+- `setup.sh`: Complete system setup — a step registry, see [commands.md](commands.md)
 - `install.conf.yaml`: Dotbot symlink configuration
+- `packages/`: Shared plugin, extension and service lists read by both
+  `setup.sh` and `bin/update`
 - `aliases`: Shell command aliases
 - `functions/`: Bash/zsh function definitions
 - `bin/`: Custom utility scripts
+
+### Why `packages/` is at the root and not under `config/`
+
+`install.conf.yaml:27-31` globs `config/*` into `~/.config/`. Anything added
+under `config/` is therefore symlinked into the live configuration tree as a
+side effect, whether or not it is configuration. Data files that only the
+`bin/` scripts read belong outside it.

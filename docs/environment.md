@@ -96,7 +96,12 @@ this function.
 
 ### GitHub CLI Extensions
 
-- gh-dash, gh-eco, gh-f, gh-markdown-preview, gh-notify, gh-poi, gh-s
+The list lives in **`packages/gh-extensions`**, which `setup.sh` installs from —
+read it there rather than trusting a copy here. `bin/update` upgrades whatever is
+installed with `gh extension upgrade --all`.
 
-The list `setup.sh` actually installs is the `GH_EXTENSIONS` array there. This
-line used to claim `gh-copilot`, which has never been in it.
+Do not re-enumerate them in this file. A prose copy is how the drift happened:
+this line once claimed `gh-copilot`, which has never been installed, while
+`gh-stack` was installed on `macbook-m5-pro` and named neither here nor in
+`setup.sh` — so a fresh machine came up without it. One file both scripts read
+is reviewable in a diff; three copies are not.

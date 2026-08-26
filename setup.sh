@@ -126,8 +126,10 @@ EOF
 # arrays and treats an empty array as unbound under `set -u`. None of these use
 # `case`, because bash 3.2 cannot parse `case` inside a command substitution.
 
-# Is $1 a registered step?
-step_exists() {
+# Is $1 a registered step? Deliberately not named step_*: that prefix belongs to
+# the step implementations, and `just lint unit` asserts every step_* function is
+# in ALL_STEPS — a helper wearing the prefix would look like a dead step.
+known_step() {
     local s
     for s in $ALL_STEPS; do
         [ "$s" = "$1" ] && return 0
@@ -732,7 +734,7 @@ ONLY=$(printf '%s' "$ONLY" | tr ',' ' ')
 SKIP=$(printf '%s' "$SKIP" | tr ',' ' ')
 
 for step in $ONLY $SKIP $FROM; do
-    step_exists "$step" || {
+    known_step "$step" || {
         log_err "setup: unknown step: $step"
         log_info "Known steps: $ALL_STEPS"
         exit 1
