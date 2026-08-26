@@ -11,11 +11,58 @@ config/tmux/plugins/
 config/herdr/plugins.json
 config/herdr/plugins/github
 
-# Fish
-config/fish/completions
-config/fish/conf.d
+# Fish — vendored plugin files only, never whole directories.
+#
+# ~/.config/fish is a *directory symlink* into this repo, so fisher writes its
+# plugins straight into the working tree and anything generated under conf.d/
+# is live on disk the instant it exists. The rules below therefore name the
+# vendor files, grouped by the config/fish/fish_plugins line that installs
+# them; keep the two in step when adding or removing a plugin.
+#
+# They used to be four blanket directory ignores. That hid *everything* under
+# conf.d/, completions/ and functions/ from `git status` — including the 15
+# hand-written functions, which had to be force-added, and including any
+# generated file, which made `git checkout` recovery a silent no-op. That is
+# the trap SI-84 5a exists to remove: a recovery path that reports success
+# while doing nothing is worse than no recovery path.
+
+# Machine-local fish state (universal variables)
 config/fish/fish_variables
-config/fish/functions/*
+
+# edc/bass
+config/fish/functions/bass.fish
+config/fish/functions/__bass.py
+
+# jethrokuan/fzf  (also covers __fzfcmd.fish)
+config/fish/conf.d/fzf.fish
+config/fish/functions/__fzf*.fish
+
+# jethrokuan/z
+config/fish/conf.d/z.fish
+config/fish/functions/__z*.fish
+
+# jorgebucaran/autopair.fish
+config/fish/conf.d/autopair.fish
+config/fish/functions/_autopair_*.fish
+
+# jorgebucaran/fisher
+config/fish/functions/fisher.fish
+config/fish/completions/fisher.fish
+
+# jorgebucaran/replay.fish
+config/fish/functions/replay.fish
+config/fish/completions/replay.fish
+
+# joshmedeski/fish-lf-icons
+config/fish/conf.d/lf-icons.fish
+
+# Completions written by the tools themselves, not by fisher. otto.fish is a
+# symlink into the private submodule.
+config/fish/completions/copilot.fish
+config/fish/completions/grok.fish
+config/fish/completions/otto.fish
+
+# Harper LSP
 file_dictionaries/
 
 # Pi
