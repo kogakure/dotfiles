@@ -54,7 +54,12 @@ dotfiles_flags_init
 # `packages` also supplies fish, which `shell_default` needs, for the same
 # reason.
 
-ALL_STEPS="submodules directories homebrew packages link terminfo tmux_plugins extensions shell_default atuin gnupg runtimes editors projects macos services"
+ALL_STEPS="preflight submodules directories homebrew packages link terminfo tmux_plugins extensions shell_default atuin gnupg runtimes editors projects macos services"
+
+# Steps that are never recorded as completed, so they run on every invocation.
+# A precondition check that can be resumed past is a check that passes on the
+# strength of having once passed, which is the opposite of the point.
+NEVER_RESUME="preflight"
 
 # Completed steps, one name per line, so a re-run can skip them. Under
 # XDG_STATE_HOME when it is set — but the fallback is what matters on a fresh
@@ -231,6 +236,112 @@ cleanup() {
 trap cleanup EXIT
 
 # --- steps ------------------------------------------------------------------
+
+# README.md documents nine manual prerequisites. The old script re-checked two
+# of them — brew and fish — and trusted the rest, so a missing one surfaced
+# later as a confusing failure somewhere else: an unreachable SSH agent made the
+# submodule clone fail, and then four steps that read private/ failed for
+# reasons that looked unrelated.
+#
+# Every check here is read-only, so the step behaves identically under
+# --dry-run. Hard failures stop the run; soft ones warn and continue, because
+# they are either repaired by a later step or only matter for part of the
+# machine.
+step_preflight() {
+    local rc=0 licence root brewfiles
+
+    # Xcode command-line tools: git, curl and tic all come from here.
+    if xcode-select -p >/dev/null 2>&1; then
+        log_ok "Xcode command-line tools: $(xcode-select -p)"
+    else
+        log_err "Xcode command-line tools are missing — run: xcode-select --install"
+        rc=1
+    fi
+
+    # An unaccepted licence makes every CLT tool refuse to run, and says so on
+    # stderr while exiting non-zero. That message is the only reliable signal:
+    # `xcodebuild -checkFirstLaunchStatus` needs full Xcode, which is not
+    # installed on any of these machines.
+    licence=$(/usr/bin/git --version 2>&1 >/dev/null)
+    case "$licence" in
+        *[Ll]icen[cs]e*)
+            log_err "the Xcode licence is not accepted — run: sudo xcodebuild -license accept"
+            rc=1
+            ;;
+        *) log_ok "Xcode licence accepted" ;;
+    esac
+
+    # Rosetta, on Apple Silicon only. A warning rather than a failure: it is
+    # needed by some casks and by nothing in this repository.
+    if [ "$(uname -m)" = arm64 ]; then
+        if arch -x86_64 /usr/bin/true >/dev/null 2>&1; then
+            log_ok "Rosetta is available (arm64)"
+        else
+            log_warn "Rosetta is not installed — run: softwareupdate --install-rosetta"
+        fi
+    else
+        log_ok "architecture: $(uname -m)"
+    fi
+
+    # The load-bearing one. A fresh Mac reports something like Mac.local, and
+    # bin/homebrew-restore:41-44 then aborts the entire package install over it.
+    # Fail here, where the message can name the fix, rather than there.
+    brewfiles=$(cd homebrew 2>/dev/null && printf '%s ' *)
+    if [ -f "homebrew/$(host_id)" ]; then
+        log_ok "hostname '$(host_id)' has a Brewfile"
+    else
+        log_err "hostname '$(host_id)' has no Brewfile in homebrew/"
+        log_err "  available: ${brewfiles% }"
+        log_err "  fix with: sudo scutil --set HostName <one of those>"
+        rc=1
+    fi
+
+    # dotbot: installed by the `packages` step, so its absence now is expected
+    # on a fresh machine and only worth a note.
+    if have dotbot; then
+        log_ok "dotbot is on PATH"
+    else
+        log_skip "dotbot is not on PATH yet — the packages step installs it"
+    fi
+
+    # The SSH agent, via Secretive. Hard only when private/ has not been cloned
+    # yet, because that is the case where the clone is about to need it; on a
+    # re-run the submodule is already there and ssh is not on the critical path.
+    if [ -n "${SSH_AUTH_SOCK:-}" ] && [ -S "$SSH_AUTH_SOCK" ] && ssh-add -l >/dev/null 2>&1; then
+        log_ok "SSH agent reachable with at least one identity"
+    elif [ -e private/.git ]; then
+        log_warn "SSH agent is not reachable, but private/ is already cloned"
+    else
+        log_err "SSH agent is not reachable and private/ is not cloned yet."
+        log_err "  Start Secretive, add the key to GitHub, then export:"
+        log_err "  SSH_AUTH_SOCK=\$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+        rc=1
+    fi
+
+    # Homebrew: installed by the `homebrew` step, so absence is expected here.
+    if have brew; then
+        log_ok "Homebrew at $(brew_prefix)"
+    else
+        log_skip "Homebrew is not installed yet — the homebrew step installs it"
+    fi
+
+    # Repo location. setup.sh itself has no hardcoded path — it derives the root
+    # from its own location — but install.conf.yaml links ~/.agents and friends
+    # and README tells you to clone to ~/.dotfiles, so a different path is worth
+    # saying out loud.
+    root=$(dotfiles_root)
+    if [ "$root" = "$HOME/.dotfiles" ]; then
+        log_ok "repository at $root"
+    else
+        log_warn "repository is at $root, not $HOME/.dotfiles"
+    fi
+
+    # No CLI can answer this one: `mas account` was removed from mas, and
+    # nothing replaced it. Saying so is better than a check that always passes.
+    log_skip "Apple ID sign-in cannot be verified from the CLI; mas entries fail without it"
+
+    return "$rc"
+}
 
 step_submodules() {
     run git submodule update --init --recursive
@@ -494,9 +605,13 @@ RESUMED=0
 # going on failure and records the name; the state file only grows on success,
 # so a resumed run retries exactly what failed.
 setup_step() {
-    local name=$1 failed_before
+    local name=$1 failed_before resumable=1
 
-    if [ "$FORCE" -eq 0 ] && state_done "$name"; then
+    for skip in $NEVER_RESUME; do
+        [ "$skip" = "$name" ] && resumable=0
+    done
+
+    if [ "$resumable" -eq 1 ] && [ "$FORCE" -eq 0 ] && state_done "$name"; then
         log_step "$name"
         log_skip "already completed on an earlier run (--force to redo)"
         RESUMED=$((RESUMED + 1))
@@ -505,7 +620,9 @@ setup_step() {
 
     failed_before=${#_DL_STEP_FAILED[@]}
     run_step "$name" "step_$name"
-    [ "${#_DL_STEP_FAILED[@]}" -eq "$failed_before" ] && state_record "$name"
+    if [ "${#_DL_STEP_FAILED[@]}" -eq "$failed_before" ] && [ "$resumable" -eq 1 ]; then
+        state_record "$name"
+    fi
     return 0
 }
 
@@ -593,7 +710,18 @@ if [ "$DOTFILES_DRY_RUN" -eq 0 ]; then
 fi
 
 for step in $ALL_STEPS; do
-    wanted "$step" && setup_step "$step"
+    wanted "$step" || continue
+    setup_step "$step"
+
+    # preflight is a precondition, not a peer of the steps after it. When the
+    # machine is not ready they fail for reasons that look unrelated to the
+    # cause — a hostname with no Brewfile aborts `brew bundle` and takes every
+    # package with it, and then nine steps fail because their binaries are
+    # missing. Stop at the cause instead of reporting sixteen consequences.
+    if [ "$step" = preflight ] && [ ${#_DL_STEP_FAILED[@]} -gt 0 ]; then
+        log_err "preflight failed — fix the above and re-run, or --skip preflight."
+        break
+    fi
 done
 
 summary_rc=0
