@@ -10,8 +10,12 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Stefan Imhoff"
-      user-mail-address "gpg@kogakure.8shield.net")
+;;
+;; Kept in the private submodule rather than in this public repo, alongside
+;; private/git/config-personal and private/jj/config.toml. The trailing `t`
+;; makes a missing file non-fatal, so Doom still starts on a machine without
+;; the submodule checked out.
+(load (expand-file-name "~/.dotfiles/private/doom/identity.el") t)
 
 ;;; ----------------------------------------------------------------------------
 ;;; UI: theme & appearance

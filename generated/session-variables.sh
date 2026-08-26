@@ -51,7 +51,6 @@ if [ "$__dl_interactive" -eq 1 ]; then
     GPG_TTY="$(tty)"
     export GPG_TTY
 fi
-export JJ_CONFIG_DIR="$HOME/.config/jj"
 if [ "$__dl_os" = Darwin ]; then
     export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 fi

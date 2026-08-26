@@ -1,6 +1,6 @@
-[user]
-name = "Stefan Imhoff"
-email = "gpg@kogakure.8shield.net"
+# The identity — [user] and the signing key — lives in private/jj/config.toml,
+# linked to ~/.config/jj/config.toml. jj reads both that and ~/.jjconfig.toml
+# (this file) and merges them, so everything reviewable stays here.
 
 [ui]
 default-command = "log"
@@ -15,4 +15,4 @@ immutable = "main@origin | master@origin"
 [signing]
 backend = "gpg"
 behavior = "own"
-key = "7A7253E8!"
+# key = … see private/jj/config.toml

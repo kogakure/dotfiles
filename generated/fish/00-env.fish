@@ -34,7 +34,6 @@ end
 if status is-interactive
     set -gx GPG_TTY "$(tty)"
 end
-set -gx JJ_CONFIG_DIR "$HOME/.config/jj"
 if test "$__dl_os" = Darwin
     set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 end
