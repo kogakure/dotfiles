@@ -220,10 +220,15 @@ jobs:
       - name: bash and fish build the same PATH
         run: |
           set -euo pipefail
-          b=$(env -i HOME="$HOME" PATH=/usr/bin:/bin bash --noprofile --norc \
+          # Resolve the interpreters before `env -i` strips PATH. Homebrew puts
+          # fish in /opt/homebrew/bin on the macOS runner, which is not in the
+          # minimal PATH handed to the child, so a bare `fish` exits 127.
+          BASH_BIN=$(command -v bash)
+          FISH_BIN=$(command -v fish)
+          b=$(env -i HOME="$HOME" PATH=/usr/bin:/bin "$BASH_BIN" --noprofile --norc \
                 -c '. generated/session-variables.sh >/dev/null 2>&1; echo "$PATH"')
-          f=$(env -i HOME="$HOME" PATH=/usr/bin:/bin fish --no-config \
-                -c 'for x in generated/fish/00-env.fish generated/fish/10-path.fish
+          f=$(env -i HOME="$HOME" PATH=/usr/bin:/bin "$FISH_BIN" --no-config \
+                -c 'for x in config/fish/conf.d/00-env.fish config/fish/conf.d/10-path.fish
                       source $x
                     end
                     string join ":" $PATH' 2>/dev/null)
