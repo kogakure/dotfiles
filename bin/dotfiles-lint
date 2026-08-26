@@ -839,6 +839,84 @@ unit_prune() {
     )
 }
 
+# bin/update's keep-alive captured no PID and had no trap, so every interrupted
+# run leaked a refresher until the loop next woke up — and setup.sh primed the
+# password before it had parsed --dry-run. Both properties are checked here, and
+# both are reachable without a password: privilege_refresh is redefined to
+# `true`, so the whole lifecycle runs with no escalation at all. That seam is
+# the reason it is a function rather than an inline command.
+#
+# privilege_prime is only ever called in dry-run mode below. Nothing here calls
+# the real thing.
+unit_privilege() {
+    unit_require bin/lib/privilege.sh || return 1
+    (
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        # shellcheck source=bin/lib/privilege.sh
+        . bin/lib/privilege.sh
+
+        privilege_refresh() { true; }
+        _DL_PRIVILEGE_INTERVAL=1
+
+        bad=0
+
+        # Initialised at source time rather than on first use: this file is
+        # sourced by setup.sh, which runs under `set -u`, and a bare `unset`
+        # would make teardown fatal. '' means set-and-empty, UNSET means unset.
+        unit_expect "PID is initialised at source time" "" \
+            "${_DL_PRIVILEGE_PID-UNSET}" || bad=1
+
+        # Release when nothing is running: exactly the case a trap hits after an
+        # early exit, and the case bin/update could not handle.
+        privilege_release || {
+            fail "unit: privilege_release failed when no refresher was running"
+            bad=1
+        }
+
+        # --dry-run must neither prompt nor start anything.
+        DOTFILES_DRY_RUN=1 privilege_prime >/dev/null || bad=1
+        DOTFILES_DRY_RUN=1 privilege_keepalive
+        unit_expect "keepalive is inert under --dry-run" "" "$_DL_PRIVILEGE_PID" || bad=1
+
+        privilege_keepalive
+        pid=$_DL_PRIVILEGE_PID
+        if [ -z "$pid" ]; then
+            fail "unit: privilege_keepalive captured no PID"
+            bad=1
+        else
+            kill -0 "$pid" 2>/dev/null || {
+                fail "unit: privilege_keepalive started no refresher"
+                bad=1
+            }
+
+            # Starting twice must not leave a second loop behind.
+            privilege_keepalive
+            unit_expect "keepalive is idempotent" "$pid" "$_DL_PRIVILEGE_PID" || bad=1
+
+            privilege_release
+            unit_expect "release clears the PID" "" "$_DL_PRIVILEGE_PID" || bad=1
+
+            # Reap it here rather than in privilege_release: a trap that can
+            # block is worse than one that leaves a reapable child behind.
+            wait "$pid" 2>/dev/null
+            if kill -0 "$pid" 2>/dev/null; then
+                fail "unit: privilege_release left the refresher running"
+                bad=1
+            fi
+
+            # Twice, because teardown can run from both a trap and a normal path.
+            privilege_release || {
+                fail "unit: a second privilege_release failed"
+                bad=1
+            }
+        fi
+
+        [ "$bad" -eq 0 ] && ok "privilege_keepalive captures its PID; release is safe idle, twice and under --dry-run"
+        exit "$bad"
+    )
+}
+
 # Each unit_* function prints its own ok/fail lines and returns 0 or 1, so one
 # failing property does not hide the others.
 check_unit() {
@@ -851,6 +929,7 @@ check_unit() {
     unit_conflicts || bad=1
     unit_no_prune || bad=1
     unit_prune || bad=1
+    unit_privilege || bad=1
     unit_log_plain || bad=1
     [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit
 }
