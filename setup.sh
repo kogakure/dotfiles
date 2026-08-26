@@ -54,12 +54,14 @@ dotfiles_flags_init
 # `packages` also supplies fish, which `shell_default` needs, for the same
 # reason.
 
-ALL_STEPS="preflight submodules directories homebrew packages link terminfo tmux_plugins extensions shell_default atuin gnupg runtimes editors projects macos services"
+ALL_STEPS="preflight submodules directories homebrew packages link terminfo tmux_plugins extensions shell_default gnupg runtimes editors projects macos services interactive"
 
 # Steps that are never recorded as completed, so they run on every invocation.
 # A precondition check that can be resumed past is a check that passes on the
-# strength of having once passed, which is the opposite of the point.
-NEVER_RESUME="preflight"
+# strength of having once passed, which is the opposite of the point. And
+# `interactive` reports itself as done when it was skipped for want of a TTY, so
+# recording it would mean a later interactive run skipped it for good.
+NEVER_RESUME="preflight interactive"
 
 # Completed steps, one name per line, so a re-run can skip them. Under
 # XDG_STATE_HOME when it is set — but the fallback is what matters on a fresh
@@ -87,6 +89,10 @@ SKIP=""
 FROM=""
 FORCE=0
 LIST=0
+# On by default only when there is a terminal to prompt at, so an unattended run
+# — cron, ssh, a CI job — never blocks without having to be told not to.
+INTERACTIVE=0
+[ -t 0 ] && INTERACTIVE=1
 
 usage() {
     cat <<'EOF'
@@ -101,6 +107,8 @@ Options:
   --skip a,b             Run everything except these steps.
   --from STEP            Run STEP and everything after it.
   --force                Ignore the state file; redo completed steps.
+  --interactive          Run the steps that prompt (default with a TTY).
+  --no-interactive       Skip the steps that prompt.
   --list                 Print the ordered step list and exit.
   -y, --yes              Answer prompts with yes.
   -h, --help             This.
@@ -487,12 +495,45 @@ step_shell_default() {
     return "$rc"
 }
 
-step_atuin() {
-    if ! have atuin; then
-        log_warn "atuin not found — expected it from the Brewfile or mise."
+# Everything that blocks on a prompt, gathered at the end of the run.
+#
+# These two used to sit mid-script with about ten steps after them, which is
+# what made an unattended run impossible: `atuin login` asks for a username,
+# password and sync key, and `doom install` asks several yes/no questions with
+# no --force. Nothing after them could complete without a human present.
+step_interactive() {
+    local rc=0
+
+    if [ "$INTERACTIVE" -eq 0 ]; then
+        log_skip "no TTY or --no-interactive: skipping the steps that prompt"
         return 0
     fi
-    run atuin login
+
+    # `atuin status` prints the logged-in username, and is the only way to tell
+    # whether logging in again would be pointless — there is no --if-needed.
+    if ! have atuin; then
+        log_warn "atuin not found — expected it from the Brewfile or mise."
+    elif atuin status 2>/dev/null | grep -q "^Username: ."; then
+        log_skip "atuin is already logged in"
+    else
+        run atuin login || rc=1
+    fi
+
+    # Keyed on the install artefact, not on the clone. `doom install` used to sit
+    # inside step_editors' `[ ! -d ~/.config/emacs ]` guard, so an aborted first
+    # run left the directory present, never retried the install, and every run
+    # after it reported "already installed" over a half-installed tree.
+    # .local/straight is what a completed `doom install` leaves behind; a fresh
+    # clone has no .local at all.
+    if [ ! -x "$HOME/.config/emacs/bin/doom" ]; then
+        log_skip "Doom Emacs is not cloned yet — the editors step does that"
+    elif [ -d "$HOME/.config/emacs/.local/straight" ]; then
+        log_skip "Doom Emacs is already installed"
+    else
+        run "$HOME/.config/emacs/bin/doom" install || rc=1
+    fi
+
+    return "$rc"
 }
 
 step_gnupg() {
@@ -524,11 +565,14 @@ step_editors() {
     log_info "Installing Neovim plugins"
     run nvim --headless "+Lazy! sync" +qa || rc=1
 
+    # The clone only. `doom install` prompts, so it belongs to the interactive
+    # step — and separating them is also what lets a half-finished install be
+    # retried, since the guard here can no longer stand in for the install
+    # having succeeded.
     if [ -d "$HOME/.config/emacs" ]; then
-        log_skip "Doom Emacs is already installed"
+        log_skip "Doom Emacs is already cloned"
     else
         run git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.config/emacs" || rc=1
-        run "$HOME/.config/emacs/bin/doom" install || rc=1
     fi
 
     return "$rc"
@@ -645,6 +689,8 @@ while [ $# -gt 0 ]; do
         -y | --yes) DOTFILES_ASSUME_YES=1 ;;
         --force) FORCE=1 ;;
         --list) LIST=1 ;;
+        --interactive) INTERACTIVE=1 ;;
+        --no-interactive) INTERACTIVE=0 ;;
         --only)
             shift
             ONLY="${1:-}"
