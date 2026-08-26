@@ -174,18 +174,21 @@ jobs:
       # startup files is the only thing that catches a fish-syntax alias in a
       # POSIX file — the regression that shipped to three machines, which
       # `bash -n` parses without complaint. Prove the check can still fail.
+      # The alias file is generated now, so the mutation goes there. That makes
+      # this check matter more, not less: a generator bug reaches every shell
+      # at once.
       - name: POSIX source test detects a fish-syntax alias
         run: |
           set -euo pipefail
-          cp aliases "$RUNNER_TEMP/aliases.orig"
-          printf '\nalias broken "echo nope"\n' >> aliases
+          cp generated/aliases.sh "$RUNNER_TEMP/aliases.orig"
+          printf '\nalias broken "echo nope"\n' >> generated/aliases.sh
           if bin/dotfiles-lint posix; then
-            cp "$RUNNER_TEMP/aliases.orig" aliases
+            cp "$RUNNER_TEMP/aliases.orig" generated/aliases.sh
             echo "::error::the POSIX source test passed on a fish-syntax alias"
             exit 1
           fi
-          cp "$RUNNER_TEMP/aliases.orig" aliases
-          git diff --exit-code -- aliases
+          cp "$RUNNER_TEMP/aliases.orig" generated/aliases.sh
+          git diff --exit-code -- generated/aliases.sh
           echo "OK: the POSIX source test rejects a fish-syntax alias"
 
       # The drift gate's whole job is to stop a hand-edit to a generated file
