@@ -15,14 +15,26 @@
 #   screenshot         SC2048  unquoted $* -> "$@"
 #                      SC2086  same line
 #
-# The 9 that remain are all in files SI-82 never touched, and they belong to
-# SI-84's shell-config consolidation:
-#   aliases              SC2139 x3, SC2142
+# SI-84 took it to 4, by deleting the files rather than by fixing them. The
+# hand-written `aliases` and `session-variables.sh` are now generated from
+# shell/*.spec, and the generator does not emit any of what they were flagged
+# for. What it cleared:
+#   aliases              SC2139 x3  double-quoted bodies, so $HOME expanded at
+#                                   definition -> single-quoted now
+#                        SC2142     `alias ia='open $1 …'`; aliases cannot take
+#                                   positional parameters, and `open -a APP
+#                                   FILE` never needed one
+#   session-variables.sh SC2155     export X=$(cmd) -> assign, then export
+#
+# The generated files themselves add zero findings, which is the bar they have
+# to keep: they are in shell_sources, so shfmt and shellcheck both see them.
+#
+# The 4 that remain belong to SI-84's follow-up (the functions consolidation,
+# phase 5d) and to bash_profile:
 #   bash_profile         SC1090 x2
-#   session-variables.sh SC2155
 #   functions/fcd.sh     SC2164
 #   functions/fco.sh     SC2016
 #
 # Hand-edited rather than regenerated: `just lint-snapshot` rewrites this file
 # from a heredoc in bin/dotfiles-lint and would destroy every comment above.
-shellcheck=9
+shellcheck=4
