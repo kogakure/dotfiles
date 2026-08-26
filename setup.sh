@@ -41,8 +41,20 @@ dotfiles_flags_init
 #
 # Order matters and is the contract. Anything that blocks on a prompt belongs
 # last; anything that provides a binary a later step calls belongs before it.
+#
+# `link` runs after `packages`, not before it. ./install execs dotbot, and
+# dotbot is a brew formula — `brew "dotbot"` in all three Brewfiles — so it only
+# exists once `packages` has run `brew bundle`. The old order called ./install
+# nineteen lines before the mechanism that installs it, which worked on every
+# machine that already had it and on no fresh one. Nothing between the two needs
+# a linked config: install.conf.yaml has no `shell:` block and declares its own
+# `create:` parents, and `brew bundle` reads homebrew/<host> straight from the
+# repo.
+#
+# `packages` also supplies fish, which `shell_default` needs, for the same
+# reason.
 
-ALL_STEPS="submodules directories link homebrew packages terminfo tmux_plugins extensions shell_default atuin gnupg runtimes editors projects macos services"
+ALL_STEPS="submodules directories homebrew packages link terminfo tmux_plugins extensions shell_default atuin gnupg runtimes editors projects macos services"
 
 # Completed steps, one name per line, so a re-run can skip them. Under
 # XDG_STATE_HOME when it is set — but the fallback is what matters on a fresh
