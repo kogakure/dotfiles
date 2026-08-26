@@ -14,6 +14,9 @@ just                  # list the recipes
 just setup            # ./setup.sh
 just link             # ./install
 just check-links      # ./install --dry-run
+just setup *ARGS      # ./setup.sh          (e.g. just setup --only link)
+just setup-dry        # ./setup.sh --dry-run
+just setup-steps      # ./setup.sh --list
 just update           # bin/update
 just lint             # every check (see below)
 just lint-staged      # the same checks, staged files only
@@ -50,7 +53,7 @@ written for bash 3.2 so it still runs under a reduced PATH.
 | `zsh`        | `zsh -n` over `zshrc`/`zshenv` — shellcheck has no zsh dialect    |
 | `posix`      | **sources** the startup files and asserts stderr is empty         |
 | `yaml`       | parses `install.conf.yaml`, asserts every `link:` source exists   |
-| `unit`       | runs the pure helpers in `bin/lib/` against fixtures               |
+| `unit`       | runs the pure helpers in `bin/lib/` against fixtures, plus two whole-file invariants — see below |
 | `manifest`   | parses `preferences.manifest`, asserts it covers `private/preferences/` |
 | `drift`      | re-runs the shell-config generator, asserts no diff (SI-84)       |
 
@@ -132,6 +135,30 @@ Two properties worth keeping when this grows:
   The 2- and 4-entry rows are the repair path, and reverting to the old
   append-only rule fails on exactly those two while 0 and 1 still pass. That
   asymmetry is why the bug shipped, and it is what the check now pins down.
+
+### Two invariants in `unit` that are not about `bin/lib/`
+
+Most `unit_*` functions exercise a pure helper against a fixture. Two instead
+assert a property of a whole file, because both properties are invisible until a
+fresh machine trips over them.
+
+**`unit_steps` — `setup.sh`'s registry agrees with its functions.** The driver
+dispatches by name, `run_step "$step" "step_$step"`, so a typo in `ALL_STEPS` is
+not a syntax error: it is a step that fails with "command not found", on a fresh
+machine, halfway through a bootstrap. The reverse is just as quiet — a `step_*`
+function missing from `ALL_STEPS` never runs and nothing says so. Both
+directions are checked, plus that `NEVER_RESUME` names real steps.
+
+This is why `known_step` is not called `step_exists`. The `step_` prefix is
+reserved for step implementations; a helper wearing it looks exactly like a dead
+step, and the check said so the first time it ran.
+
+**`unit_packages` — the `packages/` files are not empty and not duplicated.**
+`package_list` returning nothing on a missing file would put the drift straight
+back: a run that installs no gh extensions and reports success. So a missing file
+must stay distinguishable from an empty one, and the real files are checked too —
+a list that parses to no entries, or names an entry twice, is a defect in the
+data rather than a preference.
 
 ## `bin/lib/` — the shared library
 
@@ -359,12 +386,27 @@ permanently-vacuous one are both worse than no job:
 - `just lint-strict` is used rather than `just lint`, so a linter that failed
   to install is an error instead of a skip.
 
-Beyond the lint run, CI asserts three properties of the guardrails themselves:
+Beyond the lint run, CI asserts five properties of the guardrails themselves:
 
 1. `just -f "$GITHUB_WORKSPACE/Justfile" --list` works from outside the
    checkout — no recipe depends on cwd.
 2. The pre-commit hook exits 0 under `PATH=/usr/bin:/bin`.
 3. The POSIX source test fails when fed a fish-syntax alias.
+4. `setup.sh`'s step graph is parseable: `--help` works, `--list` yields at
+   least fifteen steps, and an unknown step name is **rejected** rather than
+   silently doing nothing.
+5. **`setup.sh --dry-run` is inert.** It exits 0, leaves `git status
+   --porcelain` byte-identical, and writes no state file. Five steps are
+   skipped — `preflight`, `packages`, `link`, `gnupg`, `macos` — because they
+   need a hostname with a matching Brewfile, brew, dotbot, or the private
+   submodule, none of which CI has. Skipping *by name* rather than listing what
+   to keep means a step added later is covered by default.
+
+That fifth one is worth its cost. A dry run is a promise, and the only way to
+know it holds is to make one and look at the tree afterwards. Two leaks were
+found exactly this way while it was being written: the Homebrew and WezTerm
+installers were command substitutions, which bash expands *before* `run()` can
+decide not to execute anything, so both would have hit the network on a dry run.
 
 ## `.editorconfig` — two files, one letter apart
 

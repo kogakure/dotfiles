@@ -839,6 +839,57 @@ unit_prune() {
     )
 }
 
+# setup.sh dispatches by name — `run_step "$step" "step_$step"` — so a typo in
+# ALL_STEPS is not a syntax error. It is a step that fails at runtime with
+# "command not found", on a fresh machine, halfway through a bootstrap. And a
+# step_* function missing from ALL_STEPS is simply dead: it never runs and
+# nothing says so. Both directions are checked here, plus that NEVER_RESUME
+# names real steps.
+unit_steps() {
+    unit_require setup.sh || return 1
+    (
+        bad=0
+        steps=$(sed -n 's/^ALL_STEPS="\(.*\)"$/\1/p' "$REPO_ROOT/setup.sh")
+        never=$(sed -n 's/^NEVER_RESUME="\(.*\)"$/\1/p' "$REPO_ROOT/setup.sh")
+
+        if [ -z "$steps" ]; then
+            fail "unit: cannot find ALL_STEPS in setup.sh"
+            exit 1
+        fi
+
+        for s in $steps; do
+            grep -q "^step_${s}() {" "$REPO_ROOT/setup.sh" || {
+                fail "unit: ALL_STEPS names '$s', but setup.sh defines no step_$s"
+                bad=1
+            }
+        done
+
+        while IFS= read -r f; do
+            [ -n "$f" ] || continue
+            case " $steps " in
+                *" $f "*) ;;
+                *)
+                    fail "unit: setup.sh defines step_$f, but ALL_STEPS omits it"
+                    bad=1
+                    ;;
+            esac
+        done < <(sed -n 's/^step_\([a-z_][a-z_]*\)() {$/\1/p' "$REPO_ROOT/setup.sh")
+
+        for s in $never; do
+            case " $steps " in
+                *" $s "*) ;;
+                *)
+                    fail "unit: NEVER_RESUME names '$s', which is not a step"
+                    bad=1
+                    ;;
+            esac
+        done
+
+        [ "$bad" -eq 0 ] && ok "setup.sh's ALL_STEPS and its step_* functions agree ($(printf '%s' "$steps" | wc -w | tr -d ' ') steps)"
+        exit "$bad"
+    )
+}
+
 # The packages/ files replace lists that were inline in setup.sh while bin/update
 # needed the same ones, so a parser that silently returns nothing would put the
 # drift straight back — a run that installs no gh extensions and reports success.
@@ -991,6 +1042,7 @@ check_unit() {
     unit_no_prune || bad=1
     unit_prune || bad=1
     unit_packages || bad=1
+    unit_steps || bad=1
     unit_privilege || bad=1
     unit_log_plain || bad=1
     [ "$bad" -eq 0 ] || FAILED[${#FAILED[@]}]=unit

@@ -15,8 +15,16 @@ default:
     @just --list --unsorted
 
 # Full system setup (installs everything).
-setup:
-    ./setup.sh
+setup *ARGS:
+    ./setup.sh {{ ARGS }}
+
+# Show what `just setup` would do, without touching anything.
+setup-dry:
+    ./setup.sh --dry-run
+
+# Print setup.sh's ordered step list.
+setup-steps:
+    ./setup.sh --list
 
 # Re-run dotbot to create/update the symlinks.
 link:
