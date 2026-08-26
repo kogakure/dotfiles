@@ -17,6 +17,10 @@
 - create:
     ~/.config:
       mode: 0755
+    # jj reads ~/.jjconfig.toml *and* ~/.config/jj/config.toml, merging both.
+    # The identity lives in the second so it can come from private/.
+    ~/.config/jj:
+      mode: 0755
     ~/.gnupg:
       mode: 0700
     ~/.ssh:
@@ -41,6 +45,7 @@
     # One rename away from a permanently dirty repo. Do not "tidy" that ignore.
     ~/.config/git/config-personal: private/git/config-personal
     ~/.config/git/config-work: private/git/config-work
+    ~/.config/jj/config.toml: private/jj/config.toml
     ~/.aliases: aliases
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc

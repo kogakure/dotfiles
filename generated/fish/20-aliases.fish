@@ -17,6 +17,7 @@ if test "$__dl_os" = Darwin
     alias ia 'open -a "/Applications/iA Writer.app"'
 end
 alias lg 'lazygit'
+alias glu 'git config --local include.path ~/.config/git/config-personal'
 alias v 'vim'
 if command -v nvim >/dev/null 2>&1
     alias vim 'nvim'

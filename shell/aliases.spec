@@ -37,6 +37,16 @@ dotfiles = cd $HOME/.dotfiles
 
 lg = lazygit
 
+# "git local user": point this repo at the personal identity.
+#
+# It used to spell the name, address and signing key out inline, in two public
+# files — `aliases` and config.fish — and they had to be kept in step with
+# private/git/config-personal, which already held the same three values. An
+# include reads them from the one place instead, so nothing can drift and no
+# identity data is in this repo. It also picks up commit.gpgsign, which the
+# hand-written version silently did not.
+glu = git config --local include.path ~/.config/git/config-personal
+
 # --- Editors ----------------------------------------------------------------
 
 v = vim

@@ -32,8 +32,12 @@ XDG_STATE_HOME = $HOME/.local/state
 @interactive GPG_TTY = $(tty)
 
 # --- jj ---------------------------------------------------------------------
-
-JJ_CONFIG_DIR = $HOME/.config/jj
+#
+# JJ_CONFIG_DIR is deliberately absent. config.fish:48 exported it, but jj has
+# no such variable — its override is JJ_CONFIG — so it never did anything. jj
+# already reads ~/.jjconfig.toml and ~/.config/jj/config.toml on its own
+# (`jj config path --user` lists both), which is how the identity moved to
+# private/jj/config.toml without any environment help.
 
 # --- SSH --------------------------------------------------------------------
 
