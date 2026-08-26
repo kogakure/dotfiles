@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Ask for the administrator password upfront
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until script has finished
-while true; do
-    sudo -n true
-    sleep 30
-    kill -0 "$$" || exit
-done 2>/dev/null &
-
 # `set -uo pipefail`, deliberately without -e: a broken tap or an offline plugin
 # registry must not skip the ten steps after it. Every step goes through
 # run_step instead, which keeps going and makes the run exit non-zero with the
@@ -27,8 +17,22 @@ cd "$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || {
 # shellcheck source-path=SCRIPTDIR
 # shellcheck source=lib/common.sh
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/privilege.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/privilege.sh" || exit 1
 
 dotfiles_flags_init
+
+# Ask once, keep the timestamp warm, and stop the refresher on the way out.
+#
+# This replaces a local copy of the loop that captured no PID and had no trap:
+# the loop's own `kill -0 "$$"` check was the only thing stopping it, and it ran
+# only after the sleep, so every interrupted run leaked a refresher for up to
+# thirty seconds. It also sat above the `set` line and above the library, so it
+# could use neither. See bin/lib/privilege.sh.
+trap privilege_release EXIT
+privilege_prime
+privilege_keepalive
 
 # Every step below goes through run_step, so one failure is reported by name in
 # the summary instead of scrolling past and leaving the run's exit status to
@@ -59,6 +63,32 @@ update_maintenance() {
     mo optimize
 }
 
+# herdr has no `plugin update` — re-running `plugin install` is the update path,
+# so the set has to come from somewhere. It comes from the same file setup.sh
+# installs from, which is the point of packages/: this script upgraded gh
+# extensions and fish plugins but had no idea herdr plugins existed, so they were
+# only ever installed and never updated.
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+update_herdr() {
+    local plugin list rc=0
+
+    if ! have herdr; then
+        log_warn "herdr not found. Skipping plugin update."
+        return 0
+    fi
+
+    # Captured, so a missing file fails loudly instead of updating nothing.
+    list=$(package_list packages/herdr-plugins) || {
+        log_err "update: cannot read packages/herdr-plugins"
+        return 1
+    }
+
+    for plugin in $list; do
+        run herdr plugin install "$plugin" --yes || rc=1
+    done
+    return "$rc"
+}
+
 # Wrapped in a function only so run_step can name it in the summary.
 # shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
 softwareupdate_all() {
@@ -69,6 +99,7 @@ run_step homebrew update_homebrew
 run_step ruby update_ruby
 run_step "tmux plugins" "$HOME/.tmux/plugins/tpm/bin/update_plugins" all
 run_step "gh extensions" gh extension upgrade --all
+run_step "herdr plugins" update_herdr
 # fisher is a fish *function*, not an executable — the brew formula ships only
 # share/fish/vendor_functions.d/fisher.fish. It has to be driven through fish.
 run_step "fish plugins" fish -c "fisher update"

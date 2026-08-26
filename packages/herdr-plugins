@@ -1,0 +1,17 @@
+# herdr plugins, installed by setup.sh's `extensions` step.
+#
+# One owner/repo per line, as `herdr plugin install` takes it. `#` comments and
+# blank lines are ignored.
+#
+# setup.sh installed two of these as literal command lines; three are installed
+# on macbook-m5-pro. ogulcancelik/herdr-browser was the missing one, so a fresh
+# machine silently came up without it.
+#
+# Note that the installed plugin id is not the repo name: herdr reports these as
+# cloudmanic.herdr-plus, official.browser and tdi.worktree-setup respectively,
+# which is why a directory listing under config/herdr/plugins/github/ cannot be
+# used to reconstruct this list.
+
+cloudmanic/herdr-plus
+ogulcancelik/herdr-browser
+tdi/herdr-worktree-setup

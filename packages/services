@@ -1,0 +1,25 @@
+# Homebrew services started at the end of a bootstrap, by setup.sh's `services`
+# step. One formula name per line; `#` comments and blank lines are ignored.
+#
+# Each is started only when brew actually has the formula installed, and that
+# guard is the point of this file rather than a detail of it. The two lines it
+# replaces were unconditional:
+#
+#     brew services start atuin
+#     brew services start borders
+#
+# Neither holds on every host:
+#
+#   atuin    brew formula on mac-mini (homebrew/mac-mini:44) and macbook-2019
+#            (:17), but mise-managed on macbook-m5-pro (config/mise/mise.toml:22)
+#            and absent from its Brewfile entirely
+#   borders  only in macbook-2019's Brewfile (:301, felixkratz/formulae/borders);
+#            not installed on macbook-m5-pro or mac-mini
+#
+# So on macbook-m5-pro both lines failed and on mac-mini one did. They sat
+# second-to-last under `set -e`, which means the final `echo "Setup complete."`
+# was unreachable on two of three machines — the run always ended one line early
+# with a non-zero status and no summary saying why.
+
+atuin
+borders

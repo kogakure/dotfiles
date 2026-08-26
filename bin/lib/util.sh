@@ -34,6 +34,29 @@ private_root() { printf '%s\n' "$_DL_ROOT/private"; }
 # Usage: host_id
 host_id() { hostname -s; }
 
+# Print one entry per line from a packages/ data file, dropping `#` comments,
+# trailing whitespace and blank lines.
+#
+# The lists these files hold — gh extensions, herdr plugins, brew services —
+# were inline in setup.sh while bin/update needed the same ones, so there was no
+# shared definition and they drifted: gh-stack was installed on a machine and in
+# neither the script nor the docs, and one of three herdr plugins was missing.
+# A file both scripts read is reviewable in a diff; two arrays in two scripts
+# are not.
+#
+# Pure: it takes the path as an argument and prints, so `just lint unit` can
+# check the parse against fixtures. Returns 1 on a missing file, so a caller can
+# fail loudly rather than install nothing.
+#
+# Usage: package_list <file>
+package_list() {
+    [ -f "$1" ] || return 1
+    sed -e 's/#.*//' \
+        -e 's/^[[:space:]]*//' \
+        -e 's/[[:space:]]*$//' \
+        -e '/^$/d' "$1"
+}
+
 # Decide whether to run, given the state of the private submodule. $@ are
 # submodule-relative paths this step writes ("preferences", "claude/work").
 #

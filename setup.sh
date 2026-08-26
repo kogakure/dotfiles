@@ -68,42 +68,18 @@ STATE_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/setup-state"
 
 # --- data -------------------------------------------------------------------
 #
-# Whitespace-delimited lists rather than arrays, so the step functions can
-# iterate them unquoted without tripping the bash 3.2 empty-array rule. These
-# move out to packages/ later in this phase.
+# The plugin, extension and service lists live in files, read through
+# package_list, so setup.sh and bin/update share one definition instead of
+# keeping two that drift. The fish list is config/fish/fish_plugins, which
+# fisher already maintains — setup.sh used to carry a second copy of it.
+
+GH_EXTENSIONS_FILE=packages/gh-extensions
+HERDR_PLUGINS_FILE=packages/herdr-plugins
+SERVICES_FILE=packages/services
+FISH_PLUGINS_FILE=config/fish/fish_plugins
 
 HOMEBREW_INSTALLER=https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 WEZTERM_TERMINFO=https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo
-
-GH_EXTENSIONS="
-dlvhdr/gh-dash
-jrnxf/gh-eco
-gennaro-tedesco/gh-f
-yusukebe/gh-markdown-preview
-meiji163/gh-notify
-seachicken/gh-poi
-gennaro-tedesco/gh-s
-"
-
-HERDR_PLUGINS="
-cloudmanic/herdr-plus
-tdi/herdr-worktree-setup
-"
-
-FISH_PLUGINS="
-jorgebucaran/fisher
-jorgebucaran/autopair.fish
-jorgebucaran/replay.fish
-edc/bass
-jethrokuan/z
-joshmedeski/fish-lf-icons
-jethrokuan/fzf
-"
-
-SERVICES="
-atuin
-borders
-"
 
 SELECTED=""
 ONLY=""
@@ -428,9 +404,21 @@ step_tmux_plugins() {
 }
 
 step_extensions() {
-    local extension plugin rc=0
+    local extension plugin rc=0 gh_list herdr_list
 
-    for extension in $GH_EXTENSIONS; do
+    # Captured rather than iterated inline: `for x in $(package_list …)`
+    # discards package_list's exit status, so a missing data file would install
+    # nothing and report success.
+    gh_list=$(package_list "$GH_EXTENSIONS_FILE") || {
+        log_err "setup: cannot read $GH_EXTENSIONS_FILE"
+        return 1
+    }
+    herdr_list=$(package_list "$HERDR_PLUGINS_FILE") || {
+        log_err "setup: cannot read $HERDR_PLUGINS_FILE"
+        return 1
+    }
+
+    for extension in $gh_list; do
         # Current gh exits 0 on an already-installed extension, but it has not
         # always, and a directory test costs nothing and skips the network.
         if [ -d "$HOME/.local/share/gh/extensions/${extension##*/}" ]; then
@@ -441,7 +429,7 @@ step_extensions() {
     done
 
     if have herdr; then
-        for plugin in $HERDR_PLUGINS; do
+        for plugin in $herdr_list; do
             run herdr plugin install "$plugin" --yes || rc=1
         done
     else
@@ -452,7 +440,12 @@ step_extensions() {
 }
 
 step_shell_default() {
-    local fish_path plugin rc=0
+    local fish_path plugin rc=0 fish_list
+
+    fish_list=$(package_list "$FISH_PLUGINS_FILE") || {
+        log_err "setup: cannot read $FISH_PLUGINS_FILE"
+        return 1
+    }
 
     log_info "Configuring fish as default shell"
     if ! have fish; then
@@ -474,7 +467,7 @@ step_shell_default() {
     # fresh machine there was no fish either. Drive them through fish, after
     # fish is guaranteed to exist.
     log_info "Installing fish plugins"
-    for plugin in $FISH_PLUGINS; do
+    for plugin in $fish_list; do
         run fish -c "fisher install $plugin" || rc=1
     done
 
@@ -587,10 +580,30 @@ step_macos() {
 }
 
 step_services() {
-    local service rc=0
-    for service in $SERVICES; do
-        run brew services start "$service" || rc=1
+    local service rc=0 installed services
+
+    # Started only when brew actually has the formula. The two lines this
+    # replaces were unconditional, and neither holds everywhere: atuin is a brew
+    # formula on mac-mini and macbook-2019 but mise-managed on macbook-m5-pro,
+    # and borders is only in macbook-2019's Brewfile. So both failed here and
+    # one failed on mac-mini — second-to-last, under `set -e`, which is why
+    # "Setup complete." was unreachable on two of three machines. See
+    # packages/services.
+    installed=$(brew list --formula 2>/dev/null)
+
+    services=$(package_list "$SERVICES_FILE") || {
+        log_err "setup: cannot read $SERVICES_FILE"
+        return 1
+    }
+
+    for service in $services; do
+        if printf '%s\n' "$installed" | grep -qxF -- "$service"; then
+            run brew services start "$service" || rc=1
+        else
+            log_skip "$service is not an installed Homebrew formula on this host"
+        fi
     done
+
     return "$rc"
 }
 
