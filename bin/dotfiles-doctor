@@ -271,7 +271,7 @@ EOF
 #
 # shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
 check_packages() {
-    local rc=0 entry kind provider note name installed="" exts=""
+    local rc=0 entry kind provider note name installed="" exts="" resolved key
 
     if [ ! -f "$OWNERS" ]; then
         finding "$OWNERS is missing"
@@ -304,6 +304,25 @@ check_packages() {
                 # nvim, ripgrep installs rg, superfile installs spf. `which
                 # neovim` fails on a perfectly healthy machine.
                 mise where "$name" >/dev/null 2>&1 && continue
+                # An arch-split tool is addressed by its backend on the host
+                # where the aqua entry is skipped: `atuin` on Apple Silicon is
+                # `cargo:atuin` on Intel, and `mise where atuin` fails there on
+                # a machine that is perfectly healthy (SI-120). So retry against
+                # the backend-addressed keys, which lets the manifest keep
+                # naming the tool rather than one host's addressing of it.
+                #
+                # Still `mise where`, not mere presence in `mise ls --current`:
+                # that lists a declared-but-uninstalled tool too, and answering
+                # "installed" for something absent is the one answer this check
+                # must never give.
+                resolved=0
+                for key in $(mise ls --current 2>/dev/null | awk '{print $1}' | grep ':'); do
+                    [ "$(printf '%s' "$key" | sed 's/^[a-z][a-z0-9]*://')" = "$name" ] || continue
+                    mise where "$key" >/dev/null 2>&1 || continue
+                    resolved=1
+                    break
+                done
+                [ "$resolved" -eq 1 ] && continue
                 finding "config/$entry is here but mise cannot resolve '$name'"
                 detail "${note}"
                 rc=1
