@@ -1,0 +1,257 @@
+#!/bin/bash
+#
+# Remove what has provably rotted, and name what has not provably rotted.
+#
+# Usage: dotfiles-clean [--apply] [--yes]
+#
+#   --apply     actually remove things. Without it, nothing is touched.
+#   --dry-run   accepted, and is the default; there so the flag means the same
+#               thing here as in every other script
+#   -y, --yes   answer the confirmations with yes (needs --apply)
+#   -h, --help  show this and exit
+#
+# DRY RUN IS THE DEFAULT, WHICH INVERTS THIS REPOSITORY'S CONVENTION.
+#
+# Everywhere else --dry-run is opt-in, because everywhere else the default is
+# to copy a file or install a package. This script's entire job is deletion, so
+# the safe direction is the other one: `dotfiles-clean` with no arguments prints
+# a plan and changes nothing, and CI asserts that `git status` and a $HOME
+# snapshot are identical across such a run.
+#
+# It removes exactly two things, both of which can be shown to be dead:
+#
+#   * symlinks under the four directories install.conf.yaml cleans, whose
+#     targets no longer exist. dotbot's own `clean:` does this at link time;
+#     this does it without relinking everything else.
+#   * directories under ~/.tmux/plugins that config/tmux/tmux.conf no longer
+#     names. tpm installs but never uninstalls.
+#
+# Everything else it finds is REPORTED AND LEFT ALONE. The stale artefacts this
+# repository carries are stale on the evidence of reading them, not on the
+# evidence of a check, and "I could not find a use for it" is not a reason for
+# a script to delete your files. Removing them is a reviewable commit, not a
+# side effect of running a tool.
+#
+# No `set -e`, like bin/dotfiles-doctor: one failing step should not cost the
+# others.
+
+set -uo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+cd "$(dotfiles_root)" || {
+    log_err "dotfiles-clean: cannot cd to the repository root — aborting."
+    exit 1
+}
+
+dotfiles_flags_init
+
+# APPLY, not DOTFILES_DRY_RUN, is this script's switch — and it is argv-only,
+# so nothing can turn deletion on through the environment channel
+# bin/dotfiles-backup exports. DOTFILES_DRY_RUN is then set from it, so run()
+# behaves as it does everywhere else and every mutation still goes through it.
+APPLY=0
+
+CLEAN_ROOTS="$HOME $HOME/.config $HOME/.gnupg $HOME/.warp"
+TMUX_CONF=config/tmux/tmux.conf
+TMUX_PLUGINS="$HOME/.tmux/plugins"
+
+usage() {
+    log_info "Usage: dotfiles-clean [--apply] [--yes]"
+    log_info ""
+    log_info "  --apply     actually remove things; without it nothing is touched"
+    log_info "  --dry-run   the default, accepted for symmetry with the other scripts"
+    log_info "  -y, --yes   answer the confirmations with yes"
+    log_info ""
+    log_info "Removes dangling symlinks and tmux plugins tmux.conf no longer names."
+    log_info "Everything else is reported and left alone."
+    log_info "bin/dotfiles-doctor is the read-only report."
+}
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --apply) APPLY=1 ;;
+        --dry-run) APPLY=0 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        *)
+            log_err "dotfiles-clean: unknown argument: $1"
+            usage
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+# run() prints instead of acting when this is 1, so the default really is inert
+# rather than merely intended to be.
+[ "$APPLY" -eq 1 ] || DOTFILES_DRY_RUN=1
+
+# --- dangling symlinks ------------------------------------------------------
+
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+clean_links() {
+    local root link n=0
+
+    for root in $CLEAN_ROOTS; do
+        [ -d "$root" ] || continue
+        while IFS= read -r link; do
+            [ -n "$link" ] || continue
+            log_info "  $link -> $(readlink "$link")"
+            n=$((n + 1))
+        done <<EOF
+$(find "$root" -maxdepth 1 -type l ! -exec test -e {} \; -print 2>/dev/null)
+EOF
+    done
+
+    if [ "$n" -eq 0 ]; then
+        log_ok "no dangling symlinks"
+        return 0
+    fi
+
+    log_warn "$n dangling symlink(s) above"
+    if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+        log_skip "dry run: pass --apply to remove them"
+        return 0
+    fi
+    if [ "$DOTFILES_ASSUME_YES" -ne 1 ] && ! confirm "Remove them?"; then
+        log_skip "left alone"
+        return 0
+    fi
+
+    for root in $CLEAN_ROOTS; do
+        [ -d "$root" ] || continue
+        while IFS= read -r link; do
+            [ -n "$link" ] || continue
+            # `rm -f <one named symlink>`, never a recursive removal: the
+            # target is gone by definition, so this unlinks a name and can
+            # destroy no content.
+            run rm -f "$link"
+        done <<EOF
+$(find "$root" -maxdepth 1 -type l ! -exec test -e {} \; -print 2>/dev/null)
+EOF
+    done
+    log_ok "removed $n dangling symlink(s)"
+    return 0
+}
+
+# --- tmux plugins tmux.conf no longer names ---------------------------------
+
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+clean_tmux_plugins() {
+    local keep extra entry n=0
+
+    if [ ! -d "$TMUX_PLUGINS" ]; then
+        log_skip "$TMUX_PLUGINS does not exist"
+        return 0
+    fi
+    if [ ! -f "$TMUX_CONF" ]; then
+        log_err "$TMUX_CONF is missing; refusing to decide what is unused"
+        return 1
+    fi
+
+    keep=$(mktemp "${TMPDIR:-/tmp}/dotfiles-clean-keep.XXXXXX") || return 1
+
+    # A commented-out `@plugin` line is not a declaration, and counting it as
+    # one would be the safe direction here — but it is still wrong, and the
+    # sed anchors on the line start so `# set -g @plugin` does not match.
+    # tpm itself is never a candidate: it is what installs the rest.
+    sed -n "s/^set -g @plugin '\([^']*\)'.*/\1/p" "$TMUX_CONF" |
+        sed 's|.*/||' >"$keep"
+    printf 'tpm\n' >>"$keep"
+
+    extra=$(sync_prune_extra "$TMUX_PLUGINS" "$keep")
+    rm -f "$keep"
+
+    if [ -z "$extra" ]; then
+        log_ok "every installed tmux plugin is still named in tmux.conf"
+        return 0
+    fi
+
+    while IFS= read -r entry; do
+        [ -n "$entry" ] || continue
+        log_info "  ${entry##*/}"
+        n=$((n + 1))
+    done <<EOF
+$extra
+EOF
+
+    log_warn "$n installed tmux plugin(s) are no longer named in tmux.conf"
+    if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+        log_skip "dry run: pass --apply to remove them"
+        return 0
+    fi
+    if [ "$DOTFILES_ASSUME_YES" -ne 1 ] && ! confirm "Remove them?"; then
+        log_skip "left alone"
+        return 0
+    fi
+
+    while IFS= read -r entry; do
+        [ -n "$entry" ] || continue
+        sync_prune_apply "$entry"
+    done <<EOF
+$extra
+EOF
+    log_ok "removed $n tmux plugin(s)"
+    return 0
+}
+
+# --- reported, never removed ------------------------------------------------
+
+# The stale artefacts the SI-85 audit turned up. Each is dead on the evidence
+# of reading it, which is a good enough reason to delete it in a commit someone
+# reviews and a bad reason for a script to delete it behind your back.
+#
+# Rows are "path|why". A path that no longer exists is simply not printed, so
+# this list shrinks itself as the removals happen and never nags about work
+# already done.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+report_stale() {
+    local path why n=0
+
+    while IFS='|' read -r path why; do
+        [ -n "$path" ] || continue
+        [ -e "$path" ] || continue
+        log_warn "  $path"
+        log_info "      $why"
+        n=$((n + 1))
+    done <<'EOF'
+default-gems|asdf/rbenv-era; mise reads it only for its own ruby installs
+default-npm-packages|asdf/nodenv-era; still lists @playwright/cli, which mise also pins
+default-python-packages|asdf-era; nothing in this repository reads it
+warp/settings.toml|Warp is no longer the terminal; Ghostty is
+config/wezterm|a cask on macbook-2019 only, yet globbed onto every host
+config/cship.toml|overlaps config/starship.toml and nothing here installs cship
+EOF
+
+    if [ "$n" -eq 0 ]; then
+        log_ok "none of the known stale artefacts are still present"
+        return 0
+    fi
+    log_info ""
+    log_info "  $n artefact(s) above look dead. This script will not remove them:"
+    log_info "  each is dead on the evidence of reading it, not of a check, and"
+    log_info "  that belongs in a commit someone reviews. See SI-85."
+    return 0
+}
+
+# --- main -------------------------------------------------------------------
+
+log_step "dotfiles-clean"
+log_field "host" "$(host_id)"
+if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+    log_warn "dry run (the default): nothing will be changed. --apply to act."
+fi
+
+run_step "dangling symlinks" clean_links
+run_step "tmux plugins" clean_tmux_plugins
+run_step "stale artefacts (reported only)" report_stale
+
+step_summary || exit 1
+exit 0
