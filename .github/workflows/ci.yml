@@ -146,6 +146,39 @@ jobs:
           fi
           echo "OK: $n steps, --help works, unknown names rejected"
 
+      # An unresolvable host must fail loudly, not silently skip the longest
+      # step in setup.sh. On macOS `hostname` returns the Bonjour name, which
+      # changes with the network and reports something like Mac.local on a
+      # fresh machine — so this is the normal state of a new host, not an edge
+      # case.
+      #
+      # Runs on both legs and needs no Homebrew, which is exactly why
+      # homebrew-restore resolves the Brewfile before it checks for brew. With
+      # the checks in the other order this would fail on the Linux leg for the
+      # wrong reason and prove nothing.
+      - name: homebrew-restore rejects an unknown host
+        run: |
+          set -uo pipefail
+          out=$(DOTFILES_HOST=definitely-not-a-host bin/homebrew-restore 2>&1) && rc=0 || rc=$?
+          printf '%s\n' "$out"
+          if [ "$rc" -eq 0 ]; then
+            echo "::error::an unknown host was accepted"
+            exit 1
+          fi
+          # The message has to name the real hosts, or it tells you nothing you
+          # could act on.
+          for f in homebrew/*; do
+            host=${f##*/}
+            case "$out" in
+              *"$host"*) ;;
+              *)
+                echo "::error::the failure message does not name '$host'"
+                exit 1
+                ;;
+            esac
+          done
+          echo "OK: exited $rc and named every available host"
+
       # A dry run has to be inert, and the only way to know is to do one and
       # look. Five steps are skipped because they need something CI does not
       # have — a hostname with a Brewfile, brew, dotbot, or the private
