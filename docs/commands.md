@@ -75,12 +75,14 @@ success when it skipped itself for want of a terminal.
 **`--dry-run` is inert, not nominal.** It changes nothing, never prompts for a
 password, and writes no state file. CI asserts all three.
 
-**Which steps are safe to `--only`.** The re-runnable ones: `link`,
-`tmux_plugins`, `extensions`, `runtimes`, `editors`. Not `packages` —
-`bin/homebrew-restore` still runs `brew bundle cleanup --force`, which
-uninstalls anything absent from the Brewfile (SI-119). Not `shell_default`,
+**Which steps are safe to `--only`.** The re-runnable ones: `link`, `packages`,
+`tmux_plugins`, `extensions`, `runtimes`, `editors`. Not `shell_default`,
 `macos` or `interactive`, which change the login shell, overwrite preferences,
 or prompt.
+
+`packages` joined that list in SI-119. It was excluded because
+`bin/homebrew-restore` ran `brew bundle cleanup --force` on every invocation,
+which uninstalls anything absent from the Brewfile; it now installs only.
 
 ## Shell configuration — generated, not hand-written
 
@@ -133,13 +135,53 @@ bin/dotfiles-lint --help
 ## Homebrew
 
 ```bash
-./bin/homebrew-backup    # Save current Homebrew packages to homebrew/<hostname>
-./bin/homebrew-restore   # Install packages from homebrew/<hostname>
+./bin/homebrew-backup           # Save this machine's packages to homebrew/<host>
+./bin/homebrew-restore          # Report what is missing, then install it
+./bin/homebrew-restore --prune  # Also offer to uninstall what the file omits
 ```
 
-Both take `--dry-run`. `homebrew-restore` still runs `brew bundle cleanup
---force`, which **uninstalls** anything not in the Brewfile — use
-`brew bundle check --file homebrew/<host>` to report drift (SI-119).
+Both take `--dry-run`.
+
+**`homebrew-restore` cannot uninstall anything without `--prune`.** Until
+SI-119 it ran `brew bundle cleanup --force` on every invocation, which removes
+every formula and cask the Brewfile does not name — 368 formulae and 121 casks
+on `macbook-m5-pro`, unattended, with no `brew` undo. `--prune` now lists what
+would go and asks first.
+
+Two things about that prompt are deliberate. `--prune` is read from the command
+line only and never from `$DOTFILES_PRUNE`, so no aggregator can turn it on for
+you. And the confirmation ignores `--yes`, against the convention every other
+prompt in this repository follows — `confirm` answers *no* when there is no
+terminal, so cron, `ssh host cmd` and any nested call are safe by construction.
+
+### Which Brewfile, and what happens when there is no match
+
+The file is `homebrew/$(hostname -s)`. `$DOTFILES_HOST` overrides it:
+
+```bash
+DOTFILES_HOST=mac-mini ./bin/homebrew-restore --dry-run
+```
+
+A host with no Brewfile is a **hard failure** that names the hosts that do have
+one, plus both fixes. It used to be a silent skip of the longest step in
+`setup.sh`. That matters more than it sounds: on macOS `hostname` returns the
+Bonjour name, which changes with the network (`.local`, `.fritz.box`), and a
+fresh Mac reports something like `Mac.local`. `sudo scutil --set HostName` is
+the permanent fix; `DOTFILES_HOST` is for a one-off run.
+
+### Reporting drift without touching anything
+
+```bash
+brew bundle check --no-upgrade --verbose --file homebrew/<host>
+```
+
+**`--no-upgrade` is load-bearing.** Without it, `brew bundle check` reports
+every *outdated* package as "needs to be installed or updated" — 40+ lines on
+`macbook-m5-pro`, including `mise`, which is plainly installed. That is
+indistinguishable from real drift, so the check gets ignored. With the flag, the
+output is what is genuinely absent.
+
+`bin/dotfiles-doctor` runs this for you (SI-85).
 
 ## `packages/` — the shared plugin and service lists
 

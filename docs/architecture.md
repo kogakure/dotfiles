@@ -55,9 +55,15 @@ deliberately removed from the file will be silently re-added by the next dump.
 That is what would have undone SI-118's move of neovim to mise, and why the
 formula was uninstalled rather than merely deleted from the file.
 
-Use `brew bundle check --file homebrew/<host>` to report drift. Do **not** use
-`bin/homebrew-restore` for that — it runs `brew bundle cleanup --force`, which
-uninstalls everything not in the file (SI-119).
+This is also why the "machine-generated, do not hand-edit" warning lives here
+and not in the files themselves: `brew bundle dump --force` rewrites each one
+whole, so a header comment would survive exactly until the next `bin/update` on
+that machine.
+
+Use `brew bundle check --no-upgrade --file homebrew/<host>` to report drift —
+`--no-upgrade`, or every merely *outdated* package is reported as missing. Since
+SI-119, `bin/homebrew-restore` is also safe to run for this: it reports and
+installs, and uninstalls only behind `--prune` and a confirmation.
 
 Known data bugs, all of which are machine state rather than file content, so
 they have to be cleaned up on the host and re-dumped:
