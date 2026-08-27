@@ -550,6 +550,19 @@ unit_expect() {
     return 1
 }
 
+# Print <file> with comments removed, for the checks that assert a property of
+# the *code* in a file rather than of its text.
+#
+# Not a nicety: unit_brew_no_force asserts that "cleanup --force" appears in one
+# place, and both files that must not run it explain at length why they must not
+# run it. Grepping the raw text finds the prose and reports the documentation as
+# the defect. Deliberately named without the unit_ prefix — every unit_* name in
+# this file is a test in check_unit's list, and one that is not would read as a
+# dead test.
+#
+# Usage: strip_comments <file>
+strip_comments() { sed 's/#.*//' "$1"; }
+
 # `disable=SC1091` in .shellcheckrc means a `# shellcheck source=` directive
 # pointing at a file that does not exist is completely silent — shellcheck
 # reports nothing for setup.sh when run from a cwd where its directive cannot
@@ -651,6 +664,155 @@ unit_brew_prefix() {
         [ "$bad" -eq 0 ] && ok "brew_prefix_choose is right on arm64 and x86_64"
         exit "$bad"
     )
+}
+
+# host_id keys the per-host Brewfile and the backup manifests, so an override
+# that silently did not take would send every one of them somewhere wrong.
+unit_host_id() {
+    unit_require bin/lib/util.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        # shellcheck source=bin/lib/util.sh
+        . bin/lib/util.sh
+
+        bad=0
+        unit_expect "DOTFILES_HOST wins" some-other-mac \
+            "$(DOTFILES_HOST=some-other-mac host_id)" || bad=1
+        unit_expect "unset falls back to hostname -s" "$(hostname -s)" \
+            "$(
+                unset DOTFILES_HOST 2>/dev/null
+                host_id
+            )" || bad=1
+
+        # An empty value is not a host name. `:-` rather than `-` is what makes
+        # DOTFILES_HOST='' behave like unset instead of resolving every
+        # host-keyed path to a bare directory.
+        unit_expect "empty is treated as unset" "$(hostname -s)" \
+            "$(DOTFILES_HOST='' host_id)" || bad=1
+
+        unit_expect "brewfile_path is host-keyed and absolute" \
+            "$REPO_ROOT/homebrew/some-other-mac" \
+            "$(DOTFILES_HOST=some-other-mac brewfile_path)" || bad=1
+
+        [ "$bad" -eq 0 ] && ok "host_id honours DOTFILES_HOST and falls back to hostname -s"
+        exit "$bad"
+    )
+}
+
+# brewfile_hosts is what a host mismatch prints, so it has to be right exactly
+# when nothing else is working. Driven from a fixture rather than homebrew/,
+# for the reason unit_packages gives: the machine running the linter is one of
+# the hosts, so it cannot produce the interesting cases by itself.
+unit_brewfile_hosts() {
+    unit_require bin/lib/util.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        # shellcheck source=bin/lib/util.sh
+        . bin/lib/util.sh
+
+        bad=0
+        d=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-brewfiles.XXXXXX") || exit 1
+
+        : >"$d/alpha"
+        : >"$d/beta"
+        mkdir -p "$d/a-directory"
+        unit_expect "files are listed, directories are not" "alpha beta" \
+            "$(brewfile_hosts "$d" | sort | tr '\n' ' ' | sed 's/ $//')" || bad=1
+
+        rm -f "$d"/alpha "$d"/beta
+        rmdir "$d/a-directory"
+        unit_expect "an empty directory lists nothing" "" \
+            "$(brewfile_hosts "$d")" || bad=1
+        rmdir "$d"
+
+        unit_expect "a missing directory lists nothing" "" \
+            "$(brewfile_hosts "$d/gone")" || bad=1
+
+        # And the real one, where being empty would mean setup.sh's preflight
+        # tells a mismatched host to pick from an empty list.
+        n=$(brewfile_hosts | grep -c .)
+        if [ "$n" -eq 0 ]; then
+            fail "unit: homebrew/ holds no Brewfiles"
+            bad=1
+        fi
+
+        [ "$bad" -eq 0 ] && ok "brewfile_hosts lists files only, and homebrew/ is not empty"
+        exit "$bad"
+    )
+}
+
+# The SI-119 property, and the reason bin/lib/brew.sh exists as a separate file.
+#
+# `brew bundle cleanup --force` uninstalls every formula and cask absent from
+# the named Brewfile — 368 and 121 of them on this machine, unattended, with no
+# undo. bin/homebrew-restore ran it on line 46 of every invocation. Putting the
+# call behind a flag is not enough on its own: the thing worth pinning is that
+# it stays behind the flag, so reinstating the old line fails the gate.
+#
+# A text property rather than a behavioural one, deliberately. Running the real
+# thing to find out whether it uninstalls is not a test anyone can afford.
+unit_brew_no_force() {
+    unit_require bin/lib/brew.sh || return 1
+    unit_require bin/homebrew-restore || return 1
+    local bad=0 n apply_line confirm_line
+
+    # The destructive string lives in exactly one place. Comments are stripped
+    # first: both files explain at length why they must not run it, and
+    # grepping the raw text reports that documentation as the defect.
+    n=$(strip_comments bin/homebrew-restore | grep -c 'cleanup --force')
+    if [ "$n" -ne 0 ]; then
+        fail "unit: bin/homebrew-restore runs 'cleanup --force' directly ($n time(s))"
+        bad=1
+    fi
+    n=$(strip_comments bin/lib/brew.sh | grep -c 'cleanup --force')
+    if [ "$n" -ne 1 ]; then
+        fail "unit: bin/lib/brew.sh should run exactly one 'cleanup --force', found $n"
+        bad=1
+    fi
+
+    # It is routed through run(), or --dry-run would uninstall for real.
+    if ! strip_comments bin/lib/brew.sh | grep -q 'run brew bundle cleanup --force'; then
+        fail "unit: brew_prune_apply does not go through run(); --dry-run would delete"
+        bad=1
+    fi
+
+    # One call site, and it is downstream of a confirmation. sed blanks comments
+    # rather than deleting them, so grep -n still reports real line numbers.
+    n=$(strip_comments bin/homebrew-restore | grep -c '^[[:space:]]*brew_prune_apply ')
+    if [ "$n" -ne 1 ]; then
+        fail "unit: brew_prune_apply should have exactly one call site, found $n"
+        bad=1
+    fi
+    apply_line=$(strip_comments bin/homebrew-restore |
+        grep -n '^[[:space:]]*brew_prune_apply ' | head -1 | cut -d: -f1)
+    confirm_line=$(strip_comments bin/homebrew-restore |
+        grep -n 'confirm "' | head -1 | cut -d: -f1)
+    if [ -z "$confirm_line" ] || [ -z "$apply_line" ] || [ "$confirm_line" -ge "$apply_line" ]; then
+        fail "unit: brew_prune_apply is not called after a confirm() prompt"
+        bad=1
+    fi
+
+    # And --prune cannot arrive through the environment channel that
+    # bin/dotfiles-backup exports, which is what makes it argv-only.
+    # shellcheck disable=SC2016  # a literal grep pattern; expanding it is the bug
+    if strip_comments bin/homebrew-restore | grep -q 'PRUNE=${DOTFILES_PRUNE'; then
+        fail "unit: --prune is seeded from DOTFILES_PRUNE; it must be argv-only"
+        bad=1
+    fi
+
+    # brew.sh stays out of every script's namespace: common.sh must not source
+    # it, for the reason it already declines to source shells.sh.
+    if strip_comments bin/lib/common.sh | grep -q 'brew\.sh'; then
+        fail "unit: bin/lib/common.sh sources brew.sh; the uninstall must stay opt-in"
+        bad=1
+    fi
+
+    [ "$bad" -eq 0 ] && ok "the only 'cleanup --force' is in brew_prune_apply, behind --prune and a confirm"
+    return "$bad"
 }
 
 # The ticket's "colour codes are currently emitted even when output is piped".
@@ -1116,6 +1278,9 @@ check_unit() {
     unit_source_directives || bad=1
     unit_shells || bad=1
     unit_brew_prefix || bad=1
+    unit_host_id || bad=1
+    unit_brewfile_hosts || bad=1
+    unit_brew_no_force || bad=1
     unit_profile || bad=1
     unit_conflicts || bad=1
     unit_no_prune || bad=1
