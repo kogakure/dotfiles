@@ -1,0 +1,86 @@
+# What provides each tool in config/.
+#
+# Read by bin/dotfiles-doctor through bin/lib/util.sh's manifest_rows, and
+# checked by bin/dotfiles-lint's `owners` case. This file is data, not a shell
+# source: bin/dotfiles-lint globs bin/lib/*.sh, so it is deliberately not linted
+# or formatted.
+#
+# WHY IT EXISTS
+#
+# install.conf.yaml globs config/* into ~/.config/, so a directory added here is
+# live configuration the moment it is committed — whether or not the tool it
+# configures is installed by anything in this repository. Four of the entries
+# below turned out to have no installer at all, and the only way to find that
+# out was to check each one by hand.
+#
+# So this file is a forcing function rather than a record: `just lint owners`
+# fails when config/ holds an entry that is not listed, and when a row names an
+# entry that is gone. Adding a config directory therefore requires saying what
+# installs its tool, and "nothing does" is a legitimate answer that stays
+# visible instead of being rediscovered a year later.
+#
+# It is NOT a check that the tool is installed *now*. That is per-host and
+# changes under you; bin/dotfiles-doctor answers it at runtime, from this file.
+#
+# FORMAT
+#
+# One entry per line, exactly four fields separated by a single "|" with NO
+# padding — a space next to a "|" becomes part of a field. "#" starts a comment.
+#
+#   entry|kind|provider|note
+#
+#   entry     a name directly under config/, file or directory, verbatim
+#             (including any extension: `cship.toml`, not `cship`)
+#   kind      brew    a formula or cask in at least one homebrew/<host>
+#             mise    a tool in config/mise/mise.toml
+#             gh-ext  a GitHub CLI extension in packages/gh-extensions
+#             fisher  a fish plugin in config/fish/fish_plugins
+#             setup   installed directly by a setup.sh step
+#             mason   installed by Neovim's Mason, outside this repository
+#             manual  present on a machine, installed by nothing here
+#             orphan  nothing provides it, and nothing is expected to
+#   provider  the name to look for under that kind — NOT always the entry name.
+#             `nvim` is provided by the mise tool `neovim`; `gh-dash` by the gh
+#             extension `dlvhdr/gh-dash`.
+#   note      free text, or "-"
+#
+# ON kind FOR A TOOL THAT HAS TWO PROVIDERS
+#
+# Thirteen of these are in both a Brewfile and config/mise/mise.toml. The kind
+# records the one that is *meant* to win — mise, since SI-118 — and doctor
+# reports the overlap as a finding rather than this file pretending it is fine.
+# atuin is the clearest case: mise-managed on macbook-m5-pro and a brew formula
+# on the other two, which is why packages/services starts it conditionally.
+
+aerospace|brew|nikitabobko/tap/aerospace|cask; window manager
+atuin|mise|atuin|also a brew formula on mac-mini and macbook-2019
+bat|mise|bat|also brew; bat-extras is mise-only
+borders|brew|felixkratz/formulae/borders|macbook-2019 only; started via packages/services
+cship.toml|manual|cship|no installer anywhere; the binary is at ~/.local/bin/cship
+doom|setup|doom-emacs|git-cloned by setup.sh's editors step, not packaged
+fish|brew|fish|the login shell; setup.sh's packages step must supply it
+gh|mise|gh|also brew; see the gh wrapper in docs/environment.md
+gh-dash|gh-ext|dlvhdr/gh-dash|a gh extension, not a formula — no Brewfile will name it
+ghostty|brew|ghostty|cask; the actual terminal
+git|brew|git|arrives as a dependency on some hosts, so it may be absent from the dump
+harper-ls|mason|harper-ls|a Neovim LSP installed by Mason; nothing here references it
+herdr|mise|herdr|also brew; plugins come from packages/herdr-plugins
+hunk|mise|hunk|also brew on mac-mini and macbook-2019; config/git/config sets it as pager
+lazydocker|mise|lazydocker|also brew
+lazygit|mise|lazygit|also brew
+lf|brew|lf|icons come from the lf-icons fisher plugin
+mise|brew|mise|mise is installed from brew; it cannot install itself
+nushell|brew|nushell|config/nushell/env.nu is generated — see shell/README.md
+nvim|mise|neovim|the directory is nvim, the mise tool is neovim
+oatmeal|brew|dustinblackman/tap/oatmeal|-
+opencode|mise|opencode|also brew, spelled two ways across hosts
+ripgrep|mise|ripgrep|also brew
+sbx|brew|docker/tap/sbx|cask; the pi and omp kits under config/sbx/kits are this repo's
+sesh|brew|joshmedeski/sesh/sesh|-
+starship.toml|mise|starship|also brew; the prompt
+superfile|mise|superfile|also brew
+tmux|brew|tmux|deliberately not mise — config/mise/mise.toml says why
+wezterm|brew|wezterm|cask on macbook-2019 only; Ghostty is the terminal elsewhere
+worktrunk|mise|worktrunk|also brew
+yazi|mise|yazi|also brew
+zed|brew|zed|cask

@@ -24,6 +24,8 @@
 #                  every "shellcheck source=" directive resolves
 #   - manifest     parse bin/lib/preferences.manifest and assert it covers
 #                  everything in private/preferences/
+#   - owners       parse bin/lib/config-owners.manifest and assert it covers
+#                  everything in config/ (SI-85)
 #   - drift        re-run the shell-config generator, assert no diff (SI-84)
 #
 # Options:
@@ -50,7 +52,7 @@ CHECKS=()
 FAILED=()
 SKIPPED=()
 
-ALL_CHECKS="shellcheck shfmt fish zsh posix yaml unit manifest drift"
+ALL_CHECKS="shellcheck shfmt fish zsh posix yaml unit manifest owners drift"
 
 # --- output helpers ---------------------------------------------------------
 
@@ -1523,6 +1525,92 @@ check_manifest() {
         return
     fi
     ok "${rows:-0} entries parse, are unique, and cover private/preferences/"
+}
+
+# --- config owners ----------------------------------------------------------
+#
+# bin/lib/config-owners.manifest says what installs the tool behind each entry
+# in config/. This asserts the two directions that make it worth trusting: every
+# entry has a row, and every row has an entry.
+#
+# The first is the forcing function. install.conf.yaml globs config/* into
+# ~/.config/, so a directory added here is live configuration whether or not
+# anything installs the tool it configures — which is how four entries ended up
+# with no installer at all. Failing the build until somebody says what provides
+# a new one is the only way that stays true.
+#
+# The second catches the reverse: a config directory deleted while its row
+# stayed, leaving the manifest describing a tool this repository no longer
+# configures.
+
+OWNER_KINDS="brew mise gh-ext fisher setup mason manual orphan"
+
+check_owners() {
+    heading "config/ owners"
+    local manifest=bin/lib/config-owners.manifest
+    local rc=0 rows=0 entry kind fields dupes line
+
+    if [ ! -f "$manifest" ]; then
+        fail "owners: $manifest is missing"
+        FAILED[${#FAILED[@]}]=owners
+        return
+    fi
+
+    while IFS= read -r line; do
+        [ -n "$line" ] || continue
+        rows=$((rows + 1))
+        fields=$(printf '%s\n' "$line" | awk -F'|' '{print NF}')
+        if [ "$fields" -ne 4 ]; then
+            fail "owners: not 4 fields ($fields): $line"
+            rc=1
+            continue
+        fi
+        entry=${line%%|*}
+        kind=$(printf '%s\n' "$line" | cut -d'|' -f2)
+        case " $OWNER_KINDS " in
+            *" $kind "*) ;;
+            *)
+                fail "owners: unknown kind '$kind' for $entry (want: $OWNER_KINDS)"
+                rc=1
+                ;;
+        esac
+        if [ ! -e "config/$entry" ]; then
+            fail "owners: config/$entry is listed but does not exist"
+            rc=1
+        fi
+    done <<EOF
+$(strip_comments "$manifest" | grep .)
+EOF
+
+    if [ "$rows" -eq 0 ]; then
+        fail "owners: $manifest parses to no rows"
+        rc=1
+    fi
+
+    dupes=$(strip_comments "$manifest" | grep . | cut -d'|' -f1 | sort | uniq -d | tr '\n' ' ')
+    if [ -n "$dupes" ]; then
+        fail "owners: listed more than once: ${dupes% }"
+        rc=1
+    fi
+
+    # And the direction that actually forces the decision.
+    for entry in config/*; do
+        [ -e "$entry" ] || continue
+        entry=${entry##*/}
+        # .DS_Store is Finder's, not configuration, and is gitignored.
+        [ "$entry" = .DS_Store ] && continue
+        if ! strip_comments "$manifest" | grep . | cut -d'|' -f1 | grep -qxF -- "$entry"; then
+            fail "owners: config/$entry has no row in $manifest"
+            fail "        add one saying what installs it — 'orphan' is a valid answer"
+            rc=1
+        fi
+    done
+
+    if [ "$rc" -ne 0 ]; then
+        FAILED[${#FAILED[@]}]=owners
+        return
+    fi
+    ok "$rows entries parse, are unique, and cover config/"
 }
 
 # --- generated-file drift ---------------------------------------------------
