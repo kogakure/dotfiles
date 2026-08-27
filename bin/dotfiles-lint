@@ -793,8 +793,28 @@ FIXTURE
             "$(strip_comments config/mise/mise.toml |
                 grep -c '[^a-z_]arch[[:space:]]*=' | tr -d ' ')" || bad=1
 
+        # No project-local mise config in this checkout.
+        #
+        # `~/.dotfiles/.tool-versions` on macbook-2019 declared neovim, so
+        # inside the repo it resolved from there and everywhere else from the
+        # global pin — the exact split config/mise/mise.toml's header forbids,
+        # and it broke the SI-118 invariant on a host where that invariant was
+        # recorded as passing.
+        #
+        # It survived because it is invisible: untracked, and `.tool-versions`
+        # is listed in ~/.config/git/ignore, so it appears in no `git status`
+        # and nothing in CI can see it. That is also why this is a filesystem
+        # test rather than a `git ls-files` one — git is the tool that cannot
+        # see the problem. It runs on the machine that has the file, which is
+        # the only place the file exists.
+        for stray in mise.toml .mise.toml .tool-versions mise/config.toml .config/mise.toml; do
+            [ -e "$REPO_ROOT/$stray" ] || continue
+            fail "unit: $stray in the repo root is a project-local mise config"
+            bad=1
+        done
+
         rm -f "$f"
-        [ "$bad" -eq 0 ] && ok "mise.toml readers handle inline tables, sections and backend prefixes"
+        [ "$bad" -eq 0 ] && ok "mise.toml readers handle inline tables, sections and backend prefixes; no project-local config"
         exit "$bad"
     )
 }
