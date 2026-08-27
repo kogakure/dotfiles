@@ -89,15 +89,13 @@ uninstall-hooks:
     git config --unset core.hooksPath || true
     echo "core.hooksPath unset; git is back to .git/hooks"
 
-# Health check for this machine (arrives with SI-85, Phase 6).
-doctor:
-    #!/usr/bin/env bash
-    set -uo pipefail
-    if [ -x bin/dotfiles-doctor ]; then
-        exec bin/dotfiles-doctor
-    fi
-    echo "just doctor: bin/dotfiles-doctor does not exist yet (SI-85, Phase 6)." >&2
-    exit 1
+# Read-only health check for this machine. `just doctor --verbose` for detail.
+doctor *ARGS:
+    bin/dotfiles-doctor {{ ARGS }}
+
+# Remove dangling symlinks and unused tmux plugins. Dry run unless --apply.
+clean *ARGS:
+    bin/dotfiles-clean {{ ARGS }}
 
 # Take every backup: claude, codex, homebrew, preferences, launch agents.
 # Pass flags or step names through, e.g. `just backup --dry-run` or

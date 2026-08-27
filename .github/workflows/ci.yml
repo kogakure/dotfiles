@@ -179,6 +179,35 @@ jobs:
           done
           echo "OK: exited $rc and named every available host"
 
+      # Doctor promises to be read-only and clean promises to do nothing
+      # without --apply. `just lint unit` pins the structural half — no run()
+      # in doctor, a forced dry run in clean — and this pins the observable
+      # half, which is the one the acceptance criteria are written about.
+      #
+      # Both are expected to exit non-zero here: a CI runner has no Brewfile
+      # for its hostname and no private submodule, so it has findings. The
+      # assertion is about the working tree, not about the exit code.
+      - name: doctor and clean change nothing
+        run: |
+          set -uo pipefail
+          git status --porcelain >"$RUNNER_TEMP/dbefore"
+          bin/dotfiles-doctor --verbose >/dev/null 2>&1 || true
+          bin/dotfiles-clean >/dev/null 2>&1 || true
+          git status --porcelain >"$RUNNER_TEMP/dafter"
+          if ! diff -u "$RUNNER_TEMP/dbefore" "$RUNNER_TEMP/dafter"; then
+            echo "::error::doctor or clean modified the working tree"
+            exit 1
+          fi
+          # An unknown check name must be rejected rather than silently doing
+          # nothing, the same property setup.sh's step graph is held to.
+          if bin/dotfiles-doctor definitely-not-a-check >/dev/null 2>&1; then
+            echo "::error::an unknown check name was accepted"
+            exit 1
+          fi
+          bin/dotfiles-doctor --help >/dev/null || { echo "::error::--help failed"; exit 1; }
+          bin/dotfiles-clean --help >/dev/null || { echo "::error::--help failed"; exit 1; }
+          echo "OK: both are inert, --help works, unknown checks rejected"
+
       # A dry run has to be inert, and the only way to know is to do one and
       # look. Five steps are skipped because they need something CI does not
       # have — a hostname with a Brewfile, brew, dotbot, or the private
