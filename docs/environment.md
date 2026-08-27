@@ -161,6 +161,59 @@ this function.
     interactive-only, in all four shells
 - **volta**: Node.js version manager (legacy, being phased out)
 
+### Four tools are declared twice, once per architecture
+
+`atuin`, `delta`, `fd` and `pnpm` are pinned to aqua packages that publish **no
+`darwin/amd64` build**. On `macbook-2019` that made `mise install` fail
+outright, and because `not_found_auto_install = true` the failure did not stay
+at provisioning time: each tool retried and failed at whatever moment it was
+first invoked, so the shell broke when you reached for `fd` rather than when you
+set the machine up (SI-120).
+
+Each of the four therefore has two entries — the fast prebuilt backend for
+Apple Silicon and Linux, and a source-built one for Intel macOS:
+
+```toml
+fd = { version = "10.4.2", os = ["macos/arm64", "linux"] }
+"cargo:fd-find" = { version = "10.4.2", os = ["macos/x64"] }
+```
+
+`os` accepts `os/arch` pairs as well as bare OS names, and mise **skips** an
+entry whose pair does not match the host. So this stays one config file, which
+is what keeps the SI-118 invariant intact — no `MISE_ENV`, no per-host file, and
+nothing that depends on a shell having started, so the split holds in scripts,
+cron and `ssh host cmd` too.
+
+Three traps, all of which cost time to find:
+
+- **There is no `arch` field.** mise ignores one silently, leaving *both*
+  entries active. The architecture goes inside `os`.
+- **The backend name is not the tool name.** `delta` is `cargo:git-delta` and
+  `fd` is `cargo:fd-find`, both because the short name was taken on crates.io.
+- **An env-scoped config (`MISE_ENV` → `mise.<env>.toml`) cannot do this job.**
+  It overrides a *version*, not a backend: writing `"cargo:atuin"` there
+  declares a second, separate tool and leaves the failing aqua entry in place.
+
+The Intel entries compile from source, so first install on that machine is
+slow. That is the accepted cost of keeping all four under mise everywhere
+rather than splitting provisioning across two package managers on one host.
+
+### A pin is only as good as the binary behind it
+
+`mise ls` derives a version from the **directory name**, not from the binary. A
+tool that updates itself in place therefore reports its pinned version with
+complete confidence while running something else — on `macbook-2019`,
+`installs/herdr/0.8.0/herdr` reported `herdr 0.8.2`.
+
+Audited on `macbook-m5-pro` for the eight self-updating candidates (`claude`,
+`codex`, `opencode`, `pi`, `grok`, `bun`, `deno`, `herdr`): every binary matches
+its directory. The drift is specific to that one host, which also has a
+third copy at `/usr/local/bin/herdr` reporting `0.7.5`.
+
+The consequence worth remembering is for the invariant, not the tool: comparing
+`mise ls --current` between two directories compares **labels**, so it can pass
+while the binaries differ.
+
 ## Git
 
 - Global gitignore: `config/git/ignore`

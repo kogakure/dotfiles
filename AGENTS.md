@@ -49,6 +49,14 @@ Personal macOS dotfiles repository managed with [dotbot](https://github.com/anis
   Doctor reports drift and never writes — it calls `run` nowhere, and both
   `just lint unit` and CI hold it to that. Do not add a mutation to it; the
   repair half is `bin/dotfiles-clean`. See @docs/commands.md
+- **Four tools in `config/mise/mise.toml` are declared twice, once per
+  architecture.** `atuin`, `delta`, `fd` and `pnpm` are pinned to aqua packages
+  with no `darwin/amd64` build, so each has a second entry naming a
+  source-built backend under `os = ["macos/x64"]`. Do not collapse the pairs,
+  and do not rewrite them as an `arch = [...]` key — mise has no such field and
+  ignores it silently, which leaves both entries active. The architecture goes
+  inside `os`. `just lint unit` fails if a pair loses a half. See
+  @docs/environment.md
 - **`bin/homebrew-restore` only uninstalls behind `--prune`** plus an
   interactive confirmation that `--yes` cannot answer. Do not reintroduce an
   unconditional `brew bundle cleanup --force`; `just lint unit` fails if you
