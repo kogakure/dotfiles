@@ -380,7 +380,7 @@ EOF
 #
 # shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
 check_mise() {
-    local rc=0 tool out configs both probe
+    local rc=0 tool out configs both probe conditional active
 
     if ! have mise; then
         log_skip "mise is not installed on this host"
@@ -391,8 +391,23 @@ check_mise() {
     # here and not there is the bug.
     probe=${TMPDIR:-/tmp}
 
+    # The four arch-split tools are declared twice each, and mise skips the
+    # entry whose os/arch pair does not match this host (SI-120). So the Intel
+    # half is *expected* to be absent on Apple Silicon and vice versa, and
+    # probing it would report a working machine as broken.
+    #
+    # Only a conditional entry gets that exemption, and only when mise agrees
+    # it is inactive here. An unconditional tool that does not resolve is still
+    # a finding, which is the check's whole point.
+    conditional=$(mise_tool_keys_conditional config/mise/mise.toml)
+    active=$(mise ls --current 2>/dev/null | awk '{print $1}')
+
     while IFS= read -r tool; do
         [ -n "$tool" ] || continue
+        if printf '%s\n' "$conditional" | grep -qxF "$tool" &&
+            ! printf '%s\n' "$active" | grep -qxF "$tool"; then
+            continue
+        fi
         # `mise where` resolves a *tool* without executing anything. Two
         # alternatives were wrong: running each of fifty binaries with
         # --version is both slow and a far larger promise than a health check
@@ -408,12 +423,19 @@ check_mise() {
         detail "its shim works only while the cwd is inside a project that declares it"
         rc=1
     done <<EOF
-$(sed -n 's/^"\{0,1\}\([a-zA-Z0-9:_.-]*\)"\{0,1\}[[:space:]]*=[[:space:]]*".*/\1/p' config/mise/mise.toml)
+$(mise_tool_keys config/mise/mise.toml)
 EOF
 
     # More than one config in play means two answers to "which version", and
     # which one you get depends on where you are standing.
-    configs=$(mise config ls 2>/dev/null | grep -c '\.toml')
+    #
+    # Counted from --json, because the file that actually caused this was
+    # `~/.dotfiles/.tool-versions` and the previous `grep -c '\.toml'` could not
+    # see it — it is untracked, listed in ~/.config/git/ignore, and absent on
+    # this host, so nothing in the repo, git status or CI could see it either
+    # (SI-120). A check that only counts one of the two config formats mise
+    # reads is a check that misses the one nobody would notice by hand.
+    configs=$(mise config ls -J 2>/dev/null | grep -c '"path":')
     if [ "${configs:-0}" -gt 1 ]; then
         finding "$configs mise configs are in effect, not one"
         while IFS= read -r line; do detail "$line"; done <<EOF
@@ -426,10 +448,11 @@ EOF
     # Two providers for one tool: which wins depends on PATH order, which
     # differs between an interactive shell and a script.
     if have brew; then
+        # Binaries, not keys: `cargo:git-delta` is Homebrew's `git-delta`, and
+        # comparing the prefixed form against a formula list matches nothing.
         both=$(comm -12 \
             <(brew list --formula 2>/dev/null | sort) \
-            <(sed -n 's/^"\{0,1\}\([a-zA-Z0-9:_.-]*\)"\{0,1\}[[:space:]]*=[[:space:]]*".*/\1/p' \
-                config/mise/mise.toml | sort))
+            <(mise_tool_binaries config/mise/mise.toml))
         if [ -n "$both" ]; then
             finding "$(printf '%s\n' "$both" | grep -c .) tool(s) are provided by both brew and mise"
             while IFS= read -r line; do detail "$line"; done <<EOF

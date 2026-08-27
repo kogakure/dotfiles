@@ -703,6 +703,102 @@ unit_host_id() {
     )
 }
 
+# The mise.toml readers, against a fixture holding every value form the real
+# file uses — and the two the old inline sed got wrong.
+#
+# That pattern required the value to start with a quote, so it skipped inline
+# tables entirely: the four arch-split tools SI-120 added were parsed as
+# nothing at all, and dropped silently out of two of doctor's checks. It also
+# only avoided [settings] by luck, since both settings happen to have unquoted
+# values. Both are fixture rows below, so neither can come back.
+unit_mise() {
+    unit_require bin/lib/mise.sh || return 1
+    (
+        # shellcheck source=bin/lib/mise.sh
+        . bin/lib/mise.sh
+
+        bad=0
+        f=$(mktemp "${TMPDIR:-/tmp}/dotfiles-lint-mise.XXXXXX") || exit 1
+        cat >"$f" <<'FIXTURE'
+# a comment, and a fake tools line that must not be parsed: nope = "1.0"
+[tools]
+fzf = "0.74.2"
+fd = { version = "10.4.2", os = ["macos/arm64", "linux"] }
+"cargo:fd-find" = { version = "10.4.2", os = ["macos/x64"] }
+"npm:playwright-cli" = "latest"
+# commented-out = "9.9.9"
+
+[settings]
+not_found_auto_install = true
+idiomatic_version_file_enable_tools = ["ruby", "node"]
+FIXTURE
+
+        unit_expect "every key, both value forms, in file order" \
+            'fzf fd cargo:fd-find npm:playwright-cli' \
+            "$(mise_tool_keys "$f" | tr '\n' ' ' | sed 's/ $//')" || bad=1
+
+        # The regression that motivated the file. An inline table is a tool.
+        unit_expect "an inline table is not skipped" 1 \
+            "$(mise_tool_keys "$f" | grep -cxF fd | tr -d ' ')" || bad=1
+
+        # [settings] keys have unquoted values, so a parser that accepts those
+        # has to be section-aware or it invents two tools that do not exist.
+        unit_expect "[settings] does not leak into the tool list" 0 \
+            "$(mise_tool_keys "$f" | grep -cE 'not_found|idiomatic' | tr -d ' ')" || bad=1
+
+        unit_expect "a commented-out entry is not a tool" 0 \
+            "$(mise_tool_keys "$f" | grep -cxF commented-out | tr -d ' ')" || bad=1
+
+        unit_expect "only os-filtered entries are conditional" \
+            'fd cargo:fd-find' \
+            "$(mise_tool_keys_conditional "$f" | tr '\n' ' ' | sed 's/ $//')" || bad=1
+
+        # Backend prefixes are mise's addressing, not the package's name; the
+        # brew comparison in doctor matches nothing without this.
+        unit_expect "backend prefixes are stripped and sorted" \
+            'fd fd-find fzf playwright-cli' \
+            "$(mise_tool_binaries "$f" | tr '\n' ' ' | sed 's/ $//')" || bad=1
+
+        # The real file, not just the fixture: an arch-split pair must stay
+        # paired. A tool given an Apple Silicon entry and no Intel one is a tool
+        # macbook-2019 silently loses — the SI-120 bug written the other way
+        # round — and mise reports nothing, because a skipped entry is normal.
+        arm=$(grep -c 'os = \["macos/arm64' config/mise/mise.toml | tr -d ' ')
+        intel=$(grep -c 'os = \["macos/x64' config/mise/mise.toml | tr -d ' ')
+        unit_expect "each arch-split tool is declared for both architectures" \
+            "$arm" "$intel" || bad=1
+
+        # Naming the four, not just counting them. Equal counts of zero are
+        # equal, so the shape assertions above all pass on a file from which
+        # the whole split has been deleted — which is the one mutation most
+        # likely to happen by hand, since on Apple Silicon it looks like
+        # tidying up four redundant lines and nothing breaks locally.
+        for t in atuin delta fd pnpm; do
+            unit_expect "$t is still split by architecture" 1 \
+                "$(mise_tool_keys_conditional config/mise/mise.toml |
+                    grep -cxF "$t" | tr -d ' ')" || bad=1
+        done
+        unit_expect "the conditional keys are exactly those pairs" \
+            "$((arm + intel))" \
+            "$(mise_tool_keys_conditional config/mise/mise.toml | grep -c . | tr -d ' ')" || bad=1
+
+        # mise has no `arch` field. It ignores one silently, which leaves both
+        # halves of a pair active and reintroduces the bug on the machine the
+        # split exists for — with no error anywhere to say so.
+        #
+        # Through strip_comments, for the reason unit_brew_no_force gives: the
+        # file's own header warns against `arch = [...]` in prose, and grepping
+        # the raw text reports that warning as the defect it warns about.
+        unit_expect "mise.toml uses no 'arch =' key" 0 \
+            "$(strip_comments config/mise/mise.toml |
+                grep -c '[^a-z_]arch[[:space:]]*=' | tr -d ' ')" || bad=1
+
+        rm -f "$f"
+        [ "$bad" -eq 0 ] && ok "mise.toml readers handle inline tables, sections and backend prefixes"
+        exit "$bad"
+    )
+}
+
 # brewfile_hosts is what a host mismatch prints, so it has to be right exactly
 # when nothing else is working. Driven from a fixture rather than homebrew/,
 # for the reason unit_packages gives: the machine running the linter is one of
@@ -1428,6 +1524,7 @@ check_unit() {
     unit_brewfile_hosts || bad=1
     unit_brew_no_force || bad=1
     unit_brew_analysers || bad=1
+    unit_mise || bad=1
     unit_doctor_readonly || bad=1
     unit_profile || bad=1
     unit_conflicts || bad=1

@@ -17,20 +17,43 @@
 #   youtube-dl      - Homebrew yt-dlp; `aliases` redirects youtube-dl to it.
 #   claude-code     - duplicate of `claude` (same aqua:anthropics/claude-code
 #                     package, same `claude` binary).
+#
+# Four tools are declared twice, once per architecture. atuin, delta, fd and
+# pnpm are pinned to aqua packages that publish no darwin/amd64 build, so on
+# macbook-2019 `mise install` failed outright and — with
+# not_found_auto_install below — each one then retried and failed at whatever
+# moment it was first invoked, breaking the shell when you reached for `fd`
+# rather than when you set the machine up (SI-120).
+#
+# The `os` field takes `os/arch` pairs as well as bare OS names, and mise skips
+# an entry whose pair does not match the host. So each of the four names the
+# fast prebuilt backend for Apple Silicon and Linux, and a source-built one for
+# Intel macOS only. The Intel entries compile, which is slow on that machine's
+# first install and is the accepted cost of keeping all four under mise on
+# every host rather than splitting provisioning across two package managers.
+#
+# Do not "simplify" these to a single `arch = [...]` key: mise has no such
+# field and silently ignores it, leaving both entries active. The arch belongs
+# inside `os`, and the backend name is not always guessable from the tool name
+# — delta is cargo:git-delta and fd is cargo:fd-find, both because the short
+# name was already taken on crates.io.
 
 [tools]
-atuin = "18.19.0"
+atuin = { version = "18.19.0", os = ["macos/arm64", "linux"] }
+"cargo:atuin" = { version = "18.19.0", os = ["macos/x64"] }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bun = "latest"
 claude = "2.1.235"
 codex = "0.147.0"
-delta = "0.19.2"
+delta = { version = "0.19.2", os = ["macos/arm64", "linux"] }
+"cargo:git-delta" = { version = "0.19.2", os = ["macos/x64"] }
 deno = "latest"
 direnv = "latest"
 docker-cli = "29.7.2"
 eza = "0.23.5"
-fd = "10.4.2"
+fd = { version = "10.4.2", os = ["macos/arm64", "linux"] }
+"cargo:fd-find" = { version = "10.4.2", os = ["macos/x64"] }
 fzf = "0.74.2"
 gh = "2.97.0"
 git-lfs = "3.7.1"
@@ -53,7 +76,8 @@ opencode = "1.18.18"
 oxlint = "1.79.0"
 pandoc = "3.10.2"
 pi = "0.84.2"
-pnpm = "11.22.0"
+pnpm = { version = "11.22.0", os = ["macos/arm64", "linux"] }
+"npm:pnpm" = { version = "11.22.0", os = ["macos/x64"] }
 prettier = "3.9.6"
 python = "latest"
 ripgrep = "15.2.0"

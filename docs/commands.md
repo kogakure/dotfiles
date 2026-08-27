@@ -331,7 +331,7 @@ Doctor's checks:
 | `brewfile` | is the host Brewfile satisfied, and do the three hosts agree? |
 | `packages` | is the tool behind each `config/` entry installed here? |
 | `binaries` | does every command `config/git/config` names resolve? |
-| `mise` | one config, every tool resolving from outside the repo, no double provision |
+| `mise` | one config — counting `.tool-versions`, not just `.toml` — every tool resolving from outside the repo, no double provision |
 | `runtimes` | how many things provide `node`? |
 | `shells` | is `fish` in `/etc/shells` exactly once? |
 | `generated` | is the committed shell config current? |
