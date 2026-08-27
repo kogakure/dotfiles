@@ -26,7 +26,8 @@ just generate *ARGS   # bin/generate-shell-config (rebuild from shell/*.spec)
 just fmt              # shfmt -w over every shell source
 just install-hooks    # git config core.hooksPath .githooks
 just uninstall-hooks  # git config --unset core.hooksPath
-just doctor           # bin/dotfiles-doctor      (arrives with SI-85)
+just doctor *ARGS     # bin/dotfiles-doctor      (read-only health check)
+just clean *ARGS      # bin/dotfiles-clean       (dry run unless --apply)
 just backup *ARGS     # bin/dotfiles-backup      (e.g. just backup --dry-run)
 ```
 
@@ -56,6 +57,7 @@ written for bash 3.2 so it still runs under a reduced PATH.
 | `yaml`       | parses `install.conf.yaml`, asserts every `link:` source exists   |
 | `unit`       | runs the pure helpers in `bin/lib/` against fixtures, plus three whole-file invariants — see below |
 | `manifest`   | parses `preferences.manifest`, asserts it covers `private/preferences/` |
+| `owners`     | parses `config-owners.manifest`, asserts it covers `config/` |
 | `drift`      | re-runs `bin/generate-shell-config`, asserts the tree did not move |
 
 Run a subset by name: `just lint posix yaml`.
@@ -452,7 +454,7 @@ permanently-vacuous one are both worse than no job:
 - `just lint-strict` is used rather than `just lint`, so a linter that failed
   to install is an error instead of a skip.
 
-Beyond the lint run, CI asserts seven properties of the guardrails themselves:
+Beyond the lint run, CI asserts nine properties of the guardrails themselves:
 
 1. `just -f "$GITHUB_WORKSPACE/Justfile" --list` works from outside the
    checkout — no recipe depends on cwd.
@@ -473,6 +475,14 @@ Beyond the lint run, CI asserts seven properties of the guardrails themselves:
    first — an unstaged edit is simply repaired, leaving nothing to detect.
    Staging is what a committed hand-edit looks like to `git diff`.
 7. **bash and fish build the same `PATH`**, byte for byte, with no duplicates.
+8. **`bin/homebrew-restore` rejects an unknown host**, exiting non-zero and
+   naming every host that does have a Brewfile. It resolves the Brewfile before
+   it checks for `brew` precisely so this runs on the Linux leg too.
+9. **`bin/dotfiles-doctor` and `bin/dotfiles-clean` change nothing.**
+   `git status --porcelain` is byte-identical across a `doctor --verbose`
+   followed by a no-argument `clean`. Both exit non-zero on a runner — no
+   Brewfile for its hostname, no private submodule — so the assertion is about
+   the working tree, not the exit code.
 
 That fifth one is worth its cost. A dry run is a promise, and the only way to
 know it holds is to make one and look at the tree afterwards. Two leaks were
