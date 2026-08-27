@@ -903,6 +903,64 @@ FIXTURE
     )
 }
 
+# bin/dotfiles-doctor promises to be read-only, and bin/dotfiles-clean promises
+# to do nothing without --apply. Both promises are only worth what enforces them.
+#
+# A text property again, and for the same reason as unit_brew_no_force: the
+# behavioural version of "does this script write anything" is to run it on a
+# real machine and compare snapshots, which CI does — but CI has no $HOME worth
+# scanning and no brew, so the structural half belongs here.
+unit_doctor_readonly() {
+    unit_require bin/dotfiles-doctor || return 1
+    unit_require bin/dotfiles-clean || return 1
+    local bad=0 hits n
+
+    # doctor must never call run(), which is this repository's marker for a
+    # mutation. If a check ever needs one, it belongs in dotfiles-clean.
+    hits=$(strip_comments bin/dotfiles-doctor | grep -c '^[[:space:]]*run ')
+    if [ "$hits" -ne 0 ]; then
+        fail "unit: bin/dotfiles-doctor calls run() $hits time(s); it must be read-only"
+        bad=1
+    fi
+
+    # And no bare mutation that would sidestep run() altogether. The generator
+    # check's temp-directory teardown is the one exception, and it is `rm -f`
+    # on files find(1) located under a mktemp path — never a recursive removal.
+    hits=$(strip_comments bin/dotfiles-doctor | grep -c '\brm -rf\b\|\bmv \|\bcp ')
+    if [ "$hits" -ne 0 ]; then
+        fail "unit: bin/dotfiles-doctor contains $hits unguarded mutation(s)"
+        bad=1
+    fi
+
+    # dotfiles-clean is the inverse: it may delete, but only once --apply has
+    # been seen on argv. The guard is that DOTFILES_DRY_RUN is forced on
+    # otherwise, so every run() call is inert by default.
+    if ! strip_comments bin/dotfiles-clean | grep -q 'APPLY.*-eq 1.*||.*DOTFILES_DRY_RUN=1'; then
+        fail "unit: bin/dotfiles-clean does not force a dry run without --apply"
+        bad=1
+    fi
+
+    # --apply must not be reachable through the environment channel.
+    # shellcheck disable=SC2016  # a literal grep pattern; expanding it is the bug
+    if strip_comments bin/dotfiles-clean | grep -q 'APPLY=${'; then
+        fail "unit: bin/dotfiles-clean seeds --apply from the environment"
+        bad=1
+    fi
+
+    # Every deletion in dotfiles-clean goes through run() or through
+    # sync_prune_apply, which itself goes through run().
+    n=$(strip_comments bin/dotfiles-clean | grep -c '^[[:space:]]*rm -')
+    hits=$(strip_comments bin/dotfiles-clean | grep -c '^[[:space:]]*run rm -')
+    # The one bare `rm -f` is the keep-file this script wrote itself.
+    if [ "$((n - hits))" -gt 1 ]; then
+        fail "unit: bin/dotfiles-clean removes things without run(): $((n - hits)) site(s)"
+        bad=1
+    fi
+
+    [ "$bad" -eq 0 ] && ok "doctor never mutates; clean cannot delete without --apply on argv"
+    return "$bad"
+}
+
 # The ticket's "colour codes are currently emitted even when output is piped".
 # Captured in a command substitution, so stdout is a pipe, so every log_*
 # function must emit no escape sequence at all.
@@ -1370,6 +1428,7 @@ check_unit() {
     unit_brewfile_hosts || bad=1
     unit_brew_no_force || bad=1
     unit_brew_analysers || bad=1
+    unit_doctor_readonly || bad=1
     unit_profile || bad=1
     unit_conflicts || bad=1
     unit_no_prune || bad=1
