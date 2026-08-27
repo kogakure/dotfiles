@@ -1,0 +1,673 @@
+#!/bin/bash
+#
+# Report what has rotted on this machine.
+#
+# Usage: dotfiles-doctor [--verbose] [check...]
+#
+#   --verbose   show the detail behind each finding
+#   -h, --help  show this and exit
+#
+# Checks, in order:
+#   links brewfile packages binaries mise runtimes shells generated plugins
+#   submodule
+#
+# Named checks may be given as positional arguments to run a subset:
+#   dotfiles-doctor brewfile mise
+#
+# Exits non-zero when anything was found, zero when clean, so it can gate a
+# script later. It will be loud the first time. That output is the backlog.
+#
+# THIS SCRIPT IS READ-ONLY, AND STRUCTURALLY SO.
+#
+# It calls run() nowhere and writes nothing under $HOME or the repository. The
+# single write is bin/generate-shell-config into a mktemp directory, which is
+# how the staleness check compares without touching the committed files —
+# $TMPDIR is /var/folders/… on macOS, outside both. unit_doctor_readonly fails
+# if a mutation creeps in, and CI diffs `git status --porcelain` across a run.
+#
+# That constraint is why the repair half lives in bin/dotfiles-clean instead:
+# a tool you are willing to run on a machine you do not understand has to be
+# one that cannot make things worse.
+#
+# No `set -e`. The whole point is that one failing check does not cost you the
+# other nine, so failures are collected and named — the same reason
+# bin/dotfiles-backup and bin/update decline it.
+
+set -uo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/brew.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/brew.sh" || exit 1
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/shells.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/shells.sh" || exit 1
+
+cd "$(dotfiles_root)" || {
+    log_err "dotfiles-doctor: cannot cd to the repository root — aborting."
+    exit 1
+}
+
+dotfiles_flags_init
+
+VERBOSE=0
+CHECKS=""
+ALL_CHECKS="links brewfile packages binaries mise runtimes shells generated plugins submodule"
+
+OWNERS=bin/lib/config-owners.manifest
+
+# The directories install.conf.yaml lists under `clean:`. Every directory this
+# repository links *into* needs scanning, not just ~ — with "~" alone, deleting
+# a config/* entry left a dangling link in ~/.config forever.
+CLEAN_ROOTS="$HOME $HOME/.config $HOME/.gnupg $HOME/.warp"
+
+usage() {
+    log_info "Usage: dotfiles-doctor [--verbose] [check...]"
+    log_info ""
+    log_info "  --verbose   show the detail behind each finding"
+    log_info ""
+    log_info "Checks: ${ALL_CHECKS}"
+    log_info ""
+    log_info "Read-only. Exits non-zero when it finds something."
+    log_info "The repair half is bin/dotfiles-clean."
+}
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -v | --verbose) VERBOSE=1 ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        -*)
+            log_err "dotfiles-doctor: unknown option: $1"
+            usage
+            exit 1
+            ;;
+        *)
+            case " $ALL_CHECKS " in
+                *" $1 "*) CHECKS="${CHECKS} $1" ;;
+                *)
+                    log_err "dotfiles-doctor: unknown check: $1"
+                    log_info "Known checks: $ALL_CHECKS"
+                    exit 1
+                    ;;
+            esac
+            ;;
+    esac
+    shift
+done
+
+[ -n "$CHECKS" ] || CHECKS=$ALL_CHECKS
+
+wanted() {
+    case " $CHECKS " in
+        *" $1 "*) return 0 ;;
+    esac
+    return 1
+}
+
+# --- reporting --------------------------------------------------------------
+#
+# A finding is a line the reader has to act on; a detail is the evidence behind
+# it, shown only under --verbose so the default output stays a list rather than
+# a transcript. Both go through log.sh, so colour is TTY-aware and a piped run
+# is plain text.
+
+# Every helper below is reached only from a check_* function, and every check_*
+# is reached only through run_step's command argument — so shellcheck sees the
+# whole graph as unreachable and reports SC2329 on all of it. The disables say
+# so once per definition, which is the same accommodation bin/dotfiles-backup
+# and bin/update make for their step functions.
+
+# shellcheck disable=SC2329  # reached from the check_* functions
+finding() { log_warn "  ! $*"; }
+# shellcheck disable=SC2329  # reached from the check_* functions
+detail() {
+    [ "$VERBOSE" -eq 1 ] && log_info "      $*"
+    return 0
+}
+
+# Print every non-comment, non-blank row of a data file. The same shape as
+# bin/lib/util.sh's package_list, which this would use if the manifest lived
+# under packages/ — it does not, because only bin/ reads it.
+#
+# shellcheck disable=SC2329  # reached from the check_* functions
+manifest_rows() {
+    [ -f "$1" ] || return 1
+    sed -e 's/#.*//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e '/^$/d' "$1"
+}
+
+# The leaf of a possibly tap-qualified package name: dlvhdr/formulae/diffnav
+# is the formula `diffnav`, and `brew list` reports the leaf.
+#
+# shellcheck disable=SC2329  # reached from the check_* functions
+leaf() { printf '%s\n' "${1##*/}"; }
+
+# --- checks -----------------------------------------------------------------
+
+# Dangling symlinks, and dotbot links that never landed.
+#
+# The mirror of dotfiles-lint's `yaml` check, which validates that every link
+# *source* exists in the repository. This validates the other end: that the
+# destination under $HOME exists, is a symlink, and points back into the repo.
+# A source can be perfectly present while nobody has run ./install.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_links() {
+    local rc=0 root link dest src pairs n=0
+
+    for root in $CLEAN_ROOTS; do
+        [ -d "$root" ] || continue
+        # -maxdepth 1: these four are what dotbot cleans. Anything deeper
+        # belongs to the tool, not to this repository.
+        while IFS= read -r link; do
+            [ -n "$link" ] || continue
+            finding "dangling symlink: $link"
+            detail "-> $(readlink "$link")"
+            n=$((n + 1))
+        done <<EOF
+$(find "$root" -maxdepth 1 -type l ! -exec test -e {} \; -print 2>/dev/null)
+EOF
+    done
+    [ "$n" -gt 0 ] && rc=1
+
+    if ! have yq; then
+        log_skip "yq is not installed; the install.conf.yaml half was not checked"
+        return "$rc"
+    fi
+
+    pairs=$(yq -r '.[] | select(has("link")) | .link | to_entries | .[] |
+        .key + "\t" + (.value.path // .value)' install.conf.yaml 2>/dev/null)
+    if [ -z "$pairs" ]; then
+        finding "could not read the link table out of install.conf.yaml"
+        return 1
+    fi
+
+    while IFS="$(printf '\t')" read -r dest src; do
+        [ -n "$dest" ] || continue
+        # A glob source is expanded by dotbot into one link per match, so the
+        # pair itself names no single destination.
+        case "$src" in */\*) continue ;; esac
+        # private/* is a submodule that not every machine is granted.
+        case "$src" in private/*) [ -e "$src" ] || continue ;; esac
+
+        # ~ is dotbot's, not the shell's: it arrives here as a literal.
+        case "$dest" in "~"*) dest="$HOME${dest#\~}" ;; esac
+
+        if [ ! -e "$dest" ] && [ ! -L "$dest" ]; then
+            finding "not linked: $dest"
+            detail "should point at $src — run ./install"
+            rc=1
+        elif [ ! -L "$dest" ]; then
+            finding "not a symlink: $dest"
+            detail "a real file is shadowing the link to $src"
+            rc=1
+        fi
+    done <<EOF
+$pairs
+EOF
+
+    [ "$rc" -eq 0 ] && log_ok "no dangling links; every dotbot destination is in place"
+    return "$rc"
+}
+
+# Brewfile drift, and the data bugs the per-host dumps cannot see themselves.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_brewfile() {
+    local rc=0 out brewfile
+
+    if ! have brew; then
+        log_skip "brew is not installed on this host"
+        return 0
+    fi
+
+    brewfile=$(brewfile_path)
+    if [ ! -f "$brewfile" ]; then
+        finding "no Brewfile for host '$(host_id)'"
+        detail "available: $(brewfile_hosts | tr '\n' ' ')"
+        return 1
+    fi
+
+    # --no-upgrade, or every merely outdated package is reported as missing:
+    # 40+ false positives against one real finding on macbook-m5-pro.
+    out=$(brew_missing "$brewfile" 2>&1 | grep '^→' | sed 's/^→ //')
+    if [ -n "$out" ]; then
+        finding "$(printf '%s\n' "$out" | grep -c .) package(s) in the Brewfile are not installed"
+        while IFS= read -r line; do detail "$line"; done <<EOF
+$out
+EOF
+        rc=1
+    fi
+
+    # The analysers read every host file, not just this one: a name that
+    # disagrees across machines is invisible from inside either.
+    out=$(
+        brewfile_mas_conflicts homebrew/*
+        brewfile_tap_drift homebrew/*
+        brewfile_tap_url_drift homebrew/*
+    )
+    if [ -n "$out" ]; then
+        finding "$(printf '%s\n' "$out" | grep -c .) inconsistency(ies) across the host Brewfiles"
+        while IFS= read -r line; do detail "$line"; done <<EOF
+$out
+EOF
+        detail "these are machine state, not file content: fix on the host and re-dump"
+        rc=1
+    fi
+
+    [ "$rc" -eq 0 ] && log_ok "the Brewfile is satisfied and the three hosts agree"
+    return "$rc"
+}
+
+# Is the thing behind each config/ entry actually installed here?
+#
+# Driven by bin/lib/config-owners.manifest, so it covers mise-provided tools and
+# gh extensions rather than only formulae — and so adding a config directory
+# forces the question rather than leaving it to be noticed years later.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_packages() {
+    local rc=0 entry kind provider note name installed="" exts=""
+
+    if [ ! -f "$OWNERS" ]; then
+        finding "$OWNERS is missing"
+        return 1
+    fi
+
+    # Formulae and casks in one list: the manifest's `brew` kind covers both,
+    # and nothing here needs to tell them apart.
+    have brew && installed=$(
+        brew list --formula 2>/dev/null
+        brew list --cask 2>/dev/null
+    )
+    have gh && exts=$(gh extension list 2>/dev/null | awk '{print $3}')
+
+    while IFS='|' read -r entry kind provider note; do
+        [ -n "$entry" ] || continue
+        name=$(leaf "$provider")
+        case "$kind" in
+            brew)
+                have brew || continue
+                printf '%s\n' "$installed" | grep -qxF -- "$name" && continue
+                finding "config/$entry is here but brew has no '$name'"
+                detail "${note}"
+                rc=1
+                ;;
+            mise)
+                have mise || continue
+                # `where`, not `which`: `which` takes a *binary* name and the
+                # binary is often not the tool name — the neovim tool installs
+                # nvim, ripgrep installs rg, superfile installs spf. `which
+                # neovim` fails on a perfectly healthy machine.
+                mise where "$name" >/dev/null 2>&1 && continue
+                finding "config/$entry is here but mise cannot resolve '$name'"
+                detail "${note}"
+                rc=1
+                ;;
+            gh-ext)
+                have gh || continue
+                printf '%s\n' "${exts:-}" | grep -qF -- "$provider" && continue
+                finding "config/$entry is here but the gh extension '$provider' is not installed"
+                detail "install it: gh extension install $provider"
+                rc=1
+                ;;
+            orphan)
+                finding "config/$entry has no provider at all"
+                detail "${note}"
+                rc=1
+                ;;
+            manual)
+                finding "config/$entry is configured but nothing here installs '$provider'"
+                detail "${note}"
+                detail "reproducible on a fresh machine only if you remember to do it by hand"
+                rc=1
+                ;;
+            *)
+                # setup, mason, fisher: provided outside the package managers.
+                detail "config/$entry is provided by $kind ($provider)"
+                ;;
+        esac
+    done <<EOF
+$(manifest_rows "$OWNERS")
+EOF
+
+    [ "$rc" -eq 0 ] && log_ok "every config/ entry's provider is installed"
+    return "$rc"
+}
+
+# Commands the configuration shells out to unconditionally.
+#
+# Derived from config/git/config rather than hand-listed, because the failure
+# that matters is exactly there: `pager = hunk pager` has no guard, so on a host
+# without hunk every `git log` and `git diff` breaks. A guarded reference — the
+# tool hooks in shell/hooks.spec — is not breakage and is deliberately not
+# checked here.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_binaries() {
+    local rc=0 cmd seen=""
+
+    while IFS= read -r cmd; do
+        [ -n "$cmd" ] || continue
+        case " $seen " in *" $cmd "*) continue ;; esac
+        seen="$seen $cmd"
+        have "$cmd" && continue
+        finding "config/git/config runs '$cmd', which is not on PATH"
+        detail "git paging or diffing is broken on this host until it is installed"
+        rc=1
+    done <<EOF
+$(sed -n \
+        -e 's/^[[:space:]]*pager[[:space:]]*=[[:space:]]*\([a-zA-Z0-9_-]*\).*/\1/p' \
+        -e 's/^[[:space:]]*diff[[:space:]]*=[[:space:]]*\([a-zA-Z0-9_-]*\)$/\1/p' \
+        -e 's/^[[:space:]]*diffFilter[[:space:]]*=[[:space:]]*"\{0,1\}\([a-zA-Z0-9_-]*\).*/\1/p' \
+        config/git/config)
+EOF
+
+    [ "$rc" -eq 0 ] && log_ok "every command config/git/config names resolves"
+    return "$rc"
+}
+
+# The SI-118 failure class, made permanent.
+#
+# A tool declared in a project-local mise config resolves only while the cwd is
+# inside that project; its shim then fails in every script, cron job and
+# `ssh host cmd`. Twenty-one tools were broken this way on 2026-08-20 and the
+# repair was by hand, so nothing stops it recurring.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_mise() {
+    local rc=0 tool out configs both probe
+
+    if ! have mise; then
+        log_skip "mise is not installed on this host"
+        return 0
+    fi
+
+    # Outside the repository, which is the whole point: a tool that resolves
+    # here and not there is the bug.
+    probe=${TMPDIR:-/tmp}
+
+    while IFS= read -r tool; do
+        [ -n "$tool" ] || continue
+        # `mise where` resolves a *tool* without executing anything. Two
+        # alternatives were wrong: running each of fifty binaries with
+        # --version is both slow and a far larger promise than a health check
+        # should make, and `mise which` takes a *binary* name — the neovim tool
+        # installs nvim, ripgrep installs rg, superfile installs spf, so it
+        # reported ten healthy tools as broken.
+        #
+        # `where` is scope-sensitive, which is the property this needs: with the
+        # global config hidden it fails for every tool, so a pass really does
+        # mean "resolves from here" rather than "exists on disk somewhere".
+        (cd "$probe" && mise where "$tool" >/dev/null 2>&1) && continue
+        finding "mise cannot resolve '$tool' from outside the repository"
+        detail "its shim works only while the cwd is inside a project that declares it"
+        rc=1
+    done <<EOF
+$(sed -n 's/^"\{0,1\}\([a-zA-Z0-9:_.-]*\)"\{0,1\}[[:space:]]*=[[:space:]]*".*/\1/p' config/mise/mise.toml)
+EOF
+
+    # More than one config in play means two answers to "which version", and
+    # which one you get depends on where you are standing.
+    configs=$(mise config ls 2>/dev/null | grep -c '\.toml')
+    if [ "${configs:-0}" -gt 1 ]; then
+        finding "$configs mise configs are in effect, not one"
+        while IFS= read -r line; do detail "$line"; done <<EOF
+$(mise config ls 2>/dev/null)
+EOF
+        detail "config/mise/mise.toml says why a project-local one is a trap"
+        rc=1
+    fi
+
+    # Two providers for one tool: which wins depends on PATH order, which
+    # differs between an interactive shell and a script.
+    if have brew; then
+        both=$(comm -12 \
+            <(brew list --formula 2>/dev/null | sort) \
+            <(sed -n 's/^"\{0,1\}\([a-zA-Z0-9:_.-]*\)"\{0,1\}[[:space:]]*=[[:space:]]*".*/\1/p' \
+                config/mise/mise.toml | sort))
+        if [ -n "$both" ]; then
+            finding "$(printf '%s\n' "$both" | grep -c .) tool(s) are provided by both brew and mise"
+            while IFS= read -r line; do detail "$line"; done <<EOF
+$both
+EOF
+            detail "which one you get depends on PATH order — see shell/path.spec"
+            rc=1
+        fi
+    fi
+
+    [ "$rc" -eq 0 ] && log_ok "one mise config, every shim resolves, no double provision"
+    return "$rc"
+}
+
+# Three ways to get node is two too many.
+#
+# docs/environment.md has called volta "legacy, being phased out" since before
+# this repository had guardrails. It has not been. Flagged rather than fixed:
+# unwinding it is a migration across three machines, not an edit.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_runtimes() {
+    local rc=0 providers="" n=0
+
+    have volta && {
+        providers="$providers volta"
+        n=$((n + 1))
+    }
+    if have mise && (cd "${TMPDIR:-/tmp}" && mise which node >/dev/null 2>&1); then
+        providers="$providers mise"
+        n=$((n + 1))
+    fi
+    if have brew && brew list --formula 2>/dev/null | grep -qx node; then
+        providers="$providers brew"
+        n=$((n + 1))
+    fi
+
+    if [ "$n" -gt 1 ]; then
+        finding "node has $n providers:${providers}"
+        detail "node resolves to: $(command -v node 2>/dev/null || echo 'nothing')"
+        detail "which one wins depends on PATH order, so a script and a shell can disagree"
+        rc=1
+    fi
+
+    [ "$rc" -eq 0 ] && log_ok "node has one provider:${providers:- none}"
+    return "$rc"
+}
+
+# /etc/shells, without sudo and without writing.
+#
+# setup.sh appended the fish path on every run until SI-83; four entries had
+# accumulated across three machines. shells_file_desired is the pure half of
+# that fix, so the check is a diff against what it would write.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_shells() {
+    local rc=0 fish_path desired n
+
+    fish_path=$(command -v fish 2>/dev/null)
+    if [ -z "$fish_path" ]; then
+        log_skip "fish is not installed on this host"
+        return 0
+    fi
+    if [ ! -r /etc/shells ]; then
+        log_skip "/etc/shells is not readable"
+        return 0
+    fi
+
+    n=$(grep -cxF -- "$fish_path" /etc/shells)
+    if [ "$n" -gt 1 ]; then
+        finding "/etc/shells lists $fish_path $n times"
+        detail "setup.sh's shell_default step collapses it; run it, or edit by hand"
+        rc=1
+    fi
+
+    desired=$(shells_file_desired "$fish_path" /etc/shells)
+    if [ "$desired" != "$(cat /etc/shells)" ] && [ "$n" -eq 1 ]; then
+        finding "/etc/shells is not what setup.sh would write"
+        rc=1
+    fi
+
+    [ "$rc" -eq 0 ] && log_ok "/etc/shells names $fish_path exactly once"
+    return "$rc"
+}
+
+# Are the committed generated files current?
+#
+# Generated into a mktemp directory and diffed, rather than regenerated in
+# place. `just lint drift` does regenerate in place — it is allowed to write and
+# only a real run proves the point — but a doctor may not, so this is the same
+# question asked read-only. $DOTFILES_GENERATE_OUT exists for exactly this.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_generated() {
+    local rc=0 tmp out
+
+    if [ ! -x bin/generate-shell-config ]; then
+        log_skip "bin/generate-shell-config is not executable"
+        return 0
+    fi
+
+    tmp=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-doctor-gen.XXXXXX") || {
+        finding "could not create a temporary directory"
+        return 1
+    }
+
+    if ! DOTFILES_GENERATE_OUT="$tmp" bin/generate-shell-config >/dev/null 2>&1; then
+        finding "bin/generate-shell-config failed"
+        rc=1
+    else
+        out=$(
+            diff -r "$tmp/generated" generated 2>&1
+            diff -r "$tmp/config/fish/conf.d" config/fish/conf.d 2>&1 | grep -v '^Only in config/fish/conf.d'
+            diff "$tmp/config/nushell/env.nu" config/nushell/env.nu 2>&1
+        )
+        if [ -n "$out" ]; then
+            finding "the generated shell config is stale"
+            while IFS= read -r line; do detail "$line"; done <<EOF
+$out
+EOF
+            detail "regenerate with: just generate"
+            rc=1
+        fi
+    fi
+
+    # Not `rm -rf $tmp`: named removals only, in a repository whose history is
+    # full of scripts that deleted more than they meant to.
+    find "$tmp" -type f -exec rm -f {} + 2>/dev/null
+    find "$tmp" -type d -depth -exec rmdir {} + 2>/dev/null
+
+    [ "$rc" -eq 0 ] && log_ok "the generated shell config matches shell/*.spec"
+    return "$rc"
+}
+
+# Plugins tracked by neither a lockfile nor a check.
+#
+# zsh_plugins.txt, config/fish/fish_plugins and tpm all follow upstream HEAD
+# with no lockfile, unlike config/nvim/lazy-lock.json. Pinning them is out of
+# scope; recording what is installed is not, and it is the difference between a
+# breakage you can diagnose and one you cannot.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_plugins() {
+    local rc=0 declared installed missing="" n_missing=0 name dir sha
+
+    # tpm reads ~/.tmux/plugins, not config/tmux/plugins. Both exist here, and
+    # the second is not what runs.
+    declared=$(sed -n "s/^set -g @plugin '\([^']*\)'.*/\1/p" config/tmux/tmux.conf)
+    installed="$HOME/.tmux/plugins"
+
+    while IFS= read -r name; do
+        [ -n "$name" ] || continue
+        name=$(leaf "$name")
+        [ -d "$installed/$name" ] && continue
+        missing="$missing $name"
+        n_missing=$((n_missing + 1))
+        rc=1
+    done <<EOF
+$declared
+EOF
+
+    if [ "$n_missing" -gt 0 ]; then
+        finding "$n_missing tmux plugin(s) declared but not in ~/.tmux/plugins"
+        detail "${missing# }"
+        detail "install with: ~/.tmux/plugins/tpm/bin/install_plugins"
+        if [ -d config/tmux/plugins ]; then
+            detail "note config/tmux/plugins/ holds $(find config/tmux/plugins -maxdepth 1 -mindepth 1 -type d | grep -c .) checkouts, which tpm does not read"
+        fi
+    fi
+
+    # The record that makes a breakage diagnosable after the fact.
+    if [ "$VERBOSE" -eq 1 ] && [ -d "$installed" ]; then
+        for dir in "$installed"/*; do
+            [ -d "$dir/.git" ] || continue
+            sha=$(git -C "$dir" rev-parse --short HEAD 2>/dev/null)
+            detail "${dir##*/} $sha"
+        done
+    fi
+
+    [ "$rc" -eq 0 ] && log_ok "every declared tmux plugin is installed"
+    return "$rc"
+}
+
+# The private submodule: present, and not carrying uncommitted work.
+#
+# A direct git query rather than private_gate, which logs and exports
+# DOTFILES_PRIVATE_GATE — a doctor must not change its caller's environment or
+# the decisions a later backup makes.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_submodule() {
+    local rc=0 root dirty
+
+    root=$(private_root)
+    if [ ! -e "$root/.git" ]; then
+        finding "private/ is not a git checkout"
+        detail "git submodule update --init --recursive"
+        return 1
+    fi
+
+    dirty=$(git -C "$root" status --porcelain 2>/dev/null)
+    if [ -n "$dirty" ]; then
+        finding "private/ has $(printf '%s\n' "$dirty" | grep -c .) uncommitted change(s)"
+        while IFS= read -r line; do detail "$line"; done <<EOF
+$dirty
+EOF
+        detail "this machine's own backups, most likely — commit them so the others see them"
+        rc=1
+    fi
+
+    [ "$rc" -eq 0 ] && log_ok "private/ is initialised and clean"
+    return "$rc"
+}
+
+# --- main -------------------------------------------------------------------
+
+log_step "dotfiles-doctor"
+log_field "host" "$(host_id)"
+log_field "checks" "${CHECKS# }"
+
+wanted links && run_step links check_links
+wanted brewfile && run_step brewfile check_brewfile
+wanted packages && run_step packages check_packages
+wanted binaries && run_step binaries check_binaries
+wanted mise && run_step mise check_mise
+wanted runtimes && run_step runtimes check_runtimes
+wanted shells && run_step shells check_shells
+wanted generated && run_step generated check_generated
+wanted plugins && run_step plugins check_plugins
+wanted submodule && run_step submodule check_submodule
+
+if ! step_summary; then
+    log_info ""
+    log_info "Findings are not failures of this script — they are the backlog."
+    [ "$VERBOSE" -eq 0 ] && log_info "Re-run with --verbose for the detail behind each one."
+    log_info "bin/dotfiles-clean repairs the two that can be repaired safely."
+    exit 1
+fi
+
+log_done "Nothing to report."
+exit 0
