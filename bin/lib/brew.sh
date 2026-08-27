@@ -39,6 +39,16 @@ brew_missing() {
 # without --force only lists, which is the whole reason this is safe to run
 # unprompted.
 #
+# The exit status answers "is there anything to prune", not "did it work":
+# `brew bundle cleanup` returns 1 when it has something to list and 0 when it
+# does not. So callers must test it rather than let `set -e` see it — the first
+# version of the caller did not, and the prune path exited before it ever
+# reached its confirmation prompt.
+#
+# Reading a status that way is only safe because it degrades in the right
+# direction: a genuine brew error also returns non-zero, is therefore read as
+# "there is work", and lands on the confirmation, where the answer is no.
+#
 # Usage: brew_prune_plan <brewfile>
 brew_prune_plan() {
     brew bundle cleanup --file "$1"

@@ -2,25 +2,51 @@
 #
 # Install the packages in homebrew/<hostname>.
 #
-# Usage: homebrew-restore [--dry-run]
+# Usage: homebrew-restore [--dry-run] [--prune]
 #
-# ⚠️ `brew bundle cleanup --force` UNINSTALLS everything not named in the
-# Brewfile. Do not use this to check for drift — that is what
-# `brew bundle check --file homebrew/<host>` is for (SI-119 de-fangs this).
+#   --dry-run   print what would be installed; change nothing
+#   --prune     ALSO offer to uninstall everything the Brewfile does not name.
+#               Shows the list first and asks. Off by default, argv-only.
+#
+# The host file is homebrew/$(host_id), overridable with $DOTFILES_HOST. If it
+# does not exist this fails and prints the hosts that do, rather than skipping
+# the longest step in setup.sh in silence.
+#
+# This script cannot uninstall anything without --prune and an interactive yes.
+# It used to run `brew bundle cleanup --force` unconditionally on line 46, which
+# removes every formula and cask absent from the Brewfile — 368 formulae and 121
+# casks here, no confirmation, no undo (SI-119).
 
 set -euo pipefail
 
 # shellcheck source-path=SCRIPTDIR
 # shellcheck source=lib/common.sh
 . "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/brew.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/brew.sh" || exit 1
 
 dotfiles_flags_init
+
+# Deliberately a local, and deliberately not seeded from $DOTFILES_PRUNE.
+#
+# The environment channel exists so bin/dotfiles-backup can push flags down into
+# the scripts it drives. Nothing should be able to push *this* flag: an
+# uninstall has to be typed on the command line of the run that performs it.
+PRUNE=0
 
 while [ $# -gt 0 ]; do
     case "$1" in
         --dry-run) DOTFILES_DRY_RUN=1 ;;
+        --prune) PRUNE=1 ;;
         -h | --help)
-            log_info "Usage: homebrew-restore [--dry-run]"
+            log_info "Usage: homebrew-restore [--dry-run] [--prune]"
+            log_info ""
+            log_info "  --dry-run   print what would be installed; change nothing"
+            log_info "  --prune     also offer to uninstall what the Brewfile"
+            log_info "              does not name; shows the list and asks first"
+            log_info ""
+            log_info "The host file is homebrew/\$(host_id); \$DOTFILES_HOST overrides it."
             exit 0
             ;;
         *)
@@ -31,17 +57,67 @@ while [ $# -gt 0 ]; do
     shift
 done
 
+# Resolve the Brewfile BEFORE requiring brew.
+#
+# Not cosmetic ordering: it is what makes the unknown-host path assertable in
+# CI, where Homebrew does not exist. Checking `have brew` first would make every
+# run on a Linux runner fail with the same message whatever the host name, and
+# the gate would prove nothing.
+BREWFILE="$(brewfile_path)"
+
+if [ ! -f "$BREWFILE" ]; then
+    log_err "homebrew-restore: no Brewfile for host '$(host_id)' at $BREWFILE"
+    log_err "  available: $(brewfile_hosts | tr '\n' ' ')"
+    log_err "  fix permanently with: sudo scutil --set HostName <one of those>"
+    log_err "  or for this run only:  DOTFILES_HOST=<one of those> $0"
+    exit 1
+fi
+
 if ! have brew; then
     log_err "homebrew-restore: brew not found on PATH."
     exit 1
 fi
 
-BREWFILE="$(dotfiles_root)/homebrew/$(host_id)"
+log_field "Brewfile" "$BREWFILE"
 
-if [ ! -f "$BREWFILE" ]; then
-    log_err "homebrew-restore: no Brewfile for this host at $BREWFILE"
-    exit 1
+# Report before installing. `brew bundle install` prints what it does, but only
+# once it is doing it; this says what is missing while there is still a chance
+# to stop. Non-zero just means "something is missing", which is the normal case.
+log_step "Checking"
+brew_missing "$BREWFILE" || true
+
+log_step "Installing"
+run brew bundle install --file "$BREWFILE"
+
+if [ "$PRUNE" -eq 1 ]; then
+    log_step "Pruning"
+
+    # In the `if` condition, not bare: brew_prune_plan returns 1 when it has
+    # something to list, so under `set -e` a bare call aborts the script — which
+    # is exactly what it did, silently, before ever reaching the prompt below.
+    if brew_prune_plan "$BREWFILE"; then
+        log_skip "nothing installed that the Brewfile does not name"
+    else
+        log_warn "Everything above is installed and absent from the Brewfile."
+
+        # confirm() and not `[ "$DOTFILES_ASSUME_YES" -eq 1 ] || confirm`, which
+        # is what bin/lib/util.sh tells call sites to write.
+        #
+        # This is the exception it describes. confirm() answers "no" when there
+        # is no terminal, so refusing to honour --yes makes every unattended run
+        # safe by construction — cron, `ssh host cmd`, a nested call from an
+        # aggregator. An uninstall with no undo is worth the inconsistency.
+        #
+        # The dry-run branch is first because a dry run must never prompt — the
+        # same promise CI asserts for setup.sh --dry-run.
+        if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+            log_skip "dry run: would ask before uninstalling any of it"
+        elif confirm "Uninstall all of it?"; then
+            brew_prune_apply "$BREWFILE"
+        else
+            log_skip "nothing uninstalled"
+        fi
+    fi
 fi
 
-run brew bundle cleanup --force --file "$BREWFILE"
-run brew bundle --file "$BREWFILE"
+log_done "Packages are up to date."
