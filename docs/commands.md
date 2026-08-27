@@ -17,6 +17,8 @@ just generate         # bin/generate-shell-config; rebuild from shell/*.spec
 just lint             # shellcheck, shfmt, fish/zsh syntax, POSIX source, yaml, unit, manifest, drift
 just fmt              # shfmt -w over every shell source
 just backup *ARGS     # every backup; `just backup --dry-run`, `just backup preferences`
+just doctor *ARGS     # read-only health check; `just doctor --verbose`
+just clean *ARGS      # remove dangling links and dead tmux plugins; --apply to act
 just install-hooks    # enable the pre-commit hook
 ```
 
@@ -302,6 +304,61 @@ stubs — a shebang and nothing else — that `setup.sh` and `bin/update` called
 while these docs claimed they worked. SI-81 deleted them rather than leave
 silent no-ops; SI-82 implemented the half that can be verified without a fresh
 machine.)
+
+## Health checks — `doctor` and `clean`
+
+```bash
+just doctor                    # every check, read-only
+just doctor --verbose          # with the evidence behind each finding
+just doctor brewfile mise      # a subset, by name
+just clean                     # print a removal plan, change nothing
+just clean --apply             # remove, asking first
+just clean --apply --yes       # remove without asking
+```
+
+`bin/dotfiles-doctor` reports; `bin/dotfiles-clean` repairs. They are two
+scripts rather than one with a `--fix` flag so that the reporting half can be
+**provably** read-only: it calls `run` nowhere, its only write is the shell-config
+generator into a `mktemp` directory, and `just lint unit` plus CI both hold it to
+that. A tool you are willing to run on a machine you do not understand has to be
+one that cannot make things worse.
+
+Doctor's checks:
+
+| Check | Answers |
+| --- | --- |
+| `links` | are there dangling symlinks, and did every dotbot link actually land? |
+| `brewfile` | is the host Brewfile satisfied, and do the three hosts agree? |
+| `packages` | is the tool behind each `config/` entry installed here? |
+| `binaries` | does every command `config/git/config` names resolve? |
+| `mise` | one config, every tool resolving from outside the repo, no double provision |
+| `runtimes` | how many things provide `node`? |
+| `shells` | is `fish` in `/etc/shells` exactly once? |
+| `generated` | is the committed shell config current? |
+| `plugins` | are the declared tmux plugins installed? |
+| `submodule` | is `private/` initialised and clean? |
+
+**It exits non-zero when it finds anything**, so it can gate a script. It is
+loud the first time, and that output is the backlog rather than a bug.
+
+`packages` and `binaries` read `bin/lib/config-owners.manifest`, which is what
+makes them cover mise tools and gh extensions rather than only formulae. Adding
+a directory under `config/` fails `just lint owners` until that file says what
+installs the tool — see [architecture.md](architecture.md).
+
+### `clean` is dry-run by **default**, which inverts the usual convention
+
+Everywhere else in this repository `--dry-run` is opt-in, because everywhere
+else the default is to copy a file or install a package. This script's whole job
+is deletion, so the safe direction is the other one: `just clean` prints a plan,
+and `--apply` is required to act. `--apply` is read from the command line only,
+so nothing can turn deletion on through the `DOTFILES_*` environment channel.
+
+It removes exactly two things, both demonstrably dead — dangling symlinks under
+the four directories `install.conf.yaml` cleans, and `~/.tmux/plugins` entries
+`tmux.conf` no longer names. Everything else it finds it **reports and leaves
+alone**: those artefacts are dead on the evidence of reading them rather than of
+a check, and that belongs in a commit someone reviews.
 
 ## macOS Settings
 

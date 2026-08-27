@@ -137,3 +137,32 @@ alongside the `fish_plugins` line that installs them.
 under `config/` is therefore symlinked into the live configuration tree as a
 side effect, whether or not it is configuration. Data files that only the
 `bin/` scripts read belong outside it.
+
+### Adding a `config/<tool>/` requires saying what installs the tool
+
+The same glob has a second consequence: a directory added under `config/` is
+**live configuration the moment it is committed**, whether or not anything in
+this repository installs the tool it configures. Nothing checked that, and
+classifying all 32 entries by hand turned up four with no installer at all —
+`cship.toml` (the binary is at `~/.local/bin/cship`, put there by nobody),
+`harper-ls` (Neovim's Mason, and nothing in `config/nvim` even references it),
+`doom` (git-cloned by `setup.sh`) and `gh-dash` (a gh extension, so no Brewfile
+will ever name it).
+
+`bin/lib/config-owners.manifest` records the answer for each entry, and
+`just lint owners` asserts it covers `config/` in **both** directions: every
+entry has a row, every row has an entry. That is a forcing function rather than
+a record — a new directory fails the build until somebody says what provides its
+tool, and `orphan` is a legitimate answer that then stays visible instead of
+being rediscovered years later.
+
+It is *not* a check that the tool is installed right now. That is per-host and
+changes under you; `bin/dotfiles-doctor` answers it at runtime, reading this
+file. Thirteen entries are in both a Brewfile and `config/mise/mise.toml`; the
+manifest records which is *meant* to win — mise, since SI-118 — and doctor
+reports the overlap rather than the file pretending it is fine.
+
+This is the third data file both a `bin/` script and a lint check read, after
+`packages/` and `bin/lib/preferences.manifest`. All three exist for the same
+reason: a list that lives in one place is reviewable in a diff, and the copies
+that preceded them had all drifted.

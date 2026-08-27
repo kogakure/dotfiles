@@ -39,3 +39,18 @@ Personal macOS dotfiles repository managed with [dotbot](https://github.com/anis
   the private submodule (`private/git/`, `private/jj/`, `private/doom/`). Do not
   reintroduce them here. The one deliberate exception is the public key
   fingerprint in `gnupg/gpg.conf`, which has a comment explaining why
+- **Adding a `config/<tool>/` needs a row in
+  `bin/lib/config-owners.manifest`** saying what installs the tool.
+  `install.conf.yaml` globs `config/*` into `~/.config/`, so the directory is
+  live configuration as soon as it is committed even if nothing installs the
+  tool — `just lint owners` fails until the question is answered, and `orphan`
+  is a valid answer. See @docs/architecture.md
+- **`just doctor` is read-only; `just clean` is dry-run unless `--apply`.**
+  Doctor reports drift and never writes — it calls `run` nowhere, and both
+  `just lint unit` and CI hold it to that. Do not add a mutation to it; the
+  repair half is `bin/dotfiles-clean`. See @docs/commands.md
+- **`bin/homebrew-restore` only uninstalls behind `--prune`** plus an
+  interactive confirmation that `--yes` cannot answer. Do not reintroduce an
+  unconditional `brew bundle cleanup --force`; `just lint unit` fails if you
+  do. Use `brew bundle check --no-upgrade` to report drift — without the flag
+  every merely outdated package is reported as missing
