@@ -270,15 +270,16 @@ step_preflight() {
     fi
 
     # The load-bearing one. A fresh Mac reports something like Mac.local, and
-    # bin/homebrew-restore:41-44 then aborts the entire package install over it.
-    # Fail here, where the message can name the fix, rather than there.
-    brewfiles=$(cd homebrew 2>/dev/null && printf '%s ' *)
-    if [ -f "homebrew/$(host_id)" ]; then
+    # bin/homebrew-restore then fails the entire package install over it. Fail
+    # here instead, where the message arrives before an hour of `brew bundle`.
+    brewfiles=$(brewfile_hosts | tr '\n' ' ')
+    if [ -f "$(brewfile_path)" ]; then
         log_ok "hostname '$(host_id)' has a Brewfile"
     else
         log_err "hostname '$(host_id)' has no Brewfile in homebrew/"
         log_err "  available: ${brewfiles% }"
         log_err "  fix with: sudo scutil --set HostName <one of those>"
+        log_err "  or for one run: DOTFILES_HOST=<one of those> ./setup.sh"
         rc=1
     fi
 
