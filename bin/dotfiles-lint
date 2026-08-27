@@ -815,6 +815,92 @@ unit_brew_no_force() {
     return "$bad"
 }
 
+# The three Brewfile analysers dotfiles-doctor reports from.
+#
+# Fixtures rather than homebrew/, and fixtures that carry the defects rather
+# than clean ones: the real files' contents change on every `bin/update`, so a
+# test written against them would pass or fail by accident of what happened to
+# be installed the day it ran. The rows below are the four shapes
+# docs/architecture.md records as known data bugs, reduced to their minimum.
+unit_brew_analysers() {
+    unit_require bin/lib/brew.sh || return 1
+    (
+        _DL_ROOT=$REPO_ROOT
+        # shellcheck source=bin/lib/log.sh
+        . bin/lib/log.sh
+        # shellcheck source=bin/lib/util.sh
+        . bin/lib/util.sh
+        # shellcheck source=bin/lib/brew.sh
+        . bin/lib/brew.sh
+
+        bad=0
+        d=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-brewfiles-a.XXXXXX") || exit 1
+
+        # One app re-listed under a new App Store ID while the old entry stayed,
+        # inside a single file. The Pages case.
+        # And a tap pinned to another owner's repository: the sst/anomalyco one.
+        cat >"$d/host-a" <<'FIXTURE'
+tap "acme/tap", "https://github.com/other-co/homebrew-tap.git", trusted: true
+tap "casing/tap", "https://github.com/Casing/homebrew-tap.git"
+brew "widget"
+brew "shared"
+mas "Pages", id: 361309726
+mas "Pages", id: 409201541
+mas "Editor", id: 111
+FIXTURE
+
+        # The same formula spelled bare on one host and tap-qualified on the
+        # other, and the same App Store id dumped under a different name.
+        cat >"$d/host-b" <<'FIXTURE'
+brew "vendor/tap/widget"
+brew "shared"
+mas "Editor 2", id: 111
+FIXTURE
+
+        unit_expect "one name under two ids, and one id under two names" \
+            'mas "Pages" has several ids: 361309726 409201541|mas id 111 has several names: Editor Editor 2' \
+            "$(brewfile_mas_conflicts "$d/host-a" "$d/host-b" | tr '\n' '|' | sed 's/|$//')" || bad=1
+
+        unit_expect "bare and tap-qualified spellings of one formula" \
+            'brew "widget" is spelled several ways: widget(host-a) vendor/tap/widget(host-b)' \
+            "$(brewfile_tap_drift "$d/host-a" "$d/host-b")" || bad=1
+
+        # A formula spelled the same way on both hosts is not drift, or every
+        # shared package would be a finding.
+        if brewfile_tap_drift "$d/host-a" "$d/host-b" | grep -q '"shared"'; then
+            fail "unit: brewfile_tap_drift reported a consistently spelled formula"
+            bad=1
+        fi
+
+        unit_expect "a tap served from another owner" \
+            'tap "acme/tap" is served from other-co (host-a)' \
+            "$(brewfile_tap_url_drift "$d/host-a" "$d/host-b")" || bad=1
+
+        # GitHub owners are case-insensitive, so `casing/tap` served from
+        # .../Casing/... is one account written two ways. Reporting it would be
+        # the kind of noise that gets a check ignored.
+        if brewfile_tap_url_drift "$d/host-a" | grep -qi 'casing'; then
+            fail "unit: brewfile_tap_url_drift reported a mere case difference"
+            bad=1
+        fi
+
+        # Clean input yields nothing at all — the property that makes a zero
+        # exit meaningful.
+        printf 'brew "one"\nmas "App", id: 5\n' >"$d/clean"
+        unit_expect "a clean Brewfile yields no findings" "" \
+            "$(
+                brewfile_mas_conflicts "$d/clean"
+                brewfile_tap_drift "$d/clean"
+                brewfile_tap_url_drift "$d/clean"
+            )" || bad=1
+
+        rm -f "$d"/host-a "$d"/host-b "$d"/clean
+        rmdir "$d"
+        [ "$bad" -eq 0 ] && ok "the Brewfile analysers find each known defect and nothing else"
+        exit "$bad"
+    )
+}
+
 # The ticket's "colour codes are currently emitted even when output is piped".
 # Captured in a command substitution, so stdout is a pipe, so every log_*
 # function must emit no escape sequence at all.
@@ -1281,6 +1367,7 @@ check_unit() {
     unit_host_id || bad=1
     unit_brewfile_hosts || bad=1
     unit_brew_no_force || bad=1
+    unit_brew_analysers || bad=1
     unit_profile || bad=1
     unit_conflicts || bad=1
     unit_no_prune || bad=1
