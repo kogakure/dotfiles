@@ -31,8 +31,42 @@ private_root() { printf '%s\n' "$_DL_ROOT/private"; }
 # Brewfiles are named mac-mini, macbook-2019 and macbook-m5-pro, and a machine
 # reporting an FQDN would otherwise look for a Brewfile that does not exist.
 #
+# $DOTFILES_HOST overrides it. On macOS `hostname` returns the Bonjour name,
+# which changes with the network — a fresh Mac reports something like Mac.local
+# — and every host-keyed path in this repository then resolves to a file that
+# does not exist. `sudo scutil --set HostName` is still the right permanent fix;
+# this is the escape hatch for a one-off run and for the tests, which need to
+# exercise the not-my-host path on a machine that is one of the hosts.
+#
 # Usage: host_id
-host_id() { hostname -s; }
+host_id() { printf '%s\n' "${DOTFILES_HOST:-$(hostname -s)}"; }
+
+# The per-host Brewfile. One spelling, shared by homebrew-backup,
+# homebrew-restore and dotfiles-doctor — the pair used to disagree about how to
+# build it, one with a tilde bash never expanded and one with an unquoted
+# command substitution.
+#
+# Usage: brewfile_path
+brewfile_path() { printf '%s\n' "$_DL_ROOT/homebrew/$(host_id)"; }
+
+# Pure. Print the hostnames that have a Brewfile, one per line, from the
+# directory given as $1 (default: the repository's homebrew/).
+#
+# Taking the directory as an argument is what makes it testable: `just lint
+# unit` runs it against a fixture rather than against whatever this machine
+# happens to have. Every caller wants the same thing — the list to print when a
+# host does not match — and setup.sh's preflight had its own `(cd homebrew &&
+# printf '%s ' *)` spelling of it.
+#
+# Usage: brewfile_hosts [dir]
+brewfile_hosts() {
+    local dir=${1:-$_DL_ROOT/homebrew} entry
+    [ -d "$dir" ] || return 0
+    for entry in "$dir"/*; do
+        [ -f "$entry" ] || continue
+        printf '%s\n' "${entry##*/}"
+    done
+}
 
 # Print one entry per line from a packages/ data file, dropping `#` comments,
 # trailing whitespace and blank lines.
