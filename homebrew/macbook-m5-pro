@@ -547,8 +547,6 @@ cask "sweet-home3d"
 cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
-# LaTeX editor
-cask "texmaker"
 # Menu bar manager
 cask "thaw"
 # Unpacks archive files
@@ -586,7 +584,7 @@ cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
 mas "Blurred 2", id: 1497527363
-mas "DaisyDisk", id: 411643860
+mas "DaisyDisk 2", id: 411643860
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Dynamic wallpaper", id: 1582358382
