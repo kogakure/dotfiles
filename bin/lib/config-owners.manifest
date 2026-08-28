@@ -24,10 +24,12 @@
 #
 # FORMAT
 #
-# One entry per line, exactly four fields separated by a single "|" with NO
-# padding — a space next to a "|" becomes part of a field. "#" starts a comment.
+# One entry per line, four fields separated by a single "|" with NO padding —
+# a space next to a "|" becomes part of a field — plus an optional fifth.
+# "#" starts a comment.
 #
 #   entry|kind|provider|note
+#   entry|kind|provider|note|hosts
 #
 #   entry     a name directly under config/, file or directory, verbatim
 #             (including any extension: `cship.toml`, not `cship`)
@@ -43,6 +45,27 @@
 #             `nvim` is provided by the mise tool `neovim`; `gh-dash` by the gh
 #             extension `dlvhdr/gh-dash`.
 #   note      free text, or "-"
+#   hosts     OPTIONAL. A comma-separated list of hostnames, each of which must
+#             name a file in homebrew/. Absent or empty means every host, which
+#             is the normal case — only write it when the tool genuinely
+#             belongs to particular machines.
+#
+# ON hosts
+#
+# The field exists because "macbook-2019 only" used to live in the *note*,
+# where doctor printed it and then reported the finding anyway. `borders` and
+# `wezterm` are installed on that machine and nowhere else, so on the other two
+# `check_packages` asked "is it here", correctly answered no, and told you to
+# fix something that was not broken — on every run, forever (SI-125). A check
+# that cannot go green stops being read.
+#
+# A scoped entry is still checked on the hosts it names, and is still printed
+# under `--verbose` on the others, so it does not become invisible. Making an
+# entry invisible is the failure this file was built to prevent; making it
+# quiet where it does not apply is the point.
+#
+# It is deliberately the LAST field, so the thirty rows that apply everywhere
+# stay byte-identical and a diff shows only what actually changed.
 #
 # ON kind FOR A TOOL THAT HAS TWO PROVIDERS
 #
@@ -55,7 +78,7 @@
 aerospace|brew|nikitabobko/tap/aerospace|cask; window manager
 atuin|mise|atuin|also a brew formula on mac-mini and macbook-2019
 bat|mise|bat|also brew; bat-extras is mise-only
-borders|brew|felixkratz/formulae/borders|macbook-2019 only; started via packages/services
+borders|brew|felixkratz/formulae/borders|started via packages/services|macbook-2019
 cship.toml|manual|cship|no installer anywhere; the binary is at ~/.local/bin/cship
 doom|setup|doom-emacs|git-cloned by setup.sh's editors step, not packaged
 fish|brew|fish|the login shell; setup.sh's packages step must supply it
@@ -80,7 +103,7 @@ sesh|brew|joshmedeski/sesh/sesh|-
 starship.toml|mise|starship|also brew; the prompt
 superfile|mise|superfile|also brew
 tmux|brew|tmux|deliberately not mise — config/mise/mise.toml says why
-wezterm|brew|wezterm|cask on macbook-2019 only; Ghostty is the terminal elsewhere
+wezterm|brew|wezterm|cask; Ghostty is the terminal elsewhere|macbook-2019
 worktrunk|mise|worktrunk|also brew
 yazi|mise|yazi|also brew
 zed|brew|zed|cask

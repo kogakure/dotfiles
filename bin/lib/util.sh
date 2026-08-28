@@ -41,6 +41,28 @@ private_root() { printf '%s\n' "$_DL_ROOT/private"; }
 # Usage: host_id
 host_id() { printf '%s\n' "${DOTFILES_HOST:-$(hostname -s)}"; }
 
+# Pure. Is $1 named in the comma-separated host list $2?
+#
+# An EMPTY list means every host, because that is what an unscoped row in
+# bin/lib/config-owners.manifest means — the common case stays the short
+# four-field form and only genuinely machine-specific entries carry a fifth
+# (SI-125).
+#
+# Usage: host_in_list <host> <comma-separated-list>
+host_in_list() {
+    local host=$1 list=$2 item old_ifs
+    [ -n "$list" ] || return 0
+    old_ifs=$IFS
+    IFS=,
+    # shellcheck disable=SC2086  # deliberate split of the comma-separated list
+    set -- $list
+    IFS=$old_ifs
+    for item in "$@"; do
+        [ "$item" = "$host" ] && return 0
+    done
+    return 1
+}
+
 # The per-host Brewfile. One spelling, shared by homebrew-backup,
 # homebrew-restore and dotfiles-doctor — the pair used to disagree about how to
 # build it, one with a tilde bash never expanded and one with an unquoted
