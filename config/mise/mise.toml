@@ -64,6 +64,13 @@
 # followed by `./bin/homebrew-backup` — without the re-dump the Brewfile still
 # names the formula and `brew bundle check` reports it as missing.
 
+# cship is a GitHub release with no brew formula and no registry entry, so it
+# was installed by hand at ~/.local/bin and reproduced on a fresh machine only
+# by remembering to (SI-86). The alias gives the ubi backend a short name, so
+# the tools entry below stays readable and `mise where cship` resolves.
+[tool_alias]
+cship = "ubi:stephenleo/cship"
+
 [tools]
 atuin = { version = "18.19.0", os = ["macos/arm64", "linux"] }
 "cargo:atuin" = { version = "18.19.0", os = ["macos/x64"] }
@@ -72,6 +79,7 @@ bat-extras = "2024.08.24"
 bun = "latest"
 claude = "2.1.235"
 codex = "0.147.0"
+cship = "1.8.1"
 delta = { version = "0.19.2", os = ["macos/arm64", "linux"] }
 "cargo:git-delta" = { version = "0.19.2", os = ["macos/x64"] }
 deno = "latest"
