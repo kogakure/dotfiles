@@ -64,6 +64,25 @@ update_rust() {
     rustup update
 }
 
+# Nothing updated mise's tools before this step existed — not even the ones
+# declared "latest", which stayed at whatever version happened to be current
+# when they were first installed (SI-122).
+#
+# `mise upgrade` respects the config: an exact pin does not move, and only a
+# "latest" entry advances. That is what makes the pinned/tracked split in
+# config/mise/mise.toml mean something — a pin you never update is honest, a
+# "latest" that never moves is not.
+update_mise() {
+    if ! have mise; then
+        log_warn "mise not found. Skipping tool upgrade."
+        return 0
+    fi
+    # Non-interactive by default — `--interactive` is the opt-in. No prune
+    # here: deleting installed versions is a separate, opt-in concern in this
+    # repository, the same rule bin/lib/sync.sh follows for backups.
+    mise upgrade
+}
+
 # `mo` is the binary shipped by the `mole` formula (https://mole.fit), which is
 # in all three Brewfiles under that name — hence the guard, since the command
 # and the package are spelled differently.
@@ -109,6 +128,7 @@ softwareupdate_all() {
 }
 
 run_step homebrew update_homebrew
+run_step mise update_mise
 run_step ruby update_ruby
 run_step rust update_rust
 run_step "tmux plugins" "$HOME/.tmux/plugins/tpm/bin/update_plugins" all
