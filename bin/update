@@ -51,6 +51,19 @@ update_ruby() {
     gem cleanup all
 }
 
+# rustup owns the Rust toolchain — mise deliberately does not declare rust, see
+# config/mise/mise.toml's header (SI-123). Nothing kept the default current
+# before this step existed, which is how macbook-2019 sat on a year-stale
+# nightly until a cargo: backend needed a newer rustc and `mise install` broke.
+# `rustup update` refreshes every installed toolchain and rustup itself.
+update_rust() {
+    if ! have rustup; then
+        log_warn "rustup not found. Skipping Rust toolchain update."
+        return 0
+    fi
+    rustup update
+}
+
 # `mo` is the binary shipped by the `mole` formula (https://mole.fit), which is
 # in all three Brewfiles under that name — hence the guard, since the command
 # and the package are spelled differently.
@@ -97,6 +110,7 @@ softwareupdate_all() {
 
 run_step homebrew update_homebrew
 run_step ruby update_ruby
+run_step rust update_rust
 run_step "tmux plugins" "$HOME/.tmux/plugins/tpm/bin/update_plugins" all
 run_step "gh extensions" gh extension upgrade --all
 run_step "herdr plugins" update_herdr

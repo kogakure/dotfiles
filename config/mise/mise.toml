@@ -17,6 +17,15 @@
 #   youtube-dl      - Homebrew yt-dlp; `aliases` redirects youtube-dl to it.
 #   claude-code     - duplicate of `claude` (same aqua:anthropics/claude-code
 #                     package, same `claude` binary).
+#   rust            - rustup. mise's rust backend only drives rustup anyway,
+#                     pinning the active toolchain via RUSTUP_TOOLCHAIN in the
+#                     shims while rustup's own default went silently stale
+#                     underneath (a year-old nightly on macbook-2019, SI-123).
+#                     One owner instead: `rustup default stable`, kept current
+#                     by bin/update's rust step. This matters because the
+#                     cargo: entries above compile with whatever rustc
+#                     resolves, so a stale default breaks `mise install` on
+#                     exactly the host least likely to be current (SI-120).
 #
 # Four tools are declared twice, once per architecture. atuin, delta, fd and
 # pnpm are pinned to aqua packages that publish no darwin/amd64 build, so on
@@ -82,7 +91,6 @@ prettier = "3.9.6"
 python = "latest"
 ripgrep = "15.2.0"
 ruby = "3.4.2"
-rust = "latest"
 shellcheck = "0.11.0"
 shfmt = "3.13.1"
 sqlite = "3.53.4"
