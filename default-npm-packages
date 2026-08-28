@@ -1,8 +1,14 @@
+@agentclientprotocol/claude-agent-acp
+@devcontainers/cli
+@earendil-works/pi-coding-agent
+@nqbao/pi-sandbox
+@plannotator/pi-extension
 @playwright/cli
 @readwise/cli
 @tobilu/qmd
 browser-sync
 caniuse-cmd
+codeburn
 commitizen
 cz-conventional-changelog
 fast-cli
@@ -10,5 +16,8 @@ json-server
 jsonlint
 neovim
 pageres-cli
+pi-agent-browser-native
+pi-defender
+pi-subagents
 trash-cli
 yarn
