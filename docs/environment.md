@@ -198,6 +198,27 @@ The Intel entries compile from source, so first install on that machine is
 slow. That is the accepted cost of keeping all four under mise everywhere
 rather than splitting provisioning across two package managers on one host.
 
+### Rust: rustup owns the toolchain, and `bin/update` keeps it current
+
+mise deliberately does not declare `rust` (SI-123). It used to pin
+`rust = "latest"`, but mise's rust backend only drives rustup anyway — the
+toolchain landed in `~/.rustup` either way, with mise pinning the *active*
+toolchain through the shims' `RUSTUP_TOOLCHAIN` while rustup's own default sat
+stale underneath. Two providers for one toolchain, resolved by PATH order: the
+same class of problem as a brew↔mise overlap, but invisible to
+`just doctor mise` because rustup is neither.
+
+One owner instead: `rustup default stable` on every host, `~/.cargo/bin` on
+`PATH` from `shell/path.spec`, and a `rust` step in `bin/update` that runs
+`rustup update` — before it existed nothing kept the toolchain current, which
+is how `macbook-2019` sat on a year-stale nightly.
+
+Staleness is not cosmetic here: the Intel `cargo:` backends above compile with
+whatever `rustc` resolves, so `mise install` fails on exactly the host least
+likely to be current when a crate's minimum rustc moves (atuin 18.19 needs
+1.97). `just doctor runtimes` now reports competing rust providers the same
+way it reports node.
+
 ### A pin is only as good as the binary behind it
 
 `mise ls` derives a version from the **directory name**, not from the binary. A

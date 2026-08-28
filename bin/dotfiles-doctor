@@ -486,11 +486,16 @@ EOF
     return "$rc"
 }
 
-# Three ways to get node is two too many.
+# Three ways to get node is two too many. Same question for rust (SI-123).
 #
 # docs/environment.md has called volta "legacy, being phased out" since before
 # this repository had guardrails. It has not been. Flagged rather than fixed:
 # unwinding it is a migration across three machines, not an edit.
+#
+# rust's declared owner is rustup — mise deliberately does not list it, see
+# config/mise/mise.toml. rustup is detected by its own install location rather
+# than `have rustup`, because a mise-provided rust ships a rustup *shim* that
+# would make one provider look like two.
 #
 # shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
 check_runtimes() {
@@ -517,6 +522,31 @@ check_runtimes() {
     fi
 
     [ "$rc" -eq 0 ] && log_ok "node has one provider:${providers:- none}"
+
+    local rust_providers="" rust_n=0
+
+    [ -x "$HOME/.cargo/bin/rustup" ] && {
+        rust_providers="$rust_providers rustup"
+        rust_n=$((rust_n + 1))
+    }
+    if have mise && (cd "${TMPDIR:-/tmp}" && mise which rustc >/dev/null 2>&1); then
+        rust_providers="$rust_providers mise"
+        rust_n=$((rust_n + 1))
+    fi
+    if have brew && brew list --formula 2>/dev/null | grep -qxE 'rust|rustup(-init)?'; then
+        rust_providers="$rust_providers brew"
+        rust_n=$((rust_n + 1))
+    fi
+
+    if [ "$rust_n" -gt 1 ]; then
+        finding "rust has $rust_n providers:${rust_providers}"
+        detail "rustc resolves to: $(command -v rustc 2>/dev/null || echo 'nothing')"
+        detail "the declared owner is rustup — see config/mise/mise.toml's header"
+        rc=1
+    else
+        log_ok "rust has one provider:${rust_providers:- none}"
+    fi
+
     return "$rc"
 }
 
