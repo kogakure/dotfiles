@@ -14,6 +14,10 @@ if [[ $- == *i* ]]; then
     if command -v gh >/dev/null 2>&1; then
         eval "$(gh completion -s bash)"
     fi
+    # gh-token
+    if command -v gh >/dev/null 2>&1; then
+        __dl_gh_token="$(command env -u GITHUB_TOKEN -u GH_TOKEN gh auth token 2>/dev/null)" && [ -n "$__dl_gh_token" ] && export GITHUB_TOKEN="$__dl_gh_token"
+    fi
     # jj
     if command -v jj >/dev/null 2>&1; then
         eval "$(jj util completion bash)"

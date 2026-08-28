@@ -1,7 +1,10 @@
 # Wrapper that picks the gh account matching the repository owner.
 #
-# config.fish exports GITHUB_TOKEN so mise and other GitHub-aware tools get the
-# authenticated API rate limit instead of 60 requests/hour per IP. But gh reads
+# The gh-token hook in shell/hooks.spec exports GITHUB_TOKEN so mise and other
+# GitHub-aware tools get the authenticated API rate limit instead of 60
+# requests/hour per IP. (It lived in config.fish until SI-84 moved the shell
+# config into shell/*.spec; the export was dropped in that move and restored
+# once an anonymous 60/hour ran out mid-`mise upgrade`.) But gh reads
 # GITHUB_TOKEN at a *higher* precedence than its own keyring, so that export
 # pins gh to whichever account was active when the shell started and makes
 # `gh auth switch` a no-op.

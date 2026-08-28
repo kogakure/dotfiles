@@ -82,10 +82,19 @@ design: its **shims are a `PATH` entry**, so pinned toolchains resolve in
 scripts, cron and `ssh host cmd`, while `mise activate` — the `cd` hook — is
 interactive.
 
+`GITHUB_TOKEN` (below) follows the same rule, and it is the one worth
+remembering, because the symptom is a rate limit rather than a missing command.
+`bin/update` inherits the variable from the terminal that launched it, so a
+`just update` you typed is authenticated; the same run from cron is not, and
+will fall back to 60 requests/hour per IP. Putting it in `env.spec` instead
+would fix that and cost every non-interactive shell a ~170 ms `gh auth token`
+subprocess, since `~/.zshenv` sources that file — which is the trade this
+deliberately declines.
+
 ### GitHub auth: the `gh` wrapper
 
-`config/fish/config.fish` exports `GITHUB_TOKEN` so mise and other
-GitHub-aware tools get the authenticated API rate limit instead of 60
+The `gh-token` hook in `shell/hooks.spec` exports `GITHUB_TOKEN` so mise and
+other GitHub-aware tools get the authenticated API rate limit instead of 60
 requests/hour per IP. But `gh` reads `GITHUB_TOKEN` at a **higher precedence
 than its own keyring**, so that export pins `gh` to whichever account was
 active when the shell started, and `gh auth switch` becomes a no-op.

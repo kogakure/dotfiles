@@ -12,6 +12,10 @@ if status is-interactive
     if command -v gh >/dev/null 2>&1
         gh completion -s fish | source
     end
+    # gh-token
+    if command -v gh >/dev/null 2>&1
+        set -l __dl_gh_token (command env -u GITHUB_TOKEN -u GH_TOKEN gh auth token 2>/dev/null); test -n "$__dl_gh_token"; and set -gx GITHUB_TOKEN $__dl_gh_token
+    end
     # jj
     if command -v jj >/dev/null 2>&1
         jj util completion fish | source
