@@ -8,10 +8,22 @@
 # machine silently came up without it.
 #
 # Note that the installed plugin id is not the repo name: herdr reports these as
-# cloudmanic.herdr-plus, official.browser and tdi.worktree-setup respectively,
-# which is why a directory listing under config/herdr/plugins/github/ cannot be
-# used to reconstruct this list.
+# cloudmanic.herdr-plus and tdi.worktree-setup respectively, which is why a
+# directory listing under config/herdr/plugins/github/ cannot be used to
+# reconstruct this list.
+#
+# ogulcancelik/herdr-browser is deliberately absent although the plugin
+# (official.browser) is installed and wired into config.toml's quick actions.
+# Upstream deprecated it on 2026-08-28 and deleted herdr-plugin.toml from HEAD,
+# so `herdr plugin install` — which is also the update path — now fails with a
+# bare ENOENT and broke `bin/update` on every run. The installed copy at
+# be6888b7 keeps working. The successor is zenbu-labs/terminal-browser, whose
+# manifest lives in a herdr-plugin/ subdir, so the install argument is
+# zenbu-labs/terminal-browser/herdr-plugin rather than the bare repo. Its
+# min_herdr_version is 0.8.2, which config/mise/mise.toml now satisfies, but its
+# build step is a curl-into-bash installer — so adopting it is a deliberate
+# choice, plus swapping the config.toml quick action to
+# zenbu-labs.terminal-browser.
 
 cloudmanic/herdr-plus
-ogulcancelik/herdr-browser
 tdi/herdr-worktree-setup
