@@ -159,7 +159,27 @@ this function.
     toolchains resolve everywhere — including scripts, cron and
     `ssh host cmd`. `mise activate` is a hook in `shell/hooks.spec` and is
     interactive-only, in all four shells
-- **volta**: Node.js version manager (legacy, being phased out)
+- **volta**: also a Node.js version manager, and **still installed and still on
+  `PATH`** — it is not being phased out, whatever this file used to say
+
+### Three providers for node, and nobody is phasing volta out
+
+This document called volta "legacy, being phased out" from before the repository
+had guardrails until SI-86, and it was never true. volta is in all three
+Brewfiles, `VOLTA_HOME` is in `shell/env.spec` and `$HOME/.volta/bin` is in
+`shell/path.spec`, so every shell on every machine has it. brew ships a third
+`node` as prettierd's and codeburn's dependency.
+
+Which one you get is decided by `PATH` order alone: the mise shims come first,
+so mise's pinned 22.17.1 wins today. Nothing declares that, and nothing would
+notice if the order changed.
+
+`just doctor runtimes` reports the count rather than fixing it, and
+`bin/dotfiles-doctor` says why in a comment above the check: unwinding volta is
+a migration across three machines, not an edit. So the honest statement is that
+three providers coexist deliberately-by-inaction, and the doctor keeps it
+visible until somebody decides otherwise. Do not restore the "being phased out"
+wording without doing the phasing out.
 
 ### Four tools are declared twice, once per architecture
 

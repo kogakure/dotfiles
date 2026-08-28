@@ -4,7 +4,11 @@ This file provides guidance to agentic agents when working with code in this rep
 
 ## Repository Overview
 
-Personal macOS dotfiles repository managed with [dotbot](https://github.com/anishathalye/dotbot). Contains configuration files for Fish shell, Neovim (LazyVim), tmux, git, and various CLI tools. Configuration files live in `config/` and are symlinked to `~/.config/` via dotbot.
+Personal macOS dotfiles repository. Configuration files live in `config/` and are symlinked to `~/.config/` by [dotbot](https://github.com/anishathalye/dotbot); it covers Fish shell, Neovim (LazyVim), tmux, git, and various CLI tools.
+
+**`just` is the front door.** Every script has a recipe wrapping it and `just` works from any cwd, so reach for `just lint`, `just doctor`, `just update`, `just generate`, `just backup` rather than the `bin/` paths. `just` with no argument lists them all.
+
+**`setup.sh` is a step registry, not a script you run top to bottom.** Every action is a `step_<name>` function, `ALL_STEPS` is the ordered list, and each step goes through `run_step` — so one failure is named in a summary instead of aborting, and a re-run resumes from a state file. It takes `--dry-run` (inert, and CI proves it), `--list`, `--only`, `--skip`, `--from` and `--force`. Never add work outside a step.
 
 ## Documentation
 
@@ -12,6 +16,7 @@ Personal macOS dotfiles repository managed with [dotbot](https://github.com/anis
 @docs/commands.md — Setup, install, homebrew, update, backup/restore, and macOS settings scripts
 @docs/environment.md — Fish, Neovim, tmux, version managers, git, and plugin ecosystems
 @docs/guardrails.md — Justfile, `bin/dotfiles-lint`, the pre-commit hook, CI, and `.editorconfig`
+@docs/troubleshooting.md — What each `just doctor` finding means, and the command that fixes it
 @docs/git-workflow.md — Conventional commit format, types, and examples
 
 ## Notes

@@ -72,7 +72,17 @@
     # relink only ever replaces symlinks — so without force ./install exits 1.
     # Losing that file is provably harmless; the repo copy is a strict content
     # superset (same pinentry line, plus the cache TTLs that consequently have
-    # never applied). Droppable once all three machines are converted.
+    # never applied).
+    #
+    # DROP THIS FLAG once all three machines are converted, and not before —
+    # while it is here, a real file that someone deliberately puts at this path
+    # is destroyed silently by the next ./install.
+    #
+    # The condition is checkable rather than remembered: `just doctor links`
+    # reports "not a symlink: ~/.gnupg/gpg-agent.conf" on any host still
+    # holding a real file. When that line is absent on macbook-m5-pro,
+    # mac-mini and macbook-2019, delete the three lines below and leave
+    # `~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf` in their place (SI-86).
     ~/.gnupg/gpg-agent.conf:
       path: gnupg/gpg-agent.conf
       force: true
