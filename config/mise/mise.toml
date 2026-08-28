@@ -46,6 +46,23 @@
 # inside `os`, and the backend name is not always guessable from the tool name
 # — delta is cargo:git-delta and fd is cargo:fd-find, both because the short
 # name was already taken on crates.io.
+#
+# Some tools here are ALSO installed by Homebrew, and that is expected rather
+# than drift (SI-121). deno, go, lua, node, ruby and sqlite are each a
+# dependency of some other formula — yt-dlp and mpv need deno, vet needs go,
+# highlight needs lua, prettierd and codeburn need node, asciidoctor needs
+# ruby, and half the tree needs sqlite. `brew uninstall` refuses while a
+# dependent is installed, so brew's copy is not removable and not a decision.
+#
+# It is also harmless: the mise shims come first in shell/path.spec, so the
+# pinned copy wins everywhere, including scripts and cron. That matters most
+# for node and ruby, where the pins are deliberately older than brew's copies
+# (22.17.1 vs 26.x, 3.4.2 vs 4.x).
+#
+# `just doctor mise` knows the difference and reports only the overlaps that
+# can actually be removed. If it names one, the fix is `brew uninstall <f>`
+# followed by `./bin/homebrew-backup` — without the re-dump the Brewfile still
+# names the formula and `brew bundle check` reports it as missing.
 
 [tools]
 atuin = { version = "18.19.0", os = ["macos/arm64", "linux"] }

@@ -399,7 +399,7 @@ EOF
 #
 # shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
 check_mise() {
-    local rc=0 tool out configs both probe conditional active
+    local rc=0 tool out configs both probe conditional active held chosen forced
 
     if ! have mise; then
         log_skip "mise is not installed on this host"
@@ -466,23 +466,50 @@ EOF
 
     # Two providers for one tool: which wins depends on PATH order, which
     # differs between an interactive shell and a script.
+    #
+    # Split by whether the overlap is a decision anyone made (SI-121). Brew
+    # keeps its own copy of node, ruby, lua and deno because prettierd,
+    # asciidoctor, highlight and yt-dlp depend on them — `brew uninstall`
+    # refuses while a dependent is installed, so reporting those as a backlog
+    # item asks for work that cannot be done. Only a formula nothing else needs
+    # can actually be removed, and that is the finding worth acting on.
     if have brew; then
         # Binaries, not keys: `cargo:git-delta` is Homebrew's `git-delta`, and
         # comparing the prefixed form against a formula list matches nothing.
         both=$(comm -12 \
             <(brew list --formula 2>/dev/null | sort) \
             <(mise_tool_binaries config/mise/mise.toml))
-        if [ -n "$both" ]; then
-            finding "$(printf '%s\n' "$both" | grep -c .) tool(s) are provided by both brew and mise"
-            while IFS= read -r line; do detail "$line"; done <<EOF
-$both
+
+        # Everything at least one other installed formula depends on. One
+        # `brew deps --installed` call — `brew uses` would be a full scan per
+        # tool, and this check runs against forty.
+        held=$(brew deps --installed --formula 2>/dev/null |
+            sed 's/^[^:]*://' | tr ' ' '\n' | sed '/^$/d' | sort -u)
+
+        chosen=$(comm -23 <(printf '%s\n' "$both" | sed '/^$/d') <(printf '%s\n' "$held"))
+        forced=$(comm -12 <(printf '%s\n' "$both" | sed '/^$/d') <(printf '%s\n' "$held"))
+
+        if [ -n "$chosen" ]; then
+            finding "$(printf '%s\n' "$chosen" | grep -c .) tool(s) are provided by both brew and mise"
+            while IFS= read -r line; do detail "  $line"; done <<EOF
+$chosen
 EOF
             detail "which one you get depends on PATH order — see shell/path.spec"
+            detail "mise wins by default (SI-118): brew uninstall each, then"
+            detail "./bin/homebrew-backup to re-dump, or the Brewfile still names it"
             rc=1
+        fi
+
+        if [ -n "$forced" ]; then
+            detail "$(printf '%s\n' "$forced" | grep -c .) more are brew's own copy, held by a dependent formula:"
+            while IFS= read -r line; do detail "  $line"; done <<EOF
+$forced
+EOF
+            detail "not removable and not a decision; the mise shims still come first"
         fi
     fi
 
-    [ "$rc" -eq 0 ] && log_ok "one mise config, every shim resolves, no double provision"
+    [ "$rc" -eq 0 ] && log_ok "one mise config, every shim resolves, no unexplained double provision"
     return "$rc"
 }
 
