@@ -16,7 +16,6 @@ tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap"
 tap "peteonrails/voxtype"
 tap "safedep/tap", trusted: true
-tap "sst/tap", "https://github.com/anomalyco/homebrew-tap.git", trusted: true
 tap "steipete/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
@@ -607,7 +606,6 @@ mas "Pages", id: 361309726
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 6475002485
 mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724

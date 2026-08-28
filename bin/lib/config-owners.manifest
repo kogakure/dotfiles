@@ -79,7 +79,7 @@ aerospace|brew|nikitabobko/tap/aerospace|cask; window manager
 atuin|mise|atuin|also a brew formula on mac-mini and macbook-2019
 bat|mise|bat|also brew; bat-extras is mise-only
 borders|brew|felixkratz/formulae/borders|started via packages/services|macbook-2019
-cship.toml|manual|cship|no installer anywhere; the binary is at ~/.local/bin/cship
+cship.toml|mise|cship|ubi:stephenleo/cship via [tool_alias]; was hand-installed until SI-86
 doom|setup|doom-emacs|git-cloned by setup.sh's editors step, not packaged
 fish|brew|fish|the login shell; setup.sh's packages step must supply it
 gh|mise|gh|also brew; see the gh wrapper in docs/environment.md
