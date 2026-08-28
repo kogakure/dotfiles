@@ -72,13 +72,13 @@
 cship = "ubi:stephenleo/cship"
 
 [tools]
-atuin = { version = "18.19.0", os = ["macos/arm64", "linux"] }
+atuin = { version = "18.20.1", os = ["macos/arm64", "linux"] }
 "cargo:atuin" = { version = "18.19.0", os = ["macos/x64"] }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bun = "latest"
-claude = "2.1.235"
-codex = "0.147.0"
+claude = "2.1.247"
+codex = "0.149.1"
 cship = "1.8.1"
 delta = { version = "0.19.2", os = ["macos/arm64", "linux"] }
 "cargo:git-delta" = { version = "0.19.2", os = ["macos/x64"] }
@@ -86,36 +86,36 @@ deno = "latest"
 direnv = "latest"
 docker-cli = "29.7.2"
 eza = "0.23.5"
-fd = { version = "10.4.2", os = ["macos/arm64", "linux"] }
+fd = { version = "10.5.0", os = ["macos/arm64", "linux"] }
 "cargo:fd-find" = { version = "10.4.2", os = ["macos/x64"] }
-fzf = "0.74.2"
-gh = "2.97.0"
+fzf = "0.74.3"
+gh = "2.98.0"
 git-lfs = "3.7.1"
 gitleaks = "8.30.1"
 go = "latest"
 grok = "1.0.5"
-herdr = "0.8.0"
-hunk = "0.19.0"
-hunkdiff = "0.19.0"
+herdr = "0.8.2"
+hunk = "0.20.0"
+hunkdiff = "0.20.0"
 jj = "0.44.0"
 jq = "1.8.2"
 lazydocker = "0.25.2"
 lazygit = "0.64.1"
 lazyssh = "0.3.0"
 lua = "latest"
-neovim = "0.12.4"
-node = "22.17.1"
+neovim = "0.12.5"
+node = "26.8.1"
 "npm:playwright-cli" = "latest"
-opencode = "1.18.18"
-oxlint = "1.79.0"
+opencode = "1.18.23"
+oxlint = "1.80.0"
 pandoc = "3.10.2"
-pi = "0.84.2"
-pnpm = { version = "11.22.0", os = ["macos/arm64", "linux"] }
+pi = "0.84.3"
+pnpm = { version = "11.24.0", os = ["macos/arm64", "linux"] }
 "npm:pnpm" = { version = "11.22.0", os = ["macos/x64"] }
 prettier = "3.9.6"
 python = "latest"
 ripgrep = "15.2.0"
-ruby = "3.4.2"
+ruby = "4.0.6"
 shellcheck = "0.11.0"
 shfmt = "3.13.1"
 sqlite = "3.53.4"
@@ -123,10 +123,10 @@ starship = "1.26.0"
 superfile = "1.6.0"
 typst = "0.15.1"
 usage = "latest"
-uv = "0.12.5"
-worktrunk = "0.74.0"
+uv = "0.12.6"
+worktrunk = "0.75.0"
 yazi = "26.8.15"
-yq = "4.53.4"
+yq = "4.53.6"
 zoxide = "0.10.0"
 
 [settings]
