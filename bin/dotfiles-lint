@@ -1424,6 +1424,100 @@ unit_pathspec() {
     )
 }
 
+# The doctor's accept-list: the matcher, and the real file.
+#
+# Both halves, for the same reason unit_packages checks packages/ as well as
+# package_list — a matcher that works against a file nobody can trust is not
+# worth much.
+#
+# The property that matters most is that a row cannot silence more than it
+# says: the check name and the host both have to agree before the glob is even
+# tried, so a glob written for one check cannot leak into another.
+#
+# And a reason is mandatory. An accept-list whose entries do not say why is a
+# way of losing information, which is the opposite of what it is for (SI-126).
+unit_baseline() {
+    unit_require bin/lib/baseline.sh || return 1
+    (
+        # shellcheck source=bin/lib/baseline.sh
+        . bin/lib/baseline.sh
+
+        bad=0
+        f=$(mktemp "${TMPDIR:-/tmp}/dotfiles-lint-baseline.XXXXXX") || exit 1
+        cat >"$f" <<'FIXTURE'
+# a comment, and a row-shaped one that must not parse:
+# runtimes|*|node has * providers:*|nope
+runtimes|*|node has * providers:*|volta deferred
+packages|macbook-2019|config/borders*|that host only
+brewfile|*|mas "Numbers"*|see #17 for why
+FIXTURE
+
+        unit_expect "a glob matches and the reason comes back" "volta deferred" \
+            "$(baseline_accepts runtimes mac-mini 'node has 2 providers: volta mise' "$f" | cut -f2)" || bad=1
+
+        # The check name is part of the key, or a glob leaks across checks.
+        unit_expect "a row does not apply to another check" no \
+            "$(baseline_accepts mise mac-mini 'node has 2 providers: volta mise' "$f" >/dev/null && echo yes || echo no)" || bad=1
+
+        unit_expect "a host-scoped row matches its host" yes \
+            "$(baseline_accepts packages macbook-2019 'config/borders is here but brew has no borders' "$f" >/dev/null && echo yes || echo no)" || bad=1
+        unit_expect "a host-scoped row ignores other hosts" no \
+            "$(baseline_accepts packages mac-mini 'config/borders is here but brew has no borders' "$f" >/dev/null && echo yes || echo no)" || bad=1
+
+        # An inline "#" is not a comment, or a reason naming a PR gets cut in
+        # half and the row silently stops saying why.
+        unit_expect "a reason may contain #" "see #17 for why" \
+            "$(baseline_accepts brewfile mac-mini 'mas "Numbers" has several ids: 1 2' "$f" | cut -f2)" || bad=1
+
+        # A commented-out row is inert even when it is otherwise well-formed.
+        unit_expect "a commented row does not match" 3 \
+            "$(baseline_rows "$f" | grep -c .)" || bad=1
+
+        unit_expect "no match returns non-zero" no \
+            "$(baseline_accepts runtimes mac-mini 'something else entirely' "$f" >/dev/null && echo yes || echo no)" || bad=1
+        unit_expect "a missing file accepts nothing" no \
+            "$(baseline_accepts runtimes mac-mini 'node has 2 providers: x' "$f.nope" >/dev/null && echo yes || echo no)" || bad=1
+
+        rm -f "$f"
+
+        # --- and the real file ------------------------------------------------
+        if [ -f .doctor-baseline ]; then
+            checks=$(sed -n 's/^ALL_CHECKS="\(.*\)"$/\1/p' bin/dotfiles-doctor)
+            [ -n "$checks" ] || {
+                fail "unit: cannot read ALL_CHECKS out of bin/dotfiles-doctor"
+                bad=1
+            }
+            while IFS='|' read -r c h g r; do
+                [ -n "$c" ] || continue
+                case " $checks " in
+                    *" $c "*) ;;
+                    *)
+                        fail "unit: .doctor-baseline names unknown check '$c'"
+                        bad=1
+                        ;;
+                esac
+                if [ "$h" != "*" ] && [ ! -f "homebrew/$h" ]; then
+                    fail "unit: .doctor-baseline row for '$c' names host '$h', which has no homebrew/ file"
+                    bad=1
+                fi
+                [ -n "$g" ] || {
+                    fail "unit: .doctor-baseline row for '$c' has an empty glob"
+                    bad=1
+                }
+                [ -n "$r" ] || {
+                    fail "unit: .doctor-baseline row '$c|$h|$g' has no reason"
+                    bad=1
+                }
+            done <<EOF
+$(baseline_rows .doctor-baseline)
+EOF
+        fi
+
+        [ "$bad" -eq 0 ] && ok "baseline rows key on check and host; every real row names a reason"
+        exit "$bad"
+    )
+}
+
 # Where tpm installs, under both layouts.
 #
 # bin/dotfiles-doctor assumed ~/.tmux/plugins and therefore reported all 17
@@ -1638,6 +1732,7 @@ check_unit() {
     unit_packages || bad=1
     unit_pathspec || bad=1
     unit_tmux_plugin_path || bad=1
+    unit_baseline || bad=1
     unit_steps || bad=1
     unit_privilege || bad=1
     unit_log_plain || bad=1

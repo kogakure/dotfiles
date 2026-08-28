@@ -30,7 +30,47 @@ just clean --apply             # remove, asking first
 ```
 
 The checks run in this order: `links`, `brewfile`, `packages`, `binaries`,
-`mise`, `runtimes`, `shells`, `generated`, `plugins`, `submodule`.
+`mise`, `runtimes`, `shells`, `generated`, `plugins`, `submodule`. A final
+`baseline` step then checks the accept-list itself.
+
+## The accept-list — `.doctor-baseline`
+
+Some findings are true, known, and not going to change. Three node providers is
+a migration across three machines that has been deliberately deferred; the two
+Numbers App Store ids are a genuine cross-host product split rather than a
+defect. Reported as news on every run, they drown the findings that are
+actually news — and a health check that can never go green stops being read.
+
+`.doctor-baseline` records them, one row per accepted finding:
+
+```
+check|host|glob|reason
+runtimes|*|node has * providers:*|volta is deliberately not being unwound — SI-86
+```
+
+It is the doctor's counterpart to `.lint-baseline`, and deliberately a
+different shape. `.lint-baseline` is a *count*, which works for shellcheck
+because any increase fails. Doctor's findings are qualitative and differ per
+machine, so a count would hide a new finding the moment an old one was fixed.
+This matches on identity instead, and the check name and host must both agree
+before the glob is tried — so a glob written for one check cannot leak into
+another.
+
+Two things keep it a gate rather than a silencer:
+
+- **An accepted finding is never hidden.** `--verbose` prints it with its
+  reason, and the summary names the count on every run, including a clean one.
+  Green means "nothing unexpected", never "nothing".
+- **A row that matches nothing is itself a finding.** That is how a suppression
+  file rots — the row outlives the thing it accepted and nobody dares delete
+  it. The `baseline` step reports it and you delete the row.
+
+`just lint` rejects a row with no reason, an unknown check name, or a host with
+no file in `homebrew/`.
+
+**Adding a row is usually the wrong answer.** It says "this is true, we know,
+and no action follows". Anything merely inconvenient, unfinished, or somebody
+else's turn is a finding, and the backlog is where it belongs.
 
 ## `links`
 

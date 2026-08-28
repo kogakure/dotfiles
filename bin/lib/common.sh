@@ -56,6 +56,9 @@ _DL_ROOT=${_DL_LIB%/*/*}
 # shellcheck source-path=SCRIPTDIR
 # shellcheck source=tmux.sh
 . "$_DL_LIB/tmux.sh"
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=baseline.sh
+. "$_DL_LIB/baseline.sh"
 
 # bin/lib/shells.sh is deliberately absent from that list: setup.sh is its only
 # caller, and register_login_shell writes to /etc/shells behind sudo. That does

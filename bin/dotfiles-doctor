@@ -57,6 +57,18 @@ CHECKS=""
 ALL_CHECKS="links brewfile packages binaries mise runtimes shells generated plugins submodule"
 
 OWNERS=bin/lib/config-owners.manifest
+BASELINE=.doctor-baseline
+
+# Set by run_check so finding() knows which check it is reporting for; the
+# accept-list is keyed on that as well as the text, so a glob cannot leak
+# across checks.
+CURRENT_CHECK=""
+DOCTOR_HOST=$(host_id)
+
+ACCEPTED=0       # accepted findings across the whole run
+CHECK_ACCEPTED=0 # …and within the current check
+CHECK_REAL=0     # unaccepted findings within the current check
+BASELINE_HITS="" # "check|glob" per accepted finding, for stale-row detection
 
 # The directories install.conf.yaml lists under `clean:`. Every directory this
 # repository links *into* needs scanning, not just ~ — with "~" alone, deleting
@@ -122,8 +134,30 @@ wanted() {
 # so once per definition, which is the same accommodation bin/dotfiles-backup
 # and bin/update make for their step functions.
 
+# A finding the baseline accepts is withheld from the list and from the exit
+# code, but never hidden: --verbose prints it with its reason, and the summary
+# always names the count. Green has to mean "nothing unexpected" rather than
+# "nothing", or the accept-list becomes a way of losing information (SI-126).
+#
 # shellcheck disable=SC2329  # reached from the check_* functions
-finding() { log_warn "  ! $*"; }
+finding() {
+    local msg="$*" hit glob reason
+
+    if hit=$(baseline_accepts "$CURRENT_CHECK" "$DOCTOR_HOST" "$msg" "$BASELINE"); then
+        glob=${hit%%	*}
+        reason=${hit#*	}
+        ACCEPTED=$((ACCEPTED + 1))
+        CHECK_ACCEPTED=$((CHECK_ACCEPTED + 1))
+        BASELINE_HITS="${BASELINE_HITS}${CURRENT_CHECK}|${glob}
+"
+        [ "$VERBOSE" -eq 1 ] && log_info "  ~ accepted: $msg"
+        [ "$VERBOSE" -eq 1 ] && log_info "      reason: $reason"
+        return 0
+    fi
+
+    CHECK_REAL=$((CHECK_REAL + 1))
+    log_warn "  ! $*"
+}
 # shellcheck disable=SC2329  # reached from the check_* functions
 detail() {
     [ "$VERBOSE" -eq 1 ] && log_info "      $*"
@@ -250,13 +284,21 @@ EOF
         brewfile_tap_drift homebrew/*
         brewfile_tap_url_drift homebrew/*
     )
+    # One finding per inconsistency, not a count with the list behind
+    # --verbose. Two reasons, both learned from SI-126: an aggregate cannot be
+    # accepted by the baseline one row at a time, so a single known-benign
+    # entry would force you to accept all of them or none; and "10
+    # inconsistencies" is not something anyone can act on, while the individual
+    # line names the app and the ids.
     if [ -n "$out" ]; then
-        finding "$(printf '%s\n' "$out" | grep -c .) inconsistency(ies) across the host Brewfiles"
-        while IFS= read -r line; do detail "$line"; done <<EOF
+        while IFS= read -r line; do
+            [ -n "$line" ] || continue
+            finding "Brewfile inconsistency: $line"
+        done <<EOF
 $out
 EOF
-        detail "these are machine state, not file content: fix on the host and re-dump"
-        rc=1
+        detail "machine state, not file content: fix on the host and re-dump"
+        [ "$CHECK_REAL" -gt 0 ] && rc=1
     fi
 
     [ "$rc" -eq 0 ] && log_ok "the Brewfile is satisfied and the three hosts agree"
@@ -758,28 +800,105 @@ EOF
 
 # --- main -------------------------------------------------------------------
 
+# Run one check, and decide what its exit status means once the baseline has
+# had its say.
+#
+# A check that failed while every finding it produced was accepted did not
+# actually find anything, so it passes. A check that failed having produced no
+# finding at all failed for an infrastructure reason — an unreadable file, a
+# missing tool — and must still fail: that is the case a blanket downgrade
+# would swallow, so the condition requires at least one acceptance.
+run_check() {
+    local name=$1 fn=$2
+    CURRENT_CHECK=$name
+    CHECK_ACCEPTED=0
+    CHECK_REAL=0
+    run_step "$name" checked "$fn"
+}
+
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+checked() {
+    local rc=0
+    "$1" || rc=1
+    if [ "$rc" -ne 0 ] && [ "$CHECK_REAL" -eq 0 ] && [ "$CHECK_ACCEPTED" -gt 0 ]; then
+        log_ok "$CHECK_ACCEPTED accepted finding(s), nothing unexpected"
+        return 0
+    fi
+    return "$rc"
+}
+
 log_step "dotfiles-doctor"
-log_field "host" "$(host_id)"
+log_field "host" "$DOCTOR_HOST"
 log_field "checks" "${CHECKS# }"
 
-wanted links && run_step links check_links
-wanted brewfile && run_step brewfile check_brewfile
-wanted packages && run_step packages check_packages
-wanted binaries && run_step binaries check_binaries
-wanted mise && run_step mise check_mise
-wanted runtimes && run_step runtimes check_runtimes
-wanted shells && run_step shells check_shells
-wanted generated && run_step generated check_generated
-wanted plugins && run_step plugins check_plugins
-wanted submodule && run_step submodule check_submodule
+wanted links && run_check links check_links
+wanted brewfile && run_check brewfile check_brewfile
+wanted packages && run_check packages check_packages
+wanted binaries && run_check binaries check_binaries
+wanted mise && run_check mise check_mise
+wanted runtimes && run_check runtimes check_runtimes
+wanted shells && run_check shells check_shells
+wanted generated && run_check generated check_generated
+wanted plugins && run_check plugins check_plugins
+wanted submodule && run_check submodule check_submodule
+
+# A row that matched nothing has outlived the finding it was written for, and
+# that is how a suppression file rots into a list nobody dares delete from. So
+# the accept-list is itself checked.
+#
+# Only meaningful when every check ran — a named subset legitimately leaves the
+# other rows unmatched — and only for rows scoped to this host.
+#
+# shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
+check_baseline() {
+    local r_check r_host r_glob r_reason n=0
+
+    if [ ! -f "$BASELINE" ]; then
+        log_skip "no $BASELINE in this repository"
+        return 0
+    fi
+    if [ "$CHECKS" != "$ALL_CHECKS" ]; then
+        log_skip "a named subset ran; a stale row is only detectable on a full run"
+        return 0
+    fi
+
+    while IFS='|' read -r r_check r_host r_glob r_reason; do
+        [ -n "$r_check" ] || continue
+        [ "$r_host" = "*" ] || [ "$r_host" = "$DOCTOR_HOST" ] || continue
+        case "$BASELINE_HITS" in
+            *"$r_check|$r_glob
+"*) continue ;;
+        esac
+        finding "$BASELINE row matched nothing: $r_check|$r_host|$r_glob"
+        detail "reason on the row: $r_reason"
+        detail "the finding it accepted is gone — delete the row"
+        n=$((n + 1))
+    done <<EOF
+$(baseline_rows "$BASELINE")
+EOF
+
+    [ "$n" -eq 0 ] && log_ok "every baseline row still matches a finding"
+    [ "$n" -eq 0 ]
+}
+
+run_check baseline check_baseline
 
 if ! step_summary; then
     log_info ""
     log_info "Findings are not failures of this script — they are the backlog."
     [ "$VERBOSE" -eq 0 ] && log_info "Re-run with --verbose for the detail behind each one."
     log_info "bin/dotfiles-clean repairs the two that can be repaired safely."
+    [ "$ACCEPTED" -gt 0 ] && log_info "$ACCEPTED further finding(s) accepted by $BASELINE."
     exit 1
 fi
 
-log_done "Nothing to report."
+# Always named, even on a clean run. An accept-list you are not reminded of is
+# one you will not revisit, and the whole point is that green means "nothing
+# unexpected" rather than "nothing".
+if [ "$ACCEPTED" -gt 0 ]; then
+    log_done "Nothing unexpected. $ACCEPTED finding(s) accepted by $BASELINE."
+    [ "$VERBOSE" -eq 0 ] && log_info "Re-run with --verbose to see them and why."
+else
+    log_done "Nothing to report."
+fi
 exit 0

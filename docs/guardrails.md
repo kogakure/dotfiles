@@ -246,6 +246,7 @@ shellcheck runs from anywhere but the repo root.
 | `preferences.sh` | the manifest parser and both direction handlers |
 | `mise.sh` | pure readers for `config/mise/mise.toml` — every tool key, the host-conditional subset, and the keys with backend prefixes stripped |
 | `tmux.sh` | `tmux_plugin_path` — where tpm installs, replicating its XDG rule. Pure, because asking tmux would mean starting a server |
+| `baseline.sh` | the `.doctor-baseline` reader and matcher — which findings `just doctor` reports as accepted rather than as news |
 | `shells.sh` | `/etc/shells` registration; **not** sourced by `common.sh`, since only `setup.sh` needs it |
 
 ### Sourcing the library has no side effects
@@ -370,6 +371,19 @@ whatever is inside it. The same pattern blocks any `Bash` command containing the
 word, which is also why the helper's own behaviour can only be verified through
 `--dry-run` output and the unit seam above. `privilege.sh` is the better name
 regardless: it describes the concern, not the binary.
+
+### Two baselines, deliberately different shapes
+
+`.lint-baseline` (below) is a **count**. `.doctor-baseline` is an
+**accept-list keyed on identity** — see
+[troubleshooting.md](troubleshooting.md).
+
+The difference is not an inconsistency. A count works for shellcheck because
+any increase fails, so nothing new can hide behind it. Doctor's findings are
+qualitative and differ per machine, so a count would hide a new finding the
+moment an old one was fixed — the two would cancel out and the number would
+not move. `just lint unit` gates the doctor one: every row must name a real
+check, a real host and a reason.
 
 ### The shellcheck baseline
 

@@ -1,0 +1,54 @@
+# Findings `just doctor` should report as accepted rather than as news.
+#
+# The doctor's counterpart to .lint-baseline, and deliberately not the same
+# shape. .lint-baseline is a count, which works for shellcheck because any
+# increase fails. Doctor's findings are qualitative and differ per machine, so
+# a count would hide a new finding the moment an old one was fixed. This is an
+# accept-list keyed on identity (SI-126).
+#
+# FORMAT — check|host|glob|reason
+#
+#   check   the doctor check the finding comes from
+#   host    a hostname, or "*" for every host
+#   glob    matched against the finding text with shell globbing
+#   reason  why it is accepted, and the ticket. Mandatory; `just lint` fails a
+#           row without one.
+#
+# An inline "#" is NOT a comment here, so a reason can name a PR or an issue.
+# Only a line whose first non-blank character is "#" is a comment.
+#
+# WHAT BELONGS HERE, AND WHAT DOES NOT
+#
+# A row says "this is true, we know, and no action follows". It is the wrong
+# answer for anything that is merely inconvenient, unfinished, or someone
+# else's turn — those are findings, and the backlog is where they belong.
+#
+# Two failure modes this file has to avoid, and the guards against each:
+#
+#   1. Silence. An accepted finding is still printed under --verbose with its
+#      reason, and the count is named in the summary on every run, including a
+#      clean one. Green means "nothing unexpected", never "nothing".
+#   2. Rot. A row that matches nothing is reported as a finding of its own, so
+#      an acceptance cannot outlive the thing it accepted. Delete it when the
+#      doctor tells you to.
+#
+# The rows are host-scoped for the same reason bin/lib/config-owners.manifest
+# is: three machines whose differences are permanent, and an acceptance written
+# for one of them should not quietly cover the others.
+
+# ---------------------------------------------------------------------------
+
+# Three node providers is the standing SI-86 item. volta is in all three
+# Brewfiles, in shell/env.spec and in shell/path.spec, so it is present on every
+# machine; the mise shims come first, so mise wins. Unwinding it is a migration
+# across three machines rather than an edit, and check_runtimes says so in a
+# comment above itself. Accepted until someone does the migration — at which
+# point this row starts matching nothing and the doctor will say so.
+runtimes|*|node has * providers:*|volta is deliberately not being unwound — SI-86, and the comment above check_runtimes
+
+# Not a defect at all. Numbers appears exactly once per host; the two ids are a
+# cross-host split, because macbook-2019 runs the 14.x releases under one App
+# Store listing while the other two run 15.x under an older one. Established in
+# SI-86 and written up in docs/architecture.md. The brewfile analyser compares
+# names across hosts and cannot tell a genuine product split from a data bug.
+brewfile|*|Brewfile inconsistency: mas "Numbers" has several ids*|two real App Store listings for one product, not a duplicate — SI-86 and docs/architecture.md
