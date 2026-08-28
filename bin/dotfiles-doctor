@@ -286,8 +286,20 @@ check_packages() {
     )
     have gh && exts=$(gh extension list 2>/dev/null | awk '{print $3}')
 
-    while IFS='|' read -r entry kind provider note; do
+    while IFS='|' read -r entry kind provider note hosts; do
         [ -n "$entry" ] || continue
+
+        # An entry scoped to particular machines is not a finding on the
+        # others. borders and wezterm live on macbook-2019 alone, so asking
+        # "is it installed here" on the other two answered no correctly and
+        # forever, which is a check telling you to fix what is not broken
+        # (SI-125). Still printed under --verbose: quiet where it does not
+        # apply, never invisible.
+        if ! host_in_list "$(host_id)" "${hosts:-}"; then
+            detail "config/$entry is declared for ${hosts} only, not checked here"
+            continue
+        fi
+
         name=$(leaf "$provider")
         case "$kind" in
             brew)

@@ -192,6 +192,14 @@ file. Thirteen entries are in both a Brewfile and `config/mise/mise.toml`; the
 manifest records which is *meant* to win — mise, since SI-118 — and doctor
 reports the overlap rather than the file pretending it is fine.
 
+A row may also carry an optional fifth field naming the hosts it applies to, so
+that a tool belonging to one machine is not reported as missing on the others
+(SI-125). `borders` and `wezterm` are the two: installed on `macbook-2019` by
+design, and until the field existed they were permanent findings on the other
+two. Absent means every host, which is why thirty of the thirty-two rows are
+unchanged. `just lint owners` rejects a hostname with no file in `homebrew/`,
+since a typo would disable the check everywhere instead of nowhere.
+
 This is the third data file both a `bin/` script and a lint check read, after
 `packages/` and `bin/lib/preferences.manifest`. All three exist for the same
 reason: a list that lives in one place is reviewable in a diff, and the copies

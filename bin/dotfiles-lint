@@ -698,7 +698,37 @@ unit_host_id() {
             "$REPO_ROOT/homebrew/some-other-mac" \
             "$(DOTFILES_HOST=some-other-mac brewfile_path)" || bad=1
 
-        [ "$bad" -eq 0 ] && ok "host_id honours DOTFILES_HOST and falls back to hostname -s"
+        # host_in_list scopes a config-owners.manifest row to named machines
+        # (SI-125). The empty case is the load-bearing one: thirty of the
+        # thirty-two rows carry no host field, and if "" meant "no host" every
+        # one of them would stop being checked anywhere — a silent hole far
+        # worse than the noise the field removes.
+        unit_expect "an empty list means every host" yes \
+            "$(host_in_list macbook-2019 '' && echo yes || echo no)" || bad=1
+        unit_expect "a single match" yes \
+            "$(host_in_list macbook-2019 macbook-2019 && echo yes || echo no)" || bad=1
+        unit_expect "a single miss" no \
+            "$(host_in_list mac-mini macbook-2019 && echo yes || echo no)" || bad=1
+        unit_expect "a match later in the list" yes \
+            "$(host_in_list mac-mini macbook-2019,mac-mini && echo yes || echo no)" || bad=1
+        # Substrings must not match: mac-mini is not macbook-2019's prefix, but
+        # a `case`-based implementation with an unanchored glob would say so.
+        unit_expect "a prefix is not a match" no \
+            "$(host_in_list mac macbook-2019,mac-mini && echo yes || echo no)" || bad=1
+        # IFS is restored, or the caller's next unquoted expansion splits on
+        # commas — a bug that would surface far from here. Asserted through
+        # behaviour rather than by comparing $IFS, whose trailing newline a
+        # command substitution eats.
+        unit_expect "IFS is restored for the caller" "a,b" \
+            "$(
+                host_in_list mac-mini macbook-2019 >/dev/null 2>&1
+                s='a,b'
+                # shellcheck disable=SC2086  # the split is the thing under test
+                set -- $s
+                printf '%s' "$1"
+            )" || bad=1
+
+        [ "$bad" -eq 0 ] && ok "host_id honours DOTFILES_HOST; host_in_list scopes a row to named machines"
         exit "$bad"
     )
 }
@@ -1780,7 +1810,7 @@ OWNER_KINDS="brew mise gh-ext fisher setup mason manual orphan"
 check_owners() {
     heading "config/ owners"
     local manifest=bin/lib/config-owners.manifest
-    local rc=0 rows=0 entry kind fields dupes line
+    local rc=0 rows=0 entry kind fields dupes line hosts host
 
     if [ ! -f "$manifest" ]; then
         fail "owners: $manifest is missing"
@@ -1792,13 +1822,31 @@ check_owners() {
         [ -n "$line" ] || continue
         rows=$((rows + 1))
         fields=$(printf '%s\n' "$line" | awk -F'|' '{print NF}')
-        if [ "$fields" -ne 4 ]; then
-            fail "owners: not 4 fields ($fields): $line"
+        if [ "$fields" -ne 4 ] && [ "$fields" -ne 5 ]; then
+            fail "owners: not 4 or 5 fields ($fields): $line"
             rc=1
             continue
         fi
         entry=${line%%|*}
         kind=$(printf '%s\n' "$line" | cut -d'|' -f2)
+
+        # A fifth field scopes the entry to named machines. A typo there is
+        # worse than the noise the field removes: it would silently disable
+        # the check for that entry on every host, since no hostname would ever
+        # match. So each name must be a real Brewfile (SI-125).
+        if [ "$fields" -eq 5 ]; then
+            hosts=$(printf '%s\n' "$line" | cut -d'|' -f5)
+            if [ -z "$hosts" ]; then
+                fail "owners: empty host list for $entry — drop the trailing '|' instead"
+                rc=1
+            fi
+            for host in $(printf '%s\n' "$hosts" | tr ',' ' '); do
+                if [ ! -f "homebrew/$host" ]; then
+                    fail "owners: $entry names host '$host', which has no homebrew/ file"
+                    rc=1
+                fi
+            done
+        fi
         case " $OWNER_KINDS " in
             *" $kind "*) ;;
             *)

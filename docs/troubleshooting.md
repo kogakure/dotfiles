@@ -157,6 +157,25 @@ so a new directory blocks the build until somebody says what provides its tool.
 each tool; this check answers whether it is here *now*, which is per-host and
 changes under you.
 
+### An entry can be scoped to particular machines
+
+A row may carry an optional fifth field naming the hosts it applies to:
+
+```
+borders|brew|felixkratz/formulae/borders|started via packages/services|macbook-2019
+```
+
+On any other host the entry is **not** checked, and appears under `--verbose`
+as `declared for macbook-2019 only, not checked here`. Without the field, a
+tool installed on one machine by design was reported as missing on the other
+two on every run, forever — a check telling you to fix what is not broken, and
+the fastest way to train yourself to ignore it (SI-125).
+
+Reach for it only when the tool genuinely belongs to particular machines. If
+the answer is "it should be here and is not", that is a finding, not a scope.
+`just lint owners` rejects a hostname with no file in `homebrew/`, because a
+typo would silently disable the check on *every* host.
+
 **`config/<entry> is here but brew has no '<name>'`**
 The manifest says a formula or cask provides it and `brew list` does not show
 it.
