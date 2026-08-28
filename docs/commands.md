@@ -223,6 +223,8 @@ machines. Each service is now started only if brew has the formula.
 ```bash
 ./bin/update  # Update all components:
               # - Homebrew packages
+              # - mise tools (`mise upgrade`: an exact pin in
+              #   config/mise/mise.toml does not move, a "latest" entry does)
               # - Rust toolchain (`rustup update`; rustup owns it, not mise)
               # - Ruby gems
               # - tmux plugins (via tpm)

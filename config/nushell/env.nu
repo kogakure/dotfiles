@@ -34,6 +34,8 @@ $env.FZF_TMUX_OPTS = $"-p"
 $env.VOLTA_HOME = $"($env.HOME)/.volta"
 $env.BUN_INSTALL = $"($env.HOME)/.bun"
 $env.PNPM_HOME = $"($env.HOME)/.local/share/pnpm"
+$env.DISABLE_AUTOUPDATER = $"1"
+$env.GROK_DISABLE_AUTOUPDATER = $"1"
 
 $env.PATH = ([
     $"($env.HOME)/.local/share/mise/shims"

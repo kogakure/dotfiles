@@ -232,8 +232,48 @@ its directory. The drift is specific to that one host, which also has a
 third copy at `/usr/local/bin/herdr` reporting `0.7.5`.
 
 The consequence worth remembering is for the invariant, not the tool: comparing
-`mise ls --current` between two directories compares **labels**, so it can pass
-while the binaries differ.
+`mise ls --current` between two directories, or between two hosts, compares
+**labels**. It can pass while the binaries differ, so it is evidence about
+configuration resolution and not about what you are running.
+
+#### What the eight actually do, and what is switched off
+
+They are not one category. Only three can replace their own binary without
+being asked, and those are the only ones worth defending against (SI-122):
+
+| Tool | Unattended self-install | Turned off by |
+| --- | --- | --- |
+| `opencode` | yes, on by default | `"autoupdate": false` in `config/opencode/opencode.json` |
+| `claude` | possible, undocumented for a bare binary | `DISABLE_AUTOUPDATER=1` in `shell/env.spec` |
+| `grok` | `auto_update = true` by default | `GROK_DISABLE_AUTOUPDATER=1` in `shell/env.spec` |
+| `codex`, `pi`, `deno` | no — they check and print a notice | nothing needed |
+| `bun` | no — only explicit `bun upgrade` | nothing needed |
+| `herdr` | no — background is check-and-notify | nothing to configure; see below |
+
+`herdr` is the one that actually drifted, and it was **not** a background
+update: `herdr update` replaces the binary in place, and its own docs say to
+update mise-managed installs through mise instead. Nothing enforces that, so
+the rule is a habit rather than a setting — bump the pin in
+`config/mise/mise.toml` and let `mise install` do it.
+
+The env vars are in `shell/env.spec` rather than each tool's config because
+that is where this repository keeps environment, and one spec covers all four
+shells. `opencode` has no env var, so its switch lives in its own config file.
+
+#### Pinned or tracked, and `mise upgrade` is what makes the difference real
+
+Every tool in `config/mise/mise.toml` is one of two things:
+
+- **pinned** to an exact version — it moves when you edit that file, and its
+  self-updater is off where it has one;
+- **tracked** as `"latest"` — it moves when `mise upgrade` runs.
+
+Before SI-122 nothing ran `mise upgrade`, so a `"latest"` entry meant "whatever
+was current the day it was first installed" and never moved again. `bin/update`
+now has a `mise` step, and `mise upgrade` keeps the range the config specifies —
+an exact pin does not move, only `"latest"` advances. It does not prune;
+deleting installed versions stays an opt-in concern here, the same rule the
+backups follow.
 
 ## Git
 

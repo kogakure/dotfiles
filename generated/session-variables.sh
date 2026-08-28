@@ -76,6 +76,8 @@ export MANPATH
 export VOLTA_HOME="$HOME/.volta"
 export BUN_INSTALL="$HOME/.bun"
 export PNPM_HOME="$HOME/.local/share/pnpm"
+export DISABLE_AUTOUPDATER="1"
+export GROK_DISABLE_AUTOUPDATER="1"
 
 # --- PATH (shell/path.spec) ---
 #

@@ -79,3 +79,22 @@ FZF_TMUX_OPTS = -p
 VOLTA_HOME = $HOME/.volta
 BUN_INSTALL = $HOME/.bun
 PNPM_HOME = $HOME/.local/share/pnpm
+
+# --- Agent CLIs: no self-updates over a pinned binary -----------------------
+
+# mise derives a tool's version from its install *directory*, never from the
+# binary, so a tool that rewrites itself in place reports its pin with complete
+# confidence while running something else — herdr shipped 0.8.2 out of an
+# 0.8.0 directory on macbook-2019 (SI-122).
+#
+# claude and grok are the two whose updaters install without being asked, so
+# they are switched off here and mise owns the version. opencode's equivalent
+# lives in config/opencode/opencode.json, since it has no env var. codex, pi,
+# bun and deno only *check* and print a notice — they never replace their own
+# binary unattended, so nothing is needed for them.
+#
+# The consequence to remember: these tools now move only when their pin in
+# config/mise/mise.toml moves, and `mise upgrade` (bin/update's mise step)
+# leaves an exact pin alone by design.
+DISABLE_AUTOUPDATER = 1
+GROK_DISABLE_AUTOUPDATER = 1

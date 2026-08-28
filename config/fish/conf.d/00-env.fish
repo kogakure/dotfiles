@@ -57,3 +57,5 @@ end
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx BUN_INSTALL "$HOME/.bun"
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+set -gx DISABLE_AUTOUPDATER "1"
+set -gx GROK_DISABLE_AUTOUPDATER "1"
