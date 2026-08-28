@@ -674,10 +674,13 @@ EOF
 check_plugins() {
     local rc=0 declared installed missing="" n_missing=0 name dir sha
 
-    # tpm reads ~/.tmux/plugins, not config/tmux/plugins. Both exist here, and
-    # the second is not what runs.
+    # Ask where tpm actually installs, rather than assuming ~/.tmux/plugins.
+    # It is XDG-aware, and ~/.config/tmux/tmux.conf exists on every machine
+    # here, so the real directory is ~/.config/tmux/plugins — which is
+    # config/tmux/plugins through the directory symlink. Assuming the other
+    # path reported all 17 plugins missing on every host (SI-124).
     declared=$(sed -n "s/^set -g @plugin '\([^']*\)'.*/\1/p" config/tmux/tmux.conf)
-    installed="$HOME/.tmux/plugins"
+    installed=$(tmux_plugin_path_here)
 
     while IFS= read -r name; do
         [ -n "$name" ] || continue
@@ -691,12 +694,10 @@ $declared
 EOF
 
     if [ "$n_missing" -gt 0 ]; then
-        finding "$n_missing tmux plugin(s) declared but not in ~/.tmux/plugins"
+        finding "$n_missing tmux plugin(s) declared but not installed"
         detail "${missing# }"
+        detail "tpm installs into $installed"
         detail "install with: ~/.tmux/plugins/tpm/bin/install_plugins"
-        if [ -d config/tmux/plugins ]; then
-            detail "note config/tmux/plugins/ holds $(find config/tmux/plugins -maxdepth 1 -mindepth 1 -type d | grep -c .) checkouts, which tpm does not read"
-        fi
     fi
 
     # The record that makes a breakage diagnosable after the fact.

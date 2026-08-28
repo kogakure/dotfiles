@@ -245,6 +245,7 @@ shellcheck runs from anywhere but the repo root.
 | `privilege.sh` | `privilege_prime/keepalive/release/refresh`; **not** sourced by `common.sh`, for the same reason as `shells.sh` |
 | `preferences.sh` | the manifest parser and both direction handlers |
 | `mise.sh` | pure readers for `config/mise/mise.toml` — every tool key, the host-conditional subset, and the keys with backend prefixes stripped |
+| `tmux.sh` | `tmux_plugin_path` — where tpm installs, replicating its XDG rule. Pure, because asking tmux would mean starting a server |
 | `shells.sh` | `/etc/shells` registration; **not** sourced by `common.sh`, since only `setup.sh` needs it |
 
 ### Sourcing the library has no side effects

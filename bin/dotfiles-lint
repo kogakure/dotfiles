@@ -1348,6 +1348,7 @@ unit_steps() {
 # Portable by construction: with a $HOME that contains none of the spec's
 # directories — every CI runner — the existence filter drops them all and the
 # test still exercises dedupe and idempotence against the inherited PATH.
+
 unit_pathspec() {
     unit_require shell/path.spec || return 1
     unit_require generated/session-variables.sh || return 1
@@ -1389,6 +1390,60 @@ unit_pathspec() {
         fi
 
         [ "$bad" -eq 0 ] && ok "path.spec has no duplicates; the generated PATH is deduped and idempotent"
+        exit "$bad"
+    )
+}
+
+# Where tpm installs, under both layouts.
+#
+# bin/dotfiles-doctor assumed ~/.tmux/plugins and therefore reported all 17
+# declared plugins missing on every host, while advising an installer that
+# would have cloned a second copy into the path tmux does not read (SI-124).
+# The rule is tpm's own: the XDG directory when a tmux.conf is there, the
+# legacy one otherwise.
+#
+# Both roots are arguments, so this runs against fixtures on a host with
+# neither directory — which is every CI runner. The fixture builds the XDG
+# layout and then removes just the tmux.conf, so the two branches are
+# exercised over the same tree and the condition cannot be satisfied by
+# accident of what happens to exist.
+unit_tmux_plugin_path() {
+    unit_require bin/lib/tmux.sh || return 1
+    (
+        # shellcheck source=bin/lib/tmux.sh
+        . bin/lib/tmux.sh
+
+        bad=0
+        root=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-lint-tmux.XXXXXX") || exit 1
+        mkdir -p "$root/config/tmux" "$root/home"
+
+        # No tmux.conf under the XDG root yet: the legacy branch.
+        unit_expect "no XDG tmux.conf falls back to ~/.tmux/plugins" \
+            "$root/home/.tmux/plugins" \
+            "$(tmux_plugin_path "$root/config" "$root/home")" || bad=1
+
+        # The layout every machine here actually has.
+        : >"$root/config/tmux/tmux.conf"
+        unit_expect "an XDG tmux.conf wins" \
+            "$root/config/tmux/plugins" \
+            "$(tmux_plugin_path "$root/config" "$root/home")" || bad=1
+
+        # No trailing slash: callers join with "/$name", and tpm's own value
+        # carries one, so this is the difference between .../plugins/name and
+        # .../plugins//name in every message the doctor prints.
+        unit_expect "no trailing slash" "" \
+            "$(tmux_plugin_path "$root/config" "$root/home" | sed 's|.*\(.\)$|\1|;s|[^/]||')" || bad=1
+
+        # The regression itself: on this repo's layout the answer must not be
+        # the legacy path. Guards against someone "simplifying" the branch away.
+        unit_expect "the XDG answer is not ~/.tmux/plugins" "differs" \
+            "$(
+                a=$(tmux_plugin_path "$root/config" "$root/home")
+                [ "$a" = "$root/home/.tmux/plugins" ] && echo same || echo differs
+            )" || bad=1
+
+        rm -rf "$root"
+        [ "$bad" -eq 0 ] && ok "tmux_plugin_path follows tpm's XDG rule under both layouts"
         exit "$bad"
     )
 }
@@ -1552,6 +1607,7 @@ check_unit() {
     unit_prune || bad=1
     unit_packages || bad=1
     unit_pathspec || bad=1
+    unit_tmux_plugin_path || bad=1
     unit_steps || bad=1
     unit_privilege || bad=1
     unit_log_plain || bad=1
