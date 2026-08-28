@@ -52,3 +52,17 @@ runtimes|*|node has * providers:*|volta is deliberately not being unwound — SI
 # SI-86 and written up in docs/architecture.md. The brewfile analyser compares
 # names across hosts and cannot tell a genuine product split from a data bug.
 brewfile|*|Brewfile inconsistency: mas "Numbers" has several ids*|two real App Store listings for one product, not a duplicate — SI-86 and docs/architecture.md
+
+# Pages has the same cross-host App Store split as Numbers. The remaining
+# same-id findings are display-name drift in `mas list`; Brew Bundle identifies
+# these apps by id, so reinstalling them only to align the generated labels
+# would not change what gets restored.
+brewfile|*|Brewfile inconsistency: mas "Pages" has several ids*|two real App Store listings for one product, not a duplicate — docs/architecture.md
+brewfile|*|Brewfile inconsistency: mas id 1474276998 has several names*|same App Store app id; only the generated display name differs — docs/architecture.md
+brewfile|*|Brewfile inconsistency: mas id 1497527363 has several names*|same App Store app id; only the generated display name differs — docs/architecture.md
+brewfile|*|Brewfile inconsistency: mas id 6446116532 has several names*|same App Store app id; only the generated display name differs — docs/architecture.md
+
+# mac-mini moved diffnav from the legacy dlvhdr tap to Homebrew core on
+# 2026-08-28. macbook-m5-pro must make the same machine-state migration and
+# re-dump; this row intentionally becomes stale when that is done.
+brewfile|*|Brewfile inconsistency: brew "diffnav" is spelled several ways*|macbook-m5-pro still needs its diffnav migration from dlvhdr/formulae to Homebrew core

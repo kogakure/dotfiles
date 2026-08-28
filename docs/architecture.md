@@ -65,21 +65,14 @@ Use `brew bundle check --no-upgrade --file homebrew/<host>` to report drift —
 SI-119, `bin/homebrew-restore` is also safe to run for this: it reports and
 installs, and uninstalls only behind `--prune` and a confirmation.
 
-Known data bugs, all of which are machine state rather than file content, so
-they have to be cleaned up on the host and re-dumped:
-
-- **Two Mac App Store entries for one app on one host.** `Pages` on `mac-mini`
-  (`361309726` *and* `409201541`) and `Reeder` on `macbook-m5-pro`
-  (`1529448980` *and* `6475002485`). Only these two are duplicates; the second
-  id in each pair cannot be satisfied on that machine, so `brew bundle check`
-  reports it forever.
-- `mac-mini` declares `tap "sst/tap"` with the **anomalyco** tap URL, left over
-  from a rename.
-- The same package appears bare on one host and tap-qualified on another:
-  `hunk` and `opencode`.
-- The same app appears under different names across hosts, which defeats any
-  name-keyed diffing: `HP Smart` vs `HP` (both `1474276998`), and `MindNode 2`
-  vs `MindNode` (both `6446116532`).
+Known machine-state bugs must be cleaned up on the affected host and re-dumped.
+The mac-mini refresh on 2026-08-28 removed its stale App Store rows, legacy
+`sst/tap`, and tap-qualified formulae. Cross-host App Store differences remain
+when they describe real store records or generated display-name drift; those
+are accepted in `.doctor-baseline` rather than "fixed" by editing a dump.
+`macbook-m5-pro` still needs to migrate `diffnav` from `dlvhdr/formulae` to
+Homebrew core and re-dump; its temporary baseline row is designed to go stale
+after that migration.
 
 ### The iWork id split is not a bug, and MindNode is three products
 
@@ -88,22 +81,25 @@ Both were recorded here as data bugs and neither is one. Ground truth as of
 
 | Host | Numbers | Pages | MindNode |
 | --- | --- | --- | --- |
-| `mac-mini` | `361304891` | `361309726` **+** `409201541` | `MindNode 2` `6446116532` |
+| `mac-mini` | `361304891` | `361309726` | `MindNode 2` `6446116532` |
 | `macbook-2019` | `409203825` | `409201541` | `MindNode Classic` `1289197285` |
 | `macbook-m5-pro` | `361304891` | `361309726` | `MindNode` `6446116532` |
 
-**Numbers is not duplicated anywhere.** It appears once per host; the two ids
-are a *cross-host* split, because `macbook-2019` runs the 14.x releases under
-one App Store listing while the other two run 15.x under an older one. Two
-different store records for the same product. An earlier version of this file
-claimed a mac-mini duplicate, which is why `brew bundle check` came back clean
-for Numbers and dirty for Pages — the tool was right and the note was wrong.
+**Numbers and Pages are not duplicated anywhere.** Each appears once per host;
+their two ids are a *cross-host* split, because `macbook-2019` uses a different
+App Store listing from the other two machines. The old, unsatisfiable Pages row
+was removed from `mac-mini` during its 2026-08-28 refresh.
 
 **`MindNode Classic` is a different application**, not a naming variant: id
 `1289197285`, only on `macbook-2019`. The `MindNode 2` / `MindNode` pair above
 really is one app under two names, on the shared id `6446116532`. So a
 name-keyed diff across the three hosts sees three MindNodes and can never
 reconcile them.
+
+The same generated-label drift affects `HP Smart` / `HP` (id `1474276998`) and
+`Blurred` / `Blurred 2` (id `1497527363`). Brew Bundle restores `mas` apps by
+id, so these names do not change the restored application. They are retained as
+reported by each host and accepted explicitly in `.doctor-baseline`.
 
 The lesson for anyone diffing these files: an id that differs across hosts is
 usually a real difference in what is installed, and only a repeated id *within

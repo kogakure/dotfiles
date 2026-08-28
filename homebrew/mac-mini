@@ -19,7 +19,6 @@ tap "modem-dev/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap", trusted: { casks: ["codiff"] }
 tap "safedep/tap", trusted: true
-tap "sst/tap", "https://github.com/anomalyco/homebrew-tap.git", trusted: true
 tap "steipete/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
@@ -28,8 +27,6 @@ brew "ack"
 brew "openssl@3"
 # Library for command-line editing
 brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
 # Browser automation CLI for AI agents
 brew "agent-browser"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -40,18 +37,12 @@ brew "libpng"
 brew "libyaml"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
-# Improved shell history for zsh, bash, fish and nushell
-brew "atuin", restart_service: :changed
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# Bash scripts that integrate bat with various command-line tools
-brew "bat-extras"
 # Low-level library for pixel manipulation
 brew "pixman"
 # Vector graphics library with cross-device output support
@@ -96,10 +87,12 @@ brew "cpptoml"
 brew "curl"
 # Power of curl, ease of use of httpie
 brew "curlie"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Load/unload environment variables based on $PWD
-brew "direnv"
+# Git diff pager based on delta but with a file tree
+brew "diffnav"
 # Standard XML representation system for technical documents
 brew "docbook"
 # XML vocabulary to create presentation-neutral documents
@@ -124,12 +117,8 @@ brew "editorconfig"
 brew "espeak-ng"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# Modern, maintained replacement for ls
-brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # SDL2 compatibility layer that uses SDL3 behind the scenes
 brew "sdl2-compat"
 # Play, record, convert, and stream select audio and video codecs
@@ -150,30 +139,20 @@ brew "findutils"
 brew "fish"
 # Plugin manager for the Fish shell
 brew "fisher"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GNU compiler collection
 brew "gcc"
-# GitHub command-line tool
-brew "gh"
 # Distributed revision control system
 brew "git"
 # Automatic git commit --fixup
 brew "git-absorb"
 # Enable transparent encryption/decryption of files in a git repo
 brew "git-crypt"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
 # Small git utilities
 brew "git-extras"
 # Alias for git commit --fixup <ref>
 brew "git-fixup"
-# Git extension for versioning large files
-brew "git-lfs"
 # Simple and efficient way to access statistics in git
 brew "git-quick-stats"
-# Audit git repos for secrets
-brew "gitleaks"
 # C++ mathematics library for graphics software
 brew "glm"
 # Render markdown on the CLI
@@ -182,8 +161,6 @@ brew "glow"
 brew "gnu-sed"
 # GNU version of the tar archiving utility
 brew "gnu-tar"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Generate introspection data for GObject libraries
@@ -202,16 +179,12 @@ brew "grex"
 brew "gum"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
-# Agent multiplexer that lives in your terminal
-brew "herdr", restart_service: :changed
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
-# Review-first terminal diff viewer for agent-authored changesets
-brew "hunk"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
@@ -220,20 +193,12 @@ brew "imagemagick"
 brew "img2pdf"
 # Make XML documents translatable through PO files
 brew "itstool"
-# Git-compatible distributed version control system
-brew "jj"
 # Command-line pager for JSON data
 brew "jless"
 # Image manipulation library
 brew "jpeg"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
-# Lazier way to manage everything docker
-brew "lazydocker"
-# Simple terminal UI for git commands
-brew "lazygit"
 # TUI for Jujutsu/jj
 brew "lazyjj"
 # Terminal file manager
@@ -282,24 +247,18 @@ brew "openai-whisper"
 brew "ouch"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
 # Tool to interact with the Phrase API
 brew "phrase-cli"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Paste PNG into files
 brew "pngpaste"
-# Fast, disk space efficient package manager
-brew "pnpm"
 # Perl documentation generator
 brew "pod2man"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
 brew "postgresql@14"
-# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
-brew "prettier"
 # Prettier daemon
 brew "prettierd"
 # Easily download, build, install, upgrade, and uninstall Python packages
@@ -314,8 +273,6 @@ brew "python@3.12"
 brew "reattach-to-user-namespace"
 # Convert between TOML, YAML and JSON
 brew "remarshal"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Wrapper around ripgrep that adds multiple rich file types
 brew "ripgrep-all"
 # Builds manuals - the opposite of roff
@@ -328,26 +285,18 @@ brew "sad"
 brew "sevenzip"
 # Database of common MIME types
 brew "shared-mime-info"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-# Autoformat shell script source code
-brew "shfmt"
 # Create beautiful image of your source code
 brew "silicon"
 # Compression/decompression tool based on snappy
 brew "snzip"
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
-# Cross-shell prompt for astronauts
-brew "starship"
-# Modern and pretty fancy file manager for the terminal
-brew "superfile"
 # Official documentation format of the GNU project
 brew "texinfo"
 # Code-search similar to ack
 brew "the_silver_searcher"
-# Terminal multiplexer
-brew "tmux"
+# CLI for Todoist
+brew "todoist-cli-go"
 # Program that allows you to count code, quickly
 brew "tokei"
 # Display directories as trees (with optional color/HTML output)
@@ -364,8 +313,6 @@ brew "universal-ctags"
 brew "unzip"
 # URL extractor/launcher
 brew "urlview"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Policy driven vetting of open source dependencies
 brew "vet", link: false
 # Your CLI home video recorder
@@ -382,28 +329,18 @@ brew "whisper-cpp"
 brew "witr"
 # Utilities to create and convert Web Open Font File (WOFF) files
 brew "woff2"
-# CLI for Git worktree management, designed for parallel AI agent workflows
-brew "worktrunk"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
 # Convert XML to another format (based on XSL or other tools)
 brew "xmlto"
 # JavaScript package manager
 brew "yarn"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Dumb downloader that scrapes the web
 brew "you-get"
-# Process YAML, JSON, XML, CSV and properties documents from the CLI
-brew "yq"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
 brew "agavra/tap/tuicr", trusted: true
-# The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode", trusted: true
 # On-device Apple FoundationModels CLI and OpenAI-compatible server
 brew "arthur-ficial/tap/apfel"
 # Coding agent with the IDE wired in
@@ -414,8 +351,6 @@ brew "charmbracelet/tap/crush"
 brew "charmbracelet/tap/soft-serve"
 # GNU Emacs text editor
 brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
-# Git diff pager based on delta but with a file tree, à la GitHub
-brew "dlvhdr/formulae/diffnav"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
 # Quickly clone an entire org/users repositories into one directory
@@ -535,12 +470,16 @@ cask "karabiner-elements"
 cask "keycastr"
 # ZSA keyboard firmware flasher
 cask "keymapp"
+# Grammar, spelling and style suggestions in all the writing apps
+cask "languagetool-desktop"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-wallet"
 # App to manage software development and track bugs
 cask "linear"
 # Discover, download, and run local LLMs
 cask "lm-studio"
+# Open-source cross-platform alternative to AirDrop
+cask "localsend"
 # Software for Logitech devices
 cask "logi-options+"
 # File system integration
@@ -619,6 +558,8 @@ cask "texmaker"
 cask "thaw"
 # Unpacks archive files
 cask "the-unarchiver"
+# To-do list
+cask "todoist-app"
 # Web browser focusing on security
 cask "tor-browser"
 # File transfer application
@@ -663,13 +604,11 @@ mas "iA Writer", id: 775737590
 mas "iFinance 5", id: 1500241909
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
-mas "Kindle", id: 302584613
 mas "Mela", id: 1568924476
 mas "MindNode 2", id: 6446116532
 mas "mymind", id: 1532801185
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
-mas "Pages", id: 409201541
 mas "Proton Pass for Safari", id: 6502835663
 mas "Pure Paste", id: 1611378436
 mas "Raycast Companion", id: 6738274497
@@ -747,47 +686,22 @@ vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
-cargo "ghzinga"
-cargo "ytsub"
 uv "jiratui"
 uv "posting"
-npm "@agentmemory/agentmemory"
-npm "@colbymchenry/codegraph"
-npm "@daisy/ace"
-npm "@github/copilot"
-npm "@gitlawb/openclaude"
-npm "@kitlangton/ghui"
+npm "@agentclientprotocol/claude-agent-acp"
+npm "@devcontainers/cli"
+npm "@earendil-works/pi-coding-agent"
 npm "@nqbao/pi-sandbox"
-npm "@opencode-ai/cli"
 npm "@plannotator/pi-extension"
+npm "@playwright/cli"
 npm "@readwise/cli"
-npm "@rynfar/meridian"
 npm "@tobilu/qmd"
-npm "@vercel/before-and-after"
-npm "@zeeg/dex"
 npm "browser-sync"
 npm "caniuse-cmd"
+npm "codeburn"
 npm "commitizen"
-npm "corepack"
 npm "cz-conventional-changelog"
 npm "fast-cli"
-npm "jscpd"
 npm "json-server"
 npm "jsonlint"
-npm "lighthouse"
 npm "neovim"
-npm "opencode-wakatime"
-npm "pageres-cli"
-npm "pi-agent-browser-native"
-npm "pi-defender"
-npm "pi-lens"
-npm "pi-mcp-adapter"
-npm "pi-subagents"
-npm "pi-teams"
-npm "pi-web-access"
-npm "pnpm"
-npm "port-whisperer"
-npm "taskplane"
-npm "trash-cli"
-npm "unlighthouse"
-npm "yarn"
