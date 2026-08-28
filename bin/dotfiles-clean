@@ -56,7 +56,11 @@ APPLY=0
 
 CLEAN_ROOTS="$HOME $HOME/.config $HOME/.gnupg $HOME/.warp"
 TMUX_CONF=config/tmux/tmux.conf
-TMUX_PLUGINS="$HOME/.tmux/plugins"
+# Resolved the way tpm resolves it, not assumed — see bin/lib/tmux.sh. This
+# script and bin/dotfiles-doctor must agree on the directory: one of them
+# reporting a plugin missing while the other declines to see it is exactly the
+# drift SI-124 was.
+TMUX_PLUGINS=$(tmux_plugin_path_here)
 
 usage() {
     log_info "Usage: dotfiles-clean [--apply] [--yes]"

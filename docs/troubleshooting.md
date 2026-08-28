@@ -404,25 +404,41 @@ its permission bit; `chmod +x bin/generate-shell-config`.
 
 Are the tmux plugins `config/tmux/tmux.conf` declares actually installed?
 
-tpm reads `~/.tmux/plugins`, not `config/tmux/plugins`. Both exist in this
-repository and the second is **not** what runs.
+**tpm installs into `~/.config/tmux/plugins`, not `~/.tmux/plugins`** — which,
+via the directory symlink, is `config/tmux/plugins` in this repository. tpm is
+XDG-aware: it uses `$XDG_CONFIG_HOME/tmux/plugins/` whenever
+`$XDG_CONFIG_HOME/tmux/tmux.conf` exists, and `install.conf.yaml` globs
+`config/*` into `~/.config/`, so that file exists on every machine here.
+`~/.tmux/plugins/` therefore holds tpm itself and nothing else, and that is
+correct rather than a symptom.
 
-**`N tmux plugin(s) declared but not in ~/.tmux/plugins`**
+Doctor resolves the directory with `tmux_plugin_path` in `bin/lib/tmux.sh`,
+which replicates tpm's rule rather than asking the server. The authoritative
+answer is `tmux show-environment -g TMUX_PLUGIN_MANAGER_PATH`, but reaching it
+costs a `tmux start-server` when none is running — a mutation, which this
+script may not make. `bin/dotfiles-clean` uses the same function, so the two
+cannot disagree about which directory they are talking about.
+
+Until SI-124 both assumed `~/.tmux/plugins`, so the check reported **all**
+seventeen declared plugins as missing on every host and advised an installer
+that would have cloned a second, unused copy into the wrong place.
+
+**`N tmux plugin(s) declared but not installed`**
 
 ```bash
 ~/.tmux/plugins/tpm/bin/install_plugins
 ```
 
 or `./setup.sh --only tmux_plugins`, which is one of the re-runnable steps.
-Under `--verbose` the check also notes how many checkouts `config/tmux/plugins/`
-holds, precisely because that directory looks like the answer and is not.
+The finding names the resolved directory under `--verbose`, so a wrong answer
+is visible rather than implied.
 
 `--verbose` additionally prints the short SHA of every installed plugin. That is
 not a finding — it is the record that makes a breakage diagnosable after the
 fact. `zsh_plugins.txt`, `config/fish/fish_plugins` and tpm all follow upstream
 HEAD with no lockfile, unlike `config/nvim/lazy-lock.json`.
 
-The opposite direction — a plugin installed under `~/.tmux/plugins` that
+The opposite direction — an installed plugin that
 `tmux.conf` no longer names — is not doctor's; tpm installs but never
 uninstalls, so it is the second thing `clean` repairs:
 
