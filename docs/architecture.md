@@ -21,10 +21,10 @@
 
 ### It is shared between machines, and not host-namespaced
 
-`private/claude/<profile>/` and `private/codex/<profile>/` are keyed on the
-work/personal profile only, so two machines using the same profile write to the
-same directory. Today `personal` was last written from `mac-mini` and `work`
-from `macbook-m5-pro`.
+`private/claude/<profile>/`, `private/codex/<profile>/` and
+`private/grok/<profile>/` are keyed on the work/personal profile only, so two
+machines using the same profile write to the same directory. Today `personal`
+was last written from `mac-mini` and `work` from `macbook-m5-pro`.
 
 That is why no backup deletes a destination whose source is missing locally:
 "not on this machine" is not "not wanted". Pruning is a separate opt-in pass

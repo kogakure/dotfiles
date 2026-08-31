@@ -11,7 +11,7 @@
 #   --gpg           include the gpg step (off by default; see below)
 #   -h, --help      show this and exit
 #
-# Steps, in order:  claude codex homebrew preferences launch-agents [gpg]
+# Steps, in order:  claude codex grok homebrew preferences launch-agents [gpg]
 #
 # Named steps may be given as positional arguments to run a subset, e.g.
 #   dotfiles-backup preferences
@@ -36,7 +36,7 @@ dotfiles_flags_init
 
 WITH_GPG=0
 STEPS=""
-DEFAULT_STEPS="claude codex homebrew preferences launch-agents"
+DEFAULT_STEPS="claude codex grok homebrew preferences launch-agents"
 
 usage() {
     log_info "Usage: dotfiles-backup [--dry-run] [--yes] [--allow-dirty] [--gpg] [step...]"
@@ -126,10 +126,11 @@ backup_launch_agents() {
 # Once, here, not once per sub-script. The first step dirties private, so a
 # per-step check would make this script refuse itself on step two. private_gate
 # exports a marker that the children honour.
-private_gate preferences claude codex launch-agents gpg || exit 1
+private_gate preferences claude codex grok launch-agents gpg || exit 1
 
 wanted claude && run_step claude ./bin/claude-backup
 wanted codex && run_step codex ./bin/codex-backup
+wanted grok && run_step grok ./bin/grok-backup
 wanted homebrew && run_step homebrew ./bin/homebrew-backup
 wanted preferences && run_step preferences ./bin/preferences-backup
 wanted launch-agents && run_step launch-agents backup_launch_agents

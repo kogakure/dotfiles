@@ -245,7 +245,7 @@ machines. Each service is now started only if brew has the formula.
               # - Fish plugins (via fisher)
               # - Neovim plugins (via Lazy)
               # - macOS software
-              # - Runs bin/dotfiles-backup (Claude, Codex, Homebrew,
+              # - Runs bin/dotfiles-backup (Claude, Codex, Grok, Homebrew,
               #   preferences, launch agents), isolating each step's failure
               #   and naming it in the summary
 ```
@@ -257,7 +257,7 @@ failures from each other, and exits non-zero naming the ones that failed —
 which is what `bin/update` calls.
 
 ```bash
-./bin/dotfiles-backup                    # claude, codex, homebrew, preferences, launch-agents
+./bin/dotfiles-backup                    # claude, codex, grok, homebrew, preferences, launch-agents
 ./bin/dotfiles-backup --dry-run          # print the whole plan, change nothing
 ./bin/dotfiles-backup preferences        # one named step
 ./bin/dotfiles-backup --gpg              # include the GPG export (see below)
@@ -279,12 +279,15 @@ invoked directly honours what the aggregator set:
 The individual entry points:
 
 ```bash
-./bin/agentic-set-profile work|personal  # Select the shared Claude/Codex profile
+./bin/agentic-set-profile work|personal  # Select the shared Claude/Codex/Grok profile
 ./bin/claude-backup           # Save Claude Code config to private/claude/<profile>
 ./bin/claude-restore          # Restore Claude Code config for the current profile
 ./bin/codex-backup            # Save Codex config to private/codex/<profile>
 ./bin/codex-restore           # Restore Codex config for the current profile
 ./bin/codex-restore personal  # Bootstrap another profile from the personal backup
+./bin/grok-backup             # Save Grok config to private/grok/<profile>
+./bin/grok-restore            # Restore Grok config for the current profile
+./bin/grok-restore personal   # Bootstrap another profile from the personal backup
 ./bin/preferences-backup      # Export app preferences
 ./bin/preferences-restore     # Import app preferences
 ./bin/gpg-keys-backup         # Export GPG keys — opt-in, see below

@@ -1,0 +1,110 @@
+#!/bin/bash
+#
+# grok-backup
+# Backs up durable Grok configuration to the private/ submodule.
+# Runtime state, credentials, bundled skills, and caches are intentionally excluded.
+#
+# Usage: grok-backup
+# Reads ~/.agentic-profile, falling back to legacy ~/.machine-profile.
+# Set with: agentic-set-profile work|personal
+
+set -euo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+dotfiles_flags_init
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        --allow-dirty) DOTFILES_ALLOW_DIRTY=1 ;;
+        -h | --help)
+            log_info "Usage: grok-backup [--dry-run] [--yes] [--allow-dirty]"
+            exit 0
+            ;;
+        *)
+            log_err "grok-backup: unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+GROK_DIR="${GROK_HOME:-$HOME/.grok}"
+DOTFILES=$(dotfiles_root)
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+PROFILE=$(agentic_profile) || exit 1
+PROFILE_DIR="$DOTFILES/private/grok/$PROFILE"
+
+log_done "Starting Grok configuration backup..."
+log_field "Profile" "$PROFILE"
+log_field "Grok home" "$GROK_DIR"
+
+run mkdir -p "$PROFILE_DIR"
+
+log_step "Backing up settings and global instructions..."
+backup_file "$GROK_DIR/config.toml" "$PROFILE_DIR/config.toml"
+backup_file "$GROK_DIR/settings.json" "$PROFILE_DIR/settings.json"
+backup_file "$GROK_DIR/pager.toml" "$PROFILE_DIR/pager.toml"
+backup_file "$GROK_DIR/AGENTS.md" "$PROFILE_DIR/AGENTS.md"
+backup_file "$GROK_DIR/Agents.md" "$PROFILE_DIR/Agents.md"
+backup_file "$GROK_DIR/AGENT.md" "$PROFILE_DIR/AGENT.md"
+backup_file "$GROK_DIR/statusline.sh" "$PROFILE_DIR/statusline.sh"
+
+log_step "Backing up hooks, rules, commands and skills..."
+backup_dir "$GROK_DIR/hooks" "$PROFILE_DIR/hooks"
+backup_dir "$GROK_DIR/rules" "$PROFILE_DIR/rules"
+backup_dir "$GROK_DIR/commands" "$PROFILE_DIR/commands"
+# Grok never writes bundled skills into ~/.grok/skills/ (those live under
+# bundled/skills/), so a straight backup_dir is enough. Absent locally means
+# leave the backup alone, matching every other helper in bin/lib/sync.sh.
+backup_dir "$GROK_DIR/skills" "$PROFILE_DIR/skills"
+
+log_step "Backing up personas, agents, workflows and user plugins..."
+backup_dir "$GROK_DIR/personas" "$PROFILE_DIR/personas"
+backup_dir "$GROK_DIR/agents" "$PROFILE_DIR/agents"
+backup_dir "$GROK_DIR/workflows" "$PROFILE_DIR/workflows"
+# User-local plugins at ~/.grok/plugins/ are auto-trusted and not the same as
+# installed-plugins/, which is a machine-local checkout with absolute paths.
+backup_dir "$GROK_DIR/plugins" "$PROFILE_DIR/plugins"
+
+log_step "Creating backup manifest..."
+write_file "$PROFILE_DIR/BACKUP_INFO.txt" <<EOF
+Grok Configuration Backup
+=========================
+Timestamp:  $TIMESTAMP
+Hostname:   $(host_id)
+Profile:    $PROFILE
+Grok Home:  $GROK_DIR
+
+Backed up:
+- config.toml (models, UI, marketplace, MCP servers, plugins, permissions)
+- settings.json and pager.toml
+- AGENTS.md / Agents.md / AGENT.md (global instructions)
+- statusline.sh (TUI footer)
+- hooks/, rules/, commands/, skills/
+- personas/, agents/, workflows/
+- User-local plugins/ (auto-trusted; not installed-plugins/)
+
+Excluded (credentials, generated, large, or machine-local state):
+- auth.json, mcp_credentials.json, agent_id
+- trusted_folders.toml
+- sessions/, memory/, logs/, crash/, memtrace/, relocations/
+- installed-plugins/, marketplace-cache/, bundled/, bin/, downloads/
+- vendor/, completions/, docs/, projects/, worktrees/, upload_queue/
+- models_cache.json, worktrees.db, version.json, CHANGELOG.*
+- active_sessions.json, slash-mru.json, tip_cursor.json, last-copy.txt
+- *.lock, *.sqlite, *.sqlite-shm, *.sqlite-wal
+
+After restoring, sign in to Grok and reinstall marketplace plugins from
+config.toml if they are not already present. Restart the CLI to apply.
+EOF
+
+log_done "Backup complete!"
+log_info "  Profile dir: $PROFILE_DIR"
+log_info ""
+log_info "To restore on another machine, run: grok-restore"

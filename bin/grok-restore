@@ -1,0 +1,124 @@
+#!/bin/bash
+#
+# grok-restore
+# Restores durable Grok configuration from the private/ submodule.
+#
+# Usage: grok-restore [source-profile]
+# Reads ~/.agentic-profile, falling back to legacy ~/.machine-profile.
+# Set with: agentic-set-profile work|personal
+
+set -euo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+dotfiles_flags_init
+
+# The one entry point with a positional argument: the profile to restore *from*,
+# which need not be this machine's own. Flags and the positional may be
+# interleaved, as they can everywhere else in bin/.
+SOURCE_ARG=""
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        -y | --yes) DOTFILES_ASSUME_YES=1 ;;
+        -h | --help)
+            log_info "Usage: grok-restore [--dry-run] [--yes] [source-profile]"
+            exit 0
+            ;;
+        -*)
+            log_err "grok-restore: unknown option: $1"
+            exit 1
+            ;;
+        *)
+            if [ -n "$SOURCE_ARG" ]; then
+                log_err "grok-restore: more than one source profile given"
+                exit 1
+            fi
+            SOURCE_ARG="$1"
+            ;;
+    esac
+    shift
+done
+
+GROK_DIR="${GROK_HOME:-$HOME/.grok}"
+DOTFILES=$(dotfiles_root)
+
+PROFILE=$(agentic_profile) || exit 1
+SOURCE_PROFILE="${SOURCE_ARG:-$PROFILE}"
+
+assert_valid_profile "$SOURCE_PROFILE" "source profile" || exit 1
+
+PROFILE_DIR="$DOTFILES/private/grok/$SOURCE_PROFILE"
+
+log_done "Starting Grok configuration restore..."
+log_field "Machine profile" "$PROFILE"
+log_field "Backup source" "$SOURCE_PROFILE"
+log_field "Grok home" "$GROK_DIR"
+
+if [ ! -d "$PROFILE_DIR" ]; then
+    log_err "Error: No backup found at $PROFILE_DIR"
+    log_info "Run grok-backup first or ensure the private/ submodule is initialized."
+    exit 1
+fi
+
+if [ -f "$PROFILE_DIR/BACKUP_INFO.txt" ]; then
+    log_warn ""
+    log_warn "Backup Information:"
+    cat "$PROFILE_DIR/BACKUP_INFO.txt"
+    log_info ""
+fi
+
+if [ "$DOTFILES_ASSUME_YES" -eq 0 ] && ! confirm "Do you want to restore Grok settings from backup?"; then
+    log_info "Restore cancelled."
+    exit 0
+fi
+
+conflicts=$(sync_conflicts \
+    "$PROFILE_DIR/config.toml" "$GROK_DIR/config.toml" \
+    "$PROFILE_DIR/settings.json" "$GROK_DIR/settings.json" \
+    "$PROFILE_DIR/pager.toml" "$GROK_DIR/pager.toml" \
+    "$PROFILE_DIR/AGENTS.md" "$GROK_DIR/AGENTS.md" \
+    "$PROFILE_DIR/Agents.md" "$GROK_DIR/Agents.md" \
+    "$PROFILE_DIR/AGENT.md" "$GROK_DIR/AGENT.md" \
+    "$PROFILE_DIR/statusline.sh" "$GROK_DIR/statusline.sh")
+
+if [ -n "$conflicts" ]; then
+    log_warn "$(printf '%s\n' "$conflicts" | wc -l | tr -d ' ') existing file(s) will be overwritten. Examples:"
+    printf '%s\n' "$conflicts" | head -5 | sed 's/^/  /'
+    if [ "$DOTFILES_ASSUME_YES" -eq 0 ] && ! confirm "Continue?"; then
+        log_info "Restore cancelled."
+        exit 0
+    fi
+fi
+
+run mkdir -p "$GROK_DIR"
+
+log_step "Restoring settings and global instructions..."
+restore_file "$PROFILE_DIR/config.toml" "$GROK_DIR/config.toml"
+restore_file "$PROFILE_DIR/settings.json" "$GROK_DIR/settings.json"
+restore_file "$PROFILE_DIR/pager.toml" "$GROK_DIR/pager.toml"
+restore_file "$PROFILE_DIR/AGENTS.md" "$GROK_DIR/AGENTS.md"
+restore_file "$PROFILE_DIR/Agents.md" "$GROK_DIR/Agents.md"
+restore_file "$PROFILE_DIR/AGENT.md" "$GROK_DIR/AGENT.md"
+restore_file "$PROFILE_DIR/statusline.sh" "$GROK_DIR/statusline.sh"
+
+log_step "Restoring hooks, rules, commands and skills..."
+restore_dir "$PROFILE_DIR/hooks" "$GROK_DIR/hooks"
+restore_dir "$PROFILE_DIR/rules" "$GROK_DIR/rules"
+restore_dir "$PROFILE_DIR/commands" "$GROK_DIR/commands"
+restore_dir "$PROFILE_DIR/skills" "$GROK_DIR/skills"
+
+log_step "Restoring personas, agents, workflows and user plugins..."
+restore_dir "$PROFILE_DIR/personas" "$GROK_DIR/personas"
+restore_dir "$PROFILE_DIR/agents" "$GROK_DIR/agents"
+restore_dir "$PROFILE_DIR/workflows" "$GROK_DIR/workflows"
+restore_dir "$PROFILE_DIR/plugins" "$GROK_DIR/plugins"
+
+log_info ""
+log_done "Restore complete!"
+log_info "Sign in to Grok separately; credentials were intentionally not backed up."
+log_info "Reinstall marketplace plugins if they are missing, then restart Grok."
+log_info "Restored configuration from: $SOURCE_PROFILE"

@@ -126,7 +126,7 @@ just update                       # everything below, then all backups
 
 `just update` asks for the admin password once, then updates Homebrew, mise
 tools, the Rust toolchain, Ruby gems, tmux, gh, herdr, fish and Neovim plugins,
-runs the maintenance sweep, takes **every backup** (Claude, Codex, Homebrew,
+runs the maintenance sweep, takes **every backup** (Claude, Codex, Grok, Homebrew,
 preferences, launch agents) and finally applies macOS software updates. Each
 step is isolated: one failure is named in the summary and the rest still run.
 

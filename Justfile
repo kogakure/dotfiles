@@ -97,7 +97,7 @@ doctor *ARGS:
 clean *ARGS:
     bin/dotfiles-clean {{ ARGS }}
 
-# Take every backup: claude, codex, homebrew, preferences, launch agents.
+# Take every backup: claude, codex, grok, homebrew, preferences, launch agents.
 # Pass flags or step names through, e.g. `just backup --dry-run` or
 # `just backup preferences`. See bin/dotfiles-backup --help.
 backup *ARGS:

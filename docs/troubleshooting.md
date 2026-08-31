@@ -535,9 +535,10 @@ git -C private push
 ```
 
 Commit them so the other machines see them. This matters more than it looks:
-`private/claude/<profile>/` and `private/codex/<profile>/` are keyed on the
-profile only, not the host, so two machines on the same profile write to the
-same directory. Uncommitted work there is work the other machine cannot see —
+`private/claude/<profile>/`, `private/codex/<profile>/` and
+`private/grok/<profile>/` are keyed on the profile only, not the host, so two
+machines on the same profile write to the same directory. Uncommitted work
+there is work the other machine cannot see —
 and is the reason no backup prunes a destination whose source is missing
 locally.
 

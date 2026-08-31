@@ -27,7 +27,7 @@ assert_valid_profile "$PROFILE" profile || exit 1
 echo "$PROFILE" >"$PROFILE_FILE"
 
 log_done "Agentic profile set to: $PROFILE"
-log_info "  Claude and Codex backups will use their respective $PROFILE directories."
+log_info "  Claude, Codex and Grok backups will use their respective $PROFILE directories."
 
 if [ -f "$LEGACY_PROFILE_FILE" ]; then
     log_warn "  Legacy ~/.machine-profile remains supported and can now be removed."
