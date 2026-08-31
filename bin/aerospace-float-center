@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# Toggle the focused window between tiling and *centred* floating.
+#
+# `aerospace layout floating tiling` leaves the window on whatever frame the
+# tiling layout had given it, so floating a window means resizing and
+# repositioning it by hand every single time. AeroSpace has no command that can
+# centre or place a floating window (nikitabobko/AeroSpace#494), so the
+# placement goes over the Accessibility API instead — see bin/lib/aerospace.sh.
+#
+# The reverse direction needs nothing: `layout tiling` hands the window back to
+# AeroSpace, which computes its frame.
+#
+# Note that the on-window-detected rules in config/aerospace/aerospace.toml
+# never had this problem. Those windows are floated before they are ever tiled,
+# so they keep their app's natural size; only the toggle is affected.
+#
+# Usage: aerospace-float-center [width-percent] [height-percent]
+# Example: aerospace-float-center 60 75
+
+set -euo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/aerospace.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/aerospace.sh" || exit 1
+
+width_pct="${1:-60}"
+height_pct="${2:-75}"
+
+usage() {
+    echo "Usage: aerospace-float-center [width-percent] [height-percent]" 1>&2
+    exit 127
+}
+
+for pct in "$width_pct" "$height_pct"; do
+    case "$pct" in
+        '' | *[!0-9]*) usage ;;
+    esac
+done
+
+if [ "$(aerospace_window_layout)" = floating ]; then
+    aerospace layout tiling
+    exit 0
+fi
+
+aerospace layout floating
+
+# The screen is resolved from the window's own centre, which floating does not
+# move — so this reads the same monitor whether it runs before or after the
+# layout change, and a multi-monitor setup needs no extra plumbing.
+visible_frame=$(aerospace_window visible-frame)
+read -r vx vy vw vh <<<"$visible_frame"
+
+frame=$(aerospace_centered_frame "$vx" "$vy" "$vw" "$vh" "$width_pct" "$height_pct")
+read -r x y w h <<<"$frame"
+
+aerospace_window set-frame "$x" "$y" "$w" "$h"
