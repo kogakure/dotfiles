@@ -144,6 +144,17 @@ bin/dotfiles-lint --help
 
 Both take `--dry-run`.
 
+**`homebrew/<host>` is `brew bundle dump` output — never hand-edit it.**
+`bin/homebrew-backup` rewrites the file whole, and `bin/update` calls it on
+every run, so anything you type into one survives until the next update on that
+machine and no longer. A package is in the file if and only if it is
+**installed on request** there; the fix for a missing line is `brew install
+<name>` on the host, not an edit here. The warning lives in the docs rather
+than in a file header for the same reason: `--force` rewrites the whole file,
+so a header comment would not survive either. See
+[architecture.md](architecture.md) for the consequences, including why a
+formula deliberately deleted from a dump comes back.
+
 **`homebrew-restore` cannot uninstall anything without `--prune`.** Until
 SI-119 it ran `brew bundle cleanup --force` on every invocation, which removes
 every formula and cask the Brewfile does not name — 368 formulae and 121 casks

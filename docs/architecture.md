@@ -70,9 +70,16 @@ The mac-mini refresh on 2026-08-28 removed its stale App Store rows, legacy
 `sst/tap`, and tap-qualified formulae. Cross-host App Store differences remain
 when they describe real store records or generated display-name drift; those
 are accepted in `.doctor-baseline` rather than "fixed" by editing a dump.
-`macbook-m5-pro` still needs to migrate `diffnav` from `dlvhdr/formulae` to
-Homebrew core and re-dump; its temporary baseline row is designed to go stale
-after that migration.
+
+`macbook-m5-pro` finished the same migration on 2026-08-31: `diffnav` moved from
+`dlvhdr/formulae` to Homebrew core, `dlvhdr/formulae` was untapped, and the host
+was re-dumped. Its temporary baseline row went stale as designed and is gone.
+Worth knowing for next time: core `diffnav` **depends on** `git-delta`, so the
+migration reinstalls brew's delta on that host. That is not the SI-121 overlap
+coming back — it arrives as a dependency rather than installed-on-request, so no
+dump names it and `brew uninstall` would refuse while `diffnav` is present. It
+is exactly the "held by a dependent formula" case `just doctor mise` reports as
+context instead of as a finding.
 
 ### The iWork id split is not a bug, and MindNode is three products
 

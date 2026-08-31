@@ -2,8 +2,8 @@ tap "agavra/tap"
 tap "anomalyco/tap", trusted: true
 tap "can1357/tap"
 tap "charmbracelet/tap", trusted: true
+tap "crmne/tap", trusted: true
 tap "d12frosted/emacs-plus", trusted: true
-tap "dlvhdr/formulae", trusted: true
 tap "docker/tap", trusted: true
 tap "dustinblackman/tap", trusted: true
 tap "f/textream", trusted: true
@@ -88,6 +88,8 @@ brew "curl"
 brew "curlie"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Git diff pager based on delta but with a file tree
+brew "diffnav"
 # Standard XML representation system for technical documents
 brew "docbook"
 # XML vocabulary to create presentation-neutral documents
@@ -238,6 +240,8 @@ brew "ollama"
 brew "open-mpi"
 # General-purpose speech recognition model
 brew "openai-whisper"
+# Painless compression and decompression for your terminal
+brew "ouch"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Tool to interact with the Phrase API
@@ -342,8 +346,6 @@ brew "charmbracelet/tap/crush"
 brew "charmbracelet/tap/soft-serve"
 # GNU Emacs text editor
 brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
-# Git diff pager based on delta but with a file tree, à la GitHub
-brew "dlvhdr/formulae/diffnav"
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
 # Quickly clone an entire org/users repositories into one directory
@@ -417,6 +419,8 @@ cask "discord"
 cask "docker-desktop"
 # Web browser focusing on privacy
 cask "duckduckgo"
+# Fast, lightweight, native Spotify client
+cask "crmne/tap/fastpotify", trusted: true
 # Collaborative team software
 cask "figma"
 # Web browser

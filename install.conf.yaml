@@ -67,25 +67,19 @@
     ~/.gemrc: gemrc
     ~/.gitmux.conf: gitmux.conf
     ~/.gnupg/dirmngr.conf: gnupg/dirmngr.conf
-    # force, not relink, because on every existing machine this path is a real
-    # file: setup.sh used to append the pinentry line to it on every run, and
-    # relink only ever replaces symlinks — so without force ./install exits 1.
-    # Losing that file is provably harmless; the repo copy is a strict content
-    # superset (same pinentry line, plus the cache TTLs that consequently have
-    # never applied).
+    # This entry carried `force: true` until 2026-08-31, because on every
+    # existing machine the path was a real file — setup.sh used to append the
+    # pinentry line to it on every run, and relink only ever replaces symlinks,
+    # so without force ./install exited 1. All three machines are converted now
+    # (`just doctor links` reports no "not a symlink: ~/.gnupg/gpg-agent.conf"
+    # on any of them), so the flag is gone: while it was here, a real file that
+    # someone deliberately put at this path would have been destroyed silently
+    # by the next ./install (SI-86).
     #
-    # DROP THIS FLAG once all three machines are converted, and not before —
-    # while it is here, a real file that someone deliberately puts at this path
-    # is destroyed silently by the next ./install.
-    #
-    # The condition is checkable rather than remembered: `just doctor links`
-    # reports "not a symlink: ~/.gnupg/gpg-agent.conf" on any host still
-    # holding a real file. When that line is absent on macbook-m5-pro,
-    # mac-mini and macbook-2019, delete the three lines below and leave
-    # `~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf` in their place (SI-86).
-    ~/.gnupg/gpg-agent.conf:
-      path: gnupg/gpg-agent.conf
-      force: true
+    # If a host ever regresses to a real file, the failure is loud and harmless
+    # — dotbot refuses the link and exits 1, and `just doctor links` names the
+    # path. Do not add force back to silence that; look at the file first.
+    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.jjconfig.toml: jjconfig.toml
     ~/.markdownlint.yaml: .markdownlint.yaml
