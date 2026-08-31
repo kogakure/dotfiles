@@ -420,23 +420,38 @@ EOF
 # tool hooks in shell/hooks.spec — is not breakage and is deliberately not
 # checked here.
 #
+# `credential.*.helper` was added after this check watched a stale
+# /opt/homebrew/bin/gh break every https fetch for two weeks. The lesson is
+# about the derivation, not the one key: a setting is in scope when it names a
+# command with no guard, and the original three were simply the ones known at
+# the time. An absolute path is checked as written, so `have` fails on it the
+# moment the provider moves — which is the point.
+#
 # shellcheck disable=SC2329  # invoked indirectly, as run_step's command argument
 check_binaries() {
     local rc=0 cmd seen=""
 
-    while IFS= read -r cmd; do
+    # Two groups, because they break differently and the second breaks quietly.
+    # A missing pager or diff tool is loud — every `git log` errors. A missing
+    # credential helper is not: git treats it as "this helper had no
+    # credentials", falls through, and prompts for a username, so an https
+    # fetch degrades into a password prompt with the real cause buried one line
+    # above it. That is how the stale /opt/homebrew/bin/gh path survived two
+    # weeks after gh became a mise tool.
+    while IFS='|' read -r cmd why; do
         [ -n "$cmd" ] || continue
         case " $seen " in *" $cmd "*) continue ;; esac
         seen="$seen $cmd"
         have "$cmd" && continue
         finding "config/git/config runs '$cmd', which is not on PATH"
-        detail "git paging or diffing is broken on this host until it is installed"
+        detail "$why"
         rc=1
     done <<EOF
 $(sed -n \
-        -e 's/^[[:space:]]*pager[[:space:]]*=[[:space:]]*\([a-zA-Z0-9_-]*\).*/\1/p' \
-        -e 's/^[[:space:]]*diff[[:space:]]*=[[:space:]]*\([a-zA-Z0-9_-]*\)$/\1/p' \
-        -e 's/^[[:space:]]*diffFilter[[:space:]]*=[[:space:]]*"\{0,1\}\([a-zA-Z0-9_-]*\).*/\1/p' \
+        -e 's/^[[:space:]]*pager[[:space:]]*=[[:space:]]*\([a-zA-Z0-9_-]*\).*/\1|git paging or diffing is broken on this host until it is installed/p' \
+        -e 's/^[[:space:]]*diff[[:space:]]*=[[:space:]]*\([a-zA-Z0-9_-]*\)$/\1|git paging or diffing is broken on this host until it is installed/p' \
+        -e 's/^[[:space:]]*diffFilter[[:space:]]*=[[:space:]]*"\{0,1\}\([a-zA-Z0-9_-]*\).*/\1|git paging or diffing is broken on this host until it is installed/p' \
+        -e 's/^[[:space:]]*helper[[:space:]]*=[[:space:]]*![[:space:]]*\([^[:space:]]*\).*/\1|every https fetch and push falls back to a username prompt, with the real error one line above it/p' \
         config/git/config)
 EOF
 

@@ -50,13 +50,25 @@
   pager = hunk pager
   whitespace = trailing-space,space-before-tab
 
+# Resolved through PATH, not by absolute path. `gh auth setup-git` writes
+# /opt/homebrew/bin/gh here, and that path went stale the moment gh became a
+# mise tool (SI-118) — brew's copy is gone, so every https fetch failed with
+# "No such file or directory" and fell through to a username prompt. Nothing
+# caught it: `just doctor binaries` reads pager, diff and diffFilter, and a
+# credential helper is none of those.
+#
+# The mise shims are first in shell/path.spec and are deliberately not
+# interactive-only, so a bare name resolves in the /bin/sh that git spawns for
+# a `!` helper. Do not re-add an absolute path; the next provider change breaks
+# it again, and silently, because git treats a missing helper as "no
+# credentials" rather than as an error.
 [credential "https://gist.github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 
 [credential "https://github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 
 [delta]
   light = false
