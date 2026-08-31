@@ -1,60 +1,120 @@
 #!/bin/bash
 #
-# Resize the focused AeroSpace window to a percentage of its monitor.
-# Usage: aerospace-resize-percent <width|height> <percent>
+# Resize an AeroSpace window to a percentage of its monitor.
+#
+# `aerospace resize` only works on *tiling* windows
+# (nikitabobko/AeroSpace#9), so before this rewrite every one of the service
+# mode's 30/40/50/60/70% bindings was a silent no-op the moment the window was
+# floating. Floating windows now go over the Accessibility API instead, holding
+# the window's centre on the axis that changed so the result composes with
+# bin/aerospace-float-center. See bin/lib/aerospace.sh.
+#
+# The percentage is of the monitor's *visible* frame — menu bar and Dock
+# excluded — not of the whole display as it was before. That is the rectangle a
+# window can actually occupy in either layout, so 50% now means half of what
+# you can see rather than half of a number that includes furniture.
+#
+# Two modes, because on-window-detected fires on a window that is not focused:
+#
+#   focused        no --window-id and no AEROSPACE_WINDOW_ID. The frontmost
+#                  window, resolved through System Events. Handles both tiling
+#                  and floating.
+#   by window id   --window-id, or AEROSPACE_WINDOW_ID from an AeroSpace
+#                  callback. Tiling only — System Events can only reach the
+#                  frontmost window, so a floating window that is not focused
+#                  cannot be sized from here.
+#
+# The env var seeds the mode and an explicit flag overrides it, which is the
+# same precedence dotfiles_flags_init gives the DOTFILES_* variables.
+# AEROSPACE_WINDOW_ID is set for callbacks only, so the keybindings in
+# config/aerospace/aerospace.toml keep taking the focused path.
+#
+# Usage: aerospace-resize-percent [--window-id <id>] <width|height> <percent>
 # Example: aerospace-resize-percent width 30
 
 set -euo pipefail
 
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/aerospace.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/aerospace.sh" || exit 1
+
+window_id="${AEROSPACE_WINDOW_ID:-}"
+
+usage() {
+    echo "Usage: aerospace-resize-percent [--window-id <id>] <width|height> <percent>" 1>&2
+    exit 127
+}
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        --window-id)
+            [ "$#" -ge 2 ] || usage
+            window_id="$2"
+            shift 2
+            ;;
+        --window-id=*)
+            window_id="${1#*=}"
+            shift
+            ;;
+        -h | --help) usage ;;
+        *) break ;;
+    esac
+done
+
 dimension="${1:-}"
 percent="${2:-}"
 
-if [[ "$dimension" != "width" && "$dimension" != "height" ]] || [[ -z "$percent" ]]; then
-    echo "Usage: aerospace-resize-percent <width|height> <percent>" 1>&2
-    exit 127
+[ "$dimension" = width ] || [ "$dimension" = height ] || usage
+
+case "$percent" in
+    '' | *[!0-9]*) usage ;;
+esac
+
+case "$window_id" in
+    *[!0-9]*) usage ;;
+esac
+
+# Resolve the layout and the monitor. By id these come from AeroSpace, which
+# knows about windows it is not showing; for the focused window the monitor
+# comes from the window's own centre.
+if [ -n "$window_id" ]; then
+    info=$(aerospace_window_info "$window_id") || {
+        echo "aerospace-resize-percent: no window with id $window_id" 1>&2
+        exit 1
+    }
+    read -r layout screen_id <<<"$info"
+
+    if ! aerospace_layout_is_tiling "$layout"; then
+        echo "aerospace-resize-percent: window $window_id is '$layout';" \
+            "only tiling windows can be sized by id" 1>&2
+        exit 1
+    fi
+
+    visible_frame=$(aerospace_window visible-frame-screen "$screen_id")
+else
+    layout=$(aerospace_window_layout)
+    visible_frame=$(aerospace_window visible-frame)
 fi
 
-screen_size=$(
-    osascript -l JavaScript <<'EOF'
-ObjC.import('AppKit')
+read -r vx vy vw vh <<<"$visible_frame"
 
-const se = Application('System Events')
-const proc = se.processes.whose({frontmost: true})[0]
-const win = proc.windows[0]
-const winPos = win.position()
-const winSize = win.size()
-const cx = winPos[0] + winSize[0] / 2
-const cy = winPos[1] + winSize[1] / 2
-
-const mainHeight = $.NSScreen.mainScreen.frame.size.height
-const screens = $.NSScreen.screens
-
-let result = null
-for (let i = 0; i < screens.count; i++) {
-  const f = screens.objectAtIndex(i).frame
-  const x1 = f.origin.x
-  const y1 = mainHeight - (f.origin.y + f.size.height)
-  const x2 = x1 + f.size.width
-  const y2 = y1 + f.size.height
-  if (cx >= x1 && cx <= x2 && cy >= y1 && cy <= y2) {
-    result = { width: f.size.width, height: f.size.height }
-    break
-  }
-}
-
-JSON.stringify(result)
-EOF
-)
-
-if [[ "$screen_size" == "null" || -z "$screen_size" ]]; then
-    echo "aerospace-resize-percent: could not determine focused window's screen" 1>&2
-    exit 1
+if [ "$dimension" = width ]; then
+    pixels=$(aerospace_div_round "$((vw * percent))" 100)
+else
+    pixels=$(aerospace_div_round "$((vh * percent))" 100)
 fi
 
-value=$(echo "$screen_size" | python3 -c "
-import json, sys
-d = json.load(sys.stdin)
-print(round(d['$dimension'] * $percent / 100))
-")
+if [ -n "$window_id" ]; then
+    aerospace resize --window-id "$window_id" "$dimension" "$pixels"
+elif [ "$layout" = floating ]; then
+    current=$(aerospace_window frame)
+    read -r x y w h <<<"$current"
 
-aerospace resize "$dimension" "$value"
+    frame=$(aerospace_resized_frame \
+        "$x" "$y" "$w" "$h" "$vx" "$vy" "$vw" "$vh" "$dimension" "$pixels")
+    read -r nx ny nw nh <<<"$frame"
+
+    aerospace_window set-frame "$nx" "$ny" "$nw" "$nh"
+else
+    aerospace resize "$dimension" "$pixels"
+fi
