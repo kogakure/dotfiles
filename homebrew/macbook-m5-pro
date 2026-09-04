@@ -234,6 +234,8 @@ brew "nginx"
 brew "nss"
 # Modern shell for the GitHub era
 brew "nushell"
+# Adds an OCR text layer to scanned PDF files
+brew "ocrmypdf"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # High performance message passing library
@@ -348,6 +350,8 @@ brew "charmbracelet/tap/soft-serve"
 brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
 # Quickly clone an entire org/users repositories into one directory
 brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
@@ -386,8 +390,6 @@ cask "basictex"
 cask "bibdesk"
 # 3D creation suite
 cask "blender"
-# Utility to dim background/inactive content in the screen
-cask "blurred"
 # Web browser focusing on privacy
 cask "brave-browser"
 # E-books management software
@@ -419,7 +421,7 @@ cask "discord"
 cask "docker-desktop"
 # Web browser focusing on privacy
 cask "duckduckgo"
-# Fast, lightweight, native Spotify client
+# Native Spotify client
 cask "crmne/tap/fastpotify", trusted: true
 # Collaborative team software
 cask "figma"
@@ -587,7 +589,6 @@ cask "zen"
 cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
-mas "Blurred 2", id: 1497527363
 mas "DaisyDisk 2", id: 411643860
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
