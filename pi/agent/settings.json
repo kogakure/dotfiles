@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.2",
+  "lastChangelogVersion": "0.85.1",
   "theme": "catppuccin-mocha",
   "defaultProvider": "lmstudio-local",
   "defaultModel": "qwen3.8-27b-mlx",
