@@ -53,6 +53,7 @@ $env.PATH = ([
     $"($env.HOME)/.volta/bin"
     $"($env.HOME)/.config/emacs/bin"
     $"($env.HOME)/.lmstudio/bin"
+    $"($env.HOME)/.docker/bin"
     $"($env.HOME)/.local/bin"
     $"/usr/local/sbin"
     $"/usr/local/bin"

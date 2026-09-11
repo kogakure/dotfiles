@@ -35,6 +35,12 @@ $HOME/.volta/bin
 $HOME/.config/emacs/bin
 $HOME/.lmstudio/bin
 
+# Docker Desktop. Its installer appends this to ~/.bash_profile, ~/.profile and
+# ~/.config/fish/config.fish on every reinstall; those are hand-written files
+# here, so the line is reverted and declared once in this spec instead. The mise
+# shims are ahead of it, so the pinned docker-cli still wins.
+$HOME/.docker/bin
+
 # Locally installed binaries. config.fish also spelled this
 # `$HOME/.local/share/../bin`, which is the same directory by a different name —
 # so it never string-matched and was added twice.

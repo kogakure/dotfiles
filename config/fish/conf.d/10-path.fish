@@ -30,6 +30,7 @@ set -a __dl_want $HOME/.cargo/bin
 set -a __dl_want $HOME/.volta/bin
 set -a __dl_want $HOME/.config/emacs/bin
 set -a __dl_want $HOME/.lmstudio/bin
+set -a __dl_want $HOME/.docker/bin
 set -a __dl_want $HOME/.local/bin
 set -a __dl_want /usr/local/sbin
 set -a __dl_want /usr/local/bin
