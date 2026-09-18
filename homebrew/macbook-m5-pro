@@ -323,7 +323,7 @@ brew "watchman"
 # Internet file retriever
 brew "wget"
 # Port of OpenAI's Whisper model in C/C++
-brew "whisper-cpp"
+brew "whisper.cpp"
 # Why is this running?
 brew "witr"
 # Utilities to create and convert Web Open Font File (WOFF) files
@@ -421,8 +421,6 @@ cask "discord"
 cask "docker-desktop"
 # Web browser focusing on privacy
 cask "duckduckgo"
-# Native Spotify client
-cask "crmne/tap/fastpotify", trusted: true
 # Collaborative team software
 cask "figma"
 # Web browser
@@ -539,6 +537,8 @@ cask "sf-symbols"
 cask "signal"
 # Control your Sonos system
 cask "sonos"
+# Native Spotify client
+cask "crmne/tap/spotifast"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
