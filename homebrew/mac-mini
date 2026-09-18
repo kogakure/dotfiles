@@ -31,6 +31,8 @@ brew "readline"
 brew "agent-browser"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
+# Password hashing library and CLI utility
+brew "argon2"
 # Library for manipulating PNG images
 brew "libpng"
 # YAML Parser
@@ -324,7 +326,7 @@ brew "watchman"
 # Internet file retriever
 brew "wget"
 # Port of OpenAI's Whisper model in C/C++
-brew "whisper-cpp"
+brew "whisper.cpp"
 # Why is this running?
 brew "witr"
 # Utilities to create and convert Web Open Font File (WOFF) files
