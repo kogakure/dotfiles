@@ -72,50 +72,50 @@
 cship = "ubi:stephenleo/cship"
 
 [tools]
-atuin = { version = "18.21.0", os = ["macos/arm64", "linux"] }
+atuin = { version = "18.22.0", os = ["macos/arm64", "linux"] }
 "cargo:atuin" = { version = "18.19.0", os = ["macos/x64"] }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bun = "latest"
-claude = "2.1.263"
-codex = "0.153.4"
+claude = "2.1.274"
+codex = "0.154.0"
 cship = "1.8.3"
 delta = { version = "0.19.2", os = ["macos/arm64", "linux"] }
 "cargo:git-delta" = { version = "0.19.2", os = ["macos/x64"] }
 deno = "latest"
 direnv = "latest"
-docker-cli = "29.8.0"
+docker-cli = "29.8.1"
 eza = "0.23.5"
 fd = { version = "10.5.0", os = ["macos/arm64", "linux"] }
 "cargo:fd-find" = { version = "10.4.2", os = ["macos/x64"] }
-fzf = "0.74.3"
-gh = "2.100.0"
+fzf = "0.74.4"
+gh = "2.101.0"
 git-lfs = "3.8.0"
 gitleaks = "8.30.1"
 go = "latest"
-grok = { version = "1.0.24", bin = "grok", platforms = { windows-arm64 = { bin = "grok.exe", url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-windows-aarch64.exe" }, windows-x64 = { bin = "grok.exe", url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-windows-x86_64.exe" } }, url = 'https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-{{ os() }}-{{ arch(x64="x86_64", arm64="aarch64") }}', version_list_url = "https://x.ai/cli/stable" }
-herdr = "0.9.0"
-hunk = "0.21.1"
-hunkdiff = "0.21.1"
+grok = { version = "1.0.34", bin = "grok", platforms = { windows-arm64 = { bin = "grok.exe", url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-windows-aarch64.exe" }, windows-x64 = { bin = "grok.exe", url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-windows-x86_64.exe" } }, url = 'https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-{{ os() }}-{{ arch(arm64="aarch64", x64="x86_64") }}', version_list_url = "https://x.ai/cli/stable" }
+herdr = "0.9.1"
+hunk = "0.22.0"
+hunkdiff = "0.22.0"
 jj = "0.45.1"
 jq = "1.8.2"
 lazydocker = "0.25.2"
-lazygit = "0.65.0"
+lazygit = "0.65.1"
 lazyssh = "0.3.0"
 lua = "latest"
 neovim = "0.12.5"
-node = "26.8.1"
+node = "26.9.0"
 "npm:playwright-cli" = "latest"
-opencode = "1.18.29"
-oxlint = "1.82.0"
+opencode = "1.18.31"
+oxlint = "1.83.0"
 pandoc = "3.11"
 pi = "0.85.1"
-pnpm = { version = "12.3.4", os = ["macos/arm64", "linux"] }
+pnpm = { version = "12.4.2", os = ["macos/arm64", "linux"] }
 "npm:pnpm" = { version = "11.22.0", os = ["macos/x64"] }
-prettier = "3.9.6"
+prettier = "3.9.7"
 python = "latest"
 ripgrep = "15.2.0"
-ruby = "4.0.6"
+ruby = "4.0.7"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
 sqlite = "3.53.4"
@@ -123,8 +123,8 @@ starship = "1.26.0"
 superfile = "1.6.0"
 typst = "0.15.1"
 usage = "latest"
-uv = "0.12.10"
-worktrunk = "0.76.0"
+uv = "0.12.15"
+worktrunk = "0.78.0"
 yazi = "26.9.1"
 yq = "4.53.6"
 zoxide = "0.10.0"
