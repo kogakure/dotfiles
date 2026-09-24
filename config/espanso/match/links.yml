@@ -1,0 +1,91 @@
+# Public profiles, websites, taglines and affiliate links.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;yt-preview
+    replace: "https://i.ytimg.com/vi/{{clipboard}}/maxresdefault.jpg"
+    label: YouTube-Video-Preview Image
+    vars:
+      - name: clipboard
+        type: clipboard
+  - trigger: ;tagline
+    replace: "Design Engineer • Minimalist • Stoic • Ancap • Japanophile"
+    label: Tagline (Text)
+  - trigger: ;emoji-tagline
+    replace: "🎨 Design Engineer • 🏴 Ancap • ⬜️ Minimalist • 🏛️ Stoic • ⛩️ Japanophile"
+    label: Tagline (Emoji)
+  - trigger: ;github
+    replace: "https://github.com/kogakure"
+    label: GitHub Profile
+  - trigger: ;url1
+    replace: "https://www.stefanimhoff.de/"
+    label: URL (stefanimhoff.de)
+  - trigger: ;linkedin
+    replace: "https://www.linkedin.com/in/kogakure/"
+    label: LinkedIn Profile
+  - trigger: ;aff-proton
+    replace: "https://pr.tn/ref/97TSFBQG"
+    label: Proton Affiliate Link
+  - trigger: ;aff-raycast
+    replace: "https://raycast.com/?via=kogakure"
+    label: Raycast Affiliate Link
+  - trigger: ;dummyimage
+    replace: "https://dummyimage.com/{{form1.width}}x{{form1.height}}/333333/7d7d7d"
+    label: Dummy Image
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            width: [[width]]
+            height: [[height]]
+          fields:
+            width:
+              default: "800"
+            height:
+              default: "600"
+  - trigger: ;linktree
+    replace: "https://linktr.ee/kogakure"
+    label: Linktree Profile
+  - trigger: ;instagram
+    replace: |-
+      {{form1.titel}}
+
+      #sketch #sketching #sketchbook #watercolor #ink #inkdrawing
+
+      {{clipboard}}
+    label: Instagram Beschreibung
+    vars:
+      - name: clipboard
+        type: clipboard
+      - name: form1
+        type: form
+        params:
+          layout: "Titel: [[titel]]"
+          fields:
+            titel:
+              default: TITLE.
+  - trigger: ;url3
+    replace: "https://www.kogakure.de/"
+    label: URL (kogakure.de)
+  - trigger: ;url4
+    replace: "https://www.xing.com/profile/Stefan_Imhoff"
+    label: URL (XING-Profil)
+  - trigger: ;aff-amazon
+    replace: "http://www.amazon.de/gp/product/{{form1.asin}}?ie=UTF8&tag=stefanimhoffde-21&linkCode=as2&camp=1638&creative=6742&creativeASIN={{form1.asin}}"
+    label: Amazon Affiliate Link stefanimhoff.de
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "ASIN: [[asin]]"
+  - trigger: ;yt-short
+    replace: "https://youtu.be/{{form1.video_id}}"
+    label: YouTube-Shortlink
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "Video ID: [[video_id]]"

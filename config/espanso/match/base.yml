@@ -1,0 +1,14 @@
+# Entry point for the snippets. Every *.yml in this directory is loaded
+# automatically, except files starting with "_" (see config/macos.yml).
+#
+# Personal and financial snippets live in the private submodule, not here. The
+# relative paths resolve through the ~/.config/espanso symlink into this
+# repository. On a checkout without private/ these imports fail to load and
+# everything else keeps working.
+#
+# On macOS Raycast is still the expander and espanso is not running; this config
+# is the backup. On Linux espanso is the primary snippet engine.
+
+imports:
+  - "../../../private/espanso/personal.yml"
+  - "../../../private/espanso/finance.yml"

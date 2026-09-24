@@ -1,0 +1,187 @@
+# Shell commands.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;ghpr
+    replace: "gh pr create --draft --assignee \"@me\" --label \"{{form1.label}}\""
+    label: Open GitHub Pull-Request
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "label: [[label]]"
+          fields:
+            label:
+              type: choice
+              values:
+                - enhancement
+                - bug
+                - documentation
+                - maintenance
+              default: enhancement
+  - trigger: ;skill-git-commit
+    replace: "npx skills add https://github.com/github/awesome-copilot --skill git-commit"
+    label: "Skill: git-commit"
+    search_terms:
+      - skill
+  - trigger: ;playwright-skills
+    replace: playwright-cli install --skills
+    label: Playwright CLI Installation
+  - trigger: ;jscpd
+    replace: "npx jscpd "
+    label: Find Code Duplication
+  - trigger: ;cb
+    replace: npx codeburn
+    label: Claude Code Verbrauch
+  - trigger: ;autoskills
+    replace: npx autoskills
+    label: Agent Autoskills
+  - trigger: ;claude-yolo
+    replace: claude --dangerously-skip-permissions
+    label: Claude God Mode
+  - trigger: ;ollama-pi
+    replace: "ollama launch pi --model kimi-k2.5:cloud"
+    label: Ollama Pi with Kimi 2.5 Cloud
+  - trigger: ;git-patch
+    replace: "git diff > ~/Downloads/{{date}}.patch"
+    label: Git Patch
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%Y-%m-%d-%H%M"
+  - trigger: ;token-random
+    replace: openssl rand -base64 32
+    label: Random Auth Token
+  - trigger: ;search-gh
+    replace: "created:2025-01-01..2025-12-31"
+    label: GitHub Datumssuche
+  - trigger: ;search-x
+    replace: "from:{{form1.username}} since:2020-01-01 until:2022-06-01"
+    label: "Twitter/𝕏 Detail-Suche"
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "username: [[username]]"
+  - trigger: ;rsync
+    replace: rsync -av --delete SOURCE TARGET
+    label: Rsync
+  - trigger: ;openwebui
+    replace: "podman run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main"
+    label: Run Open WebUI with Podman (Docker)
+  - trigger: ;vectorize
+    replace: "npx @neplex/vectorizer {{form1.raster_png}} {{form1.vector_svg}}"
+    label: Vectorize
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            ./raster.png: [[raster_png]]
+            ./vector.svg: [[vector_svg]]
+  - triggers:
+      - ;fu
+      - ;gfu
+    replace: "git commit --no-verify --fixup={{clipboard}}"
+    label: Git commit fixup (no verify)
+    vars:
+      - name: clipboard
+        type: clipboard
+  - trigger: ;exif-purge
+    replace: "exiftool -r -all= {{form1.datei_oder_ordner}}"
+    label: Purge Metadata mit ExifTool
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "Datei oder Ordner: [[datei_oder_ordner]]"
+          fields:
+            datei_oder_ordner:
+              default: "*.jpeg"
+  - trigger: ;venv
+    replace: |-
+      python -m venv venv
+      source venv/bin/activate.fish
+    label: Python Virtual Environment
+  - trigger: ;webp
+    replace: "find . -iname '*.{{form1.file}}' -exec bash -c 'ffmpeg -y -i \"$1\" \"${1%.*}.webp\"' _ {} \\;"
+    label: Convert PNG to WebP
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "file: [[file]]"
+          fields:
+            file:
+              default: jpg
+  - trigger: ;monolith
+    replace: "monolith {{clipboard}} -o {{form1.filename}}.html"
+    label: Website speichern
+    vars:
+      - name: clipboard
+        type: clipboard
+      - name: form1
+        type: form
+        params:
+          layout: "filename: [[filename]]"
+          fields:
+            filename:
+              default: index
+  - trigger: ;gif
+    replace: "ffmpeg -ss 00:00:00 -i {{form1.video_mp4}} -t 2 -vf \"fps=10,scale=320:-1:flags=lanczos\" output.gif"
+    label: Turn video into Gif
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "video.mp4: [[video_mp4]]"
+  - trigger: ;wav
+    replace: "ffmpeg -i \"{{clipboard}}\" -ar 16000 -vn \"{{clipboard}}.wav\""
+    label: Convert to WAV
+    vars:
+      - name: clipboard
+        type: clipboard
+  - trigger: ;qrcode
+    replace: "qrencode --foreground='FFFFFF' --background='000000' -s 10 --level=H -o ~/Downloads/qrcode.png '{{form1.text}}'"
+    label: QR Code
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "Text: [[text]]"
+  - trigger: ;git-reset-origin
+    replace: "git reset --hard origin/{{form1.branch}}; git clean -df;"
+    label: Reset Git Branch to Server
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "branch: [[branch]]"
+  - trigger: ;convert
+    replace: "convert {{form1.input_png}} {{form1.output_jpg}}"
+    label: Convert image in new format
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            input.png: [[input_png]]
+            output.jpg: [[output_jpg]]
+  - trigger: ;stitch
+    replace: "convert *.jpeg +append result.jpg"
+    label: Stitch images together
+  - trigger: ;whisper
+    replace: "whisper-cpp --output-txt {{clipboard}}"
+    label: Audio mit Whisper CPP in Text konvertieren
+    vars:
+      - name: clipboard
+        type: clipboard
+  - trigger: ;pnpm-install
+    replace: "curl -fsSL https://get.pnpm.io/install.sh | sh -"
+    label: PNPM Installation
+  - trigger: ;yarn-dedupe
+    replace: "npx yarn-deduplicate --list yarn.lock && yarn"
+    label: Yarn Deduplicate

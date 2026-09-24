@@ -1,0 +1,153 @@
+# Symbols, arrows, fractions, modifier keys and emoji.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: "--->"
+    replace: "→"
+    label: "Pfeil nach rechts (→)"
+  - trigger: "===>"
+    replace: "➜"
+    label: "Dicker Pfeil nach links (➜)"
+    left_word: true
+  - trigger: ;x
+    replace: "𝕏"
+    label: Twitter X
+  - trigger: "xx\\"
+    replace: "×"
+    label: Multiplikationszeichen
+  - trigger: "---v"
+    replace: "↓"
+    label: "Pfeil nach unten (↓)"
+  - trigger: ;thinspace
+    replace: " "
+    label: Thin Space
+  - trigger: ;enspace
+    replace: " "
+    label: En Space
+  - trigger: "<---"
+    replace: "←"
+    label: "Pfeil nach links (←)"
+  - trigger: ;hyper
+    replace: "✦"
+    label: "Hyper ✦"
+    right_word: true
+  - trigger: ;snip
+    replace: "✂---✂---✂---✂---✂---✂---✂---✂"
+    label: Abrisskante
+  - trigger: ;dot
+    replace: " • "
+    label: "Middot ( • )"
+  - trigger: ;ding
+    replace: "🛎"
+    label: Reminder
+  - trigger: "3/4"
+    replace: "¾"
+    label: "¾"
+    word: true
+  - trigger: "1/2"
+    replace: "½"
+    label: "½"
+    word: true
+  - trigger: "3/8"
+    replace: "⅜"
+    label: "⅜"
+    word: true
+  - trigger: "1/3"
+    replace: "⅓"
+    label: "⅓"
+    word: true
+  - trigger: "1/4"
+    replace: "¼"
+    label: "¼"
+    word: true
+  - trigger: TM
+    replace: "™"
+    label: "™"
+    word: true
+  - trigger: "1/8"
+    replace: "⅛"
+    label: "⅛"
+    word: true
+  - trigger: "5/8"
+    replace: "⅝"
+    label: "⅝"
+    word: true
+  - trigger: "7/8"
+    replace: "⅞"
+    label: "⅞"
+    word: true
+  - trigger: "2/3"
+    replace: "⅔"
+    label: "⅔"
+    word: true
+  - trigger: c/o
+    replace: "℅"
+    label: "℅"
+    word: true
+  - trigger: ;hyperkey
+    replace: "⌘⌃⌥⇧"
+    label: "Hyper Key ⌘⌃⌥⇧"
+  - trigger: ;ctrl
+    replace: "⌃"
+    label: "CTRL ⌃"
+  - trigger: ;shift
+    replace: "⇧"
+    label: "Shift ⇧"
+  - trigger: ;option
+    replace: "⌥"
+    label: "Option ⌥"
+  - trigger: ;cmd
+    replace: "⌘"
+    label: "Command ⌘"
+  - trigger: ;flag
+    replace: "⚑"
+    label: "Flagge (⚑)"
+  - trigger: ;bull
+    replace: "•"
+    label: "Bullet (•)"
+  - trigger: ;pomodoro
+    replace: "🍅"
+    label: Pomodori
+  - trigger: ;proposal
+    replace: "🐣"
+    label: Proposal
+  - trigger: ;pitch
+    replace: "💡"
+    label: Pitch
+  - trigger: ;box
+    replace: |-
+      ╭─────╮
+      │  $|$  │
+      ╰─────╯
+    label: Ascii Border Box
+  - trigger: 2star
+    replace: "★★"
+    label: 2 Star
+    word: true
+  - trigger: 3star
+    replace: "★★★"
+    label: 3 Star
+    word: true
+  - trigger: 4star
+    replace: "★★★★"
+    label: 4 Star
+    word: true
+  - trigger: 5star
+    replace: "★★★★★"
+    label: 5 Star
+    word: true
+  - trigger: "<===>"
+    replace: "⬌"
+    label: "Link-Rechts Pfeil (⬌)"
+  - trigger: "---^"
+    replace: "↑"
+    label: "Pfeil nach oben (↑)"
+  - trigger: ;looped-square
+    replace: "⌘"
+    label: "Schleifenquadrat (⌘)"
+  - trigger: 1star
+    replace: "★"
+    label: 1 Star
+    word: true

@@ -304,6 +304,38 @@ an exact pin does not move, only `"latest"` advances. It does not prune;
 deleting installed versions stays an opt-in concern here, the same rule the
 backups follow.
 
+## Snippets: Espanso
+
+`config/espanso/` → `~/.config/espanso`, through the usual `config/*` glob. The
+snippets were migrated from a Raycast export of 2026-09-11, and **every trigger
+starts with `;`**: Raycast's `\dat` is `;dat` here. Raycast is being moved to the
+same keywords over time. The label on each snippet is its old Raycast name, and
+the search bar (`Alt+Space`) matches on it, which is how the snippets that never
+had a keyword are meant to be found.
+
+- **One file per category** in `config/espanso/match/`. A file starting with `_`
+  is not autoloaded: `_macos.yml` is added by `config/macos.yml`
+  (`filter_os: macos`) and nowhere else.
+- **Personal and financial snippets are in `private/espanso/`**, imported by
+  relative path from `match/base.yml`. The path resolves through the directory
+  symlink into this checkout, so it works on every host whatever its `$HOME`.
+  Without the submodule those two imports fail and everything else still loads.
+  Credentials (API tokens) belong in neither place.
+- **On macOS espanso is installed but deliberately not running**, because Raycast
+  still expands, and two expanders would both fire. The config is the backup,
+  and `ESPANSO_CONFIG_DIR=$PWD/config/espanso espanso match list` checks that it
+  loads without starting anything. espanso prefers
+  `~/Library/Application Support/espanso` whenever that directory exists, so it
+  must not: that is what makes it fall back to `~/.config/espanso`.
+- **On Linux it is the primary expander.** Omarchy runs Wayland, which needs the
+  `espanso-wayland` build, `espanso service register`, and an explicit
+  `keyboard_layout` (Colemak-DH) in `config/default.yml`. The file has the
+  commented block ready.
+
+`word: true` is set on triggers made of plain letters or digits (`TM`, `1/2`,
+`Dojo`) so that "HTML" does not expand. `right_word` is set on a trigger that is
+a prefix of another (`;z` and `;zdat`), so the short one waits for a separator.
+
 ## Git
 
 - Global gitignore: `config/git/ignore`

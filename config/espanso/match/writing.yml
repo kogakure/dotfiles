@@ -1,0 +1,38 @@
+# Markdown and Obsidian helpers, the journal template.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;ocs
+    replace: |-
+      > [!SUMMARY] Zusammenfassung
+      > {{clipboard}}
+    label: Obsidian Callout (Summary)
+    vars:
+      - name: clipboard
+        type: clipboard
+  - trigger: ;kbd
+    replace: "<kbd>{{clipboard}}</kbd>$|$"
+    label: Keyboard (kbd)
+    vars:
+      - name: clipboard
+        type: clipboard
+  - trigger: ;fn
+    replace: |-
+      [^ID]
+
+      [^ID]: {{form1.autor}} ({{date}}):{{form1.titel}}, {{form1.url}}.
+    label: Markdown Footnote
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            Autor: [[autor]]
+            Titel: [[titel]]
+            URL: [[url]]
+      - name: date
+        type: date
+        params:
+          format: "%Y"

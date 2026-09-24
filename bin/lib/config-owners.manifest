@@ -81,6 +81,7 @@ bat|mise|bat|also brew; bat-extras is mise-only
 borders|brew|felixkratz/formulae/borders|started via packages/services|macbook-2019
 cship.toml|mise|cship|ubi:stephenleo/cship via [tool_alias]; was hand-installed until SI-86
 doom|setup|doom-emacs|git-cloned by setup.sh's editors step, not packaged
+espanso|brew|espanso|cask; the backup to Raycast on macOS (not running there), the primary expander on Linux
 fish|brew|fish|the login shell; setup.sh's packages step must supply it
 gh|mise|gh|also brew; see the gh wrapper in docs/environment.md
 gh-dash|gh-ext|dlvhdr/gh-dash|a gh extension, not a formula — no Brewfile will name it

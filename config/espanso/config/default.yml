@@ -1,0 +1,13 @@
+# espanso settings shared by every OS. Per-OS overrides live next to this file
+# (macos.yml). Reference: https://espanso.org/docs/configuration/options/
+
+# Snippets without a memorable trigger are meant to be found here: the search
+# bar matches on each snippet's label (its old Raycast name).
+search_shortcut: ALT+SPACE
+
+# Linux (Wayland) cannot detect the keyboard layout and needs it spelled out,
+# otherwise triggers are misread. Set this on the Omarchy machine, e.g.:
+#
+# keyboard_layout:
+#   layout: us
+#   variant: colemak_dh

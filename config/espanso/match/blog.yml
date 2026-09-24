@@ -1,0 +1,58 @@
+# MDX components for the website.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;mdx-youtube
+    replace: "<YouTube id=\"\" />"
+    label: YouTube Embed
+  - trigger: ;mdx-figure
+    replace: |-
+      <Figure caption="" size="{{form1.size}}">
+        <Image src="/assets/images/posts/.jpg" alt="" />
+      </Figure>
+    label: Figure
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "size: [[size]]"
+          fields:
+            size:
+              type: choice
+              values:
+                - wide
+                - fullsize
+              default: wide
+  - trigger: ;mdx-blockquote
+    replace: |
+      <Blockquote author="" source="" sourceUrl="" lang="en">
+      $|$
+      </Blockquote>
+    label: Blockquote
+  - trigger: ;mdx-pullquote
+    replace: |
+      <Pullquote text="" author="" source="" sourceUrl="" lang="en" />
+    label: Pullquote
+  - trigger: ;mdx-banner
+    replace: |
+      <Banner summary="$|$" open>
+
+      </Banner>
+    label: Banner
+  - trigger: ;mdx-netflix
+    replace: "<NetflixFlag id=\"\" />"
+    label: Netflix Flag
+  - trigger: ;mdx-flag
+    replace: "<Flag label=\"\" href=\"\" />"
+    label: Flag
+  - trigger: ;mdx-bookshelf
+    replace: |
+      <Bookshelf>
+        <AmazonBook asin="" alt="" />
+      </Bookshelf>
+    label: Bookshelf
+  - trigger: ;mdx-appletv
+    replace: "<AppleTVFlag id=\"\" />"
+    label: AppleTV Flag

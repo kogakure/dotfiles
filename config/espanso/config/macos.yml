@@ -1,0 +1,5 @@
+# macOS only: add the macOS-specific commands on top of the default match set.
+filter_os: macos
+
+extra_includes:
+  - "../match/_macos.yml"

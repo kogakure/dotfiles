@@ -1,0 +1,60 @@
+# Code snippets: JS, CSS, lint pragmas, cspell.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;umami-off
+    replace: localStorage.setItem('umami.disabled', '1');
+    label: Disable Umami
+  - trigger: ;sc-logic
+    replace: "${(props) => css`\n  ${props.$noPadding && css`      \n  `};\n`};"
+    label: CSS Styled Components Logic Block
+  - trigger: ;eslint-type-assertions
+    replace: "/* eslint-disable @typescript-eslint/consistent-type-assertions */"
+    label: Eslint Disable consistent-type-assertions
+  - trigger: ;domready
+    replace: |-
+      window.addEventListener('DOMContentLoaded', () => {
+        $|$
+      });
+    label: JavaScript DOMContentLoaded
+  - trigger: ;log
+    replace: 'console.log("$|$");'
+    label: Console.log
+    right_word: true
+  - trigger: ;logv
+    replace: "console.log($|$)"
+    label: Console Log
+  - trigger: ;cspell-words
+    replace: "Cspell:words "
+    label: Cspell Inline Comment
+  - trigger: ;eslint-ts-comment
+    replace: "/* eslint-disable @typescript-eslint/ban-ts-comment */"
+    label: Disable eslint/ban-ts-comment
+  - trigger: ;codespellrc
+    replace: |-
+      [codespell]
+      ignore-words = Crate,crate
+    label: Codespell ignore Rules (.codespellrc)
+  - trigger: ;css-img
+    replace: |-
+      img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;
+        font-style: italic;
+        background-repeat: no-repeat;
+        background-size: cover;
+        shape-margin: 0.75rem;
+      }
+    label: CSS Image Tag Defaults
+  - trigger: ;bash-script
+    replace: |
+      #!/bin/bash
+
+      $|$
+    label: "Shell: Leeres Script"
+  - trigger: ;rel-blank
+    replace: 'rel="nofollow noopener noreferrer external" target="_blank"'
+    label: HTML nofollow noopener noreferrer blank

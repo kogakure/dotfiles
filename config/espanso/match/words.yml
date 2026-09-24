@@ -1,0 +1,26 @@
+# Words and typo fixes.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;hh
+    replace: Hamburg
+    label: Hamburg
+  - trigger: ;de
+    replace: Deutschland
+    label: Deutschland
+  - trigger: desicions
+    replace: decisions
+    label: decisions
+    word: true
+  - trigger: maintainance
+    replace: maintenance
+    label: maintenance
+    word: true
+  - trigger: ;min
+    replace: Minuten
+    label: Minuten
+  - trigger: ;std
+    replace: Stunden
+    label: Stunden

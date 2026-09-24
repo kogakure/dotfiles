@@ -1,0 +1,75 @@
+# Name, greetings and letters. Werbewiderspruch pulls the address from private/.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;mfg1
+    replace: |2
+
+      Mit freundlichen Grüßen
+
+      Stefan Imhoff
+    label: "Mit freundlichen Grüßen (voller Name)"
+  - trigger: ;sg1
+    replace: |2
+
+      Schöne Grüße
+
+      Stefan Imhoff
+    label: "Schöne Grüße (voller Name)"
+  - trigger: ;si
+    replace: Stefan Imhoff
+    label: Stefan Imhoff
+  - trigger: ;sg2
+    replace: |2
+
+      Schöne Grüße
+
+      Stefan
+    label: "Schöne Grüße (Vorname)"
+  - trigger: ;werbewiderspruch
+    replace: |
+      Guten Tag,
+
+      ich lege hiermit Widerspruch gegen die Verarbeitung meiner personenbezogenen Daten für Direktwerbung gemäß Art. 21 Abs. 2 DSGVO ein. Der Widerspruch betrifft auch Profiling, soweit es mit Direktwerbung in Verbindung steht.
+
+      Sollte ich eine Einwilligung zur Verarbeitung meiner Daten für Direktwerbung (bspw. nach Art. 6 Abs. 1 lit. a oder Art. 9 Abs. 2 DSGVO) erteilt haben, widerrufe ich diese hiermit.
+
+      Bitte teilen Sie mir im Voraus mit, falls mein Widerspruch eine Löschung meines eventuell bei Ihnen vorhandenen Kontos, eine Kündigung eines eventuell mit Ihnen abgeschlossenen Vertrages oder Ähnliches zur Folge haben sollte. Ich werde dann im Einzelfall entscheiden, ob dies durchgeführt werden soll.
+
+      Meine Anfrage schließt explizit auch sämtliche weiteren Angebote und Unternehmen ein, für die Sie Verantwortlicher im Sinne des Art. 4 Nr. 7 DSGVO sind.
+
+      Nach Art. 12 Abs. 3 DSGVO haben Sie mir meinen Widerspruch unverzüglich, spätestens aber innerhalb eines Monats nach Eingang des Antrags, zu bestätigen.
+
+      Zur Identifikation meiner Person habe ich folgende Daten beigefügt:
+
+      {{nested}}
+
+      Sollten Sie meinem Antrag nicht innerhalb der genannten Frist nachkommen, behalte ich mir vor rechtliche Schritte gegen Sie einzuleiten und Beschwerde bei der zuständigen Datenschutzaufsichtsbehörde einzureichen.
+
+      Schon im Voraus vielen Dank für Ihre Mühe.
+
+      Mit freundlichen Grüßen
+
+      Stefan Imhoff
+    label: Werbewiderspruch
+    vars:
+      - name: nested
+        type: match
+        params:
+          trigger: ;adresse
+  - trigger: ;lg2
+    replace: |2
+
+      Liebe Grüße
+
+      Stefan
+    label: "Liebe Grüße (Vorname)"
+  - trigger: ;lg1
+    replace: |2
+
+      Liebe Grüße
+
+      Stefan Imhoff
+    label: "Liebe Grüße (voller Name)"

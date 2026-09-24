@@ -1,0 +1,71 @@
+# Quotes.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;rand
+    replace: "You did not care to compete in terms of intelligence—you are now competing in terms of brutality. You did not care to allow rewards to be won by successful production—you are now running a race in which rewards are won by successful plunder. You called it selfish and cruel that men should trade value for value—you have now established an unselfish society where they trade extortion for extortion. Your system is a legal civil war, where men gang up on one another and struggle for possession of the law, which they use as a club over rivals, till another gang wrests it from their clutch and clubs them with it in their turn, all of them clamoring protestations of service to an unnamed public’s unspecified good. You had said that you saw no difference between economic and political power, between the power of money and the power of guns—no difference between reward and punishment, no difference between purchase and plunder, no difference between pleasure and fear, no difference between life and death. You are learning the difference now."
+    label: Ayn Rand Zitat
+    search_terms:
+      - Ayn Rand
+      - Zitat
+  - trigger: ;orr
+    replace: "📢 Im Übrigen bin ich der Meinung, dass der öffentliche Rundfunk zerstört werden muss."
+    label: "ÖRR muss zerstört werden"
+  - trigger: ;censeo
+    replace: |-
+      Ceterum censeo publicam radiophoniae esse delendam
+
+      ℂ𝕖𝕥𝕖𝕣𝕦𝕞 𝕔𝕖𝕟𝕤𝕖𝕠 𝕡𝕦𝕓𝕝𝕚𝕔𝕒𝕞 𝕣𝕒𝕕𝕚𝕠𝕡𝕙𝕠𝕟𝕚𝕒𝕖 𝕖𝕤𝕤𝕖 𝕕𝕖𝕝𝕖𝕟𝕕𝕒𝕞
+    label: "ÖRR gehört zerstört auf Latein"
+  - trigger: ;libertarismus
+    replace: |-
+      1️⃣ Individuelle Freiheit: Jeder Mensch hat das Recht, sein Leben nach seinen eigenen Wünschen zu gestalten, solange er dabei nicht die Rechte anderer verletzt. Dazu gehören die Meinungs-, Vereinigungs- und Lebensfreiheit.
+      2️⃣ Selbstverantwortung: Jeder Mensch ist sein Eigentum und hat das Recht, über seinen Körper und sein Leben selbst zu bestimmen. Andere dürfen ihm gegenüber keine Gewalt oder Zwang anwenden.
+      3️⃣ Nichtangriffsprinzip (NAP): Die Anwendung von Gewalt oder Zwang gegen andere ist grundsätzlich falsch. Gewalt ist nur zur Verteidigung gegen Aggression gerechtfertigt.
+      4️⃣ Private Eigentumsrechte: Einzelpersonen haben das Recht, ohne Gewaltanwendung, Betrug oder Diebstahl erworbenes Eigentum zu erwerben, zu kontrollieren und zu übertragen.
+      5️⃣ Freie Märkte und freiwilliger Austausch: Wirtschaftliche Transaktionen sollten freiwillig und frei von staatlichen Eingriffen sein, um Wettbewerb und Innovation zu ermöglichen.
+      6️⃣ Eingeschränkte Regierung: Die Rolle der Regierung sollte minimal sein und in erster Linie darin bestehen, individuelle Rechte zu schützen, Verträge durchzusetzen und für die gemeinsame Verteidigung zu sorgen.
+    label: Prinzipien des Libertarismus
+  - trigger: ;lingg
+    replace: |-
+      “I couldn’t have thrown that bomb. I was at home making bombs.”
+
+      –Louis Lingg
+    label: Louis Lingg Zitat
+  - trigger: ;kipling7
+    replace: "In the Carboniferous Epoch we were promised abundance for all, \nBy robbing selected Peter to pay for collective Paul; \nBut, though we had plenty of money, there was nothing our money could buy, \nAnd the Gods of the Copybook Headings said: “If you don’t work you die.”"
+    label: The Gods of the Copybook Headings (7)
+  - trigger: ;kipling3
+    replace: "We moved as the Spirit listed. They never altered their pace, \nBeing neither cloud nor wind-borne like the Gods of the Market Place, \nBut they always caught up with our progress, and presently word would come \nThat a tribe had been wiped off its icefield, or the lights had gone out in Rome."
+    label: The Gods of the Copybook Heading (3)
+  - trigger: ;kipling4
+    replace: "With the Hopes that our World is built on they were utterly out of touch. \nThey denied that the Moon was Stilton; they denied she was even Dutch. \nThey denied that Wishes were Horses; they denied that a Pig had Wings. \nSo we worshipped the Gods of the Market Who promised these beautiful things."
+    label: The Gods of the Copybook Headine (4)
+  - trigger: ;kipling5
+    replace: "When the Cambrian measures were forming, They promised perpetual peace. \nThey swore, if we gave them our weapons, that the wars of the tribes would cease. \nBut when we disarmed They sold us and delivered us bound to our foe, \nAnd the Gods of the Copybook Headings said: “Stick to the Devil you know.”"
+    label: The Gods of the Copybook Headings (5)
+  - trigger: ;kipling6
+    replace: "On the first Feminian Sandstones we were promised the Fuller Life \n(Which started by loving our neighbour and ended by loving his wife) \nTill our women had no more children and the men lost reason and faith, \nAnd the Gods of the Copybook Headings said: “The Wages of Sin is Death.”"
+    label: The Gods of the Copybook Headings (6)
+  - trigger: ;kipling8
+    replace: "Then the Gods of the Market tumbled, and their smooth-tongued wizards withdrew, \nAnd the hearts of the meanest were humbled and began to believe it was true \nThat All is not Gold that Glitters, and Two and Two make Four— \nAnd the Gods of the Copybook Headings limped up to explain it once more."
+    label: The Gods of the Copybook Headings (8)
+  - trigger: ;copybook
+    replace: "“In the Carboniferous Epoch, we were promised abundance for all by robbing selected Peter to pay for collective Paul; but, though we had plenty of money, there was nothing our money could buy, and the Gods of the Copybook Headings said: ‘If you don’t work, you die.’” –Kipling"
+    label: Gods of the Copybook Headings (Wirtschaft)
+  - trigger: ;cato
+    replace: "Ceterum censeo {{form1.carthaginem}} esse delendam."
+    label: "Cato: Im übringen bin ich der Meinung"
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "Carthaginem: [[carthaginem]]"
+          fields:
+            carthaginem:
+              default: Carthaginem
+  - trigger: ;ceterum
+    replace: "📣 Ceterum censeo publicam radiophoniae esse delendam."
+    label: "ÖRR abschaffen"

@@ -1,0 +1,64 @@
+# Dates and times.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;dat
+    replace: "{{date}}"
+    label: Datum (DD.MM.YYYY)
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%d.%m.%Y"
+  - trigger: ;udat
+    replace: "{{date}}"
+    label: Datum (UTC) (DD.MM.YYYY)
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  - trigger: ;z
+    replace: "{{date}}"
+    label: "Aktuelle Zeit (HH:mm)"
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%H:%M"
+    right_word: true
+  - trigger: ;mdat
+    replace: "{{date}}"
+    label: Morgiges Datum (DD.MM.YYYY)
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%d.%m.%Y"
+          offset: 86400
+  - trigger: ;zdat
+    replace: "{{date}}"
+    label: "Datum und Zeit (DD.MM.YYYY HH:mm)"
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%d.%m.%Y %H:%M"
+  - trigger: ;uzzt
+    replace: "{{date}} Uhr"
+    label: "Aktuelle Zeit und Uhr (HH:mm Uhr)"
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%H:%M"
+  - trigger: ;id
+    replace: "{{date}}"
+    label: Zettel ID (Timestamp)
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%Y%m%d%H%M"

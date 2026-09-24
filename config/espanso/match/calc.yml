@@ -1,0 +1,48 @@
+# Calculators: a form, then awk does the arithmetic (decimal commas accepted).
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;calc-ebook
+    replace: "{{result}}"
+    label: eBook Fortschritt Berechnung
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            Fortschritt: [[fortschritt]]
+            Gesamt: [[gesamt]]
+      - name: result
+        type: shell
+        params:
+          cmd: "awk -v a='{{form1.fortschritt}}' -v b='{{form1.gesamt}}' 'BEGIN { gsub(\",\", \".\", a); gsub(\",\", \".\", b); printf \"%.0f%%\", a / b * 100 }'"
+  - trigger: ;calc-btc
+    replace: "{{result}}"
+    label: Bitcoin-Preis berechnen
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            Bezahlte Euro: [[bezahlte_euro]]
+            BTC Quantity: [[btc_quantity]]
+      - name: result
+        type: shell
+        params:
+          cmd: "awk -v a='{{form1.bezahlte_euro}}' -v b='{{form1.btc_quantity}}' 'BEGIN { gsub(\",\", \".\", a); gsub(\",\", \".\", b); printf \"%.2f\", a / b }'"
+  - trigger: ;calc-scale
+    replace: "{{result}}"
+    label: Scaling Image
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            Scaled-down width: [[scaled_down_width]]
+            Original width: [[original_width]]
+      - name: result
+        type: shell
+        params:
+          cmd: "awk -v a='{{form1.scaled_down_width}}' -v b='{{form1.original_width}}' 'BEGIN { gsub(\",\", \".\", a); gsub(\",\", \".\", b); printf \"%.4f\", a / b }'"

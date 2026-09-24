@@ -1,0 +1,59 @@
+# macOS-only commands. The leading underscore keeps espanso from loading it everywhere; config/macos.yml includes it on macOS only.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: ;unquarantine
+    replace: "xattr -d com.apple.quarantine /Applications/{{form1.application}}.app"
+    label: Unquarantine Applications
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "Application: [[application]]"
+  - trigger: ;transcribe
+    replace: "transcribe-anything {{clipboard}} --device mlx"
+    label: Transcribe Anything
+    vars:
+      - name: clipboard
+        type: clipboard
+  - trigger: ;softwareupdate
+    replace: sudo softwareupdate -i -a
+    label: Mac Software-Update
+  - trigger: ;brew-env
+    replace: "eval \"$(/opt/homebrew/bin/brew shellenv)\""
+    label: Homebrew Environment
+  - trigger: ;fastwhisper
+    replace: "insanely-fast-whisper --device-id mps --file-name \"{{form1.filename_or_url}}\""
+    label: Insanely fast Whisper
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: "filename or URL: [[filename_or_url]]"
+  - trigger: ;podcasts-dir
+    replace: "open ~/Library/Group\\ Containers/243LU875E5.groups.com.apple.podcasts/Library/Cache/"
+    label: Apple Podcast Download-Ordner
+  - trigger: ;iconset
+    replace: |-
+      sips -z 16 16     {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_16x16.png
+      sips -z 32 32     {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_16x16@2x.png
+      sips -z 32 32     {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_32x32.png
+      sips -z 64 64     {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_32x32@2x.png
+      sips -z 128 128   {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_128x128.png
+      sips -z 256 256   {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_128x128@2x.png
+      sips -z 256 256   {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_256x256.png
+      sips -z 512 512   {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_256x256@2x.png
+      sips -z 512 512   {{form1.icon1024}}.png --out {{form1.folder}}.iconset/icon_512x512.png
+      cp {{form1.icon1024}}.png {{form1.folder}}.iconset/icon_512x512@2x.png
+      iconutil -c icns {{form1.folder}}.iconset
+      rm -R {{form1.folder}}.iconset
+    label: Iconset (icns) erstellen
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |-
+            Icon1024: [[icon1024]]
+            Folder: [[folder]]

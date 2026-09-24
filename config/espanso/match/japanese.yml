@@ -1,0 +1,38 @@
+# Japanese macrons and romanised terms.
+#
+# Migrated from the Raycast snippet export of 2026-09-11. Every trigger starts
+# with ';'. See docs/environment.md.
+
+matches:
+  - trigger: Dojo
+    replace: "Dōjō"
+    label: "Dōjō"
+    word: true
+  - trigger: ;oo
+    replace: "ō"
+    label: "Japanisches Längenzeichen ō"
+  - trigger: ;uu
+    replace: "ū"
+    label: "Japanisches Längenzeichen ū"
+  - trigger: Ryu
+    replace: "Ryū"
+    label: "Ryū"
+    word: true
+  - trigger: ;OO
+    replace: "Ō"
+    label: "Japanisches Längenzeichen Ō"
+  - trigger: ;UU
+    replace: "Ū"
+    label: "Japanisches Längenzeichen Ū"
+  - trigger: Bushido
+    replace: "Bushidō"
+    label: "Bushidō"
+    word: true
+  - trigger: Daimyo
+    replace: "Daimyō"
+    label: "Daimyō"
+    word: true
+  - trigger: Daisho
+    replace: "Daishō"
+    label: "Daishō"
+    word: true
