@@ -406,6 +406,8 @@ cask "colemak-dh"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Disk space visualiser
 cask "daisydisk"
 # Browser for SQLite databases
@@ -710,8 +712,5 @@ npm "browser-sync"
 npm "caniuse-cmd"
 npm "codeburn"
 npm "commitizen"
+npm "corepack"
 npm "cz-conventional-changelog"
-npm "fast-cli"
-npm "json-server"
-npm "jsonlint"
-npm "neovim"
