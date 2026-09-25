@@ -1,3 +1,4 @@
+tap "abue-ammar/tinycast", trusted: true
 tap "agavra/tap"
 tap "anomalyco/tap", trusted: true
 tap "can1357/tap"
@@ -312,6 +313,8 @@ brew "universal-ctags"
 brew "unzip"
 # URL extractor/launcher
 brew "urlview"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Policy driven vetting of open source dependencies
 brew "vet", link: false
 # Your CLI home video recorder
@@ -421,6 +424,8 @@ cask "discord"
 cask "docker-desktop"
 # Web browser focusing on privacy
 cask "duckduckgo"
+# Cross-platform Text Expander written in Rust
+cask "espanso"
 # Collaborative team software
 cask "figma"
 # Web browser
@@ -557,6 +562,8 @@ cask "telegram-desktop"
 cask "thaw"
 # Unpacks archive files
 cask "the-unarchiver"
+# Tiny, fully native launcher, hotkeys, and clipboard history
+cask "abue-ammar/tinycast/tinycast", trusted: true
 # Web browser focusing on security
 cask "tor-browser"
 # File transfer application
@@ -687,11 +694,7 @@ cargo "ghzinga"
 cargo "nixpkgs-fmt"
 uv "jiratui"
 uv "posting"
-npm "@agentclientprotocol/claude-agent-acp"
-npm "@devcontainers/cli"
-npm "@earendil-works/pi-coding-agent"
 npm "@nqbao/pi-sandbox"
-npm "@plannotator/pi-extension"
 npm "@playwright/cli"
 npm "@readwise/cli"
 npm "@tobilu/qmd"
@@ -710,4 +713,5 @@ npm "pi-agent-browser-native"
 npm "pi-defender"
 npm "pi-subagents"
 npm "trash-cli"
+npm "yalc"
 npm "yarn"
