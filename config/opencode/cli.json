@@ -3,7 +3,8 @@
     "name": "system"
   },
   "plugins": [
-    "@cortexkit/opencode-magic-context@0.33.1"
+    "@cortexkit/opencode-magic-context@0.33.1",
+    "./herdr-opencode"
   ],
   "scroll": {
     "speed": 3,
