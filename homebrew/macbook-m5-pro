@@ -15,6 +15,7 @@ tap "kdlbs/kandev"
 tap "modem-dev/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap"
+tap "penso/tap", trusted: { casks: ["herdr-gpui"] }
 tap "peteonrails/voxtype"
 tap "safedep/tap", trusted: true
 tap "steipete/tap", trusted: true
@@ -410,6 +411,8 @@ cask "colemak-dh"
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Command-line agent for Cursor
 cask "cursor-cli"
 # Disk space visualiser
