@@ -22,12 +22,12 @@ tap "steipete/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
 brew "ack"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Browser automation CLI for AI agents
 brew "agent-browser"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -252,6 +252,8 @@ brew "p7zip"
 brew "phrase-cli"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # Paste PNG into files
 brew "pngpaste"
 # Perl documentation generator
@@ -396,6 +398,8 @@ cask "bibdesk"
 cask "blender"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Privacy-focused web browser
+cask "brave-origin"
 # E-books management software
 cask "calibre"
 # Terminal-based AI coding assistant
@@ -461,6 +465,8 @@ cask "gpg-suite-no-mail"
 cask "grok-build"
 # Open-source video transcoder
 cask "handbrake-app"
+# Chromium-based web browser
+cask "helium-browser"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
 # Free and open-source media player
@@ -565,8 +571,6 @@ cask "telegram-desktop"
 cask "thaw"
 # Unpacks archive files
 cask "the-unarchiver"
-# Tiny, fully native launcher, hotkeys, and clipboard history
-cask "abue-ammar/tinycast/tinycast", trusted: true
 # Web browser focusing on security
 cask "tor-browser"
 # File transfer application
@@ -599,7 +603,7 @@ cask "zen"
 cask "zoom"
 mas "1-Click Video Converter", id: 717545086
 mas "Aiko", id: 1672085276
-mas "DaisyDisk 2", id: 411643860
+mas "DaisyDisk", id: 411643860
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Dynamic wallpaper", id: 1582358382
@@ -697,7 +701,12 @@ cargo "ghzinga"
 cargo "nixpkgs-fmt"
 uv "jiratui"
 uv "posting"
+npm "@agentclientprotocol/claude-agent-acp"
+npm "@devcontainers/cli"
+npm "@earendil-works/pi-coding-agent"
+npm "@linear/import"
 npm "@nqbao/pi-sandbox"
+npm "@plannotator/pi-extension"
 npm "@playwright/cli"
 npm "@readwise/cli"
 npm "@tobilu/qmd"
@@ -705,16 +714,8 @@ npm "browser-sync"
 npm "caniuse-cmd"
 npm "codeburn"
 npm "commitizen"
-npm "corepack"
 npm "cz-conventional-changelog"
 npm "fast-cli"
 npm "json-server"
 npm "jsonlint"
 npm "neovim"
-npm "pageres-cli"
-npm "pi-agent-browser-native"
-npm "pi-defender"
-npm "pi-subagents"
-npm "trash-cli"
-npm "yalc"
-npm "yarn"
