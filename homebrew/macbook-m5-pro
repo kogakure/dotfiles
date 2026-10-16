@@ -26,8 +26,6 @@ brew "ack"
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Browser automation CLI for AI agents
 brew "agent-browser"
 # Plugin manager for zsh, inspired by antigen and antibody
@@ -36,6 +34,8 @@ brew "antidote"
 brew "libpng"
 # YAML Parser
 brew "libyaml"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
 # GNU internationalization (i18n) and localization (l10n) library
@@ -412,6 +412,7 @@ cask "steipete/tap/codexbar"
 cask "nkzw-tech/tap/codiff", trusted: true
 # Colemak mod for more comfortable typing (DH variant)
 cask "colemak-dh"
+# Color blindness simulator
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
@@ -704,7 +705,6 @@ uv "posting"
 npm "@agentclientprotocol/claude-agent-acp"
 npm "@devcontainers/cli"
 npm "@earendil-works/pi-coding-agent"
-npm "@linear/import"
 npm "@nqbao/pi-sandbox"
 npm "@plannotator/pi-extension"
 npm "@playwright/cli"
@@ -719,3 +719,9 @@ npm "fast-cli"
 npm "json-server"
 npm "jsonlint"
 npm "neovim"
+npm "pageres-cli"
+npm "pi-agent-browser-native"
+npm "pi-defender"
+npm "pi-subagents"
+npm "trash-cli"
+npm "yarn"
