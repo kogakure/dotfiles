@@ -23,8 +23,6 @@ tap "steipete/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
 brew "ack"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Library for command-line editing
 brew "readline"
 # Browser automation CLI for AI agents
@@ -37,6 +35,8 @@ brew "argon2"
 brew "libpng"
 # YAML Parser
 brew "libyaml"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
 # GNU internationalization (i18n) and localization (l10n) library
@@ -391,6 +391,8 @@ cask "bibdesk"
 cask "blender"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Privacy-focused web browser
+cask "brave-origin"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
@@ -456,6 +458,8 @@ cask "grok-bot"
 cask "grok-build"
 # Open-source video transcoder
 cask "handbrake-app"
+# Chromium-based web browser
+cask "helium-browser"
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
 # Free and open-source media player
