@@ -162,7 +162,7 @@ if.app-id = 'com.mymind.mymind-mac'
 run = ["move-node-to-workspace 3", "layout --workspace 3 --root h_accordion"]
 
 [[on-window-detected]]
-if.app-id = 'com.devon-technologies.think3'
+if.app-id = 'com.linear'
 run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
