@@ -494,6 +494,8 @@ cask "keymapp"
 cask "lbry"
 # Wallet desktop application to maintain multiple cryptocurrencies
 cask "ledger-wallet"
+# App to manage software development and track bugs
+cask "linear"
 # Discover, download, and run local LLMs
 cask "lm-studio"
 # Software for Logitech devices
@@ -568,8 +570,6 @@ cask "sweet-home3d"
 cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
-# Menu bar manager
-cask "thaw"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser focusing on security
