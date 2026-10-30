@@ -98,6 +98,7 @@ nushell|brew|nushell|config/nushell/env.nu is generated — see shell/README.md
 nvim|mise|neovim|the directory is nvim, the mise tool is neovim
 oatmeal|brew|dustinblackman/tap/oatmeal|-
 opencode|mise|opencode|also brew, spelled two ways across hosts
+rex|manual|Rex Beta.app|terminal app installed by hand; no cask or mise tool provides it
 ripgrep|mise|ripgrep|also brew
 sbx|brew|docker/tap/sbx|cask; the pi and omp kits under config/sbx/kits are this repo's
 sesh|brew|joshmedeski/sesh/sesh|-
