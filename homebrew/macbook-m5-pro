@@ -308,6 +308,8 @@ brew "tmux"
 brew "tree"
 # Incremental parsing library
 brew "tree-sitter"
+# Terminal UI OS (Terminal Multiplexer)
+brew "tuios"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Maintained ctags implementation
