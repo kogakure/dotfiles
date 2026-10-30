@@ -1,0 +1,1 @@
+-- Rex configuration. Bind keys with rex.bind, remove them with rex.unbind.
