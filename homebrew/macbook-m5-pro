@@ -1,6 +1,7 @@
 tap "abue-ammar/tinycast", trusted: true
 tap "agavra/tap"
 tap "anomalyco/tap", trusted: true
+tap "benbjohnson/litestream"
 tap "can1357/tap"
 tap "charmbracelet/tap", trusted: true
 tap "crmne/tap", trusted: true
@@ -348,6 +349,10 @@ brew "you-get"
 brew "zsh"
 # Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
 brew "agavra/tap/tuicr", trusted: true
+# OpenCode V2 - the AI coding agent for the terminal
+brew "anomalyco/tap/opencode-v2", trusted: true
+# Streaming replication for SQLite databases
+brew "benbjohnson/litestream/litestream", trusted: true
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
@@ -470,6 +475,8 @@ cask "grok-build"
 cask "handbrake-app"
 # Chromium-based web browser
 cask "helium-browser"
+# Local voice dictation
+cask "anomalyco/tap/hex", trusted: true
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
 # Free and open-source media player
@@ -566,8 +573,6 @@ cask "stats"
 cask "steam"
 # Dictation tool including LLM reformatting
 cask "superwhisper"
-# Interior design application
-cask "sweet-home3d"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Desktop client for Telegram messenger
