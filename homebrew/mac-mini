@@ -10,6 +10,7 @@ tap "dustinblackman/tap", trusted: true
 tap "f/textream", trusted: true
 tap "felixkratz/formulae", trusted: true
 tap "gabrie30/utils", trusted: true
+tap "gaurav-gosain/tap", "https://github.com/Gaurav-Gosain/homebrew-tap"
 tap "hmans/beans", trusted: true
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -305,6 +306,8 @@ brew "tokei"
 brew "tree"
 # Incremental parsing library
 brew "tree-sitter"
+# Terminal UI OS (Terminal Multiplexer)
+brew "tuios"
 # Source code spell checker
 brew "typos-cli"
 # Command-line unarchiving tools supporting multiple formats
@@ -381,6 +384,8 @@ cask "astro-editor"
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
+# Menu bar icon organiser
+cask "bartender"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
 # Agentic-first issue tracker
@@ -405,6 +410,7 @@ cask "codex"
 cask "steipete/tap/codexbar"
 # Colemak mod for more comfortable typing (DH variant)
 cask "colemak-dh"
+# Color blindness simulator
 cask "color-oracle"
 # Multi-platform client-side cloud file encryption tool
 cask "cryptomator"
@@ -566,8 +572,6 @@ cask "tailscale-app"
 cask "telegram-desktop"
 # LaTeX editor
 cask "texmaker"
-# Menu bar manager
-cask "thaw"
 # Unpacks archive files
 cask "the-unarchiver"
 # To-do list
@@ -576,6 +580,8 @@ cask "todoist-app"
 cask "tor-browser"
 # File transfer application
 cask "transmit"
+# Web terminal server for TUIOS - Serves TUIOS through the browser
+cask "gaurav-gosain/tap/tuios-web", trusted: true
 # Font manager application
 cask "typeface"
 # Disk encryption software focusing on security based on TrueCrypt
@@ -586,6 +592,8 @@ cask "safedep/tap/vet", trusted: true
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Menu bar toolkit with keep-awake, system monitor and volume mixer
+cask "vorssaint"
 # Rust-based terminal
 cask "warp"
 # Torrent streaming application
@@ -619,7 +627,7 @@ mas "iFinance 5", id: 1500241909
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Mela", id: 1568924476
-mas "MindNode 2", id: 6446116532
+mas "MindNode", id: 6446116532
 mas "mymind", id: 1532801185
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
@@ -721,3 +729,9 @@ npm "fast-cli"
 npm "json-server"
 npm "jsonlint"
 npm "neovim"
+npm "pageres-cli"
+npm "pi-agent-browser-native"
+npm "pi-defender"
+npm "pi-subagents"
+npm "trash-cli"
+npm "yarn"

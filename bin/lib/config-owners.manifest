@@ -105,6 +105,7 @@ sesh|brew|joshmedeski/sesh/sesh|-
 starship.toml|mise|starship|also brew; the prompt
 superfile|mise|superfile|also brew
 tmux|brew|tmux|deliberately not mise — config/mise/mise.toml says why
+tuios|brew|tuios|terminal multiplexer and agent window manager
 wezterm|brew|wezterm|cask; Ghostty is the terminal elsewhere|macbook-2019
 worktrunk|mise|worktrunk|also brew
 yazi|mise|yazi|also brew
