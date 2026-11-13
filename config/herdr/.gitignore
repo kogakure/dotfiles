@@ -3,4 +3,6 @@
 release-notes.json
 session.json
 .plugins.lock
-plugins/.lock
+plugins
+herdr.sock.agent
+github-installations

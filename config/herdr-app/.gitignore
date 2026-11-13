@@ -1,0 +1,9 @@
+# Herdr app writes almost everything here; track only what is edited by hand.
+*
+!.gitignore
+!settings.json
+!keys.json
+!programs.json
+# Custom layouts, themes and mods: allowlist each one, e.g.
+# !layouts/
+# !layouts/my-layout.json

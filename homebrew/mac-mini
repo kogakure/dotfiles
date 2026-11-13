@@ -16,6 +16,7 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "joshmedeski/sesh", trusted: true
 tap "kdlbs/kandev"
+tap "lumarylabsllc/tap"
 tap "modem-dev/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap", trusted: { casks: ["codiff"] }
@@ -261,7 +262,7 @@ brew "pod2man"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
-brew "postgresql@14"
+brew "postgresql@18", link: true
 # Prettier daemon
 brew "prettierd"
 # Easily download, build, install, upgrade, and uninstall Python packages
@@ -372,8 +373,6 @@ cask "ableton-live-lite"
 cask "nikitabobko/tap/aerospace"
 # Image editing and design software
 cask "affinity"
-# Network scanner
-cask "angry-ip-scanner"
 # Memory training application
 cask "anki"
 # Application uninstaller
@@ -466,6 +465,8 @@ cask "grok-build"
 cask "handbrake-app"
 # Chromium-based web browser
 cask "helium-browser"
+# Local voice dictation
+cask "anomalyco/tap/hex", trusted: true
 # Create presentation slides from a Markdown document
 cask "ia-presenter"
 # Free and open-source media player
@@ -508,6 +509,8 @@ cask "microsoft-auto-update"
 cask "microsoft-outlook"
 # Display MIDI signals going in and out of your computer
 cask "midi-monitor"
+# All your machines in one app, for you and your AI agents
+cask "lumarylabsllc/tap/muxin", trusted: true
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Calculator and converter application
@@ -565,13 +568,13 @@ cask "superwhisper"
 # Interior design application
 cask "sweet-home3d"
 # Minimal GUI for AI code agents
+cask "t3-code"
+# Minimal GUI for AI code agents
 cask "t3-code@nightly"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
-# LaTeX editor
-cask "texmaker"
 # Unpacks archive files
 cask "the-unarchiver"
 # To-do list
@@ -714,7 +717,6 @@ uv "jiratui"
 uv "posting"
 npm "@agentclientprotocol/claude-agent-acp"
 npm "@devcontainers/cli"
-npm "@earendil-works/pi-coding-agent"
 npm "@nqbao/pi-sandbox"
 npm "@plannotator/pi-extension"
 npm "@playwright/cli"

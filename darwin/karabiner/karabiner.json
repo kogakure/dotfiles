@@ -51,6 +51,7 @@
                     },
                     {
                         "description": "CAPS_LOCK + i/j/k/l == Arrow Keys",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

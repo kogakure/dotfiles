@@ -69,4 +69,8 @@ config/fish/completions/otto.fish
 file_dictionaries/
 
 # Pi
+# Trust decisions, plus the managed install the Pi installer writes
+# (launcher, release tree, and its node_modules).
+pi/agent/bin/
+pi/agent/install/
 pi/agent/trust.json

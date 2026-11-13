@@ -1,0 +1,9 @@
+{
+  "zoom": 1.3,
+  "sounds": {
+    "enabled": true
+  },
+  "minimum_contrast": 1,
+  "appearance": "dark",
+  "font": "Monaspace Neon"
+}

@@ -89,6 +89,7 @@ ghostty|brew|ghostty|cask; the actual terminal
 git|brew|git|arrives as a dependency on some hosts, so it may be absent from the dump
 harper-ls|mason|harper-ls|a Neovim LSP installed by Mason; nothing here references it
 herdr|mise|herdr|also brew; plugins come from packages/herdr-plugins
+herdr-app|manual|Herdr.app|desktop app installed by hand; only hand-edited keys and settings are tracked
 hunk|mise|hunk|also brew on mac-mini and macbook-2019; config/git/config sets it as pager
 lazydocker|mise|lazydocker|also brew
 lazygit|mise|lazygit|also brew

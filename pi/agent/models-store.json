@@ -2,82 +2,6 @@
   "openai-codex": {
     "models": [
       {
-        "id": "gpt-5.3-codex-spark",
-        "name": "GPT-5.3 Codex Spark",
-        "api": "openai-codex-responses",
-        "provider": "openai-codex",
-        "baseUrl": "https://chatgpt.com/backend-api",
-        "reasoning": true,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 1.75,
-          "output": 14,
-          "cacheRead": 0.175,
-          "cacheWrite": 0
-        },
-        "contextWindow": 128000,
-        "maxTokens": 128000,
-        "thinkingLevelMap": {
-          "xhigh": "xhigh",
-          "minimal": "low"
-        },
-        "compat": {
-          "supportsOpenAIGrammarTools": true
-        },
-        "type": "chat"
-      },
-      {
-        "id": "gpt-5.5",
-        "name": "GPT-5.5",
-        "api": "openai-codex-responses",
-        "provider": "openai-codex",
-        "baseUrl": "https://chatgpt.com/backend-api",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 5,
-          "output": 30,
-          "cacheRead": 0.5,
-          "cacheWrite": 0,
-          "tiers": [
-            {
-              "inputTokensAbove": 272000,
-              "input": 10,
-              "output": 45,
-              "cacheRead": 1,
-              "cacheWrite": 0
-            }
-          ]
-        },
-        "contextWindow": 272000,
-        "maxTokens": 128000,
-        "thinkingLevelMap": {
-          "xhigh": "xhigh",
-          "minimal": "low"
-        },
-        "compat": {
-          "supportsOpenAIGrammarTools": true,
-          "supportsToolSearch": true,
-          "supportsMidConvoSystemMessages": true
-        },
-        "inputLimits": {
-          "images": {
-            "resize": {
-              "maxWidth": 2000,
-              "maxHeight": 2000,
-              "maxBytes": 4718592,
-              "jpegQuality": 80
-            }
-          }
-        },
-        "type": "chat"
-      },
-      {
         "id": "gpt-5.6-luna",
         "name": "GPT-5.6 Luna",
         "api": "openai-codex-responses",
@@ -394,11 +318,121 @@
           }
         },
         "type": "chat"
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "name": "GPT-6.1 Sol",
+        "api": "openai-codex-responses",
+        "provider": "openai-codex",
+        "baseUrl": "https://chatgpt.com/backend-api",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2,
+          "output": 10,
+          "cacheRead": 0.1,
+          "cacheWrite": 2.5,
+          "tiers": [
+            {
+              "inputTokensAbove": 272000,
+              "input": 4,
+              "output": 15,
+              "cacheRead": 0.2,
+              "cacheWrite": 5
+            }
+          ]
+        },
+        "contextWindow": 500000,
+        "maxTokens": 128000,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": "low",
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh",
+          "max": "max"
+        },
+        "compat": {
+          "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
+          "supportsToolSearch": true,
+          "supportsMidConvoSystemMessages": true
+        },
+        "inputLimits": {
+          "images": {
+            "resize": {
+              "maxWidth": 2000,
+              "maxHeight": 2000,
+              "maxBytes": 4718592,
+              "jpegQuality": 80
+            }
+          }
+        },
+        "type": "chat"
+      },
+      {
+        "id": "gpt-6.1-terra",
+        "name": "GPT-6.1 Terra",
+        "api": "openai-codex-responses",
+        "provider": "openai-codex",
+        "baseUrl": "https://chatgpt.com/backend-api",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1,
+          "output": 5,
+          "cacheRead": 0.05,
+          "cacheWrite": 1.25,
+          "tiers": [
+            {
+              "inputTokensAbove": 272000,
+              "input": 2,
+              "output": 7.5,
+              "cacheRead": 0.1,
+              "cacheWrite": 2.5
+            }
+          ]
+        },
+        "contextWindow": 500000,
+        "maxTokens": 128000,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": "low",
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh",
+          "max": "max"
+        },
+        "compat": {
+          "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
+          "supportsToolSearch": true,
+          "supportsMidConvoSystemMessages": true
+        },
+        "inputLimits": {
+          "images": {
+            "resize": {
+              "maxWidth": 2000,
+              "maxHeight": 2000,
+              "maxBytes": 4718592,
+              "jpegQuality": 80
+            }
+          }
+        },
+        "type": "chat"
       }
     ],
-    "checkedAt": 1790688122035,
-    "lastModified": 1790685871000,
-    "etag": "W/\"33d4f9db141f788989850e1ac9cf899e\""
+    "lastModified": 1794305868000,
+    "etag": "W/\"95a2e44a856349a2e4505efd9edc3494\"",
+    "checkedAt": 1794306840928
   },
   "opencode-go": {
     "models": [
@@ -953,9 +987,6 @@
         "api": "openai-responses",
         "provider": "xai",
         "baseUrl": "https://api.x.ai/v1",
-        "compat": {
-          "supportsLongCacheRetention": false
-        },
         "reasoning": true,
         "input": [
           "text",
@@ -978,13 +1009,16 @@
         },
         "contextWindow": 1000000,
         "maxTokens": 30000,
+        "compat": {
+          "supportsLongCacheRetention": false
+        },
         "thinkingLevelMap": {
           "off": "none",
           "minimal": null,
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null,
+          "xhigh": "xhigh",
           "max": null
         },
         "inputLimits": {
@@ -1005,9 +1039,6 @@
         "api": "openai-responses",
         "provider": "xai",
         "baseUrl": "https://api.x.ai/v1",
-        "compat": {
-          "supportsLongCacheRetention": false
-        },
         "reasoning": true,
         "input": [
           "text",
@@ -1030,13 +1061,16 @@
         },
         "contextWindow": 500000,
         "maxTokens": 500000,
+        "compat": {
+          "supportsLongCacheRetention": false
+        },
         "thinkingLevelMap": {
           "off": null,
           "minimal": null,
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null,
+          "xhigh": "xhigh",
           "max": null
         },
         "inputLimits": {
@@ -1057,9 +1091,6 @@
         "api": "openai-responses",
         "provider": "xai",
         "baseUrl": "https://api.x.ai/v1",
-        "compat": {
-          "supportsLongCacheRetention": false
-        },
         "reasoning": true,
         "input": [
           "text",
@@ -1082,6 +1113,9 @@
         },
         "contextWindow": 500000,
         "maxTokens": 500000,
+        "compat": {
+          "supportsLongCacheRetention": false
+        },
         "thinkingLevelMap": {
           "off": null,
           "minimal": null,
@@ -1109,9 +1143,6 @@
         "api": "openai-responses",
         "provider": "xai",
         "baseUrl": "https://api.x.ai/v1",
-        "compat": {
-          "supportsLongCacheRetention": false
-        },
         "reasoning": true,
         "input": [
           "text",
@@ -1134,6 +1165,9 @@
         },
         "contextWindow": 500000,
         "maxTokens": 500000,
+        "compat": {
+          "supportsLongCacheRetention": false
+        },
         "thinkingLevelMap": {
           "off": null,
           "minimal": null,
@@ -1156,9 +1190,9 @@
         "type": "chat"
       }
     ],
-    "checkedAt": 1790688286234,
-    "lastModified": 1790685900000,
-    "etag": "W/\"b50d96c8b2709cd393eefeadd99ffa83\""
+    "lastModified": 1794305902000,
+    "etag": "W/\"998ab86c53906a9f009b7c5f296b5d2d\"",
+    "checkedAt": 1794306894336
   },
   "anthropic": {
     "models": [
@@ -1181,10 +1215,15 @@
         },
         "contextWindow": 1000000,
         "maxTokens": 128000,
+        "thinkingLevelMap": {
+          "off": null,
+          "xhigh": "xhigh",
+          "max": "max"
+        },
         "compat": {
+          "forceAdaptiveThinking": true,
           "supportsMidConvoSystemMessages": true,
           "supportsMidConvoToolChanges": true,
-          "forceAdaptiveThinking": true,
           "supportsStrictTools": true,
           "allowedFallbackModels": [
             {
@@ -1208,11 +1247,6 @@
               }
             }
           ]
-        },
-        "thinkingLevelMap": {
-          "off": null,
-          "xhigh": "xhigh",
-          "max": "max"
         },
         "promptCache": {
           "short": 300,
@@ -1251,17 +1285,78 @@
         },
         "contextWindow": 1000000,
         "maxTokens": 128000,
-        "compat": {
-          "supportsMidConvoEffort": true,
-          "supportsMidConvoSystemMessages": true,
-          "supportsMidConvoToolChanges": true,
-          "forceAdaptiveThinking": true,
-          "supportsStrictTools": true
-        },
         "thinkingLevelMap": {
           "off": null,
           "xhigh": "xhigh",
           "max": "max"
+        },
+        "compat": {
+          "forceAdaptiveThinking": true,
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true,
+          "supportsStrictTools": true
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
+        },
+        "inputLimits": {
+          "maxRequestBytes": 33554432,
+          "images": {
+            "maxPerRequest": 600,
+            "resize": {
+              "maxWidth": 2000,
+              "maxHeight": 2000,
+              "maxBytes": 4718592,
+              "jpegQuality": 80
+            }
+          }
+        },
+        "type": "chat"
+      },
+      {
+        "id": "claude-fable-5-2",
+        "name": "Claude Fable 5.2",
+        "api": "anthropic-messages",
+        "provider": "anthropic",
+        "baseUrl": "https://api.anthropic.com",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 8,
+          "output": 40,
+          "cacheRead": 0.2,
+          "cacheWrite": 10
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "thinkingLevelMap": {
+          "off": null,
+          "xhigh": "xhigh",
+          "max": "max"
+        },
+        "compat": {
+          "forceAdaptiveThinking": true,
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true,
+          "supportsStrictTools": true,
+          "allowedFallbackModels": [
+            {
+              "provider": "anthropic",
+              "model": "claude-opus-5",
+              "cost": {
+                "input": 5,
+                "output": 25,
+                "cacheRead": 0.5,
+                "cacheWrite": 6.25
+              }
+            }
+          ]
         },
         "promptCache": {
           "short": 300,
@@ -1398,11 +1493,11 @@
           "max": "max"
         },
         "compat": {
+          "forceAdaptiveThinking": true,
+          "supportsTemperature": false,
           "supportsMidConvoEffort": true,
           "supportsMidConvoSystemMessages": true,
           "supportsMidConvoToolChanges": true,
-          "forceAdaptiveThinking": true,
-          "supportsTemperature": false,
           "supportsStrictTools": true
         },
         "promptCache": {
@@ -1612,16 +1707,16 @@
         },
         "contextWindow": 1000000,
         "maxTokens": 128000,
-        "compat": {
-          "supportsMidConvoSystemMessages": true,
-          "supportsMidConvoToolChanges": true,
-          "forceAdaptiveThinking": true,
-          "supportsTemperature": false,
-          "supportsStrictTools": true
-        },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max"
+        },
+        "compat": {
+          "forceAdaptiveThinking": true,
+          "supportsTemperature": false,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true,
+          "supportsStrictTools": true
         },
         "promptCache": {
           "short": 300,
@@ -1660,17 +1755,17 @@
         },
         "contextWindow": 1000000,
         "maxTokens": 128000,
-        "compat": {
-          "supportsMidConvoEffort": true,
-          "supportsMidConvoSystemMessages": true,
-          "supportsMidConvoToolChanges": true,
-          "forceAdaptiveThinking": true,
-          "supportsTemperature": false,
-          "supportsStrictTools": true
-        },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max"
+        },
+        "compat": {
+          "forceAdaptiveThinking": true,
+          "supportsTemperature": false,
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true,
+          "supportsStrictTools": true
         },
         "promptCache": {
           "short": 300,
@@ -1719,11 +1814,11 @@
           "max": "max"
         },
         "compat": {
+          "forceAdaptiveThinking": true,
+          "supportsTemperature": false,
           "supportsMidConvoEffort": true,
           "supportsMidConvoSystemMessages": true,
           "supportsMidConvoToolChanges": true,
-          "forceAdaptiveThinking": true,
-          "supportsTemperature": false,
           "supportsStrictTools": true
         },
         "promptCache": {
@@ -1893,6 +1988,7 @@
         },
         "compat": {
           "forceAdaptiveThinking": true,
+          "supportsTemperature": false,
           "supportsStrictTools": true
         },
         "promptCache": {
@@ -1942,11 +2038,11 @@
           "max": "max"
         },
         "compat": {
+          "forceAdaptiveThinking": true,
+          "supportsTemperature": false,
           "supportsMidConvoEffort": true,
           "supportsMidConvoSystemMessages": true,
           "supportsMidConvoToolChanges": true,
-          "forceAdaptiveThinking": true,
-          "supportsTemperature": false,
           "supportsStrictTools": true
         },
         "promptCache": {
@@ -1968,8 +2064,8 @@
         "type": "chat"
       }
     ],
-    "lastModified": 1792584775000,
-    "etag": "W/\"57f8d8de07c2366a6fec71012c710360\"",
-    "checkedAt": 1792591914337
+    "lastModified": 1794305806000,
+    "etag": "W/\"df29ce52198fbf32d274b2cdcaf27bb8\"",
+    "checkedAt": 1794306948119
   }
 }

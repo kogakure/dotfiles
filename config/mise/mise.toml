@@ -72,12 +72,12 @@
 cship = "ubi:stephenleo/cship"
 
 [tools]
-atuin = { version = "18.24.5", os = ["macos/arm64", "linux"] }
+atuin = { version = "18.24.6", os = ["macos/arm64", "linux"] }
 "cargo:atuin" = { version = "18.19.0", os = ["macos/x64"] }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bun = "latest"
-claude = "2.1.319"
+claude = "2.1.322"
 codex = "0.167.0"
 cship = "1.8.3"
 delta = { version = "0.20.1", os = ["macos/arm64", "linux"] }
@@ -100,17 +100,17 @@ hunkdiff = "0.24.1"
 jj = "0.47.1"
 jq = "1.8.2"
 lazydocker = "0.25.2"
-lazygit = "0.66.2"
+lazygit = "0.66.3"
 lazyssh = "0.3.0"
 lua = "latest"
 neovim = "0.12.6"
 node = "26.13.0"
 "npm:playwright-cli" = "latest"
 opencode = "2.2.6"
-"npm:oxlint" = "1.92.0"
+"npm:oxlint" = "1.93.0"
 pandoc = "3.13"
-pi = "1.5.0"
-pnpm = { version = "12.16.1", os = ["macos/arm64", "linux"] }
+pi = "1.5.1"
+pnpm = { version = "12.18.0", os = ["macos/arm64", "linux"] }
 "npm:pnpm" = { version = "11.22.0", os = ["macos/x64"] }
 prettier = "3.9.10"
 python = "latest"
@@ -126,7 +126,7 @@ usage = "latest"
 uv = "0.13.7"
 worktrunk = { version = "0.81.0", workflow = "release.yaml" }
 yazi = "26.9.1"
-yq = "4.54.2"
+yq = "4.54.3"
 zoxide = "0.10.0"
 
 [settings]

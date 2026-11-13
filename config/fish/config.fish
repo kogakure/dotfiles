@@ -43,3 +43,6 @@ alias reload 'exec fish'
 if test -r "$HOME/.hooks.fish"
     source "$HOME/.hooks.fish"
 end
+
+# Pi
+fish_add_path "$HOME/.local/bin"
