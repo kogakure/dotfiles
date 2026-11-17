@@ -130,6 +130,14 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # Window Autodetection
 [[on-window-detected]]
+if.app-id = 'com.t3tools.t3code'
+run = ["move-node-to-workspace 1", "layout --workspace 1 --root h_accordion"]
+
+[[on-window-detected]]
+if.app-id = 'com.superlogical.rex'
+run = ["move-node-to-workspace 1", "layout --workspace 1 --root h_accordion"]
+
+[[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = ["move-node-to-workspace 1", "layout --workspace 1 --root h_accordion"]
 
