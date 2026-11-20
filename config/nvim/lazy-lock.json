@@ -100,7 +100,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "a67f826164c38c836fc6060f32b275c4c43317a7" },
   "rustaceanvim": { "branch": "main", "commit": "cd58d8a4d82b67f046086eb78f04dd42058ccfcd" },
   "smart-open.nvim": { "branch": "0.2.x", "commit": "7763800068bef69334870c10cb595d49ce27580a" },
-  "smart-splits.nvim": { "branch": "master", "commit": "d3617de050f58e6f1f924b1401fba7677517c196" },
+  "smart-splits.nvim": { "branch": "master", "commit": "e96b23e4ce660c95133f0080a6e488b96644ec0c" },
   "smear-cursor.nvim": { "branch": "main", "commit": "f6cb57c342268177f719acc3968b9d8de3ecc969" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "sqlite.lua": { "branch": "master", "commit": "50092d60feb242602d7578398c6eb53b4a8ffe7b" },
