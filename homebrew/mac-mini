@@ -577,6 +577,8 @@ cask "tailscale-app"
 cask "telegram-desktop"
 # Unpacks archive files
 cask "the-unarchiver"
+# To-do & task list manager
+cask "ticktick"
 # To-do list
 cask "todoist-app"
 # Web browser focusing on security
