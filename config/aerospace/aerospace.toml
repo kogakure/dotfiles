@@ -154,7 +154,7 @@ if.app-id = 'app.zen-browser.zen'
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
-if.app-id = 'com.apple.reminders'
+if.app-id = 'com.TickTick.task.mac'
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
