@@ -6,6 +6,7 @@ tap "can1357/tap"
 tap "charmbracelet/tap", trusted: true
 tap "crmne/tap", trusted: true
 tap "d12frosted/emacs-plus", trusted: true
+tap "devvmhq/tap"
 tap "docker/tap", trusted: true
 tap "dustinblackman/tap", trusted: true
 tap "f/textream", trusted: true
@@ -409,6 +410,8 @@ cask "brave-browser"
 cask "brave-origin"
 # E-books management software
 cask "calibre"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # Screen capturing tool
@@ -431,8 +434,6 @@ cask "cursor-cli"
 cask "daisydisk"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
-# Collect, organise, edit and annotate documents
-cask "devonthink"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
@@ -475,6 +476,8 @@ cask "grok-build"
 cask "handbrake-app"
 # Chromium-based web browser
 cask "helium-browser"
+# Desktop app for terminals and coding agents
+cask "herdr-app"
 # Local voice dictation
 cask "anomalyco/tap/hex", trusted: true
 # Create presentation slides from a Markdown document
@@ -573,12 +576,16 @@ cask "stats"
 cask "steam"
 # Dictation tool including LLM reformatting
 cask "superwhisper"
+# Minimal GUI for AI code agents
+cask "t3-code"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Unpacks archive files
 cask "the-unarchiver"
+# To-do & task list manager
+cask "ticktick"
 # Web browser focusing on security
 cask "tor-browser"
 # File transfer application
@@ -634,6 +641,7 @@ mas "Raycast Companion", id: 6738274497
 mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Smart Converter", id: 447513724
+mas "TestFlight", id: 899247664
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
 mas "Yoink", id: 457622435
