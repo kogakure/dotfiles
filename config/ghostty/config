@@ -8,6 +8,7 @@ font-family = Monaspace Neon
 font-family-italic = Monaspace Radon
 font-family-bold = Monaspace Krypton
 font-family-bold-italic = Monaspace Radon
+font-family = "Hiragino Sans"
 
 font-size = 16
 adjust-cell-height = 20%
