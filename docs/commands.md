@@ -294,6 +294,26 @@ The individual entry points:
 ./bin/gpg-keys-restore        # Import GPG keys
 ```
 
+### KOReader on the Kobo
+
+```bash
+just koreader-backup              # bin/koreader-backup
+just koreader-backup --dry-run    # what it would archive, and where
+bin/koreader-backup --volume <path> --dest <dir>
+```
+
+Zips KOReader's user data from the mounted Kobo (`/Volumes/KOBOeReader`) into
+`Backups/KOReader/koreader-backup-<YYYY-MM-DDTHHMMSSZ>.zip` in the first
+Dropbox it finds, timestamped in UTC. Paths in the archive are relative to the
+volume root, so restoring is unzipping onto the Kobo.
+
+It collects the settings, history, statistics, vocabulary, style tweaks,
+patches, plugins and dictionaries under `.adds/koreader`, and **every
+`<book>.sdr/` folder on the volume**. That second half is what holds the
+highlights: with KOReader's default metadata location they sit next to each
+book, not under `.adds/koreader`. It is not part of `bin/dotfiles-backup`,
+because the Kobo is only mounted occasionally.
+
 **Adding an app to the preferences backup is one line.** The table lives in
 `bin/lib/preferences.manifest`; the two scripts just walk it. `just lint
 manifest` asserts every file in `private/preferences/` is either listed there

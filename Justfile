@@ -102,3 +102,8 @@ clean *ARGS:
 # `just backup preferences`. See bin/dotfiles-backup --help.
 backup *ARGS:
     bin/dotfiles-backup {{ ARGS }}
+
+# Back up KOReader settings and highlights from a mounted Kobo into a UTC-stamped
+# ZIP in Dropbox/Backups/KOReader. See bin/koreader-backup --help.
+koreader-backup *ARGS:
+    bin/koreader-backup {{ ARGS }}

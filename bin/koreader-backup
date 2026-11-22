@@ -1,0 +1,204 @@
+#!/bin/bash
+#
+# Back up KOReader's settings, reading statistics and highlights from a mounted
+# Kobo into a timestamped ZIP in Dropbox.
+#
+# Usage: koreader-backup [--dry-run] [--volume <path>] [--dest <dir>]
+#
+# Output: <dest>/koreader-backup-<YYYY-MM-DDTHHMMSSZ>.zip, UTC.
+#
+# Paths inside the archive are relative to the root of the Kobo, so restoring is
+# unzipping onto the mounted volume (or picking single files out of it).
+#
+# Why the book folders are scanned and not just .adds/koreader: with KOReader's
+# default "document_metadata_folder = doc", highlights, bookmarks, reading
+# position and per-book settings live in a `<book>.sdr/` directory NEXT TO EACH
+# BOOK, not under .adds/koreader. A backup of the KOReader folder alone would
+# miss every highlight. The other two modes ("dir" and "hash") keep them in
+# .adds/koreader/docsettings and .adds/koreader/hashdocsettings, which are
+# collected too, so the backup is complete whichever mode is set.
+#
+# Not part of bin/dotfiles-backup: the Kobo is mounted only occasionally, and an
+# aggregator step that fails whenever it is not plugged in would be noise.
+#
+# Overrides: $KOREADER_VOLUME (default /Volumes/KOBOeReader) and
+# $KOREADER_BACKUP_DIR (default: Backups/KOReader in the first Dropbox found).
+
+set -euo pipefail
+
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=lib/common.sh
+. "$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh" || exit 1
+
+dotfiles_flags_init
+
+usage() {
+    log_info "Usage: koreader-backup [--dry-run] [--volume <path>] [--dest <dir>]"
+}
+
+VOLUME=${KOREADER_VOLUME:-/Volumes/KOBOeReader}
+DEST=${KOREADER_BACKUP_DIR:-}
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --dry-run) DOTFILES_DRY_RUN=1 ;;
+        --volume)
+            [ $# -ge 2 ] || {
+                log_err "koreader-backup: --volume needs a path"
+                exit 1
+            }
+            VOLUME=$2
+            shift
+            ;;
+        --dest)
+            [ $# -ge 2 ] || {
+                log_err "koreader-backup: --dest needs a path"
+                exit 1
+            }
+            DEST=$2
+            shift
+            ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        *)
+            log_err "koreader-backup: unknown argument: $1"
+            usage >&2
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+# The Dropbox root differs per machine: ~/Dropbox on a personal account, and
+# ~/Library/CloudStorage/Dropbox-<team>/<member>/ on a team account, where the
+# member folder is one level down. The first existing Backups folder wins. The
+# Backups folder itself must already exist — creating it under a guessed root
+# would put the archive somewhere Dropbox may not sync.
+find_backup_root() {
+    local candidate
+    for candidate in \
+        "$HOME/Dropbox/Backups" \
+        "$HOME/Library/CloudStorage/Dropbox/Backups" \
+        "$HOME"/Library/CloudStorage/Dropbox-*/Backups \
+        "$HOME"/Library/CloudStorage/Dropbox-*/*/Backups; do
+        if [ -d "$candidate" ]; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done
+    return 1
+}
+
+KOREADER="$VOLUME/.adds/koreader"
+
+if [ ! -f "$KOREADER/settings.reader.lua" ]; then
+    log_err "koreader-backup: no KOReader installation at $KOREADER"
+    log_err "  Is the Kobo connected and mounted? Override with --volume <path>."
+    exit 1
+fi
+
+if ! have zip; then
+    log_err "koreader-backup: zip not found on PATH."
+    exit 1
+fi
+
+if [ -z "$DEST" ]; then
+    if ! root=$(find_backup_root); then
+        log_err "koreader-backup: could not find a Dropbox Backups folder."
+        log_err "  Pass --dest <dir> or set KOREADER_BACKUP_DIR."
+        exit 1
+    fi
+    DEST="$root/KOReader"
+fi
+
+STAMP=$(date -u +%Y-%m-%dT%H%M%SZ)
+NAME="koreader-backup-${STAMP}.zip"
+
+# Everything user-owned under .adds/koreader. The rest of that directory is the
+# program itself, which a reinstall restores. Missing entries are skipped, since
+# most are created only once the feature is used.
+#
+# plugins/ is included whole: third-party plugins live there and some store
+# their settings beside their code. Restoring it over a newer KOReader would
+# downgrade the bundled ones, so restore from it selectively.
+KOREADER_ITEMS=(
+    settings.reader.lua
+    settings.reader.lua.old
+    history.lua
+    defaults.custom.lua
+    version.log
+    settings
+    docsettings
+    hashdocsettings
+    styletweaks
+    patches
+    scripts
+    clipboard
+    plugins
+    data/dict
+)
+
+# Build the file list, relative to the volume root.
+#
+# Excluded: macOS AppleDouble files (._*) and .DS_Store, which the Mac writes
+# onto the FAT volume and which are not KOReader's; and bookinfo_cache.sqlite3,
+# the cover browser's thumbnail cache, which can be large and is regenerated.
+#
+# The book scan prunes the KOReader tree (already covered) and the macOS
+# volume metadata directories, which are unreadable and would fail the find.
+# .kobo is NOT pruned: store-bought books live in .kobo/kepub, and their
+# sidecars sit beside them.
+LIST=$(mktemp -t koreader-backup.XXXXXX)
+WORK=$(mktemp -d -t koreader-backup.XXXXXX)
+cleanup() {
+    rm -f "$LIST" "$WORK/$NAME"
+    rmdir "$WORK" 2>/dev/null || true
+}
+trap cleanup EXIT
+
+cd "$VOLUME"
+
+for item in "${KOREADER_ITEMS[@]}"; do
+    [ -e ".adds/koreader/$item" ] || continue
+    find ".adds/koreader/$item" -type f \
+        ! -name '._*' ! -name '.DS_Store' ! -name 'bookinfo_cache.sqlite3'
+done >"$LIST"
+
+find . \( -path ./.adds -o -path ./.Spotlight-V100 -o -path ./.Trashes \
+    -o -path ./.fseventsd \) -prune \
+    -o -type d -name '*.sdr' -print |
+    while IFS= read -r sdr; do
+        find "$sdr" -type f ! -name '._*' ! -name '.DS_Store'
+    done |
+    sed 's|^\./||' >>"$LIST"
+
+FILES=$(wc -l <"$LIST" | tr -d ' ')
+BOOKS=$(sed -n 's|\(.*\.sdr\)/.*|\1|p' "$LIST" | sort -u | wc -l | tr -d ' ')
+
+if [ "$FILES" -eq 0 ]; then
+    log_err "koreader-backup: found nothing to back up under $VOLUME"
+    exit 1
+fi
+
+log_field "Source" "$VOLUME"
+log_field "Files" "$FILES (highlights and progress for $BOOKS book(s))"
+log_field "Archive" "$DEST/$NAME"
+
+if [ "$DOTFILES_DRY_RUN" -eq 1 ]; then
+    run mkdir -p "$DEST"
+    run zip -X -q "$WORK/$NAME" "-@ <$FILES files>"
+    run mv "$WORK/$NAME" "$DEST/$NAME"
+    exit 0
+fi
+
+# Built in a temporary directory and moved into place once verified, so Dropbox
+# never syncs a half-written archive and a failed run leaves nothing behind.
+zip -X -q "$WORK/$NAME" -@ <"$LIST"
+unzip -tq "$WORK/$NAME" >/dev/null
+
+mkdir -p "$DEST"
+mv "$WORK/$NAME" "$DEST/$NAME"
+
+log_ok "Backed up to $DEST/$NAME ($(du -h "$DEST/$NAME" | cut -f1 | tr -d ' '))"
