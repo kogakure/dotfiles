@@ -14,6 +14,15 @@ config/espanso/match/packages/
 config/herdr/plugins.json
 config/herdr/plugins/github
 
+# OmniWM's bundled default shell — shipped by the app, which rewrites it on
+# install and update (every file matched shell/default/.manifest.json's
+# checksums when this rule was added). A shell you author goes in its own
+# directory next to it and is committed.
+config/omniwm/shell/default/
+# Luau type definitions for editor autocompletion, also app-shipped and
+# versioned with OmniWM rather than authored here.
+config/omniwm/shell/omniwm.d.luau
+
 # Fish — vendored plugin files only, never whole directories.
 #
 # ~/.config/fish is a *directory symlink* into this repo, so fisher writes its

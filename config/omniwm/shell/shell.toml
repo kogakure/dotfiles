@@ -1,0 +1,11 @@
+
+[profiles]
+
+[profiles.default]
+
+[profiles.default.workspaceBar]
+fullWidth = true
+fullWidthNotchMode = "splitAroundNotch"
+position = "overlappingMenuBar"
+reserveLayoutSpace = true
+windowLevel = "popup"
