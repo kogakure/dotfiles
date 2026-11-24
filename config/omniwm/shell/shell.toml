@@ -44,7 +44,7 @@ systemStatsButton = true
 transparentBackground = false
 windowLevel = "popup"
 xOffset = 0.0
-yOffset = -10.0
+yOffset = -30.0
 
 [weather]
 city = "Hamburg, Germany"
