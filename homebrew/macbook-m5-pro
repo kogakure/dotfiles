@@ -6,7 +6,7 @@ tap "can1357/tap"
 tap "charmbracelet/tap", trusted: true
 tap "crmne/tap", trusted: true
 tap "d12frosted/emacs-plus", trusted: true
-tap "devvmhq/tap"
+tap "devvmhq/tap", trusted: true
 tap "docker/tap", trusted: true
 tap "dustinblackman/tap", trusted: true
 tap "f/textream", trusted: true
@@ -532,6 +532,8 @@ cask "numi"
 cask "obsidian"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
+# Tiling window manager
+cask "omniwm"
 # AI coding agent desktop client
 cask "opencode-desktop"
 # Local-first alternative to Logitech Options+ for HID++ devices

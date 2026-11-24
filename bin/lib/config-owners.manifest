@@ -98,7 +98,7 @@ mise|brew|mise|mise is installed from brew; it cannot install itself
 nushell|brew|nushell|config/nushell/env.nu is generated — see shell/README.md
 nvim|mise|neovim|the directory is nvim, the mise tool is neovim
 oatmeal|brew|dustinblackman/tap/oatmeal|-
-omniwm|manual|omniwm|window manager; installed outside brew
+omniwm|brew|omniwm|cask; window manager
 opencode|mise|opencode|also brew, spelled two ways across hosts
 rex|manual|Rex Beta.app|terminal app installed by hand; no cask or mise tool provides it
 ripgrep|mise|ripgrep|also brew
