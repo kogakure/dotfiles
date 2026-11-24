@@ -5,6 +5,7 @@
                 "rules": [
                     {
                         "description": "CAPS_LOCK : (Hyper) SHIFT+COMMAND+OPTION+CONTROL or ESCAPE (if alone)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -117,6 +118,7 @@
                     },
                     {
                         "description": "F4: Open Raycast",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": { "key_code": "f4" },
@@ -127,6 +129,7 @@
                     },
                     {
                         "description": "Focus Microsoft Teams Meeting Manager Window",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -154,6 +157,7 @@
                     },
                     {
                         "description": "Change Fn + Spacebar to Shift + Cmd + A",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -180,6 +184,7 @@
                     },
                     {
                         "description": "Change option + a/o/u to ä/ö/ü",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
