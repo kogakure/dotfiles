@@ -6,13 +6,18 @@ tabRailAppIcons = false
 
 [borders]
 enabled = true
-width = 5.0
+width = 4.0
 
 [borders.color]
 alpha = 1.0
-blue = 0.979300037944676
-green = 1.0
-red = 0.08458520228437894
+blue = 0.8447450995445251
+green = 0.998426616191864
+red = 0.36828309297561646
+
+[borders.glow]
+enabled = false
+opacity = 0.55
+radius = 8.0
 
 [borders.gradient]
 direction = "topLeftToBottomRight"
@@ -20,18 +25,18 @@ enabled = false
 
 [borders.gradient.end]
 alpha = 1.0
-blue = 0.7
-green = 1.0
-red = 0.0
+blue = 0.498723566532135
+green = 0.7053661942481995
+red = 0.06651615351438522
 
 [borders.gradient.start]
 alpha = 1.0
-blue = 1.0
-green = 0.4
-red = 0.0
+blue = 0.8663743138313293
+green = 0.9708320498466492
+red = 0.7290936708450317
 
 [clipboard]
-historyEnabled = false
+historyEnabled = true
 ignoredTypes = []
 maxItemBytes = 8388608
 maxItems = 200
@@ -50,21 +55,21 @@ crossesMonitorAtEdge = true
 edgeNavigationInterval = 1.5
 followsMouse = true
 followsMouseOnlyFullyVisible = false
-followsWindowToMonitor = false
+followsWindowToMonitor = true
 lockModifier = "off"
-moveCrossesMonitorAtEdge = false
+moveCrossesMonitorAtEdge = true
 moveMouseToFocusedWindow = true
 raiseOnMouseFocus = false
 
 [gaps]
 fullscreenUsesOuterGaps = false
-size = 16.0
+size = 10.0
 
 [gaps.outer]
-bottom = 0.0
-left = 0.0
-right = 0.0
-top = 0.0
+bottom = 10.0
+left = 10.0
+right = 10.0
+top = 10.0
 
 [general]
 animationSpeed = 1.0
@@ -101,12 +106,12 @@ windowResizeEnabled = false
 windowResizeFingerCount = 3
 workspaceSwipeAxis = "vertical"
 workspaceSwipeEdgeBehavior = "cycle"
-workspaceSwipeEnabled = false
+workspaceSwipeEnabled = true
 workspaceSwipeFingerCount = 3
 
 [hiddenBar]
 enabled = true
-hiddenBundleIDs = []
+hiddenBundleIDs = ["com.superlogical.rex", "com.apple.ScriptMenuApp", "com.sindresorhus.Pure-Paste"]
 rehideIntervalSeconds = 5.0
 
 [island]
@@ -120,7 +125,7 @@ cliFolders = []
 entries = []
 shell = "system"
 shellExecutable = ""
-terminal = "terminal"
+terminal = "ghostty"
 
 [mouseWarp]
 constrainToArrangement = false
@@ -134,7 +139,7 @@ centerFocusedColumn = "never"
 containerPrimarySpanPresets = [0.3333333333333333, 0.5, 0.6666666666666666]
 defaultContainerPrimarySpan = 0.5
 edgeGaps = true
-infiniteLoop = false
+infiniteLoop = true
 moveWindowStacksIntoColumn = true
 overscrollVisibleStripPercent = 5
 resizeStepPercent = 5
@@ -177,13 +182,13 @@ red = 0.3
 [quakeTerminal]
 animationDuration = 0.2
 autoHide = false
-backgroundBlurRadius = 0
+backgroundBlurRadius = 30
 backgroundEffect = "standardBlur"
 enabled = true
 heightPercent = 50.0
 monitorMode = "focusedWindow"
-opacity = 1.0
-position = "center"
+opacity = 0.8
+position = "bottom"
 provider = "ghostty"
 widthPercent = 50.0
 
@@ -220,19 +225,19 @@ weather = true
 [statusBar]
 showAppNames = false
 showIcon = true
-showWorkspaceName = false
-useWorkspaceId = false
+showWorkspaceName = true
+useWorkspaceId = true
 
 [statusMenu]
-hiddenControls = []
-hiddenMenuItems = []
-showControlHelp = true
+hiddenControls = ["preventSleepEnabled"]
+hiddenMenuItems = ["diagnostics", "helpLinks", "reportBug", "sponsors"]
+showControlHelp = false
 showControls = true
 showMenuItems = true
 
 [windowSwitcher]
 commandTab = "activeWorkspace"
-enabled = false
+enabled = true
 optionTab = "allWorkspaces"
 order = "omniLayout"
 scope = "allWorkspaces"
@@ -244,7 +249,7 @@ autoHideHideDelayMilliseconds = 0.0
 autoHideRevealDelayMilliseconds = 0.0
 backgroundOpacity = 0.1
 deduplicateAppIcons = false
-enabled = false
+enabled = true
 excludedBundleIDs = []
 fullWidth = false
 fullWidthNotchMode = "rightOfNotch"
@@ -274,82 +279,118 @@ yOffset = 0.0
 [workspaceBar.iconOverrides]
 
 [[appRules]]
-bundleId = "com.openai.codex"
-id = "6A31F08A-4051-4354-B439-42F4C71894A3"
-minHeight = 600.0
-minWidth = 800.0
-
-[[appRules]]
-bundleId = "com.eltima.cmd1.pro.mas"
-id = "4BA546DA-2875-4BEF-B13F-1539E833B1A0"
-minHeight = 550.0
-minWidth = 950.0
-
-[[appRules]]
-bundleId = "com.google.Chrome"
-id = "486CEFA6-69AA-4A3C-AF27-BCD38F4F138B"
-minHeight = 375.0
-minWidth = 500.0
-
-[[appRules]]
+assignToWorkspace = "1"
 bundleId = "dev.zed.Zed"
 id = "979F05F4-FFA2-4EDD-B23F-08A9944C759F"
 minHeight = 240.0
 minWidth = 360.0
 
 [[appRules]]
-bundleId = "com.apple.Safari"
-id = "81426D13-C1A5-475E-AFBC-00BBA05042D0"
-minHeight = 220.0
-minWidth = 574.0
-
-[[appRules]]
-bundleId = "app.zen-browser.zen"
-id = "1CF39647-F30D-4E76-9686-79B551F1B094"
-minHeight = 495.0
-minWidth = 500.0
-
-[[appRules]]
-bundleId = "org.mozilla.firefox"
-id = "005C00D3-F665-47F8-BDAE-D80790E9E46B"
-minHeight = 120.0
-minWidth = 500.0
-
-[[appRules]]
-bundleId = "company.thebrowser.dia"
-id = "C21156B1-0224-4998-97E3-8F4FA65B9F3B"
-minHeight = 420.0
-minWidth = 500.0
-
-[[appRules]]
+assignToWorkspace = "6"
 bundleId = "com.spotify.client"
 id = "2DE9390B-0DB4-4D0C-9ABA-06F76F1D4EA9"
 minHeight = 600.0
 minWidth = 800.0
 
 [[appRules]]
-bundleId = "com.hnc.Discord"
-id = "AF752D95-8497-4844-BE20-4C93E73BAEF2"
-minHeight = 500.0
-minWidth = 800.0
-
-[[appRules]]
+assignToWorkspace = "1"
 bundleId = "com.mitchellh.ghostty"
 id = "7876C9EF-437E-4D4F-9C27-B1B02F4AABCE"
 minHeight = 48.0
 minWidth = 90.0
 
 [[appRules]]
-bundleId = "com.microsoft.Outlook"
-id = "8ECAB78B-BCDD-4245-BC25-1609A49B1C86"
-minHeight = 650.0
-minWidth = 930.0
-
-[[appRules]]
 bundleId = "com.apple.MobileSMS"
 id = "552FB77D-BF0E-4737-90A6-B5BC6986C579"
 minHeight = 320.0
 minWidth = 660.0
+
+[[appRules]]
+assignToWorkspace = "1"
+bundleId = "com.t3tools.t3code"
+id = "B06F3F2C-9B66-4E72-B5F9-DAB4E403410B"
+
+[[appRules]]
+assignToWorkspace = "1"
+bundleId = "com.superlogical.rex"
+id = "A3E745E3-6FD9-46B5-8C53-BD0CC7268BDF"
+
+[[appRules]]
+assignToWorkspace = "2"
+bundleId = "com.brave.Browser"
+id = "E64D59B2-18C1-4144-8269-9B8A2C047066"
+
+[[appRules]]
+assignToWorkspace = "2"
+bundleId = "com.brave.Browser.origin"
+id = "2FB30B9B-FB91-4C4B-A81D-DAC808D146A4"
+
+[[appRules]]
+assignToWorkspace = "2"
+bundleId = "com.TickTick.task.mac"
+id = "F81E2A22-619A-4A3E-8A36-DBA98BFFBFC2"
+minWidth = 400.0
+
+[[appRules]]
+assignToWorkspace = "3"
+bundleId = "tw.ogdesign.eagle"
+id = "AEEEF4F9-4E24-48A5-845A-EF01825B93F8"
+
+[[appRules]]
+assignToWorkspace = "3"
+bundleId = "com.mymind.mymind-mac"
+id = "F52408E7-0B0E-4DE0-B733-77E19EDCC725"
+
+[[appRules]]
+assignToWorkspace = "4"
+bundleId = "com.linear"
+id = "B7F6EA4F-BA40-4B34-84CA-D81312B29C75"
+
+[[appRules]]
+assignToWorkspace = "5"
+bundleId = "md.obsidian"
+id = "1B22583F-B394-44C3-902C-360832072A60"
+
+[[appRules]]
+assignToWorkspace = "9"
+bundleId = "com.apple.mail"
+id = "424CD0A5-6316-4ECD-9597-BBE1ECC6B8BF"
+initialContainerPrimarySpan = 1.0
+minWidth = 1200.0
+
+[[appRules]]
+assignToWorkspace = "8"
+bundleId = "com.canva.affinity"
+id = "3E59D195-2E5B-4286-A23B-8661BC8969D8"
+
+[[appRules]]
+assignToWorkspace = "9"
+bundleId = "com.figma.Desktop"
+id = "6D71C927-CD8D-4F54-893F-9015CD74C8FC"
+
+[[appRules]]
+assignToWorkspace = "9"
+bundleId = "com.microsoft.teams2"
+id = "58BA58D3-BFF9-44A0-8AD9-52E4E9B1583B"
+initialContainerPrimarySpan = 0.7
+
+[[appRules]]
+bundleId = "com.daisydiskapp.DaisyDiskStandAlone"
+id = "5A431D4C-8D6B-4C3F-9E2F-C006285FB47E"
+initialContainerPrimarySpan = 0.5
+layout = "float"
+
+[[appRules]]
+bundleId = "io.zsa.keymapp"
+id = "6E2887DF-70EC-4615-9ABB-1CD3A7680EC1"
+layout = "float"
+
+[[appRules]]
+assignToWorkspace = "9"
+bundleId = "com.microsoft.Outlook"
+id = "CA3168B7-717A-4B84-8633-551E10595095"
+initialContainerPrimarySpan = 1.0
+minWidth = 1200.0
 
 [[hotkeys]]
 binding = "Unassigned"
@@ -1144,7 +1185,7 @@ binding = "Unassigned"
 id = "rescueOffscreenWindows"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Command+F"
 id = "toggleFocusedWindowFloating"
 
 [[hotkeys]]
@@ -1172,7 +1213,7 @@ binding = "Unassigned"
 id = "toggleHiddenBarPanel"
 
 [[hotkeys]]
-binding = "Option+Grave"
+binding = "Option+Quote"
 id = "toggleQuakeTerminal"
 
 [[hotkeys]]
@@ -1186,6 +1227,22 @@ id = "toggleOverview"
 [[hotkeys]]
 binding = "Unassigned"
 id = "toggleSystemStats"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "toggleShellWidget.hidden-bar"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "toggleShellWidget.media"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "toggleShellWidget.system-stats"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "toggleShellWidget.workspaces"
 
 [[workspaces]]
 id = "AD36F001-C57E-41A5-AC1D-DF5249D007F0"
@@ -1228,22 +1285,20 @@ name = "5"
 type = "main"
 
 [[workspaces]]
-displayName = "❤️"
 id = "5953F2BF-A378-4266-91B2-287174C4FA4D"
 layoutType = "niri"
 name = "6"
 
 [workspaces.monitorAssignment]
-type = "secondary"
+type = "main"
 
 [[workspaces]]
-displayName = "🚀"
 id = "A7D5E104-6985-4516-8ED5-07F144F2A33D"
 layoutType = "niri"
 name = "7"
 
 [workspaces.monitorAssignment]
-type = "secondary"
+type = "main"
 
 [[workspaces]]
 id = "0E18F6B0-345A-4078-8B21-33641F07A861"
@@ -1259,4 +1314,4 @@ layoutType = "niri"
 name = "9"
 
 [workspaces.monitorAssignment]
-type = "main"
+type = "secondary"

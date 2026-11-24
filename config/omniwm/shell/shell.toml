@@ -2,10 +2,51 @@
 [profiles]
 
 [profiles.default]
+center = []
+leading = ["apple-menu", "app-menu", "omniwm", "workspaces", "scratchpads"]
+scheme = "tonalSpot"
+theme = "wallpaper"
+trailing = ["media", "system-stats"]
+
+[profiles.default.hiddenBar]
+enabled = true
+
+[profiles.default.widgets]
+
+[profiles.default.widgets.clock]
+icon = false
 
 [profiles.default.workspaceBar]
-fullWidth = true
+autoHide = true
+autoHideHideDelayMilliseconds = 150.0
+autoHideRevealDelayMilliseconds = 150.0
+backgroundOpacity = 0.0
+deduplicateAppIcons = false
+fullWidth = false
 fullWidthNotchMode = "splitAroundNotch"
-position = "overlappingMenuBar"
-reserveLayoutSpace = true
+height = 34.0
+hideEmptyWorkspaces = true
+hideInNativeFullscreen = false
+hoverPreviewsEnabled = true
+inactiveIconOpacity = 0.55
+notchMode = "moveBelowMenuBar"
+notificationBadges = "dot"
+position = "belowMenuBar"
+reserveLayoutSpace = false
+revealHoldMilliseconds = 50.0
+revealModifier = "option"
+showAccentHighlights = true
+showFloatingWindows = true
+showItemBackgrounds = false
+showLabels = true
+solidBlackBackground = false
+systemStatsButton = true
+transparentBackground = false
 windowLevel = "popup"
+xOffset = 0.0
+yOffset = -10.0
+
+[weather]
+city = "Hamburg, Germany"
+refresh = 15.0
+units = "celsius"
