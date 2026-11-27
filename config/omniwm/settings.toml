@@ -53,12 +53,12 @@ useGlobalGaps = true
 [focus]
 crossesMonitorAtEdge = true
 edgeNavigationInterval = 1.5
-followsMouse = true
+followsMouse = false
 followsMouseOnlyFullyVisible = false
 followsWindowToMonitor = true
 lockModifier = "off"
 moveCrossesMonitorAtEdge = true
-moveMouseToFocusedWindow = true
+moveMouseToFocusedWindow = false
 raiseOnMouseFocus = false
 
 [gaps]
@@ -391,6 +391,11 @@ bundleId = "com.microsoft.Outlook"
 id = "CA3168B7-717A-4B84-8633-551E10595095"
 initialContainerPrimarySpan = 1.0
 minWidth = 1200.0
+
+[[appRules]]
+assignToWorkspace = "1"
+bundleId = "com.stablyai.orca"
+id = "8126CF8A-9970-40D9-8BF9-7C7900E33430"
 
 [[hotkeys]]
 binding = "Unassigned"
