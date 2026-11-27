@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "atuin": {
+      "command": "/Users/stefanimhoff/.local/share/mise/shims/atuin",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}
