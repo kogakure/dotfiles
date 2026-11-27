@@ -1,3 +1,6 @@
 {
-  "plugin": ["./herdr-tui-session.js"]
+  "plugin": [
+    "./herdr-tui-session.js",
+    "file:///Users/stefanimhoff/.config/opencode/plugins/orca-opencode-status-tui/tui.js"
+  ]
 }
