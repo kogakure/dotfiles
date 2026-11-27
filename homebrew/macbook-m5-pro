@@ -20,6 +20,7 @@ tap "nkzw-tech/tap"
 tap "penso/tap", trusted: { casks: ["herdr-gpui"] }
 tap "peteonrails/voxtype"
 tap "safedep/tap", trusted: true
+tap "stablyai/orca"
 tap "steipete/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
@@ -94,6 +95,8 @@ brew "curlie"
 brew "diff-so-fancy"
 # Git diff pager based on delta but with a file tree
 brew "diffnav"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Standard XML representation system for technical documents
 brew "docbook"
 # XML vocabulary to create presentation-neutral documents
@@ -364,8 +367,6 @@ brew "charmbracelet/tap/soft-serve"
 brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
 # Quickly clone an entire org/users repositories into one directory
 brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
@@ -374,12 +375,10 @@ brew "joshmedeski/sesh/sesh"
 brew "kdlbs/kandev/kandev", trusted: true
 # Sound and music editor
 cask "ableton-live-lite"
-# AeroSpace is an i3-like tiling window manager for macOS
-cask "nikitabobko/tap/aerospace"
 # Image editing and design software
 cask "affinity"
-# Network scanner
-cask "angry-ip-scanner"
+# Tools for building Android applications
+cask "android-studio"
 # Webcam & audio device software
 cask "ankerwork"
 # Memory training application
@@ -538,6 +537,8 @@ cask "omniwm"
 cask "opencode-desktop"
 # Local-first alternative to Logitech Options+ for HID++ devices
 cask "openlogi"
+# IDE for orchestrating AI coding agents across terminals and worktrees
+cask "stablyai/orca/orca", trusted: true
 # Control your smart light system
 cask "philips-hue-sync"
 # Client for Proton Drive
@@ -646,6 +647,7 @@ mas "Smart Converter", id: 447513724
 mas "TestFlight", id: 899247664
 mas "Things", id: 904280696
 mas "Time Sink", id: 404363161
+mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
 vscode "adamvoss.vscode-languagetool"
 vscode "akamud.vscode-caniuse"
@@ -736,9 +738,3 @@ npm "fast-cli"
 npm "json-server"
 npm "jsonlint"
 npm "neovim"
-npm "pageres-cli"
-npm "pi-agent-browser-native"
-npm "pi-defender"
-npm "pi-subagents"
-npm "trash-cli"
-npm "yarn"
