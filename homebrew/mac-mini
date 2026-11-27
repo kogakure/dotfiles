@@ -21,6 +21,7 @@ tap "modem-dev/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap", trusted: { casks: ["codiff"] }
 tap "safedep/tap", trusted: true
+tap "stablyai/orca"
 tap "steipete/tap", trusted: true
 tap "tw93/tap", trusted: true
 # Search tool like grep, but optimized for programmers
@@ -359,8 +360,6 @@ brew "charmbracelet/tap/soft-serve"
 brew "d12frosted/emacs-plus/emacs-plus@30", trusted: true
 # Terminal UI to chat with large language models (LLM) using backends such as Ollama, and direct integrations with your favourite editor like Neovim!
 brew "dustinblackman/tap/oatmeal"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
 # Quickly clone an entire org/users repositories into one directory
 brew "gabrie30/utils/ghorg"
 # Smart terminal session manager
@@ -369,8 +368,6 @@ brew "joshmedeski/sesh/sesh"
 brew "kdlbs/kandev/kandev", trusted: true
 # Sound and music editor
 cask "ableton-live-lite"
-# AeroSpace is an i3-like tiling window manager for macOS
-cask "nikitabobko/tap/aerospace"
 # Image editing and design software
 cask "affinity"
 # Memory training application
@@ -419,8 +416,6 @@ cask "cursor"
 cask "daisydisk"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
-# Collect, organise, edit and annotate documents
-cask "devonthink"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
@@ -521,10 +516,14 @@ cask "obsidian"
 cask "october"
 # Organise all your reference images in one place
 cask "ogdesign-eagle"
+# Tiling window manager
+cask "omniwm"
 # AI coding agent desktop client
 cask "opencode-desktop"
 # Local-first alternative to Logitech Options+ for HID++ devices
 cask "openlogi"
+# IDE for orchestrating AI coding agents across terminals and worktrees
+cask "stablyai/orca/orca", trusted: true
 # Control your smart light system
 cask "philips-hue-sync"
 # Client for Proton Drive
@@ -719,6 +718,7 @@ uv "jiratui"
 uv "posting"
 npm "@agentclientprotocol/claude-agent-acp"
 npm "@devcontainers/cli"
+npm "@earendil-works/pi-coding-agent"
 npm "@nqbao/pi-sandbox"
 npm "@plannotator/pi-extension"
 npm "@playwright/cli"
