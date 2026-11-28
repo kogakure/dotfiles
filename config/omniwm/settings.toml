@@ -302,6 +302,7 @@ minWidth = 90.0
 [[appRules]]
 bundleId = "com.apple.MobileSMS"
 id = "552FB77D-BF0E-4737-90A6-B5BC6986C579"
+initialContainerPrimarySpan = 0.3
 minHeight = 320.0
 minWidth = 660.0
 
@@ -314,6 +315,7 @@ id = "B06F3F2C-9B66-4E72-B5F9-DAB4E403410B"
 assignToWorkspace = "1"
 bundleId = "com.superlogical.rex"
 id = "A3E745E3-6FD9-46B5-8C53-BD0CC7268BDF"
+initialContainerPrimarySpan = 1.0
 
 [[appRules]]
 assignToWorkspace = "2"
@@ -324,6 +326,7 @@ id = "E64D59B2-18C1-4144-8269-9B8A2C047066"
 assignToWorkspace = "2"
 bundleId = "com.brave.Browser.origin"
 id = "2FB30B9B-FB91-4C4B-A81D-DAC808D146A4"
+initialContainerPrimarySpan = 1.0
 
 [[appRules]]
 assignToWorkspace = "2"
@@ -396,6 +399,24 @@ minWidth = 1200.0
 assignToWorkspace = "1"
 bundleId = "com.stablyai.orca"
 id = "8126CF8A-9970-40D9-8BF9-7C7900E33430"
+initialContainerPrimarySpan = 1.0
+
+[[appRules]]
+assignToWorkspace = "3"
+bundleId = "com.refernapp.refern"
+id = "89496D75-CFAD-4F03-B073-345188A439DF"
+initialContainerPrimarySpan = 1.0
+
+[[appRules]]
+assignToWorkspace = "2"
+bundleId = "com.officecommun.search"
+id = "0F835889-B80E-4AEA-B886-CA6997731964"
+initialContainerPrimarySpan = 1.0
+
+[[appRules]]
+bundleId = "com.abueammar.tinycast"
+id = "98D3A17C-E0B3-4E18-A26D-88046680E8DA"
+layout = "float"
 
 [[hotkeys]]
 binding = "Unassigned"
